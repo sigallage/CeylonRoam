@@ -14,6 +14,7 @@ const LandingPage = () => {
   const [scrollY, setScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [statsInView, setStatsInView] = useState(false);
+  const [visibleSections, setVisibleSections] = useState(new Set());
   const [stats, setStats] = useState({
     destinations: 0,
     travelers: 0,
@@ -98,6 +99,37 @@ const LandingPage = () => {
     observer.observe(statsSection);
     return () => observer.disconnect();
   }, [statsInView]);
+
+  // Scroll animation observer
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleSections(prev => new Set([...prev, entry.target.id]));
+        } else {
+          setVisibleSections(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(entry.target.id);
+            return newSet;
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.2,
+      rootMargin: '-50px 0px'
+    });
+
+    // Observe sections
+    const sections = ['features', 'destinations', 'stats-section', 'about'];
+    sections.forEach(sectionId => {
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const features = [
     {
@@ -221,7 +253,11 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
+      <section id="features" className={`relative py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden transition-all duration-1000 transform ${
+        visibleSections.has('features') 
+          ? 'translate-y-0 opacity-100' 
+          : 'translate-y-16 opacity-0'
+      }`}>
         <div className="absolute inset-0 opacity-10">
           <img src={colomboImage} alt="" className="w-full h-full object-cover" />
         </div>
@@ -263,7 +299,11 @@ const LandingPage = () => {
       </section>
 
       {/* Experiences Showcase */}
-      <section id="destinations" className="relative py-24 px-4 bg-gray-900 overflow-hidden">
+      <section id="destinations" className={`relative py-24 px-4 bg-gray-900 overflow-hidden transition-all duration-1000 transform delay-200 ${
+        visibleSections.has('destinations') 
+          ? 'translate-y-0 opacity-100' 
+          : 'translate-y-16 opacity-0'
+      }`}>
         <div className="absolute inset-0 opacity-15">
           <img src={templeImage} alt="" className="w-full h-full object-cover" />
         </div>
@@ -307,7 +347,11 @@ const LandingPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section id="stats-section" className="relative py-24 px-4 bg-gray-900 overflow-hidden">
+      <section id="stats-section" className={`relative py-24 px-4 bg-gray-900 overflow-hidden transition-all duration-1000 transform delay-300 ${
+        visibleSections.has('stats-section') 
+          ? 'translate-y-0 opacity-100' 
+          : 'translate-y-16 opacity-0'
+      }`}>
         <div className="absolute inset-0 opacity-20">
           <img src={flagImage} alt="" className="w-full h-full object-cover" />
         </div>
@@ -354,7 +398,11 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section id="about" className="relative py-24 px-4 bg-gray-900 overflow-hidden">
+      <section id="about" className={`relative py-24 px-4 bg-gray-900 overflow-hidden transition-all duration-1000 transform delay-500 ${
+        visibleSections.has('about') 
+          ? 'translate-y-0 opacity-100' 
+          : 'translate-y-16 opacity-0'
+      }`}>
         <div className="absolute inset-0 opacity-10">
           <img src={colomboImage} alt="" className="w-full h-full object-cover" />
         </div>
