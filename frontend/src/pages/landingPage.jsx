@@ -202,7 +202,7 @@ const LandingPage = () => {
               <img src={flagImage} alt="Sri Lanka" className="w-full h-full object-cover" />
             </div>
             <h1 className="text-3xl font-bold text-white tracking-tight">
-              Ceylon<span className="text-yellow-400">Voyage</span>
+              Ceylon<span className="text-yellow-400">Roam</span>
             </h1>
           </div>
           <div className="hidden md:flex gap-8 text-white font-medium">
@@ -434,7 +434,7 @@ const LandingPage = () => {
                 <img src={flagImage} alt="Sri Lanka" className="w-full h-full object-cover" />
               </div>
               <h1 className="text-3xl font-bold text-white tracking-tight">
-                Ceylon<span className="text-yellow-400">Voyage</span>
+                Ceylon<span className="text-yellow-400">Roam</span>
               </h1>
             </div>
 
@@ -448,14 +448,14 @@ const LandingPage = () => {
 
             {/* Contact Info */}
             <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm">info@ceylonvoyage.lk</p>
+              <p className="text-gray-400 text-sm">info@ceylonroam.lk</p>
               <p className="text-gray-400 text-sm">+94 11 234 5678</p>
             </div>
           </div>
 
           {/* Bottom Copyright */}
           <div className="mt-8 pt-6 border-t border-gray-800 text-center">
-            <p className="text-gray-400 text-sm">© 2025 CeylonVoyage. All rights reserved. Made with love in Sri Lanka</p>
+            <p className="text-gray-400 text-sm">© 2025 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
           </div>
         </div>
       </footer>
