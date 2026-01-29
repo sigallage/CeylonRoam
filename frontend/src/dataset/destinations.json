@@ -1,0 +1,26 @@
+{
+        "id": "sigiriya",
+        "name": "Sigiriya Rock Fortress",
+        "latitude": 7.9570,
+        "longitude": 80.7603,
+        "description": "An ancient rock fortress and UNESCO World Heritage Site, Sigiriya is one of Sri Lanka's most iconic landmarks. The 5th-century citadel features stunning frescoes, the Mirror Wall, and breathtaking views from the summit.",
+        "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+        "category": "historical",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October"],
+            "best_time_to_visit": "Early morning (6:30 AM) to avoid crowds and heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Comfortable clothing with covered shoulders and knees recommended",
+            "behavior": [
+                "Climb can be strenuous - bring water",
+                "Wear appropriate footwear",
+                "Be cautious of wasps near the summit"
+            ],
+            "entry_requirements": ["Valid ticket required", "Photography allowed"]
+        },
+        "entry_fee": "USD 30 for foreigners",
+        "opening_hours": "7:00 AM - 5:30 PM"
+    }
+    
