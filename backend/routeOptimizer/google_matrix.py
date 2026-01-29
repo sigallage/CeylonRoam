@@ -39,7 +39,12 @@ def fetch_distance_matrix(
     """
 
     if api_key is None:
-        api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+        api_key = (
+            os.getenv("GOOGLE_MAPS_API_KEY")
+            or os.getenv("GOOGLE_MAPS_KEY")
+            or os.getenv("GOOGLE_API_KEY")
+            or os.getenv("GMAPS_API_KEY")
+        )
 
     if not api_key:
         raise GoogleMatrixError(
@@ -75,7 +80,15 @@ def fetch_distance_matrix(
         payload: dict[str, Any] = resp.json()
 
     if payload.get("status") != "OK":
-        raise GoogleMatrixError(f"Google Distance Matrix error: {payload.get('status')} {payload.get('error_message','')}")
+        status = payload.get("status")
+        error_message = payload.get("error_message", "")
+        if status == "REQUEST_DENIED" and "referer" in str(error_message).lower():
+            raise GoogleMatrixError(
+                "Google Distance Matrix error: REQUEST_DENIED (referer restriction). "
+                "Your key is likely restricted to HTTP referrers (browser key). "
+                "Use a server key for the backend (Application restrictions: None or IP addresses)."
+            )
+        raise GoogleMatrixError(f"Google Distance Matrix error: {status} {error_message}")
 
     rows = payload.get("rows", [])
     if len(rows) != n:

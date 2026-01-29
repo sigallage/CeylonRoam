@@ -17,6 +17,46 @@ To optimize using live traffic, set a backend environment variable:
 
 - `GOOGLE_MAPS_API_KEY` (enable **Distance Matrix API** in Google Cloud; billing required)
 
+On Windows PowerShell (current terminal session):
+
+```powershell
+$env:GOOGLE_MAPS_API_KEY = "YOUR_KEY_HERE"
+```
+
+Or create a `.env` file (supported locations):
+
+- `backend/routeOptimizer/.env`
+- `.env` at repo root
+
+Example `.env`:
+
+```env
+GOOGLE_MAPS_API_KEY=YOUR_KEY_HERE
+```
+
+### Traffic colors on the route (Google Maps-style)
+
+To draw per-segment traffic colors (blue/yellow/red) similar to the native Google Maps app, the frontend calls:
+
+- `POST http://localhost:8000/traffic-route`
+
+This uses Google **Routes API** (v2) with `TRAFFIC_ON_POLYLINE` to return `speedReadingIntervals`.
+
+Enable for your backend key:
+- **Routes API**
+- Billing
+
+If you see: `Google Routes error (403): Requests from referer <empty> are blocked.`
+
+That means you used a **browser-restricted** key (HTTP referrers) for the backend.
+Backend calls have no `Referer` header, so Google blocks them.
+
+Fix:
+- Create/use a separate **server** API key for the backend
+- In Google Cloud Console → Credentials → API key:
+  - **Application restrictions**: `None` (simplest for local dev) OR `IP addresses` (recommended for production)
+  - **API restrictions**: limit to `Routes API` (+ `Distance Matrix API` if you use `/optimize` with `metric=google`)
+
 Example request (PowerShell):
 
 ```powershell
@@ -33,6 +73,7 @@ If you're inside `backend/routeOptimizer`, `python main.py` also works, but it r
 
 Frontend can call:
 - `POST http://localhost:8000/optimize`
+- `POST http://localhost:8000/traffic-route`
 
 ## Smoke test (no server)
 

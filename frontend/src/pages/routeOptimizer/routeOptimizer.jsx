@@ -75,6 +75,47 @@ function trafficColorForLeg(leg) {
 	return '#ef4444' // red (heavy traffic)
 }
 
+function decodePolyline(encoded) {
+	// Google encoded polyline algorithm (no deps)
+	if (!encoded) return []
+	let index = 0
+	let lat = 0
+	let lng = 0
+	const points = []
+	while (index < encoded.length) {
+		let b
+		let shift = 0
+		let result = 0
+		do {
+			b = encoded.charCodeAt(index++) - 63
+			result |= (b & 0x1f) << shift
+			shift += 5
+		} while (b >= 0x20)
+		const dlat = result & 1 ? ~(result >> 1) : result >> 1
+		lat += dlat
+
+		shift = 0
+		result = 0
+		do {
+			b = encoded.charCodeAt(index++) - 63
+			result |= (b & 0x1f) << shift
+			shift += 5
+		} while (b >= 0x20)
+		const dlng = result & 1 ? ~(result >> 1) : result >> 1
+		lng += dlng
+
+		points.push({ lat: lat / 1e5, lng: lng / 1e5 })
+	}
+	return points
+}
+
+function trafficColorForSpeed(speed) {
+	if (speed === 'NORMAL') return '#1e3a8a'
+	if (speed === 'SLOW') return '#f59e0b'
+	if (speed === 'TRAFFIC_JAM') return '#ef4444'
+	return '#1e3a8a'
+}
+
 export default function RouteOptimizer() {
 	const [returnToStart, setReturnToStart] = useState(false)
 	const [tryAllStarts, setTryAllStarts] = useState(true)
@@ -104,6 +145,8 @@ export default function RouteOptimizer() {
 	const [userAccuracyM, setUserAccuracyM] = useState(null)
 	const [navStepFlatIndex, setNavStepFlatIndex] = useState(0)
 	const [navSteps, setNavSteps] = useState([])
+	const [trafficRoute, setTrafficRoute] = useState(null)
+	const [trafficRouteError, setTrafficRouteError] = useState('')
 
 	const itinerary = mockItinerary
 
@@ -137,6 +180,19 @@ export default function RouteOptimizer() {
 	const center = useMemo(() => computeCenter(pathPoints), [pathPoints])
 
 	const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+	const backendBaseUrl = useMemo(() => {
+		const fromEnv = import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL
+		if (fromEnv) return String(fromEnv).replace(/\/$/, '')
+		// In dev we rely on Vite proxy (/api -> localhost:8000).
+		// In production (or file:// builds), there is no proxy, so default to local backend.
+		if (import.meta.env.DEV) return ''
+		return 'http://localhost:8000'
+	}, [])
+
+	function resolveBackendUrl(path) {
+		const cleanPath = path.startsWith('/') ? path : `/${path}`
+		return backendBaseUrl ? `${backendBaseUrl}${cleanPath}` : `/api${cleanPath}`
+	}
 	const { isLoaded } = useJsApiLoader({
 		id: 'ceylonroam-google-maps',
 		googleMapsApiKey: googleMapsApiKey || '',
@@ -266,6 +322,91 @@ export default function RouteOptimizer() {
 		const t = window.setInterval(() => setNavTick((x) => x + 1), 30000)
 		return () => window.clearInterval(t)
 	}, [navActive])
+
+	useEffect(() => {
+		// Fetch traffic-on-polyline intervals from backend (Routes API) for closer Google Maps-like coloring.
+		if (!googleMapsApiKey) return
+		if (!isLoaded) return
+		if (travelMode !== 'DRIVING') {
+			setTrafficRoute(null)
+			setTrafficRouteError('')
+			return
+		}
+		if (!activeItinerary || activeItinerary.length < 2) return
+
+		const url = resolveBackendUrl('/traffic-route')
+
+		const stops = activeItinerary.filter((d) => d.id !== 'start-user-location')
+		const origin = navActive && currentLocation
+			? currentLocation
+			: { lat: activeItinerary[0].location.lat, lng: activeItinerary[0].location.lng }
+		const destination = returnToStart
+			? origin
+			: { lat: stops[stops.length - 1].location.lat, lng: stops[stops.length - 1].location.lng }
+		const intermediates = stops.slice(0, returnToStart ? undefined : -1).map((d) => ({
+			lat: d.location.lat,
+			lng: d.location.lng,
+		}))
+
+		setTrafficRouteError('')
+		let cancelled = false
+
+		;(async () => {
+			try {
+				const res = await fetch(url, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						origin,
+						destination,
+						intermediates,
+						travel_mode: vehicleType === 'motorcycle' ? 'TWO_WHEELER' : 'DRIVE',
+					}),
+				})
+
+				if (!res.ok) {
+					const text = await res.text()
+					if (res.status === 404) {
+						throw new Error(
+							`Traffic route endpoint not found (404). Start the backend and ensure it has /traffic-route. If you're running a production build, set VITE_ROUTE_OPTIMIZER_BASE_URL to your backend URL.`,
+						)
+					}
+					throw new Error(text || `Traffic route request failed (${res.status})`)
+				}
+				const json = await res.json()
+				if (cancelled) return
+
+				const legs = (json.legs || []).map((leg) => {
+					const points = decodePolyline(leg.encoded_polyline)
+					return {
+						points,
+						intervals: (leg.speed_intervals || []).map((i) => ({
+							startIndex: i.start_index,
+							endIndex: i.end_index,
+							speed: i.speed,
+						})),
+					}
+				})
+
+				setTrafficRoute({
+					durationS: json.duration_seconds ?? null,
+					distanceM: json.distance_meters ?? null,
+					legs,
+				})
+			} catch (e) {
+				if (cancelled) return
+				setTrafficRoute(null)
+				setTrafficRouteError(
+					e?.message ||
+					'Unable to fetch traffic-on-polyline. Ensure backend GOOGLE_MAPS_API_KEY has Routes API enabled.',
+				)
+			}
+		})()
+
+		return () => {
+			cancelled = true
+		}
+	}, [googleMapsApiKey, isLoaded, travelMode, vehicleType, activeItinerary, currentLocation, navActive, navTick, returnToStart])
 
 	function getCurrentPositionPromise(options) {
 		return new Promise((resolve, reject) => {
@@ -399,8 +540,7 @@ export default function RouteOptimizer() {
 		setError('')
 		setLoading(true)
 		try {
-			const baseUrl = import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL
-			const url = baseUrl ? `${baseUrl}/optimize` : '/api/optimize'
+			const url = resolveBackendUrl('/optimize')
 
 			// If we have a current location, force the route to start from it
 			// by prepending it at index 0 and turning off try_all_starts.
@@ -548,6 +688,7 @@ export default function RouteOptimizer() {
 			{error ? <div className="ro-error">{error}</div> : null}
 			{locationError ? <div className="ro-error">{locationError}</div> : null}
 			{directionsError ? <div className="ro-error">{directionsError}</div> : null}
+			{trafficRouteError ? <div className="ro-error">{trafficRouteError}</div> : null}
 
 			<main className="ro-grid">
 				<section className="ro-card ro-left">
@@ -721,7 +862,51 @@ export default function RouteOptimizer() {
 										const legs = route?.legs || []
 										const isDriving =
 											travelMode === 'DRIVING' && window.google?.maps?.TravelMode?.DRIVING
-										// Draw the route ourselves so we can color by traffic.
+
+										// Prefer backend Routes API traffic-on-polyline (segment-level speeds).
+										if (trafficRoute?.legs?.length) {
+											const allPoints = trafficRoute.legs.flatMap((l) => l.points)
+											return (
+												<>
+													{allPoints.length ? (
+														<PolylineF
+															path={allPoints}
+															options={{
+																strokeColor: 'rgba(17, 24, 39, 0.55)',
+																strokeOpacity: 0.8,
+																strokeWeight: 10,
+																zIndex: 4,
+														}} 
+														/>
+													) : null}
+
+												{trafficRoute.legs.map((leg, legIndex) =>
+													(leg.intervals?.length ? leg.intervals : [{ startIndex: 0, endIndex: leg.points.length - 1, speed: 'NORMAL' }]).map(
+														(it, intIndex) => {
+																const start = Math.max(0, it.startIndex)
+																const end = Math.min(leg.points.length - 1, it.endIndex)
+																const path = leg.points.slice(start, end + 1)
+																if (path.length < 2) return null
+																return (
+																	<PolylineF
+																		key={`tr-leg-${legIndex}-int-${intIndex}`}
+																		path={path}
+																		options={{
+																		strokeColor: trafficColorForSpeed(it.speed),
+																		strokeOpacity: 0.95,
+																		strokeWeight: 6,
+																		zIndex: 5,
+																	}}
+																	/>
+																)
+															},
+														),
+												)}
+												</>
+											)
+										}
+
+										// Fallback: draw the route ourselves so we can color by traffic (approx by leg ratio).
 										return (
 											<>
 												{legs.length
@@ -801,24 +986,26 @@ export default function RouteOptimizer() {
 									<div className="ro-nav-eta">
 										<div className="ro-nav-eta-time">
 											{formatMinutesToHhMm(
-												(directionsTotals.trafficS ?? directionsTotals.durationS) != null
-													? (directionsTotals.trafficS ?? directionsTotals.durationS) / 60
+												(trafficRoute?.durationS ?? (directionsTotals.trafficS ?? directionsTotals.durationS)) != null
+													? (trafficRoute?.durationS ?? (directionsTotals.trafficS ?? directionsTotals.durationS)) / 60
 													: null,
 											)}
 										</div>
 										<div className="ro-nav-eta-sub">
-											{directions?.routes?.[0]?.legs
-												? formatDistance(
-													(directions.routes[0].legs || []).reduce(
-														(acc, l) => acc + (l?.distance?.value || 0),
-														0,
-													),
-												)
-												: '—'}
+											{trafficRoute?.distanceM != null
+												? formatDistance(trafficRoute.distanceM)
+												: directions?.routes?.[0]?.legs
+													? formatDistance(
+														(directions.routes[0].legs || []).reduce(
+															(acc, l) => acc + (l?.distance?.value || 0),
+															0,
+														),
+													)
+													: '—'}
 											{' · '}
 											ETA{' '}
 											{(() => {
-												const s = directionsTotals.trafficS ?? directionsTotals.durationS
+												const s = trafficRoute?.durationS ?? (directionsTotals.trafficS ?? directionsTotals.durationS)
 												if (!s) return '—'
 												return formatTimeOfDay(new Date(Date.now() + s * 1000))
 											})()}
