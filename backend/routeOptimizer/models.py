@@ -20,15 +20,36 @@ class OptimizeRequest(BaseModel):
     return_to_start: bool = False
     try_all_starts: bool = True
 
+    # Optimization metric source
+    # - 'haversine': uses straight-line haversine distance
+    # - 'google': uses Google Distance Matrix (driving + duration_in_traffic)
+    metric: str = Field(default="haversine", pattern="^(haversine|google)$")
+
+    # What to optimize
+    # - 'distance': minimize distance (km)
+    # - 'time': minimize duration_in_traffic (seconds)
+    # - 'hybrid': minimize weighted normalized distance + time
+    optimize_for: str = Field(default="distance", pattern="^(distance|time|hybrid)$")
+
+    # Used only when optimize_for='hybrid'
+    distance_weight: float = 1.0
+    time_weight: float = 1.0
+
 
 class Segment(BaseModel):
     from_index: int
     to_index: int
     distance_km: float
+    duration_seconds: float | None = None
+    duration_in_traffic_seconds: float | None = None
 
 
 class OptimizeResponse(BaseModel):
     optimized_order: list[int]
     total_distance_km: float
+    total_duration_seconds: float | None = None
+    total_duration_in_traffic_seconds: float | None = None
+    metric_used: str
+    optimize_for: str
     optimized_itinerary: list[Destination]
     segments: list[Segment]

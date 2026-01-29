@@ -1,5 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { GoogleMap, InfoWindowF, MarkerF, PolylineF, useJsApiLoader } from '@react-google-maps/api'
+import {
+	CircleF,
+	DirectionsRenderer,
+	GoogleMap,
+	InfoWindowF,
+	MarkerF,
+	PolylineF,
+	TrafficLayer,
+	useJsApiLoader,
+} from '@react-google-maps/api'
 
 import { mockItinerary } from '../../mockData/itineraryData.js'
 import { destinationData } from '../../mockData/destinationData.js'
@@ -8,6 +17,15 @@ const SRI_LANKA_CENTER = { lat: 7.8731, lng: 80.7718 }
 
 function round2(n) {
 	return Math.round(n * 100) / 100
+}
+
+function formatMinutesToHhMm(totalMinutes) {
+	if (totalMinutes == null || Number.isNaN(totalMinutes)) return '—'
+	const minutes = Math.round(totalMinutes)
+	const h = Math.floor(minutes / 60)
+	const m = minutes % 60
+	if (h <= 0) return `${m} min`
+	return `${h} h ${m} min`
 }
 
 function computeCenter(points) {
@@ -19,6 +37,44 @@ function computeCenter(points) {
 	return { lat: sum.lat / points.length, lng: sum.lng / points.length }
 }
 
+function stripHtml(html) {
+	if (!html) return ''
+	try {
+		const el = document.createElement('div')
+		el.innerHTML = html
+		return (el.textContent || el.innerText || '').trim()
+	} catch {
+		return String(html).replace(/<[^>]*>/g, '').trim()
+	}
+}
+
+function formatDistance(meters) {
+	if (meters == null || Number.isNaN(meters)) return '—'
+	if (meters < 1000) return `${Math.round(meters)} m`
+	const km = meters / 1000
+	return `${km >= 10 ? Math.round(km) : Math.round(km * 10) / 10} km`
+}
+
+function formatTimeOfDay(date) {
+	try {
+		return new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit' }).format(date)
+	} catch {
+		return date.toLocaleTimeString()
+	}
+}
+
+function trafficColorForLeg(leg) {
+	// Approximate traffic level using ratio of duration_in_traffic to duration.
+	// Note: Directions API does not provide true per-segment congestion colors like the native Google Maps app.
+	const base = leg?.duration?.value
+	const traffic = leg?.duration_in_traffic?.value
+	if (!base || !traffic) return '#1e3a8a' // dark blue fallback
+	const ratio = traffic / base
+	if (ratio <= 1.12) return '#1e3a8a' // dark blue (free flow)
+	if (ratio <= 1.35) return '#f59e0b' // yellow (light traffic)
+	return '#ef4444' // red (heavy traffic)
+}
+
 export default function RouteOptimizer() {
 	const [returnToStart, setReturnToStart] = useState(false)
 	const [tryAllStarts, setTryAllStarts] = useState(true)
@@ -28,8 +84,26 @@ export default function RouteOptimizer() {
 	const [locationError, setLocationError] = useState('')
 	const [currentLocation, setCurrentLocation] = useState(null)
 	const locationRequestedRef = useRef(false)
+	const locationWatchIdRef = useRef(null)
+	const mapRef = useRef(null)
 
 	const [selectedMarkerId, setSelectedMarkerId] = useState(null)
+
+	const [optMode, setOptMode] = useState('distance')
+	const [showTrafficLayer, setShowTrafficLayer] = useState(true)
+	const [directions, setDirections] = useState(null)
+	const [directionsError, setDirectionsError] = useState('')
+	const [directionsTotals, setDirectionsTotals] = useState({ durationS: null, trafficS: null })
+
+	const [navActive, setNavActive] = useState(false)
+	const [travelMode, setTravelMode] = useState('DRIVING')
+	const [vehicleType, setVehicleType] = useState('car')
+	const [followUser, setFollowUser] = useState(true)
+	const [navTick, setNavTick] = useState(0)
+	const [userHeading, setUserHeading] = useState(null)
+	const [userAccuracyM, setUserAccuracyM] = useState(null)
+	const [navStepFlatIndex, setNavStepFlatIndex] = useState(0)
+	const [navSteps, setNavSteps] = useState([])
 
 	const itinerary = mockItinerary
 
@@ -67,6 +141,131 @@ export default function RouteOptimizer() {
 		id: 'ceylonroam-google-maps',
 		googleMapsApiKey: googleMapsApiKey || '',
 	})
+
+	const trafficEnabled = optMode !== 'distance'
+
+	useEffect(() => {
+		// Build a real route to display (preserving our optimized order).
+		if (!isLoaded) return
+		if (!googleMapsApiKey) return
+		if (!activeItinerary || activeItinerary.length < 1) return
+		if (!window.google?.maps?.DirectionsService) return
+
+		setDirectionsError('')
+
+		const stops = activeItinerary.filter((d) => d.id !== 'start-user-location')
+		const effectiveOrigin = navActive && currentLocation
+			? currentLocation
+			: activeItinerary[0]
+				? { lat: activeItinerary[0].location.lat, lng: activeItinerary[0].location.lng }
+				: null
+
+		if (!effectiveOrigin) return
+		if (stops.length < 1) {
+			setDirections(null)
+			setDirectionsTotals({ durationS: null, trafficS: null })
+			return
+		}
+
+		const effectiveTravelMode =
+			(window.google.maps.TravelMode && window.google.maps.TravelMode[travelMode]) ||
+			window.google.maps.TravelMode.DRIVING
+
+		const destination = returnToStart
+			? effectiveOrigin
+			: {
+				lat: stops[stops.length - 1].location.lat,
+				lng: stops[stops.length - 1].location.lng,
+			}
+
+		const waypoints = stops.slice(0, returnToStart ? undefined : -1).map((d) => ({
+			location: { lat: d.location.lat, lng: d.location.lng },
+			stopover: true,
+		}))
+
+		const service = new window.google.maps.DirectionsService()
+		const isDriving = effectiveTravelMode === window.google.maps.TravelMode.DRIVING
+		if (effectiveTravelMode === window.google.maps.TravelMode.TRANSIT && waypoints.length) {
+			setDirections(null)
+			setDirectionsTotals({ durationS: null, trafficS: null })
+			setDirectionsError('Transit mode does not support multi-stop routes. Switch to Driving/Walking for itinerary routing.')
+			return
+		}
+		const request = {
+			origin: effectiveOrigin,
+			destination,
+			waypoints,
+			optimizeWaypoints: false,
+			travelMode: effectiveTravelMode,
+		}
+		if (isDriving) {
+			request.drivingOptions = {
+				departureTime: new Date(),
+				trafficModel: window.google.maps.TrafficModel?.BEST_GUESS,
+			}
+		}
+		service.route(
+			request,
+			(res, status) => {
+				if (status === 'OK' && res) {
+					setDirections(res)
+					try {
+						const legs = res.routes?.[0]?.legs || []
+						let durationS = 0
+						let trafficS = 0
+						let hasTraffic = false
+						for (const leg of legs) {
+							durationS += leg?.duration?.value || 0
+							if (leg?.duration_in_traffic?.value != null) {
+								trafficS += leg.duration_in_traffic.value
+								hasTraffic = true
+							}
+						}
+						setDirectionsTotals({ durationS, trafficS: hasTraffic ? trafficS : null })
+
+						// Flatten step list for simple navigation HUD.
+						const flat = []
+						for (let li = 0; li < legs.length; li++) {
+							const steps = legs[li]?.steps || []
+							for (let si = 0; si < steps.length; si++) {
+								const s = steps[si]
+								flat.push({
+									legIndex: li,
+									stepIndex: si,
+									instructionHtml: s?.instructions || '',
+									instructionText: stripHtml(s?.instructions || ''),
+									maneuver: s?.maneuver || null,
+									distanceM: s?.distance?.value ?? null,
+									durationS: s?.duration?.value ?? null,
+									end: s?.end_location
+										? { lat: s.end_location.lat(), lng: s.end_location.lng() }
+										: null,
+								})
+							}
+						}
+						setNavSteps(flat)
+						setNavStepFlatIndex(0)
+					} catch {
+						setDirectionsTotals({ durationS: null, trafficS: null })
+						setNavSteps([])
+						setNavStepFlatIndex(0)
+					}
+				} else {
+					setDirections(null)
+					setDirectionsTotals({ durationS: null, trafficS: null })
+					setDirectionsError(`Directions unavailable: ${status}`)
+					setNavSteps([])
+					setNavStepFlatIndex(0)
+				}
+			},
+		)
+	}, [activeItinerary, isLoaded, googleMapsApiKey, returnToStart, travelMode, navActive, currentLocation, navTick])
+
+	useEffect(() => {
+		if (!navActive) return
+		const t = window.setInterval(() => setNavTick((x) => x + 1), 30000)
+		return () => window.clearInterval(t)
+	}, [navActive])
 
 	function getCurrentPositionPromise(options) {
 		return new Promise((resolve, reject) => {
@@ -126,6 +325,76 @@ export default function RouteOptimizer() {
 		requestCurrentLocation()
 	}, [])
 
+	useEffect(() => {
+		// While navigating, keep the camera following the user (like Google Maps).
+		if (!navActive) return
+		if (!followUser) return
+		if (!currentLocation) return
+		const map = mapRef.current
+		if (!map) return
+		map.panTo(currentLocation)
+		if (map.getZoom() < 12) map.setZoom(13)
+	}, [navActive, followUser, currentLocation])
+
+	function startNavigation() {
+		setError('')
+		setDirectionsError('')
+		if (!googleMapsApiKey) {
+			setError('Missing VITE_GOOGLE_MAPS_API_KEY. Add it in frontend/.env (see frontend/.env.example).')
+			return
+		}
+		setShowTrafficLayer(true)
+		setNavActive(true)
+		requestCurrentLocation()
+		if ('geolocation' in navigator && locationWatchIdRef.current == null) {
+			locationWatchIdRef.current = navigator.geolocation.watchPosition(
+				(pos) => {
+					setUserHeading(pos.coords.heading ?? null)
+					setUserAccuracyM(pos.coords.accuracy ?? null)
+					setCurrentLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+					setSelectedMarkerId('start-user-location')
+				},
+				(err) => {
+					// Non-fatal: user can still see traffic + route without live location updates.
+					setLocationError(err?.message || 'Unable to track location while navigating.')
+				},
+				{ enableHighAccuracy: true, maximumAge: 5000, timeout: 20000 },
+			)
+		}
+	}
+
+	function stopNavigation() {
+		setNavActive(false)
+		setFollowUser(true)
+		if (locationWatchIdRef.current != null) {
+			navigator.geolocation.clearWatch(locationWatchIdRef.current)
+			locationWatchIdRef.current = null
+		}
+	}
+
+	useEffect(() => {
+		// Advance to the next step once we get close to the current step end.
+		if (!navActive) return
+		if (!currentLocation) return
+		if (!navSteps.length) return
+		const cur = navSteps[navStepFlatIndex]
+		if (!cur?.end) return
+		const dx = (cur.end.lat - currentLocation.lat) * 111320
+		const dy = (cur.end.lng - currentLocation.lng) * 111320 * Math.cos((currentLocation.lat * Math.PI) / 180)
+		const distM = Math.sqrt(dx * dx + dy * dy)
+		if (distM < 35 && navStepFlatIndex < navSteps.length - 1) setNavStepFlatIndex((i) => i + 1)
+	}, [navActive, currentLocation, navSteps, navStepFlatIndex])
+
+	function recenter() {
+		if (!currentLocation) return
+		const map = mapRef.current
+		if (map) {
+			map.panTo(currentLocation)
+			if (map.getZoom() < 15) map.setZoom(16)
+		}
+		setFollowUser(true)
+	}
+
 	async function optimize() {
 		setError('')
 		setLoading(true)
@@ -138,6 +407,9 @@ export default function RouteOptimizer() {
 			const effectiveTryAllStarts = currentLocation ? false : tryAllStarts
 			const effectiveItinerary = currentLocation ? itineraryWithStart : itinerary
 
+			const metric = trafficEnabled ? 'google' : 'haversine'
+			const optimizeFor = trafficEnabled ? (optMode === 'time' ? 'time' : 'hybrid') : 'distance'
+
 			const res = await fetch(url, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -145,6 +417,10 @@ export default function RouteOptimizer() {
 					itinerary: effectiveItinerary,
 					return_to_start: returnToStart,
 					try_all_starts: effectiveTryAllStarts,
+					metric,
+					optimize_for: optimizeFor,
+					distance_weight: 1,
+					time_weight: optMode === 'time' ? 2 : 1,
 				}),
 			})
 
@@ -171,9 +447,81 @@ export default function RouteOptimizer() {
 					<p className="ro-subtitle">Haversine distance + greedy nearest-neighbor + 2-opt</p>
 				</div>
 				<div className="ro-actions">
+					<button
+						className={navActive ? 'ro-button ro-button-danger' : 'ro-button ro-button-primary'}
+						onClick={navActive ? stopNavigation : startNavigation}
+						disabled={loading}
+						title="Start a live driving view with traffic"
+					>
+						{navActive ? 'Stop' : 'Start'}
+					</button>
+
+					<label className="ro-toggle" title="Travel mode used for the on-map route">
+						Mode
+						<select
+							value={travelMode}
+							onChange={(e) => setTravelMode(e.target.value)}
+							style={{ marginLeft: 8, padding: '6px 8px', borderRadius: 8 }}
+							disabled={!googleMapsApiKey}
+						>
+							<option value="DRIVING">Driving</option>
+							<option value="WALKING">Walking</option>
+							<option value="BICYCLING">Bicycling</option>
+							<option value="TRANSIT">Transit</option>
+						</select>
+					</label>
+
+					{travelMode === 'DRIVING' ? (
+						<label className="ro-toggle" title="Vehicle type (UI only; Google Maps JS API uses DRIVING)">
+							Vehicle
+							<select
+								value={vehicleType}
+								onChange={(e) => setVehicleType(e.target.value)}
+								style={{ marginLeft: 8, padding: '6px 8px', borderRadius: 8 }}
+								disabled={!googleMapsApiKey}
+							>
+								<option value="car">Car</option>
+								<option value="motorcycle">Motorcycle</option>
+							</select>
+						</label>
+					) : null}
+
+					<label className="ro-toggle" title="Keep the camera centered on your live location while navigating">
+						<input
+							type="checkbox"
+							checked={followUser}
+							onChange={(e) => setFollowUser(e.target.checked)}
+							disabled={!navActive}
+						/>
+						Follow me
+					</label>
+
 					<button className="ro-button" onClick={requestCurrentLocation} disabled={loading}>
 						Use my location
 					</button>
+
+					<label className="ro-toggle">
+						Optimize for
+						<select
+							value={optMode}
+							onChange={(e) => setOptMode(e.target.value)}
+							style={{ marginLeft: 8, padding: '6px 8px', borderRadius: 8 }}
+						>
+							<option value="distance">Distance (Haversine)</option>
+							<option value="time">Time (Live traffic)</option>
+							<option value="hybrid">Hybrid (Traffic + distance)</option>
+						</select>
+					</label>
+
+					<label className="ro-toggle">
+						<input
+							type="checkbox"
+							checked={showTrafficLayer || navActive}
+							onChange={(e) => setShowTrafficLayer(e.target.checked)}
+							disabled={!googleMapsApiKey}
+						/>
+						Show traffic
+					</label>
 					<label className="ro-toggle">
 						<input
 							type="checkbox"
@@ -199,6 +547,7 @@ export default function RouteOptimizer() {
 
 			{error ? <div className="ro-error">{error}</div> : null}
 			{locationError ? <div className="ro-error">{locationError}</div> : null}
+			{directionsError ? <div className="ro-error">{directionsError}</div> : null}
 
 			<main className="ro-grid">
 				<section className="ro-card ro-left">
@@ -222,8 +571,32 @@ export default function RouteOptimizer() {
 								{result?.total_distance_km != null ? `${round2(result.total_distance_km)} km` : '—'}
 							</span>
 						</div>
+						<div>
+							<span className="ro-summary-label">Total time:</span>{' '}
+							<span className="ro-summary-value">
+								{formatMinutesToHhMm(
+									(result?.total_duration_seconds != null
+										? result.total_duration_seconds / 60
+										: directionsTotals.durationS != null
+											? directionsTotals.durationS / 60
+											: null),
+								)}
+							</span>
+						</div>
+						<div>
+							<span className="ro-summary-label">Total time (traffic):</span>{' '}
+							<span className="ro-summary-value">
+								{formatMinutesToHhMm(
+									(result?.total_duration_in_traffic_seconds != null
+										? result.total_duration_in_traffic_seconds / 60
+										: directionsTotals.trafficS != null
+											? directionsTotals.trafficS / 60
+											: null),
+								)}
+							</span>
+						</div>
 						<div className="ro-summary-hint">
-							Start the backend and add your Google key to enable the map.
+							For live traffic optimization, set backend <code>GOOGLE_MAPS_API_KEY</code> (Distance Matrix API).
 						</div>
 					</div>
 				</section>
@@ -237,29 +610,73 @@ export default function RouteOptimizer() {
 					) : !isLoaded ? (
 						<div className="ro-map-placeholder">Loading Google Maps…</div>
 					) : (
-						<GoogleMap
-							mapContainerStyle={{ width: '100%', height: '100%' }}
-							center={center}
-							zoom={7}
-							options={{
-								mapTypeControl: false,
-								streetViewControl: false,
-								fullscreenControl: true,
-							}}
-							onClick={() => setSelectedMarkerId(null)}
-						>
-							{activeItinerary.map((d, idx) => (
-								<MarkerF
-									key={d.id}
-									position={{ lat: d.location.lat, lng: d.location.lng }}
-									label={
-										d.id === 'start-user-location'
-											? { text: 'Start', fontWeight: '800' }
-											: { text: String(idx + 1), fontWeight: '700' }
-									}
-									onClick={() => setSelectedMarkerId(d.id)}
-								/>
-							))}
+						<div className="ro-map-wrap">
+							<GoogleMap
+								mapContainerStyle={{ width: '100%', height: '100%' }}
+								center={center}
+								zoom={7}
+								options={{
+									mapTypeControl: false,
+									streetViewControl: false,
+									fullscreenControl: true,
+								}}
+								onLoad={(map) => {
+									mapRef.current = map
+								}}
+								onClick={() => {
+									setSelectedMarkerId(null)
+									setFollowUser(false)
+								}}
+							>
+								{showTrafficLayer || navActive ? <TrafficLayer /> : null}
+
+								{userAccuracyM && currentLocation ? (
+									<CircleF
+										center={currentLocation}
+										radius={Math.min(userAccuracyM, 120)}
+										options={{
+											fillColor: '#3b82f6',
+											fillOpacity: 0.12,
+											strokeColor: '#3b82f6',
+											strokeOpacity: 0.25,
+											strokeWeight: 2,
+										}} 
+									/>
+								) : null}
+
+								{activeItinerary.map((d, idx) => {
+									const isUser = d.id === 'start-user-location'
+									const icon =
+										isLoaded && isUser && navActive && window.google?.maps
+											? {
+												path: window.google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+												scale: 6,
+												rotation: userHeading ?? 0,
+												fillColor: '#2563eb',
+												fillOpacity: 1,
+												strokeColor: '#ffffff',
+												strokeWeight: 2,
+											}
+											: undefined
+									return (
+										<MarkerF
+											key={d.id}
+											position={{ lat: d.location.lat, lng: d.location.lng }}
+											icon={icon}
+											label={
+												isUser
+													? navActive
+														? null
+														: { text: 'Start', fontWeight: '800' }
+													: {
+														text: String(activeItinerary[0]?.id === 'start-user-location' ? idx : idx + 1),
+														fontWeight: '700',
+													}
+											}
+											onClick={() => setSelectedMarkerId(d.id)}
+										/>
+									)
+								})}
 
 							{selectedMarkerId ? (
 								selectedMarkerId === 'start-user-location' && currentLocation ? (
@@ -298,16 +715,121 @@ export default function RouteOptimizer() {
 							) : null}
 
 							{pathPoints.length > 1 ? (
-								<PolylineF
-									path={pathPoints}
-									options={{
-										strokeColor: '#2563eb',
-										strokeOpacity: 0.9,
-										strokeWeight: 4,
-									}}
-								/>
+								directions ? (
+									(() => {
+										const route = directions?.routes?.[0]
+										const legs = route?.legs || []
+										const isDriving =
+											travelMode === 'DRIVING' && window.google?.maps?.TravelMode?.DRIVING
+										// Draw the route ourselves so we can color by traffic.
+										return (
+											<>
+												{legs.length
+													? legs.map((leg, legIndex) => {
+														const strokeColor = isDriving ? trafficColorForLeg(leg) : '#1e3a8a'
+														const steps = leg?.steps || []
+														return steps.map((step, stepIndex) => {
+															const path = (step?.path || []).map((p) => ({
+																lat: p.lat(),
+																lng: p.lng(),
+															}))
+															return (
+																<PolylineF
+																	key={`leg-${legIndex}-step-${stepIndex}`}
+																	path={path}
+																	options={{
+																		strokeColor,
+																		strokeOpacity: 0.95,
+																		strokeWeight: 6,
+																		zIndex: 5,
+																	}}
+																/>
+															)
+														})
+													})
+													: null}
+
+											{/* subtle outline underlay to mimic Google Maps route styling */}
+											{route?.overview_path?.length ? (
+												<PolylineF
+													path={route.overview_path.map((p) => ({ lat: p.lat(), lng: p.lng() }))}
+													options={{
+														strokeColor: 'rgba(17, 24, 39, 0.55)',
+														strokeOpacity: 0.8,
+														strokeWeight: 10,
+														zIndex: 4,
+													}}
+												/>
+											) : null}
+										</>
+										)
+									})()
+								) : (
+									<PolylineF
+										path={pathPoints}
+										options={{
+											strokeColor: '#1e3a8a',
+											strokeOpacity: 0.9,
+											strokeWeight: 4,
+										}}
+									/>
+								)
 							) : null}
 						</GoogleMap>
+
+							{navActive ? (
+								<div className="ro-nav-top" role="status" aria-live="polite">
+									<div className="ro-nav-top-row">
+										<div className="ro-nav-icon">↑</div>
+										<div className="ro-nav-text">
+											<div className="ro-nav-primary">
+												{navSteps[navStepFlatIndex]?.instructionText || 'Starting navigation…'}
+											</div>
+											<div className="ro-nav-secondary">
+												Then {navSteps[navStepFlatIndex + 1]?.instructionText || 'continue'}
+											</div>
+										</div>
+									</div>
+								</div>
+							) : null}
+
+							{navActive ? (
+								<div className="ro-nav-bottom">
+									<button className="ro-nav-pill" onClick={recenter} disabled={!currentLocation}>
+										Re-centre
+									</button>
+									<div className="ro-nav-eta">
+										<div className="ro-nav-eta-time">
+											{formatMinutesToHhMm(
+												(directionsTotals.trafficS ?? directionsTotals.durationS) != null
+													? (directionsTotals.trafficS ?? directionsTotals.durationS) / 60
+													: null,
+											)}
+										</div>
+										<div className="ro-nav-eta-sub">
+											{directions?.routes?.[0]?.legs
+												? formatDistance(
+													(directions.routes[0].legs || []).reduce(
+														(acc, l) => acc + (l?.distance?.value || 0),
+														0,
+													),
+												)
+												: '—'}
+											{' · '}
+											ETA{' '}
+											{(() => {
+												const s = directionsTotals.trafficS ?? directionsTotals.durationS
+												if (!s) return '—'
+												return formatTimeOfDay(new Date(Date.now() + s * 1000))
+											})()}
+										</div>
+									</div>
+									<div className="ro-nav-pill ro-nav-vehicle" title={`Vehicle: ${vehicleType}`}> 
+										{vehicleType === 'motorcycle' ? '🏍' : '🚗'}
+									</div>
+								</div>
+							) : null}
+						</div>
 					)}
 				</section>
 			</main>

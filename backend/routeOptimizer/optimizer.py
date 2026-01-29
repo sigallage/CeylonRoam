@@ -1,9 +1,6 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
-
-
 EARTH_RADIUS_KM = 6371.0088
 
 
@@ -46,6 +43,60 @@ def path_length(dist: list[list[float]], order: list[int], return_to_start: bool
     return total
 
 
+def two_opt_open_path_any(cost: list[list[float]], order: list[int]) -> list[int]:
+    """2-opt improvement for an OPEN path that works for asymmetric matrices.
+
+    Uses full path cost evaluation per swap (OK for small N).
+    """
+    n = len(order)
+    if n < 4:
+        return order
+
+    best = order
+    best_cost = path_length(cost, best, return_to_start=False)
+
+    improved = True
+    while improved:
+        improved = False
+        for i in range(1, n - 2):
+            for k in range(i + 1, n - 1):
+                candidate = best[:]
+                candidate[i : k + 1] = reversed(candidate[i : k + 1])
+                c = path_length(cost, candidate, return_to_start=False)
+                if c + 1e-12 < best_cost:
+                    best = candidate
+                    best_cost = c
+                    improved = True
+        # loop again if improved
+
+    return best
+
+
+def two_opt_cycle_any(cost: list[list[float]], order: list[int]) -> list[int]:
+    """2-opt improvement for a closed tour that works for asymmetric matrices."""
+    n = len(order)
+    if n < 4:
+        return order
+
+    best = order
+    best_cost = path_length(cost, best, return_to_start=True)
+
+    improved = True
+    while improved:
+        improved = False
+        for i in range(1, n - 1):
+            for k in range(i + 1, n):
+                candidate = best[:]
+                candidate[i:k] = reversed(candidate[i:k])
+                c = path_length(cost, candidate, return_to_start=True)
+                if c + 1e-12 < best_cost:
+                    best = candidate
+                    best_cost = c
+                    improved = True
+
+    return best
+
+
 def greedy_nearest_neighbor(dist: list[list[float]], start: int = 0) -> list[int]:
     n = len(dist)
     if n == 0:
@@ -83,60 +134,16 @@ def best_greedy_route(dist: list[list[float]], try_all_starts: bool) -> list[int
     return best_order or greedy_nearest_neighbor(dist, 0)
 
 
-def two_opt_open_path(dist: list[list[float]], order: list[int]) -> list[int]:
-    """2-opt improvement for an OPEN path (no edge from end->start)."""
-    n = len(order)
-    if n < 4:
-        return order
-
-    improved = True
-    while improved:
-        improved = False
-        for i in range(1, n - 2):
-            a = order[i - 1]
-            b = order[i]
-            for k in range(i + 1, n - 1):
-                c = order[k]
-                d = order[k + 1]
-
-                current = dist[a][b] + dist[c][d]
-                swapped = dist[a][c] + dist[b][d]
-
-                if swapped + 1e-12 < current:
-                    order[i : k + 1] = reversed(order[i : k + 1])
-                    improved = True
-        # loop again if improved
-    return order
-
-
-def two_opt_cycle(dist: list[list[float]], order: list[int]) -> list[int]:
-    """2-opt improvement for a closed tour (includes end->start)."""
-    n = len(order)
-    if n < 4:
-        return order
-
-    improved = True
-    while improved:
-        improved = False
-        for i in range(n - 1):
-            a = order[i]
-            b = order[(i + 1) % n]
-            for k in range(i + 2, n - (0 if i > 0 else 1)):
-                c = order[k % n]
-                d = order[(k + 1) % n]
-
-                current = dist[a][b] + dist[c][d]
-                swapped = dist[a][c] + dist[b][d]
-
-                if swapped + 1e-12 < current:
-                    # reverse segment (i+1..k)
-                    i1 = i + 1
-                    k1 = k
-                    order[i1 : k1 + 1] = reversed(order[i1 : k1 + 1])
-                    improved = True
-        # loop again if improved
-
-    return order
+def optimize_order_from_cost_matrix(
+    cost: list[list[float]],
+    *,
+    return_to_start: bool,
+    try_all_starts: bool,
+) -> list[int]:
+    order = best_greedy_route(cost, try_all_starts=try_all_starts)
+    if return_to_start:
+        return two_opt_cycle_any(cost, order)
+    return two_opt_open_path_any(cost, order)
 
 
 def optimize_route(
@@ -145,11 +152,10 @@ def optimize_route(
     try_all_starts: bool = True,
 ) -> tuple[list[int], list[list[float]]]:
     dist = build_distance_matrix(coords)
-    order = best_greedy_route(dist, try_all_starts=try_all_starts)
-
-    if return_to_start:
-        order = two_opt_cycle(dist, order)
-    else:
-        order = two_opt_open_path(dist, order)
+    order = optimize_order_from_cost_matrix(
+        dist,
+        return_to_start=return_to_start,
+        try_all_starts=try_all_starts,
+    )
 
     return order, dist

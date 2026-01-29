@@ -10,6 +10,19 @@ python -m venv .venv
 pip install -r backend/routeOptimizer/requirements.txt
 uvicorn backend.routeOptimizer.main:app --reload --port 8000
 ```
+
+## Live traffic (Google)
+
+To optimize using live traffic, set a backend environment variable:
+
+- `GOOGLE_MAPS_API_KEY` (enable **Distance Matrix API** in Google Cloud; billing required)
+
+Example request (PowerShell):
+
+```powershell
+$body = @{ itinerary = @() ; metric = 'google' ; optimize_for = 'hybrid' ; distance_weight = 1 ; time_weight = 1 } | ConvertTo-Json -Depth 10
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/optimize -ContentType 'application/json' -Body $body
+```
 Alternative (also works):
 
 ```powershell

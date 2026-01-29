@@ -1,5 +1,13 @@
 # React + Vite
 
+## Google Maps (Route Optimizer)
+
+This app uses the Google Maps JavaScript API (via `@react-google-maps/api`) to render the map, show live traffic, and display a navigation-style “Start” view.
+
+1. Copy the example env file: `frontend/.env.example` → `frontend/.env`
+2. Set `VITE_GOOGLE_MAPS_API_KEY` (enable **Maps JavaScript API** for that key)
+3. Start the dev server: `npm run dev`
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
