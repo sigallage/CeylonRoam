@@ -1,20 +1,51 @@
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+
+def _load_dotenv_if_present() -> None:
+    """Load environment variables from .env files if python-dotenv is installed.
+
+    This helps local development on Windows where the backend is often started
+    in a different terminal session than where env vars were set.
+    """
+
+    try:
+        from dotenv import load_dotenv  # type: ignore
+    except Exception:
+        return
+
+    here = Path(__file__).resolve()
+    repo_root = here.parents[2]
+
+    # Prefer a backend-local .env, then fall back to repo-root .env.
+    # If the variable exists but is empty, allow .env to override it.
+    should_override = not bool(os.getenv("GOOGLE_MAPS_API_KEY"))
+    load_dotenv(here.parent / ".env", override=should_override)
+    load_dotenv(repo_root / ".env", override=should_override)
+
+_load_dotenv_if_present()
 
 # Support both:
 # - `uvicorn backend.routeOptimizer.main:app` (package import)
 # - `python backend/routeOptimizer/main.py` (direct execution)
 try:
     from .models import OptimizeRequest, OptimizeResponse, Segment
+    from .models import TrafficRouteRequest, TrafficRouteResponse, TrafficLeg, SpeedInterval
     from .optimizer import optimize_order_from_cost_matrix, optimize_route, path_length
     from .google_matrix import GoogleMatrixError, fetch_distance_matrix
+    from .google_routes import GoogleRoutesError, compute_traffic_route
 except ImportError:  # pragma: no cover
     from models import OptimizeRequest, OptimizeResponse, Segment
+    from models import TrafficRouteRequest, TrafficRouteResponse, TrafficLeg, SpeedInterval
     from optimizer import optimize_order_from_cost_matrix, optimize_route, path_length
     from google_matrix import GoogleMatrixError, fetch_distance_matrix
+    from google_routes import GoogleRoutesError, compute_traffic_route
 
 app = FastAPI(title="CeylonRoam Route Optimizer", version="1.0.0")
 
@@ -147,6 +178,46 @@ def optimize(req: OptimizeRequest) -> OptimizeResponse:
         optimize_for=req.optimize_for,
         optimized_itinerary=optimized_itinerary,
         segments=segments,
+    )
+
+
+@app.post("/traffic-route", response_model=TrafficRouteResponse)
+def traffic_route(req: TrafficRouteRequest) -> TrafficRouteResponse:
+    """Return traffic-on-polyline intervals for route coloring.
+
+    This endpoint is used by the frontend to draw a Google-Maps-like route line
+    with per-segment traffic colors (blue/yellow/red).
+
+    Requires backend `GOOGLE_MAPS_API_KEY` with Routes API enabled.
+    """
+
+    try:
+        payload = compute_traffic_route(
+            origin=(req.origin.lat, req.origin.lng),
+            destination=(req.destination.lat, req.destination.lng),
+            intermediates=[(p.lat, p.lng) for p in req.intermediates],
+            travel_mode=req.travel_mode,
+        )
+    except GoogleRoutesError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    legs: list[TrafficLeg] = []
+    for leg in payload.get("legs", []):
+        intervals = [
+            SpeedInterval(
+                start_index=int(i.get("startIndex", 0)),
+                end_index=int(i.get("endIndex", 0)),
+                speed=str(i.get("speed", "SPEED_UNSPECIFIED")),
+            )
+            for i in (leg.get("speedReadingIntervals") or [])
+        ]
+        legs.append(TrafficLeg(encoded_polyline=str(leg.get("encodedPolyline") or ""), speed_intervals=intervals))
+
+    return TrafficRouteResponse(
+        duration_seconds=payload.get("durationSeconds"),
+        static_duration_seconds=payload.get("staticDurationSeconds"),
+        distance_meters=payload.get("distanceMeters"),
+        legs=legs,
     )
 
 
