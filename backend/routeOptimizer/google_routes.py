@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import re
 from datetime import datetime, timezone
+from datetime import timedelta
 from typing import Any
 
 import httpx
@@ -65,7 +66,11 @@ def compute_traffic_route(
         "extraComputations": ["TRAFFIC_ON_POLYLINE"],
         "polylineQuality": "HIGH_QUALITY",
         "polylineEncoding": "ENCODED_POLYLINE",
-        "departureTime": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        # Google Routes requires departureTime to be in the future.
+        # Add a small buffer to avoid clock skew / request latency.
+        "departureTime": (datetime.now(timezone.utc) + timedelta(minutes=2))
+        .isoformat()
+        .replace("+00:00", "Z"),
     }
 
     if intermediates:
