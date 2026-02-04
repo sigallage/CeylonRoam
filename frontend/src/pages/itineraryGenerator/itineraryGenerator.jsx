@@ -101,6 +101,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
     return "";
   }, [startDate, endDate]);
 
+  const isPastDate = (isoValue) => { //checks if a date is in the past
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to start of day for accurate comparison
+    const dateToCheck = new Date(isoValue);
+    return dateToCheck < today;
+  };
+
   const handleFieldChange = ( //handles changes to form fields
     field,
     value
@@ -112,7 +119,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
   };
 
   const handleDateClick = (isoValue) => { //handles date selection for range
-    if (isSubmitting) {
+    if (isSubmitting || isPastDate(isoValue)) {
       return;
     }
 
@@ -476,15 +483,16 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               {calendarDays.map(({ isoValue, label, isCurrentMonth }) => {
                 const inRange = isDateInRange(isoValue);
                 const isStartEnd = isStartOrEndDate(isoValue);
+                const isPast = isPastDate(isoValue);
                 return (
                   <button
                     type="button"
                     key={isoValue}
                     onClick={() => handleDateClick(isoValue)}
-                    disabled={!isCurrentMonth || isSubmitting}
+                    disabled={!isCurrentMonth || isSubmitting || isPast}
                     className={`flex h-12 w-full items-center justify-center rounded-xl border text-sm transition
                       ${
-                        !isCurrentMonth
+                        !isCurrentMonth || isPast
                           ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
                           : isStartEnd
                             ? "border-yellow-400 bg-[#FFD700] font-semibold text-black shadow-[0_0_12px_rgba(255,215,0,0.45)]"
