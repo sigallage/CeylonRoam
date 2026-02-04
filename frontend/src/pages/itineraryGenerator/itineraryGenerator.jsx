@@ -275,7 +275,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           className="flex flex-col gap-6"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col gap-5 rounded-3xl bg-black p-6 shadow-xl sm:p-8">
+          <div className="flex flex-col gap-5 rounded-3xl bg-black p-6 shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(234,179,8,0.6),0_0_80px_rgba(234,179,8,0.3)] sm:p-8" style={{ boxShadow: '0 0 20px rgba(234,179,8,0.3), 0 0 40px rgba(234,179,8,0.1)' }}>
             <div className="flex items-center justify-between gap-4 rounded-2xl border border-[#1f29331a] bg-white p-4 shadow-sm transition-shadow hover:shadow-lg">
               <input
                 aria-label="Purpose of trip"
@@ -449,7 +449,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(-1)}
-                  className="rounded-full border border-black/10 px-3 py-1 text-sm text-black transition hover:border-yellow-400 hover:text-yellow-500"
+                  className="rounded-full bg-gray-500 px-3 py-1 text-sm text-white transition hover:bg-yellow-600"
                   disabled={isSubmitting}
                 >
                   Prev
@@ -460,7 +460,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(1)}
-                  className="rounded-full border border-black/10 px-3 py-1 text-sm text-black transition hover:border-yellow-400 hover:text-yellow-500"
+                  className="rounded-full bg-gray-500 px-3 py-1 text-sm text-white transition hover:bg-yellow-600"
                   disabled={isSubmitting}
                 >
                   Next

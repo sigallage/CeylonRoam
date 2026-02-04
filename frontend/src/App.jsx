@@ -1,12 +1,3 @@
-/*import './App.css'
-import RouteOptimizer from './pages/routeOptimizer/routeOptimizer.jsx'
-
-function App() {
-  return <RouteOptimizer />
-}
-
-export default App */
-
 import './App.css';
 import { Navigate, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main/Main";

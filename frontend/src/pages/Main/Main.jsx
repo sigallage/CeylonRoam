@@ -1,4 +1,4 @@
-//Important: The component in Main.jsx renders the “results” view after the itinerary generator submits to the backend. (Tash)
+//(Tash) Important: The component in Main.jsx renders the “results” view after the itinerary generator submits to the backend. (Tash)
 
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
