@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import flagImage from '../assets/1.jpg';
+import flagImage from '../../assets/1.jpg';
 import logoIcon from '../../assets/icon.jpeg';
-import colomboImage from '../assets/2.jpg';
-import templeImage from '../assets/3.jpg';
-import wildlifeImage from '../assets/6.jpg';
-import sigiriyaImage from '../assets/4.jpeg';
-import beachImage from '../assets/7.jpg';
-import heritageImage from '../assets/4.jpeg';
-import templesImage from '../assets/5.jpg';
+import colomboImage from '../../assets/2.jpg';
+import templeImage from '../../assets/3.jpg';
+import wildlifeImage from '../../assets/6.jpg';
+import sigiriyaImage from '../../assets/4.jpeg';
+import beachImage from '../../assets/7.jpg';
+import heritageImage from '../../assets/4.jpeg';
+import templesImage from '../../assets/5.jpg';
 
 const LandingPage = () => {
   const navigate = useNavigate();
