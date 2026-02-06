@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import flagImage from '../assets/1.jpg';
+import logoIcon from '../../assets/icon.jpeg';
 import colomboImage from '../assets/2.jpg';
 import templeImage from '../assets/3.jpg';
 import wildlifeImage from '../assets/6.jpg';
@@ -199,7 +200,7 @@ const LandingPage = () => {
         <nav className="relative z-20 flex justify-between items-center px-8 py-6">
           <div className="flex items-center gap-3 animate-fade-in">
             <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
-              <img src={flagImage} alt="Sri Lanka" className="w-full h-full object-cover" />
+              <img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
             </div>
             <h1 className="text-3xl font-bold text-white tracking-tight">
               Ceylon<span className="text-yellow-400">Roam</span>
@@ -431,7 +432,7 @@ const LandingPage = () => {
             {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
-                <img src={flagImage} alt="Sri Lanka" className="w-full h-full object-cover" />
+                <img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
               </div>
               <h1 className="text-3xl font-bold text-white tracking-tight">
                 Ceylon<span className="text-yellow-400">Roam</span>
