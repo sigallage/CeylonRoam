@@ -85,9 +85,12 @@ function VoiceTranslation() {
   const [isRecording, setIsRecording] = useState(false);
   const [audioFile, setAudioFile] = useState(null);
   const [transcription, setTranscription] = useState('');
+  const [translationResult, setTranslationResult] = useState('');
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
   const [isPreparingAudio, setIsPreparingAudio] = useState(false);
   const [recordingLanguage, setRecordingLanguage] = useState('');
+  const [translationLanguage, setTranslationLanguage] = useState('en');
   const [detectedLanguage, setDetectedLanguage] = useState('');
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -156,6 +159,7 @@ function VoiceTranslation() {
     }
 
     setIsTranscribing(true);
+    setTranslationResult('');
     try {
       const formData = new FormData();
       formData.append('file', fileToTranscribe, fileToTranscribe.name || 'recording.wav');
@@ -184,10 +188,48 @@ function VoiceTranslation() {
     }
   };
 
+  const translateText = async () => {
+    if (!transcription.trim()) {
+      alert('Transcription is empty. Record audio first.');
+      return;
+    }
+    if (!translationLanguage) {
+      alert('Choose the language you want to translate to.');
+      return;
+    }
+    setIsTranslating(true);
+    try {
+      const response = await fetch(`${apiBaseUrl}/text/translate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: transcription,
+          source_language: recordingLanguage || detectedLanguage || 'auto',
+          target_language: translationLanguage,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorBody = await response.text();
+        throw new Error(`Request failed (${response.status}): ${errorBody}`);
+      }
+      const data = await response.json();
+      setTranslationResult(data.text || 'Translation result will appear here');
+    } catch (error) {
+      console.error('Translation error:', error);
+      setTranslationResult('Error: Could not translate text.');
+    } finally {
+      setIsTranslating(false);
+    }
+  };
+
   const clearAll = () => {
     setAudioFile(null);
     setTranscription('');
-     setDetectedLanguage('');
+    setTranslationResult('');
+    setDetectedLanguage('');
     audioChunksRef.current = [];
   };
 
@@ -287,6 +329,47 @@ function VoiceTranslation() {
                 </div><br></br>
               </section>
             )}
+
+            {transcription && (
+              <section className="space-y-4">
+                <div className="mx-auto w-full max-w-[440px] space-y-3">
+                  <label className="space-y-2">
+                    <span className="block text-[15px] font-semibold text-[#111]">Step 4: Select a language to translate</span>
+                    <select
+                      value={translationLanguage}
+                      onChange={(event) => setTranslationLanguage(event.target.value)}
+                      className="w-full rounded-[8px] border border-[#ddd] px-4 py-3 text-[15px] text-[#333]"
+                    >
+                      {LANGUAGE_OPTIONS.map((option) => (
+                        <option key={option.code} value={option.code}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <button
+                    onClick={translateText}
+                    disabled={isTranslating || isPreparingAudio}
+                    className="w-full rounded-[8px] bg-[#1a1a1a] px-6 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#333] disabled:bg-[#3b3b3b]"
+                    style={{ color: '#ffffff', height: '52px' }}
+                  >
+                    {isTranslating ? 'Translating...' : 'Translate Text'}
+                  </button>
+                </div>
+              </section>
+            )}
+
+            {translationResult && (
+              <section className="space-y-3">
+                <div className="mx-auto w-full max-w-[440px] space-y-3">
+                  <h2 className="text-[16px] font-semibold text-[#333]">Translated Result</h2>
+                  <div className="min-h-[120px] rounded-[8px] border border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-[15px] text-[#333] whitespace-pre-wrap">
+                    {translationResult}
+                  </div>
+                </div>
+              </section>
+            )}
+
 
             {(audioFile || transcription) && (
               <div className="mx-auto w-full max-w-[440px]">
