@@ -6,6 +6,7 @@ import ResetPassword from '../Login/ResetPassword.jsx';
 import SignUpPage from '../Login/SignUpPage.jsx';
 import LandingPage from '../landingPage/landingPage.jsx';
 import RouteOptimizer from '../routeOptimizer/routeOptimizer.jsx';
+import VoiceTranslationPage from '../VoiceTranslation/VoiceTranslationPage.jsx';
 
 function Router() {
 	return (
@@ -16,6 +17,7 @@ function Router() {
 			<Route path="/reset-password" element={<ResetPassword />} />
 			<Route path="/forgot-password" element={<ForgotPassword />} />
 			<Route path="/signup" element={<SignUpPage />} />
+            <Route path="/voice-translation" element={<VoiceTranslationPage />} />
 			{/* Add other routes here as needed */}
 		</Routes>
 	);
