@@ -1,26 +1,443 @@
-{
-        "id": "sigiriya",
-        "name": "Sigiriya Rock Fortress",
-        "latitude": 7.9570,
-        "longitude": 80.7603,
-        "description": "An ancient rock fortress and UNESCO World Heritage Site, Sigiriya is one of Sri Lanka's most iconic landmarks. The 5th-century citadel features stunning frescoes, the Mirror Wall, and breathtaking views from the summit.",
-        "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
-        "category": "historical",
+[
+
+
+    {
+        "id": "Colombo",
+        "name": "Gangaramaya Temple",
+        "latitude": 6.9271,
+        "longitude": 79.8612,
+        "description": "A prominent Buddhist temple in Colombo, known for its eclectic mix of modern architecture and cultural elements. It serves as a place of worship and a center for learning about Buddhism.",
+        "image_url": "",
+        "category": "Buddhist Temple",
         "crowd_info": {
-            "peak_months": ["December", "January", "February", "July", "August"],
-            "off_peak_months": ["May", "June", "September", "October"],
+            "peak_months": ["January", "February", "March", "April", "May"],
+            "off_peak_months": ["June", "July", "August", "September", "October", "November", "December"],
             "best_time_to_visit": "Early morning (6:30 AM) to avoid crowds and heat"
         },
         "cultural_guidelines": {
-            "dress_code": "Comfortable clothing with covered shoulders and knees recommended",
+            "dress_code": "Dress modestly by covering your shoulders and knees, avoiding sleeveless tops, shorts, or revealing clothing; Remove hats/caps and shoes before entering, and consider wearing light colors like white as a sign of respect, with wraps often available if needed",
             "behavior": [
-                "Climb can be strenuous - bring water",
-                "Wear appropriate footwear",
-                "Be cautious of wasps near the summit"
+              "Dress Code: Wear clothing that covers shoulders and knees. Sarongs are available at the entrance if necessary.",
+              "Footwear: Remove shoes and hats before entering the temple complex; a designated area is available for storage.",
+              "Decorum: Maintain silence, avoid loud talking, and do not touch religious artifacts or statues.",
+              "Photography: Allowed, but be considerate and avoid taking close-up shots of people without permission.",
+              "Offering/Donation: While entry is generally free, donations are appreciated, and a fee may be required for the museum area.",
+              "Cultural Respect: Be aware of the active, crowded nature of the temple and respectful of monks and devotees."   
             ],
-            "entry_requirements": ["Valid ticket required", "Photography allowed"]
+            "entry_requirements": ["free entry", "Photography allowed"]
         },
-        "entry_fee": "USD 30 for foreigners",
-        "opening_hours": "7:00 AM - 5:30 PM"
-    }
+        "entry_fee": "free",
+        "opening_hours": "6.00 AM - 10.00 PM"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Galle Face Green",
+        "latitude": 6.9275,
+        "longitude": 79.8428,
+        "description": "A popular ocean-side urban park in Colombo, known for its scenic views, recreational activities, and vibrant atmosphere. It serves as a gathering place for locals and tourists alike.",
+        "image_url": "",
+        "category": "Beach / Urban Park",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["February", "March", "May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Evening (4:00 PM - 7:00 PM) to enjoy the sunset and cooler weather"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable clothing is acceptable. Light clothing is recommended due to the heat. No strict dress code, but modest attire is advised",
+            "behavior": [
+                "Public Decorum: Maintain respectful behavior as it is a family-friendly public space.",
+                "Cleanliness: Avoid littering; use designated bins to keep the beach clean.",
+                "Safety: Be cautious when near the ocean as swimming is generally not recommended due to strong currents.",
+                "Photography: Allowed freely; it is a popular location for sunset photography.",
+                "Food Vendors: Enjoy local street food but ensure cleanliness and hygiene."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "24 hours"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Viharamahadevi Park",
+        "latitude": 6.9105,
+        "longitude": 79.8636,
+        "description": "The oldest and largest public park in Colombo, located near the Town Hall. The park features landscaped gardens, walking paths, a large Buddha statue, fountains, and a children's play area, making it a peaceful place for relaxation and recreation.",
+        "image_url": "",
+        "category": "Urban Park",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["February", "March", "May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) or late afternoon (4:30 PM - 6:30 PM) to avoid heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable clothing is acceptable. Light clothing is recommended due to warm weather. Modest attire is appreciated, especially near the Buddha statue.",
+            "behavior": [
+                "Public Decorum: Maintain respectful behavior, especially near religious statues.",
+                "Cleanliness: Do not litter; use designated waste bins to keep the park clean.",
+                "Photography: Allowed, but be respectful when taking photos near the Buddha statue.",
+                "Family-Friendly Environment: The park is popular with families and children, so maintain appropriate behavior.",
+                "Safety: Follow park rules and supervise children in play areas."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "National Museum of Colombo",
+        "latitude": 6.9102,
+        "longitude": 79.8612,
+        "description": "The National Museum of Colombo is the largest museum in Sri Lanka, showcasing a vast collection of artifacts, including historical, cultural, and artistic treasures. It provides insights into the country's rich heritage and history.",
+        "image_url": "",
+        "category": "Museum",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["February", "March", "May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:00 AM) to explore comfortably before peak hours"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual but modest clothing is recommended. Avoid overly revealing attire as it is a cultural institution.",
+            "behavior": [
+                "Museum Etiquette: Maintain silence and avoid disturbing other visitors.",
+                "Photography: Photography may be restricted in certain sections; check for signs before taking photos.",
+                "Handling Artifacts: Do not touch exhibits unless clearly permitted.",
+                "Food and Drinks: Not allowed inside exhibition halls.",
+                "Respect: Follow instructions given by museum staff."
+            ], 
+            "entry_requirements": ["Ticket required for entry", "Photography allowed in designated areas"]
+        },
+        "entry_fee": "Paid entry (varies for locals and foreigners)",
+        "opening_hours": "9:00 AM - 6:00 PM (closed on Mondays and public holidays)"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Kelaniya Raja Maha Vihara",
+        "latitude": 6.9553,
+        "longitude": 79.9220,
+        "description": "Kelaniya Raja Maha Vihara is a Buddhist temple located in Kelaniya, near Colombo. It is renowned for its historical and religious significance, as well as its beautiful architecture and serene surroundings.",
+        "image_url": "",
+        "category": "Buddhist Temple",
+        "crowd_info": {
+            "peak_months": ["January", "April", "May", "December"],
+            "off_peak_months": ["February", "March", "June", "July", "August", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) or late afternoon (4:30 PM - 6:30 PM) to avoid heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear modest clothing covering shoulders and knees. White or light-colored clothing is preferred. Remove shoes and hats before entering temple premises.",
+            "behavior": [
+                "Respectful Conduct: Maintain silence and behave respectfully within the temple.",
+                "Footwear: Remove shoes before entering the shrine areas.",
+                "Photography: Allowed in certain areas, but avoid photographing monks or worshippers without permission.",
+                "Offerings: Visitors may bring flowers or incense as offerings.",
+                "Cultural Respect: Avoid turning your back directly to Buddha statues when taking photographs."
+            ],
+            "entry_requirements": ["Free public access", "Photography allowed in permitted areas"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "5:00 AM - 9:00 PM"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Mount Lavinia Beach",
+        "latitude": 6.8402,
+        "longitude": 79.8635,
+        "description": "Mount Lavinia Beach is a popular beach destination in Colombo, known for its golden sands, vibrant atmosphere, and stunning sunsets. It is a great place for swimming, sunbathing, and enjoying beachside cafes and restaurants.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["February", "March", "May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) or late afternoon (4:30 PM - 6:30 PM) for cooler weather and to enjoy the sunset"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual beachwear is acceptable. Swimwear is allowed, but modest attire is recommended when leaving the beach area.",
+            "behavior": [
+                "Safety: Swim only in designated safe areas and be cautious of strong currents.",
+                "Cleanliness: Avoid littering and help keep the beach clean.",
+                "Public Decorum: Maintain respectful behavior as it is a family-friendly location.",
+                "Photography: Allowed freely, especially for sunset photography.",
+                "Local Vendors: Purchase food and drinks from trusted vendors and check hygiene."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (beach access), but swimming is recommended during daylight hours"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Independence Memorial Hall (Independence Square)",
+        "latitude": 6.9022,
+        "longitude": 79.8676,
+        "description":"A national monument built to commemorate Sri Lanka’s independence from British rule in 1948. Located in Independence Square, the site features a grand stone hall inspired by Kandyan architecture, landscaped gardens, and statues of national heroes, making it a popular place for relaxation, jogging, and photography.",
+        "image_url": "",
+        "category": "Historical Monument / Public Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "December"],
+            "off_peak_months": ["March", "May", "June", "July", "August", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) or evening (4:30 PM - 7:00 PM) to avoid heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "casual and modest clothing is acceptable. Light clothing is recommended due to warm weather. Modest attire is appreciated, especially near the monument.",
+            "behavior": [
+                "Respect: Maintain respectful behavior as it is a site of national importance.",
+                "Cleanliness: Do not litter; use waste bins provided.",
+                "Photography: Allowed freely; it is a popular spot for photos.",
+                "Public Use: The area is popular for jogging and walking; be mindful of others.",
+                "Monuments: Do not climb or damage statues and historical structures."
+            ],
+                
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "24 hours (monument access), but visiting during daylight hours is recommended for safety and to enjoy the surroundings"
+    },
+
+
+    {
+    "id": "Colombo",
+    "name": "Dehiwala Zoological Garden",
+    "latitude": 6.8569,
+    "longitude": 79.8737,
+    "description": "Also known as the National Zoological Gardens of Sri Lanka, this zoo houses a wide variety of animals including mammals, birds, reptiles, and aquatic species. It is well known for its elephant shows, bird park, and educational programs promoting wildlife conservation.",
+    "image_url": "",
+    "category": "Zoo / Wildlife Park",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April", "August"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning (8:30 AM - 11:30 AM) before peak crowds and heat"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual and comfortable clothing is recommended. Light clothing and hats are advisable due to outdoor exposure.",
+        "behavior": [
+            "Animal Safety: Do not feed or disturb animals unless permitted.",
+            "Cleanliness: Avoid littering and use designated waste bins.",
+            "Photography: Allowed, but avoid using flash around animals.",
+            "Respect Rules: Follow zoo guidelines and staff instructions.",
+            "Supervision: Children should be supervised at all times."
+        ],
+        "entry_requirements": ["Tickets required", "Photography allowed (additional fee may apply)"]
+    },
+    "entry_fee": "Paid entry (different rates for locals and foreigners)",
+    "opening_hours": "8.30 AM - 6.00 PM"
+    },
+
+
+    {
+    "id": "Colombo",
+    "name": "Old Parliament Building",
+    "latitude": 6.9344,
+    "longitude": 79.8428,
+    "description": "A historic colonial-era building located at the northern end of Galle Face Green. Opened in 1930, it originally housed the Parliament of Sri Lanka and now serves as the Presidential Secretariat. The building is known for its grand Neo-Baroque architecture and seaside location.",
+    "image_url": "",
+    "category": "Historical Building / Government",
+    "crowd_info": {
+        "peak_months": ["December", "January", "February", "April"],
+        "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Evening (4:30 PM - 6:30 PM) when visiting Galle Face Green nearby"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual but modest clothing is recommended as it is a government building area.",
+        "behavior": [
+            "Security: The building is not open to the public; visitors can view it from outside only.",
+            "Photography: Allowed from public areas, but avoid restricted zones.",
+            "Respect: Maintain respectful behavior as it is an important government institution.",
+            "Cleanliness: Avoid littering around the premises."
+        ],
+        "entry_requirements": ["Exterior viewing only", "No public interior access"]
+    },
+    "entry_fee": "free (exterior viewing only)",
+    "opening_hours": "Exterior accessible at all times"
+},
+
+
     
+    {
+    "id": "Colombo",
+    "name": "Jami Ul-Alfar Mosque",
+    "latitude": 6.9383,
+    "longitude": 79.8516,
+    "description": "Also known as the Red Mosque, this iconic landmark in the Pettah area of Colombo is famous for its striking red-and-white candy-striped architecture. Built in 1908, it serves as an important place of worship for the Muslim community and is one of the most photographed buildings in the city.",
+    "image_url": "",
+    "category": "Mosque",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Outside prayer times, preferably morning (9:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Modest clothing required. Shoulders and knees must be covered. Women may be required to cover their heads. Shoes must be removed before entering.",
+        "behavior": [
+            "Prayer Respect: Avoid visiting during prayer times unless you are participating.",
+            "Footwear: Remove shoes before entering the mosque.",
+            "Photography: Ask permission before taking photos inside; exterior photography is allowed.",
+            "Silence: Maintain quiet and respectful behavior.",
+            "Gender Areas: Follow any designated prayer area guidelines."
+        ],
+        "entry_requirements": ["Free entry", "Visitors allowed outside prayer times"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open daily (visit outside prayer times)"
+},
+
+
+{
+        "id": "Colombo",
+        "name": "Sri Lanka Planetarium",
+        "latitude": 6.9008,
+        "longitude": 79.8629,
+        "description": "Established in 1965, this is the first and only planetarium in Sri Lanka. It is famous for its unique lotus-shaped architecture and serves as a major hub for astronomy education, featuring a 4D/Digital full-dome projector that displays celestial events and shows.",
+        "image_url": "",
+        "category": "Science Museum & Planetarium",
+        "crowd_info": {
+            "peak_months": ["January", "February", "August", "December"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Weekday mornings; show times are typically at 10:00 AM and 2:00 PM"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable clothing is appropriate; however, avoid extremely revealing attire as a sign of general cultural respect in public institutions.",
+            "behavior": [
+              "Punctuality: Arrive at least 15-30 minutes before show times (10 AM and 2 PM) as late entry is strictly prohibited once the dome is dark.",
+              "Noise Control: Maintain silence inside the auditorium to ensure everyone can hear the lecture and enjoy the immersive experience.",
+              "Food & Drink: No outside food or beverages are allowed inside the dome or the exhibition areas.",
+              "Electronics: Use of mobile phones is discouraged during the show; the bright light from screens disrupts the dark-sky environment.",
+              "Photography: Photography is generally allowed in the gardens and exhibition areas, but flash photography is strictly prohibited inside the auditorium during shows.",
+              "Group Visits: School groups are very common; be prepared for high energy and large crowds during term time."
+            ],
+            "entry_requirements": ["Ticketed entry required", "Closed on Sundays, Mondays, and Public Holidays"]
+        },
+        "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children/Students",
+        "opening_hours": "8.00 AM - 4.00 PM (Shows at 10.00 AM and 2.00 PM)"
+    },
+
+    {
+    "id": "Colombo",
+    "name": "Beddagana Wetland Park",
+    "latitude": 6.8894,
+    "longitude": 79.9143,
+    "description": "A protected urban wetland sanctuary located in Sri Jayawardenepura Kotte. The park is known for its rich biodiversity, including migratory birds, butterflies, reptiles, and small mammals. Wooden boardwalks allow visitors to explore the wetlands while enjoying nature and birdwatching.",
+    "image_url": "",
+    "category": "Nature Park / Wetland Sanctuary",
+    "crowd_info": {
+        "peak_months": ["December", "January", "February"],
+        "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+        "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) for birdwatching and cooler weather"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Wear comfortable and modest outdoor clothing. Light, breathable fabrics and comfortable walking shoes are recommended.",
+        "behavior": [
+            "Wildlife Protection: Do not disturb or feed animals and birds.",
+            "Silence: Maintain quiet behavior to avoid disturbing wildlife.",
+            "Cleanliness: Do not litter; help preserve the natural environment.",
+            "Photography: Allowed, especially for nature photography, but avoid disturbing animals.",
+            "Stay on Paths: Use designated boardwalks and trails only."
+        ],
+        "entry_requirements": ["Tickets required", "Follow park rules and regulations"]
+    },
+    "entry_fee": "Paid entry (affordable rates for locals and foreigners)",
+    "opening_hours": "6.00 AM - 6.00 PM"
+},
+
+
+{
+        "id": "Colombo",
+        "name": "Attidiya Bird Sanctuary",
+        "latitude": 6.8458,
+        "longitude": 79.8986,
+        "description": "A shallow freshwater wetland located in the urban sprawl of Colombo. It is a critical habitat for over 50 species of migratory and resident birds, as well as butterflies and several endemic freshwater fish. It offers a tranquil escape for birdwatching and nature photography.",
+        "image_url": "",
+        "category": "Wildlife Sanctuary / Wetland",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "March"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Early morning (6:00 AM - 8:00 AM) or late afternoon (4:30 PM - 6:00 PM) for peak bird activity."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear comfortable, earth-toned or neutral-colored clothing to blend into the environment; sturdy walking shoes or boots are recommended as paths can be muddy.",
+            "behavior": [
+              "Silence: Keep noise to a minimum to avoid startling the birds and wildlife.",
+              "Environmental Care: Strictly no littering; ensure all plastic and waste are carried back out with you.",
+              "Wildlife Respect: Maintain a safe distance from animals and do not attempt to feed the birds or crocodiles.",
+              "Safety: Be cautious of the marshy terrain and stay on designated paths; crocodiles are known to inhabit these waters.",
+              "Equipment: Bring binoculars and insect repellent, as mosquitoes are common in the wetland.",
+              "Photography: Nature photography is encouraged, but avoid using drones without specific prior authorization."
+            ],
+            "entry_requirements": ["Free entry", "Open access (No formal ticketing gate)"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (Recommended during daylight: 6:00 AM - 6:00 PM)"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "Diyatha Uyana Park",
+        "latitude": 6.9075,
+        "longitude": 79.9192,
+        "description": "A beautifully landscaped urban park and lakeside walking path located at Polduwa Junction. It features a water fountain, an aquarium, a floating restaurant, and a popular plant nursery. It serves as a hub for recreation, fitness, and weekend markets.",
+        "image_url": "",
+        "category": "Urban Park & Recreation",
+        "crowd_info": {
+            "peak_months": ["All Year Round", "December", "January", "April"],
+            "off_peak_months": ["May", "June", "October"],
+            "best_time_to_visit": "Late afternoon (5:00 PM onwards) to enjoy the cooler breeze and the illuminated fountains."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual or sportswear is recommended for walking and jogging; modest casual wear is appropriate for the food court and markets.",
+            "behavior": [
+              "Public Conduct: A family-friendly environment; avoid loud music and public displays of affection that may be considered inappropriate in local culture.",
+              "Environmental Care: Strictly no littering; the park is well-maintained with numerous bins provided.",
+              "Pet Policy: Generally, pets are not allowed in the main walking and seated areas to maintain cleanliness.",
+              "Market Etiquette: On weekends, support local vendors at the Good Market or plant stalls; polite bargaining is acceptable but not always expected.",
+              "Safety: Be cautious near the edge of the Diyawanna Lake, especially with children, as there are no high fences.",
+              "Cycling/Skating: Restricted in certain high-traffic walking areas to ensure pedestrian safety."
+            ],
+            "entry_requirements": ["Free entry", "Open to the public"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6.00 AM - 11.00 PM"
+    },
+
+
+    {
+        "id": "Colombo",
+        "name": "St. Anthony's Shrine",
+        "latitude": 6.9469,
+        "longitude": 79.8561,
+        "description": "A historic Roman Catholic shrine and national monument located in Kochchikade. Dedicated to St. Anthony of Padua, it is world-renowned for its reported miracles and houses a sacred relic (a piece of the Saint's tongue). It remains a deeply spiritual site for Catholics, Hindus, Buddhists, and Muslims alike.",
+        "image_url": "",
+        "category": "Catholic Shrine / National Monument",
+        "crowd_info": {
+            "peak_months": ["June (Feast Month)", "April", "December"],
+            "off_peak_months": ["September", "October", "November"],
+            "best_time_to_visit": "Early morning on weekdays; note that Tuesdays are exceptionally crowded due to the weekly Novena."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress modestly by covering shoulders and knees. While footwear removal is not required inside the church (unlike temples), many devotees choose to enter barefoot as a sign of penance.",
+            "behavior": [
+              "Veneration: You will see many people touching the glass casing of the St. Anthony statue at the entrance; please be respectful of this ritual and wait your turn.",
+              "Candle Lighting: It is a tradition to light yellow candles at the designated outdoor trench; ensure you purchase candles from the authorized church shop.",
+              "Mass Decorum: If a service (Mass) is in progress, remain silent and avoid walking near the altar or taking photos of the congregation.",
+              "Silence & Prayer: The interior is a space for deep prayer; keep your voice to a whisper even when exploring the architecture.",
+              "Photography: Generally allowed, but strictly prohibited during Mass and religious ceremonies. Avoid using flash inside the shrine.",
+              "Respect for History: Acknowledge the shrine's significance as a site of resilience following the 2019 Easter attacks; maintain a somber and respectful attitude."
+            ],
+            "entry_requirements": ["Free entry", "Open to all faiths"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "5.00 AM - 8.00 PM"
+    }
+]
+
