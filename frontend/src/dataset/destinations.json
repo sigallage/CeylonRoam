@@ -438,6 +438,41 @@
         },
         "entry_fee": "free",
         "opening_hours": "5.00 AM - 8.00 PM"
+    },
+
+    {
+        "id": "koneswaram_temple",
+        "name": "Koneswaram Temple",
+        "latitude": 8.5700,
+        "longitude": 81.2330,
+        "description": "A historic Hindu temple perched on Swami Rock overlooking the Indian Ocean, Koneswaram is one of the Pancha Ishwarams dedicated to Lord Shiva.",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spiritual_16.jpg/1280px-Spiritual_16.jpg",
+        "category": "religious",
+        "crowd_info": {
+            "peak_months": ["April", "July", "August"],
+            "off_peak_months": ["May", "October"],
+            "best_time_to_visit": "Early morning or evening"
+        },
+        "cultural_guidelines": {
+        "dress_code": "Modest attire required",
+        "behavior": [
+            "Remove footwear",
+            "Photography restricted in inner shrine"
+        ],
+        "entry_requirements": ["Temple rules apply"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
+
+    },
+    {
+        
     }
+
+
+
+
+
+
 ]
 
