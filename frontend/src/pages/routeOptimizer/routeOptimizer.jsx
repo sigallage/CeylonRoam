@@ -11,7 +11,21 @@ import {
 } from '@react-google-maps/api'
 
 import { mockItinerary } from '../../mockData/itineraryData.js'
-import { destinationData } from '../../mockData/destinationData.js'
+import destinationsRaw from '../../dataset/destinations.json'
+
+// Transform destinations.json format to match expected structure
+const destinationData = destinationsRaw.map(dest => ({
+	id: dest.id || dest.name,
+	name: dest.name,
+	location: { lat: dest.latitude, lng: dest.longitude },
+	description: dest.description,
+	category: dest.category,
+	entry_fee: dest.entry_fee,
+	opening_hours: dest.opening_hours,
+	image_url: dest.image_url,
+	crowd_info: dest.crowd_info,
+	cultural_guidelines: dest.cultural_guidelines
+}))
 
 const SRI_LANKA_CENTER = { lat: 7.8731, lng: 80.7718 }
 
