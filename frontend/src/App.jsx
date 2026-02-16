@@ -1,18 +1,8 @@
-import './App.css';
-import { Navigate, Route, Routes } from "react-router-dom";
-import Main from "./pages/Main/Main";
-import ItineraryGenerator from "./pages/itineraryGenerator/itineraryGenerator.jsx";
-//import Splash from "./pages/Splash/Splash.jsx";
-import RouteOptimizer from './pages/routeOptimizer/routeOptimizer.jsx';
+import './App.css'
+import Router from './pages/routes/router.jsx'
 
-const App = () => (
-  <Routes>
-    <Route path="/" element={<ItineraryGenerator />} />
-    <Route path="/main" element={<Main />} />
-    {/* <Route path="/splash" element={<Splash />} /> */}
-    <Route path="/route-optimizer" element={<RouteOptimizer />} />
-    <Route path="*" element={<Navigate to="/" replace />} />
-  </Routes>
-);
+function App() {
+  return <Router />
+}
 
-export default App;
+export default App

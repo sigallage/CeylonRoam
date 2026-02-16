@@ -1,0 +1,6 @@
+{
+  "appId": "com.ceylonroam.app",
+  "appName": "CeylonRoam",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

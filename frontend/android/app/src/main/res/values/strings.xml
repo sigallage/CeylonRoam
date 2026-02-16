@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CeylonRoam</string>
+    <string name="title_activity_main">CeylonRoam</string>
+    <string name="package_name">com.ceylonroam.app</string>
+    <string name="custom_url_scheme">com.ceylonroam.app</string>
+</resources>
