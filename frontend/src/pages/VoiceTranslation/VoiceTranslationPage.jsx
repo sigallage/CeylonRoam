@@ -95,7 +95,7 @@ function VoiceTranslation() {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const apiBaseUrl = useMemo(
-    () => import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:8000',
+    () => import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:8002',
     [],
   );
 
