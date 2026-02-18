@@ -2,7 +2,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "gangaramaya-temple",
         "name": "Gangaramaya Temple",
         "latitude": 6.9271,
         "longitude": 79.8612,
@@ -32,7 +32,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "galle-face-green",
         "name": "Galle Face Green",
         "latitude": 6.9275,
         "longitude": 79.8428,
@@ -61,7 +61,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "viharamahadevi-park",
         "name": "Viharamahadevi Park",
         "latitude": 6.9105,
         "longitude": 79.8636,
@@ -90,7 +90,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "national-museum-colombo",
         "name": "National Museum of Colombo",
         "latitude": 6.9102,
         "longitude": 79.8612,
@@ -119,7 +119,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "kelaniya-raja-maha-vihara",
         "name": "Kelaniya Raja Maha Vihara",
         "latitude": 6.9553,
         "longitude": 79.9220,
@@ -148,7 +148,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "mount-lavinia-beach",
         "name": "Mount Lavinia Beach",
         "latitude": 6.8402,
         "longitude": 79.8635,
@@ -177,7 +177,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "independence-memorial-hall",
         "name": "Independence Memorial Hall (Independence Square)",
         "latitude": 6.9022,
         "longitude": 79.8676,
@@ -207,7 +207,7 @@
 
 
     {
-    "id": "Colombo",
+    "id": "dehiwala-zoo",
     "name": "Dehiwala Zoological Garden",
     "latitude": 6.8569,
     "longitude": 79.8737,
@@ -236,7 +236,7 @@
 
 
     {
-    "id": "Colombo",
+    "id": "old-parliament-building",
     "name": "Old Parliament Building",
     "latitude": 6.9344,
     "longitude": 79.8428,
@@ -265,7 +265,7 @@
 
     
     {
-    "id": "Colombo",
+    "id": "jami-ul-alfar-mosque",
     "name": "Jami Ul-Alfar Mosque",
     "latitude": 6.9383,
     "longitude": 79.8516,
@@ -294,7 +294,7 @@
 
 
 {
-        "id": "Colombo",
+        "id": "sri-lanka-planetarium",
         "name": "Sri Lanka Planetarium",
         "latitude": 6.9008,
         "longitude": 79.8629,
@@ -323,7 +323,7 @@
     },
 
     {
-    "id": "Colombo",
+    "id": "beddagana-wetland-park",
     "name": "Beddagana Wetland Park",
     "latitude": 6.8894,
     "longitude": 79.9143,
@@ -352,7 +352,7 @@
 
 
 {
-        "id": "Colombo",
+        "id": "attidiya-bird-sanctuary",
         "name": "Attidiya Bird Sanctuary",
         "latitude": 6.8458,
         "longitude": 79.8986,
@@ -382,7 +382,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "diyatha-uyana-park",
         "name": "Diyatha Uyana Park",
         "latitude": 6.9075,
         "longitude": 79.9192,
@@ -412,7 +412,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "st-anthonys-shrine",
         "name": "St. Anthony's Shrine",
         "latitude": 6.9469,
         "longitude": 79.8561,
@@ -469,6 +469,29 @@
         },
         "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children (Local); Higher rates apply for foreign visitors",
         "opening_hours": "7:30 AM - 6:00 PM"
+    {
+        "id": "koneswaram_temple",
+        "name": "Koneswaram Temple",
+        "latitude": 8.5700,
+        "longitude": 81.2330,
+        "description": "A historic Hindu temple perched on Swami Rock overlooking the Indian Ocean, Koneswaram is one of the Pancha Ishwarams dedicated to Lord Shiva.",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spiritual_16.jpg/1280px-Spiritual_16.jpg",
+        "category": "religious",
+        "crowd_info": {
+            "peak_months": ["April", "July", "August"],
+            "off_peak_months": ["May", "October"],
+            "best_time_to_visit": "Early morning or evening"
+        },
+        "cultural_guidelines": {
+        "dress_code": "Modest attire required",
+        "behavior": [
+            "Remove footwear",
+            "Photography restricted in inner shrine"
+        ],
+        "entry_requirements": ["Temple rules apply"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
     }
 
     

@@ -1,0 +1,16 @@
+diff --git a/node_modules/native-run/dist/android/utils/adb.js b/node_modules/native-run/dist/android/utils/adb.js
+index a4b4ec5..2f49788 100644
+--- a/node_modules/native-run/dist/android/utils/adb.js
++++ b/node_modules/native-run/dist/android/utils/adb.js
+@@ -207,9 +207,9 @@ function parseAdbInstallOutput(line) {
+ exports.parseAdbInstallOutput = parseAdbInstallOutput;
+ async function startActivity(sdk, device, packageName, activityName) {
+     const debug = Debug(`${modulePrefix}:${startActivity.name}`);
+-    const args = ['-s', device.serial, 'shell', 'am', 'start', '-W', '-n', `${packageName}/${activityName}`];
++    const args = ['-s', device.serial, 'shell', 'am', 'start', '-n', `${packageName}/${activityName}`];
+     debug('Invoking adb with args: %O', args);
+-    await execAdb(sdk, args, { timeout: 5000 });
++    await execAdb(sdk, args, { timeout: 60000 });
+ }
+ exports.startActivity = startActivity;
+ function parseAdbDevices(output) {

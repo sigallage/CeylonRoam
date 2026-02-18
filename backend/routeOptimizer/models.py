@@ -53,3 +53,30 @@ class OptimizeResponse(BaseModel):
     optimize_for: str
     optimized_itinerary: list[Destination]
     segments: list[Segment]
+
+
+class TrafficRouteRequest(BaseModel):
+    origin: LatLng
+    destination: LatLng
+    intermediates: list[LatLng] = Field(default_factory=list)
+
+    # Google Routes API travel modes (subset for our UI)
+    travel_mode: str = Field(default="DRIVE", pattern="^(DRIVE|TWO_WHEELER)$")
+
+
+class SpeedInterval(BaseModel):
+    start_index: int
+    end_index: int
+    speed: str
+
+
+class TrafficLeg(BaseModel):
+    encoded_polyline: str
+    speed_intervals: list[SpeedInterval] = Field(default_factory=list)
+
+
+class TrafficRouteResponse(BaseModel):
+    duration_seconds: float | None = None
+    static_duration_seconds: float | None = None
+    distance_meters: int | None = None
+    legs: list[TrafficLeg] = Field(default_factory=list)

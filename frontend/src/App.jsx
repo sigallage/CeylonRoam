@@ -1,8 +1,8 @@
 import './App.css'
-import RouteOptimizer from './pages/routeOptimizer/routeOptimizer.jsx'
+import Router from './pages/routes/router.jsx'
 
 function App() {
-  return <RouteOptimizer />
+  return <Router />
 }
 
 export default App
