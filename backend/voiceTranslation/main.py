@@ -1,24 +1,20 @@
-"""
-Voice Translation API using Local Whisper + OpenRouter
-Provides speech-to-text transcription and text translation
-"""
-import os
-import io
-import torch
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import httpx
-from dotenv import load_dotenv
-from transformers import pipeline
-import soundfile as sf
+import torch
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import tempfile
+import os
+import logging
 
-# Load environment variables
-load_dotenv()
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Voice Translation API")
 
-# CORS configuration
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -27,21 +23,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# API Configuration
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+# Global variables for models
+whisper_pipe = None
+translation_model = None
+translation_tokenizer = None
 
-# Use OpenRouter for GPT translation (cost-effective)
-OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Language mapping for Whisper
+WHISPER_LANG_MAP = {
+    'si': 'si',  # Sinhala
+    'en': 'en',  # English
+    'ta': 'ta',  # Tamil
+}
 
-# Initialize Whisper model (local, free)
-print("Loading Whisper model...")
-device = "cuda" if torch.cuda.is_available() else "cpu"
-whisper_transcriber = pipeline(
-    "automatic-speech-recognition",
-    model="openai/whisper-small",
-    device=device
-)
-print(f"Whisper model loaded on {device}!")
+# Language mapping for NLLB translation model
+NLLB_LANG_MAP = {
+    'si': 'sin_Sinh',  # Sinhala
+    'en': 'eng_Latn',  # English
+    'ta': 'tam_Taml',  # Tamil
+}
 
 
 class TextTranslationRequest(BaseModel):
@@ -50,164 +49,181 @@ class TextTranslationRequest(BaseModel):
     target_language: str
 
 
-class TranscriptionResponse(BaseModel):
-    text: str
-    detected_language: str
-
-
-class TranslationResponse(BaseModel):
-    text: str
-
-
-def get_language_name(code: str) -> str:
-    """Convert language code to full name"""
-    language_map = {
-        "si": "Sinhala",
-        "ta": "Tamil",
-        "en": "English",
-        "auto": "auto-detect"
-    }
-    return language_map.get(code, code)
+@app.on_event("startup")
+async def load_models():
+    """Load models on startup"""
+    global whisper_pipe, translation_model, translation_tokenizer
+    
+    try:
+        logger.info("Loading Whisper model...")
+        device = "cuda:0" if torch.cuda.is_available() else "cpu"
+        torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+        
+        # Load Whisper Large v3
+        model_id = "openai/whisper-large-v3"
+        
+        model = AutoModelForSpeechSeq2Seq.from_pretrained(
+            model_id, 
+            torch_dtype=torch_dtype, 
+            low_cpu_mem_usage=True, 
+            use_safetensors=True
+        )
+        model.to(device)
+        
+        processor = AutoProcessor.from_pretrained(model_id)
+        
+        whisper_pipe = pipeline(
+            "automatic-speech-recognition",
+            model=model,
+            tokenizer=processor.tokenizer,
+            feature_extractor=processor.feature_extractor,
+            max_new_tokens=128,
+            chunk_length_s=30,
+            batch_size=16,
+            return_timestamps=False,
+            torch_dtype=torch_dtype,
+            device=device,
+        )
+        logger.info("✓ Whisper model loaded successfully")
+        
+        # Load translation model (NLLB-200)
+        logger.info("Loading NLLB translation model...")
+        translation_model_id = "facebook/nllb-200-distilled-600M"
+        
+        translation_tokenizer = AutoTokenizer.from_pretrained(translation_model_id)
+        translation_model = AutoModelForSeq2SeqLM.from_pretrained(translation_model_id)
+        translation_model.to(device)
+        logger.info("✓ Translation model loaded successfully")
+        
+    except Exception as e:
+        logger.error(f"Error loading models: {e}")
+        raise
 
 
 @app.get("/")
 async def root():
     return {
-        "service": "Voice Translation API",
-        "status": "running",
-        "endpoints": {
-            "transcription": "/voice/translate",
-            "translation": "/text/translate"
-        }
+        "message": "Voice Translation API is running",
+        "whisper_loaded": whisper_pipe is not None,
+        "translation_loaded": translation_model is not None,
+        "device": "cuda" if torch.cuda.is_available() else "cpu"
     }
 
 
-@app.post("/voice/translate", response_model=TranscriptionResponse)
+@app.post("/voice/translate")
 async def transcribe_audio(
     file: UploadFile = File(...),
-    source_language: str = "",
-    target_language: str = ""
+    task: str = Form("transcribe"),
+    target_language: str = Form("en"),
+    source_language: str = Form("en")
 ):
     """
-    Transcribe audio file using Local Whisper Model (FREE)
-    
-    Args:
-        file: Audio file (wav, mp3, etc.)
-        source_language: Language spoken in audio (si/ta/en)
-        target_language: Same as source_language for transcription
-    
-    Returns:
-        Transcription text and detected language
+    Transcribe audio file using Whisper
     """
-    try:
-        # Read audio file
-        audio_data = await file.read()
-        
-        # Load audio using soundfile
-        audio_array, sample_rate = sf.read(io.BytesIO(audio_data))
-        
-        # Prepare generation kwargs
-        generate_kwargs = {}
-        if source_language and source_language != "auto":
-            generate_kwargs["language"] = source_language
-        
-        # Transcribe using local Whisper model
-        result = whisper_transcriber(
-            {"array": audio_array, "sampling_rate": sample_rate},
-            generate_kwargs=generate_kwargs
-        )
-        
-        transcription_text = result.get('text', '')
-        detected_lang = source_language if source_language else 'en'
-        
-        return TranscriptionResponse(
-            text=transcription_text,
-            detected_language=detected_lang
-        )
+    if whisper_pipe is None:
+        raise HTTPException(status_code=503, detail="Whisper model not loaded")
     
+    try:
+        # Save uploaded file temporarily
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
+            content = await file.read()
+            temp_audio.write(content)
+            temp_audio_path = temp_audio.name
+        
+        logger.info(f"Processing audio file: {file.filename}")
+        
+        # Get the language code for Whisper
+        whisper_lang = WHISPER_LANG_MAP.get(source_language, 'en')
+        
+        # Transcribe using Whisper
+        result = whisper_pipe(
+            temp_audio_path,
+            generate_kwargs={
+                "language": whisper_lang,
+                "task": task
+            }
+        )
+        
+        # Clean up temp file
+        os.unlink(temp_audio_path)
+        
+        transcribed_text = result["text"].strip()
+        logger.info(f"Transcription successful: {transcribed_text[:50]}...")
+        
+        return {
+            "text": transcribed_text,
+            "detected_language": source_language,
+            "task": task
+        }
+        
     except Exception as e:
+        logger.error(f"Transcription error: {e}")
+        # Clean up temp file on error
+        if 'temp_audio_path' in locals():
+            try:
+                os.unlink(temp_audio_path)
+            except:
+                pass
         raise HTTPException(status_code=500, detail=f"Transcription failed: {str(e)}")
 
 
-@app.post("/text/translate", response_model=TranslationResponse)
+@app.post("/text/translate")
 async def translate_text(request: TextTranslationRequest):
     """
-    Translate text using OpenRouter GPT
-    
-    Args:
-        request: Contains text, source_language, target_language
-    
-    Returns:
-        Translated text
+    Translate text between languages using NLLB
     """
-    if not OPENROUTER_API_KEY:
-        raise HTTPException(
-            status_code=500,
-            detail="OPENROUTER_API_KEY not configured in environment variables"
-        )
-    
-    source_lang = get_language_name(request.source_language)
-    target_lang = get_language_name(request.target_language)
-    
-    # Create translation prompt
-    prompt = f"""Translate the following text from {source_lang} to {target_lang}.
-
-Only provide the translation, without any explanations or additional text.
-
-Text to translate:
-{request.text}
-
-Translation:"""
+    if translation_model is None or translation_tokenizer is None:
+        raise HTTPException(status_code=503, detail="Translation model not loaded")
     
     try:
-        headers = {
-            'Authorization': f'Bearer {OPENROUTER_API_KEY}',
-            'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://ceylonroam.app',  # Optional: for rankings
-            'X-Title': 'CeylonRoam Voice Translation'  # Optional: shows in rankings
+        source_lang = NLLB_LANG_MAP.get(request.source_language, 'eng_Latn')
+        target_lang = NLLB_LANG_MAP.get(request.target_language, 'eng_Latn')
+        
+        logger.info(f"Translating from {source_lang} to {target_lang}")
+        
+        # Set source language
+        translation_tokenizer.src_lang = source_lang
+        
+        # Tokenize input
+        inputs = translation_tokenizer(
+            request.text, 
+            return_tensors="pt", 
+            padding=True
+        )
+        
+        # Move to device
+        device = translation_model.device
+        inputs = {k: v.to(device) for k, v in inputs.items()}
+        
+        # Get the target language token ID
+        forced_bos_token_id = translation_tokenizer.convert_tokens_to_ids(target_lang)
+        
+        # Generate translation
+        translated_tokens = translation_model.generate(
+            **inputs,
+            forced_bos_token_id=forced_bos_token_id,
+            max_length=512
+        )
+        
+        # Decode translation
+        translated_text = translation_tokenizer.batch_decode(
+            translated_tokens, 
+            skip_special_tokens=True
+        )[0]
+        
+        logger.info(f"Translation successful: {translated_text[:50]}...")
+        
+        return {
+            "text": translated_text,
+            "source_language": request.source_language,
+            "target_language": request.target_language
         }
         
-        payload = {
-            'model': 'openai/gpt-4o-mini',  # Cost-effective for translation
-            'messages': [
-                {
-                    'role': 'system',
-                    'content': 'You are a professional translator specializing in Sinhala, Tamil, and English. Provide accurate, natural translations.'
-                },
-                {
-                    'role': 'user',
-                    'content': prompt
-                }
-            ],
-            'temperature': 0.3,  # Lower temperature for more consistent translations
-        }
-        
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            response = await client.post(
-                OPENROUTER_API_URL,
-                headers=headers,
-                json=payload
-            )
-        
-        if response.status_code != 200:
-            error_detail = response.text
-            raise HTTPException(
-                status_code=response.status_code,
-                detail=f"Translation API error: {error_detail}"
-            )
-        
-        result = response.json()
-        translated_text = result['choices'][0]['message']['content'].strip()
-        
-        return TranslationResponse(text=translated_text)
-    
-    except httpx.TimeoutException:
-        raise HTTPException(status_code=504, detail="Translation request timeout")
     except Exception as e:
+        logger.error(f"Translation error: {e}")
         raise HTTPException(status_code=500, detail=f"Translation failed: {str(e)}")
 
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.getenv("PORT", 8002))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=8002)

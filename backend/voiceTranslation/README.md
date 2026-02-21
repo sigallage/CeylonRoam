@@ -1,94 +1,71 @@
 # Voice Translation Backend
 
-FastAPI backend for CeylonRoam voice translation feature using OpenRouter and OpenAI APIs.
+This backend service provides **speech-to-text** and **text translation** capabilities using open-source models from Hugging Face:
+
+- **Whisper Large v3** (OpenAI) - for speech recognition
+- **NLLB-200** (Meta) - for translation
 
 ## Features
 
-- **Speech-to-Text**: Transcribe audio using OpenAI Whisper API
-- **Text Translation**: Translate between Sinhala, Tamil, and English using GPT-4 via OpenRouter
-- **Multi-language Support**: Supports Sinhala (si), Tamil (ta), and English (en)
+- ✅ **Completely FREE** - runs locally on your machine
+- ✅ **No API keys required**
+- ✅ Supports Sinhala, English, and Tamil
+- ✅ High-quality transcription with Whisper Large v3
+- ✅ Advanced translation with NLLB-200
 
-## Setup Instructions
+## Quick Start
 
-### 1. Get API Keys
+### 1. Install Python
+Make sure you have Python 3.8+ installed.
 
-#### OpenRouter API Key (for translation)
-1. Go to [OpenRouter.ai](https://openrouter.ai/)
-2. Sign up or log in
-3. Go to [API Keys](https://openrouter.ai/keys)
-4. Create a new API key
-5. Copy the key
-
-#### OpenAI API Key (for speech-to-text)
-1. Go to [OpenAI Platform](https://platform.openai.com/)
-2. Sign up or log in
-3. Go to [API Keys](https://platform.openai.com/api-keys)
-4. Create a new secret key
-5. Copy the key
-
-### 2. Configure Environment Variables
-
-1. Open the `.env` file in this directory
-2. Add your API keys:
-
-```env
-OPENROUTER_API_KEY=sk-or-v1-your-key-here
-OPENAI_API_KEY=sk-your-openai-key-here
-PORT=8002
-```
-
-### 3. Install Dependencies
-
-```bash
-# Make sure you're in the voiceTranslation directory
-cd backend/voiceTranslation
-
-# Install requirements
-pip install -r requirements.txt
-```
-
-### 4. Run the Backend
-
-**Option 1: Using the batch script**
+### 2. Run the Backend
+Simply double-click `start_backend.bat` or run:
 ```bash
 start_backend.bat
 ```
 
-**Option 2: Directly with Python**
-```bash
-python main.py
+On first run, this will:
+- Create a virtual environment
+- Install all dependencies (~2-3 GB download including models)
+- Start the API server on http://localhost:8002
+
+**Note:** First run may take 10-15 minutes to download models.
+
+### 3. Verify It's Running
+Open your browser and go to:
+```
+http://localhost:8002
 ```
 
-**Option 3: With uvicorn**
-```bash
-uvicorn main:app --host 0.0.0.0 --port 8002 --reload
-```
-
-The API will start on `http://localhost:8002`
-
-## API Endpoints
-
-### POST `/voice/translate`
-Transcribe audio to text
-
-**Request:**
-- Form data with audio file
-- `file`: Audio file (WAV, MP3, etc.)
-- `source_language`: Language code (si/ta/en)
-- `target_language`: Same as source for transcription
-
-**Response:**
+You should see:
 ```json
 {
-  "text": "transcribed text",
-  "detected_language": "en"
+  "message": "Voice Translation API is running",
+  "whisper_loaded": true,
+  "translation_loaded": true,
+  "device": "cpu"
 }
 ```
 
-### POST `/text/translate`
-Translate text between languages
+## API Endpoints
 
-**Request:**
+### 1. Transcribe Audio
+**POST** `/voice/translate`
+
+Convert speech to text.
+
+**Parameters:**
+- `file`: Audio file (WAV format)
+- `task`: "transcribe" or "translate"
+- `source_language`: Language code (si/en/ta)
+- `target_language`: Language code (si/en/ta)
+
+### 2. Translate Text
+**POST** `/text/translate`
+
+Translate text between languages.
+
+**Body:**
 ```json
 {
   "text": "Hello world",
@@ -97,73 +74,56 @@ Translate text between languages
 }
 ```
 
-**Response:**
-```json
-{
-  "text": "හෙලෝ වර්ල්ඩ්"
-}
+## Supported Languages
+
+- `si` - Sinhala (සිංහල)
+- `en` - English
+- `ta` - Tamil (தமிழ்)
+
+## System Requirements
+
+### Minimum
+- RAM: 8 GB
+- Storage: 5 GB free space
+- CPU: Multi-core processor
+
+### Recommended
+- RAM: 16 GB+
+- GPU: NVIDIA GPU with CUDA support (for faster processing)
+- Storage: 5 GB free space
+
+## GPU Acceleration (Optional)
+
+For faster processing, install PyTorch with CUDA:
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-## Language Codes
-
-- `si` - Sinhala
-- `ta` - Tamil
-- `en` - English
-
-## Cost Estimates
-
-### OpenAI Whisper API
-- **Price**: ~$0.006 per minute of audio
-- **Model**: whisper-1
-
-### OpenRouter GPT-4o-mini
-- **Price**: ~$0.15 per 1M input tokens, $0.60 per 1M output tokens
-- **Model**: openai/gpt-4o-mini (cost-effective for translation)
+The service will automatically use GPU if available.
 
 ## Troubleshooting
 
-### "OPENAI_API_KEY not configured"
-- Make sure you've added your OpenAI API key to the `.env` file
-- Restart the backend after updating `.env`
+### Models taking too long to load?
+- First download is slow (2-3 GB of models)
+- Subsequent starts are much faster
+- Consider using a smaller model if needed
 
-### "OPENROUTER_API_KEY not configured"  
-- Make sure you've added your OpenRouter API key to the `.env` file
-- Restart the backend after updating `.env`
+### Out of memory?
+- Close other applications
+- Use a lighter model variant
+- Reduce batch size in main.py
 
-### CORS errors from frontend
-- The backend is configured to allow all origins
-- Make sure the backend is running on port 8002
-- Check that frontend is using correct API URL
-
-### Audio transcription fails
-- Ensure audio file is in a supported format (WAV, MP3, M4A, etc.)
-- Check that the file size is under 25MB
-- Verify your OpenAI API key has credits
-
-## Architecture
-
-```
-Frontend (React)
-    ↓
-FastAPI Backend (this service)
-    ↓
-    ├─→ OpenAI Whisper API (transcription)
-    └─→ OpenRouter GPT API (translation)
+### Port 8002 already in use?
+Change the port in `main.py`:
+```python
+uvicorn.run(app, host="0.0.0.0", port=8003)  # Change port here
 ```
 
-## Development
+## License
 
-To run in development mode with auto-reload:
+This uses open-source models:
+- Whisper: MIT License
+- NLLB-200: CC-BY-NC 4.0
 
-```bash
-uvicorn main:app --reload --port 8002
-```
-
-## Production Deployment
-
-For production, consider:
-- Setting up proper environment variable management
-- Implementing rate limiting
-- Adding authentication
-- Using a production ASGI server
-- Implementing caching for common translations
+Completely free for personal and educational use!
