@@ -1,3 +1,4 @@
+import SearchBar from '../../components/global/searchbar';
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
 	CircleF,
@@ -1111,6 +1112,7 @@ export default function RouteOptimizer() {
 					) : null}
 
 					<div style={{ marginTop: 10 }}>
+						<SearchBar />
 						<h3 className="ro-h3">Available destinations</h3>
 						<ul className="ro-list ro-list-plain">
 							{catalogDestinations.map((d) => (
