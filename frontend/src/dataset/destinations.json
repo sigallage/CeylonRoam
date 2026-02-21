@@ -492,8 +492,505 @@
     },
     "entry_fee": "Free",
     "opening_hours": "6:00 AM - 7:00 PM"
-    }
 
-    
+    },
+    {
+  "id": "nallur_kovil",
+  "name": "Nallur Kandaswamy Kovil",
+  "latitude": 9.6746,
+  "longitude": 80.0296,
+  "description": "One of the most significant Hindu temples in Sri Lanka, dedicated to Lord Murugan and known for its grand annual festival.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Nallur_Kandasamy_front_entrance.jpg",
+  "category": "religious",
+  "crowd_info": {
+    "peak_months": ["August"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Early morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Strictly modest clothing",
+    "behavior": [
+      "Remove footwear",
+      "No photography inside sanctum"
+    ],
+    "entry_requirements": ["Temple rules apply"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "5:00 AM - 12:00 PM, 4:00 PM - 9:00 PM"
+},
 
+{
+  "id": "jaffna_fort",
+  "name": "Jaffna Fort",
+  "latitude": 9.6615,
+  "longitude": 80.0136,
+  "description": "A massive Dutch-built fort showcasing colonial military architecture and views of the Jaffna lagoon.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Jaffna_Fort_%281%29.jpg/1280px-Jaffna_Fort_%281%29.jpg",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["December", "January"],
+    "off_peak_months": ["May"],
+    "best_time_to_visit": "Evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Do not damage structures",
+      "Follow marked paths"
+    ],
+    "entry_requirements": ["Public access"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "8:00 AM - 6:00 PM"
+},
+
+{
+  "id": "keerimalai_temple",
+  "name": "Keerimalai Naguleswaram Temple",
+  "latitude": 9.8125,
+  "longitude": 79.9940,
+  "description": "An ancient Hindu temple near natural springs believed to have healing properties, overlooking the Indian Ocean.",
+  "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2020/05/Naguleswaram-Temple1.jpg",
+  "category": "religious",
+  "crowd_info": {
+    "peak_months": ["July", "August"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest clothing",
+    "behavior": [
+      "Remove footwear",
+      "Bathing allowed in designated areas only"
+    ],
+    "entry_requirements": ["Temple rules apply"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+
+{
+  "id": "casuarina_beach",
+  "name": "Casuarina Beach",
+  "latitude": 9.7426,
+  "longitude": 79.8815,
+  "description": "One of the safest swimming beaches in northern Sri Lanka, known for shallow waters and white sand.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Casuarina_Beach.jpg/1280px-Casuarina_Beach.jpg",
+  "category": "beach",
+  "crowd_info": {
+    "peak_months": ["April", "August"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Beachwear acceptable",
+    "behavior": [
+      "No littering",
+      "Swim only in safe areas"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "delft_island",
+  "name": "Delft Island (Neduntheevu)",
+  "latitude": 9.5200,
+  "longitude": 79.6700,
+  "description": "A remote island famous for wild ponies, coral walls, and Dutch-era ruins, offering a unique rural island experience.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Delft_Island_fort.JPG/1280px-Delft_Island_fort.JPG",
+  "category": "island",
+  "crowd_info": {
+    "peak_months": ["January", "February"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Day trip (morning ferry)"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Do not disturb animals",
+      "Carry drinking water"
+    ],
+    "entry_requirements": ["Ferry permit required"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Daytime only"
+},
+
+{
+  "id": "nagadeepa_temple",
+  "name": "Nagadeepa Rajamaha Viharaya",
+  "latitude": 9.6070,
+  "longitude": 79.7730,
+  "description": "One of the 16 sacred Buddhist sites in Sri Lanka, believed to be visited by the Buddha during his second visit.",
+  "image_url": "https://npgov.lk/wp-content/uploads/2024/06/Nagadipa-Purana-Vihara.jpg",
+  "category": "religious",
+  "crowd_info": {
+    "peak_months": ["May", "Poson"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "White or modest attire",
+    "behavior": [
+      "Remove footwear",
+      "Maintain silence"
+    ],
+    "entry_requirements": ["Boat transport required"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+
+{
+  "id": "mannar_fort",
+  "name": "Mannar Fort",
+  "latitude": 8.9814,
+  "longitude": 79.9087,
+  "description": "A well-preserved Dutch fort located on Mannar Island, reflecting colonial history and coastal defense.",
+  "image_url": "https://www.storyofsrilanka.com/images/sri-lanka-guide/forts-light-houses-and-bridges/mannar-fort/02.jpg",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["January", "February"],
+    "off_peak_months": ["May"],
+    "best_time_to_visit": "Late afternoon"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "No vandalism",
+      "Respect heritage site"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "8:00 AM - 6:00 PM"
+},
+
+{
+  "id": "adams_bridge",
+  "name": "Adam’s Bridge (Rama Setu)",
+  "latitude": 9.0833,
+  "longitude": 79.4833,
+  "description": "A chain of limestone shoals connecting Sri Lanka to India, visible via satellite and rich in mythological significance.",
+  "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/67/e0/96/adam-s-bridge-rama-setu.jpg?w=1100&h=-1&s=1",
+  "category": "natural",
+  "crowd_info": {
+    "peak_months": ["January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Daytime (viewpoints only)"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Access restricted to viewpoints",
+      "No swimming"
+    ],
+    "entry_requirements": ["Viewing only"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Daytime"
+},
+
+{
+  "id": "vankalai_sanctuary",
+  "name": "Vankalai Bird Sanctuary",
+  "latitude": 8.9750,
+  "longitude": 79.9500,
+  "description": "A Ramsar wetland site famous for migratory birds, mangroves, and coastal ecosystems.",
+  "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2021/01/Vankalai-Marine-Wildlife-Sanctuary.jpg",
+  "category": "wildlife",
+  "crowd_info": {
+    "peak_months": ["December", "January"],
+    "off_peak_months": ["May"],
+    "best_time_to_visit": "Early morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Neutral colors",
+    "behavior": [
+      "No loud noise",
+      "No littering"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+
+{
+  "id": "kandarodai",
+  "name": "Kandarodai Archaeological Site",
+  "latitude": 9.7415,
+  "longitude": 80.0236,
+  "description": "An ancient Buddhist archaeological site featuring small stupas dating back to the Anuradhapura period, reflecting early Buddhist influence in the north.",
+  "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/published/kandarodai-aka-kadurugoda-mini-stupas-on-jaffna-peninsula-title-photo.jpg?1673836443",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["January", "May"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest attire",
+    "behavior": [
+      "Remove footwear near stupas",
+      "Do not climb structures"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "8:00 AM - 6:00 PM"
+},
+
+{
+  "id": "nilavarai_well",
+  "name": "Nilavarai Bottomless Well",
+  "latitude": 9.7966,
+  "longitude": 80.0265,
+  "description": "A mysterious freshwater well believed to never dry up, associated with ancient legends and local folklore.",
+  "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/published/nilavarai-botttomless-well-near-puttur-title-photo.jpg?1675235891",
+  "category": "natural",
+  "crowd_info": {
+    "peak_months": ["December", "January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Daytime"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "No littering",
+      "Do not attempt to enter the well"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "7:00 AM - 6:00 PM"
+},
+
+{
+  "id": "point_pedro_lighthouse",
+  "name": "Point Pedro Lighthouse",
+  "latitude": 9.8236,
+  "longitude": 80.2358,
+  "description": "Located at the northernmost point of Sri Lanka, this lighthouse offers views of the Indian Ocean and surrounding coastal landscape.",
+  "image_url": "https://i0.wp.com/amazinglanka.com/wp/wp-content/uploads/2013/11/point-padro-01.jpg?fit=640%2C1011&ssl=1",
+  "category": "landmark",
+  "crowd_info": {
+    "peak_months": ["January", "February"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Restricted access inside lighthouse",
+      "Photography allowed outside"
+    ],
+    "entry_requirements": ["Viewing area only"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "chundikulam_national_park",
+  "name": "Chundikulam National Park",
+  "latitude": 9.5350,
+  "longitude": 80.4510,
+  "description": "A coastal national park and bird sanctuary known for lagoons, migratory birds, and mangrove ecosystems.",
+  "image_url": "https://www.ceylonexpeditions.com/medias/destination_places/big/43/p2250116-copy.jpg",
+  "category": "wildlife",
+  "crowd_info": {
+    "peak_months": ["December", "January"],
+    "off_peak_months": ["May"],
+    "best_time_to_visit": "Early morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Neutral colors recommended",
+    "behavior": [
+      "Do not disturb birds",
+      "No loud noises"
+    ],
+    "entry_requirements": ["Park regulations apply"]
+  },
+  "entry_fee": "USD 15 for foreigners",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+
+{
+  "id": "elephant_pass_memorial",
+  "name": "Elephant Pass War Memorial",
+  "latitude": 9.4976,
+  "longitude": 80.3953,
+  "description": "A memorial site marking the strategic Elephant Pass, symbolizing a significant location in Sri Lanka’s modern history.",
+  "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/elephant-pass-memorial-900_orig.jpg",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["December"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Daytime"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Respectful attire",
+    "behavior": [
+      "Maintain decorum",
+      "No vandalism"
+    ],
+    "entry_requirements": ["Public access"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "thiruketheeswaram",
+  "name": "Thiruketheeswaram Temple",
+  "latitude": 8.9636,
+  "longitude": 79.9044,
+  "description": "One of the Pancha Ishwarams dedicated to Lord Shiva, with deep religious significance and ancient origins.",
+  "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2020/11/Thiruketheeswaram-Kovil-Mannar.jpg",
+  "category": "religious",
+  "crowd_info": {
+    "peak_months": ["February", "July"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Strictly modest attire",
+    "behavior": [
+      "Remove footwear",
+      "No photography in sanctum"
+    ],
+    "entry_requirements": ["Temple rules apply"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "5:30 AM - 7:00 PM"
+},
+
+{
+  "id": "giants_tank",
+  "name": "Giant’s Tank (Yoda Wewa)",
+  "latitude": 8.9300,
+  "longitude": 80.0200,
+  "description": "An ancient irrigation reservoir built during the Anuradhapura era, still supporting agriculture and wildlife.",
+  "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/06/LSL_B2_Giants-Tank_1920x700.jpg",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Do not enter water",
+      "Respect local farmers"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "iranamadu_tank",
+  "name": "Iranamadu Tank",
+  "latitude": 9.3560,
+  "longitude": 80.4510,
+  "description": "One of Sri Lanka’s largest reservoirs, supplying water to the Northern Province and surrounded by scenic landscapes.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Iranamadu_Tank2.jpg",
+  "category": "nature",
+  "crowd_info": {
+    "peak_months": ["January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "No swimming",
+      "Fishing only with permission"
+    ],
+    "entry_requirements": ["Restricted areas apply"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "mullaitivu_beach_park",
+  "name": "Mullaitivu Beach Park",
+  "latitude": 9.2671,
+  "longitude": 80.8142,
+  "description": "A peaceful coastal park area ideal for relaxation, evening walks, and enjoying sea views in Mullaitivu town.",
+  "image_url": "https://lh5.googleusercontent.com/p/AF1QipMAGPePBJepLHzVNZknxFukvCqG5MOMhINR55d0=s1600",
+  "category": "beach",
+  "crowd_info": {
+    "peak_months": ["April", "August"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest casual wear",
+    "behavior": [
+      "Keep the park clean",
+      "Avoid swimming during rough seas"
+    ],
+    "entry_requirements": ["Public access"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "Open all day"
+},
+
+{
+  "id": "vavuniya_archaeological_site",
+  "name": "Vavuniya Archaeological Site",
+  "latitude": 8.7542,
+  "longitude": 80.4970,
+  "description": "A small archaeological area highlighting ancient ruins and early settlement evidence in the Vavuniya region.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Archaeological_Museum%2C_Vavuniya.JPG",
+  "category": "historical",
+  "crowd_info": {
+    "peak_months": ["January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual attire",
+    "behavior": [
+      "Do not disturb ruins",
+      "Follow local guidance"
+    ],
+    "entry_requirements": ["None"]
+  },
+  "entry_fee": "Free",
+  "opening_hours": "8:00 AM - 5:00 PM"
+},
+
+{
+  "id": "kantharodai_museum",
+  "name": "Kantharodai Archaeological Museum",
+  "latitude": 9.7420,
+  "longitude": 80.0245,
+  "description": "A small museum displaying artifacts discovered from the Kantharodai archaeological area, providing insight into early northern civilizations.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Archaeological_Museum%2C_Jaffna.JPG/1280px-Archaeological_Museum%2C_Jaffna.JPG",
+  "category": "museum",
+  "crowd_info": {
+    "peak_months": ["December", "January"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Mid-morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest attire",
+    "behavior": [
+      "No touching exhibits",
+      "Photography limited"
+    ],
+    "entry_requirements": ["Museum rules apply"]
+  },
+  "entry_fee": "LKR 100",
+  "opening_hours": "9:00 AM - 4:00 PM"
+}
 ]
