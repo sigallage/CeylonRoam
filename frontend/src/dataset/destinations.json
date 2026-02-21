@@ -2,7 +2,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "gangaramaya-temple",
         "name": "Gangaramaya Temple",
         "latitude": 6.9271,
         "longitude": 79.8612,
@@ -32,7 +32,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "galle-face-green",
         "name": "Galle Face Green",
         "latitude": 6.9275,
         "longitude": 79.8428,
@@ -61,7 +61,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "viharamahadevi-park",
         "name": "Viharamahadevi Park",
         "latitude": 6.9105,
         "longitude": 79.8636,
@@ -90,7 +90,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "national-museum-colombo",
         "name": "National Museum of Colombo",
         "latitude": 6.9102,
         "longitude": 79.8612,
@@ -119,7 +119,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "kelaniya-raja-maha-vihara",
         "name": "Kelaniya Raja Maha Vihara",
         "latitude": 6.9553,
         "longitude": 79.9220,
@@ -148,7 +148,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "mount-lavinia-beach",
         "name": "Mount Lavinia Beach",
         "latitude": 6.8402,
         "longitude": 79.8635,
@@ -177,7 +177,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "independence-memorial-hall",
         "name": "Independence Memorial Hall (Independence Square)",
         "latitude": 6.9022,
         "longitude": 79.8676,
@@ -207,7 +207,7 @@
 
 
     {
-    "id": "Colombo",
+    "id": "dehiwala-zoo",
     "name": "Dehiwala Zoological Garden",
     "latitude": 6.8569,
     "longitude": 79.8737,
@@ -236,7 +236,7 @@
 
 
     {
-    "id": "Colombo",
+    "id": "old-parliament-building",
     "name": "Old Parliament Building",
     "latitude": 6.9344,
     "longitude": 79.8428,
@@ -265,7 +265,7 @@
 
     
     {
-    "id": "Colombo",
+    "id": "jami-ul-alfar-mosque",
     "name": "Jami Ul-Alfar Mosque",
     "latitude": 6.9383,
     "longitude": 79.8516,
@@ -294,7 +294,7 @@
 
 
 {
-        "id": "Colombo",
+        "id": "sri-lanka-planetarium",
         "name": "Sri Lanka Planetarium",
         "latitude": 6.9008,
         "longitude": 79.8629,
@@ -323,7 +323,7 @@
     },
 
     {
-    "id": "Colombo",
+    "id": "beddagana-wetland-park",
     "name": "Beddagana Wetland Park",
     "latitude": 6.8894,
     "longitude": 79.9143,
@@ -352,7 +352,7 @@
 
 
 {
-        "id": "Colombo",
+        "id": "attidiya-bird-sanctuary",
         "name": "Attidiya Bird Sanctuary",
         "latitude": 6.8458,
         "longitude": 79.8986,
@@ -382,7 +382,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "diyatha-uyana-park",
         "name": "Diyatha Uyana Park",
         "latitude": 6.9075,
         "longitude": 79.9192,
@@ -412,7 +412,7 @@
 
 
     {
-        "id": "Colombo",
+        "id": "st-anthonys-shrine",
         "name": "St. Anthony's Shrine",
         "latitude": 6.9469,
         "longitude": 79.8561,
@@ -440,6 +440,35 @@
         "opening_hours": "5.00 AM - 8.00 PM"
     },
 
+
+
+{
+        "id": "Gampaha",
+        "name": "Henarathgoda Botanical Garden",
+        "latitude": 7.1021,
+        "longitude": 79.9868,
+        "description": "Established in 1876, this historic garden is famous for housing the first rubber tree planted in Sri Lanka. It features a diverse collection of tropical flora, extensive lawns, and a scenic lake, serving as both a botanical research center and a popular recreational spot.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "August", "December"],
+            "off_peak_months": ["May", "June", "October", "November"],
+            "best_time_to_visit": "Early morning (7:30 AM - 9:30 AM) to enjoy the birdlife and avoid the midday humidity."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear; comfortable walking shoes are highly recommended for exploring the large grounds.",
+            "behavior": [
+              "Nature Conservation: Strictly no plucking of flowers, damaging plants, or disturbing the wildlife.",
+              "Environmental Care: Maintain cleanliness and use designated bins; avoid bringing single-use plastics into the garden.",
+              "Recreation: Popular for picnics and pre-wedding photography; be mindful of other visitors' space and privacy.",
+              "Safety: Stay on the marked paths and be cautious near the lakeside areas.",
+              "Quietude: Respect the peaceful environment by avoiding loud music or disruptive activities.",
+              "Historical Respect: Visit the site of the original rubber tree, which is a significant landmark in the country's economic history."
+            ],
+            "entry_requirements": ["Ticketed entry required", "Photography permitted (additional fees may apply for professional shoots)"]
+        },
+        "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children (Local); Higher rates apply for foreign visitors",
+        "opening_hours": "7:30 AM - 6:00 PM"
     {
         "id": "koneswaram_temple",
         "name": "Koneswaram Temple",
@@ -965,4 +994,3 @@
   "opening_hours": "9:00 AM - 4:00 PM"
 }
 ]
-
