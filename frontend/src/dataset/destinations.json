@@ -469,7 +469,8 @@
         },
         "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children (Local); Higher rates apply for foreign visitors",
         "opening_hours": "7:30 AM - 6:00 PM"
-    {
+       },
+       {
         "id": "koneswaram_temple",
         "name": "Koneswaram Temple",
         "latitude": 8.5700,
