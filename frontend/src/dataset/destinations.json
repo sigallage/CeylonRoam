@@ -1,5 +1,5 @@
 [
-
+    
 
     {
         "id": "gangaramaya-temple",
@@ -443,7 +443,7 @@
 
 
 {
-        "id": "Gampaha",
+        "id": "henarathgoda_botanical_garden",
         "name": "Henarathgoda Botanical Garden",
         "latitude": 7.1021,
         "longitude": 79.9868,
@@ -469,7 +469,387 @@
         },
         "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children (Local); Higher rates apply for foreign visitors",
         "opening_hours": "7:30 AM - 6:00 PM"
-    {
+    },
+
+
+{
+    "id": "national-basilica-of-our-lady-of-lanka",
+    "name": "National Basilica of Our Lady of Lanka",
+    "latitude": 7.0306,
+    "longitude": 79.9172,
+    "description": "A major Roman Catholic pilgrimage site in Sri Lanka, built as a thanksgiving offering after World War II. It is known for its peaceful atmosphere and annual feast celebrations.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/national-basilica-of-our-lady-of-lanka/",
+    "category": "Catholic Church / Pilgrimage Site",
+    "crowd_info": {
+        "peak_months": ["February", "March", "September"],
+        "off_peak_months": ["April", "May", "June", "July", "October", "November", "December", "January"],
+        "best_time_to_visit": "Morning (7:00 AM - 10:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Modest clothing required covering shoulders and knees.",
+        "behavior": [
+            "Maintain silence during prayers.",
+            "Photography allowed outside; ask before taking photos inside.",
+            "Respect clergy and worshippers."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "6.00 AM - 6.00 PM"
+}
+
+
+{
+    "id": "st-marys-church",
+    "name": "St. Mary's Church",
+    "latitude": 7.2083,
+    "longitude": 79.8358,
+    "description": "One of the largest cathedrals in Sri Lanka, located in Grand Street, Negombo. It features beautiful ceiling paintings and impressive architecture.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/st-marys-church-negombo/",
+    "category": "Catholic Church",
+    "crowd_info": {
+        "peak_months": ["December", "April"],
+        "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Morning hours outside mass times"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Modest attire required.",
+        "behavior": [
+            "Avoid visiting during mass unless attending.",
+            "Maintain silence inside.",
+            "Photography allowed without flash."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "6.00 AM - 6.00 PM"
+}
+
+
+{
+    "id": "water-world-kelaniya",
+    "name": "Water World Kelaniya",
+    "latitude": 6.9566,
+    "longitude": 79.9226,
+    "description": "Sri Lanka’s first public aquarium and underwater tunnel experience. It features freshwater and marine species along with educational exhibits.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/water-world-kelaniya/",
+    "category": "Aquarium / Educational Park",
+    "crowd_info": {
+        "peak_months": ["December", "April", "August"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning (9:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Do not tap on aquarium glass.",
+            "Follow staff instructions.",
+            "Supervise children."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "9.00 AM - 5.00 PM"
+}
+
+
+{
+    "id": "guruge_nature_park",
+    "name": "Guruge Nature Park",
+    "latitude": 7.0835,
+    "longitude": 79.8930,
+    "description": "A family-friendly theme and cultural park featuring replicas of Sri Lankan heritage sites, small zoo areas, and entertainment facilities.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/guruge-nature-park/",
+    "category": "Theme Park / Cultural Park",
+    "crowd_info": {
+        "peak_months": ["December", "April", "August"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning or late afternoon"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Follow park rules.",
+            "Do not disturb animals.",
+            "Keep environment clean."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "8.30 AM - 6.00 PM"
+}
+
+
+{
+    "id": "negombo_beach",
+    "name": "Negombo Beach",
+    "latitude": 7.2390,
+    "longitude": 79.8417,
+    "description": "A popular coastal destination known for golden sands, fishing boats, beachside hotels, and stunning sunsets.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/negombo-beach/",
+    "category": "Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Evening (4:30 PM - sunset)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Beachwear allowed; modest attire outside beach area.",
+        "behavior": [
+            "Avoid swimming in rough sea conditions.",
+            "Do not litter.",
+            "Be respectful in public spaces."
+        ],
+        "entry_requirements": ["Free public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+}
+
+
+{
+    "id": "horagolla_national_park",
+    "name": "Horagolla National Park",
+    "latitude": 7.1400,
+    "longitude": 80.0900,
+    "description": "A small national park known for secondary forest vegetation and wildlife including monkeys, birds, and deer.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/horagolla-national-park/",
+    "category": "National Park / Wildlife",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (6:00 AM - 9:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Outdoor comfortable clothing.",
+        "behavior": [
+            "Do not feed wildlife.",
+            "Stay on designated paths.",
+            "Follow park regulations."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "6.00 AM - 6.00 PM"
+}
+
+
+{
+    "id": "negombo_lagoon",
+    "name": "Negombo Lagoon",
+    "latitude": 7.1800,
+    "longitude": 79.8300,
+    "description": "A large estuarine lagoon famous for fishing, boat rides, mangroves, and birdwatching.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/negombo-lagoon/",
+    "category": "Lagoon / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Early morning or sunset"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Use life jackets during boat rides.",
+            "Avoid polluting water.",
+            "Respect local fishermen."
+        ],
+        "entry_requirements": ["Free access", "Boat rides available at extra cost"]
+    },
+    "entry_fee": "free (boat rides paid)",
+    "opening_hours": "Open 24 hours"
+}
+
+
+{
+    "id": "richmond_castle",
+    "name": "Richmond Castle",
+    "latitude": 6.5753,
+    "longitude": 79.9608,
+    "description": "A grand Edwardian mansion built in the early 20th century, showcasing colonial architecture and beautiful gardens. It is one of the most famous heritage mansions in Sri Lanka.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/richmond-castle/",
+    "category": "Historical Mansion / Heritage Site",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning (9:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual but modest clothing recommended.",
+        "behavior": [
+            "Do not touch antique furniture or artifacts.",
+            "Follow staff instructions.",
+            "Photography allowed in permitted areas."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "9.00 AM - 5.00 PM"
+}
+
+
+
+{
+    "id": "kalutara_bodhiya",
+    "name": "Kalutara Bodhiya",
+    "latitude": 6.5833,
+    "longitude": 79.9594,
+    "description": "A sacred Buddhist temple located along the Kalu River. It is famous for its hollow stupa where visitors can enter and worship.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalutara-bodhiya/",
+    "category": "Buddhist Temple",
+    "crowd_info": {
+        "peak_months": ["April", "May", "December"],
+        "off_peak_months": ["June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "White or modest clothing covering shoulders and knees.",
+        "behavior": [
+            "Remove shoes before entering.",
+            "Maintain silence.",
+            "Do not turn your back directly to Buddha statues for photos."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "5.00 AM - 9.00 PM"
+}
+    
+
+{
+    "id": "calido_beach",
+    "name": "Calido Beach",
+    "latitude": 6.5817,
+    "longitude": 79.9580,
+    "description": "A peaceful beach located near the mouth of the Kalu River. It offers scenic views where the river meets the sea.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/calido-beach/",
+    "category": "Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Evening (4:30 PM - sunset)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Beachwear allowed; modest attire outside beach area.",
+        "behavior": [
+            "Be cautious of strong currents.",
+            "Avoid littering.",
+            "Follow local safety signs."
+        ],
+        "entry_requirements": ["Free public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+}
+
+
+{
+    "id": "kalido_public_beach",
+    "name": "Kalido Public Beach",
+    "latitude": 6.5825,
+    "longitude": 79.9575,
+    "description": "A public beach area popular among locals for relaxation, swimming, and enjoying sunsets.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalido-public-beach/",
+    "category": "Public Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Late afternoon (4:30 PM - 6:30 PM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual beachwear acceptable.",
+        "behavior": [
+            "Respect families and other visitors.",
+            "Keep the beach clean.",
+            "Avoid swimming during rough sea conditions."
+        ],
+        "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+}
+
+
+{
+    "id": "kalutara_bridge",
+    "name": "Kalutara Bridge",
+    "latitude": 6.5839,
+    "longitude": 79.9598,
+    "description": "A major bridge crossing the Kalu River, connecting Kalutara town. It offers scenic river views and is a key landmark in the area.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalutara-bridge/",
+    "category": "Landmark / Bridge",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June"],
+        "best_time_to_visit": "Sunset for scenic river views"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual attire.",
+        "behavior": [
+            "Follow traffic and pedestrian safety rules.",
+            "Avoid standing in restricted areas."
+        ],
+        "entry_requirements": ["Public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+}
+
+
+{
+    "id": "thudugala_ella",
+    "name": "Thudugala Ella",
+    "latitude": 6.5240,
+    "longitude": 80.1400,
+    "description": "A scenic waterfall located in a tea estate area, surrounded by lush greenery. It is a popular eco-tourism destination.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/thudugala-ella/",
+    "category": "Waterfall / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (8:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Comfortable outdoor clothing.",
+        "behavior": [
+            "Avoid littering.",
+            "Be cautious on slippery rocks.",
+            "Respect local estate property."
+        ],
+        "entry_requirements": ["Small entrance fee may apply"]
+    },
+    "entry_fee": "Paid (small fee)",
+    "opening_hours": "8.00 AM - 5.00 PM"
+}
+
+
+{
+    "id": "thudugala_waterfall",
+    "name": "Thudugala Waterfall",
+    "latitude": 6.5240,
+    "longitude": 80.1400,
+    "description": "Also known as Thudugala Ella, this natural waterfall is surrounded by tea plantations and is ideal for nature lovers and photographers.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/thudugala-ella/",
+    "category": "Waterfall / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (8:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Outdoor comfortable clothing.",
+        "behavior": [
+            "Be careful of slippery surfaces.",
+            "Do not pollute the water.",
+            "Follow eco-tourism rules."
+        ],
+        "entry_requirements": ["Small entrance fee may apply"]
+    },
+    "entry_fee": "Paid (small fee)",
+    "opening_hours": "8.00 AM - 5.00 PM"
+}
+
+{
         "id": "koneswaram_temple",
         "name": "Koneswaram Temple",
         "latitude": 8.5700,
