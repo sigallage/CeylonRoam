@@ -4,7 +4,7 @@ import MainLayout from '../layout/mainLayout.jsx';
 import LoginPage from '../Login/LoginPage.jsx';
 import ForgotPassword from '../Login/ForgotPassword.jsx';
 import ResetPassword from '../Login/ResetPassword.jsx';
-import SignUpPage from '../Login/SignUpPage.jsx';
+import SignUp from '../signup/signup.jsx';
 import LandingPage from '../landingPage/landingPage.jsx';
 import RouteOptimizer from '../routeOptimizer/routeOptimizer.jsx';
 import VoiceTranslationPage from '../VoiceTranslation/VoiceTranslationPage.jsx';
@@ -22,7 +22,7 @@ function Router() {
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/reset-password" element={<ResetPassword />} />
 				<Route path="/forgot-password" element={<ForgotPassword />} />
-				<Route path="/signup" element={<SignUpPage />} />
+				<Route path="/signup" element={<SignUp />} />
 				<Route path="/voice-translation" element={<VoiceTranslationPage />} />
 			<Route path="/itinerary-generator" element={<ItineraryGenerator />} />
 			</Route>
