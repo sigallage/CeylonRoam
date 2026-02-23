@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import logoIcon from '../../assets/icon.jpeg';
+import { LoginButton, SignUpButton, LogoutButton } from '../loginButton';
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -17,21 +18,9 @@ const Header = () => {
 				<a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
 				<a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
 				<a href="#about" className="hover:text-orange-400 transition-colors">About</a>
-				<button
-					className="ml-8 px-6 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold hover:bg-white/20 transition-all duration-200"
-				>
-					Login
-				</button>
-				<button
-					className="ml-2 px-6 py-2 rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-semibold shadow hover:shadow-yellow-500/40 transition-all duration-200"
-				>
-					Sign Up
-				</button>
-				<button
-					className="ml-2 px-6 py-2 rounded-full bg-white/10 border border-white/30 text-white font-semibold hover:bg-white/20 transition-all duration-200"
-				>
-					Log Out
-				</button>
+				   <LoginButton />
+				   <SignUpButton />
+				   <LogoutButton />
 			</div>
 		</nav>
 	);
