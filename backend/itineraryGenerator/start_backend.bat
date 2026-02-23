@@ -6,5 +6,5 @@ if not exist ".venv\Scripts\python.exe" (
 )
 call .venv\Scripts\activate
 pip install -r requirements.txt
-start "TRAVEL-AI API" cmd /k "call .venv\Scripts\activate && python -m uvicorn main:app --reload --port 8000"
+start "TRAVEL-AI API" cmd /k "call .venv\Scripts\activate && python -m uvicorn main:app --reload --port 8001"
 echo Backend started in new window.
