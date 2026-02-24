@@ -1372,6 +1372,8 @@
   "entry_fee": "LKR 100",
   "opening_hours": "9:00 AM - 4:00 PM"
 },
+
+
     {
         "id": "sri-dalada-maligawa",
         "name": "Sri Dalada Maligawa",
@@ -1400,6 +1402,8 @@
         "entry_fee": "LKR 1500 for foreign adults",
         "opening_hours": "5:30 AM - 8:00 PM"
     },
+
+
     {
         "id": "udawatta-kele-sanctuary",
         "name": "Udawatta Kele Sanctuary",
@@ -1428,6 +1432,8 @@
         "entry_fee": "LKR 600 for foreign adults",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "royal-botanic-gardens-peradeniya",
         "name": "Royal Botanic Gardens, Peradeniya",
@@ -1456,6 +1462,8 @@
         "entry_fee": "LKR 2000 for foreign adults",
         "opening_hours": "7:30 AM - 5:00 PM"
     },
+
+
     {
         "id": "kandy-viewpoint",
         "name": "Kandy Viewpoint",
@@ -1483,6 +1491,8 @@
         "entry_fee": "free",
         "opening_hours": "Open all day"
     },
+
+
     {
         "id": "ceylon-tea-museum",
         "name": "Ceylon Tea Museum",
@@ -1511,6 +1521,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "8:30 AM - 4:30 PM (Closed on Mondays)"
     },
+
+
     {
         "id": "kandy-lake",
         "name": "Kandy Lake",
@@ -1539,6 +1551,8 @@
         "entry_fee": "free",
         "opening_hours": "Open all day"
     },
+
+
     {
         "id": "commonwealth-war-cemetery-kandy",
         "name": "Commonwealth War Cemetery Kandy",
@@ -1567,6 +1581,8 @@
         "entry_fee": "free",
         "opening_hours": "7:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "international-buddhist-museum",
         "name": "International Buddhist Museum",
@@ -1595,6 +1611,8 @@
         "entry_fee": "Included with Sri Dalada Maligawa ticket",
         "opening_hours": "9:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "old-royal-palace-kandy",
         "name": "Old Royal Palace",
@@ -1623,6 +1641,8 @@
         "entry_fee": "Included with Sri Dalada Maligawa complex ticket",
         "opening_hours": "9:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "kandy-national-museum",
         "name": "Kandy National Museum",
@@ -1651,6 +1671,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "9:00 AM - 5:00 PM (Closed on Fridays)"
     },
+
+
     {
         "id": "pallekele-international-cricket-stadium",
         "name": "Pallekele International Cricket Stadium",
@@ -1679,6 +1701,8 @@
         "entry_fee": "Varies by match and seating category",
         "opening_hours": "Match dependent; Stadium open during scheduled events"
     },
+
+
     {
         "id": "british-garrison-cemetery",
         "name": "British Garrison Cemetery",
@@ -1707,6 +1731,8 @@
         "entry_fee": "free",
         "opening_hours": "8:00 AM - 4:30 PM"
     },
+
+
     {
         "id": "sri-lankathilake-rajamaha-viharaya",
         "name": "Sri Lankathilake Rajamaha Viharaya",
@@ -1735,6 +1761,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "royal-palace-park-kandy",
         "name": "Royal Palace Park",
@@ -1763,6 +1791,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "st-pauls-church-kandy",
         "name": "St Paul's Church",
@@ -1791,6 +1821,8 @@
         "entry_fee": "free",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "red-mosque-kandy",
         "name": "Red Mosque of Kandy",
@@ -1819,34 +1851,9 @@
         "entry_fee": "free",
         "opening_hours": "Open daily; avoid visiting during prayer times"
     },
-    {
-        "id": "pinnawala-elephant-orphanage",
-        "name": "Pinnawala Elephant Orphanage",
-        "latitude": 7.2996,
-        "longitude": 80.3831,
-        "description": "Established in 1975, the Pinnawala Elephant Orphanage is home to one of the world's largest herds of captive elephants. Located on the banks of the Maha Oya River, it rescues and cares for orphaned, injured, and abandoned elephants. Visitors can observe elephants feeding, bathing in the river, and interacting with their keepers in a naturalistic setting.",
-        "image_url": "",
-        "category": "Wildlife Sanctuary",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Feeding times (9:15 AM, 1:15 PM, 5:00 PM) and bathing time (10:00 AM - 12:00 PM, 2:00 PM - 4:00 PM) at the Maha Oya River for the best experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual, comfortable clothing suitable for an outdoor setting. Closed-toe shoes are recommended. Expect to get splashed near the river during the bathing session.",
-            "behavior": [
-                "Wildlife: Do not attempt to touch, feed, or approach elephants beyond designated viewing areas.",
-                "Safety: Maintain a safe distance from elephants at all times; follow all keeper and staff instructions.",
-                "Photography: Photography is allowed and encouraged; avoid using flash near the elephants.",
-                "Ethical Tourism: Be cautious of elephant riding or direct contact activities offered outside the main orphanage, as these may not meet ethical animal welfare standards.",
-                "Littering: Do not litter or throw food items into the elephant enclosures.",
-                "Children: Supervise children at all times and keep them within safe viewing boundaries."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 3000 for foreign adults",
-        "opening_hours": "8:30 AM - 5:30 PM"
-    },
+
+
+
     {
         "id": "sigiriya",
         "name": "Sigiriya",
@@ -1875,6 +1882,8 @@
         "entry_fee": "USD 30 for foreign adults",
         "opening_hours": "7:00 AM - 5:30 PM"
     },
+
+
     {
         "id": "sri-natha-devalaya",
         "name": "Sri Natha Devalaya",
@@ -1903,6 +1912,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 8:00 PM"
     },
+
+
     {
         "id": "ambuluwawa-biodiversity-complex",
         "name": "Ambuluwawa Biodiversity Complex",
@@ -1931,6 +1942,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "7:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "ranawana-purana-rajamaha-viharaya",
         "name": "Ranawana Purana Rajamaha Viharaya",
@@ -1959,6 +1972,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 7:00 PM"
     },
+
+
     {
         "id": "sri-vishnu-devala",
         "name": "Sri Vishnu Devala",
@@ -1987,6 +2002,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 8:00 PM"
     },
+
+
     {
         "id": "asgiriya-maha-viharaya",
         "name": "Asgiriya Maha Viharaya",
@@ -2015,6 +2032,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 7:00 PM"
     },
+
+
     {
         "id": "st-sylvesters-monastery-ampitiya",
         "name": "Montefano, St. Sylvester's Monastery, Ampitiya",
@@ -2043,6 +2062,8 @@
         "entry_fee": "free",
         "opening_hours": "By prior arrangement; generally 8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "degaldoruwa-temple",
         "name": "Degaldoruwa Temple",
@@ -2071,6 +2092,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "millennium-elephant-foundation",
         "name": "Millennium Elephant Foundation",
@@ -2099,6 +2122,8 @@
         "entry_fee": "LKR 2500 for foreign adults; interaction packages available at additional cost",
         "opening_hours": "8:00 AM - 5:30 PM"
     },
+
+
     {
         "id": "gadaladeniya-temple",
         "name": "Gadaladeniya Rajamaha Viharaya",
@@ -2127,6 +2152,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "hulu-ganga",
         "name": "Hulu Ganga",
@@ -2154,5 +2181,365 @@
         },
         "entry_fee": "free",
         "opening_hours": "Open all day"
+    },
+
+
+    {
+        "id": "sri-muthumari-amman-kovil",
+        "name": "Sri Muthumari Amman Kovil",
+        "latitude": 7.4833,
+        "longitude": 80.6167,
+        "description": "A vibrant and sacred Hindu temple dedicated to Goddess Muthumari Amman, a form of the Divine Mother worshipped widely among Sri Lanka's Tamil Hindu community. The temple is known for its colorful gopuram (tower), elaborate rituals, and festive celebrations that draw large numbers of devotees from across the region.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "October"],
+            "off_peak_months": ["April", "May", "June", "September", "November"],
+            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) during puja sessions for an authentic devotional experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress very modestly with shoulders and knees fully covered. Avoid wearing leather items inside the temple. Remove shoes before entering. Traditional attire such as a saree or dhoti is appreciated.",
+            "behavior": [
+                "Dress Code: Full modest dress is mandatory. Avoid wearing leather belts or accessories inside the temple.",
+                "Footwear: Remove all footwear before entering the temple premises.",
+                "Photography: Photography inside the inner sanctum is strictly prohibited; check with temple authorities for other areas.",
+                "Decorum: Maintain silence and deep reverence inside the temple at all times.",
+                "Rituals: Do not interrupt ongoing puja rituals. Observe respectfully from a designated distance.",
+                "Cultural Respect: Non-Hindu visitors are welcome but should be especially respectful of the sacred space and ongoing worship."
+            ],
+            "entry_requirements": ["Free entry", "Modest dress strictly required", "Photography restricted in inner sanctum"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM"
+    },
+
+
+    {
+        "id": "national-spice-garden-sri-lanka",
+        "name": "National Spice Garden of Sri Lanka",
+        "latitude": 7.4714,
+        "longitude": 80.5986,
+        "description": "Located in Matale, the National Spice Garden is a fascinating botanical showcase of Sri Lanka's world-renowned spice heritage. The garden cultivates a rich variety of spices including cinnamon, cardamom, cloves, nutmeg, pepper, and vanilla, offering guided tours that educate visitors on cultivation, processing, and the cultural and medicinal significance of each spice.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:30 AM) for a guided tour before the afternoon heat and tour group crowds"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for outdoor walking. Light footwear is fine; paths are generally well-maintained.",
+            "behavior": [
+                "Plants: Do not pluck, damage, or remove any plants, spices, or produce from the garden without permission.",
+                "Guided Tours: A guided tour is strongly recommended and is often included with entry for the full educational experience.",
+                "Photography: Photography is freely allowed throughout the garden.",
+                "Purchasing: A spice shop on-site sells authentic locally produced spices and herbal products.",
+                "Littering: Do not litter; use designated waste bins throughout the garden.",
+                "Respect: Be respectful of garden staff and follow their instructions during the tour."
+            ],
+            "entry_requirements": ["Free entry or small guided tour fee", "Photography allowed"]
+        },
+        "entry_fee": "free (guided tour may have a nominal fee)",
+        "opening_hours": "8:00 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "aluviharaya-rock-cave-temple",
+        "name": "Aluviharaya Rock Cave Temple",
+        "latitude": 7.5167,
+        "longitude": 80.6167,
+        "description": "An ancient and historically significant Buddhist cave temple located in Matale, renowned as the site where the Tipitaka, the sacred Theravada Buddhist scriptures, were first committed to writing on ola leaf manuscripts in the 1st century BC. The temple complex features a series of cave shrines adorned with intricate murals, statues, and vivid depictions of Buddhist cosmology including the realms of hell, making it a unique and spiritually profound destination.",
+        "image_url": "",
+        "category": "Buddhist Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) in natural daylight for the best viewing of the murals and cave interiors"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress modestly with shoulders and knees fully covered. White or light-colored clothing is preferred. Remove shoes before entering the cave shrines.",
+            "behavior": [
+                "Dress Code: Modest attire is mandatory. Sarongs may be available at the entrance if required.",
+                "Footwear: Remove shoes before entering any of the cave shrine rooms.",
+                "Murals & Statues: Do not touch any murals, statues, or sacred artifacts inside the caves.",
+                "Photography: Photography is generally allowed; avoid flash photography to protect the ancient paintings.",
+                "Decorum: Maintain silence and deep reverence throughout the cave temple complex.",
+                "Guided Tours: A local guide can provide detailed explanations of the scriptural murals and historical significance."
+            ],
+            "entry_requirements": ["Small entry fee may apply", "No flash photography", "Modest dress required"]
+        },
+        "entry_fee": "LKR 400 for foreign visitors",
+        "opening_hours": "7:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "riverston",
+        "name": "Riverston",
+        "latitude": 7.6167,
+        "longitude": 80.7833,
+        "description": "A breathtaking highland destination in the Knuckles Mountain Range, Riverston is celebrated for its dramatic landscapes, misty mountain peaks, and sweeping panoramic views stretching across the central highlands. The area offers exceptional trekking trails through cloud forests, waterfalls, and diverse ecosystems, making it one of Sri Lanka's most rewarding adventure and nature destinations.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) on clear days between January and April for the most spectacular views before clouds settle over the peaks"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, layered clothing as temperatures at altitude can be significantly cooler, especially in the morning. Sturdy hiking boots or trail shoes are essential.",
+            "behavior": [
+                "Trekking: Stick to designated trails and do not venture off-path; the terrain can be steep and disorienting in misty conditions.",
+                "Wildlife: Do not disturb wildlife. The Knuckles Range is a UNESCO World Heritage-listed biodiversity hotspot.",
+                "Littering: Strictly no littering. Carry all waste out of the nature reserve.",
+                "Guided Treks: Hiring a certified local guide is strongly recommended, especially for longer hikes.",
+                "Photography: Photography is freely encouraged; the landscape offers world-class photography opportunities.",
+                "Safety: Inform someone of your trekking plan and expected return time. Weather can change rapidly."
+            ],
+            "entry_requirements": ["Conservation area fee may apply", "Guided treks recommended", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1500 conservation fee for foreign visitors",
+        "opening_hours": "Open all day; best accessed from 6:00 AM"
+    },
+
+
+    {
+        "id": "bambarakiri-ella",
+        "name": "Bambarakiri Ella",
+        "latitude": 7.6050,
+        "longitude": 80.7700,
+        "description": "A stunning multi-tiered waterfall cascading through the lush forests of the Knuckles Mountain Range near Riverston. Bambarakiri Ella is one of the most scenic and picturesque waterfalls in the central highlands, set within a pristine natural environment and accessible via a rewarding forest trek, making it a favorite destination for nature lovers and hikers.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) after a period of rainfall for the most impressive water flow and freshest forest conditions"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear sturdy hiking footwear and comfortable, quick-dry clothing. Expect wet and muddy trail conditions. Bring rain gear as the area receives frequent rainfall.",
+            "behavior": [
+                "Trails: Follow designated trails carefully; the path to the falls can be slippery and steep in places.",
+                "Swimming: Exercise extreme caution near the waterfall base; currents can be strong after heavy rainfall.",
+                "Littering: Strictly no littering in this protected natural area. Carry all waste out.",
+                "Wildlife: Do not disturb wildlife or damage vegetation along the trail.",
+                "Photography: Photography is freely allowed and highly rewarding throughout the trek.",
+                "Guided Treks: A local guide is highly recommended for navigation through the forest trail."
+            ],
+            "entry_requirements": ["Conservation area fee may apply", "Guided treks recommended", "Photography allowed"]
+        },
+        "entry_fee": "Nominal fee may apply as part of Knuckles conservation area",
+        "opening_hours": "Open all day; best accessed from 7:00 AM"
+    },
+
+
+    {
+        "id": "nalanda-gedige",
+        "name": "Nalanda Gedige",
+        "latitude": 7.5500,
+        "longitude": 80.7167,
+        "description": "A remarkable and enigmatic ancient stone temple dating back to approximately the 8th century, located near Nalanda in Matale District. Nalanda Gedige is unique in Sri Lanka as it blends Buddhist and Hindu architectural elements, featuring exquisite stone carvings reminiscent of South Indian temple art. Originally dismantled and reconstructed near a reservoir, it remains one of the most architecturally intriguing historical monuments in the country.",
+        "image_url": "",
+        "category": "Historical Site",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:30 AM - 11:00 AM) on weekdays for a peaceful visit with minimal crowds"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual but respectful attire is appropriate given the historical and religious significance of the site. Comfortable walking shoes are recommended.",
+            "behavior": [
+                "Stone Carvings: Do not touch or climb on the ancient stone carvings or structural elements.",
+                "Respect: Treat the site with the reverence due to a place of ancient religious and cultural significance.",
+                "Photography: Photography is freely allowed throughout the site.",
+                "Guided Tours: Engaging a local guide is recommended to fully appreciate the architectural and historical significance.",
+                "Littering: No littering of any kind within the site grounds.",
+                "Safety: Exercise care around the reservoir embankment adjacent to the temple site."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign visitors",
+        "opening_hours": "8:00 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "pitawala-pathana-riverston",
+        "name": "Pitawala Pathana",
+        "latitude": 7.6200,
+        "longitude": 80.7850,
+        "description": "A spectacular high-altitude grassland plateau situated within the Knuckles Mountain Range near Riverston, Pitawala Pathana is a unique patana (montane grassland) ecosystem offering sweeping views across misty valleys and mountain ridges. The plateau is home to endemic flora and fauna and is a key habitat within the UNESCO-listed Knuckles Conservation Forest, making it a premier destination for trekkers and nature enthusiasts.",
+        "image_url": "",
+        "category": "Nature Reserve",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning (6:00 AM - 8:30 AM) between January and March for clear skies and the best visibility across the plateau and surrounding peaks"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, wind-resistant layers as the plateau is exposed and temperatures drop significantly. Sturdy waterproof hiking boots are essential for the terrain.",
+            "behavior": [
+                "Conservation: This is a protected UNESCO ecosystem. Do not damage, collect, or remove any plants or natural materials.",
+                "Trails: Stay on designated trekking paths to avoid damaging the fragile grassland ecosystem.",
+                "Wildlife: The patana is home to endemic species including endemic lizards and birds; observe without disturbing.",
+                "Littering: Absolutely no littering. All waste must be carried out of the protected area.",
+                "Guided Treks: A registered local guide is mandatory for trekking into Pitawala Pathana.",
+                "Safety: Weather conditions can change rapidly; carry rain gear and inform someone of your trekking route."
+            ],
+            "entry_requirements": ["Conservation area permit required", "Registered guide mandatory", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1500 conservation fee for foreign visitors",
+        "opening_hours": "Best accessed from 5:30 AM; return before 5:00 PM"
+    },
+
+
+    {
+        "id": "sera-ella-waterfall",
+        "name": "Sera Ella Waterfall",
+        "latitude": 7.5980,
+        "longitude": 80.7620,
+        "description": "One of the most scenic and accessible waterfalls in the Knuckles Mountain Range area, Sera Ella cascades gracefully through lush tropical forest creating a beautiful natural pool at its base. The waterfall is surrounded by dense greenery and offers a refreshing and picturesque natural retreat, particularly popular with families and nature visitors travelling through the Matale and Knuckles regions.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "June", "September", "October"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after moderate rainfall for the best water flow and a refreshing visit"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear comfortable casual clothing and footwear suitable for a short forest walk. Bring a change of clothes if you plan to swim at the base pool.",
+            "behavior": [
+                "Swimming: The natural pool at the base is generally safe for bathing; always assess water depth and currents before entering.",
+                "Littering: Do not litter; carry all waste out of the natural area.",
+                "Wildlife: Do not disturb wildlife along the trail or near the waterfall.",
+                "Photography: Photography is freely allowed and highly encouraged throughout the site.",
+                "Noise: Be respectful of other visitors and the natural environment; keep noise levels low.",
+                "Safety: Exercise caution on wet and slippery rocks near the waterfall base."
+            ],
+            "entry_requirements": ["Free or nominal entry fee", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open all day; best visited during daylight hours"
+    },
+
+
+    {
+        "id": "sembuwatta-lake",
+        "name": "Sembuwatta Lake",
+        "latitude": 7.5714,
+        "longitude": 80.7286,
+        "description": "A stunning artificial lake nestled in the misty Elkaduwa highlands amid tea and rubber plantations, Sembuwatta Lake is one of Sri Lanka's most photogenic and romantic natural escapes. Surrounded by lush green hills and forest, the lake offers boat rides, a treetop walk, zip-lining, and serene lakeside walks, making it a popular eco-tourism and leisure destination near Kandy and Matale.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "December"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Weekday mornings (8:00 AM - 11:00 AM) for peaceful misty lake views before weekend crowds arrive"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for outdoor leisure. Light footwear is fine for most areas; wear sturdy shoes if planning to use the treetop walk.",
+            "behavior": [
+                "Boat Rides: Life jackets are provided for boat rides; always wear them during the activity.",
+                "Activities: Follow all safety instructions from staff for zip-lining, treetop walks, and boat rides.",
+                "Littering: Strictly no littering in or around the lake and plantation grounds.",
+                "Wildlife: Do not disturb wildlife or damage vegetation around the lake.",
+                "Photography: Photography is freely allowed and the scenic lake backdrop makes for exceptional photos.",
+                "Respect: Be considerate of other visitors and the natural environment at all times."
+            ],
+            "entry_requirements": ["Paid entry required", "Activity fees apply separately", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign adults; activity fees apply separately",
+        "opening_hours": "8:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "ranweli-spice-garden",
+        "name": "Ranweli Spice Garden",
+        "latitude": 7.4780,
+        "longitude": 80.6050,
+        "description": "A well-established and highly regarded spice and herbal garden in the Matale district, Ranweli Spice Garden offers immersive guided tours through cultivated plots of Sri Lanka's finest spices and medicinal plants, including cinnamon, cloves, cardamom, pepper, vanilla, and a wide range of Ayurvedic herbs. The garden provides an educational and aromatic experience that showcases the island's extraordinary spice heritage.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:30 AM) for a guided tour with knowledgeable staff before the midday heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing and footwear suitable for outdoor walking along garden paths.",
+            "behavior": [
+                "Plants: Do not pluck, damage, or remove any spices or plants from the garden without authorization.",
+                "Guided Tours: Guided tours are included and are the primary way to experience the garden; follow the guide's instructions.",
+                "Photography: Photography is freely allowed throughout the garden.",
+                "Purchasing: An on-site spice shop offers authentic locally grown spices, herbal products, and Ayurvedic preparations.",
+                "Herbal Treatments: Ayurvedic demonstrations or treatments may be available; inquire at reception.",
+                "Littering: Do not litter; maintain the cleanliness of the garden environment."
+            ],
+            "entry_requirements": ["Guided tour fee applies", "Photography allowed"]
+        },
+        "entry_fee": "Nominal guided tour fee applies",
+        "opening_hours": "8:30 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "wasgamuwa-national-park",
+        "name": "Wasgamuwa National Park",
+        "latitude": 7.7333,
+        "longitude": 80.8667,
+        "description": "A vast and relatively off-the-beaten-path national park situated on the edge of the central highlands, Wasgamuwa is one of Sri Lanka's premier wilderness destinations. The park is a key habitat for large herds of wild Asian elephants, leopards, sloth bears, sambar deer, and abundant birdlife. Its remote character and dense forests along the Mahaweli and Amban Ganga rivers offer an authentic and uncrowded wildlife safari experience.",
+        "image_url": "",
+        "category": "National Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM safari departure) or late afternoon (3:30 PM) drives for the best wildlife sightings, particularly for elephants near water sources"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear neutral-colored, lightweight clothing such as khaki, olive, or beige to avoid disturbing wildlife. Long sleeves are recommended to protect against insects. Closed-toe shoes are essential.",
+            "behavior": [
+                "Safari Vehicle: Remain inside the safari vehicle at all times unless at a designated viewpoint or rest stop.",
+                "Wildlife: Do not feed, provoke, or approach wildlife. Maintain safe distances at all times.",
+                "Noise: Keep noise to an absolute minimum to avoid startling animals, especially elephants.",
+                "Photography: Photography is allowed and strongly encouraged; long lenses are recommended for wildlife shots.",
+                "Littering: No littering of any kind within the national park boundaries.",
+                "Guided Safaris: A licensed park guide is mandatory for all safari vehicles entering the park."
+            ],
+            "entry_requirements": ["Paid entry required", "Licensed guide mandatory", "Registered safari vehicle required"]
+        },
+        "entry_fee": "USD 25 for foreign adults plus vehicle and guide fees",
+        "opening_hours": "6:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "hulangala-mini-worlds-end-elkaduwa",
+        "name": "Hulangala Mini World's End Viewpoint",
+        "latitude": 7.5550,
+        "longitude": 80.7400,
+        "description": "A dramatic cliff-edge viewpoint located within the Elkaduwa Plantations, Hulangala Mini World's End offers a breathtaking sheer drop with sweeping panoramic views across the lowland plains and forested valleys far below. Often compared to the famous World's End at Horton Plains, this viewpoint is far less crowded and provides an equally stunning and adrenaline-inducing visual spectacle set within a lush plantation landscape.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning (6:30 AM - 8:30 AM) on clear days between January and April before cloud cover obscures the view into the valley below"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, wind-resistant layers as the viewpoint is exposed to strong winds at altitude. Sturdy hiking footwear with good grip is essential for the trail to the cliff edge.",
+            "behavior": [
+                "Safety: Do not approach the cliff edge beyond any safety barriers; the drop is sheer and extremely dangerous.",
+                "Trails: Follow designated paths to the viewpoint; do not cut through plantation vegetation.",
+                "Littering: Strictly no littering in the plantation and forest areas.",
+                "Photography: Photography is freely allowed and the dramatic cliff views offer world-class landscape photography opportunities.",
+                "Guided Access: Access may require arrangement through the Elkaduwa Plantations; confirm logistics in advance.",
+                "Weather: If mist or cloud covers the valley, the view will be obscured; check weather conditions before making the trip."
+            ],
+            "entry_requirements": ["Plantation access fee may apply", "Photography allowed", "Guided access recommended"]
+        },
+        "entry_fee": "Nominal plantation access fee may apply",
+        "opening_hours": "Best accessed from 6:00 AM; return before 5:00 PM"
     }
 ]
