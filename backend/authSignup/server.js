@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const session = require('express-session');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -7,8 +8,23 @@ const authRoutes = require('./src/routes/auth');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 app.use(express.json());
+
+// Session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'ceylonroam_secret_key_change_in_production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+  }
+}));
 
 app.get('/health', (req, res) => {
   res.json({ ok: true });
@@ -28,7 +44,7 @@ async function start() {
   await mongoose.connect(MONGODB_URI);
 
   app.listen(PORT, () => {
-    console.log(`Auth/Signup backend listening on port ${PORT}`);
+    console.log(`Auth service listening on port ${PORT}`);
   });
 }
 
