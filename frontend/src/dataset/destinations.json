@@ -1372,6 +1372,8 @@
   "entry_fee": "LKR 100",
   "opening_hours": "9:00 AM - 4:00 PM"
 },
+
+
     {
         "id": "sri-dalada-maligawa",
         "name": "Sri Dalada Maligawa",
@@ -1400,6 +1402,8 @@
         "entry_fee": "LKR 1500 for foreign adults",
         "opening_hours": "5:30 AM - 8:00 PM"
     },
+
+
     {
         "id": "udawatta-kele-sanctuary",
         "name": "Udawatta Kele Sanctuary",
@@ -1428,6 +1432,8 @@
         "entry_fee": "LKR 600 for foreign adults",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "royal-botanic-gardens-peradeniya",
         "name": "Royal Botanic Gardens, Peradeniya",
@@ -1456,6 +1462,8 @@
         "entry_fee": "LKR 2000 for foreign adults",
         "opening_hours": "7:30 AM - 5:00 PM"
     },
+
+
     {
         "id": "kandy-viewpoint",
         "name": "Kandy Viewpoint",
@@ -1483,6 +1491,8 @@
         "entry_fee": "free",
         "opening_hours": "Open all day"
     },
+
+
     {
         "id": "ceylon-tea-museum",
         "name": "Ceylon Tea Museum",
@@ -1511,6 +1521,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "8:30 AM - 4:30 PM (Closed on Mondays)"
     },
+
+
     {
         "id": "kandy-lake",
         "name": "Kandy Lake",
@@ -1539,6 +1551,8 @@
         "entry_fee": "free",
         "opening_hours": "Open all day"
     },
+
+
     {
         "id": "commonwealth-war-cemetery-kandy",
         "name": "Commonwealth War Cemetery Kandy",
@@ -1567,6 +1581,8 @@
         "entry_fee": "free",
         "opening_hours": "7:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "international-buddhist-museum",
         "name": "International Buddhist Museum",
@@ -1595,6 +1611,8 @@
         "entry_fee": "Included with Sri Dalada Maligawa ticket",
         "opening_hours": "9:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "old-royal-palace-kandy",
         "name": "Old Royal Palace",
@@ -1623,6 +1641,8 @@
         "entry_fee": "Included with Sri Dalada Maligawa complex ticket",
         "opening_hours": "9:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "kandy-national-museum",
         "name": "Kandy National Museum",
@@ -1651,6 +1671,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "9:00 AM - 5:00 PM (Closed on Fridays)"
     },
+
+
     {
         "id": "pallekele-international-cricket-stadium",
         "name": "Pallekele International Cricket Stadium",
@@ -1679,6 +1701,8 @@
         "entry_fee": "Varies by match and seating category",
         "opening_hours": "Match dependent; Stadium open during scheduled events"
     },
+
+
     {
         "id": "british-garrison-cemetery",
         "name": "British Garrison Cemetery",
@@ -1707,6 +1731,8 @@
         "entry_fee": "free",
         "opening_hours": "8:00 AM - 4:30 PM"
     },
+
+
     {
         "id": "sri-lankathilake-rajamaha-viharaya",
         "name": "Sri Lankathilake Rajamaha Viharaya",
@@ -1735,6 +1761,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "royal-palace-park-kandy",
         "name": "Royal Palace Park",
@@ -1763,6 +1791,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "st-pauls-church-kandy",
         "name": "St Paul's Church",
@@ -1791,6 +1821,8 @@
         "entry_fee": "free",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "red-mosque-kandy",
         "name": "Red Mosque of Kandy",
@@ -1819,34 +1851,9 @@
         "entry_fee": "free",
         "opening_hours": "Open daily; avoid visiting during prayer times"
     },
-    {
-        "id": "pinnawala-elephant-orphanage",
-        "name": "Pinnawala Elephant Orphanage",
-        "latitude": 7.2996,
-        "longitude": 80.3831,
-        "description": "Established in 1975, the Pinnawala Elephant Orphanage is home to one of the world's largest herds of captive elephants. Located on the banks of the Maha Oya River, it rescues and cares for orphaned, injured, and abandoned elephants. Visitors can observe elephants feeding, bathing in the river, and interacting with their keepers in a naturalistic setting.",
-        "image_url": "",
-        "category": "Wildlife Sanctuary",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Feeding times (9:15 AM, 1:15 PM, 5:00 PM) and bathing time (10:00 AM - 12:00 PM, 2:00 PM - 4:00 PM) at the Maha Oya River for the best experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual, comfortable clothing suitable for an outdoor setting. Closed-toe shoes are recommended. Expect to get splashed near the river during the bathing session.",
-            "behavior": [
-                "Wildlife: Do not attempt to touch, feed, or approach elephants beyond designated viewing areas.",
-                "Safety: Maintain a safe distance from elephants at all times; follow all keeper and staff instructions.",
-                "Photography: Photography is allowed and encouraged; avoid using flash near the elephants.",
-                "Ethical Tourism: Be cautious of elephant riding or direct contact activities offered outside the main orphanage, as these may not meet ethical animal welfare standards.",
-                "Littering: Do not litter or throw food items into the elephant enclosures.",
-                "Children: Supervise children at all times and keep them within safe viewing boundaries."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 3000 for foreign adults",
-        "opening_hours": "8:30 AM - 5:30 PM"
-    },
+
+
+
     {
         "id": "sigiriya",
         "name": "Sigiriya",
@@ -1875,6 +1882,8 @@
         "entry_fee": "USD 30 for foreign adults",
         "opening_hours": "7:00 AM - 5:30 PM"
     },
+
+
     {
         "id": "sri-natha-devalaya",
         "name": "Sri Natha Devalaya",
@@ -1903,6 +1912,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 8:00 PM"
     },
+
+
     {
         "id": "ambuluwawa-biodiversity-complex",
         "name": "Ambuluwawa Biodiversity Complex",
@@ -1931,6 +1942,8 @@
         "entry_fee": "LKR 500 for foreign adults",
         "opening_hours": "7:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "ranawana-purana-rajamaha-viharaya",
         "name": "Ranawana Purana Rajamaha Viharaya",
@@ -1959,6 +1972,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 7:00 PM"
     },
+
+
     {
         "id": "sri-vishnu-devala",
         "name": "Sri Vishnu Devala",
@@ -1987,6 +2002,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 8:00 PM"
     },
+
+
     {
         "id": "asgiriya-maha-viharaya",
         "name": "Asgiriya Maha Viharaya",
@@ -2015,6 +2032,8 @@
         "entry_fee": "free",
         "opening_hours": "6:00 AM - 7:00 PM"
     },
+
+
     {
         "id": "st-sylvesters-monastery-ampitiya",
         "name": "Montefano, St. Sylvester's Monastery, Ampitiya",
@@ -2043,6 +2062,8 @@
         "entry_fee": "free",
         "opening_hours": "By prior arrangement; generally 8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "degaldoruwa-temple",
         "name": "Degaldoruwa Temple",
@@ -2071,6 +2092,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "8:00 AM - 5:00 PM"
     },
+
+
     {
         "id": "millennium-elephant-foundation",
         "name": "Millennium Elephant Foundation",
@@ -2099,6 +2122,8 @@
         "entry_fee": "LKR 2500 for foreign adults; interaction packages available at additional cost",
         "opening_hours": "8:00 AM - 5:30 PM"
     },
+
+
     {
         "id": "gadaladeniya-temple",
         "name": "Gadaladeniya Rajamaha Viharaya",
@@ -2127,6 +2152,8 @@
         "entry_fee": "LKR 300 for foreign visitors",
         "opening_hours": "6:00 AM - 6:00 PM"
     },
+
+
     {
         "id": "hulu-ganga",
         "name": "Hulu Ganga",
@@ -2154,5 +2181,1326 @@
         },
         "entry_fee": "free",
         "opening_hours": "Open all day"
+    },
+
+
+    {
+        "id": "sri-muthumari-amman-kovil",
+        "name": "Sri Muthumari Amman Kovil",
+        "latitude": 7.4833,
+        "longitude": 80.6167,
+        "description": "A vibrant and sacred Hindu temple dedicated to Goddess Muthumari Amman, a form of the Divine Mother worshipped widely among Sri Lanka's Tamil Hindu community. The temple is known for its colorful gopuram (tower), elaborate rituals, and festive celebrations that draw large numbers of devotees from across the region.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "October"],
+            "off_peak_months": ["April", "May", "June", "September", "November"],
+            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) during puja sessions for an authentic devotional experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress very modestly with shoulders and knees fully covered. Avoid wearing leather items inside the temple. Remove shoes before entering. Traditional attire such as a saree or dhoti is appreciated.",
+            "behavior": [
+                "Dress Code: Full modest dress is mandatory. Avoid wearing leather belts or accessories inside the temple.",
+                "Footwear: Remove all footwear before entering the temple premises.",
+                "Photography: Photography inside the inner sanctum is strictly prohibited; check with temple authorities for other areas.",
+                "Decorum: Maintain silence and deep reverence inside the temple at all times.",
+                "Rituals: Do not interrupt ongoing puja rituals. Observe respectfully from a designated distance.",
+                "Cultural Respect: Non-Hindu visitors are welcome but should be especially respectful of the sacred space and ongoing worship."
+            ],
+            "entry_requirements": ["Free entry", "Modest dress strictly required", "Photography restricted in inner sanctum"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM"
+    },
+
+
+    {
+        "id": "national-spice-garden-sri-lanka",
+        "name": "National Spice Garden of Sri Lanka",
+        "latitude": 7.4714,
+        "longitude": 80.5986,
+        "description": "Located in Matale, the National Spice Garden is a fascinating botanical showcase of Sri Lanka's world-renowned spice heritage. The garden cultivates a rich variety of spices including cinnamon, cardamom, cloves, nutmeg, pepper, and vanilla, offering guided tours that educate visitors on cultivation, processing, and the cultural and medicinal significance of each spice.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:30 AM) for a guided tour before the afternoon heat and tour group crowds"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for outdoor walking. Light footwear is fine; paths are generally well-maintained.",
+            "behavior": [
+                "Plants: Do not pluck, damage, or remove any plants, spices, or produce from the garden without permission.",
+                "Guided Tours: A guided tour is strongly recommended and is often included with entry for the full educational experience.",
+                "Photography: Photography is freely allowed throughout the garden.",
+                "Purchasing: A spice shop on-site sells authentic locally produced spices and herbal products.",
+                "Littering: Do not litter; use designated waste bins throughout the garden.",
+                "Respect: Be respectful of garden staff and follow their instructions during the tour."
+            ],
+            "entry_requirements": ["Free entry or small guided tour fee", "Photography allowed"]
+        },
+        "entry_fee": "free (guided tour may have a nominal fee)",
+        "opening_hours": "8:00 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "aluviharaya-rock-cave-temple",
+        "name": "Aluviharaya Rock Cave Temple",
+        "latitude": 7.5167,
+        "longitude": 80.6167,
+        "description": "An ancient and historically significant Buddhist cave temple located in Matale, renowned as the site where the Tipitaka, the sacred Theravada Buddhist scriptures, were first committed to writing on ola leaf manuscripts in the 1st century BC. The temple complex features a series of cave shrines adorned with intricate murals, statues, and vivid depictions of Buddhist cosmology including the realms of hell, making it a unique and spiritually profound destination.",
+        "image_url": "",
+        "category": "Buddhist Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) in natural daylight for the best viewing of the murals and cave interiors"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress modestly with shoulders and knees fully covered. White or light-colored clothing is preferred. Remove shoes before entering the cave shrines.",
+            "behavior": [
+                "Dress Code: Modest attire is mandatory. Sarongs may be available at the entrance if required.",
+                "Footwear: Remove shoes before entering any of the cave shrine rooms.",
+                "Murals & Statues: Do not touch any murals, statues, or sacred artifacts inside the caves.",
+                "Photography: Photography is generally allowed; avoid flash photography to protect the ancient paintings.",
+                "Decorum: Maintain silence and deep reverence throughout the cave temple complex.",
+                "Guided Tours: A local guide can provide detailed explanations of the scriptural murals and historical significance."
+            ],
+            "entry_requirements": ["Small entry fee may apply", "No flash photography", "Modest dress required"]
+        },
+        "entry_fee": "LKR 400 for foreign visitors",
+        "opening_hours": "7:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "riverston",
+        "name": "Riverston",
+        "latitude": 7.6167,
+        "longitude": 80.7833,
+        "description": "A breathtaking highland destination in the Knuckles Mountain Range, Riverston is celebrated for its dramatic landscapes, misty mountain peaks, and sweeping panoramic views stretching across the central highlands. The area offers exceptional trekking trails through cloud forests, waterfalls, and diverse ecosystems, making it one of Sri Lanka's most rewarding adventure and nature destinations.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) on clear days between January and April for the most spectacular views before clouds settle over the peaks"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, layered clothing as temperatures at altitude can be significantly cooler, especially in the morning. Sturdy hiking boots or trail shoes are essential.",
+            "behavior": [
+                "Trekking: Stick to designated trails and do not venture off-path; the terrain can be steep and disorienting in misty conditions.",
+                "Wildlife: Do not disturb wildlife. The Knuckles Range is a UNESCO World Heritage-listed biodiversity hotspot.",
+                "Littering: Strictly no littering. Carry all waste out of the nature reserve.",
+                "Guided Treks: Hiring a certified local guide is strongly recommended, especially for longer hikes.",
+                "Photography: Photography is freely encouraged; the landscape offers world-class photography opportunities.",
+                "Safety: Inform someone of your trekking plan and expected return time. Weather can change rapidly."
+            ],
+            "entry_requirements": ["Conservation area fee may apply", "Guided treks recommended", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1500 conservation fee for foreign visitors",
+        "opening_hours": "Open all day; best accessed from 6:00 AM"
+    },
+
+
+    {
+        "id": "bambarakiri-ella",
+        "name": "Bambarakiri Ella",
+        "latitude": 7.6050,
+        "longitude": 80.7700,
+        "description": "A stunning multi-tiered waterfall cascading through the lush forests of the Knuckles Mountain Range near Riverston. Bambarakiri Ella is one of the most scenic and picturesque waterfalls in the central highlands, set within a pristine natural environment and accessible via a rewarding forest trek, making it a favorite destination for nature lovers and hikers.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) after a period of rainfall for the most impressive water flow and freshest forest conditions"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear sturdy hiking footwear and comfortable, quick-dry clothing. Expect wet and muddy trail conditions. Bring rain gear as the area receives frequent rainfall.",
+            "behavior": [
+                "Trails: Follow designated trails carefully; the path to the falls can be slippery and steep in places.",
+                "Swimming: Exercise extreme caution near the waterfall base; currents can be strong after heavy rainfall.",
+                "Littering: Strictly no littering in this protected natural area. Carry all waste out.",
+                "Wildlife: Do not disturb wildlife or damage vegetation along the trail.",
+                "Photography: Photography is freely allowed and highly rewarding throughout the trek.",
+                "Guided Treks: A local guide is highly recommended for navigation through the forest trail."
+            ],
+            "entry_requirements": ["Conservation area fee may apply", "Guided treks recommended", "Photography allowed"]
+        },
+        "entry_fee": "Nominal fee may apply as part of Knuckles conservation area",
+        "opening_hours": "Open all day; best accessed from 7:00 AM"
+    },
+
+
+    {
+        "id": "nalanda-gedige",
+        "name": "Nalanda Gedige",
+        "latitude": 7.5500,
+        "longitude": 80.7167,
+        "description": "A remarkable and enigmatic ancient stone temple dating back to approximately the 8th century, located near Nalanda in Matale District. Nalanda Gedige is unique in Sri Lanka as it blends Buddhist and Hindu architectural elements, featuring exquisite stone carvings reminiscent of South Indian temple art. Originally dismantled and reconstructed near a reservoir, it remains one of the most architecturally intriguing historical monuments in the country.",
+        "image_url": "",
+        "category": "Historical Site",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:30 AM - 11:00 AM) on weekdays for a peaceful visit with minimal crowds"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual but respectful attire is appropriate given the historical and religious significance of the site. Comfortable walking shoes are recommended.",
+            "behavior": [
+                "Stone Carvings: Do not touch or climb on the ancient stone carvings or structural elements.",
+                "Respect: Treat the site with the reverence due to a place of ancient religious and cultural significance.",
+                "Photography: Photography is freely allowed throughout the site.",
+                "Guided Tours: Engaging a local guide is recommended to fully appreciate the architectural and historical significance.",
+                "Littering: No littering of any kind within the site grounds.",
+                "Safety: Exercise care around the reservoir embankment adjacent to the temple site."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign visitors",
+        "opening_hours": "8:00 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "pitawala-pathana-riverston",
+        "name": "Pitawala Pathana",
+        "latitude": 7.6200,
+        "longitude": 80.7850,
+        "description": "A spectacular high-altitude grassland plateau situated within the Knuckles Mountain Range near Riverston, Pitawala Pathana is a unique patana (montane grassland) ecosystem offering sweeping views across misty valleys and mountain ridges. The plateau is home to endemic flora and fauna and is a key habitat within the UNESCO-listed Knuckles Conservation Forest, making it a premier destination for trekkers and nature enthusiasts.",
+        "image_url": "",
+        "category": "Nature Reserve",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning (6:00 AM - 8:30 AM) between January and March for clear skies and the best visibility across the plateau and surrounding peaks"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, wind-resistant layers as the plateau is exposed and temperatures drop significantly. Sturdy waterproof hiking boots are essential for the terrain.",
+            "behavior": [
+                "Conservation: This is a protected UNESCO ecosystem. Do not damage, collect, or remove any plants or natural materials.",
+                "Trails: Stay on designated trekking paths to avoid damaging the fragile grassland ecosystem.",
+                "Wildlife: The patana is home to endemic species including endemic lizards and birds; observe without disturbing.",
+                "Littering: Absolutely no littering. All waste must be carried out of the protected area.",
+                "Guided Treks: A registered local guide is mandatory for trekking into Pitawala Pathana.",
+                "Safety: Weather conditions can change rapidly; carry rain gear and inform someone of your trekking route."
+            ],
+            "entry_requirements": ["Conservation area permit required", "Registered guide mandatory", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1500 conservation fee for foreign visitors",
+        "opening_hours": "Best accessed from 5:30 AM; return before 5:00 PM"
+    },
+
+
+    {
+        "id": "sera-ella-waterfall",
+        "name": "Sera Ella Waterfall",
+        "latitude": 7.5980,
+        "longitude": 80.7620,
+        "description": "One of the most scenic and accessible waterfalls in the Knuckles Mountain Range area, Sera Ella cascades gracefully through lush tropical forest creating a beautiful natural pool at its base. The waterfall is surrounded by dense greenery and offers a refreshing and picturesque natural retreat, particularly popular with families and nature visitors travelling through the Matale and Knuckles regions.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "June", "September", "October"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after moderate rainfall for the best water flow and a refreshing visit"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear comfortable casual clothing and footwear suitable for a short forest walk. Bring a change of clothes if you plan to swim at the base pool.",
+            "behavior": [
+                "Swimming: The natural pool at the base is generally safe for bathing; always assess water depth and currents before entering.",
+                "Littering: Do not litter; carry all waste out of the natural area.",
+                "Wildlife: Do not disturb wildlife along the trail or near the waterfall.",
+                "Photography: Photography is freely allowed and highly encouraged throughout the site.",
+                "Noise: Be respectful of other visitors and the natural environment; keep noise levels low.",
+                "Safety: Exercise caution on wet and slippery rocks near the waterfall base."
+            ],
+            "entry_requirements": ["Free or nominal entry fee", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open all day; best visited during daylight hours"
+    },
+
+
+    {
+        "id": "sembuwatta-lake",
+        "name": "Sembuwatta Lake",
+        "latitude": 7.5714,
+        "longitude": 80.7286,
+        "description": "A stunning artificial lake nestled in the misty Elkaduwa highlands amid tea and rubber plantations, Sembuwatta Lake is one of Sri Lanka's most photogenic and romantic natural escapes. Surrounded by lush green hills and forest, the lake offers boat rides, a treetop walk, zip-lining, and serene lakeside walks, making it a popular eco-tourism and leisure destination near Kandy and Matale.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "December"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Weekday mornings (8:00 AM - 11:00 AM) for peaceful misty lake views before weekend crowds arrive"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for outdoor leisure. Light footwear is fine for most areas; wear sturdy shoes if planning to use the treetop walk.",
+            "behavior": [
+                "Boat Rides: Life jackets are provided for boat rides; always wear them during the activity.",
+                "Activities: Follow all safety instructions from staff for zip-lining, treetop walks, and boat rides.",
+                "Littering: Strictly no littering in or around the lake and plantation grounds.",
+                "Wildlife: Do not disturb wildlife or damage vegetation around the lake.",
+                "Photography: Photography is freely allowed and the scenic lake backdrop makes for exceptional photos.",
+                "Respect: Be considerate of other visitors and the natural environment at all times."
+            ],
+            "entry_requirements": ["Paid entry required", "Activity fees apply separately", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign adults; activity fees apply separately",
+        "opening_hours": "8:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "ranweli-spice-garden",
+        "name": "Ranweli Spice Garden",
+        "latitude": 7.4780,
+        "longitude": 80.6050,
+        "description": "A well-established and highly regarded spice and herbal garden in the Matale district, Ranweli Spice Garden offers immersive guided tours through cultivated plots of Sri Lanka's finest spices and medicinal plants, including cinnamon, cloves, cardamom, pepper, vanilla, and a wide range of Ayurvedic herbs. The garden provides an educational and aromatic experience that showcases the island's extraordinary spice heritage.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:30 AM) for a guided tour with knowledgeable staff before the midday heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing and footwear suitable for outdoor walking along garden paths.",
+            "behavior": [
+                "Plants: Do not pluck, damage, or remove any spices or plants from the garden without authorization.",
+                "Guided Tours: Guided tours are included and are the primary way to experience the garden; follow the guide's instructions.",
+                "Photography: Photography is freely allowed throughout the garden.",
+                "Purchasing: An on-site spice shop offers authentic locally grown spices, herbal products, and Ayurvedic preparations.",
+                "Herbal Treatments: Ayurvedic demonstrations or treatments may be available; inquire at reception.",
+                "Littering: Do not litter; maintain the cleanliness of the garden environment."
+            ],
+            "entry_requirements": ["Guided tour fee applies", "Photography allowed"]
+        },
+        "entry_fee": "Nominal guided tour fee applies",
+        "opening_hours": "8:30 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "wasgamuwa-national-park",
+        "name": "Wasgamuwa National Park",
+        "latitude": 7.7333,
+        "longitude": 80.8667,
+        "description": "A vast and relatively off-the-beaten-path national park situated on the edge of the central highlands, Wasgamuwa is one of Sri Lanka's premier wilderness destinations. The park is a key habitat for large herds of wild Asian elephants, leopards, sloth bears, sambar deer, and abundant birdlife. Its remote character and dense forests along the Mahaweli and Amban Ganga rivers offer an authentic and uncrowded wildlife safari experience.",
+        "image_url": "",
+        "category": "National Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM safari departure) or late afternoon (3:30 PM) drives for the best wildlife sightings, particularly for elephants near water sources"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear neutral-colored, lightweight clothing such as khaki, olive, or beige to avoid disturbing wildlife. Long sleeves are recommended to protect against insects. Closed-toe shoes are essential.",
+            "behavior": [
+                "Safari Vehicle: Remain inside the safari vehicle at all times unless at a designated viewpoint or rest stop.",
+                "Wildlife: Do not feed, provoke, or approach wildlife. Maintain safe distances at all times.",
+                "Noise: Keep noise to an absolute minimum to avoid startling animals, especially elephants.",
+                "Photography: Photography is allowed and strongly encouraged; long lenses are recommended for wildlife shots.",
+                "Littering: No littering of any kind within the national park boundaries.",
+                "Guided Safaris: A licensed park guide is mandatory for all safari vehicles entering the park."
+            ],
+            "entry_requirements": ["Paid entry required", "Licensed guide mandatory", "Registered safari vehicle required"]
+        },
+        "entry_fee": "USD 25 for foreign adults plus vehicle and guide fees",
+        "opening_hours": "6:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "hulangala-mini-worlds-end-elkaduwa",
+        "name": "Hulangala Mini World's End Viewpoint",
+        "latitude": 7.5550,
+        "longitude": 80.7400,
+        "description": "A dramatic cliff-edge viewpoint located within the Elkaduwa Plantations, Hulangala Mini World's End offers a breathtaking sheer drop with sweeping panoramic views across the lowland plains and forested valleys far below. Often compared to the famous World's End at Horton Plains, this viewpoint is far less crowded and provides an equally stunning and adrenaline-inducing visual spectacle set within a lush plantation landscape.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning (6:30 AM - 8:30 AM) on clear days between January and April before cloud cover obscures the view into the valley below"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, wind-resistant layers as the viewpoint is exposed to strong winds at altitude. Sturdy hiking footwear with good grip is essential for the trail to the cliff edge.",
+            "behavior": [
+                "Safety: Do not approach the cliff edge beyond any safety barriers; the drop is sheer and extremely dangerous.",
+                "Trails: Follow designated paths to the viewpoint; do not cut through plantation vegetation.",
+                "Littering: Strictly no littering in the plantation and forest areas.",
+                "Photography: Photography is freely allowed and the dramatic cliff views offer world-class landscape photography opportunities.",
+                "Guided Access: Access may require arrangement through the Elkaduwa Plantations; confirm logistics in advance.",
+                "Weather: If mist or cloud covers the valley, the view will be obscured; check weather conditions before making the trip."
+            ],
+            "entry_requirements": ["Plantation access fee may apply", "Photography allowed", "Guided access recommended"]
+        },
+        "entry_fee": "Nominal plantation access fee may apply",
+        "opening_hours": "Best accessed from 6:00 AM; return before 5:00 PM"
+    },
+
+
+    {
+        "id": "victoria-park-nuwara-eliya",
+        "name": "Victoria Park",
+        "latitude": 6.9706,
+        "longitude": 80.7736,
+        "description": "A beautifully maintained public park in the heart of Nuwara Eliya, established during the British colonial era and named after Queen Victoria. The park features manicured lawns, colorful flower beds, a stream, and a children's play area, and is particularly spectacular during the flowering seasons. It is a beloved recreational space for both locals and visitors seeking the cool mountain air of Sri Lanka's little England.",
+        "image_url": "",
+        "category": "Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) during the April flower season for the most spectacular blooms"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for cool highland weather. A light jacket is recommended as temperatures in Nuwara Eliya can be chilly.",
+            "behavior": [
+                "Plants: Do not pluck or damage any flowers or plants within the park.",
+                "Littering: Strictly no littering; use designated waste bins throughout the park.",
+                "Noise: Be respectful of other visitors enjoying the peaceful park atmosphere.",
+                "Photography: Photography is freely allowed throughout the park.",
+                "Pets: Check current park regulations regarding pets before visiting.",
+                "Children: The park has a children's play area; supervise children near the stream."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign adults",
+        "opening_hours": "7:00 AM - 6:00 PM"
+    },
+
+
+     {
+        "id": "moon-plains-nuwara-eliya",
+        "name": "Moon Plains",
+        "latitude": 6.9500,
+        "longitude": 80.8000,
+        "description": "A stunning high-altitude grassland plateau perched above Nuwara Eliya, Moon Plains offers vast open landscapes, rolling mist-covered meadows, and panoramic views of the surrounding central highlands including Pidurutalagala, Sri Lanka's highest peak. The plateau is home to diverse wildlife including sambar deer, giant squirrels, and numerous bird species, making it an exceptional nature and photography destination.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning (6:00 AM - 8:30 AM) on clear days for misty sunrise views and the best wildlife sightings before cloud cover sets in"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, windproof layers as the plateau is exposed and temperatures are significantly cooler than Nuwara Eliya town. Sturdy walking shoes are essential.",
+            "behavior": [
+                "Wildlife: Do not disturb or feed wildlife encountered on the plateau.",
+                "Trails: Follow designated paths and do not venture off-trail into protected grassland areas.",
+                "Littering: Absolutely no littering; carry all waste out of the natural area.",
+                "Photography: Photography is freely encouraged; the landscape and wildlife offer exceptional opportunities.",
+                "Safety: Mist can descend rapidly and reduce visibility significantly; do not wander far from your vehicle or guide.",
+                "Guided Tours: Tuk-tuk or jeep tours to Moon Plains are available from Nuwara Eliya town and are recommended."
+            ],
+            "entry_requirements": ["Nominal access fee may apply", "Photography allowed"]
+        },
+        "entry_fee": "Nominal fee may apply",
+        "opening_hours": "Best accessed from 5:30 AM; return before 5:00 PM"
+    },
+
+
+    {
+        "id": "seeta-amman-kovil",
+        "name": "Seeta Amman Kovil",
+        "latitude": 6.9333,
+        "longitude": 80.8167,
+        "description": "A sacred and historically significant Hindu temple located in Seetha Eliya near Nuwara Eliya, believed to mark the site where the goddess Sita was held captive by the demon king Ravana according to the ancient Hindu epic Ramayana. The temple is venerated by both Hindu devotees and Ramayana trail pilgrims, featuring colorful shrines dedicated to Sita, Rama, Lakshmana, and Hanuman amid a serene natural setting.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "October"],
+            "off_peak_months": ["April", "May", "June", "September", "November"],
+            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) during morning puja for a spiritually immersive and crowd-free experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress modestly with shoulders and knees fully covered. Remove shoes before entering the temple premises. Traditional attire is appreciated.",
+            "behavior": [
+                "Dress Code: Full modest dress is mandatory at all times within the temple complex.",
+                "Footwear: Remove all footwear before entering the temple premises.",
+                "Photography: Photography inside the inner sanctum is generally restricted; seek permission from temple priests.",
+                "Rituals: Do not interrupt ongoing puja rituals. Observe quietly and respectfully.",
+                "Decorum: Maintain silence and deep reverence inside the temple complex.",
+                "Cultural Respect: Be mindful of the great religious and mythological significance of this site to Hindu pilgrims."
+            ],
+            "entry_requirements": ["Free entry", "Modest dress required", "Photography restricted in inner sanctum"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM"
+    },
+
+
+    {
+        "id": "lovers-leap-waterfall",
+        "name": "Lover's Leap Waterfall",
+        "latitude": 6.8833,
+        "longitude": 80.7167,
+        "description": "A romantic and picturesque waterfall located near Nuwara Eliya within a lush tea plantation landscape, named after a local legend of star-crossed lovers. The falls cascade dramatically through a narrow rocky gorge surrounded by verdant tea bushes and forest, offering a scenic and somewhat secluded natural attraction that combines natural beauty with local folklore.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after recent rainfall for the strongest water flow and freshest surrounding greenery"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear comfortable clothing and sturdy footwear suitable for a short plantation and forest walk. Paths can be muddy and slippery after rain.",
+            "behavior": [
+                "Safety: Exercise caution near the waterfall edge and on slippery rocks.",
+                "Trails: Follow designated paths through the tea plantation; do not damage tea bushes.",
+                "Littering: No littering; carry all waste out of the plantation area.",
+                "Photography: Photography is freely allowed and the waterfall setting offers beautiful compositions.",
+                "Respect: Be respectful of active tea plantation workers and operations.",
+                "Access: Confirm current access arrangements with the plantation management before visiting."
+            ],
+            "entry_requirements": ["Plantation access fee may apply", "Photography allowed"]
+        },
+        "entry_fee": "Nominal plantation access fee may apply",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "bomburu-ella-waterfall",
+        "name": "Bomburu Ella Waterfall",
+        "latitude": 6.9167,
+        "longitude": 80.7500,
+        "description": "One of the widest and most impressive waterfalls in the Nuwara Eliya region, Bomburu Ella is a broad, multi-channeled cascade tumbling powerfully through dense highland forest. The waterfall is particularly spectacular during and after the monsoon season when water volumes are at their peak, and the surrounding misty forest creates an atmospheric and dramatic natural setting.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after significant rainfall for the most powerful and visually impressive cascade"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear sturdy footwear and comfortable clothing. The trail may be wet and slippery; rain gear is recommended.",
+            "behavior": [
+                "Safety: Keep a safe distance from the waterfall base and avoid slippery rocks near the water.",
+                "Trails: Follow designated forest trails; the terrain can be steep in places.",
+                "Littering: Do not litter in this natural forest environment.",
+                "Photography: Photography is freely allowed; the wide cascade offers excellent landscape shots.",
+                "Wildlife: Do not disturb wildlife encountered along the forest trail.",
+                "Guided Access: A local guide may be helpful for locating and safely navigating to the waterfall."
+            ],
+            "entry_requirements": ["Free or nominal access fee", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "lake-gregory-nuwara-eliya",
+        "name": "Lake Gregory",
+        "latitude": 6.9611,
+        "longitude": 80.7814,
+        "description": "A picturesque artificial lake constructed during the British colonial period in 1873 and named after Sir William Gregory, a former Governor of Ceylon. Set against the backdrop of misty green hills, Lake Gregory is a centerpiece of Nuwara Eliya's scenic charm and offers boating, speed boating, and lakeside leisure activities. The surrounding park is a popular recreational destination for families and visitors exploring Sri Lanka's hill country.",
+        "image_url": "",
+        "category": "Scenic Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:30 AM - 11:00 AM) on clear days for calm lake reflections and pleasant temperatures"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, comfortable clothing suitable for cool highland weather. A warm jacket is recommended especially in the morning and evening.",
+            "behavior": [
+                "Boating: Life jackets are provided for boating activities; always wear them during water activities.",
+                "Littering: Strictly no littering in or around the lake.",
+                "Wildlife: Do not disturb the birdlife and fish within and around the lake.",
+                "Photography: Photography is freely allowed; the lake and hill backdrop offer excellent scenery.",
+                "Activities: Speed boats and paddle boats are available for hire at designated points.",
+                "Safety: Follow all instructions from activity operators during water-based leisure activities."
+            ],
+            "entry_requirements": ["Paid entry to park area", "Activity fees apply separately", "Photography allowed"]
+        },
+        "entry_fee": "LKR 300 for foreign adults; activity fees apply separately",
+        "opening_hours": "8:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "hakgala-botanical-garden",
+        "name": "Hakgala Botanical Garden",
+        "latitude": 6.9167,
+        "longitude": 80.8167,
+        "description": "Established in 1861 at an altitude of 1,745 meters, Hakgala Botanical Garden is one of Sri Lanka's most beautiful highland gardens, set on the slopes of the Hakgala rock massif near Nuwara Eliya. The garden is renowned for its magnificent rose collection, exotic ferns, tree ferns, orchids, and a remarkable variety of temperate and subtropical plants. It also holds religious significance as a site associated with the Ramayana epic.",
+        "image_url": "",
+        "category": "Botanical Garden",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) during the rose flowering season between January and April for peak beauty"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual comfortable clothing and shoes suitable for walking on hillside garden paths. A warm layer is recommended due to the cool altitude.",
+            "behavior": [
+                "Plants: Do not pluck, damage, or remove any plants, flowers, or produce from the garden.",
+                "Littering: Strictly no littering; use designated waste bins throughout the garden.",
+                "Wildlife: Do not disturb wildlife including the sambar deer and monkeys often seen within the garden.",
+                "Photography: Photography is freely allowed throughout the garden.",
+                "Pets: Pets are not permitted inside the botanical garden.",
+                "Paths: Stick to designated garden paths, especially on steeper hillside sections."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1500 for foreign adults",
+        "opening_hours": "8:00 AM - 5:00 PM"
+    },
+
+
+    {
+        "id": "horton-plains-national-park",
+        "name": "Horton Plains National Park",
+        "latitude": 6.8008,
+        "longitude": 80.8020,
+        "description": "A UNESCO World Heritage Site and one of Sri Lanka's most spectacular and ecologically significant protected areas, Horton Plains is a high-altitude plateau at approximately 2,100 meters above sea level. The park is home to the famous World's End cliff, a sheer 870-meter drop, and Baker's Falls, along with unique cloud forest ecosystems, endemic wildlife including sambar deer, leopards, and the Sri Lanka whistling thrush, and sweeping highland grasslands.",
+        "image_url": "",
+        "category": "National Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning entry (6:00 AM opening) between January and April is essential to reach World's End before the clouds roll in and obscure the views by approximately 10:00 AM"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear warm, layered, windproof clothing as temperatures at altitude can drop to near 10°C. Sturdy waterproof hiking boots are essential. Rain gear is mandatory.",
+            "behavior": [
+                "World's End: Stay behind safety barriers at the World's End cliff edge at all times; the drop is 870 meters.",
+                "Wildlife: Do not feed, disturb, or approach wildlife. Sambar deer are habituated to humans but must not be fed.",
+                "Trails: Stick strictly to the designated circular trail; off-trail walking is prohibited in this protected ecosystem.",
+                "Littering: Absolutely no littering of any kind within the park. All waste must be carried out.",
+                "Photography: Photography is freely allowed and World's End offers world-class landscape photography.",
+                "Timing: Arrive at opening time and head directly to World's End; cloud cover typically obscures the view by mid-morning."
+            ],
+            "entry_requirements": ["Paid entry required", "Vehicle and guide fees apply", "No food or plastic bags permitted inside"]
+        },
+        "entry_fee": "USD 25 for foreign adults plus vehicle and guide fees",
+        "opening_hours": "6:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "grand-hotel-nuwara-eliya",
+        "name": "The Grand Hotel Nuwara Eliya",
+        "latitude": 6.9703,
+        "longitude": 80.7742,
+        "description": "A magnificent colonial-era heritage hotel in the heart of Nuwara Eliya, The Grand Hotel is one of Sri Lanka's most iconic and storied heritage properties. Originally built as the private residence of Sir Edward Barnes, Governor of Ceylon, the hotel exudes Victorian charm with its grand architecture, manicured gardens, fireplaces, and timeless colonial atmosphere, offering guests and visitors a journey into Sri Lanka's British colonial past.",
+        "image_url": "",
+        "category": "Heritage Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August", "December"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Afternoon (3:00 PM - 5:00 PM) for high tea in the colonial setting, or during the April season for a full heritage experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Smart casual attire is appropriate for visiting the hotel and its restaurants. Formal dress is required for the main dining room.",
+            "behavior": [
+                "Respect: Be respectful of hotel guests and staff at all times within the property.",
+                "Photography: Photography of the heritage exterior and gardens is generally allowed; seek permission for interior photography.",
+                "Dining: Reservations are recommended for restaurant visits, especially during peak seasons.",
+                "Heritage: Treat the heritage building and its furnishings with great care and respect.",
+                "Public Access: Some areas of the hotel may be restricted to guests only; follow staff guidance.",
+                "High Tea: The hotel's high tea service is a renowned cultural experience and a highlight for visitors."
+            ],
+            "entry_requirements": ["Open to visitors for dining and high tea", "Reservations recommended", "Photography by permission"]
+        },
+        "entry_fee": "No entry fee; dining and activity charges apply",
+        "opening_hours": "Open daily; restaurant and high tea hours vary"
+    },
+
+
+    {
+        "id": "ramboda-falls",
+        "name": "Ramboda Falls",
+        "latitude": 7.0167,
+        "longitude": 80.7167,
+        "description": "One of the tallest and most spectacular waterfalls in Sri Lanka, Ramboda Falls plunges approximately 109 meters through lush tea plantation-clad hillsides along the Nuwara Eliya to Kandy highway. The falls are easily visible from the main road and a viewing platform provides excellent vantage points. The surrounding landscape of layered tea estates and misty hills creates a breathtaking setting that makes Ramboda one of the most photographed waterfalls in the country.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after significant rainfall for the most powerful flow and best photographic light on the falls"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual clothing and comfortable footwear. The viewing area is accessible with minimal walking.",
+            "behavior": [
+                "Safety: Stay within designated viewing areas and do not attempt to climb the rocks near the falls.",
+                "Photography: Photography is freely allowed from the viewing platform and roadside vantage points.",
+                "Littering: No littering in or around the waterfall viewing area.",
+                "Vendors: Local vendors operate near the viewing area; engage respectfully.",
+                "Traffic: Exercise caution when stopping along the main highway to view the falls.",
+                "Nearby Temple: The Shree Bhakta Hanuman Kovil is located nearby; combine both visits respectfully."
+            ],
+            "entry_requirements": ["Free access to viewing area", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open all day"
+    },
+
+
+    {
+        "id": "pedro-tea-estate",
+        "name": "Pedro Tea Estate",
+        "latitude": 6.9833,
+        "longitude": 80.8000,
+        "description": "One of the oldest and most celebrated tea estates in Nuwara Eliya, Pedro Tea Estate has been producing fine highland Ceylon tea since the 19th century. The estate offers guided factory tours that walk visitors through the complete tea production process from withering and rolling to fermentation and drying. The surrounding tea gardens provide a beautiful highland landscape backdrop and excellent photography opportunities.",
+        "image_url": "",
+        "category": "Tea Estate",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:30 AM - 11:30 AM) on weekdays when the factory is in full operation for the most informative tour"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual comfortable clothing. Closed-toe shoes are recommended for the factory tour. Avoid loose clothing near machinery.",
+            "behavior": [
+                "Factory Safety: Follow all safety instructions from the tour guide during the factory tour.",
+                "Machinery: Do not touch or interfere with any tea processing machinery.",
+                "Photography: Photography is generally allowed in the gardens and factory; check for any restricted areas.",
+                "Tea Tasting: A tea tasting session is typically included or available; take the opportunity to sample fresh highland tea.",
+                "Littering: No littering on the estate grounds.",
+                "Purchasing: Fresh estate tea is available for purchase and makes an excellent souvenir."
+            ],
+            "entry_requirements": ["Paid tour fee required", "Photography allowed in most areas"]
+        },
+        "entry_fee": "LKR 500 for foreign adults",
+        "opening_hours": "8:00 AM - 5:00 PM (Factory operational on weekdays)"
+    },
+
+
+    {
+        "id": "galways-land-national-park",
+        "name": "Galway's Land National Park",
+        "latitude": 6.9667,
+        "longitude": 80.7833,
+        "description": "A small but ecologically significant national park situated within Nuwara Eliya town, Galway's Land is a remnant cloud forest reserve that provides a vital habitat corridor for endemic bird species, mammals, and highland flora. The park is particularly renowned among birdwatchers as one of the best sites in Sri Lanka to observe highland endemic species including the Sri Lanka whistling thrush, dull-blue flycatcher, and Sri Lanka white-eye in their natural forest habitat.",
+        "image_url": "",
+        "category": "National Park",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) for the best birdwatching when endemic species are most active"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear neutral-colored, quiet clothing suitable for birdwatching. Sturdy walking shoes for forest trails. A warm layer is recommended in the morning.",
+            "behavior": [
+                "Wildlife: Maintain strict silence and do not disturb birds or wildlife within the forest reserve.",
+                "Trails: Follow designated trails only; do not venture off-path in this protected ecosystem.",
+                "Photography: Nature and wildlife photography is encouraged; avoid flash photography near birds.",
+                "Littering: No littering of any kind within the national park.",
+                "Birdwatching: Binoculars are highly recommended for the best birdwatching experience.",
+                "Guided Tours: A local bird guide is strongly recommended to locate and identify endemic species."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 1000 for foreign adults",
+        "opening_hours": "6:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "labookellie-tea-lounge",
+        "name": "Labookellie Tea Lounge",
+        "latitude": 6.9833,
+        "longitude": 80.7667,
+        "description": "A beloved and iconic tea lounge situated at the historic Labookellie Tea Estate along the Kandy to Nuwara Eliya highway. Labookellie offers visitors a quintessential Ceylon tea experience with complimentary fresh-brewed highland tea and a factory tour, set amid spectacular tea garden views. It is one of the most popular and accessible tea estate experiences in the hill country.",
+        "image_url": "",
+        "category": "Tea Estate",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Mid-morning (10:00 AM - 12:00 PM) on weekdays for a factory tour combined with a relaxed tea tasting session"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual comfortable clothing. Closed-toe shoes recommended for the factory floor tour.",
+            "behavior": [
+                "Tea Tasting: Complimentary tea is offered; enjoy it respectfully and consider purchasing estate tea as a gesture of appreciation.",
+                "Factory Tour: Follow the guide's instructions throughout the factory tour for safety.",
+                "Machinery: Do not touch or operate any tea processing equipment.",
+                "Photography: Photography is generally allowed in the gardens and lounge area.",
+                "Purchasing: A wide range of Labookellie teas are available for purchase at competitive prices.",
+                "Littering: No littering on the estate grounds."
+            ],
+            "entry_requirements": ["Free entry and complimentary tea", "Photography allowed", "Factory tour available"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "8:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "nuwara-eliya-golf-club",
+        "name": "Nuwara Eliya Golf Club",
+        "latitude": 6.9669,
+        "longitude": 80.7697,
+        "description": "One of the oldest golf clubs in Asia, established in 1889 during the British colonial era, the Nuwara Eliya Golf Club is a spectacular 18-hole course set at an altitude of nearly 1,900 meters amid misty highlands and manicured greens. The club is a heritage institution that embodies the colonial sporting legacy of Sri Lanka's little England and is open to visiting golfers, making it a unique and prestigious experience.",
+        "image_url": "",
+        "category": "Heritage Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (7:30 AM - 11:00 AM) for the most pleasant playing conditions and clear highland views"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Proper golf attire is mandatory for players. Smart casual dress is required for the clubhouse. Collared shirts and golf shoes are expected on the course.",
+            "behavior": [
+                "Golf Etiquette: Observe standard golf course etiquette at all times including silence during play and repairing divots.",
+                "Membership: Visiting golfers must register at the clubhouse and pay the applicable green fee.",
+                "Club Rental: Golf club rental is available for visiting players without their own equipment.",
+                "Clubhouse: Smart casual dress is required in the heritage clubhouse; observe club rules.",
+                "Photography: Photography of the scenic course and surroundings is allowed; avoid disrupting play.",
+                "Respect: Be respectful of the heritage nature of this historic institution."
+            ],
+            "entry_requirements": ["Green fee required for visiting golfers", "Proper golf attire mandatory"]
+        },
+        "entry_fee": "Green fees apply for visiting golfers",
+        "opening_hours": "7:00 AM - 6:00 PM"
+    },
+
+
+    {
+        "id": "pidurutalagala",
+        "name": "Pidurutalagala",
+        "latitude": 6.9983,
+        "longitude": 80.7731,
+        "description": "At 2,524 meters above sea level, Pidurutalagala is the highest mountain in Sri Lanka, located immediately above Nuwara Eliya. The summit hosts a Sri Lanka Air Force telecommunications installation and is therefore closed to the general public, but the approach roads and forest trails around its base offer exceptional highland scenery, birdwatching, and views of Nuwara Eliya town and Lake Gregory below.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) for clear highland views and the best birdwatching conditions on the lower slopes"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm, layered clothing is essential as temperatures at this altitude are significantly cooler. Sturdy waterproof hiking footwear required.",
+            "behavior": [
+                "Military Restriction: The summit and upper slopes are a restricted military zone; do not attempt to access beyond permitted areas.",
+                "Trails: Explore only publicly accessible lower slope trails; respect all boundary markings and signage.",
+                "Wildlife: The mountain forests are rich in endemic birdlife; observe quietly without disturbing.",
+                "Photography: Photography of the natural landscape is allowed in public access areas; photographing military installations is strictly prohibited.",
+                "Littering: No littering in the highland forest environment.",
+                "Safety: Inform someone of your route and expected return time when walking the lower slopes."
+            ],
+            "entry_requirements": ["Summit is restricted; lower slope access only", "No photography of military installations"]
+        },
+        "entry_fee": "free (public access areas only)",
+        "opening_hours": "Lower slopes accessible during daylight hours"
+    },
+
+
+    {
+        "id": "shree-bhakta-hanuman-kovil-ramboda",
+        "name": "Shree Bhakta Hanuman Kovil, Ramboda",
+        "latitude": 7.0200,
+        "longitude": 80.7150,
+        "description": "A vibrant and spiritually significant Hindu temple dedicated to Lord Hanuman, located in Ramboda near the famous Ramboda Falls. The temple is an important site on Sri Lanka's Ramayana trail, believed to mark one of the locations where Hanuman searched for Sita during the events of the Ramayana epic. The colorful gopuram and serene mountain setting make it a deeply atmospheric pilgrimage and cultural destination.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August", "October"],
+            "off_peak_months": ["April", "May", "June", "September", "November"],
+            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) during morning puja for an authentic devotional experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress very modestly with shoulders and knees fully covered. Remove shoes before entering. Avoid wearing leather items inside the temple.",
+            "behavior": [
+                "Dress Code: Full modest dress is mandatory. Avoid leather accessories inside the temple complex.",
+                "Footwear: Remove all footwear before entering the temple premises.",
+                "Photography: Photography inside the inner sanctum is restricted; seek permission from temple priests.",
+                "Rituals: Do not interrupt ongoing puja rituals; observe from a respectful distance.",
+                "Decorum: Maintain silence and deep respect throughout the temple complex.",
+                "Cultural Respect: Be mindful of the Ramayana epic significance of this site to Hindu devotees and pilgrims."
+            ],
+            "entry_requirements": ["Free entry", "Modest dress required", "Photography restricted in inner sanctum"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM"
+    },
+
+
+    {
+        "id": "hakgala-rock",
+        "name": "Hakgala Rock",
+        "latitude": 6.9100,
+        "longitude": 80.8200,
+        "description": "A striking and imposing granite rock massif rising dramatically above the Hakgala Botanical Garden and the surrounding highland landscape near Nuwara Eliya. Hakgala holds mythological significance as a site associated with the Ramayana, believed to be the location from which Hanuman carried a piece of the Himalayan Sanjeevani mountain. The rock provides a dramatic natural backdrop to the botanical garden and offers excellent views of the surrounding hill country.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for clear views of the rock and surrounding highland landscape"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual comfortable clothing and sturdy footwear for walking around the base and botanical garden area.",
+            "behavior": [
+                "Climbing: Climbing the rock face is not recommended and may be restricted; assess conditions carefully.",
+                "Nature: Do not damage vegetation around the rock base area.",
+                "Photography: Photography of the dramatic rock formation and surrounding landscape is freely encouraged.",
+                "Littering: No littering in the natural and botanical garden surroundings.",
+                "Combined Visit: The rock is best viewed in conjunction with a visit to the adjacent Hakgala Botanical Garden.",
+                "Respect: Be mindful of the Ramayana mythological significance of the site to Hindu visitors."
+            ],
+            "entry_requirements": ["Viewable from public areas and botanical garden", "Photography allowed"]
+        },
+        "entry_fee": "Viewable from botanical garden (garden entry fee applies)",
+        "opening_hours": "Visible during daylight hours"
+    },
+
+
+    {
+        "id": "devon-falls",
+        "name": "Devon Falls",
+        "latitude": 6.9833,
+        "longitude": 80.6333,
+        "description": "One of the most majestic and photographed waterfalls in Sri Lanka, Devon Falls plunges approximately 97 meters in a single dramatic cascade through lush tea estate-clad hillsides near Talawakele. Named after a British planter's original estate, the falls are easily visible from a roadside viewing area and are a classic highlight of the scenic train or road journey through the central highlands.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after significant rainfall for the most powerful and visually stunning cascade"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual clothing. The main viewing area is roadside and requires minimal walking.",
+            "behavior": [
+                "Traffic Safety: Exercise caution when stopping along the main road for roadside viewing.",
+                "Photography: Photography is freely allowed from the viewing area.",
+                "Vendors: Local vendors operate at the viewpoint; engage respectfully.",
+                "Littering: No littering at the roadside viewing area.",
+                "Trails: A short trail to the base may be accessible; exercise caution on slippery paths.",
+                "Combined Visit: Devon Falls and St Clair's Falls are located close together and are best visited in combination."
+            ],
+            "entry_requirements": ["Free access to viewing area", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open all day"
+    },
+
+
+    {
+        "id": "aberdeen-waterfall",
+        "name": "Aberdeen Waterfall",
+        "latitude": 6.9667,
+        "longitude": 80.6167,
+        "description": "A stunning single-drop waterfall plunging approximately 98 meters through dense highland forest near Nuwara Eliya, Aberdeen Waterfall is one of Sri Lanka's tallest and most beautiful waterfalls. Set within a scenic forested gorge accessible via a tea plantation, the falls offer a rewarding natural experience with excellent photography opportunities in a tranquil and relatively unspoiled highland setting.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after rainfall for the strongest water flow and freshest forest atmosphere"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear sturdy hiking footwear and comfortable clothing suitable for a forest trail walk. Paths can be slippery and muddy after rain.",
+            "behavior": [
+                "Safety: Exercise caution near the waterfall base and on slippery forest trail sections.",
+                "Trails: Follow the designated trail through the plantation and forest to the waterfall.",
+                "Littering: No littering in this natural forest area.",
+                "Photography: Photography is freely allowed; the falls and forest setting offer excellent shots.",
+                "Plantation Access: Confirm access arrangements with local guides or plantation management before visiting.",
+                "Wildlife: Do not disturb wildlife encountered along the forest trail."
+            ],
+            "entry_requirements": ["Plantation access fee may apply", "Photography allowed"]
+        },
+        "entry_fee": "Nominal plantation access fee may apply",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "ambewela-farm",
+        "name": "Ambewela Farm",
+        "latitude": 6.8333,
+        "longitude": 80.8000,
+        "description": "Known as the New Zealand of Sri Lanka, Ambewela Farm is a state-owned dairy farm located at approximately 2,000 meters above sea level near Nuwara Eliya. The farm is set amid rolling green meadows and misty highland landscapes, home to dairy cows, sheep, rabbits, and other farmyard animals. It offers a charming rural escape with fresh farm produce, scenic walks, and an authentic highland farming experience.",
+        "image_url": "",
+        "category": "Agricultural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) when the farm is most active and misty highland views are at their most atmospheric"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm, comfortable clothing as the farm is at high altitude and temperatures are significantly cooler. Waterproof footwear recommended for muddy farm paths.",
+            "behavior": [
+                "Animals: Do not provoke, chase, or disturb farm animals. Follow staff guidance for any animal interactions.",
+                "Farm Areas: Stay within visitor-accessible areas of the farm and do not enter restricted livestock zones.",
+                "Photography: Photography is freely allowed throughout the visitor areas of the farm.",
+                "Purchasing: Fresh milk, yogurt, and farm produce are available for purchase.",
+                "Littering: No littering within the farm grounds.",
+                "Children: Supervise children carefully around large farm animals."
+            ],
+            "entry_requirements": ["Paid entry required", "Photography allowed"]
+        },
+        "entry_fee": "LKR 500 for foreign adults",
+        "opening_hours": "8:00 AM - 5:30 PM"
+    },
+
+
+    {
+        "id": "laxapana-falls",
+        "name": "Laxapana Falls",
+        "latitude": 6.9167,
+        "longitude": 80.5167,
+        "description": "One of the tallest waterfalls in Sri Lanka at approximately 126 meters, Laxapana Falls cascades powerfully through dense highland forest in the Maskeliya area, feeding into the Laxapana hydroelectric reservoir. Surrounded by lush forest and tea estates, the falls are a dramatic and visually stunning natural attraction that showcases the raw power and natural beauty of Sri Lanka's central highlands watershed.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after significant rainfall for the most powerful and impressive water flow"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual sturdy clothing and waterproof footwear suitable for a forested trail walk. Expect mist and spray near the falls.",
+            "behavior": [
+                "Safety: Do not approach the waterfall edge or attempt to climb near the falls.",
+                "Trails: Follow designated viewing paths to the waterfall.",
+                "Littering: No littering in the natural and forested surroundings.",
+                "Photography: Photography is freely allowed; the dramatic cascade offers excellent shots.",
+                "Wildlife: Do not disturb wildlife in the surrounding forest.",
+                "Guided Access: A local guide is helpful for navigating to the best viewpoints."
+            ],
+            "entry_requirements": ["Free or nominal access fee", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "great-worlds-end-drop",
+        "name": "Great World's End Drop",
+        "latitude": 6.7980,
+        "longitude": 80.8050,
+        "description": "The Great World's End is the most dramatic and iconic feature of Horton Plains National Park, a sheer cliff face plunging approximately 870 meters in a near-vertical drop to the lowland plains far below. On clear mornings, the view from the cliff edge is one of the most breathtaking and awe-inspiring natural spectacles in Sri Lanka, with the vast lowland landscape stretching to the horizon. Cloud cover typically obscures the view by mid-morning.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Arrive at Horton Plains at opening (6:00 AM) and walk directly to World's End; clear views are almost exclusively possible before 9:30 AM when clouds typically roll in"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm layered clothing and waterproof windproof outer layers. Sturdy hiking boots essential for the 9km circular trail through the national park.",
+            "behavior": [
+                "Safety: Stay strictly behind safety barriers at the cliff edge. The 870-meter drop is absolutely fatal.",
+                "Trails: Follow the designated circular trail route within the national park.",
+                "Timing: This attraction is entirely cloud-dependent; if clouds are present at arrival, the view will be minimal regardless of waiting.",
+                "Littering: Absolutely no littering; pack out all waste.",
+                "Photography: Clear morning views offer world-class landscape photography opportunities.",
+                "Wildlife: Be alert for sambar deer and endemic birds along the trail; observe without disturbance."
+            ],
+            "entry_requirements": ["Accessed via Horton Plains National Park entry fee", "Licensed guide required"]
+        },
+        "entry_fee": "Included with Horton Plains National Park entry (USD 25 for foreign adults)",
+        "opening_hours": "Accessible from 6:00 AM within park hours"
+    },
+
+
+    {
+        "id": "devathurai-ella-falls",
+        "name": "Devathurai Ella Falls",
+        "latitude": 6.8500,
+        "longitude": 80.7000,
+        "description": "A beautiful and relatively secluded waterfall located in the highlands south of Nuwara Eliya, Devathurai Ella cascades through lush highland forest in a pristine natural setting. The falls offer a rewarding off-the-beaten-path natural experience for visitors exploring the lesser-known highland waterfall trails away from the more heavily visited attractions of the Nuwara Eliya region.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after rainfall for the best water flow and freshest natural conditions"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear sturdy hiking footwear and comfortable quick-dry clothing. The trail may be wet, muddy, and steep in sections.",
+            "behavior": [
+                "Trails: Follow designated trails carefully as the area may be unfamiliar; a local guide is strongly recommended.",
+                "Safety: Exercise extreme caution near the waterfall base and on wet rocks.",
+                "Littering: No littering in this pristine natural area.",
+                "Photography: Photography is freely encouraged throughout the trail and at the falls.",
+                "Wildlife: Do not disturb wildlife in the surrounding forest.",
+                "Guided Access: Engage a local guide for safe navigation to this less-visited waterfall."
+            ],
+            "entry_requirements": ["Free access", "Local guide recommended", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "great-western-mountain",
+        "name": "Great Western Mountain",
+        "latitude": 6.9167,
+        "longitude": 80.6000,
+        "description": "Rising to approximately 2,210 meters, Great Western Mountain is one of the major peaks of Sri Lanka's central highlands, located in the Maskeliya range near Nuwara Eliya. The mountain offers exceptional trekking through cloud forests, tea estates, and highland grasslands, with panoramic summit views across the central highlands. It is a rewarding but challenging destination for experienced hikers seeking highland wilderness adventures.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning start (5:00 AM - 6:00 AM) for a full-day trek to the summit and back, targeting the clearest weather windows between January and March"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Full hiking gear including warm layered clothing, waterproof jacket, and sturdy waterproof hiking boots. Trekking poles are recommended for steep sections.",
+            "behavior": [
+                "Guided Treks: A certified local guide is mandatory for trekking Great Western Mountain; the terrain is complex and trail-finding is difficult.",
+                "Safety: Inform someone of your full trekking plan and expected return. Emergency communication may be limited at altitude.",
+                "Wildlife: The cloud forests are habitat for endemic species; observe without disturbance.",
+                "Littering: Carry all waste out of the highland environment.",
+                "Photography: The summit and cloud forest offer extraordinary photography opportunities.",
+                "Weather: Mountain weather changes rapidly; be prepared to abandon the summit attempt if conditions deteriorate."
+            ],
+            "entry_requirements": ["Certified guide mandatory", "Permit may be required", "Photography allowed"]
+        },
+        "entry_fee": "Guide and permit fees apply",
+        "opening_hours": "Best started before 6:00 AM for a full day trek"
+    },
+
+
+    {
+        "id": "puna-ella-falls",
+        "name": "Puna Ella Falls",
+        "latitude": 6.9000,
+        "longitude": 80.7333,
+        "description": "A scenic and picturesque waterfall located in the highlands near Nuwara Eliya, Puna Ella cascades gracefully through verdant highland forest and tea plantation landscapes. The falls offer a pleasant natural retreat and photography destination for visitors exploring the many waterfalls scattered throughout the central highlands region of Sri Lanka.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after rainfall for the most impressive water flow"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Comfortable clothing and sturdy footwear suitable for a short forest or plantation walk. Paths may be slippery after rain.",
+            "behavior": [
+                "Safety: Exercise caution on slippery rocks near the waterfall.",
+                "Trails: Follow established paths to the waterfall viewing area.",
+                "Littering: No littering in the natural surroundings.",
+                "Photography: Photography is freely allowed at the falls.",
+                "Wildlife: Do not disturb wildlife along the trail.",
+                "Access: Confirm current access route with local guides before visiting."
+            ],
+            "entry_requirements": ["Free or nominal access fee", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+    {
+        "id": "thotupola",
+        "name": "Thotupola",
+        "latitude": 6.7833,
+        "longitude": 80.8167,
+        "description": "The third highest peak in Sri Lanka at approximately 2,357 meters, Thotupola Kanda is located within and adjacent to Horton Plains National Park. The summit area features unique high-altitude cloud forest and montane grassland ecosystems, and the approach offers spectacular highland wilderness scenery. It is a significant peak for highland trekkers exploring Sri Lanka's highest mountain environments.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning start (5:30 AM - 6:00 AM) for the clearest summit conditions and the most rewarding highland trek experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Full highland hiking gear including very warm layered clothing, waterproof windproof jacket, and sturdy waterproof hiking boots. Temperatures near the summit can be near freezing before dawn.",
+            "behavior": [
+                "Guided Treks: A registered local guide is required for trekking to the Thotupola summit.",
+                "Park Regulations: Trekking within the Horton Plains boundary requires compliance with all national park regulations.",
+                "Wildlife: The highland ecosystems are fragile and home to endemic species; observe without disturbance.",
+                "Littering: Absolutely no littering; all waste must be carried out.",
+                "Photography: The high-altitude landscape offers exceptional photography.",
+                "Safety: Mountain weather can change extremely rapidly; carry emergency rain gear and warm layers."
+            ],
+            "entry_requirements": ["Horton Plains entry fee applies if accessed via the park", "Registered guide required"]
+        },
+        "entry_fee": "Park entry fees apply",
+        "opening_hours": "Best started before 6:00 AM"
+    },
+
+
+    {
+        "id": "kirigalpota",
+        "name": "Kirigalpota",
+        "latitude": 6.7833,
+        "longitude": 80.7667,
+        "description": "The second highest peak in Sri Lanka at 2,395 meters, Kirigalpota is a challenging and rewarding highland trekking destination near Horton Plains. The summit offers extraordinary panoramic views across the central highlands on clear days and the trek passes through pristine cloud forest and high-altitude patana grassland ecosystems that are among the most ecologically significant habitats in Sri Lanka.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Very early morning start (4:30 AM - 5:00 AM) for a full-day summit trek targeting clear conditions at the top before midday cloud cover"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Full professional highland hiking gear. Warm layered clothing, waterproof jacket, sturdy hiking boots, and trekking poles are all essential for this demanding trek.",
+            "behavior": [
+                "Guided Treks: A certified experienced guide is mandatory for this demanding mountain trek.",
+                "Fitness: This is a strenuous full-day trek requiring good physical fitness; assess your capability honestly before attempting.",
+                "Safety: Emergency communication may be extremely limited; carry a fully charged phone and basic first aid kit.",
+                "Wildlife: Observe all endemic highland wildlife without disturbance.",
+                "Littering: Carry all waste out of this pristine protected highland environment.",
+                "Weather: Be prepared to turn back if weather conditions deteriorate; summit conditions can be extremely harsh."
+            ],
+            "entry_requirements": ["Certified guide mandatory", "Permit required", "Photography allowed"]
+        },
+        "entry_fee": "Guide and permit fees apply",
+        "opening_hours": "Best started before 5:00 AM for a full day summit trek"
+    },
+
+
+    {
+        "id": "lower-ramboda-falls",
+        "name": "Lower Ramboda Falls",
+        "latitude": 7.0100,
+        "longitude": 80.7100,
+        "description": "Located below the famous upper Ramboda Falls along the Nuwara Eliya to Kandy highway corridor, Lower Ramboda Falls is a beautiful secondary cascade that is often overlooked by visitors focused on the main upper falls. The lower falls offer a more intimate and accessible waterfall experience set within lush forest and tea plantation surroundings, with a short trail leading to excellent close-up viewing points.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after rainfall for the strongest water flow, ideally combined with a visit to the upper Ramboda Falls"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Comfortable clothing and sturdy footwear for a short forest trail walk. Paths can be slippery after rain.",
+            "behavior": [
+                "Safety: Exercise caution on wet and slippery rocks near the waterfall.",
+                "Trails: Follow established paths down to the lower falls viewing area.",
+                "Littering: No littering in the natural surroundings.",
+                "Photography: Photography is freely allowed at the falls.",
+                "Combined Visit: Best visited in combination with the upper Ramboda Falls on the same trip.",
+                "Access: The trail to the lower falls requires more effort than the roadside upper falls; appropriate footwear is important."
+            ],
+            "entry_requirements": ["Free access", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "pattipola",
+        "name": "Pattipola",
+        "latitude": 6.8333,
+        "longitude": 80.8500,
+        "description": "Located at approximately 1,892 meters above sea level, Pattipola is the highest railway station in Sri Lanka and one of the highest in Asia, situated on the iconic Colombo to Badulla hill country railway line. The station and surrounding highland landscape offer a glimpse into Sri Lanka's extraordinary mountain railway heritage, with dramatic views of the surrounding highland plains and the approach to Horton Plains National Park.",
+        "image_url": "",
+        "category": "Heritage Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "During scheduled train arrivals, particularly the iconic blue train from Colombo, for the full highland railway heritage experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm clothing is essential as Pattipola is at high altitude and temperatures are significantly cooler than lower elevations.",
+            "behavior": [
+                "Railway Safety: Stay off the railway tracks at all times; observe all safety signage at the station.",
+                "Platform: Purchase a valid platform ticket if observing trains at the station.",
+                "Photography: Photography of the station and passing trains is allowed from safe designated areas.",
+                "Respect: Be respectful of railway staff and operational requirements at the active station.",
+                "Littering: No littering at the station or surrounding area.",
+                "Train Travel: Travelling on the hill country railway through Pattipola is one of the most scenic rail journeys in the world."
+            ],
+            "entry_requirements": ["Free to visit station area", "Platform ticket required for platform access", "Photography allowed"]
+        },
+        "entry_fee": "free (platform ticket required for train platform)",
+        "opening_hours": "Open during railway operational hours"
+    },
+
+
+    {
+        "id": "senteliyas-viewpoint",
+        "name": "Senteliyas Viewpoint",
+        "latitude": 6.9300,
+        "longitude": 80.8300,
+        "description": "A spectacular and relatively lesser-known highland viewpoint located near Nuwara Eliya, Senteliyas Viewpoint offers sweeping panoramic views across misty highland valleys, tea estate-draped hillsides, and the dramatic central mountain landscape. The viewpoint is particularly atmospheric at dawn and during misty conditions when the valleys below fill with rolling clouds creating a sea of mist effect.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Sunrise (6:00 AM - 7:30 AM) between January and April for the most dramatic misty valley views and golden morning light over the highlands"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm windproof clothing essential for early morning visits. Sturdy footwear for the approach path.",
+            "behavior": [
+                "Safety: Stay within safe viewing areas and away from exposed cliff edges.",
+                "Littering: No littering at this scenic natural viewpoint.",
+                "Photography: Photography is freely encouraged; the panoramic views offer exceptional landscape opportunities.",
+                "Access: Confirm current access arrangements and road conditions before visiting.",
+                "Noise: Respect the peaceful highland atmosphere and other visitors.",
+                "Guided Access: A local guide or tuk-tuk driver familiar with the area is helpful for locating this viewpoint."
+            ],
+            "entry_requirements": ["Free access", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Best accessed from 5:30 AM for sunrise"
+    },
+
+
+    {
+        "id": "gerandigala-gerandi-ella-waterfall",
+        "name": "Gerandigala Gerandi Ella Waterfall",
+        "latitude": 6.9200,
+        "longitude": 80.7600,
+        "description": "A scenic and relatively secluded highland waterfall set within lush forest near Nuwara Eliya, Gerandi Ella offers a rewarding off-the-beaten-path natural experience away from the more heavily visited waterfalls of the region. The falls cascade through a rocky forested gorge creating a beautiful and tranquil natural pool area, making it an excellent destination for nature lovers seeking unspoiled highland scenery.",
+        "image_url": "",
+        "category": "Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "July", "August"],
+            "off_peak_months": ["April", "May", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) after rainfall for the most impressive water flow in a fresh and vibrant forest setting"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Sturdy hiking footwear and comfortable clothing. The forest trail can be steep and slippery; trekking poles are useful.",
+            "behavior": [
+                "Trails: A local guide is strongly recommended for safe navigation to this lesser-visited waterfall.",
+                "Safety: Exercise caution near the waterfall and on wet forest trail sections.",
+                "Littering: No littering in this pristine forest and waterfall area.",
+                "Photography: Photography is freely encouraged throughout the trail and at the falls.",
+                "Wildlife: Do not disturb wildlife in the surrounding highland forest.",
+                "Swimming: The natural pool may be suitable for bathing; assess depth and currents carefully."
+            ],
+            "entry_requirements": ["Free access", "Local guide recommended", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open during daylight hours"
+    },
+
+
+    {
+        "id": "ballanbedi-hela",
+        "name": "Ballanbedi Hela",
+        "latitude": 6.9100,
+        "longitude": 80.7800,
+        "description": "A dramatic highland cliff and viewpoint located in the hills surrounding Nuwara Eliya, Ballanbedi Hela offers a breathtaking sheer drop with sweeping panoramic views across forested highland valleys and the surrounding mountain landscape. The site is a remarkable natural feature of the central highlands and provides an adrenaline-inducing vantage point for those seeking dramatic highland scenery off the standard tourist circuit.",
+        "image_url": "",
+        "category": "Scenic Viewpoint",
+        "crowd_info": {
+            "peak_months": ["January", "February", "March", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) on clear days for the best visibility and most dramatic cliff-edge views before cloud cover builds"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Warm windproof layers for the exposed cliff-edge environment. Sturdy hiking footwear with good grip essential for the approach trail.",
+            "behavior": [
+                "Safety: Exercise extreme caution at the cliff edge. Do not lean over or approach beyond any natural or marked safety boundaries.",
+                "Guided Access: A local guide is strongly recommended for safe navigation to this dramatic viewpoint.",
+                "Littering: No littering at this natural highland site.",
+                "Photography: The dramatic cliff views offer extraordinary landscape photography opportunities.",
+                "Weather: Do not visit in mist or poor visibility as navigation and safety are significantly compromised.",
+                "Access: Confirm current access route and conditions with local guides before visiting."
+            ],
+            "entry_requirements": ["Free access", "Local guide strongly recommended", "Photography allowed"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Best accessed from 6:00 AM during daylight hours only"
     }
+
+
 ]
