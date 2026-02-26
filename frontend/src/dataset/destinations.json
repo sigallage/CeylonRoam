@@ -3500,7 +3500,588 @@
         },
         "entry_fee": "free",
         "opening_hours": "Best accessed from 6:00 AM during daylight hours only"
+    },
+
+
+    {
+        "id": "nallur-kandaswamy-devasthanam",
+        "name": "Nallur Kandaswamy Devasthanam",
+        "latitude": 9.6687,
+        "longitude": 80.0137,
+        "description": "The largest and most significant Hindu temple in Sri Lanka, located in Nallur, Jaffna. Dedicated to Lord Murugan (Kartikeya), its towering five-storey golden gopuram is an iconic symbol of Tamil Hindu identity. Originally founded in 948 CE, the present structure dates to 1734 CE. The temple hosts the grand 25-day Nallur Festival in July/August, one of the most spectacular religious events in the country.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["July", "August", "January", "April"],
+            "off_peak_months": ["February", "March", "May", "June", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) for the morning pooja or late afternoon (4:00 PM - 6:00 PM) to avoid crowds and heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Strict dress code enforced. Men must remove their shirts before entering the main temple area. All visitors must cover shoulders and knees; wearing shorts or sleeveless tops is prohibited. Wearing black clothing is strongly discouraged. Shoes and hats must be removed before entering the temple premises.",
+            "behavior": [
+                "Dress Code: Men must remove their shirts; women must wear modest attire such as saris or long skirts. Black clothing is discouraged as a sign of respect.",
+                "Footwear: Remove shoes and socks before entering the temple complex. A designated storage area is available.",
+                "Photography: Strictly prohibited inside the main sanctum and during active pooja ceremonies. Allowed in the outer courtyards and surrounding areas only.",
+                "Decorum: Maintain complete silence during poojas and rituals. Avoid loud conversations or disruptive behaviour.",
+                "Offerings: Visitors may bring flowers, fruits, or incense as offerings. Donations are accepted and appreciated.",
+                "Festival Period: During the 25-day Nallur Festival (July/August), expect very large crowds and processions; plan visits accordingly and respect all ceremonial activities."
+            ],
+            "entry_requirements": ["Free entry", "Donations appreciated", "Strict dress code enforced"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "4:30 AM - 12:00 PM and 4:00 PM - 9:00 PM daily (extended hours on Fridays and festival days)"
+    },
+
+
+
+    {
+        "id": "jaffna-market",
+        "name": "Jaffna Market (Manning Market)",
+        "latitude": 9.6615,
+        "longitude": 80.0108,
+        "description": "The bustling central market of Jaffna, known for its vibrant atmosphere and wide variety of local produce, fresh seafood, spices, tropical fruits, handicrafts, and traditional goods. It is an essential cultural experience offering a genuine insight into the everyday life and commerce of the Jaffna Peninsula.",
+        "image_url": "",
+        "category": "Local Market / Bazaar",
+        "crowd_info": {
+            "peak_months": ["December", "January", "April"],
+            "off_peak_months": ["May", "June", "July", "September", "October"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) for the freshest produce, most vendors, and the most lively atmosphere before the midday heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and modest clothing is recommended out of respect for the local Tamil community. Light, breathable fabrics are advised due to the heat.",
+            "behavior": [
+                "Bargaining: Polite bargaining is acceptable and common practice, but be respectful and fair to local vendors.",
+                "Photography: Ask permission before photographing vendors or local people; some may decline.",
+                "Cleanliness: Avoid littering; dispose of any waste in designated bins.",
+                "Crowd Awareness: The market can be very busy, especially in the mornings; be mindful of your belongings.",
+                "Cultural Sensitivity: The market area has a predominantly Tamil Hindu community; maintain respectful conduct throughout your visit."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM daily (some stalls may close during midday)"
+    },
+
+
+    {
+        "id": "fort-jaffna",
+        "name": "Jaffna Fort (Dutch Fort)",
+        "latitude": 9.6549,
+        "longitude": 80.0024,
+        "description": "A massive 17th-century star-shaped colonial fort overlooking the Jaffna Lagoon, originally built by the Portuguese in 1618 and later expanded by the Dutch into one of the most powerful fortifications in Asia. Spanning over 22 hectares, the fort features impressive coral and limestone ramparts, a moat, five bastions, the Hangman's Tower, the Queen's House, and a small archaeological museum. It suffered significant damage during the civil war but has since been partially restored with Dutch government support.",
+        "image_url": "",
+        "category": "Historical Fort / Colonial Monument",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:00 PM) for cooler weather and spectacular sunset views over the Jaffna Lagoon"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear. Flat, anti-slip shoes are strongly recommended for walking along the ramparts and uneven terrain.",
+            "behavior": [
+                "Safety: Stay on marked paths and be cautious on the rampart walls; some areas are uneven or damaged.",
+                "Preservation: Do not climb on or damage the historic walls, bastions, or structures.",
+                "Photography: Freely allowed throughout; no restrictions on cameras.",
+                "Security: A security check may be required at the entrance; carry your national ID or passport.",
+                "Museum: Visit the small archaeological museum inside the main portal for historical context and exhibits.",
+                "Birdwatching: Birding enthusiasts may spot woodpeckers, Brahminy kites, and other species from the fort walls."
+            ],
+            "entry_requirements": ["Paid entry", "ID or passport may be required at security checkpoint"]
+        },
+        "entry_fee": "Approx. LKR 50 for locals; USD 4 for foreign visitors",
+        "opening_hours": "7:30 AM - 5:30 PM daily"
+    },
+
+
+
+    {
+        "id": "jaffna-public-library",
+        "name": "Jaffna Public Library",
+        "latitude": 9.6620,
+        "longitude": 80.0060,
+        "description": "One of Sri Lanka's most iconic and historically significant landmarks, the Jaffna Public Library is a symbol of Tamil cultural resilience. Built in 1933, it once held over 97,000 books and manuscripts, making it one of the largest libraries in Asia. It was deliberately burned down in 1981 during the civil conflict, an act widely regarded as a cultural atrocity. Rebuilt and reopened in 2001, it stands today as a powerful monument to cultural memory and perseverance, housing a growing collection in its distinctive white colonial-style building.",
+        "image_url": "",
+        "category": "Historic Library / Cultural Monument",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April", "August"],
+            "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Morning (9:00 AM - 11:00 AM) on weekdays for a quieter and more reflective visit"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Smart casual and modest clothing is appropriate for a public cultural institution.",
+            "behavior": [
+                "Silence: Maintain library decorum; keep voices low inside the building.",
+                "Photography: Generally permitted on the exterior and grounds; check with staff before photographing inside.",
+                "Respect: Acknowledge the deep historical and emotional significance of this building to the Tamil community.",
+                "Conduct: Do not disturb readers or researchers working inside.",
+                "Awareness: Reading rooms and collections may be in use; be respectful of the active library functions."
+            ],
+            "entry_requirements": ["Free public access", "Visitors welcome"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "8:00 AM - 6:00 PM (closed on public holidays)"
+    },
+
+
+    {
+        "id": "nagadeepa-purana-viharaya",
+        "name": "Nagadeepa Purana Viharaya (Nainativu Island)",
+        "latitude": 9.7215,
+        "longitude": 79.9022,
+        "description": "One of the sixteen holiest Buddhist shrines (Solosmasthana) in Sri Lanka, located on the sacred island of Nainativu (Nagadeepa). According to Buddhist tradition, Lord Buddha visited this site during his second visit to Sri Lanka to resolve a dispute between two Naga kings, making it a place of immense spiritual significance. The temple features a striking silver-painted stupa, a gem throne, large stone Buddha footprints, and murals depicting the Buddha's visit. Accessible only by ferry from Kurikadduwan Jetty on Punkudutivu Island.",
+        "image_url": "",
+        "category": "Buddhist Temple / Sacred Island",
+        "crowd_info": {
+            "peak_months": ["June", "July", "January", "April"],
+            "off_peak_months": ["February", "March", "August", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning (arrive at KKD Jetty by 7:30 AM) to catch the first ferries and avoid midday heat; last ferry to the island departs at 4:00 PM"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Dress modestly by covering shoulders and knees. White or light-coloured clothing is appreciated as a sign of respect. Remove shoes before entering the temple premises.",
+            "behavior": [
+                "Ferry: Take the ferry from Kurikadduwan (KKD) Jetty on Punkudutivu Island; the 15-20 minute boat ride requires life jackets. Last ferry to the island is at 4:00 PM and last return ferry is at 5:30 PM.",
+                "Footwear: Remove shoes before entering the temple grounds.",
+                "Photography: Permitted in the outer areas and around the stupa, but avoid photographing monks or worshippers without permission during ceremonies.",
+                "Decorum: This is an active pilgrimage site; maintain respectful silence especially inside the image house.",
+                "Water Safety: Follow all safety instructions on the ferry; the boat can be crowded. Prefer the upper deck or open deck for comfort.",
+                "Combined Visit: The Nagapooshani Amman Kovil (Hindu temple) is only 700m away on the same island and can be visited on the same trip."
+            ],
+            "entry_requirements": ["Free entry to temple", "Ferry fare required (approx. LKR 80-100 per person each way)", "No accommodation on the island; day trips only"]
+        },
+        "entry_fee": "free (ferry charges apply)",
+        "opening_hours": "9:00 AM - 4:30 PM (Temple access dependent on ferry schedule from KKD Jetty)"
+    },
+
+
+    {
+        "id": "nainativu-nagapooshani-amman-kovil",
+        "name": "Nainativu Nagapooshani Amman Kovil",
+        "latitude": 9.7248,
+        "longitude": 79.9031,
+        "description": "A magnificently ornate Hindu temple on Nainativu Island dedicated to the Goddess Parvati in her form as Nagapooshani Amman (adorned with serpents). One of the 64 Shakthi Peethams of South Asia, the temple is famous for its elaborate Dravidian-style architecture featuring an estimated 10,000 sculptures. It hosts the largest predominantly Hindu festival in Sri Lanka, drawing hundreds of thousands of pilgrims annually, particularly during the June/July festival season.",
+        "image_url": "",
+        "category": "Hindu Temple / Sacred Island",
+        "crowd_info": {
+            "peak_months": ["June", "July", "January", "April"],
+            "off_peak_months": ["February", "March", "August", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning on weekdays; avoid June/July festival season unless specifically attending the festival, as crowds are extremely large"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Strict modest dress required. Men must remove their shirts before entering the main sanctum. Women should wear saris or long skirts covering ankles. Shoulders and knees must be covered. Remove shoes before entering.",
+            "behavior": [
+                "Dress Code: Men remove shirts inside the main temple; women wear conservative attire. Sarongs or wraps may be available at the entrance.",
+                "Footwear: Remove shoes before entering the temple complex.",
+                "Photography: Ask permission before photographing inside the temple; exterior photography is generally permitted.",
+                "Offerings: Free vegetarian food (prasadam) is served thrice daily at the temple; all visitors are welcome.",
+                "Ferry: Accessible only by ferry from KKD Jetty; the last ferry from the island departs at 5:30 PM.",
+                "Festival Crowds: The annual festival in June/July attracts massive crowds; extra planning is needed for transport and safety during this period."
+            ],
+            "entry_requirements": ["Free entry", "Ferry fare required", "Day trips only; no accommodation on island"]
+        },
+        "entry_fee": "free (ferry charges apply)",
+        "opening_hours": "Open daily during ferry operating hours (approx. 7:30 AM - 5:30 PM based on ferry schedule)"
+    },
+
+
+    {
+        "id": "jaffna-archaeological-museum",
+        "name": "Jaffna Archaeological Museum",
+        "latitude": 9.6656,
+        "longitude": 80.0110,
+        "description": "Established in 1978 in Nallur, the Jaffna Archaeological Museum houses a rich and diverse collection of artifacts from the Northern Province, spanning from ancient Sri Lanka to the colonial era. Exhibits include Buddhist and Hindu religious objects in metal, wood, and stone, 15th-century Buddha statues, and significant finds from the Kandarodai (Kantharodai) archaeological site, including a rare 14th-century seven-mouthed musical instrument pot. The land for the museum was donated by the Arumuga Navalar Foundation.",
+        "image_url": "",
+        "category": "Archaeological Museum",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) on weekdays for a quieter experience"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual but modest clothing appropriate for a cultural institution. Avoid overly revealing attire.",
+            "behavior": [
+                "Museum Etiquette: Maintain silence and avoid disturbing other visitors.",
+                "Artefacts: Do not touch any exhibits or display items.",
+                "Photography: Check with museum staff before photographing exhibits; restrictions may apply in certain sections.",
+                "Food & Drink: Not permitted inside the museum galleries.",
+                "Guided Information: Information panels are available; engage with staff for additional context on exhibits."
+            ],
+            "entry_requirements": ["Paid entry (nominal fee)", "Closed on Tuesdays and public holidays"]
+        },
+        "entry_fee": "Paid entry (nominal fee; lower rate for locals)",
+        "opening_hours": "8:00 AM - 4:45 PM (closed on Tuesdays and public holidays)"
+    },
+
+
+    {
+        "id": "king-sangiliyan-statue",
+        "name": "King Sangiliyan's Statue",
+        "latitude": 9.6607,
+        "longitude": 80.0062,
+        "description": "A prominent bronze statue of King Sankili (Sangiliyan II), the last independent king of the Jaffna Kingdom, located in the heart of Jaffna town near the clock tower and public library. The statue is a significant cultural and political symbol for the Tamil community, commemorating the king who led the final resistance against Portuguese colonial rule in the early 17th century. It serves as a popular landmark and gathering point in the city.",
+        "image_url": "",
+        "category": "Historical Monument / Statue",
+        "crowd_info": {
+            "peak_months": ["January", "April", "December"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 10:00 AM) or evening (5:00 PM - 7:00 PM) for photography and a pleasant atmosphere"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual clothing is acceptable. The area is a busy public thoroughfare.",
+            "behavior": [
+                "Respect: The statue holds deep cultural significance to the Tamil community; maintain respectful conduct.",
+                "Photography: Freely allowed; a popular spot for photos and documentation.",
+                "Cleanliness: Avoid littering in the public space surrounding the monument.",
+                "Traffic Awareness: The statue is located in a busy town-centre area; be mindful of traffic."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible 24 hours (best visited during daylight)"
+    },
+
+
+    {
+        "id": "keerimalai-naguleswaram-temple",
+        "name": "Keerimalai Naguleswaram Temple",
+        "latitude": 9.8189,
+        "longitude": 80.0342,
+        "description": "One of the most ancient and revered Hindu temples in Sri Lanka, located in the coastal town of Keerimalai, north of Jaffna. Dedicated to Lord Shiva, it is the northernmost of the island's five sacred Pancha Ishwaram temples. Believed to date to 543 BCE, the temple sits adjacent to the sacred Keerimalai Springs — natural mineral water tanks believed to have powerful curative properties. The legend tells of the sage Nagula Muni who was cured of a mongoose-like face by bathing in the springs. The temple was last destroyed in 1993 during the civil war and has since been rebuilt and expanded.",
+        "image_url": "",
+        "category": "Hindu Temple / Sacred Spring",
+        "crowd_info": {
+            "peak_months": ["July", "August", "February", "January"],
+            "off_peak_months": ["March", "April", "May", "June", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) before the heat and outside major festival days. The Aadi Amavasai festival in July/August draws very large crowds."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Strict modest dress required at the temple. Cover shoulders and knees. White or light-coloured clothing preferred. Remove shoes before entering the temple. Swimwear is acceptable at the sacred springs (separate gendered bathing tanks).",
+            "behavior": [
+                "Springs: The bathing tanks are separated by gender; the larger tank is for men and the smaller, western tank is reserved for women. Observe this rule without exception.",
+                "Temple Etiquette: Remove footwear before entering. Dress modestly and maintain respectful silence inside the shrine.",
+                "Photography: Allowed on the exterior and around the springs, but ask permission before photographing inside the temple or of devotees bathing.",
+                "Ritual Respect: On Aadi Amavasai and Maasi Magam festival days, bathing and ancestor-remembrance rituals are conducted; observe with reverence and do not interrupt.",
+                "Historical Site: Ruins of the ancient Keerimalai Ambalama (rest house) are visible near the car park; treat the area with care.",
+                "Nearby Ruins: An ancient archaeological site with ruins of the old Keerimalai Ambalama temple is located close by; explore respectfully."
+            ],
+            "entry_requirements": ["Free entry to temple and springs", "Modest dress required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "5:30 AM - 12:00 PM and 4:00 PM - 8:00 PM daily"
+    },
+
+
+    {
+        "id": "casuarina-beach",
+        "name": "Casuarina Beach",
+        "latitude": 9.7636,
+        "longitude": 79.9678,
+        "description": "Widely regarded as the finest beach on the Jaffna Peninsula, Casuarina Beach in Karainagar is known for its pristine white sand, calm shallow turquoise waters, and the shade provided by rows of native Casuarina trees lining the shore. Located approximately 23 km from Jaffna town, it offers a serene, uncrowded escape for swimming, picnicking, and relaxation. The shallow, clear waters make it particularly safe and suitable for families with children.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August", "December"],
+            "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Early morning (7:00 AM - 10:00 AM) or late afternoon (4:00 PM - 6:30 PM) for cooler temperatures; weekdays are significantly less crowded"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Beachwear is acceptable at the waterfront. Modest attire (covering swimwear) is strongly advised when moving through the nearby village or accessing local shops and eateries, as the area is a conservative Tamil community.",
+            "behavior": [
+                "Safety: Swim only in the calm, shallow designated areas. Avoid venturing too far from shore.",
+                "Modesty: Be mindful of local cultural norms when away from the immediate beach area; the surrounding community is traditional and conservative.",
+                "Cleanliness: Strictly avoid littering. The beach's pristine condition is maintained by the local community; take all waste with you.",
+                "Photography: Freely allowed; a stunning location for photography, especially during golden hour.",
+                "Vendors: A few local vendors offer fresh fruit and snacks; support local businesses.",
+                "Facilities: Basic public restrooms and changing facilities are available. Lifeguards may be present during peak hours."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (swimming recommended during daylight hours)"
+    },
+
+
+    {
+        "id": "elephantpass",
+        "name": "Elephant Pass (Aanaiththivu)",
+        "latitude": 9.4156,
+        "longitude": 80.3839,
+        "description": "The strategic land gateway to the Jaffna Peninsula, Elephant Pass is a narrow causeway connecting the peninsula to mainland Sri Lanka. Of immense historical and military significance, it was the site of some of the most intense battles of the Sri Lankan civil war. Today, it is a poignant site with a decommissioned battle tank displayed as a war memorial and a statue of a soldier, serving as a reminder of the conflict that shaped the region. The vast salt flats and lagoons surrounding the causeway offer dramatic, otherworldly scenery.",
+        "image_url": "",
+        "category": "Historical Site / War Memorial / Scenic Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "April", "December"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Daytime for photography of the salt flats and memorial; best light in the early morning or late afternoon"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear is appropriate.",
+            "behavior": [
+                "Respect: This is a war memorial site significant to multiple communities; maintain a solemn and respectful attitude.",
+                "Photography: Permitted of the memorial, battle tank, salt flats, and surrounding lagoon landscape.",
+                "Military Sensitivity: The area was formerly a major military zone; follow any instructions from personnel and do not enter restricted areas.",
+                "Cleanliness: Do not litter at the memorial or in the surrounding natural environment.",
+                "Historical Awareness: Take time to reflect on the historical significance of the site for Sri Lanka's recent history."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible 24 hours (daytime visits recommended)"
+    },
+
+
+    {
+        "id": "neduntheevu-delft-island",
+        "name": "Neduntheevu (Delft Island)",
+        "latitude": 9.5483,
+        "longitude": 79.6933,
+        "description": "One of the most remote and enigmatic islands of the Jaffna archipelago, Delft (Neduntheevu in Tamil) is a place of extraordinary character. Famous for its herds of wild ponies descended from Dutch-era horses, ancient coral walls used as fencing, the ruins of a Portuguese-Dutch fort, a Queen's Tower lighthouse, and a giant sacred Baobab tree believed to have been planted by Arab traders centuries ago. The island has no motorised vehicles and offers an almost timeless, windswept landscape.",
+        "image_url": "",
+        "category": "Remote Island / Historical & Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Full-day visit starting with the first morning ferry (approx. 7:30 AM from Kurikadduwan Jetty). Avoid the rough sea season from May to October."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Comfortable, light outdoor wear and sturdy walking shoes are essential, as the island terrain is sandy and uneven. Sun protection (hat, sunscreen) is strongly advised.",
+            "behavior": [
+                "Wild Ponies: Do not attempt to feed, touch, or ride the wild ponies; observe them from a safe distance.",
+                "Natural Environment: The island is ecologically fragile; do not litter and carry all waste back with you.",
+                "Ruins: Treat the Portuguese-Dutch fort ruins, coral walls, and other historical structures with care; do not climb on or damage them.",
+                "Ferry Schedule: The ferry from Kurikadduwan Jetty has limited daily departures; plan carefully and never miss the last return ferry.",
+                "Facilities: Facilities on the island are extremely limited; bring sufficient food, water, and supplies for a full day.",
+                "Community Respect: A small resident community lives on Delft; be respectful of their space and privacy."
+            ],
+            "entry_requirements": ["Ferry fare required", "Day trips only; very limited accommodation available"]
+        },
+        "entry_fee": "free (ferry charges apply)",
+        "opening_hours": "Accessible during daylight hours, dependent on ferry schedule from KKD Jetty"
+    },
+
+
+    {
+        "id": "jaffna-clock-tower",
+        "name": "Jaffna Clock Tower",
+        "latitude": 9.6614,
+        "longitude": 80.0060,
+        "description": "A distinctive and beloved landmark in the heart of Jaffna town, the Jaffna Clock Tower is an architectural curiosity featuring a unique Moorish-domed top, giving it an appearance more reminiscent of North Africa than South Asia. Erected during the colonial era, it stands near the Jaffna Public Library and King Sangiliyan's Statue, making it a central reference point for the city and a popular subject for photography.",
+        "image_url": "",
+        "category": "Colonial Landmark / Clock Tower",
+        "crowd_info": {
+            "peak_months": ["January", "April", "December"],
+            "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Morning or evening when the town centre is lively; combine with a visit to the nearby Public Library and King Sangiliyan's Statue"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual clothing is appropriate. The town centre area is busy and public.",
+            "behavior": [
+                "Photography: Freely allowed; a popular landmark for photography.",
+                "Traffic: Located in a busy town-centre junction; be aware of traffic when taking photographs.",
+                "Combined Visit: Conveniently located near the Jaffna Public Library and King Sangiliyan's Statue; easily visited together on a short walking tour of Jaffna town."
+            ],
+            "entry_requirements": ["Free public access"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible 24 hours (exterior viewing only)"
+    },
+
+
+    {
+        "id": "king-sangiliyan-ministers-house",
+        "name": "King Sangiliyan's Minister's House (Manthiri Manai / Sankiliyan Thoppu)",
+        "latitude": 9.6782,
+        "longitude": 80.0165,
+        "description": "A remarkable historical ruin in Nallur, widely believed to be the entrance archway (thoppu) of the palace of King Sankili II, the last king of the Jaffna Kingdom. This solitary arched gateway is one of the very few remaining physical remnants of the ancient Jaffna Kingdom and its royal heritage. It stands amid open grounds and offers a poignant glimpse into the pre-colonial Tamil kingdom that once flourished in northern Sri Lanka.",
+        "image_url": "",
+        "category": "Historical Ruin / Ancient Landmark",
+        "crowd_info": {
+            "peak_months": ["January", "April", "December"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) or late afternoon (4:00 PM - 6:00 PM) for better light and cooler temperatures"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual outdoor wear is appropriate.",
+            "behavior": [
+                "Preservation: Do not touch, climb, or cause any damage to the ancient archway structure.",
+                "Photography: Freely allowed; a historically significant photographic subject.",
+                "Respect: The site holds deep cultural significance to the Tamil community as a symbol of their ancient kingdom.",
+                "Cleanliness: Avoid littering in and around the grounds of the historical site."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    },
+
+
+    {
+        "id": "keerimalai-hot-spring",
+        "name": "Keerimalai Natural Springs (Hot Springs)",
+        "latitude": 9.8178,
+        "longitude": 80.0352,
+        "description": "Sacred natural mineral water springs located adjacent to the Keerimalai Naguleswaram Temple, on the northern shore of Jaffna. The spring waters are fresh despite their proximity to the ocean, a geological phenomenon attributed to underground mineral sources. Hindus believe the waters have powerful curative properties, particularly for skin and rheumatic conditions. The springs feature two separate bathing tanks — a larger one for men and a smaller, more private one for women — and are an active site of Hindu ritual bathing, especially on the Aadi Amavasai festival.",
+        "image_url": "",
+        "category": "Sacred Spring / Natural Attraction",
+        "crowd_info": {
+            "peak_months": ["July", "August", "February"],
+            "off_peak_months": ["March", "April", "May", "June", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning (6:00 AM - 8:00 AM) for a peaceful bathing experience before the crowds arrive"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Modest swimwear is acceptable in the designated bathing areas. Full coverage required outside the bathing tanks. Remove shoes before approaching the spring area adjacent to the temple.",
+            "behavior": [
+                "Gender Separation: The tanks are strictly separated by gender. The larger tank is for men; the smaller, more secluded western tank is for women only. This rule must be respected.",
+                "Ritual Awareness: Pilgrims use the springs for religious bathing and ancestral rituals, especially on festival days; observe respectfully and do not interrupt ceremonies.",
+                "Photography: Avoid photographing individuals bathing as a matter of privacy and respect.",
+                "Cleanliness: Do not introduce soap, shampoo, or any chemicals into the sacred spring waters.",
+                "Marine Life: Turtles and fish are sometimes visible in the springs; do not disturb or attempt to touch them."
+            ],
+            "entry_requirements": ["Free public access", "Adjacent to Keerimalai Naguleswaram Temple"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open daily from early morning; access is tied to temple hours (approx. 5:30 AM - 8:00 PM)"
+    },
+
+
+    {
+        "id": "maruthanarmadam-aanjaneyar-kovil",
+        "name": "Maruthanarmadam Aanjaneyar Kovil",
+        "latitude": 9.6921,
+        "longitude": 80.0318,
+        "description": "A notable Hindu temple near Jaffna dedicated to Lord Hanuman (Aanjaneyar), the divine monkey god of devotion and strength. The temple is a popular place of worship among the Tamil community and is visited by devotees seeking blessings for strength, protection, and the overcoming of obstacles. It is part of the rich tapestry of Hindu religious life in the Jaffna Peninsula.",
+        "image_url": "",
+        "category": "Hindu Temple",
+        "crowd_info": {
+            "peak_months": ["January", "April", "July", "August"],
+            "off_peak_months": ["May", "June", "September", "October", "November", "December"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) during pooja times for the most devotional atmosphere"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Modest attire is required. Cover shoulders and knees. Men should ideally wear traditional attire or simple, conservative clothing. Remove shoes before entering the temple premises.",
+            "behavior": [
+                "Footwear: Remove shoes before entering the temple.",
+                "Dress Code: Dress conservatively; shorts and sleeveless tops are inappropriate.",
+                "Photography: Ask for permission before taking photos inside the temple; exterior photography is generally accepted.",
+                "Decorum: Maintain respectful silence during prayers and poojas.",
+                "Offerings: Devotees may bring flowers and fruits as offerings to the deity."
+            ],
+            "entry_requirements": ["Free entry", "Modesty in dress required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Morning and evening pooja sessions (approx. 6:00 AM - 12:00 PM and 4:00 PM - 8:00 PM)"
+    },
+
+
+    {
+        "id": "kadurugoda-viharaya-kantharodai",
+        "name": "Kadurugoda Viharaya (Kantharodai)",
+        "latitude": 9.7280,
+        "longitude": 80.0536,
+        "description": "One of the most significant and mysterious ancient Buddhist archaeological sites in Sri Lanka, located in the hamlet of Kandarodai (Kantharodai) in Chunnakam, north of Jaffna. The site features over 20 intact miniature stupas (with foundations of up to 56 total) of unique design — built from grey coral stone with distinctive umbrella-shaped pinnacles unlike any other stupas on the island. Dating to the Anuradhapura era, the site is believed to have been visited by the Sanghamitta and even by Lord Buddha himself during his second visit to Sri Lanka. Declared an archaeological protected site.",
+        "image_url": "",
+        "category": "Buddhist Archaeological Site",
+        "crowd_info": {
+            "peak_months": ["January", "April", "December"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for the best light for photography and before the midday heat"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear is appropriate. Modest attire showing respect for the sacred nature of a Buddhist site is recommended.",
+            "behavior": [
+                "Preservation: This is a protected archaeological site. Do not touch, climb, or cause any damage to the ancient stupas or any structures on the grounds.",
+                "Photography: Freely allowed; the unique miniature stupas make for extraordinary photographs.",
+                "Respect: Maintain a respectful demeanour appropriate to a sacred Buddhist site.",
+                "Stay on Paths: Do not walk between or around the stupas in ways that may disturb the archaeological terrain.",
+                "Military Presence: The site is currently maintained by the Sri Lankan Army; follow any instructions given by personnel on site."
+            ],
+            "entry_requirements": ["Free public access", "Declared archaeological protected site"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "8:00 AM - 5:00 PM daily"
+    },
+
+
+    {
+        "id": "akkarai-beach",
+        "name": "Akkarai Beach (Akkaraipattu Beach)",
+        "latitude": 9.7105,
+        "longitude": 80.1875,
+        "description": "A quiet and less-frequented beach on the eastern coast of the Jaffna Peninsula, known for its natural, undeveloped setting. Akkarai Beach offers a serene escape away from the more tourist-focused beaches, with a raw, windswept coastal landscape popular with locals for evening walks and relaxation. The beach provides a more authentic and off-the-beaten-track coastal experience in the Jaffna area.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["January", "April", "August"],
+            "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+            "best_time_to_visit": "Late afternoon (4:30 PM - 6:30 PM) for the sunset and cooler sea breeze"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Modest casual wear is appropriate. Conservative swimwear is acceptable at the waterline but more modest clothing is expected when walking through the nearby community.",
+            "behavior": [
+                "Respect: The surrounding area is a local residential community; maintain respectful conduct.",
+                "Safety: Be cautious of currents and do not swim in unknown or undesignated areas.",
+                "Cleanliness: This is an undeveloped beach; ensure you leave no waste behind.",
+                "Photography: Freely allowed for natural scenery; ask permission before photographing local people."
+            ],
+            "entry_requirements": ["Free public access"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (daytime and evening visits recommended)"
+    },
+
+
+    {
+        "id": "jambukolappattinam-viharai",
+        "name": "Jambukolappattinam Viharai (Dambakolapatuna)",
+        "latitude": 9.8447,
+        "longitude": 80.2203,
+        "description": "An ancient and deeply sacred Buddhist temple located at the northernmost tip of the Jaffna Peninsula near Kankesanthurai. This site is believed to be the location where Sanghamitta Theri, daughter of Emperor Ashoka, arrived in Sri Lanka by boat carrying the sacred Bo Tree sapling (from the Bodhi tree under which the Buddha attained enlightenment). It is thus one of the most historically significant sites in Sri Lankan Buddhist history, revered as a place of pilgrimage and cultural heritage.",
+        "image_url": "",
+        "category": "Buddhist Temple / Sacred Heritage Site",
+        "crowd_info": {
+            "peak_months": ["January", "April", "Unduvap Poya (December)"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM). Unduvap Full Moon Poya day (December) is particularly significant and draws large pilgrim crowds."
+        },
+        "cultural_guidelines": {
+            "dress_code": "White or light-coloured modest clothing is strongly preferred as a sign of Buddhist respect. Cover shoulders and knees. Remove shoes before entering the temple premises.",
+            "behavior": [
+                "Footwear: Remove shoes before entering the temple premises.",
+                "Dress Code: White clothing is customary and respectful. Shorts and revealing attire are inappropriate.",
+                "Decorum: Maintain calm and silence, especially during religious observances.",
+                "Photography: Generally permitted in the outer grounds; ask for guidance from monks or staff regarding interior photography.",
+                "Pilgrimage Significance: Acknowledge the profound historical importance of this site to Sri Lankan Buddhist heritage."
+            ],
+            "entry_requirements": ["Free public access"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open daily from early morning until evening (approx. 6:00 AM - 8:00 PM)"
+    },
+
+
+    {
+        "id": "manatkaadu-beach",
+        "name": "Manatkaadu Beach",
+        "latitude": 9.8368,
+        "longitude": 80.0692,
+        "description": "A scenic and tranquil beach located near Kankesanthurai on the northern coast of the Jaffna Peninsula. Manatkaadu Beach is a calm and less-visited stretch of coastline offering clear waters, open skies, and a peaceful environment away from the crowds. It is a favourite among locals for quiet walks and relaxation, and the surrounding landscape reflects the characteristic flat, wind-exposed beauty of northern Sri Lanka's coastline.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:30 PM) for the most pleasant temperatures and scenic coastal light"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual modest wear appropriate for a local beach setting. Conservative swimwear acceptable at the waterline; cover up when away from the immediate shore.",
+            "behavior": [
+                "Safety: Currents on the northern coast can be unpredictable; exercise caution when swimming.",
+                "Cleanliness: Maintain the natural cleanliness of this less-developed beach; carry all waste out with you.",
+                "Respect: Be mindful of any local fishing or community activity in the area.",
+                "Photography: Freely allowed for natural scenery and coastal landscapes."
+            ],
+            "entry_requirements": ["Free public access"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (daytime visits recommended)"
     }
-
-
 ]
