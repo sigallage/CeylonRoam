@@ -1,17 +1,17 @@
 # Voice Translation Backend
 
-This backend service provides **speech-to-text** and **text translation** capabilities using open-source models from Hugging Face:
+This backend service provides **speech-to-text** and **text translation** capabilities using open-source models from Hugging Face and they are:
 
 - **Whisper Large v3** (OpenAI) - for speech recognition
 - **NLLB-200** (Meta) - for translation
 
 ## Features
 
-- ✅ **Completely FREE** - runs locally on your machine
-- ✅ **No API keys required**
-- ✅ Supports Sinhala, English, and Tamil
-- ✅ High-quality transcription with Whisper Large v3
-- ✅ Advanced translation with NLLB-200
+- **Completely FREE** - runs locally on your machine
+- **No API keys required**
+- Supports Sinhala, English, and Tamil
+- High-quality transcription with Whisper Large v3
+- Advanced translation with NLLB-200
 
 ## Quick Start
 
@@ -76,9 +76,9 @@ Translate text between languages.
 
 ## Supported Languages
 
-- `si` - Sinhala (සිංහල)
+- `si` - Sinhala 
 - `en` - English
-- `ta` - Tamil (தமிழ்)
+- `ta` - Tamil 
 
 ## System Requirements
 
@@ -127,3 +127,23 @@ This uses open-source models:
 - NLLB-200: CC-BY-NC 4.0
 
 Completely free for personal and educational use!
+
+---
+
+## Project Overview
+This backend service enables real-time speech-to-text and multilingual translation using state-of-the-art open-source models. It is designed for local, free use without API keys.
+
+## Docker Usage
+A Dockerfile is provided for containerized deployment. To build and run:
+
+```bash
+docker build -t voice-translation .
+docker run -p 8002:8002 voice-translation
+```
+
+## Configuration
+You can configure environment variables or settings in `main.py` for custom behavior (e.g., port, model paths).
+
+
+## Contact & Support
+For questions or support, contact the maintainer or open an issue in the repository.
