@@ -4272,7 +4272,7 @@
     "opening_hours": "Accessible during daytime hours (viewing from outside); combine with Iranamadu Tank visit"
   },
 
-  
+
   {
     "id": "chundikulam-bird-sanctuary",
     "name": "Chundikulam Bird Sanctuary (Chundikkulam National Park)",
@@ -4362,6 +4362,497 @@
     "entry_fee": "Tour fees applicable (vary by tour type and duration)",
     "opening_hours": "Tours typically depart at 5:30 AM - 6:00 AM for early morning birdwatching; contact operator for scheduling"
   }
+
+
+  [
+    {
+        "id": "mannar-dutch-fort",
+        "name": "Mannar Dutch Fort (Fort São Jorge)",
+        "latitude": 8.9758,
+        "longitude": 79.9042,
+        "description": "A monumental colonial fortification on Mannar Island, located next to the causeway bridge connecting the island to the mainland. Originally built by the Portuguese in 1560 and named Fort São Jorge (St. George), it was captured by the Dutch in 1658 and substantially rebuilt in 1696. The British occupied it without resistance in 1795, subsequently using it as a strategic assembly point for troops. The square-shaped fort features four corner bastions, thick coral and brick walls approximately 1.5 metres wide, and ramparts stretching approximately 14.5 metres each. Inside, the ruins of a Dutch colonial church survive with remarkable gravestones and burial plaques with intricate inscriptions embedded in the floor and walls. Two watchtowers still stand at opposite corners. Currently managed by the Department of Archaeology and undergoing restoration. Views from the ramparts over the Mannar Lagoon and causeway bridge are superb, especially at sunset. The fort also features freshwater ponds and wells that supplied its historical occupants, still holding significant water levels.",
+        "image_url": "",
+        "category": "Historical Fort / Colonial Monument",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Early morning (7:00 AM - 10:00 AM) or late afternoon (4:00 PM - 6:00 PM) for the best light and sunset views over the lagoon. Best visited between December and February or July to September for pleasant weather."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear. Flat, anti-slip shoes strongly recommended for walking along the uneven ramparts and ruined interior.",
+            "behavior": [
+                "Safety: Exercise care on the uneven rampart surfaces and inside partially ruined structures; some areas may be unsafe to enter.",
+                "Preservation: Do not climb on, damage, or remove any part of the historic walls, bastions, or structures.",
+                "Photography: Freely permitted throughout; excellent for architectural and landscape photography, especially of the lagoon at sunset.",
+                "Church Ruins: Visit the ruins of the Dutch church inside and observe the colonial-era gravestone inscriptions with respect.",
+                "Police Presence: The area surrounding the fort is used by the police department; follow any instructions from personnel on site.",
+                "Restoration Works: Active restoration work may be ongoing; observe any barriers or instructions."
+            ],
+            "entry_requirements": ["Free entry", "Managed by Department of Archaeology"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open daily during daylight hours (approx. 7:00 AM - 5:30 PM)"
+    },
+
+    {
+        "id": "keeri-beach",
+        "name": "Keeri Beach",
+        "latitude": 8.9795,
+        "longitude": 79.8704,
+        "description": "The most popular beach on Mannar Island, located approximately 5 kilometres west of Mannar town along the coast road. Keeri Beach is known for its wide golden sandy stretch, exceptionally calm and shallow crystal-clear waters ideal for swimming at all skill levels, and a fringe of Palmyra palm trees that shelter a resident troop of monkeys. A line of wind turbines runs parallel to the beach as an interesting modern backdrop to the natural setting. A notable ancient mosque with the tomb of a local saint is located near the Keeri junction on the way to the beach. The beach offers a pleasant escape with changing and washing facilities and a small shop selling snacks and water. Occasional jellyfish sightings have been reported, and there are no lifeguards on duty. The beach is an ideal spot for sunset photography.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) or late afternoon (4:00 PM - 6:30 PM) to avoid the harsh midday sun. Weekday mornings are the least crowded. Best visited between December and February or July to September."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Swimwear is acceptable at the waterfront. Modest attire is strongly advised when moving through the road and village areas surrounding the beach, as the community is conservative.",
+            "behavior": [
+                "Safety: Swim within the designated safe areas. No lifeguard on duty — swim at your own risk. Be alert for occasional jellyfish.",
+                "Monkeys: Do not feed or antagonise the resident Palmyra palm monkeys; secure all food items carefully when picnicking.",
+                "Facilities: Changing and washing facilities are available. A small shop sells snacks and water near the beach.",
+                "Cleanliness: The beach requires visitors to take responsibility for their own litter; use bins where available and carry waste out.",
+                "Photography: Excellent for sunset photography with the wind turbines as a backdrop.",
+                "Nearby Attraction: The ancient mosque with the tomb of a local saint near Keeri junction is worth a respectful visit."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (swimming recommended during daylight hours)"
+    },
+
+    {
+        "id": "national-shrine-our-lady-of-madhu",
+        "name": "National Shrine of Our Lady of Madhu (Madhu Church)",
+        "latitude": 8.7858,
+        "longitude": 80.1431,
+        "description": "Sri Lanka's holiest Catholic shrine, located deep within jungle approximately 50 km southeast of Mannar town. With over 400 years of history, the site traces its origins to 1670 when 20 Catholic Tamil families fled Dutch persecution in Mantai, carrying a precious statue of the Virgin Mary (Our Lady of Good Counsel) into the Vanni jungles, where they were joined by around 700 more Catholics fleeing Jaffna. Together they established the shrine at Madhu — named after the local Tamil/Sinhala word for a jungle waterhole or pond. The site is believed to have been a Pattini Devale (Hindu healing shrine) in ancient times, and was renovated by the missionary Bishop Joseph Vaz in 1705. The present church building dates to 1872, featuring soaring central columns and a cream and duck-egg blue exterior portico. Pope Pius XI granted the statute a Canonical Coronation in 1924, and Pope Francis visited in 2015. Before the civil war, the annual Assumption feast on August 15 drew attendance approaching one million pilgrims. A pit inside the church filled with sacred Madhu soil — reputedly protective against snakebites — is available to pilgrims. The shrine holds profound significance across all faiths: Catholics, Hindus, Buddhists, and Muslims all visit to seek blessings.",
+        "image_url": "",
+        "category": "Catholic National Shrine / Pilgrimage Site",
+        "crowd_info": {
+            "peak_months": ["August (Feast of the Assumption, August 15)", "July (Feast of Our Lady, July 2)", "December", "April"],
+            "off_peak_months": ["February", "March", "May", "June", "September", "October", "November"],
+            "best_time_to_visit": "Weekday mornings (7:00 AM - 10:00 AM) for a peaceful and reflective visit. Avoid August 15 and July 2 unless specifically attending the festival, as enormous crowds arrive. Daily Mass is held at 6:00 AM; Sunday Masses continue until 11:30 AM."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Modest attire required. Cover shoulders and knees. Both men and women should avoid shorts, sleeveless tops, and revealing clothing. Many pilgrims walk barefoot as a personal act of penance.",
+            "behavior": [
+                "Security Sign-In: Visitors must sign in at the security book upon entering the property.",
+                "Candles: Purchase candles from the authorised church shop only; light them at the designated outdoor candle trench — not inside the church.",
+                "Prayers in Progress: Do not walk near the altar or photograph the congregation during Mass.",
+                "Sacred Statue: The statue of Our Lady of Madhu is housed within a glass case at a teak altar; queue respectfully to pray before it.",
+                "Prohibited Conduct: Alcohol, dancing, loud music, and any form of disruptive activity are strictly prohibited on shrine grounds.",
+                "Madhu Soil: Sacred soil from the pit inside the church is available to take; Catholics traditionally mix it with concrete for home foundations and use it for healing.",
+                "Accommodation: Rooms and cottages for overnight pilgrim stays can be booked through the church office.",
+                "Photography: Permitted outside and in the grounds; strictly prohibited during Mass and religious ceremonies.",
+                "Multi-faith Welcome: All faiths are welcome to visit respectfully."
+            ],
+            "entry_requirements": ["Free entry", "Open to all faiths", "Security sign-in required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "6:00 AM - 8:00 PM daily"
+    },
+
+    {
+        "id": "st-sebastians-cathedral-mannar",
+        "name": "St. Sebastian's Cathedral, Mannar",
+        "latitude": 8.9766,
+        "longitude": 79.9053,
+        "description": "The principal Roman Catholic cathedral of Mannar town and the seat of the Diocese of Mannar. Dedicated to St. Sebastian, this cathedral serves as the central place of Catholic worship for Mannar Island and district, hosting the substantial Catholic community of both Tamil and Sinhalese Catholics in the area. It is an important centre of Catholic faith in the Northern Province and hosts regular Masses, significant feast days on January 20 (Feast of St. Sebastian), Christmas, Easter, and pastoral activities year round. The cathedral's architecture reflects the colonial-era Catholic ecclesiastical tradition established across Sri Lanka's north and west by Portuguese missionaries in the 16th century.",
+        "image_url": "",
+        "category": "Catholic Cathedral",
+        "crowd_info": {
+            "peak_months": ["January (St. Sebastian's Feast Day, January 20)", "December (Christmas)", "April (Easter)"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) outside of Mass times for a quiet visit; Sunday Masses draw larger congregations"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Modest attire required. Cover shoulders and knees; avoid shorts and sleeveless tops.",
+            "behavior": [
+                "Decorum: Maintain respectful silence inside the cathedral at all times.",
+                "Mass Times: Avoid entering during Mass unless attending the service; daily Mass is typically held in the morning and evening.",
+                "Photography: Permitted outside and in the general interior; avoid flash photography and photographing the congregation during services.",
+                "Respect: Conduct yourself with the reverence appropriate to an active place of worship."
+            ],
+            "entry_requirements": ["Free entry", "Open to all visitors"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open daily; Mass times typically 6:00 AM and 6:00 PM on weekdays; Sunday Mass times vary — check locally"
+    },
+
+    {
+        "id": "vankalai-bird-sanctuary",
+        "name": "Vankalai Bird Sanctuary (Mannar Bird Sanctuary)",
+        "latitude": 8.9333,
+        "longitude": 79.9167,
+        "description": "A globally significant protected wetland and one of the premier birdwatching destinations in Asia, located along the western coast of Mannar mainland. Spanning 4,839 hectares, the sanctuary was designated by the Department of Wildlife Conservation on September 9, 2008, and was selected as the fourth Ramsar Wetland of International Importance in Sri Lanka on July 12, 2010. The sanctuary encompasses Puliyantivu Island, Pallimunai, Vankalai, and the strips of land on either side of the causeway connecting Mannar Island to the mainland. Its extraordinary diversity of ecosystems — arid-zone thorn scrubland, maritime grasslands, sand dunes, mangroves, salt marshes, lagoons, tidal flats, and shallow seagrass beds — makes it exceptionally productive habitat for over 150 distinct bird species. Mannar is the first landfall for birds arriving from the Central Asian Flyway each winter, and Vankalai serves as their last staging point at season's end. The sanctuary supports 20,000+ waterbirds including Greater Flamingo and Eurasian Wigeon (both at 1% of global population), Northern Pintail, Spot-billed Duck, Comb Duck, Long-toed Stint, Peregrine Falcon, and Black-tailed Godwit. The marine ecosystem also supports 60+ fish species, Green Turtles, Dugongs, and Saltwater Crocodiles. Part of the sanctuary overlaps with the ancient port site of Mantai, dated from the 6th century BCE to 13th century CE.",
+        "image_url": "",
+        "category": "Wildlife Sanctuary / Ramsar Wetland",
+        "crowd_info": {
+            "peak_months": ["November", "December", "January", "February"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) during the peak migratory season from November to January for the most spectacular birdwatching. Greater Flamingos are most visible at the beginning and end of the migration season. Late afternoon is also productive."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Wear comfortable, neutral-coloured or earth-toned clothing. Closed-toe shoes are recommended. Bring a wide-brimmed hat, sunscreen, and insect repellent.",
+            "behavior": [
+                "Wildlife Respect: Maintain a safe and respectful distance from all birds and wildlife; do not disturb, feed, or approach animals.",
+                "Silence: Keep noise to an absolute minimum, especially near the lagoon and salt flat areas where birds congregate.",
+                "Photography: Birdwatching photography is actively encouraged; avoid drones without prior authorisation.",
+                "Safety: Be alert for Saltwater Crocodiles near the water's edge; never approach the waterline carelessly.",
+                "Guided Access: For deeper access into the sanctuary, a guide is strongly recommended.",
+                "Binoculars: Bring binoculars and a camera with a telephoto lens for the best experience.",
+                "Environmental Care: Carry all waste out; the sanctuary is a fragile and protected Ramsar ecosystem."
+            ],
+            "entry_requirements": ["Free public access from roadside areas along the causeway", "Entry fees may apply for designated sanctuary zones — check with the Department of Wildlife Conservation"]
+        },
+        "entry_fee": "Free public access from the causeway; entry fees may apply for designated areas",
+        "opening_hours": "Accessible during daylight hours (6:00 AM - 6:00 PM recommended)"
+    },
+
+    {
+        "id": "adams-bridge-talaimannar",
+        "name": "Adam's Bridge (Rama Setu) — Talaimannar",
+        "latitude": 9.0900,
+        "longitude": 79.7800,
+        "description": "One of the world's most mythologically and geologically remarkable natural formations: a 48-kilometre chain of natural limestone shoals, sandbanks, and sandy islands stretching from Talaimannar on Mannar Island to Pamban (Rameswaram) Island in India, separating the Gulf of Mannar from the Palk Strait. Geological evidence suggests it was a former land bridge between India and Sri Lanka, passable on foot until a catastrophic cyclone in 1480 CE. In the Hindu epic Ramayana, it is revered as the bridge (Rama Setu) built by Lord Rama's army to rescue Sita from Lanka. In Islamic tradition, it is the bridge Adam used after descending from Adam's Peak. In Sri Lankan Catholic tradition, the 30-seeded baobab fruit here is nicknamed 'Judas' Bag' after the 30 pieces of silver. The best viewing point is from the Talaimannar Pier, where the iconic abandoned British-built double-track railway pier (1915) extends dramatically into the turquoise water and the first sandy islands of the chain are visible stretching toward India approximately 28 km away. Navy-operated boat tours to nearby sandbanks can sometimes be arranged. Talaimannar is also Sri Lanka's windiest location and a popular kitesurfing destination.",
+        "image_url": "",
+        "category": "Natural Wonder / Sacred Landmark",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:30 PM) for spectacular sunset views over the pier and the shoals extending toward India. Early morning is excellent for calm conditions and photography."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual outdoor wear. Bring sun protection (hat and sunscreen) as the pier area is fully exposed to the elements.",
+            "behavior": [
+                "Navy Presence: The area around the pier and beyond is under Sri Lanka Navy jurisdiction. Do not enter any restricted or fenced-off zones.",
+                "Boat Tours: Occasional navy-operated boat tours to the nearby sandbanks can sometimes be arranged at the pier — enquire politely with naval personnel on site.",
+                "Religious Sensitivity: Adam's Bridge holds profound religious significance for Hindus as Rama Setu — approach the subject and the site with cultural sensitivity and respect.",
+                "Photography: Freely permitted from public pier and beach areas; do not photograph military or naval installations.",
+                "Combined Visit: The Talaimannar Lighthouse, pier, and beach are within easy walking distance and best visited together."
+            ],
+            "entry_requirements": ["Free public access to viewing areas", "Boat tours subject to Navy permission and availability"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    },
+
+    {
+        "id": "thanthirimale-raja-maha-viharaya",
+        "name": "Thanthirimale Raja Maha Viharaya",
+        "latitude": 8.6230,
+        "longitude": 80.2360,
+        "description": "An ancient and profoundly sacred Buddhist temple located approximately 40 km northwest of Anuradhapura city, on the border of Mannar and Anuradhapura districts. Dating to the 3rd century BCE, Thanthirimale is believed to be one of the eight locations where a sapling from the sacred Jaya Sri Maha Bodhi was planted — possibly making it the first Sri Maha Bodhi planted in Sri Lanka. According to Mahavamsa chronicles, when Princess Sangamitta Theri brought the sacred Bo sapling from India for King Devanampiyatissa, the royal procession rested for one night at Thivanka Bamunugama (the ancient name for Thanthirimale). The settlement itself may date as far back as the time of King Vijaya, established by his minister Upatissa. The temple and its surroundings spread over 250 acres of granite rock terrain and jungle, and contain: a Samadhi (seated meditation) Buddha statue 2.4 m (8 ft) tall carved directly from living rock; an unfinished reclining Buddha statue 13.7 m (45 ft) long of the late Anuradhapura period; an ancient Pothgula (monastery library) perched atop a high rock; 12 Padhanagaraya meditation cave structures; and caves with Brahmi inscriptions believed to date from the 1st century BCE. An on-site archaeological museum displays stone containers and other finds. Ancient Veddah rock paintings featuring figures of humans, animals, the sun, bows and arrows, and other symbols are also visible approximately 1 km further into the forest. The site was re-discovered and restored beginning in the early 1960s by the monk Kudakongaskada Vimalagnana Thera after centuries of being lost to the jungle.",
+        "image_url": "",
+        "category": "Ancient Buddhist Temple / Archaeological Site",
+        "crowd_info": {
+            "peak_months": ["January", "April", "June (Poson Poya)", "December"],
+            "off_peak_months": ["May", "July", "August", "September", "October"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) to avoid extreme heat; midday temperatures on the exposed rock surfaces can be very high. Best visited between December and February or July to September."
+        },
+        "cultural_guidelines": {
+            "dress_code": "White or light-coloured modest clothing is strongly preferred at a Buddhist sacred site. Cover shoulders and knees. Bring slip-on shoes or thongs that can be easily removed; footwear must be removed frequently across the large rocky site.",
+            "behavior": [
+                "Site Navigation: Ask a monk or guard for directions upon arrival — the key features including the Samadhi statue, reclining Buddha, and library are widely spread across rocky terrain and easy to miss.",
+                "Rock Statues: The Samadhi and reclining Buddha statues are located among rock formations and not immediately obvious; a local guide or monk's direction is recommended.",
+                "Brahmi Caves: The ancient meditation caves with 1st century BCE inscriptions are located 1 km into the forest; comfortable footwear for this walk is essential.",
+                "Veddah Rock Paintings: Ancient rock art is approximately 1 km further into the sanctuary; a local guide is recommended.",
+                "Footwear: Remove shoes before entering the image house and any shrine areas; the rocky ground between sites may require walking barefoot or in thongs.",
+                "Photography: Freely allowed throughout; an extraordinary site for photography, especially the rock-carved Samadhi statue.",
+                "Preservation: Do not touch or damage any inscriptions, carvings, statues, or stone structures."
+            ],
+            "entry_requirements": ["Free entry to temple grounds", "Archaeological museum entry may have a nominal fee"]
+        },
+        "entry_fee": "free (temple grounds); nominal fee may apply for museum",
+        "opening_hours": "6:00 AM - 8:00 PM daily"
+    },
+
+    {
+        "id": "yodha-wewa-giants-tank",
+        "name": "Yodha Wewa (Giant's Tank)",
+        "latitude": 8.8600,
+        "longitude": 80.0800,
+        "description": "One of the largest man-made irrigation reservoirs in ancient Sri Lanka, located approximately 25 km southeast of Mannar town on the A14 Medawachchiya–Mannar road. Known as Manawatu Wewa in ancient times, Yodha Wewa (literally 'Giant's Tank') is attributed to King Dhatusena (459–477 CE), who constructed a remarkable 25-kilometre feeder canal (Yodha Ela) from the Malwatu Oya River to fill this natural depression. Because the terrain in Mannar is exceptionally flat, King Dhatusena's engineers selected a diversion point (the Thekkam Anicut) nearly 20 km upstream, demonstrating extraordinary mastery of the subtle gradients of the land. British irrigation engineers who encountered the tank in the 19th century initially condemned it as a failed construction — they did not understand the innovative design for flat terrain until scholars later reinterpreted it. The tank was later restored by King Parakramabahu I in the 12th century. Its embankment stretches over 7 km in length and the tank feeds 162 smaller downstream tanks, irrigating approximately 11,000 hectares of paddy land — making Mannar District a major rice-producing region. The tank was declared a Wildlife Sanctuary in 1954 (covering 10,700 acres), and its waters attract abundant birdlife including Spot-billed Pelican, Pheasant-tailed Jacana, Rufous-rumped Shrike, and many waterbirds. Saltwater Crocodiles are also present. A Sri Lanka Army 'Jana Aavahala' rest stop on the bund offers refreshments and elevated views over the tank.",
+        "image_url": "",
+        "category": "Ancient Irrigation Tank / Wildlife Sanctuary",
+        "crowd_info": {
+            "peak_months": ["November", "December", "January"],
+            "off_peak_months": ["April", "May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Evening (4:30 PM - 6:30 PM) for stunning sunset views from the bund. Early morning (6:00 AM - 8:00 AM) for birdwatching. The tank is most scenic from October to January when it is full after the northeast monsoon."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear. Sun protection is strongly recommended.",
+            "behavior": [
+                "Safety: Saltwater Crocodiles are present in the tank — do not swim, wade, or stand too close to the water's edge under any circumstances.",
+                "Birdwatching: Bring binoculars, especially during the migratory season (November to February); the tank attracts a wide variety of waterbirds.",
+                "Fishing Boat Safari: Local fishermen may be willing to take visitors on a boat excursion across the tank — negotiate respectfully and always wear a life jacket.",
+                "Photography: The sunset view from the bund over the vast expanse of water is particularly spectacular.",
+                "Army Rest Stop: The 'Jana Aavahala' operated by the Sri Lanka Army on the bund offers an elevated viewing deck and refreshments.",
+                "Environmental Care: Do not litter; this is an active irrigation and wildlife resource."
+            ],
+            "entry_requirements": ["Free public access (bund and roadside viewing)", "Wildlife sanctuary entry fees may apply for deeper access"]
+        },
+        "entry_fee": "free (bund access); wildlife sanctuary entry fees may apply",
+        "opening_hours": "Accessible during daylight hours (7:00 AM - 6:00 PM recommended)"
+    },
+
+    {
+        "id": "baobab-tree-pallimunai",
+        "name": "Baobab Tree, Pallimunai, Mannar",
+        "latitude": 8.9844,
+        "longitude": 79.9177,
+        "description": "Sri Lanka's most famous and ancient Baobab tree, located approximately 1.2 km northeast of Mannar town centre in Pallimunai village. Declared an archaeological protected monument by Government Gazette No. 10758 on April 28, 1955, this extraordinary tree is estimated to be over 700–800 years old — the oldest of approximately 40 Baobab trees surviving in Sri Lanka, 34 of which are found on or near Mannar Island. It stands 7.5 metres tall with a colossal circumference of approximately 19.5–21 metres — the largest girth of any tree in Sri Lanka. The Baobab (Adansonia digitata) is native to Africa, Madagascar, and Australia. Its presence in Mannar is attributed to Arab traders who brought seeds or saplings along the ancient Indian Ocean trade route to this once-thriving pearl fishery port over 700 years ago. Known locally as 'Ali Gaha' (Elephant Tree) because its rough, textured bark resembles elephant skin, and 'Perukka' in Tamil. During the dry season when leaves are shed, the angular branches pointing skyward give the tree the appearance of being planted upside-down — hence the African name 'upside-down tree'. Catholics in Mannar sometimes call it the 'Judas Bag' as each baobab fruit contains 30 seeds (echoing the 30 pieces of silver). A small statue of the Virgin Mary stands beside the tree.",
+        "image_url": "",
+        "category": "Natural Monument / Protected Tree",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September", "October"],
+            "best_time_to_visit": "Morning (7:00 AM - 9:00 AM) or evening (4:30 PM - 6:30 PM) to avoid harsh midday sun; the tree is fully exposed with no shade around it"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual clothing is appropriate. Sun protection (hat and sunscreen) is strongly recommended as the area around the tree is open and fully exposed.",
+            "behavior": [
+                "Preservation: Do not carve, scratch, or damage the tree's bark in any way; it is a legally protected archaeological monument.",
+                "Photography: Freely allowed; this is a very popular photography stop — the tree's enormous girth requires a wide-angle lens to capture fully.",
+                "Parking: Vehicle parking is available directly beside the tree on the roadside.",
+                "Fruit: The baobab fruit occasionally falls; do not attempt to harvest or damage the tree.",
+                "Respect: Locals hold the tree in high regard both culturally and as a community landmark; leave no waste and treat the site with care."
+            ],
+            "entry_requirements": ["Free public access", "Declared archaeological protected monument — Gazette No. 10758, April 28, 1955"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible 24 hours (morning and evening visits recommended)"
+    },
+
+    {
+        "id": "talaimannar-lighthouse",
+        "name": "Talaimannar Lighthouse",
+        "latitude": 9.1069,
+        "longitude": 79.7336,
+        "description": "A historic colonial lighthouse located at the northwestern tip of Mannar Island, directly adjacent to the Talaimannar Pier and railway terminus. Built in 1915 by the British colonial administration, the 19-metre (62-foot) white cylindrical rubble masonry tower with a lantern and gallery guided seafarers and passenger ferry vessels navigating the shallow, treacherous waters of the Palk Strait between Sri Lanka and Rameswaram, India. The ferry service it served — the Indo-Ceylon railway link between Talaimannar and Dhanushkodi — was a landmark colonial achievement: passengers could buy a single ticket from Chennai (Madras) to Colombo, travelling by rail to Pamban Island, ferry across the Palk Strait, and back onto the train to Colombo. A devastating cyclone in December 1964 destroyed the Dhanushkodi terminal, effectively ending the service. Neglected for decades due to the civil war, the lighthouse was restored after 2009 and is now accessible to the public. Though visitors cannot climb the tower, the lighthouse and the rusting, romantically abandoned pier together make for extraordinary photography, particularly at sunset. Talaimannar is the only location in Sri Lanka where an A-grade national highway (A14) and a broad-gauge railway line terminate simultaneously at the sea.",
+        "image_url": "",
+        "category": "Colonial Lighthouse / Historical Landmark",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:30 PM) for spectacular sunset photography. Morning (7:00 AM - 9:00 AM) is also beautiful for calm conditions and photography toward India."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual outdoor wear. Bring sun protection as the pier area is fully exposed to sea wind and sun.",
+            "behavior": [
+                "No Climbing: Visitors are not permitted to climb inside or to the top of the lighthouse tower.",
+                "Navy Area: The Sri Lanka Navy operates in the vicinity; do not enter any restricted or fenced-off naval zones.",
+                "Photography: The lighthouse with the rusting pier stretching into the sea toward India is one of Mannar's most iconic images — wide-angle and telephoto lenses are both valuable here.",
+                "Combined Visit: The Talaimannar Pier, beach, and the view toward Adam's Bridge are all within easy walking distance and best visited together.",
+                "Winds: Talaimannar is Sri Lanka's windiest location; secure hats and loose items."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    },
+
+    {
+        "id": "bird-watching-tower-vankalai",
+        "name": "Bird Watching Tower, Vankalai",
+        "latitude": 8.9750,
+        "longitude": 79.8450,
+        "description": "A purpose-built bird observation tower located within or on the boundary of the Vankalai Bird Sanctuary (Mannar Bird Sanctuary), providing elevated panoramic views over the lagoon, salt flats, mangroves, and wetland habitats that host one of Sri Lanka's most spectacular concentrations of migratory and resident waterbirds. The tower offers an ideal vantage point for observing large-scale bird activity across the sanctuary — including enormous migratory flocks of Greater Flamingo, Eurasian Wigeon, Northern Pintail, and a diverse array of waders and waterfowl — without entering the sensitive sanctuary ecosystem on foot. It is a key eco-tourism infrastructure facility supporting responsible wildlife tourism in Mannar district, and is especially valuable during the November–February migratory peak season.",
+        "image_url": "",
+        "category": "Birdwatching Tower / Eco-Tourism Infrastructure",
+        "crowd_info": {
+            "peak_months": ["November", "December", "January", "February"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) for peak bird activity and the best photographic light. Late afternoon (4:00 PM - 6:00 PM) is also excellent. Binoculars and a telephoto camera lens are essential."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Light, neutral-coloured or earth-toned clothing. Bring a hat, sunscreen, and insect repellent for the exposed outdoor environment.",
+            "behavior": [
+                "Silence: Keep all noise to a minimum; loud sounds will disturb and scatter the birds.",
+                "Wildlife Respect: Do not attempt to attract or disturb birds or wildlife in any way.",
+                "Photography: Birdwatching photography is the primary activity; avoid drones without prior authorisation from DWC.",
+                "Capacity: Be mindful of tower capacity; do not overcrowd the structure.",
+                "Environmental Care: No littering; the tower is located in a protected Ramsar wetland ecosystem.",
+                "Binoculars: Essential for making the most of the tower experience."
+            ],
+            "entry_requirements": ["Free access or nominal entry fee applicable", "Located within or adjacent to Vankalai Sanctuary"]
+        },
+        "entry_fee": "Free or nominal entry fee",
+        "opening_hours": "Open during daylight hours (6:00 AM - 6:00 PM)"
+    },
+
+    {
+        "id": "arippu-dutch-fort",
+        "name": "Arippu Dutch Fort (Allirani Fort)",
+        "latitude": 8.7878,
+        "longitude": 79.9142,
+        "description": "A small but historically layered Portuguese and Dutch fortification located approximately 16–20 km south of Mannar town on the mainland at the village of Arippu, near the Arippu causeway. Built originally by the Portuguese and handed over to the Dutch in 1658, the fort is also known as 'Allirani Fort' from the legend of the Tamil queen Alli Rani, said to have ruled over Mannar and whose fortress is believed to have occupied this very ground. Dutch accounts from 1700 describe it as garrisoned by 20 soldiers and 4 field-pieces, primarily to prevent illegal pearl fishing — punishable by death. The famous British captive and author Robert Knox, having escaped the Kandyan court in 1679, followed the Malwatu Oya to Arippu and took refuge here. The first British Governor of Ceylon, Frederick North, converted the fort into accommodation for officers overseeing the extraordinarily lucrative Gulf of Mannar pearl fisheries, and built his official summer residence — the Doric Bungalow — directly on the adjacent beachfront. Today, only the perimeter walls and foundations of the fort's buildings survive, but the historical layers — Portuguese, Dutch, British, and ancient Tamil — make it a fascinating visit for history enthusiasts.",
+        "image_url": "",
+        "category": "Historical Fort / Colonial Monument",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:30 PM) for the coastal setting and cooler temperatures; best combined with a visit to the adjacent Doric Bungalow"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear. Sturdy footwear is recommended for the fort grounds.",
+            "behavior": [
+                "Preservation: Do not damage or remove any part of the historic fortification structures.",
+                "Photography: Freely allowed; the fort and its coastal surroundings offer good photography.",
+                "Combined Visit: The Doric Bungalow — the first British Governor of Ceylon's summer residence — is located directly adjacent and best visited at the same time.",
+                "Access: A robust vehicle is advisable in wet weather as the road approaching Arippu may be unpaved or muddy.",
+                "Cleanliness: Avoid littering at this relatively undisturbed historical site."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    },
+
+    {
+        "id": "pesalai-beach",
+        "name": "Pesalai Beach",
+        "latitude": 9.0400,
+        "longitude": 79.8600,
+        "description": "A pleasant developed public beach located on the eastern coast of Mannar Island at the village of Pesalai, approximately 12–15 km north of Mannar town on the A14 highway. It offers a sheltered stretch of coastline with views over the Mannar Lagoon, equipped with public huts, separate bathing and changing facilities for men and women, and designated zones for swimming, family picnics, and relaxation. The Pesalai Beach View Hotel — the only beachfront hotel in Mannar district — is located directly on the beach, providing convenient accommodation and dining access for visitors. Pesalai is a predominantly Catholic fishing community, and its church is an important centre for the local community. The beach offers a more sheltered and family-friendly alternative to the island's exposed western coast beaches, and is a popular weekend destination for locals.",
+        "image_url": "",
+        "category": "Beach",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) or late afternoon (4:00 PM - 6:30 PM) for cooler temperatures; best visited between December and February or July to September"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Swimwear is acceptable at the waterfront. Modest attire is strongly advised when moving through the village of Pesalai, which is a tight-knit Catholic fishing community.",
+            "behavior": [
+                "Community Respect: Pesalai is a fishing village with a strong community identity; be respectful of local residents and their way of life.",
+                "Safety: Swim only in designated safe areas. No lifeguard on duty — swim at your own risk.",
+                "Facilities: Separate male and female changing and bathing facilities are available. The adjacent hotel's restaurant is accessible to non-guests.",
+                "Photography: Freely allowed for natural scenery; ask permission before photographing local people or the fishing community.",
+                "Cleanliness: Use the designated waste bins provided."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Open 24 hours (swimming recommended during daylight hours)"
+    },
+
+    {
+        "id": "thekkam-anicut",
+        "name": "Thekkam Anicut (Thekkama Amuna)",
+        "latitude": 8.6500,
+        "longitude": 80.2050,
+        "description": "An ancient diversion dam on the Malwatu Oya River, located approximately 800 metres south of the 26th mile post on the A14 Medawachchiya–Mannar Road, within the Madhu Divisional Secretary's Division. Built during the Anuradhapura Period — attributed to King Dhatusena (459–477 CE) — the Thekkam Anicut is the ingenious headworks that diverts water from the Malwatu Oya into a 25-kilometre feeder canal (Yodha Ela) to supply the Yodha Wewa (Giant's Tank). Because the Mannar landscape is so remarkably flat, King Dhatusena's engineers selected a diversion point nearly 20 km upstream of the reservoir, demonstrating profound knowledge of the subtle gradient of the land. The anicut is constructed from giant granite blocks on a rocky natural foundation, laid at a slight angle across the river. It is approximately 200 metres long, 27.5 metres wide, and rises 3.7 metres, with 3 large flood-release openings on the northern side. A 25-km canal carries the diverted water through the jungle to the reservoir. A British analysis of concrete from this anicut in 1889 initially baffled Victorian engineers who could not comprehend the design for flat terrain. Declared an archaeological protected monument by Government Gazette No. 1823/73, August 16, 2013. Ruins of an ancient Pattini Devale (shrine to Goddess Pattini) with a notable 11th–12th century Parvati statue are also visible nearby.",
+        "image_url": "",
+        "category": "Ancient Irrigation Monument / Archaeological Protected Site",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for cool temperatures; best visited in the dry season when the Malwatu Oya water levels are lower and the granite structure is more visible"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Comfortable outdoor wear and sturdy shoes are essential; the access path is a narrow gravel track through jungle terrain.",
+            "behavior": [
+                "Access Route: From the A14 road, turn south approximately 250 metres past the Paraiyanalankulam police station onto a narrow gravel road; travel approximately 650 metres into the jungle to reach the anicut.",
+                "Terrain: The route involves a jungle track that can be muddy in wet weather; a 4x4 or robust vehicle is strongly recommended.",
+                "Preservation: This is a declared archaeological protected monument; do not touch, damage, or remove any part of the anicut structure.",
+                "Photography: Freely allowed; a remarkable photographic subject against the jungle backdrop.",
+                "Pattini Devale Ruins: Ruins of an ancient Hindu shrine with an 11th–12th century Parvati statue are visible nearby; treat the area with appropriate respect.",
+                "Combined Visit: Best visited together with Yodha Wewa and the Madhu Church, all on the same A14 road."
+            ],
+            "entry_requirements": ["Free public access", "Declared archaeological protected monument — Gazette No. 1823/73, August 16, 2013"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours (best visited in the morning)"
+    },
+
+    {
+        "id": "talaimannar-pier",
+        "name": "Talaimannar Pier",
+        "latitude": 9.1072,
+        "longitude": 79.7354,
+        "description": "One of Sri Lanka's most evocative and historically poignant landmarks — the abandoned remains of what was once the final station of the Indo-Ceylon Railway. The double-track railway pier was built in 1915 by the British to serve the ferry crossing of the shallow Palk Strait from Talaimannar to Dhanushkodi on Rameswaram Island, India. This service allowed passengers to travel by continuous rail and ferry between Colombo and Chennai (Madras) on a single through ticket. The ferry served pilgrims, colonial officials, labourers, and traders for decades. A devastating cyclone in December 1964 destroyed the Dhanushkodi terminal, effectively ending the service. The Sri Lankan civil war further prevented restoration. The railway line was rebuilt and reopened in 2015, with trains now running daily between Colombo Fort and Talaimannar Pier station. The pier itself — its rusting rails extending toward India into the turquoise sea — remains one of the most photographed images in Sri Lanka's north. It is also a unique point where an A-grade highway (A14) and a broad-gauge railway line both terminate simultaneously at the sea. The beach surrounding the pier is considered safe for swimming, and Talaimannar's strong sea winds attract kitesurfers.",
+        "image_url": "",
+        "category": "Historical Pier / Colonial Railway Monument",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February", "April"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Late afternoon (4:00 PM - 6:30 PM) for magical sunset photography over the pier extending toward India. Morning is also excellent for calm light and photography."
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual outdoor wear. Sun and wind protection is strongly advised — Talaimannar is Sri Lanka's windiest location.",
+            "behavior": [
+                "Navy Zone: The Sri Lanka Navy operates in the vicinity of the pier; respect all restricted zones and do not attempt to access restricted areas.",
+                "Boat Tours: Navy-operated boat excursions toward the Adam's Bridge sandbanks are sometimes available from the pier — enquire with naval personnel on site.",
+                "Photography: The pier with its rusting tracks extending into the turquoise sea is one of Sri Lanka's most iconic photographs; bring a wide-angle lens.",
+                "Train Travel: Talaimannar Pier railway station is now operational with daily services to Colombo Fort — train travel to/from Colombo is a recommended experience.",
+                "Winds: Strong sea winds are characteristic; secure all belongings.",
+                "Combined Visit: The Talaimannar Lighthouse and beach are within immediate walking distance — visit all three together."
+            ],
+            "entry_requirements": ["Free public access to pier viewing areas", "Naval permission required for any boat tours"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    },
+
+    {
+        "id": "giants-tank-sanctuary",
+        "name": "Giant's Tank Sanctuary (Yodha Wewa Wildlife Sanctuary)",
+        "latitude": 8.8600,
+        "longitude": 80.0800,
+        "description": "The protected wildlife sanctuary area surrounding the Giant's Tank (Yodha Wewa), officially designated in 1954 and covering 10,700 acres (approximately 43 sq km). The sanctuary encompasses the tank and its surrounding arid-zone scrubland, providing critical habitat for a remarkable variety of waterbirds and wildlife in Mannar's semi-arid landscape. Notable avifauna includes Spot-billed Pelican, Pheasant-tailed Jacana, Rufous-rumped Shrike, Striated Weaver, Purple Heron, Grey Heron, Little Cormorant, Indian Darter, and many others. The sanctuary has also historically been noted for the presence of elephants, wild buffalo, and Saltwater Crocodiles. Local fishermen fish the tank's freshwaters in traditional boats, offering the possibility of hiring a vessel for wildlife observation from the water. The sanctuary's quiet, off-the-beaten-track character makes it a rewarding destination for those wishing to experience Mannar's natural landscape away from the more famous Vankalai Sanctuary.",
+        "image_url": "",
+        "category": "Wildlife Sanctuary / Ancient Irrigation Tank",
+        "crowd_info": {
+            "peak_months": ["November", "December", "January", "February"],
+            "off_peak_months": ["April", "May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) for birdwatching and wildlife; the tank is most accessible and scenic between October and February when it is full of water"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual, light outdoor wear. Bring binoculars, sun protection, insect repellent, and sufficient water.",
+            "behavior": [
+                "Safety: Saltwater Crocodiles are present in the tank — do not swim or wade in the water under any circumstances.",
+                "Wildlife Respect: Do not disturb wildlife; maintain a respectful distance from all animals.",
+                "Fishing Boats: Local fishermen may be willing to take visitors on a boat excursion across the tank; negotiate respectfully and always wear a life jacket.",
+                "Photography: Bring a camera with a telephoto lens; excellent for bird photography from the bund.",
+                "Environmental Care: Do not litter; this is a protected wildlife sanctuary and active irrigation resource."
+            ],
+            "entry_requirements": ["Free access from the main road bund", "DWC entry fee may apply for deeper sanctuary access"]
+        },
+        "entry_fee": "Free (bund and roadside access); sanctuary entry fee may apply",
+        "opening_hours": "Accessible during daylight hours (6:00 AM - 6:00 PM recommended)"
+    },
+
+    {
+        "id": "periyamadu",
+        "name": "Periyamadu",
+        "latitude": 8.8900,
+        "longitude": 80.1600,
+        "description": "A rural village and area in the interior of Mannar District, located along the A14 road between Mannar and Medawachchiya, characterised by the flat, arid, open landscape typical of the Vanni region. Periyamadu is surrounded by the paddy fields, scrub forests, and seasonal wetlands irrigated by the Giant's Tank system. The area is notable for its agricultural character and the presence of wildlife that can be spotted along the rural roads and tank boundaries, including deer, peacocks, mongooses, and a variety of birdlife. Periyamadu reflects the post-war recovery of the Mannar hinterland, with the gradual return of farming communities to lands affected by decades of civil conflict. The serene, flat countryside and small agricultural tanks in the vicinity offer a glimpse of traditional rural life in Sri Lanka's arid north. The area is traversed by those visiting Thanthirimale or making the journey between Anuradhapura and Mannar along the A14.",
+        "image_url": "",
+        "category": "Rural Village / Natural Landscape",
+        "crowd_info": {
+            "peak_months": ["December", "January", "February"],
+            "off_peak_months": ["May", "June", "July", "August", "September"],
+            "best_time_to_visit": "Morning (7:00 AM - 10:00 AM) or late afternoon (4:00 PM - 6:30 PM) for wildlife spotting and photography; the area is most scenic from October to January when paddy fields are green and tanks are full"
+        },
+        "cultural_guidelines": {
+            "dress_code": "Casual and comfortable outdoor wear appropriate for a rural agricultural environment.",
+            "behavior": [
+                "Community Respect: This is a rural farming community recovering from the impacts of the civil war; maintain a respectful and sensitive attitude toward local residents.",
+                "Wildlife Spotting: Drive slowly along rural roads in the early morning or evening to spot peacocks, deer, and other wildlife.",
+                "Photography: Seek permission before photographing local people, farmsteads, or homes.",
+                "Environmental Care: Do not litter in this rural area.",
+                "Road Conditions: Some roads in the Periyamadu area may be unpaved or poorly maintained; plan travel accordingly."
+            ],
+            "entry_requirements": ["Free public access", "No tickets required"]
+        },
+        "entry_fee": "free",
+        "opening_hours": "Accessible during daylight hours"
+    }
 
 
 ]
