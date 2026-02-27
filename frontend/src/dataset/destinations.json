@@ -3936,7 +3936,7 @@
                 "Cleanliness: Do not introduce soap, shampoo, or any chemicals into the sacred spring waters.",
                 "Marine Life: Turtles and fish are sometimes visible in the springs; do not disturb or attempt to touch them."
             ],
-            "entry_requirements": ["Free public access", "Adjacent to Keerimalai Naguleswaram Temple"]
+            "entry_requirements": ["Free public access", "with a nominal fee of approximately 30 LKR for using the bathing facilities"]
         },
         "entry_fee": "free",
         "opening_hours": "Open daily from early morning; access is tied to temple hours (approx. 5:30 AM - 8:00 PM)"
@@ -4083,5 +4083,285 @@
         },
         "entry_fee": "free",
         "opening_hours": "Open 24 hours (daytime visits recommended)"
-    }
+    },
+
+  {
+    "id": "kandasamy-temple-kilinochchi",
+    "name": "Kandasamy Temple (Kilinochchi)",
+    "latitude": 9.3896,
+    "longitude": 80.3997,
+    "description": "A prominent Hindu temple in Kilinochchi town dedicated to Lord Murugan (Kandasamy), serving as a central place of Hindu worship for the local Tamil community. The temple holds deep religious and cultural significance for residents of the Kilinochchi District and is an active site of daily prayer and annual festival observances. Like many religious sites in the area, it symbolises the spiritual resilience of the community following decades of civil conflict.",
+    "image_url": "",
+    "category": "Hindu Temple",
+    "crowd_info": {
+      "peak_months": ["January","April","July","August"],
+      "off_peak_months": ["May","June","September","October","November","December"],
+      "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) during morning pooja for the most devotional atmosphere, or late afternoon (4:00 PM - 7:00 PM)"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire required. Cover shoulders and knees. Men should ideally wear a vetti or simple conservative clothing. Remove shoes and hats before entering the temple premises.",
+      "behavior": [
+        "Footwear: Remove shoes before entering the temple; a designated area is available near the entrance.",
+        "Dress Code: Wear conservative and modest clothing. Shorts, sleeveless tops, and revealing attire are not acceptable.",
+        "Photography: Ask for permission before photographing inside the temple; exterior and gopuram photography is generally welcome.",
+        "Decorum: Maintain respectful silence, especially during poojas and prayer times.",
+        "Offerings: Devotees may bring flowers, fruits, or incense as offerings to the deity.",
+        "Festival Periods: The temple hosts annual festivals; expect larger crowds and processions during those times."
+      ],
+      "entry_requirements": [
+        "Free entry",
+        "Modest dress required"
+      ]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Morning pooja session (approx. 6:00 AM - 12:00 PM) and evening session (4:00 PM - 8:00 PM)"
+  },
+
+
+  {
+    "id": "kilinochchi-kulam",
+    "name": "கிளிநொச்சி குளம் (Kilinochchi Kulam)",
+    "latitude": 9.398,
+    "longitude": 80.398,
+    "description": "One of the major irrigation ponds of Kilinochchi town, the Kilinochchi Kulam (pond) is a serene freshwater body that forms a vital part of the agricultural landscape of the northern district. Along with the Iranamadu Tank and Kanakampikai Kulam, it is one of the primary water sources supporting paddy cultivation across the region. The pond offers a peaceful, scenic setting popular with locals for evening walks and quiet relaxation, and it attracts a variety of waterbirds, making it a pleasant spot for nature observation.",
+    "image_url": "",
+    "category": "Irrigation Tank / Natural Scenic Spot",
+    "crowd_info": {
+      "peak_months": ["November","December","January"],
+      "off_peak_months": ["April","May","June","July","August","September"],
+      "best_time_to_visit": "Late afternoon (4:30 PM - 6:30 PM) for pleasant scenery, cooler temperatures, and the best birdwatching conditions. The pond is most scenic from October to January when rainfall keeps it full."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual and comfortable clothing is appropriate. Light, breathable fabrics are recommended due to the heat.",
+      "behavior": [
+        "Environmental Care: Avoid littering; help maintain the natural cleanliness of the pond and its surroundings.",
+        "Birdwatching: Keep noise to a minimum to avoid disturbing the waterbirds that frequent the pond.",
+        "Photography: Freely allowed; a beautiful location for landscape and bird photography.",
+        "Respect: The pond is part of an active agricultural water system; do not interfere with any irrigation infrastructure.",
+        "Safety: Exercise caution near the water's edge, especially with children."
+      ],
+      "entry_requirements": [
+        "Free public access",
+        "No tickets required"
+      ]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Accessible 24 hours (daytime and evening visits recommended)"
+  },
+
+
+  {
+    "id": "green-park-kilinochchi",
+    "name": "Green Park (பசுமை பூங்கா), Kilinochchi",
+    "latitude": 9.421,
+    "longitude": 80.405,
+    "description": "A beautifully landscaped urban park located approximately 4 km north of Kilinochchi town on the A9 road. Green Park is a verdant community oasis offering expansive lawns with vibrant flora, serene walking pathways, and a charming hanging bridge that provides sweeping views of the surrounding landscape. Developed as part of post-war reconstruction and greening initiatives, it serves as a hub for family recreation, picnics, and community gatherings, offering residents and visitors a peaceful retreat in the often dry, flat terrain of the northern district.",
+    "image_url": "",
+    "category": "Urban Park & Recreation",
+    "crowd_info": {
+      "peak_months": ["January","April","December"],
+      "off_peak_months": ["May","June","July","August","September","October"],
+      "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) to enjoy the peaceful ambiance and cooler temperatures, or late afternoon (4:30 PM - 7:00 PM)"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual and comfortable outdoor wear or sportswear is appropriate for walking and recreation.",
+      "behavior": [
+        "Public Conduct: The park is a family-friendly environment; maintain respectful and appropriate behaviour.",
+        "Environmental Care: Do not litter; use the designated bins provided throughout the park.",
+        "Photography: Freely allowed, especially from the hanging bridge for panoramic views.",
+        "Safety: Exercise caution on the hanging bridge, especially with children.",
+        "Picnics: Picnicking on the lawns is welcome; please ensure all waste is cleared before leaving."
+      ],
+      "entry_requirements": [
+        "Free public access",
+        "No tickets required"
+      ]
+    },
+    "entry_fee": "free",
+    "opening_hours": "6:00 AM - 9:00 PM daily"
+  },
+
+
+  {
+    "id": "murippu-kulam",
+    "name": "Murippu Kulam",
+    "latitude": 9.375,
+    "longitude": 80.41,
+    "description": "A serene and scenic freshwater reservoir located in the Kilinochchi area, Murippu Kulam is a tranquil irrigation pond that forms part of the northern district's vital agricultural water network. Surrounded by the flat, open landscapes characteristic of the Vanni region, it offers a peaceful natural escape rich in local character and cultural heritage. The pond is a popular spot for local fishermen and attracts various waterbirds, particularly during the migratory season, making it a rewarding destination for nature observers and photography enthusiasts.",
+    "image_url": "",
+    "category": "Irrigation Tank / Natural Scenic Spot",
+    "crowd_info": {
+      "peak_months": ["November","December","January","February"],
+      "off_peak_months": ["May","June","July","August","September"],
+      "best_time_to_visit": "Early morning (6:00 AM - 8:00 AM) for birdwatching and cool temperatures, or late afternoon (4:30 PM - 6:30 PM) for scenic light and photography"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual and comfortable outdoor wear is appropriate. Light, breathable clothing is recommended.",
+      "behavior": [
+        "Environmental Care: Avoid littering; the natural environment around the kulam is fragile and should be respected.",
+        "Birdwatching: Maintain quiet to avoid disturbing waterbirds and other wildlife.",
+        "Photography: Freely allowed; wonderful for landscape and wildlife photography.",
+        "Respect for Locals: Local fishermen may be using the reservoir; be respectful of their activities and do not interfere.",
+        "Safety: Be cautious near the water's edge."
+      ],
+      "entry_requirements": [
+        "Free public access"
+      ]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Accessible during daylight hours (6:00 AM - 6:00 PM recommended)"
+  },
+
+
+  {
+    "id": "hasalaka-gamini-war-memorial",
+    "name": "Hasalaka Gamini War Memorial (Elephant Pass)",
+    "latitude": 9.4175,
+    "longitude": 80.4125,
+    "description": "A solemn and historically significant war memorial located at Elephant Pass on the A9 highway, near the Elephant Pass Railway Station in Kilinochchi District. The memorial commemorates Corporal Gamini Kularatne (known as 'Hasalaka Gamini' or the 'Hero of Hasalaka'), who on 14 July 1991 gave his life to save hundreds of fellow soldiers during a massive LTTE siege of the Elephant Pass Army Camp. He climbed onto an armour-plated bulldozer laden with explosives and threw grenades into it, destroying the vehicle at the cost of his own life. He was the first-ever recipient of the Parama Weera Vibhushanaya, Sri Lanka's highest military honour. The memorial features a statue of the war hero alongside the preserved armour-plated bulldozer he destroyed, which still stands where it stopped on that fateful night.",
+    "image_url": "",
+    "category": "War Memorial / Historical Monument",
+    "crowd_info": {
+      "peak_months": ["January","July","December"],
+      "off_peak_months": ["May","June","August","September","October"],
+      "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) or late afternoon (3:00 PM - 5:30 PM); the memorial is managed by the Sri Lanka Army and staff are available to explain the history"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual but respectful clothing is appropriate. Avoid overly revealing or disrespectful attire at a military memorial site.",
+      "behavior": [
+        "Solemnity: This is a memorial honouring a fallen military hero; maintain a respectful and solemn demeanour throughout your visit.",
+        "Photography: Allowed of the memorial, statue, and the preserved bulldozer; the site is a popular stop for documenting history.",
+        "Military Personnel: The site is managed by the Sri Lanka Army; follow any instructions given by personnel on site.",
+        "Historical Context: Army personnel at the site are knowledgeable and willing to explain the history of the memorial; engage respectfully.",
+        "Cleanliness: Do not litter within the memorial grounds."
+      ],
+      "entry_requirements": [
+        "Free public access",
+        "No tickets required"
+      ]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open daily during daylight hours (approx. 8:00 AM - 5:30 PM)"
+  },
+
+
+  {
+    "id": "iranaimadu-water-pump",
+    "name": "Iranaimadu Water Pump (Kilinochchi Water Supply Station)",
+    "latitude": 9.375,
+    "longitude": 80.452,
+    "description": "A notable public infrastructure landmark near Kilinochchi, the Iranaimadu Water Pump station is the primary raw water intake facility for the Jaffna and Kilinochchi Water Supply and Sanitation Project — a landmark development initiative funded by the Asian Development Bank and the French Development Agency. Water is drawn from the Iranamadu Tank and pumped via a network of pipelines to serve hundreds of thousands of people across the Jaffna Peninsula. The facility represents a symbol of post-war reconstruction and the restoration of essential services to the north, and is of interest to visitors as an example of large-scale development in post-conflict Sri Lanka.",
+    "image_url": "",
+    "category": "Public Infrastructure / Landmark",
+    "crowd_info": {
+      "peak_months": ["January","April","December"],
+      "off_peak_months": ["May","June","July","August","September","October"],
+      "best_time_to_visit": "Daytime visits during working hours; best combined with a visit to the adjacent Iranamadu Tank"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual and modest clothing is appropriate.",
+      "behavior": [
+        "Respect Infrastructure: This is an active water supply facility; do not interfere with any equipment or infrastructure.",
+        "Security: The facility may be managed by government or military personnel; follow all instructions and respect any access restrictions.",
+        "Photography: Permitted of the general surroundings and infrastructure from public access areas; ask for permission for closer photography.",
+        "Combined Visit: Best visited together with the Iranamadu Tank which is in close proximity."
+      ],
+      "entry_requirements": ["Public viewing from accessible areas","Formal entry to the facility may require permission"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Accessible during daytime hours (viewing from outside); combine with Iranamadu Tank visit"
+  },
+
+  
+  {
+    "id": "chundikulam-bird-sanctuary",
+    "name": "Chundikulam Bird Sanctuary (Chundikkulam National Park)",
+    "latitude": 9.5,
+    "longitude": 80.4833,
+    "description": "One of Sri Lanka's most spectacular and important protected areas, Chundikulam National Park is situated approximately 12 km north-east of Kilinochchi on the northeastern coast of the Jaffna Peninsula. Originally designated a bird sanctuary in 1938, it was elevated to a National Park in June 2015, covering 19,565 hectares (196 sq km). The park's landscape is extraordinarily diverse, encompassing Chundikkulam Lagoon, mangrove swamps, seagrass beds, palmyra palm plantations, sandy beaches, coastal scrub forest, and freshwater ponds. It is world-renowned as one of the finest destinations in Sri Lanka for witnessing large flocks of migratory Greater Flamingos, which arrive in their thousands from November to January. Other notable species include Eurasian Spoonbill, Painted Stork, Oriental Ibis, Bar-tailed Godwit, Black-winged Stilt, Eurasian Wigeon, and numerous wader and waterfowl species. The park is currently managed by the Sri Lanka Army in partnership with the Department of Wildlife Conservation.",
+    "image_url": "",
+    "category": "National Park / Bird Sanctuary",
+    "crowd_info": {
+      "peak_months": ["November","December","January","February"],
+      "off_peak_months": ["May","June","July","August","September"],
+      "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM) during the migratory season (November to January) for the best birdwatching and the most spectacular flamingo sightings"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Wear comfortable, light, earth-toned or neutral-coloured outdoor clothing to blend into the natural environment. Closed-toe shoes or boots are strongly recommended as the terrain includes sandy dunes, marshy areas, and forest paths. A wide-brimmed hat, sunscreen, and insect repellent are essential.",
+      "behavior": [
+        "Wildlife Protection: Do not disturb, feed, or approach birds and wildlife. Maintain a respectful distance at all times.",
+        "Silence: Keep noise to a minimum; loud conversations, music, and sudden movements will scare birds away.",
+        "Vehicle Access: A 4x4 vehicle is strongly recommended as roads within the park can be sandy, muddy, or submerged in shallow water.",
+        "Environmental Care: Strictly no littering; the park is a sensitive protected ecosystem. Carry all waste out with you.",
+        "Photography: Birdwatching and nature photography are actively encouraged; avoid using drones without prior authorisation.",
+        "Military Coordination: The park is managed with army involvement; coordinate entry at the checkpoint and follow all instructions from park and military personnel.",
+        "Accommodation: The Army-run Chundikulam Nature Park Holiday Resort offers overnight accommodation within the park for those wishing to stay."
+      ],
+      "entry_requirements": ["Entry fee required","Register at the entry checkpoint","4x4 vehicle strongly recommended"]
+    },
+    "entry_fee": "Paid entry (fees for locals and foreigners differ; applicable national park rates)",
+    "opening_hours": "6:00 AM - 6:00 PM daily"
+  },
+
+
+  {
+    "id": "iranamadu-tank",
+    "name": "Iranamadu Tank (இரணைமடு குளம்)",
+    "latitude": 9.35,
+    "longitude": 80.4333,
+    "description": "The largest man-made irrigation reservoir in Northern Sri Lanka, located approximately 8–10 km south-east of Kilinochchi town on the A9 road. Constructed between 1902 and 1921 under British colonial rule by the Director of Irrigation H.T.S. Ward, it was built on the Kanakarayan Aru with a catchment area of 588 sq km and a storage capacity of approximately 106,500 acre-feet (131 million cubic metres). The tank was raised and expanded three times — in 1951, 1954, and 1975 — to increase capacity. Historically believed to have ancient origins attributed to King Dhatusena, the Iranamadu Tank is the agricultural lifeline of Kilinochchi District, capable of irrigating over 18,000 acres of paddy land. Scenic and vast in extent, the tank is particularly spectacular when full and spilling during the rainy season (October to January). Visitors may also spot crocodiles along the banks. Access is via a security sign-in at the army checkpoint.",
+    "image_url": "",
+    "category": "Ancient Irrigation Tank / Scenic Reservoir",
+    "crowd_info": {
+      "peak_months": ["November","December","January"],
+      "off_peak_months": ["April","May","June","July","August","September"],
+      "best_time_to_visit": "Evening (4:30 PM - 6:30 PM) for stunning sunset views over the water, or morning (7:00 AM - 9:00 AM) for birdwatching. The tank is most scenic from October to January when it is full"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual and comfortable outdoor wear is appropriate. Light, breathable clothing and sun protection are advised.",
+      "behavior": [
+        "Security Sign-In: Visitors must sign in at the army/security checkpoint before proceeding to the tank bund and viewing areas.",
+        "Safety: Exercise extreme caution near the dam wall and water's edge; the bund edges can be uneven. Crocodiles have been sighted in the tank — do not wade into the water or stand close to the bank.",
+        "Photography: Freely allowed from the bund and viewing areas; the vast expanse of water and surrounding landscape make it excellent for photography.",
+        "Environmental Care: Do not litter; this is an active water supply and irrigation infrastructure.",
+        "Fishing: Traditional fishing is conducted by local communities in designated areas; respect their activities.",
+        "Birdwatching: Bring binoculars, particularly during the migratory season (November to February)."
+      ],
+      "entry_requirements": ["Free public access","Security sign-in required at checkpoint"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open during daylight hours (approx. 7:00 AM - 6:00 PM); security checkpoint must be passed"
+  },
+
+
+  {
+    "id": "north-lanka-nature-trails",
+    "name": "North Lanka Nature Trails",
+    "latitude": 9.3961,
+    "longitude": 80.3982,
+    "description": "A specialist birdwatching and wildlife photography tour operator based in Kilinochchi, founded by two passionate nature enthusiasts with a dedicated mission to showcase the extraordinary avian biodiversity of Northern Sri Lanka. North Lanka Nature Trails organises guided tours to the key birding hotspots of the north, including Chundikulam National Park, Iranaimadu Tank, Kilinochchi Kulam, and other wetlands and habitats of the Jaffna Peninsula and Vanni region. The service is particularly valuable for visiting birdwatchers, nature photographers, and ecologists seeking expert local knowledge of the region's rarely visited and highly rewarding natural habitats. Tours are tailored to visitor interests and can be arranged for half-day, full-day, or multi-day experiences.",
+    "image_url": "",
+    "category": "Eco-Tourism / Birdwatching Tour Operator",
+    "crowd_info": {
+      "peak_months": ["November","December","January","February"],
+      "off_peak_months": ["May","June","July","August","September"],
+      "best_time_to_visit": "Early morning (starting from 5:30 AM) during the migratory season from November to January for peak birdwatching. Tours should be booked in advance, particularly during peak season."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Wear comfortable, neutral-coloured or earth-toned clothing that does not disturb wildlife. Closed-toe shoes are recommended. Bring a hat, sunscreen, and insect repellent. Binoculars and a camera with a telephoto lens are highly recommended.",
+      "behavior": [
+        "Guided Tours: Tours are guided by knowledgeable local naturalists; follow all instructions from your guide.",
+        "Wildlife Respect: Maintain silence and respectful distances from all birds and wildlife at all times.",
+        "Environmental Ethics: Practice Leave No Trace principles; carry all waste out of natural areas.",
+        "Photography: Birdwatching photography is a core activity; avoid flash photography around wildlife and do not use drones without prior authorisation.",
+        "Advance Booking: Tours are by appointment and advance booking is strongly recommended, especially during peak migratory season.",
+        "Cultural Sensitivity: Tours operate in rural communities; be respectful of local residents and their way of life."
+      ],
+      "entry_requirements": ["Booking required","Tour fees applicable","Contact operator in advance to arrange tour"]
+    },
+    "entry_fee": "Tour fees applicable (vary by tour type and duration)",
+    "opening_hours": "Tours typically depart at 5:30 AM - 6:00 AM for early morning birdwatching; contact operator for scheduling"
+  }
+
+
 ]
