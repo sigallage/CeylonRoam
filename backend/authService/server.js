@@ -43,8 +43,18 @@ async function start() {
 
   await mongoose.connect(MONGODB_URI);
 
+  app.use((err, req, res,  next) => {
+    err.statuCode = err.statuCode || 500;
+    err.status = err.status || 'error';
+    res.status(err.statuCode).json({ 
+        status: err.status,
+        message: err.message,
+    });
+});
+
   app.listen(PORT, () => {
     console.log(`Auth service listening on port ${PORT}`);
+    console.log('Connected to MongoDB!');
   });
 }
 
