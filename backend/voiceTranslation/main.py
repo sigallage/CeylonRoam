@@ -110,6 +110,11 @@ async def root():
     }
 
 
+@app.get("/health")
+async def health():
+    return {"ok": True}
+
+
 @app.post("/voice/translate")
 async def transcribe_audio(
     file: UploadFile = File(...),
