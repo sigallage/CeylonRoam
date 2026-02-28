@@ -4419,6 +4419,7 @@
         "entry_fee": "free",
         "opening_hours": "Open 24 hours (swimming recommended during daylight hours)"
     },
+    
 
     {
         "id": "national-shrine-our-lady-of-madhu",
@@ -4452,6 +4453,7 @@
         "opening_hours": "6:00 AM - 8:00 PM daily"
     },
 
+
     {
         "id": "st-sebastians-cathedral-mannar",
         "name": "St. Sebastian's Cathedral, Mannar",
@@ -4478,6 +4480,7 @@
         "entry_fee": "free",
         "opening_hours": "Open daily; Mass times typically 6:00 AM and 6:00 PM on weekdays; Sunday Mass times vary — check locally"
     },
+
 
     {
         "id": "vankalai-bird-sanctuary",
@@ -4509,6 +4512,7 @@
         "opening_hours": "Accessible during daylight hours (6:00 AM - 6:00 PM recommended)"
     },
 
+
     {
         "id": "adams-bridge-talaimannar",
         "name": "Adam's Bridge (Rama Setu) — Talaimannar",
@@ -4536,6 +4540,7 @@
         "entry_fee": "free",
         "opening_hours": "Accessible during daylight hours"
     },
+
 
     {
         "id": "thanthirimale-raja-maha-viharaya",
@@ -4567,6 +4572,7 @@
         "opening_hours": "6:00 AM - 8:00 PM daily"
     },
 
+
     {
         "id": "yodha-wewa-giants-tank",
         "name": "Yodha Wewa (Giant's Tank)",
@@ -4596,6 +4602,7 @@
         "opening_hours": "Accessible during daylight hours (7:00 AM - 6:00 PM recommended)"
     },
 
+
     {
         "id": "baobab-tree-pallimunai",
         "name": "Baobab Tree, Pallimunai, Mannar",
@@ -4624,6 +4631,7 @@
         "opening_hours": "Accessible 24 hours (morning and evening visits recommended)"
     },
 
+
     {
         "id": "talaimannar-lighthouse",
         "name": "Talaimannar Lighthouse",
@@ -4651,6 +4659,7 @@
         "entry_fee": "free",
         "opening_hours": "Accessible during daylight hours"
     },
+
 
     {
         "id": "bird-watching-tower-vankalai",
@@ -4681,6 +4690,7 @@
         "opening_hours": "Open during daylight hours (6:00 AM - 6:00 PM)"
     },
 
+
     {
         "id": "arippu-dutch-fort",
         "name": "Arippu Dutch Fort (Allirani Fort)",
@@ -4709,6 +4719,7 @@
         "opening_hours": "Accessible during daylight hours"
     },
 
+
     {
         "id": "pesalai-beach",
         "name": "Pesalai Beach",
@@ -4736,6 +4747,7 @@
         "entry_fee": "free",
         "opening_hours": "Open 24 hours (swimming recommended during daylight hours)"
     },
+
 
     {
         "id": "thekkam-anicut",
@@ -4766,6 +4778,7 @@
         "opening_hours": "Accessible during daylight hours (best visited in the morning)"
     },
 
+
     {
         "id": "talaimannar-pier",
         "name": "Talaimannar Pier",
@@ -4795,6 +4808,7 @@
         "opening_hours": "Accessible during daylight hours"
     },
 
+
     {
         "id": "giants-tank-sanctuary",
         "name": "Giant's Tank Sanctuary (Yodha Wewa Wildlife Sanctuary)",
@@ -4823,6 +4837,7 @@
         "opening_hours": "Accessible during daylight hours (6:00 AM - 6:00 PM recommended)"
     },
 
+
     {
         "id": "periyamadu",
         "name": "Periyamadu",
@@ -4850,7 +4865,9 @@
         "entry_fee": "free",
         "opening_hours": "Accessible during daylight hours"
     },
-  {
+
+
+    {
     "id": "dry-zone-botanic-gardens-hambantota",
     "name": "Dry Zone Botanic Gardens (Mirijjawila)",
     "latitude": 6.1317,
@@ -4881,6 +4898,8 @@
     "entry_fee": "paid",
     "opening_hours": "Daily 7:30 AM – 5:00 PM (verify public and national holiday closures in advance)"
   },
+
+
   {
     "id": "bundala-national-park",
     "name": "Bundala National Park",
@@ -4914,6 +4933,8 @@
     "entry_fee": "paid",
     "opening_hours": "Daily 6:00 AM – 6:00 PM"
   },
+
+
   {
     "id": "walawe-river-safari",
     "name": "Walawe River Safari (Boat Safari)",
@@ -4946,6 +4967,8 @@
     "entry_fee": "paid",
     "opening_hours": "Tours operate daily 6:00 AM – 6:00 PM (advance booking recommended)"
   },
+
+
   {
     "id": "ridiyagama-safari-park",
     "name": "Ridiyagama Safari Park",
@@ -4980,6 +5003,8 @@
     "entry_fee": "paid",
     "opening_hours": "Daily 8:30 AM – 4:30 PM"
   },
+
+
   {
     "id": "yala-national-park",
     "name": "Yala National Park (Ruhuna National Park)",
@@ -5014,6 +5039,8 @@
     "entry_fee": "paid",
     "opening_hours": "Daily 6:00 AM – 6:00 PM (park may close annually for about 6 weeks typically in Sep–Oct — confirm current dates)"
   },
+
+
   {
     "id": "birds-park-birds-research-center-hambantota",
     "name": "Birds Park & Birds Research Center – Hambantota",
@@ -5044,6 +5071,8 @@
     "entry_fee": "paid",
     "opening_hours": "Contact facility for current opening times"
   },
+
+
   {
     "id": "mirijjawila-dry-zone-botanic-gardens-south-gate",
     "name": "Mirijjawila Botanical Gardens – South Gate",
@@ -5073,6 +5102,8 @@
     "entry_fee": "paid",
     "opening_hours": "Daily 7:30 AM – 5:00 PM"
   },
+
+
   {
     "id": "mirijjawila-development-zone",
     "name": "Mirijjawila (Hambantota Development Zone)",
@@ -5100,6 +5131,8 @@
     "entry_fee": "paid",
     "opening_hours": "Ridiyagama Safari Park: 8:30 AM – 4:30 PM; Dry Zone Botanic Gardens: 7:30 AM – 5:00 PM daily"
   },
+
+
   {
     "id": "bataatha-agro-technology-tourism-park",
     "name": "Bataatha Agro Technology and Tourism Park",
@@ -5129,6 +5162,8 @@
     "entry_fee": "paid",
     "opening_hours": "Contact the park directly for current hours"
   },
+
+
   {
     "id": "ussangoda-national-park",
     "name": "Ussangoda National Park",
@@ -5161,6 +5196,8 @@
     "entry_fee": "free",
     "opening_hours": "Open during daylight hours"
   },
+
+
   {
     "id": "ramba-raja-maha-viharaya",
     "name": "Ramba Raja Maha Viharaya",
@@ -5193,6 +5230,8 @@
     "entry_fee": "free",
     "opening_hours": "Open daily from dawn to dusk; monastery functions throughout the day"
   },
+
+
   {
     "id": "hambantota-beach",
     "name": "Hambantota Beach",
@@ -5223,6 +5262,8 @@
     "entry_fee": "free",
     "opening_hours": "Open at all hours; most active at dawn and dusk"
   },
+
+
   {
     "id": "sooriyawewa-international-cricket-stadium",
     "name": "Mahinda Rajapaksa International Cricket Stadium (Sooriyawewa)",
@@ -5253,6 +5294,8 @@
     "entry_fee": "paid",
     "opening_hours": "Match days: as per fixture schedule. Non-match days: exterior viewing generally accessible during daylight hours."
   },
+
+
   {
     "id": "tissamaharama-raja-maha-vihara",
     "name": "Tissamaharama Raja Maha Viharaya",
@@ -5286,6 +5329,8 @@
     "entry_fee": "free",
     "opening_hours": "Open daily 6:00 AM – 6:00 PM"
   },
+
+
   {
     "id": "godawaya-beach",
     "name": "Godawaya Beach (Ancient Port of Godawaya)",
@@ -5317,6 +5362,8 @@
     "entry_fee": "free",
     "opening_hours": "Beach: open at all hours. Temple: dawn to dusk."
   },
+
+
   {
     "id": "kumana-national-park",
     "name": "Kumana National Park (Yala East)",
@@ -5350,6 +5397,8 @@
     "entry_fee": "paid",
     "opening_hours": "Jeeps depart before dawn for morning safaris; afternoon safaris typically depart at 2:00 PM. Park open daily (check for any seasonal closures)."
   },
+
+
   {
     "id": "abarana-ella",
     "name": "Abarana Ella (Bisowaru Mala Ella)",
@@ -5381,6 +5430,8 @@
     "entry_fee": "free",
     "opening_hours": "Accessible during daylight hours"
   },
+
+
   {
     "id": "kalametiya-bird-sanctuary",
     "name": "Kalametiya Bird Sanctuary (Bird Watching & Ecotourism)",
@@ -5413,6 +5464,8 @@
     "entry_fee": "paid",
     "opening_hours": "Boat tours depart from approximately 4:00 AM onwards; sanctuary open 6:00 AM – 6:00 PM (best results with pre-dawn departure)"
   },
+
+
   {
     "id": "muruthawela-gini-petti-palama",
     "name": "Muruthawela Gini Petti Palama (Matchbox Bridge)",
@@ -5443,6 +5496,8 @@
     "entry_fee": "free",
     "opening_hours": "Accessible during daylight hours"
   },
+
+
   {
     "id": "kataragama",
     "name": "Kataragama Sacred City",
@@ -5477,5 +5532,511 @@
     },
     "entry_fee": "free",
     "opening_hours": "The sacred complex is open daily with four daily puja ceremonies (dawn, noon, evening, and night). The town itself is accessible at all hours."
+  },
+
+
+  {
+    "id": "polhena_beach",
+    "name": "Polhena Beach",
+    "latitude": 5.9422,
+    "longitude": 80.5271,
+    "description": "Polhena Beach is one of Sri Lanka's finest snorkeling destinations, protected by a shallow offshore coral reef that creates a natural lagoon with calm, clear water. Located just west of Matara town (approximately 2 km from the centre), the beach is compact and palm-fringed with a relaxed local atmosphere. The reef forms a natural barrier dampening ocean waves and producing waist-to-chest-deep areas ideal for swimming. The defining attraction is snorkeling with wild resident Green Sea Turtles, which feed on seagrass in the reef lagoon and are regularly spotted just metres from shore. Local vendors on the beach rent snorkel gear, and the Polhena Diving Center runs guided reef swims departing every hour from 6:30 AM until 11:30 AM — earlier sessions offer the best turtle sightings. Guides such as Nirosh (+94 775481252) specialise in responsible turtle encounters. The best times to spot turtles are early morning around 8:00 AM or late afternoon around 4:00 PM. Visitors should follow local guidance when approaching marine life, watch for sea urchins near exposed coral, and stay within the reef lagoon — currents outside the reef can be strong. The beach is popular with local families on weekends and can become crowded. Accommodation ranges from small beachside guesthouses along Beach Road to hotels in Matara town a few kilometres away. Nearest rail station: Walgama (short distance) or Matara (larger hub).",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Polhena_Beach.jpg/1280px-Polhena_Beach.jpg",
+    "category": "Beach / Marine",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March", "April"],
+      "off_peak_months": ["June", "July", "August", "September"],
+      "best_time_to_visit": "Early morning (6:30–9:00 AM) for turtle snorkeling; November–April for calmest seas and best visibility. Weekday mornings are least crowded."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Swimwear appropriate; modest beachwear in the community areas out of respect for local fishing families",
+      "behavior": "Never touch or chase sea turtles; maintain respectful distance; follow guide instructions; no littering",
+      "entry_requirements": "Free public access; snorkel gear rental from local vendors (approximately Rs. 300–500); guided snorkel tours approximately USD 15–30 per person"
+    },
+    "entry_fee": "Free (beach access); snorkeling gear rental and guided tours at extra cost",
+    "opening_hours": "Open 24 hours; snorkel tours from 6:30 AM to 11:30 AM (Polhena Diving Center)"
+  },
+
+
+  {
+    "id": "paravi_duwa_bridge",
+    "name": "Paravi Duwa Bridge | පරෙවි දූව පාලම | மாத்தறை புறாத்தீவு பாலம்",
+    "latitude": 5.9475,
+    "longitude": 80.5345,
+    "description": "Paravi Duwa — 'Pigeon Island' in Sinhala — is a tiny offshore islet in front of Matara Beach, home to the Uposathaghara Raja Maha Viharaya, a Buddhist temple of the Siam Nikaya sect. The island is reached via a narrow pedestrian footbridge from Matara Beach. The original bridge was destroyed by the devastating 2004 Indian Ocean tsunami; a steel cable-stayed replacement was erected in 2008, but this in turn collapsed in March 2022 injuring 60 people. A new stone bridge has since been constructed and is the current access route. The temple complex on the compact islet features a white stupa topped with a golden casket, a gilt Buddha statue in a shrine room, colourful painted temple buildings, shrines dedicated to Goddess Pattini and Hindu deities including Vishnu, Ganesh, and Kataragama, a meditation garden, and a replica of the sacred gold footprint from Adam's Peak (Sri Pada). The island is also associated with Siam Nikaya Buddhism, which originated from Thailand following the revival of ordination in Sri Lanka in 1753. The pedestrian bridge and the islet itself frame spectacular views of Matara Beach, fishing boats, and the open Indian Ocean — especially beautiful at sunrise and sunset. A cultural preservation fee of Rs. 500 is charged for foreign visitors. Annual celebrations in early February feature traditional dances and processions. Festival days (Poya full moon days) bring heightened devotional activity.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Paravi_Duwa_Temple_Matara.jpg/1280px-Paravi_Duwa_Temple_Matara.jpg",
+    "category": "Religious / Cultural",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Early morning (6:00–8:00 AM) for quiet devotional atmosphere and golden light photography; February for the annual celebrations; Poya (full moon) days for festival atmosphere. November–April for the best weather."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress mandatory — shoulders and knees covered; white or light-coloured traditional clothing preferred; shoes removed before entering the islet temple",
+      "behavior": "Respectful silence; do not disturb monks in meditation or prayer; clockwise circumambulation of the stupa; no backs turned to Buddha images; photography generally permitted in outer areas",
+      "entry_requirements": "Foreign visitors: cultural preservation fee Rs. 500; Sri Lankan visitors: free or small donation"
+    },
+    "entry_fee": "Rs. 500 (foreign visitors); free or donation (Sri Lankan visitors)",
+    "opening_hours": "Sunrise to sunset daily"
+  },
+
+
+  {
+    "id": "the_shrine_of_our_lady_of_matara",
+    "name": "The Shrine of Our Lady of Matara",
+    "latitude": 5.9503,
+    "longitude": 80.5367,
+    "description": "The Shrine of Our Lady of Matara is a Roman Catholic pilgrimage site in Matara town, dedicated to the Virgin Mary. It is one of the significant Catholic shrines on Sri Lanka's southern coast, drawing pilgrims and visitors of various faiths who come to pray and seek blessings. The shrine reflects the Catholic heritage brought to the region during the Portuguese colonial period (16th–17th centuries), when Christianity was actively introduced to coastal communities. The Portuguese established Christian missions throughout the southern coast and constructed churches and shrines, leaving a lasting religious legacy alongside the island's predominantly Buddhist and Hindu traditions. The shrine is an active place of worship with regular masses and Marian devotions. It provides a point of reflection on the religious diversity and colonial history of Matara. The surrounding area of Matara town retains layered traces of Portuguese, Dutch, and British influence alongside indigenous Sinhalese Buddhist and Hindu traditions, making any visit here part of a broader understanding of the city's multicultural heritage.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Matara_Our_Lady_Shrine.jpg/800px-Matara_Our_Lady_Shrine.jpg",
+    "category": "Religious / Cultural",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March", "August"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning masses; Catholic feast days and Marian observances for special celebrations; December for Christmas observances"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress required — shoulders and knees covered; respectful attire as befitting a place of active Catholic worship",
+      "behavior": "Respectful silence; do not disturb worshippers during prayer or mass; photography with permission only",
+      "entry_requirements": "Free entry; donations welcomed for upkeep"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open during scheduled services and daily prayer times; check local schedule"
+  },
+
+
+  {
+    "id": "matara_beach",
+    "name": "Matara Beach",
+    "latitude": 5.9478,
+    "longitude": 80.5353,
+    "description": "Matara Beach is the main public seafront of Matara town, stretching along the southern coast at the confluence of the Nilwala Ganga river estuary and the Indian Ocean. It is a broad, open, working beach rather than a resort destination — the authentic beating heart of Matara's coastal community. The beach fronts the historic Matara Fort rampart and offers direct views of the Paravi Duwa islet and its Buddhist temple across the water. Fishing boats are moored here, and the daily rhythm of the working harbour is visible — nets being mended, boats departing at dawn, catches unloaded in the morning. The beachfront esplanade and the grounds near the Fort provide ample space for walking, cricket matches among local youth, and evening strolls. Matara Beach is not a typical tourist beach — it is busy, characterful, and fully integrated into local town life. The Matara Bus Station, railway terminus (southernmost station on the Coastal Line from Colombo), and the Fort are all within walking distance. Beachfront cafes and stalls sell fresh coconuts, short eats, and Sri Lankan snacks. The beach serves as the starting point for the bridge walk to Paravi Duwa and the gateway to the Matara Fort heritage zone. Swimming conditions vary — the river mouth, currents, and harbour activity mean this is not primarily a swimming beach; assess locally before entering the water.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Matara_Beach_Sri_Lanka.jpg/1280px-Matara_Beach_Sri_Lanka.jpg",
+    "category": "Beach / Urban Waterfront",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Early morning (6:00–8:00 AM) to see fishing boats and daily harbour activity; late afternoon for the evening promenade atmosphere; December–April for dry weather"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest beachwear appropriate in this community setting; fully clothed when walking along the esplanade near the Fort and town",
+      "behavior": "Respect the working fishing community; do not obstruct fishing activities; no alcohol in public spaces",
+      "entry_requirements": "Free public access"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours (public beach)"
+  },
+
+
+  {
+    "id": "matara_bodhiya",
+    "name": "Matara Bodhiya | මාතර බෝධිය | மாதாரா போதி மரம்",
+    "latitude": 5.9490,
+    "longitude": 80.5360,
+    "description": "The Matara Bodhiya is a sacred Bo tree (Ficus religiosa) venerated by Buddhists in Matara town. Bo trees are among the most revered objects in Theravada Buddhism — it was under a Bo (Bodhi) tree at Bodh Gaya in India that Siddhartha Gautama attained enlightenment and became the Buddha. The most sacred Bo tree in Sri Lanka is the Jaya Sri Maha Bodhi in Anuradhapura, propagated from the original Bodhi tree and planted in 288 BCE, making it the oldest historically documented tree in the world. Many sacred Bo trees throughout Sri Lanka are believed to have been grown from saplings of this revered tree. The Matara Bodhiya provides a focal point for daily Buddhist worship, merit-making, and meditation for the people of Matara. Devotees circumambulate the tree, light oil lamps, offer flowers and water, and recite Pali chants. The Bo tree enclosure near the Matara beach area is a place of quiet sanctity within the otherwise busy town. Visitors of all faiths are welcome to observe respectfully.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Bo_tree_Sri_Lanka.jpg/800px-Bo_tree_Sri_Lanka.jpg",
+    "category": "Religious / Natural Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Early morning during daily puja; Poya (full moon) days for heightened devotional activity"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress — shoulders and knees covered; white or light clothing preferred for worship; shoes removed near the Bo tree enclosure",
+      "behavior": "Clockwise circumambulation; no photography during active puja; respectful silence; do not lean on or touch the tree bark with disrespect",
+      "entry_requirements": "Free"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily; most active at dawn and dusk puja times"
+  },
+
+
+  {
+    "id": "matara_fort",
+    "name": "Matara Fort",
+    "latitude": 5.9494,
+    "longitude": 80.5360,
+    "description": "Matara Fort is one of Sri Lanka's finest surviving examples of Dutch colonial military architecture, occupying the promontory where the Nilwala Ganga (Nilwala River) estuary meets the Indian Ocean. The Portuguese first constructed fortifications here in 1595 with the assistance of Don Juan Dharmapala. In 1640 the Dutch East India Company (VOC) captured Matara from the Portuguese and in 1645 substantially rebuilt the current fortifications to protect VOC administrative buildings and the lucrative cinnamon and elephant trading post. The fort consists of a 240-metre-long, 13-metre-thick, 5-metre-high rampart constructed from local limestone, granite, and coral, with a gateway, bastion projections, and an original ditch and bridge. During the 'Matara Rebellion' of 1761, Kandyan forces under Kirti Sri Rajasinha bombarded and briefly captured the fort — a celebrated episode of local resistance to colonial rule — before the Dutch retook it in 1762. The Dutch then built the separate Star Fort in 1765 to guard the river approach. On 24 February 1796 the fort was handed over to the British, who added the Courts Complex, the Police Station, a Rest House, and in 1883 a 12-metre-high Clock Tower atop the remaining rampart — built using public subscriptions from headmen of the Matara District and modelled after British seaside clock towers. Today the fort is a living administrative centre housing the District Secretariat, courts, schools, residences, and local shops, alongside the 1706 Dutch Reformed Church (the oldest building inside the fort, reconstructed in 1767 after the Rebellion), and various colonial-era buildings. The entire fort and rampart is a protected monument under Sri Lanka's Antiquities Ordinance. Gate and walls were restored in 1985–86 by Dutch firm Ballast Nedam. Entry is free; the fort is walkable and best explored on foot.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Matara_Fort_Sri_Lanka.jpg/1280px-Matara_Fort_Sri_Lanka.jpg",
+    "category": "Heritage / Colonial Architecture",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Morning or late afternoon (9:00 AM–12:00 PM or 3:00–6:00 PM) for comfortable walking; December–April for best weather; early morning for photography of ramparts against the sea"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; modestly covered when entering the Dutch Reformed Church",
+      "behavior": "Respect active government buildings and courts; photography of court buildings may be restricted; be mindful of residents and workers inside the fort",
+      "entry_requirements": "Free entry (fort grounds); Dutch Reformed Church may request a small donation"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily (fort grounds); Dutch Reformed Church: generally accessible during daylight hours; government offices: weekdays only"
+  },
+
+
+  {
+    "id": "lakshawaththa_beach",
+    "name": "Lakshawaththa Beach",
+    "latitude": 5.9440,
+    "longitude": 80.5180,
+    "description": "Lakshawaththa Beach is a quieter, less-visited stretch of sandy coastline located west of Matara town, between Polhena and the main Matara waterfront. The beach offers a more secluded alternative to the busier Polhena snorkeling beach. Rocky outcrops frame calmer cove sections along this part of the coast, where the surrounding reef system continues. The beach is accessible from the coastal road and is popular with local residents seeking a peaceful setting away from the crowds that gather at Polhena on weekends. The area retains a natural, undeveloped character. It is suitable for relaxed beachcombing and wading. As with all beaches along this stretch of coastline, sea conditions should be checked with locals before swimming, particularly during the southwest monsoon season (May–September).",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sri_Lanka_South_coast.jpg/1280px-Sri_Lanka_South_coast.jpg",
+    "category": "Beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "November–April (dry season); weekday mornings for the most peaceful experience"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest swimwear appropriate; standard beach attire",
+      "behavior": "Respect local residents; no littering",
+      "entry_requirements": "Free public access"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours (public beach)"
+  },
+
+
+  {
+    "id": "lighthouse_dewundara",
+    "name": "Lighthouse Dewundara",
+    "latitude": 5.9218,
+    "longitude": 80.5925,
+    "description": "Dondra Head Lighthouse (locally known as Dewundara Lighthouse) stands at the southernmost tip of Sri Lanka — the very bottom of the island — in the small coastal settlement of Dondra (Devundara / Devinuwara), approximately 6 kilometres southeast of Matara. It is Sri Lanka's tallest lighthouse at 49 metres (161 feet) and one of the tallest lighthouses in all of South and Southeast Asia. The lighthouse was designed by Sir James Nicholas Douglass (the only British engineer to receive a knighthood primarily for lighthouse work) and constructed by William Douglass of the Imperial Lighthouse Service, commencing in November 1887 and completed and opened in March 1890. All building materials — bricks, steel, and granite — were imported from England; the granite came specifically from quarries at Dalbeattie in Scotland and Penryn in Cornwall. The tower is octagonal in shape with distinctive 14 two-panel yellow windows against white-painted brickwork. It contains 7 floors reached by 196 steps to the top. Originally fitted with one of the rare large Hyperradiant Fresnel lenses made by Chance Brothers of England — one of only four such lights in Sri Lanka — the rotating lens was replaced in 2020 by a static flashing LED light with a range of 28 nautical miles. The lighthouse is operated by the Sri Lanka Ports Authority. Climbing to the top requires prior permission from the Sri Lanka Ports Authority and offers a panoramic view over the Indian Ocean in all directions — on clear days the Bulutota Mountain Range is visible to the north. The name 'Dondra' derives from 'Devi-Nuwara' meaning 'City of the Gods' in Sinhala. The lighthouse sits within the broader Devinuwara sacred precinct, close to the ancient Vishnu Devalaya and Gal Ge shrine.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Dondra_Head_Lighthouse.jpg/800px-Dondra_Head_Lighthouse.jpg",
+    "category": "Landmark / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "December–April (dry season, clear skies for best visibility from top); sunrise or sunset for photography; morning visits are cooler and less crowded"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Smart casual; modest attire when visiting the adjacent temple precincts",
+      "behavior": "Respect the active lighthouse (operated by Sri Lanka Ports Authority); obtain permission before climbing; do not interfere with navigational equipment",
+      "entry_requirements": "Small entrance fee (Rs. 100–300 reported); climbing to the top requires permission from Sri Lanka Ports Authority in advance"
+    },
+    "entry_fee": "Small entry fee (Rs. 100–300); advance permission required to climb",
+    "opening_hours": "9:00 AM to 6:00 PM daily (grounds); climbing subject to prior permission"
+  },
+
+
+  {
+    "id": "snake_farm_weligama",
+    "name": "Snake Farm Weligama (Traditional Farm)",
+    "latitude": 5.9740,
+    "longitude": 80.4295,
+    "description": "The Snake Farm in Weligama is a traditional snake farm and educational facility showcasing Sri Lanka's diverse snake species, including venomous species endemic to the island. Sri Lanka has approximately 100 snake species, of which around 50 are endemic, and the island's herpetofauna is considered exceptionally diverse for its size. The farm provides an opportunity for visitors to observe a variety of live snakes in a controlled setting — from the Russell's Viper and Cobra (Naja naja) to the various non-venomous species found throughout the southern province. Educational exhibits explain the ecology, behaviour, and conservation status of Sri Lankan snakes, as well as information on snakebite prevention and first aid — an important public health topic in rural Sri Lanka. Snake farms of this traditional type have historical roots in antivenin research and local snake-handling knowledge. The farm is particularly interesting for wildlife enthusiasts, herpetologists, and children. It is located in Weligama town, approximately 20 km west of Matara on the A2 coastal road.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Sri_Lanka_Cobra.jpg/800px-Sri_Lanka_Cobra.jpg",
+    "category": "Wildlife / Education",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning visits (9:00–11:00 AM) when snakes are more active; year-round"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; closed-toe shoes recommended",
+      "behavior": "Do not touch snakes without handler supervision; follow all safety instructions from staff; do not tap glass or disturb exhibits",
+      "entry_requirements": "Entry fee charged (verify current amount on-site)"
+    },
+    "entry_fee": "Charged entry (verify current fee on-site)",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM daily (confirm locally)"
+  },
+
+
+  {
+    "id": "weligama_beach",
+    "name": "Weligama Beach",
+    "latitude": 5.9733,
+    "longitude": 80.4295,
+    "description": "Weligama Beach is a wide, gently curving bay approximately 20 km west of Matara, consistently ranked among the best beginner surf beaches in Sri Lanka and Asia. Weligama ('Sandy Village') is named for its broad sandy shoreline. The bay is sheltered and produces consistently gentle, rolling waves ideal for beginner and intermediate surfers, making it one of the top learn-to-surf destinations in the Indian Ocean. Numerous surf schools and board rental shops operate along the beach, offering lessons year-round. The beach is wide and accessible, with calm water sections suitable for swimming and family outings. The seafront is lined with guesthouses, restaurants, juice bars, and surf shops. Local stilt fishermen — an iconic image of Sri Lankan coastal life — can sometimes still be seen in the shallows. The beach fronts Taprobane Island, a tiny private island in the bay with a historic villa (once owned by Count de Mauny and later the author Paul Bowles) connected to the mainland only by wading at low tide. Kushtarajagala, the ancient Bodhisattva rock sculpture (7th–9th century), is located just 1 km from the beach. The town offers excellent fresh seafood dining. The southwest monsoon (May–October) can bring bigger waves and rougher conditions — good for experienced surfers but less suitable for beginners.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Weligama_Beach_Sri_Lanka.jpg/1280px-Weligama_Beach_Sri_Lanka.jpg",
+    "category": "Beach / Surfing",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March", "April"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "November–April for calmest conditions and ideal beginner surf; May–October for larger, more challenging waves (experienced surfers); early morning for least crowded sessions"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Standard beach and surf attire; cover up when walking through Weligama town",
+      "behavior": "Follow surf etiquette (no dropping in on other surfers' waves); respect local fishing activities",
+      "entry_requirements": "Free public beach; surf lessons and board rental at commercial rates"
+    },
+    "entry_fee": "Free (beach); surf lessons typically Rs. 2,500–4,000 per session",
+    "opening_hours": "Open 24 hours; surf schools typically 7:00 AM – 6:00 PM"
+  },
+
+
+  {
+    "id": "old_dutch_market",
+    "name": "Old Dutch Market",
+    "latitude": 5.9500,
+    "longitude": 80.5358,
+    "description": "The Old Dutch Market (also known as the Old Nupe Market) in Matara is a historic colonial-era building of Dutch origin, located close to the Matara Fort precinct in the heart of Matara town. The market building dates to the Dutch colonial period (1640–1796) and served as an important trading and commercial hub for the region's cinnamon, spice, and goods trade that made Matara a key VOC (Dutch East India Company) port in southern Ceylon. The Dutch established Matara as an important commercial centre — the deep and sheltered estuary of the Nilwala Ganga made the town ideal for trading, and it was a major export point for cinnamon and elephants under VOC administration. The building's architecture reflects Dutch colonial commercial design, with thick walls built from coral and limestone typical of this era. Today the market area remains a busy local commercial zone, allowing visitors to experience the layered history of the town while observing everyday Sri Lankan market life. The building stands as a reminder of Matara's mercantile colonial past and its place in the global spice trade routes of the 17th–18th centuries.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Matara_Old_Market.jpg/800px-Matara_Old_Market.jpg",
+    "category": "Heritage / Colonial Architecture",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning (8:00 AM–12:00 PM) when market activity is at its peak; December–April for best weather"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; standard town attire",
+      "behavior": "Respectful of the working market; do not obstruct vendors or shoppers; photography generally permitted",
+      "entry_requirements": "Free to view (public area)"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Market typically active from early morning to early evening; building exterior viewable at any time"
+  },
+
+
+  {
+    "id": "dutch_reformed_church",
+    "name": "Dutch Reformed Church",
+    "latitude": 5.9498,
+    "longitude": 80.5358,
+    "description": "The Dutch Reformed Church within Matara Fort is the oldest building inside the fort and one of the best-preserved examples of Dutch colonial ecclesiastical architecture in Sri Lanka. Built by the Dutch East India Company (VOC) in 1706 to serve the Protestant Dutch garrison and officials stationed in Matara, it was damaged during the Matara Rebellion of 1761 when Kandyan forces briefly captured the fort, and was subsequently reconstructed in 1767 — the date engraved above the entrance refers to this reconstruction. The church's architectural style is characteristic of Dutch colonial design: thick walls built from coral and limestone to keep the interior cool in the tropical climate, heavy wooden door and window panels, arched windows, and a plain, unadorned interior. Inside, gravestones set into the floor date back to 1686, commemorating significant Dutch community members and beneficiaries of the colonial era. The walls now show signs of deterioration — conservation specialists have noted that the original lime-mortar mixture used in construction cannot be precisely replicated with materials available within Sri Lanka. The church is part of the Matara Fort protected monument complex. It currently operates as a place of historical interest rather than active regular worship, though special services may be held. Visitors can examine the remarkable floor inscriptions and absorb the austere colonial Protestant interior.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Dutch_Reformed_Church_Matara.jpg/800px-Dutch_Reformed_Church_Matara.jpg",
+    "category": "Heritage / Colonial Architecture / Religious",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Morning visits (9:00 AM–12:00 PM); December–April for best weather; combine with Matara Fort heritage walk"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire — shoulders and knees covered; respectful dress as for a historic place of worship",
+      "behavior": "Respectful silence; do not walk on or damage floor gravestones; photography generally permitted; small donation requested for maintenance",
+      "entry_requirements": "Free; small donation welcomed"
+    },
+    "entry_fee": "Free; voluntary donation for maintenance",
+    "opening_hours": "Generally accessible during daylight hours within the Fort; confirm locally"
+  },
+
+
+  {
+    "id": "kai_beach_pool_club",
+    "name": "Kai Beach Pool Club",
+    "latitude": 5.9430,
+    "longitude": 80.5250,
+    "description": "Kai Beach Pool Club is a contemporary beach club located along the Polhena–Matara coastal stretch, offering a modern leisure destination on the southern coast. The club combines a swimming pool, beach access, food and beverage service, and a relaxed social atmosphere — a lifestyle venue catering to both domestic tourists and international visitors looking for a more curated beach club experience on the southern coast. It serves as a day-use venue where visitors can access pool facilities, sun loungers, and beach-view dining without booking accommodation, offering a contrast to the mostly budget and mid-range guesthouses that characterise the immediate Polhena area. This type of beach pool club concept has become increasingly popular along Sri Lanka's southern coast. Visitors should check the club's current day-entry rates and opening days in advance, as these venues can have variable schedules depending on season and bookings.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Polhena_Beach.jpg/1280px-Polhena_Beach.jpg",
+    "category": "Beach Club / Leisure",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "November–April (dry season); weekends for social atmosphere; weekdays for more peaceful experience"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Beach club attire (swimwear and casual wear); cover up in dining areas",
+      "behavior": "Follow club rules and guidelines; respectful of other guests",
+      "entry_requirements": "Day entry fee applicable; advance booking may be required on weekends; check current rates directly with the venue"
+    },
+    "entry_fee": "Day entry fee (verify current rate with venue)",
+    "opening_hours": "Check directly with venue (typically 10:00 AM – 7:00 PM or later)"
+  },
+
+
+  {
+    "id": "kotikagoda_rajamaha_viharaya",
+    "name": "Kotikagoda Rajamaha Viharaya",
+    "latitude": 5.9510,
+    "longitude": 80.5450,
+    "description": "Kotikagoda Raja Maha Viharaya is a Buddhist temple situated in Wewahamanduwa village near Walgama in Matara District, notable for its well-preserved 19th-century image house and historically significant connections to the Sitawaka Kingdom. Some accounts trace the temple's origins to King Kumaradasa of Anuradhapura (513–522 CE), while more reliably documented history links it to royal patronage from King Mayadunna (1521–1581 CE) and Rajasinha I (1581–1593 CE) of the Sitawaka Kingdom — a period when it reportedly flourished as an important religious site in the Ruhuna region. When Portuguese forces arrived in the early 16th century they destroyed the main religious structures and Buddhist monks had to vacate the temple, a pattern seen across many southern Sri Lanka temples during the era of Portuguese colonial expansion. The temple was re-established in the early 18th century, and the current image house was constructed in 1829 CE. The image house features a beautifully crafted Kandyan-style seated Buddha statue and decorative paintings characteristic of the late Kandyan and Kandyan-transitional period. Subsidiary shrines dedicated to Hindu deities are incorporated in the compound — reflecting the traditional Sri Lankan integration of Buddhist viharaya and Hindu devala worship. The temple remains an active place of worship for local communities.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Sri_Lanka_Buddhist_temple.jpg/800px-Sri_Lanka_Buddhist_temple.jpg",
+    "category": "Religious / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Early morning (6:00–9:00 AM) for daily puja; Poya (full moon) days for heightened religious activity"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress mandatory — shoulders and knees covered; white or light clothing preferred; shoes removed at temple entrance",
+      "behavior": "Respectful silence; clockwise circumambulation of the stupa; no back to Buddha images; ask permission before photographing religious interiors",
+      "entry_requirements": "Free; donations welcomed"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily from early morning to evening; most active during puja times"
+  },
+
+
+  {
+    "id": "devinuwara_gal_ge",
+    "name": "Devinuwara Gal Ge | දෙවිනුවර ගල් ගේ",
+    "latitude": 5.9220,
+    "longitude": 80.5910,
+    "description": "The Gal Ge (also called Galgane) is one of the most architecturally remarkable and least-visited ancient monuments in southern Sri Lanka — a complete stone shrine built entirely of granite blocks, located on a windswept high ground approximately 500 metres inland from the Devinuwara (Dondra) Vishnu Devalaya and the Raja Maha Viharaya. The structure was first formally identified in 1914 by British archaeologist E.R. Ayrton and declared an archaeological reserve in 1927. Professor Senarath Paranavitana — the pre-eminent Sri Lankan archaeologist of the 20th century — published a definitive study in 1953 titled 'The Shrine of Upulvan at Devundara', concluding that the Gal Ge dates to the 7th–8th centuries CE and was dedicated to the deity Upulvan (the original name for the guardian deity now associated with Vishnu). The building is rectangular, measuring approximately 8 metres in length, 4.9 metres in width, and 3.7 metres in height, consisting of a garbha gruha (inner sanctum) and an antechamber. Both exterior and interior walls are constructed from finely chiselled granite slabs dry-laid without regular bonding, with the core filled with rubble and lime mortar — a technique of extraordinary precision. The architecture follows the ancient devala (shrine) design evolved by the 7th–8th centuries, featuring the inner chamber (garbha) for deity statues, a mandapa pavilion, and an antharalaya corridor connecting them. Heavy rains in 1947 caused part of the monument to collapse; it was carefully dismantled and reconstructed between February and November 1947 by the Department of Archaeology. Local folk traditions connect the site to the Ramayana epic, claiming the battle between Rama and Ravana occurred here. Others hold it was a shrine to the Sun God, as the entrance faces east. The Gal Ge is a rare, remarkable survival from the ancient 'City of Gods' that dominated this promontory before the Portuguese destruction of 1587.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Galgane_shrine_Devinuwara.jpg/800px-Galgane_shrine_Devinuwara.jpg",
+    "category": "Archaeology / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Morning (8:00–11:00 AM) for best light and cooler conditions; combine with the Vishnu Devalaya and Dondra Lighthouse for a full Devinuwara heritage visit. Off-peak weekday visits provide a peaceful, uncrowded experience at this little-known monument."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress (shoulders and knees covered) out of respect for the adjacent temple area; shoes may be removed near the monument",
+      "behavior": "Do not climb on or damage the structure; no graffiti; photography permitted; treat the site with archaeological reverence",
+      "entry_requirements": "Free (protected archaeological monument; Department of Archaeology site)"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily during daylight hours"
+  },
+
+
+  {
+    "id": "devinuwara_vishnu_devalaya",
+    "name": "Devinuwara Uthpalawanna Sri Vishnu Maha Dewalaya - දෙවි නුවර උත්පලවණ්ණ ශ්‍රී විශ්නු මහා දේවාලය",
+    "latitude": 5.9227,
+    "longitude": 80.5917,
+    "description": "The Devinuwara Uthpalawanna Sri Vishnu Maha Dewalaya (Tenavaram Temple) at Dondra is one of the most historically significant and anciently revered religious sites in Sri Lanka, standing on the southernmost tip of the island — the 'City of Gods' (Devinuwara). The site has been a sacred precinct since at least the 7th century CE when King Dappula I (659–660 CE) is historically recorded to have constructed the temple and devalaya. The primary deity was originally Upulvan — a distinctly Sri Lankan Buddhist god whom the Mahavamsa records was appointed by Sakka (Indra) at the Buddha's own request to be the guardian deity and protector of the island of Lanka. By the medieval period (13th–15th centuries), Devinuwara had become Sri Lanka's most celebrated pilgrimage destination and a major emporium — a busy seaport with global connections to China, Arab traders, the Malabar Coast, and Swahili Africa. The temple complex was three-storied, built on vaulted arches on the promontory over the Indian Ocean, and featured a roof of gilded copper and brass that glittered in sunlight and served as a navigational landmark for ships approaching the island. The Pali poem 'Paravi Sandeshaya' (15th century) describes the deity as a destroyer of demons. King Parakramabahu II of Dambadeniya (13th century) restored the complex and established the annual Esala festival. In 1587 a Portuguese army led by Thome de Souza attacked and destroyed the sacred city, plundering all valuables — a major cultural devastation. The current temple was built by King Rajasinha II (1635–1687) of the Kandyan Kingdom after expelling the Portuguese from Matara District. By this period, the identity of the deity had transformed from Upulvan to Vishnu, partly due to the influence of Brahmin priests who arrived from India. The current devalaya is dedicated to blue-bodied Vishnu (Upulwan) — the guardian deity of Sri Lanka and protector of Buddhism. Adjacent shrines house subsidiary deities including Ganesha, Shiva, and Kataragama. A sacred Bodhi tree and Buddhist vihara adjoin the complex — Buddhist priests reside and conduct worship here alongside the Hindu kapurala priests. The Devinuwara Esala Festival (held in July–August, the month of Esala/Esela Poya) draws hundreds of thousands of pilgrims over eight days of processions, drumming, dancing, and offerings. Inside the main Vishnu shrine, photography is not permitted. Coconut-breaking at the designated area is a traditional practice for devotees seeking divine intervention.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Devinuwara_Vishnu_Devale.jpg/800px-Devinuwara_Vishnu_Devale.jpg",
+    "category": "Religious / Heritage",
+    "crowd_info": {
+      "peak_months": ["July", "August", "December", "January", "February"],
+      "off_peak_months": ["April", "May", "June"],
+      "best_time_to_visit": "July–August for the spectacular 8-day Esala Festival; early morning for quiet daily worship; Poya days for active devotional atmosphere. December–April for the best weather when visiting as a tourist."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest dress strictly required — shoulders, torso, and knees fully covered; white or light-coloured traditional attire preferred; shoes removed at entrance",
+      "behavior": "Respectful silence in shrine rooms; no photography inside the main Vishnu shrine; clockwise circumambulation; follow kapurala (priest) instructions during puja; coconut-breaking only at designated area",
+      "entry_requirements": "Free entry; donations welcomed"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily; dawn puja, mid-morning puja, evening puja, and night puja — verify current schedule locally"
+  },
+
+
+  {
+    "id": "matara_clock_tower",
+    "name": "Matara Clock Tower",
+    "latitude": 5.9495,
+    "longitude": 80.5355,
+    "description": "The Matara Clock Tower is a 12-metre-high British colonial clock tower constructed in 1883, standing atop the remaining rampart wall of the historic Matara Fort. The tower was built not by the colonial government directly but through public subscriptions raised by the local headmen (mudaliyars) and officials of the Matara District — reflecting the hybrid governance and social structures of the British colonial era. An inscription at the base of the tower reads: 'This clock was purchased from funds subscribed by the [headmen] of the Matara District. The tower was erected by the Local Board of Matara and completed in May 1883.' The clock tower follows the tradition of British authorities building clock towers at their most important coastal forts — a style modelled loosely after the world-famous clock tower of Big Ben on the Thames. The tower is a distinctive white sentinel visible from the Matara seafront and from behind the bus station when approaching on the coastal road, and it serves as a recognisable landmark of the town. The clock faces (four faces) have been noted by visitors to occasionally display different times — adding to the landmark's character. It is part of the Matara Fort protected monument complex and should be visited as part of a broader heritage walk through the fort, alongside the Dutch Reformed Church, the Star Fort, and the colonial buildings within the fortified enclosure.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Matara_Clock_Tower.jpg/800px-Matara_Clock_Tower.jpg",
+    "category": "Heritage / Colonial Architecture",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Combine with a Matara Fort heritage walk; golden hour (late afternoon) for the best photography with the sea as backdrop"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; standard town attire",
+      "behavior": "Viewable from outside; do not climb the tower structure; photography freely permitted",
+      "entry_requirements": "Free (within the Matara Fort public access area)"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Viewable at any time (exterior); part of the public Fort area"
+  },
+
+
+  {
+    "id": "snake_farm_telijjawila",
+    "name": "Snake Farm Telijjawila",
+    "latitude": 5.9912,
+    "longitude": 80.5021,
+    "description": "Snake Farm Telijjawila is a dedicated snake farm and educational facility located in the Telijjawila area on the northern outskirts of Matara District. It is one of the more well-known snake farms in the southern province, offering visitors the opportunity to observe a range of Sri Lankan snake species in a structured educational environment. Sri Lanka has one of the highest concentrations of endemic snake species in South Asia, with 50+ endemic species out of approximately 100 total snake species on the island. The farm maintains collections of venomous species including the Cobra (Naja naja), Russell's Viper (Daboia russelii), Indian Krait (Bungarus caeruleus), and various non-venomous species important to the southern ecosystems. Educational displays explain snake biology, habitat, the ecological role of snakes as predators of rodents and pests in rice farming communities, and information on snakebite treatment — particularly relevant in rural Sri Lanka where agricultural workers face snakebite risk. The farm is popular with school groups and visiting families. It provides a safe, supervised environment for close observation of species that would otherwise rarely be encountered in the wild. Located just off the A2 coastal road between Matara and Colombo, making it convenient to combine with a journey along the southern coast.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Indian_cobra.jpg/800px-Indian_cobra.jpg",
+    "category": "Wildlife / Education",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning (9:00–11:00 AM); year-round; school holidays bring larger groups"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; closed-toe shoes strongly recommended",
+      "behavior": "Follow all safety instructions from handlers; do not tap glass enclosures or disturb snakes; do not handle snakes without staff supervision",
+      "entry_requirements": "Entry fee charged (verify current amount on-site)"
+    },
+    "entry_fee": "Charged entry (verify current fee on-site)",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM daily (confirm locally)"
+  },
+
+
+  {
+    "id": "kushtarajagala",
+    "name": "Kushtarajagala",
+    "latitude": 5.9690,
+    "longitude": 80.4200,
+    "description": "Kushtarajagala ('Rock of the Leper King') is an extraordinary ancient rock-cut sculpture located in the town limits of Weligama, approximately 12 km west of Matara on the old Galle–Matara road near the Agrabodhi Viharaya. It is considered one of the finest Mahayana Buddhist sculptures in Sri Lanka and among the most important examples of early South Asian rock-cut art. The sculpture is a colossal bas-relief carved into an arched niche in a large rock face, standing 383 cm (approximately 3.8 metres / 12.5 feet) in height — well above life size. It depicts a Bodhisattva figure — the Archaeological Department officially ascribes it to the 6th–7th century CE, which would make it among the earliest surviving Mahayana sculptures in South Asia. Most scholars identify it as Avalokiteshvara (Awalokitheshvara), the Bodhisattva of Compassion — one of the most powerful healer-beings in Mahayana Buddhism. Evidence includes the four seated Amitabha Dhyani Buddha figures carved on the elaborate headdress, and the Vitarka Mudra (gesture of teaching) on the right hand and Kataka Hastha Mudra on the left holding a lotus. The lower body is draped in a dhoti with a decorative girdle; the upper body is bare and adorned with necklaces, bangles, and anklets. The style shows both South Indian Pallava artistic influence and indigenous Sri Lankan Mahayana tradition. A very similar figure appears at Buduruwagala near Wellawaya. The popular name 'Kushtarajagala' ('Leper King's Rock') derives from a local legend: a foreign king suffering from a severe skin disease (kushta) landed in Weligama Bay, was cured by a local doctor, and commissioned this statue in gratitude or in honour of the deity Natha/Vishnu to whom he had made a vow. Another version holds that the king himself made a vow to Bodhisattva Avalokiteshvara — the supreme healer — and was cured. The statue is a protected archaeological monument under the Sri Lanka Department of Archaeology. Located on the old main road 500 metres from the main Galle–Matara highway, 200 metres south of Agrabodhi Vihara, and 500 metres from Weligama beach.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Kushtarajagala_statue.jpg/800px-Kushtarajagala_statue.jpg",
+    "category": "Archaeology / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Early morning (7:00–10:00 AM) for best photography light and cooler temperatures; the site is open and exposed — midday can be very hot. Combine with Weligama Beach and surf area."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire (the statue is associated with an active Vihara); shoes may be removed near the statue area",
+      "behavior": "Do not climb on the rock; do not touch the carved relief; photography permitted; respect any worshippers making offerings at the site",
+      "entry_requirements": "Free (protected archaeological monument)"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily during daylight hours"
+  },
+
+
+  {
+    "id": "hummana_beach_dondra",
+    "name": "Hummana Beach Dondra",
+    "latitude": 5.9200,
+    "longitude": 80.5950,
+    "description": "Hummana Beach at Dondra (Devundara) is a natural, largely undeveloped shoreline at the southernmost tip of Sri Lanka, adjacent to the Dondra Lighthouse precinct and the Devinuwara sacred complex. Rocky outcrops frame small patches of sandy beach along this rugged stretch of the coastline — the southernmost shores of the island. The beach is free of mass tourism and development, retaining a wild, isolated character unusual for Sri Lanka's southern coast. The main attraction is the geographic significance — standing at the literal bottom of the island, with open Indian Ocean stretching southward toward Antarctica. The beach and rocky promontory provide dramatic views of the Dondra Head Lighthouse and of ships navigating the major Indian Ocean shipping lane that passes close to the southern tip. The rocky pools and coves are excellent for rock pooling and nature observation. Sunrise and sunset views from this southernmost point are exceptional — the sun appears to rise and set directly over open ocean. The beach is best combined with visits to the Dondra Lighthouse, the Vishnu Devalaya, and the Gal Ge as part of a full Devinuwara heritage and nature circuit. Strong waves and rocky shores mean swimming is inadvisable; the beach is for exploration and photography rather than bathing.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Dondra_Point_Sri_Lanka.jpg/1280px-Dondra_Point_Sri_Lanka.jpg",
+    "category": "Beach / Nature",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Sunrise (6:00–7:00 AM) and sunset (5:30–6:30 PM) for spectacular photographs at the island's southernmost point; December–April for the calmest seas and clearest visibility"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; modest attire when walking near the adjacent temple precincts",
+      "behavior": "No swimming (rocky shores and strong waves); take extreme care on cliff edges; no littering at this ecologically significant site",
+      "entry_requirements": "Free public access"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours (public foreshore)"
+  },
+
+
+  {
+    "id": "public_children_park_matara",
+    "name": "Public Children Park - Matara",
+    "latitude": 5.9482,
+    "longitude": 80.5340,
+    "description": "The Public Children's Park in Matara is the main recreational park of Matara town, situated near the seafront along the Matara Beach esplanade. The park is a popular gathering space for local families, particularly on weekends and public holidays, providing playground facilities, open green spaces, and sea-view areas where families can relax. It reflects the social life of Matara as a working coastal town with a strong community character. The park is located within easy walking distance of the Matara Fort, Paravi Duwa temple bridge, Matara Beach, and the town centre, making it a natural rest stop during a heritage walk of the town. The surrounding esplanade and park area become particularly lively in the evenings when locals gather for walks, exercise, and socializing along the seafront. The park represents an important aspect of Matara's urban character — a town that is genuinely lived-in and community-oriented rather than purely tourist-facing, giving visitors an authentic glimpse of everyday southern Sri Lankan life.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Matara_Beach_Sri_Lanka.jpg/1280px-Matara_Beach_Sri_Lanka.jpg",
+    "category": "Public Recreation / Urban",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Late afternoon and evening (4:00–7:00 PM) for the lively local atmosphere; weekends for family activity; December–April for pleasant weather"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; standard town attire",
+      "behavior": "Family-friendly environment; respect other park users; no alcohol in public parks",
+      "entry_requirements": "Free public access"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open daily; most active afternoon to evening"
+  },
+
+
+  {
+    "id": "talalla_beach",
+    "name": "Talalla Beach",
+    "latitude": 5.9535,
+    "longitude": 80.6244,
+    "description": "Talalla Beach is a secluded, largely undeveloped golden-sand beach located approximately 12–13 km east of Matara, nestled between the small towns of Gandara and Dickwella on a stretch of coastline that curves around the bottom of Sri Lanka. It is consistently described as one of the most beautiful and peaceful beaches on the entire southern coast — a genuine 'hidden gem' that receives a fraction of the visitors that flock to Mirissa or Unawatuna. The bay is approximately 1 km in length (about 3 miles of golden sand), curvaceous, lined with sea vines and a dense fringe of coconut palms, with crystal-clear turquoise water. The beach has maintained its natural, largely untouched character because it sits just off the beaten track between Matara and Tangalle, bypassed by many travellers. A small number of boutique hotels, guesthouses, and beach restaurants operate along the beach — primarily focused on surf retreats, yoga, and relaxed nature-based tourism. The beach has beginner-friendly surf conditions in parts of the bay. However, a notable hazard is the presence of rip currents in the centre of the beach — caution is strongly advised, and visitors should swim only in designated safer zones identified by lifeguards or local knowledge. Strong waves and rip tides during the southwest monsoon (May–October) make swimming risky; December–April is the recommended season. The beach is within 30 minutes' drive of Weligama (surfing) and approximately 20 km from Dondra Head (southernmost point). Access is by bus to Matara then tuk-tuk, or by the coastal railway to Kakanadura station followed by a short tuk-tuk ride. The surrounding area includes the ancient Kotikagoda and Devinuwara temples, making Talalla a fine base for combining beach relaxation with cultural exploration.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Talalla_beach_Sri_Lanka.jpg/1280px-Talalla_beach_Sri_Lanka.jpg",
+    "category": "Beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["May", "June", "July", "August", "September"],
+      "best_time_to_visit": "December–April for calm, swimming-safe conditions and best weather; early morning and sunset for the most beautiful light and photography; weekday visits for minimal crowds year-round"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Standard beach attire; cover up when walking through Talalla/Gandara village",
+      "behavior": "Observe rip current warnings — swim only in safe zones indicated by locals or lifeguards; no littering; respect the peaceful, low-key community character of the beach",
+      "entry_requirements": "Free public beach"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours (public beach)"
   }
 ]
