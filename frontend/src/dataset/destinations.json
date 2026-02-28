@@ -1591,6 +1591,423 @@
     },
     "entry_fee": "USD 15 (foreigners)",
     "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "anuradhapura_sri_maha_bodhi",
+    "name": "Sri Maha Bodhi",
+    "latitude": 8.3440,
+    "longitude": 80.3955,
+    "description": "The oldest historically documented tree in the world, grown from a cutting of the Bodhi tree under which Lord Buddha attained enlightenment.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg/960px-SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "June", "December"],
+      "off_peak_months": ["September", "October"],
+      "best_time_to_visit": "Early morning or evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing required",
+      "behavior": ["Remove footwear", "Maintain silence"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "5:00 AM - 10:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_ruwanwelisaya",
+    "name": "Ruwanwelisaya",
+    "latitude": 8.3500,
+    "longitude": 80.3960,
+    "description": "A magnificent white stupa built by King Dutugemunu, considered one of the most sacred Buddhist monuments in Sri Lanka.",
+    "image_url": "https://www.trawell.in/admin/images/upload/07208983Anuradhapura_Ruwanwalisaya.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening for illumination"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White clothing preferred",
+      "behavior": ["Walk clockwise", "No loud behavior"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "5:30 AM - 9:30 PM"
+  },
+
+  {
+    "id": "anuradhapura_jetavanaramaya",
+    "name": "Jetavanaramaya",
+    "latitude": 8.3521,
+    "longitude": 80.4010,
+    "description": "Once the tallest brick structure in the world, built by King Mahasena, symbolizing ancient Sri Lankan engineering.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Jetavanaramaya_Stupa_profile.jpg/1280px-Jetavanaramaya_Stupa_profile.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January", "May"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["No climbing", "Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_abhayagiri",
+    "name": "Abhayagiri Monastery",
+    "latitude": 8.3539,
+    "longitude": 80.4035,
+    "description": "A major monastic complex and center of Buddhist scholarship in ancient Anuradhapura.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg/1280px-SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Respect ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_isurumuniya",
+    "name": "Isurumuniya Temple",
+    "latitude": 8.3370,
+    "longitude": 80.3870,
+    "description": "A rock temple famous for its ancient stone carvings including the iconic Isurumuniya Lovers.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/ISURUMUNIYA_ROCK_TEMPLE.JPG/1280px-ISURUMUNIYA_ROCK_TEMPLE.JPG",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Covered shoulders and knees",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 200",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_kuttam_pokuna",
+    "name": "Kuttam Pokuna (Twin Ponds)",
+    "latitude": 8.3555,
+    "longitude": 80.4020,
+    "description": "Two beautifully designed ancient bathing ponds used by Buddhist monks.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/si/thumb/b/b9/Kuttam_PokuNa_01.JPG/1280px-Kuttam_PokuNa_01.JPG",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual modest wear",
+      "behavior": ["No swimming"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_mihintale",
+    "name": "Mihintale",
+    "latitude": 8.3606,
+    "longitude": 80.5100,
+    "description": "The birthplace of Buddhism in Sri Lanka where Arahat Mahinda met King Devanampiyatissa.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Mihintale_Rock.jpg/1920px-Mihintale_Rock.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["June"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing",
+      "behavior": ["Climb carefully", "Respect sacredness"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_royal_palace",
+    "name": "Royal Palace of King Parakramabahu",
+    "latitude": 7.9403,
+    "longitude": 81.0006,
+    "description": "Ruins of the grand palace complex of King Parakramabahu I, showcasing ancient royal architecture.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/04/LS_Palace-of-King-Parakramabahu_DESK_1920x700.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest clothing",
+      "behavior": ["Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_gal_vihara",
+    "name": "Gal Vihara",
+    "latitude": 7.9668,
+    "longitude": 81.0000,
+    "description": "A rock temple featuring four magnificent Buddha statues carved into a granite cliff.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/6212668_orig.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest attire",
+      "behavior": ["No posing with Buddha statues"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_parakrama_samudra",
+    "name": "Parakrama Samudra",
+    "latitude": 7.9490,
+    "longitude": 81.0167,
+    "description": "A massive ancient reservoir built by King Parakramabahu I, symbolizing advanced irrigation engineering.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Polonnaruwa-panta.jpg/1280px-Polonnaruwa-panta.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Avoid littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "anuradhapura_lovamahapaya",
+    "name": "Lovamahapaya (Brazen Palace)",
+    "latitude": 8.3508,
+    "longitude": 80.3950,
+    "description": "An ancient multi-storied monastic building built by King Dutugemunu, once supported by bronze pillars.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/SL_Anuradhapura_asv2020-01_img09_Lovamahapaya.jpg/1280px-SL_Anuradhapura_asv2020-01_img09_Lovamahapaya.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["May", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing",
+      "behavior": ["Remove footwear", "Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_samadhi_statue",
+    "name": "Samadhi Buddha Statue",
+    "latitude": 8.3565,
+    "longitude": 80.4009,
+    "description": "A serene Buddha statue depicting deep meditation, considered one of the finest sculptures in Sri Lanka.",
+    "image_url": "https://www.srilankanexpeditions.com/images/sri-lanka-travel-guide/history-archaeology-sri-lanka/buddha-statues-in-sri-lanka/samadhi-statue/samadhi-statue-01.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["No photography from front angle"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_tissa_wewa",
+    "name": "Tissa Wewa",
+    "latitude": 8.3333,
+    "longitude": 80.3833,
+    "description": "An ancient reservoir built by King Devanampiyatissa, offering peaceful surroundings and birdlife.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/04/LS_Tissa-Wewa_Desktop_1920x700.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "anuradhapura_vessagiriya",
+    "name": "Vessagiriya Cave Monastery",
+    "latitude": 8.3397,
+    "longitude": 80.3906,
+    "description": "An ancient cave monastery used by meditating monks, featuring drip-ledged caves and inscriptions.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Rock_Shelters%2C_Vessagiri_083.jpg/1280px-Rock_Shelters%2C_Vessagiri_083.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "February"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest wear",
+      "behavior": ["Respect sacred caves"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_rankoth_vehera",
+    "name": "Rankoth Vehera",
+    "latitude": 7.9428,
+    "longitude": 80.9992,
+    "description": "A massive stupa inspired by Anuradhapura architecture, built during King Nissankamalla’s reign.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Rankoth_Vehera%2C_Ancient_City_of_Polonnaruwa%2C_Sri_Lanka_%285%29.jpg/1280px-Rankoth_Vehera%2C_Ancient_City_of_Polonnaruwa%2C_Sri_Lanka_%285%29.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White clothing recommended",
+      "behavior": ["Walk clockwise"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_lankatilaka",
+    "name": "Lankatilaka Image House",
+    "latitude": 7.9661,
+    "longitude": 80.9994,
+    "description": "A towering brick image house once containing a colossal standing Buddha statue.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/polonnaruwa-lankatilaka-image-house-dsc-0044-1500panoramic_orig.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Do not touch ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_vatadage",
+    "name": "Polonnaruwa Vatadage",
+    "latitude": 7.9407,
+    "longitude": 81.0003,
+    "description": "A beautifully preserved circular relic house with intricate stone carvings and Buddha statues.",
+    "image_url": "https://do6raq9h04ex.cloudfront.net/sites/8/2023/09/Polonnaruwas-Archaeological-1050x700-1.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_shiva_devalaya",
+    "name": "Shiva Devalaya No.1",
+    "latitude": 7.9422,
+    "longitude": 81.0011,
+    "description": "An ancient Hindu temple showcasing Dravidian stone architecture from the Chola period.",
+    "image_url": "https://weepingredorger.wordpress.com/wp-content/uploads/2015/07/dsc07255-3.jpg?w=768",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Traditional or modest clothing",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_alahana_pirivena",
+    "name": "Alahana Pirivena",
+    "latitude": 7.9675,
+    "longitude": 81.0018,
+    "description": "A large monastic complex where monks practiced meditation and education during the Polonnaruwa era.",
+    "image_url": "https://nexttravelsrilanka.com/wp-content/uploads/2023/02/Alahana-Pirivena-Monastery.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Respect sacred space"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
   }
 
 
