@@ -2376,6 +2376,800 @@
     },
     "entry_fee": "Free",
     "opening_hours": "Daytime"
+  },
+  {
+    "id": "sinharaja",
+    "name": "Sinharaja Forest Reserve",
+    "latitude": 6.4061,
+    "longitude": 80.4603,
+    "description": "A UNESCO World Heritage rainforest rich in endemic flora and fauna, ideal for eco-tourism.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg/1280px-20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Use a guide", "No littering"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "USD 10",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "adams_peak",
+    "name": "Sri Pada (Adam’s Peak)",
+    "latitude": 6.8096,
+    "longitude": 80.4994,
+    "description": "A sacred mountain pilgrimage site revered by Buddhists, Hindus, Christians, and Muslims.",
+    "image_url": "https://www.ceylonexpeditions.com/medias/destination_places/big/110/sri-pada-adam-s-peak-sri-lanka.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Night climb"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Warm modest clothing",
+      "behavior": ["Respect pilgrims"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Seasonal"
+  },
+  {
+    "id": "Gem_museum",
+    "name": "Ratnapura Gem Museum",
+    "latitude": 6.6828,
+    "longitude": 80.4036,
+    "description": "A museum showcasing Sri Lanka’s world-famous gemstones and mining heritage.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2020/03/Gem-Bank-Ratnapura.jpg",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No touching displays"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "9:00 AM - 5:00 PM"
+  },
+
+  {
+    "id": "Bopath Ella",
+    "name": "Bopath Ella Waterfall",
+    "latitude": 6.6890,
+    "longitude": 80.4010,
+    "description": "A popular waterfall shaped like a Bo leaf, especially active during monsoon season.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/bopath-ella-2-455_orig.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "Saman_devalaya",
+    "name": "Maha Saman Devalaya",
+    "latitude": 6.6856,
+    "longitude": 80.4015,
+    "description": "A major shrine dedicated to God Saman, the guardian deity of Sri Pada.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/maha-saman-devale-dsc-0156-1560panoramic_orig.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
+  },
+  {
+    "id": "ratnapura_kithulgala_edge",
+    "name": "Kithulgala Border Area",
+    "latitude": 6.9900,
+    "longitude": 80.4200,
+    "description": "A scenic river-side area near Ratnapura famous for adventure and rainforest views.",
+    "image_url": "https://www.kitulgalaadventures.com/images/kitulgala/kitulgala-06.jpg",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["Follow safety instructions"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_udawalawa_border",
+    "name": "Udawalawa National Park (Ratnapura Side)",
+    "latitude": 6.4410,
+    "longitude": 80.8920,
+    "description": "The Ratnapura-side entrance area of Udawalawa, rich in elephant sightings.",
+    "image_url": "https://www.sinharajatourguide.com/images/gallery/default/destinations/Udawalawe-National-Park-Sinharaja-Tour-Guide.webp",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["August", "September"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning safari"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Safari wear",
+      "behavior": ["Follow park rules"],
+      "entry_requirements": ["Park ticket"]
+    },
+    "entry_fee": "USD 15",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_wewelwatte",
+    "name": "Wewelwatte Tea Estate",
+    "latitude": 6.7200,
+    "longitude": 80.4600,
+    "description": "A peaceful tea estate offering scenic walks and hill-country views.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800/////////////",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable clothing",
+      "behavior": ["Respect workers"],
+      "entry_requirements": ["Permission required"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  
+  {
+    "id": "ratnapura_pahiyangala_cave",
+    "name": "Pahiyangala Cave",
+    "latitude": 6.6500,
+    "longitude": 80.2400,
+    "description": "A prehistoric cave site where evidence of early human habitation was discovered.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/pahiyangala-940_orig.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest wear",
+      "behavior": ["Do not damage cave"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "8:00 AM - 5:30 PM"
+  },
+  {
+    "id": "ratnapura_kirindi_oya",
+    "name": "Kirindi Oya Origin Area",
+    "latitude": 6.6000,
+    "longitude": 80.7000,
+    "description": "The upper basin of Kirindi Oya surrounded by forest and rural villages.",
+    "image_url": "https://cdn.lakpura.com/images/LK94009320-01-E.JPG",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Beware of currents"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_pahanthudawa",
+    "name": "Pahanthudawa Waterfall",
+    "latitude": 6.6030,
+    "longitude": 80.4560,
+    "description": "A scenic waterfall hidden within forest terrain near Kalawana.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2019/09/Pahanthuda-Waterfall-Pahanthudawa-Waterfall.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "After rainfall"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Slippery rocks"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_gilimale_forest",
+    "name": "Gilimale Forest Reserve",
+    "latitude": 6.7440,
+    "longitude": 80.4420,
+    "description": "A protected forest area rich in birdlife and biodiversity.",
+    "image_url": "https://cdn.lakpura.com/images/LK943ABECA-02-E.JPG",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_madampe",
+    "name": "Madampe River Area",
+    "latitude": 6.7000,
+    "longitude": 80.3900,
+    "description": "A quiet river stretch suitable for nature walks and relaxation.",
+    "image_url": "",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid swimming"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_weddagala",
+    "name": "Weddagala Forest Area",
+    "latitude": 6.6300,
+    "longitude": 80.5200,
+    "description": "A forest region known for endemic plants and rural trails.",
+    "image_url": "",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["Eco-friendly travel"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_ellagawa",
+    "name": "Ellagawa Village",
+    "latitude": 6.7200,
+    "longitude": 80.4300,
+    "description": "A rural village near Ratnapura offering authentic local experiences.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect privacy"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_udugama_edge",
+    "name": "Udugama Border Forest",
+    "latitude": 6.5600,
+    "longitude": 80.4800,
+    "description": "Forest edge area connecting Sinharaja buffer zones.",
+    "image_url": "",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_nivitigala",
+    "name": "Nivitigala Town",
+    "latitude": 6.5800,
+    "longitude": 80.4600,
+    "description": "A small town surrounded by forest and tea plantations.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect local culture"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "kegalle_belilena",
+    "name": "Belilena Cave",
+    "latitude": 7.2697,
+    "longitude": 80.4144,
+    "description": "A prehistoric cave where evidence of early human habitation in Sri Lanka was discovered.",
+    "image_url": "",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest wear",
+      "behavior": ["Do not damage cave"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "8:00 AM - 5:30 PM"
+  },
+
+  {
+    "id": "kegalle_kitulgala",
+    "name": "Kitulgala Adventure Zone",
+    "latitude": 6.9896,
+    "longitude": 80.4273,
+    "description": "Sri Lanka’s main white-water rafting destination surrounded by rainforest.",
+    "image_url": "",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Sportswear",
+      "behavior": ["Follow safety rules"],
+      "entry_requirements": ["Operator booking"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_kelani_valley",
+    "name": "Kelani Valley Viewpoints",
+    "latitude": 7.0200,
+    "longitude": 80.4500,
+    "description": "Scenic viewpoints overlooking the Kelani River and surrounding hills.",
+    "image_url": "",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_rambukkana_town",
+    "name": "Rambukkana Town",
+    "latitude": 7.3230,
+    "longitude": 80.3915,
+    "description": "A historic railway town close to Pinnawala and rural attractions.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect locals"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_arandara_falls",
+    "name": "Arandara Waterfall",
+    "latitude": 7.0500,
+    "longitude": 80.4700,
+    "description": "A seasonal waterfall hidden in forest terrain near rural villages.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "After rainfall"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_mawanella",
+    "name": "Mawanella Town",
+    "latitude": 7.2500,
+    "longitude": 80.4500,
+    "description": "A busy town surrounded by hills, known for spice shops and local food.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect cultural diversity"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hingula",
+    "name": "Hingula Tea Area",
+    "latitude": 7.1800,
+    "longitude": 80.4100,
+    "description": "A peaceful tea-growing area with scenic landscapes and village life.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable wear",
+      "behavior": ["Do not disturb workers"],
+      "entry_requirements": ["Permission may be required"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_karawanella",
+    "name": "Karawanella Town",
+    "latitude": 7.0000,
+    "longitude": 80.4200,
+    "description": "A town near rainforest zones with easy access to nature attractions.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Eco-friendly travel"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_ambepussa",
+    "name": "Ambepussa Railway Area",
+    "latitude": 7.2520,
+    "longitude": 80.4720,
+    "description": "A historic railway station area surrounded by plantations.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Railway safety"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hemmathagama",
+    "name": "HemmataGama Area",
+    "latitude": 7.2200,
+    "longitude": 80.3600,
+    "description": "A rural agricultural area known for coconut and rubber plantations.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect private land"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_deraniyagala",
+    "name": "Deraniyagala Town",
+    "latitude": 6.9300,
+    "longitude": 80.3400,
+    "description": "A town bordering rainforest areas, ideal for eco-tourism base stays.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect nature"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_karandana",
+    "name": "Karandana Rubber Estate",
+    "latitude": 7.2800,
+    "longitude": 80.3400,
+    "description": "A rubber plantation area showcasing Sri Lanka’s plantation economy.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Permission needed"],
+      "entry_requirements": ["Estate approval"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_mahawatta",
+    "name": "Mahawatta Village",
+    "latitude": 7.1900,
+    "longitude": 80.3900,
+    "description": "A quiet village offering authentic rural Sri Lankan life.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect privacy"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hulangamuwa",
+    "name": "Hulangamuwa Forest Edge",
+    "latitude": 7.0500,
+    "longitude": 80.3900,
+    "description": "A forest-edge area ideal for birdwatching and short nature walks.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_thalgaspitiya",
+    "name": "Thalgaspitiya Area",
+    "latitude": 7.1400,
+    "longitude": 80.3500,
+    "description": "A calm village area surrounded by greenery and plantations.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect locals"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_yatiyantota",
+    "name": "Yatiyantota Area",
+    "latitude": 6.9900,
+    "longitude": 80.3000,
+    "description": "A riverside area near rainforest borders, ideal for eco-stays.",
+    "image_url": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Eco-friendly behavior"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "Pinnawala",
+    "name": "Pinnawala Elephant Orphanage",
+    "latitude": 7.3000,
+    "longitude": 80.3867,
+    "description": "A world-famous sanctuary for orphaned and injured elephants.",
+    "image_url": "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=800",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Feeding time"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Do not feed elephants"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 20",
+    "opening_hours": "8:30 AM - 6:00 PM"
+  },
+  {
+    "id": "Pinnawala_zoo",
+    "name": "Pinnawala Open Zoo",
+    "latitude": 7.3020,
+    "longitude": 80.3900,
+    "description": "Sri Lanka’s first open zoo with spacious enclosures and safari-style viewing.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["April", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No teasing animals"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 15",
+    "opening_hours": "8:30 AM - 5:30 PM"
+  },
+  {
+    "id": "Alagalla",
+    "name": "Alagalla Mountain Range",
+    "latitude": 7.2600,
+    "longitude": 80.4800,
+    "description": "A scenic mountain range popular for hiking, camping, and panoramic views.",
+    "image_url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Hiking wear",
+      "behavior": ["Carry water"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "Arankele",
+    "name": "Arankele Forest Monastery",
+    "latitude": 7.3500,
+    "longitude": 80.4500,
+    "description": "An ancient forest monastery known for meditation caves and serene surroundings.",
+    "image_url": "https://images.unsplash.com/photo-1589884334700-4f77c9f3d5dd?w=800",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Maintain silence"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
   }
  
 
