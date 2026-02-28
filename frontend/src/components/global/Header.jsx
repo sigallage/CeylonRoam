@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import logoIcon from '../../assets/icon.jpeg';
-import { LoginButton, SignUpButton, LogoutButton } from '../loginButton';
+import { LogoutButton } from '../loginButton';
 
 const Header = () => {
 	const navigate = useNavigate();
 	return (
-		<nav className="relative z-20 flex justify-between items-center px-8 py-6 bg-transparent">
+		<nav className="relative z-20 flex justify-between items-center px-8 py-6 bg-black">
 			<div className="flex items-center gap-3 animate-fade-in cursor-pointer" onClick={() => navigate('/') }>
 				<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
 					<img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
@@ -18,9 +18,8 @@ const Header = () => {
 				<a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
 				<a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
 				<a href="#about" className="hover:text-orange-400 transition-colors">About</a>
-				   <LoginButton />
-				   <SignUpButton />
-				   <LogoutButton />
+				<button className="px-4 py-2 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-400 transition-colors">Profile</button>
+				<LogoutButton />
 			</div>
 		</nav>
 	);
