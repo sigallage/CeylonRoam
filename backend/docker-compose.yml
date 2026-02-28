@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: ceylonroam-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=changeme123
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ceylonroam-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Auth/Signup Service
+  auth-service:
+    build:
+      context: ./authSignup
+      dockerfile: Dockerfile
+    container_name: ceylonroam-auth
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - MONGODB_URI=mongodb://admin:changeme123@mongodb:27017/ceylonroam?authSource=admin
+      - NODE_ENV=production
+      - SESSION_SECRET=your_secure_session_secret_change_in_production
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - ceylonroam-network
+    restart: unless-stopped
+
+  # Itinerary Generator Service
+  itinerary-service:
+    build:
+      context: ./itineraryGenerator
+      dockerfile: Dockerfile
+    container_name: ceylonroam-itinerary
+    ports:
+      - "8001:8001"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+    networks:
+      - ceylonroam-network
+    restart: unless-stopped
+
+  # Route Optimizer Service
+  route-optimizer-service:
+    build:
+      context: ./routeOptimizer
+      dockerfile: Dockerfile
+    container_name: ceylonroam-route-optimizer
+    ports:
+      - "8002:8002"
+    environment:
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
+    networks:
+      - ceylonroam-network
+    restart: unless-stopped
+
+  # Voice Translation Service
+  voice-translation-service:
+    build:
+      context: ./voiceTranslation
+      dockerfile: Dockerfile
+    container_name: ceylonroam-voice-translation
+    ports:
+      - "8003:8003"
+    networks:
+      - ceylonroam-network
+    restart: unless-stopped
+
+networks:
+  ceylonroam-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
