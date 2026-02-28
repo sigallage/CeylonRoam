@@ -993,5 +993,229 @@
   },
   "entry_fee": "LKR 100",
   "opening_hours": "9:00 AM - 4:00 PM"
-}
+},
+{
+   
+    "id": "kurunegala_ethagala",
+    "name": "Ethagala (Elephant Rock)",
+    "latitude": 7.4867,
+    "longitude": 80.3623,
+    "description": "A massive rock formation shaped like an elephant, offering panoramic views of Kurunegala city. A Buddha statue crowns the summit.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/SL_Kurunegala_asv2020-01_img05.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "April", "August"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Early morning or evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing recommended",
+      "behavior": ["Remove footwear at temple areas", "Maintain silence"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
+  },
+
+  {
+    "id": "kurunegala_athugala",
+    "name": "Athugala Buddha Statue",
+    "latitude": 7.4889,
+    "longitude": 80.3601,
+    "description": "A sacred hilltop site featuring a large seated Buddha statue and scenic viewpoints.",
+    "image_url": "https://i0.wp.com/amazinglanka.com/wp/wp-content/uploads/2025/05/athugala-17.jpg?resize=1024%2C576&ssl=1",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["June", "September"],
+      "best_time_to_visit": "Morning hours"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Cover shoulders and knees",
+      "behavior": ["No loud behavior", "No littering"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_ridi_viharaya",
+    "name": "Ridi Viharaya",
+    "latitude": 7.5633,
+    "longitude": 80.5078,
+    "description": "An ancient Buddhist temple associated with the discovery of silver used for the Ruwanwelisaya stupa.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Ridi_Viharaya_3.JPG",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January", "April", "August"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Traditional or modest attire",
+      "behavior": ["Respect religious customs"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_panduwasnuwara",
+    "name": "Panduwasnuwara Ancient Kingdom",
+    "latitude": 7.5892,
+    "longitude": 80.2033,
+    "description": "Ruins of one of Sri Lanka’s earliest kingdoms, linked to King Panduwasdeva and Princess Unmada Chitra.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Panduwasnuwara_archaeological_site_3.jpg/1280px-Panduwasnuwara_archaeological_site_3.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest clothing",
+      "behavior": ["Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 100",
+    "opening_hours": "8:00 AM - 5:00 PM"
+  },
+
+  {
+    "id": "kurunegala_yapahuwa",
+    "name": "Yapahuwa Rock Fortress",
+    "latitude": 7.8286,
+    "longitude": 80.2950,
+    "description": "A medieval rock fortress famous for its ornate stone staircase and former Sacred Tooth Relic shrine.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/yapahuwa-04-900_orig.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January", "August"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Wear proper footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 100",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_arankele",
+    "name": "Arankele Forest Monastery",
+    "latitude": 7.7058,
+    "longitude": 80.4178,
+    "description": "A secluded ancient forest monastery used by meditation monks, surrounded by jungle and ruins.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/arankale-ancient-forest-monastery-in-the-northeast-of-sri-lanka_orig.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "February"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Simple modest clothing",
+      "behavior": ["Silence required"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 5:30 PM"
+  },
+
+  {
+    "id": "puttalam_kalpitiya",
+    "name": "Kalpitiya Peninsula",
+    "latitude": 8.2296,
+    "longitude": 79.7570,
+    "description": "A famous coastal destination for dolphin watching, kite surfing, and pristine beaches.",
+    "image_url": "https://nexttravelsrilanka.com/wp-content/uploads/2023/02/Kalpitiya.jpg",
+    "category": "beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Morning boat rides"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest beachwear",
+      "behavior": ["Follow safety instructions"],
+      "entry_requirements": ["Boat ticket required"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "puttalam_dutch_fort",
+    "name": "Kalpitiya Dutch Fort",
+    "latitude": 8.2301,
+    "longitude": 79.7642,
+    "description": "A 17th-century fort built by the Dutch, reflecting colonial military architecture.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/SL_Kalpitiya_asv2020-01_img6_Dutch_fort.jpg/1920px-SL_Kalpitiya_asv2020-01_img6_Dutch_fort.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual wear",
+      "behavior": ["Do not damage structures"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "puttalam_anawilundawa",
+    "name": "Anawilundawa Wetland Sanctuary",
+    "latitude": 7.6756,
+    "longitude": 79.8822,
+    "description": "A RAMSAR-listed wetland famous for migratory birds and biodiversity.",
+    "image_url": "https://www.bestoflanka.com/images/slider/best-things-to-do-in-sri-lanka/wildlife-safaris-sri-lanka/wildlife-safaris-anawilundawa-bird-sanctuary-sri-lanka/01.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["November", "December"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable outdoor clothing",
+      "behavior": ["Do not disturb wildlife"],
+      "entry_requirements": ["Permission recommended"]
+    },
+    "entry_fee": "LKR 100",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "puttalam_wilpattu_gate",
+    "name": "Wilpattu National Park (North Western Entrance)",
+    "latitude": 8.4500,
+    "longitude": 80.0000,
+    "description": "Sri Lanka’s largest national park, known for leopard sightings and natural lakes.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/06/LSL_B2_Wilpattu-National-Park_1920x700.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["February", "August"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Morning safari"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Neutral colored clothing",
+      "behavior": ["Follow park rules"],
+      "entry_requirements": ["Safari ticket required"]
+    },
+    "entry_fee": "USD 15 (foreigners)",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  }
+
+
+
+
 ]
