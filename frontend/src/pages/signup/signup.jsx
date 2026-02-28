@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const navigate = useNavigate();
+  const authBaseUrl = useMemo(
+    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
+    [],
+  );
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,11 +76,12 @@ function SignUp() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('http://localhost:3000/api/auth/signup', {
+      const response = await fetch(`${authBaseUrl}/api/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
