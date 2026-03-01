@@ -48,7 +48,15 @@ function SignUpPage() {
         return;
       }
 
-      navigate('/login');
+      // Save user data to localStorage for auto-login
+      try {
+        window.localStorage.setItem('ceylonroam_user', JSON.stringify(payload));
+      } catch {
+        // ignore storage failures
+      }
+
+      // Navigate to planner instead of login
+      navigate('/planner');
     } catch (err) {
       console.error('Signup error:', err);
       setError('Network error. Please check your connection and try again.');

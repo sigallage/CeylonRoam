@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
 import { FaUser } from 'react-icons/fa';
@@ -9,19 +9,41 @@ const Profile = () => {
 		username: '',
 		userId: '',
 		phone: '',
+		email: '',
 		profilePicture: null
 	});
 	const [isEditing, setIsEditing] = useState(false);
 	const [editedData, setEditedData] = useState({
 		username: '',
+		phone: '',
 		profilePicture: null
 	});
+	const [isSaving, setIsSaving] = useState(false);
+	const [saveError, setSaveError] = useState('');
+
+	const authBaseUrl = useMemo(
+		() => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
+		[],
+	);
 
 	useEffect(() => {
-		// Load user data from localStorage or API
-		const storedUserData = localStorage.getItem('userData');
-		if (storedUserData) {
-			setUserData(JSON.parse(storedUserData));
+		// Load user data from localStorage (saved after login)
+		const storedData = localStorage.getItem('ceylonroam_user');
+		if (storedData) {
+			try {
+				const parsed = JSON.parse(storedData);
+				// Extract user data from login response
+				const user = parsed.user || parsed;
+				setUserData({
+					username: user.name || '',
+					userId: user._id || '',
+					phone: user.phone || '',
+					email: user.email || '',
+					profilePicture: user.profilePicture || null
+				});
+			} catch (error) {
+				console.error('Error parsing user data:', error);
+			}
 		}
 	}, []);
 
@@ -29,29 +51,79 @@ const Profile = () => {
 		setIsEditing(true);
 		setEditedData({
 			username: userData.username,
+			phone: userData.phone,
 			profilePicture: userData.profilePicture
 		});
+		setSaveError('');
 	};
 
-	const handleSaveProfile = () => {
-		// Save the edited data
-		const updatedUserData = {
-			...userData,
-			username: editedData.username,
-			profilePicture: editedData.profilePicture
-		};
-		setUserData(updatedUserData);
-		localStorage.setItem('userData', JSON.stringify(updatedUserData));
-		setIsEditing(false);
-		console.log('Profile saved successfully');
+	const handleSaveProfile = async () => {
+		setIsSaving(true);
+		setSaveError('');
+
+		try {
+			// Get token from localStorage
+			const storedData = localStorage.getItem('ceylonroam_user');
+			const parsed = JSON.parse(storedData);
+			const token = parsed.token;
+
+			// Call API to update profile
+			const response = await fetch(`${authBaseUrl}/api/profile`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`
+				},
+				body: JSON.stringify({
+					name: editedData.username,
+					phone: editedData.phone
+				})
+			});
+
+			const result = await response.json();
+
+			if (!response.ok) {
+				throw new Error(result.message || 'Failed to update profile');
+			}
+
+			// Update local state with saved data
+			const updatedUserData = {
+				...userData,
+				username: editedData.username,
+				phone: editedData.phone,
+				profilePicture: editedData.profilePicture
+			};
+			setUserData(updatedUserData);
+
+			// Update localStorage with new data
+			const updatedStoredData = {
+				...parsed,
+				user: {
+					...parsed.user,
+					name: editedData.username,
+					phone: editedData.phone,
+					profilePicture: editedData.profilePicture
+				}
+			};
+			localStorage.setItem('ceylonroam_user', JSON.stringify(updatedStoredData));
+
+			setIsEditing(false);
+		} catch (error) {
+			console.error('Error saving profile:', error);
+			setSaveError(error.message || 'Failed to save profile. Please try again.');
+		} finally {
+			setIsSaving(false);
+		}
 	};
 
 	const handleCancelEdit = () => {
 		setIsEditing(false);
 		setEditedData({
 			username: userData.username,
+			phone: userData.phone,
 			profilePicture: userData.profilePicture
 		});
+		setSaveError('');
 	};
 
 	const handleResetPassword = () => {
@@ -92,6 +164,13 @@ const Profile = () => {
 		setEditedData(prev => ({
 			...prev,
 			username: e.target.value
+		}));
+	};
+
+	const handlePhoneChange = (e) => {
+		setEditedData(prev => ({
+			...prev,
+			phone: e.target.value
 		}));
 	};
 
@@ -189,18 +268,41 @@ const Profile = () => {
 								)}
 							</div>
 							<div className="flex items-center justify-between py-3 border-b border-gray-200">
+								<span className="text-gray-600 font-medium">Email</span>
+								<span className="text-gray-900 font-semibold text-sm">
+									{userData.email || 'Not set'}
+								</span>
+							</div>
+							<div className="flex items-center justify-between py-3 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">User ID</span>
-								<span className="text-gray-900 font-semibold">
+								<span className="text-gray-900 font-semibold text-xs">
 									{userData.userId || 'Not set'}
 								</span>
 							</div>
 							<div className="flex items-center justify-between py-3 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">Phone</span>
-								<span className="text-gray-900 font-semibold">
-									{userData.phone || 'Not set'}
-								</span>
+								{isEditing ? (
+									<input
+										type="tel"
+										value={editedData.phone}
+										onChange={handlePhoneChange}
+										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										placeholder="Enter phone number"
+									/>
+								) : (
+									<span className="text-gray-900 font-semibold">
+										{userData.phone || 'Not set'}
+									</span>
+								)}
 							</div>
 						</div>
+
+						{/* Error Message */}
+						{saveError && (
+							<div className="w-full max-w-xs mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+								{saveError}
+							</div>
+						)}
 
 						{/* Edit and Save Buttons */}
 						<div className="w-full max-w-xs flex gap-3">
@@ -216,16 +318,18 @@ const Profile = () => {
 								<>
 									<button 
 										onClick={handleCancelEdit}
-										className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md"
+										disabled={isSaving}
+										className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
 									>
 										Cancel
 									</button>
 									<button 
 										onClick={handleSaveProfile}
-										className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+										disabled={isSaving}
+										className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
 									>
 										<FiSave className="w-5 h-5" />
-										Save
+										{isSaving ? 'Saving...' : 'Save'}
 									</button>
 								</>
 							)}

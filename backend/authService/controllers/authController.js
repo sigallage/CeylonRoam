@@ -30,6 +30,7 @@ exports.signup = async (req, res, next) => {
                 _id: newUser._id,
                 name: newUser.name,
                 email: newUser.email,
+                phone: newUser.phone || '',
             },
         });    
 
@@ -64,7 +65,8 @@ exports.login = async (req, res, next) => {
             user: {
                 _id: user._id,
                 name: user.name,
-                email: user.email
+                email: user.email,
+                phone: user.phone || '',
             },
         });
     }
@@ -72,4 +74,39 @@ exports.login = async (req, res, next) => {
         next(error);
     }
 
+};
+
+// UPDATE USER PROFILE
+exports.updateProfile = async (req, res, next) => {
+    try {
+        const userId = req.user.id; // from JWT middleware
+        const { name, phone } = req.body;
+
+        const updateData = {};
+        if (name !== undefined) updateData.name = name;
+        if (phone !== undefined) updateData.phone = phone;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            updateData,
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return next(new createError('User not found!', 404));
+        }
+
+        res.status(200).json({
+            status: 'success',
+            message: 'Profile updated successfully',
+            user: {
+                _id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email,
+                phone: updatedUser.phone || '',
+            },
+        });
+    } catch (error) {
+        next(error);
+    }
 };
