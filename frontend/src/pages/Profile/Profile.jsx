@@ -131,8 +131,7 @@ const Profile = () => {
 	};
 
 	const handleItineraryHistory = () => {
-		// Navigate to itinerary history page
-		console.log('Itinerary history clicked');
+		navigate('/itinerary-history');
 	};
 
 	const handleProfilePictureChange = (e) => {
