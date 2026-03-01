@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiX, FiChevronRight, FiEdit2, FiCamera } from 'react-icons/fi';
+import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
 import { FaUser } from 'react-icons/fa';
 
 const Profile = () => {
@@ -9,6 +9,11 @@ const Profile = () => {
 		username: '',
 		userId: '',
 		phone: '',
+		profilePicture: null
+	});
+	const [isEditing, setIsEditing] = useState(false);
+	const [editedData, setEditedData] = useState({
+		username: '',
 		profilePicture: null
 	});
 
@@ -21,8 +26,32 @@ const Profile = () => {
 	}, []);
 
 	const handleEditProfile = () => {
-		// Navigate to edit profile page or open edit modal
-		console.log('Edit profile clicked');
+		setIsEditing(true);
+		setEditedData({
+			username: userData.username,
+			profilePicture: userData.profilePicture
+		});
+	};
+
+	const handleSaveProfile = () => {
+		// Save the edited data
+		const updatedUserData = {
+			...userData,
+			username: editedData.username,
+			profilePicture: editedData.profilePicture
+		};
+		setUserData(updatedUserData);
+		localStorage.setItem('userData', JSON.stringify(updatedUserData));
+		setIsEditing(false);
+		console.log('Profile saved successfully');
+	};
+
+	const handleCancelEdit = () => {
+		setIsEditing(false);
+		setEditedData({
+			username: userData.username,
+			profilePicture: userData.profilePicture
+		});
 	};
 
 	const handleResetPassword = () => {
@@ -39,15 +68,48 @@ const Profile = () => {
 		if (file) {
 			const reader = new FileReader();
 			reader.onloadend = () => {
-				setUserData(prev => ({
-					...prev,
-					profilePicture: reader.result
-				}));
-				// Save to localStorage
-				const updatedData = { ...userData, profilePicture: reader.result };
-				localStorage.setItem('userData', JSON.stringify(updatedData));
+				if (isEditing) {
+					// Store in editedData during edit mode
+					setEditedData(prev => ({
+						...prev,
+						profilePicture: reader.result
+					}));
+				} else {
+					// Direct update if not in edit mode
+					setUserData(prev => ({
+						...prev,
+						profilePicture: reader.result
+					}));
+					const updatedData = { ...userData, profilePicture: reader.result };
+					localStorage.setItem('userData', JSON.stringify(updatedData));
+				}
 			};
 			reader.readAsDataURL(file);
+		}
+	};
+
+	const handleUsernameChange = (e) => {
+		setEditedData(prev => ({
+			...prev,
+			username: e.target.value
+		}));
+	};
+
+	const handleRemoveProfilePicture = () => {
+		if (isEditing) {
+			// Remove profile picture in edit mode
+			setEditedData(prev => ({
+				...prev,
+				profilePicture: null
+			}));
+		} else {
+			// Direct removal if not in edit mode
+			setUserData(prev => ({
+				...prev,
+				profilePicture: null
+			}));
+			const updatedData = { ...userData, profilePicture: null };
+			localStorage.setItem('userData', JSON.stringify(updatedData));
 		}
 	};
 
@@ -72,9 +134,9 @@ const Profile = () => {
 						{/* Profile Picture */}
 						<div className="relative mb-4">
 							<div className="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden border-4 border-gray-200">
-								{userData.profilePicture ? (
+								{(isEditing ? editedData.profilePicture : userData.profilePicture) ? (
 									<img 
-										src={userData.profilePicture} 
+										src={isEditing ? editedData.profilePicture : userData.profilePicture} 
 										alt="Profile" 
 										className="w-full h-full object-cover"
 									/>
@@ -95,6 +157,15 @@ const Profile = () => {
 									className="hidden"
 								/>
 							</label>
+							{(isEditing ? editedData.profilePicture : userData.profilePicture) && (
+								<button
+									onClick={handleRemoveProfilePicture}
+								className="absolute bottom-0 left-0 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 cursor-pointer transition-colors shadow-lg"
+									title="Remove profile picture"
+								>
+									<FiTrash2 className="w-5 h-5" />
+								</button>
+							)}
 						</div>
 
 						<p className="text-sm text-gray-600 mb-6">Edit Profile Picture</p>
@@ -103,9 +174,19 @@ const Profile = () => {
 						<div className="w-full space-y-4 mb-6">
 							<div className="flex items-center justify-between py-3 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">User name</span>
-								<span className="text-gray-900 font-semibold">
-									{userData.username || 'Not set'}
-								</span>
+								{isEditing ? (
+									<input
+										type="text"
+										value={editedData.username}
+										onChange={handleUsernameChange}
+										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										placeholder="Enter username"
+									/>
+								) : (
+									<span className="text-gray-900 font-semibold">
+										{userData.username || 'Not set'}
+									</span>
+								)}
 							</div>
 							<div className="flex items-center justify-between py-3 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">User ID</span>
@@ -121,14 +202,34 @@ const Profile = () => {
 							</div>
 						</div>
 
-						{/* Edit Button */}
-						<button 
-							onClick={handleEditProfile}
-							className="w-full max-w-xs bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
-						>
-							<FiEdit2 className="w-5 h-5" />
-							Edit
-						</button>
+						{/* Edit and Save Buttons */}
+						<div className="w-full max-w-xs flex gap-3">
+							{!isEditing ? (
+								<button 
+									onClick={handleEditProfile}
+									className="flex-1 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+								>
+									<FiEdit2 className="w-5 h-5" />
+									Edit
+								</button>
+							) : (
+								<>
+									<button 
+										onClick={handleCancelEdit}
+										className="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md"
+									>
+										Cancel
+									</button>
+									<button 
+										onClick={handleSaveProfile}
+										className="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+									>
+										<FiSave className="w-5 h-5" />
+										Save
+									</button>
+								</>
+							)}
+						</div>
 					</div>
 				</div>
 
