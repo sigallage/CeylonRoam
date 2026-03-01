@@ -2,7 +2,6 @@ import axios from "axios"; //used to make HTTP requests
 import { AnimatePresence, motion } from "framer-motion";  // used for animations
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; //used to navigate between pages
-import itineraryBg from "../../assets/itinerarybg.jpeg";
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "/api").replace(/\/$/, ""); //ensures axios hits the correct backend in dev/prod
 
@@ -262,11 +261,8 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
 
   return ( //main JSX return
     <div
-      className="min-h-screen w-full bg-cover bg-center bg-no-repeat px-3 py-6 sm:px-6 sm:py-10 lg:px-12"
-      style={{
-        backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.65)), url(${itineraryBg})`,
-        backgroundBlendMode: "multiply" // lighter overlay for a more visible skyline
-      }}
+      className="min-h-screen w-full px-3 py-6 sm:px-6 sm:py-10 lg:px-12"
+      style={{ backgroundColor: '#0a0a0a' }}
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 sm:gap-10">
         <div className="space-y-2 text-center text-white">
@@ -282,14 +278,14 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           className="flex flex-col gap-4 sm:gap-6"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl bg-black p-4 sm:p-6 shadow-xl transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(234,179,8,0.6),0_0_80px_rgba(234,179,8,0.3)] lg:p-8" style={{ boxShadow: '0 0 20px rgba(234,179,8,0.3), 0 0 40px rgba(234,179,8,0.1)' }}>
+          <div className="flex flex-col gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl bg-black p-4 sm:p-6 shadow-xl transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(255,255,255,0.6),0_0_80px_rgba(255,255,255,0.3)] lg:p-8" style={{ boxShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)' }}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
                 Purpose of trip
               </span>
               <input
                 aria-label="Purpose of trip"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
                 placeholder="e.g., surfing, cultural, wellness"
                 value={formState.purposeInput}
                 onChange={(event) => handleFieldChange("purposeInput", event.target.value)}
@@ -303,7 +299,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </span>
               <input
                 aria-label="Budget in LKR"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
                 placeholder="Budget (LKR)"
                 value={formState.budget}
                 inputMode="numeric"
@@ -332,14 +328,14 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                     {SRI_LANKA_PROVINCES.map((province) => (
                       <label
                         key={province}
-                        className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 sm:p-2 transition hover:bg-yellow-50 active:bg-yellow-100"
+                        className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 sm:p-2 transition hover:bg-gray-50 active:bg-gray-100"
                       >
                         <input
                           type="checkbox"
                           checked={formState.selectedProvinces.includes(province)}
                           onChange={() => toggleProvinceSelection(province)}
                           disabled={isSubmitting}
-                          className="h-5 w-5 sm:h-4 sm:w-4 rounded border-black/30 text-yellow-400 focus:ring-yellow-400"
+                          className="h-5 w-5 sm:h-4 sm:w-4 rounded border-black/30 text-white focus:ring-white"
                         />
                         <span className="text-sm sm:text-sm text-black">{province}</span>
                       </label>
@@ -355,7 +351,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </span>
               <select
                 aria-label="Solo or family"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
                 value={formState.tripType}
                 onChange={(event) =>
                   handleFieldChange("tripType", event.target.value)
@@ -373,7 +369,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </span>
               <textarea
                 aria-label="Additional preferences"
-                className="h-24 w-full flex-1 resize-none rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="h-24 w-full flex-1 resize-none rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
                 placeholder="Any additional preferences (e.g., vegetarian meals, wheelchair access)"
                 value={formState.preferencesInput}
                 onChange={(event) => handleFieldChange("preferencesInput", event.target.value)}
@@ -387,7 +383,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </span>
               <input
                 aria-label="Selected travel dates"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
                 placeholder="Select dates from the calendar"
                 value={formattedSelectedDates}
                 readOnly
@@ -409,7 +405,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         handleFieldChange("gender", event.target.value)
                       }
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-yellow-400 focus:ring-yellow-400"
+                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
                     <span className="text-white">Male</span>
                   </label>
@@ -423,7 +419,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         handleFieldChange("gender", event.target.value)
                       }
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-yellow-400 focus:ring-yellow-400"
+                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
                     <span className="text-white">Female</span>
                   </label>
@@ -437,7 +433,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         handleFieldChange("gender", event.target.value)
                       }
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-yellow-400 focus:ring-yellow-400"
+                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
                     <span className="text-white">Other</span>
                   </label>
@@ -456,7 +452,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(-1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-yellow-600 active:bg-yellow-700 min-w-[60px] sm:min-w-0"
+                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
                   disabled={isSubmitting}
                 >
                   Prev
@@ -467,7 +463,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-yellow-600 active:bg-yellow-700 min-w-[60px] sm:min-w-0"
+                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
                   disabled={isSubmitting}
                 >
                   Next
@@ -495,10 +491,10 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         !isCurrentMonth || isPast
                           ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
                           : isStartEnd
-                            ? "border-yellow-400 bg-[#FFD700] font-semibold text-black shadow-[0_0_12px_rgba(255,215,0,0.45)]"
+                            ? "border-gray-300 bg-white font-semibold text-black shadow-[0_0_12px_rgba(255,255,255,0.6)]"
                             : inRange
-                              ? "border-yellow-300 bg-yellow-100 text-black"
-                              : "border-black/10 bg-white text-black hover:border-yellow-400 hover:shadow-[0_0_10px_rgba(255,215,0,0.35)] active:bg-yellow-50"
+                              ? "border-gray-200 bg-gray-100 text-black"
+                              : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
                       }
                     `}
                   >
@@ -512,7 +508,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           <div className="flex justify-end">
             <button
               type="submit"
-              className="w-full rounded-xl sm:rounded-2xl bg-black px-4 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-semibold uppercase tracking-wide text-[#FFD700] shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(255,215,0,0.45)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-black/40 disabled:shadow-none touch-manipulation min-h-[44px]"
+              className="w-full rounded-xl sm:rounded-2xl bg-black px-4 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-semibold uppercase tracking-wide text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(255,255,255,0.6)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-black/40 disabled:shadow-none touch-manipulation min-h-[44px]"
               disabled={isSubmitting}
             >
               Enter
@@ -520,7 +516,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           </div>
 
           {error && (
-            <p className="rounded-lg sm:rounded-xl border border-yellow-400/60 bg-[#FFF9DB] px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs sm:text-sm font-medium text-black">
+            <p className="rounded-lg sm:rounded-xl border border-gray-300 bg-gray-100 px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs sm:text-sm font-medium text-black">
               {error}
             </p>
           )}
