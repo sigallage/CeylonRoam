@@ -9,6 +9,7 @@ import LandingPage from '../landingPage/landingPage.jsx';
 import RouteOptimizer from '../routeOptimizer/routeOptimizer.jsx';
 import VoiceTranslationPage from '../VoiceTranslation/VoiceTranslationPage.jsx';
 import ItineraryGenerator from '../itineraryGenerator/itineraryGenerator.jsx';
+import Profile from '../Profile/Profile.jsx';
 
 function Router() {
 	return (
@@ -24,7 +25,8 @@ function Router() {
 				<Route path="/forgot-password" element={<ForgotPassword />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/voice-translation" element={<VoiceTranslationPage />} />
-			<Route path="/itinerary-generator" element={<ItineraryGenerator />} />
+				<Route path="/itinerary-generator" element={<ItineraryGenerator />} />
+				<Route path="/profile" element={<Profile />} />
 			</Route>
 		</Routes>
 	);
