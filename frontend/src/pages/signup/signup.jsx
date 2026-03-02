@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const navigate = useNavigate();
+  const authBaseUrl = useMemo(
+    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
+    [],
+  );
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,11 +76,12 @@ function SignUp() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('http://localhost:3000/api/auth/signup', {
+      const response = await fetch(`${authBaseUrl}/api/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -132,7 +137,7 @@ function SignUp() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="John Doe"
+                placeholder="Enter your full name"
                 className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
                 style={{ height: '48px' }}
               />
@@ -149,7 +154,7 @@ function SignUp() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="me@example.com"
+                placeholder="Enter your email address"
                 required
                 className={`w-full px-4 border rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none transition-colors box-border ${
                   errors.email ? 'border-red-500' : 'border-[#ddd] focus:border-[#2c3e9e]'

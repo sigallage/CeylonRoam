@@ -1372,787 +1372,2186 @@
   "entry_fee": "LKR 100",
   "opening_hours": "9:00 AM - 4:00 PM"
 },
-    {
-        "id": "sri-dalada-maligawa",
-        "name": "Sri Dalada Maligawa",
-        "latitude": 7.2936,
-        "longitude": 80.6413,
-        "description": "The Temple of the Sacred Tooth Relic is one of the most sacred Buddhist temples in Sri Lanka, housing the relic of the tooth of the Buddha. It is a UNESCO World Heritage Site and a major pilgrimage destination.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:00 AM) during the first Tevava (worship session) to avoid large crowds"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly by covering shoulders and knees; white clothing is preferred as a sign of respect. Sarongs are available at the entrance if needed. Remove shoes and hats before entering.",
-            "behavior": [
-                "Dress Code: White or light-colored clothing is preferred. Shoulders and knees must be covered at all times.",
-                "Footwear: Remove shoes before entering the temple; a designated area is provided for storage.",
-                "Decorum: Maintain silence and reverence throughout the temple. Avoid turning your back to the relic chamber.",
-                "Photography: Photography is restricted inside the inner shrine room. Respect all signage regarding camera use.",
-                "Queuing: Follow the designated queue systems during worship sessions (Tevava), which occur three times daily.",
-                "Cultural Respect: Bow respectfully when passing monks and devotees. Avoid pointing feet toward the shrine."
-            ],
-            "entry_requirements": ["Paid entry for foreign visitors", "Photography restricted in inner shrine"]
-        },
-        "entry_fee": "LKR 1500 for foreign adults",
-        "opening_hours": "5:30 AM - 8:00 PM"
+{
+   
+    "id": "kurunegala_ethagala",
+    "name": "Ethagala (Elephant Rock)",
+    "latitude": 7.4867,
+    "longitude": 80.3623,
+    "description": "A massive rock formation shaped like an elephant, offering panoramic views of Kurunegala city. A Buddha statue crowns the summit.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/SL_Kurunegala_asv2020-01_img05.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "April", "August"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Early morning or evening"
     },
-    {
-        "id": "udawatta-kele-sanctuary",
-        "name": "Udawatta Kele Sanctuary",
-        "latitude": 7.2980,
-        "longitude": 80.6432,
-        "description": "A scenic forest reserve located just above the Kandy city center, historically used as a forbidden forest by Kandyan kings. It is home to a rich variety of flora, fauna, and birdlife, offering serene walking trails through the jungle.",
-        "image_url": "",
-        "category": "Nature Reserve",
-        "crowd_info": {
-            "peak_months": ["January", "February", "March", "July", "August"],
-            "off_peak_months": ["May", "June", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) for birdwatching and cooler temperatures"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Wear comfortable, light clothing suitable for walking. Closed-toe shoes or hiking sandals are recommended for the trails.",
-            "behavior": [
-                "Wildlife: Do not disturb or feed wildlife. Maintain a respectful distance from animals.",
-                "Trails: Stick to designated trails and avoid venturing off-path.",
-                "Littering: Do not litter; carry out all waste to keep the sanctuary clean.",
-                "Noise: Keep noise levels low to avoid disturbing wildlife and other visitors.",
-                "Photography: Photography of nature and wildlife is encouraged; avoid flash photography near animals.",
-                "Guided Tours: Hiring a local guide is recommended for a richer experience and better navigation."
-            ],
-            "entry_requirements": ["Paid entry required", "Guided tours available at the entrance"]
-        },
-        "entry_fee": "LKR 600 for foreign adults",
-        "opening_hours": "8:00 AM - 5:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing recommended",
+      "behavior": ["Remove footwear at temple areas", "Maintain silence"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "royal-botanic-gardens-peradeniya",
-        "name": "Royal Botanic Gardens, Peradeniya",
-        "latitude": 7.2686,
-        "longitude": 80.5966,
-        "description": "One of the finest botanical gardens in Asia, spanning over 147 acres along the Mahaweli River. The gardens feature an extraordinary collection of orchids, palms, medicinal plants, and a famous avenue of royal palms, attracting nature lovers and researchers alike.",
-        "image_url": "",
-        "category": "Botanical Garden",
-        "crowd_info": {
-            "peak_months": ["January", "February", "March", "July", "August"],
-            "off_peak_months": ["May", "June", "September", "October", "November"],
-            "best_time_to_visit": "Weekday mornings (8:00 AM - 11:00 AM) to enjoy the gardens before crowds and midday heat arrive"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual, comfortable clothing suitable for walking outdoors. Sunscreen and a hat are recommended.",
-            "behavior": [
-                "Plants: Do not pluck, damage, or remove any plants, flowers, or fruits from the garden.",
-                "Littering: Strictly no littering; bins are available throughout the garden.",
-                "Picnicking: Picnicking is allowed in designated areas only.",
-                "Pets: Pets are not permitted inside the gardens.",
-                "Photography: Photography is freely allowed for personal use throughout the gardens.",
-                "Vehicles: Bicycles and vehicles are restricted to specific paths only."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 2000 for foreign adults",
-        "opening_hours": "7:30 AM - 5:00 PM"
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
+  },
+
+  {
+    "id": "kurunegala_athugala",
+    "name": "Athugala Buddha Statue",
+    "latitude": 7.4889,
+    "longitude": 80.3601,
+    "description": "A sacred hilltop site featuring a large seated Buddha statue and scenic viewpoints.",
+    "image_url": "https://i0.wp.com/amazinglanka.com/wp/wp-content/uploads/2025/05/athugala-17.jpg?resize=1024%2C576&ssl=1",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["June", "September"],
+      "best_time_to_visit": "Morning hours"
     },
-    {
-        "id": "kandy-viewpoint",
-        "name": "Kandy Viewpoint",
-        "latitude": 7.2906,
-        "longitude": 80.6337,
-        "description": "A popular hilltop vantage point offering breathtaking panoramic views of the Kandy city skyline, Kandy Lake, and the surrounding misty hills. It is especially stunning at sunrise and sunset, making it a favorite spot for photographers and tourists.",
-        "image_url": "",
-        "category": "Scenic Viewpoint",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning or late afternoon (5:30 PM) for golden hour views over the city"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual clothing is appropriate. Comfortable shoes are recommended for the uphill walk.",
-            "behavior": [
-                "Littering: Do not litter; help keep the viewpoint clean for all visitors.",
-                "Noise: Be respectful of other visitors enjoying the view; keep noise to a minimum.",
-                "Photography: Photography is freely allowed and highly encouraged from all angles.",
-                "Safety: Stay within safe boundaries and avoid climbing on rocks or barriers.",
-                "Vendors: Local vendors operate nearby; engage respectfully if purchasing souvenirs or refreshments."
-            ],
-            "entry_requirements": ["Free entry", "Photography allowed"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "Open all day"
+    "cultural_guidelines": {
+      "dress_code": "Cover shoulders and knees",
+      "behavior": ["No loud behavior", "No littering"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "ceylon-tea-museum",
-        "name": "Ceylon Tea Museum",
-        "latitude": 7.2791,
-        "longitude": 80.6317,
-        "description": "Housed in a restored colonial-era tea factory in Hantane, the Ceylon Tea Museum showcases the rich history of Sri Lanka's famous tea industry. Exhibits include antique tea processing machinery, historical photographs, and interactive displays tracing the journey from leaf to cup.",
-        "image_url": "",
-        "category": "Museum",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "June", "September", "October", "November"],
-            "best_time_to_visit": "Midmorning (10:00 AM - 12:00 PM) on weekdays for a quieter and more relaxed visit"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Smart casual clothing is appropriate. Comfortable shoes are recommended as the museum spans multiple floors.",
-            "behavior": [
-                "Exhibits: Do not touch or tamper with machinery and historical exhibits on display.",
-                "Photography: Photography is generally allowed; check for any restricted zones inside.",
-                "Guided Tours: Guided tours are available and highly recommended to fully appreciate the exhibits.",
-                "Tea Tasting: Take advantage of the tea tasting session offered at the museum for an authentic experience.",
-                "Noise: Maintain a respectful noise level inside exhibit halls.",
-                "Purchasing: A gift shop is available for purchasing authentic Ceylon tea and souvenirs."
-            ],
-            "entry_requirements": ["Paid entry required", "Guided tours available"]
-        },
-        "entry_fee": "LKR 500 for foreign adults",
-        "opening_hours": "8:30 AM - 4:30 PM (Closed on Mondays)"
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_ridi_viharaya",
+    "name": "Ridi Viharaya",
+    "latitude": 7.5633,
+    "longitude": 80.5078,
+    "description": "An ancient Buddhist temple associated with the discovery of silver used for the Ruwanwelisaya stupa.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Ridi_Viharaya_3.JPG",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January", "April", "August"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "kandy-lake",
-        "name": "Kandy Lake",
-        "latitude": 7.2924,
-        "longitude": 80.6415,
-        "description": "An artificial lake built by the last Kandyan king, Sri Wickrama Rajasinha, in 1807, located in the heart of Kandy city. The lake is surrounded by a scenic walking path and offers tranquil views of the surrounding hills and the Sri Dalada Maligawa, making it a beloved spot for locals and visitors alike.",
-        "image_url": "",
-        "category": "Scenic Landmark",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:00 AM - 8:00 AM) for a peaceful lakeside walk before the city comes alive"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual clothing suitable for walking. Comfortable footwear is recommended for the lakeside path.",
-            "behavior": [
-                "Littering: Strictly no littering around or into the lake; help maintain the cleanliness of this historic site.",
-                "Swimming: Swimming in the lake is strictly prohibited.",
-                "Wildlife: Do not disturb or feed the birds and monitor lizards that inhabit the lake area.",
-                "Photography: Photography is freely allowed throughout the lakeside area.",
-                "Noise: Be respectful of local residents and other visitors enjoying the tranquil atmosphere.",
-                "Vendors: Street food vendors and boat ride services operate near the lake; engage respectfully."
-            ],
-            "entry_requirements": ["Free entry", "Photography allowed"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "Open all day"
+    "cultural_guidelines": {
+      "dress_code": "Traditional or modest attire",
+      "behavior": ["Respect religious customs"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "commonwealth-war-cemetery-kandy",
-        "name": "Commonwealth War Cemetery Kandy",
-        "latitude": 7.2882,
-        "longitude": 80.6256,
-        "description": "A beautifully maintained cemetery administered by the Commonwealth War Graves Commission, honoring the memory of over 200 Allied servicemen who died in Sri Lanka during World War II. The site is characterized by immaculate rows of white headstones set within serene, manicured gardens.",
-        "image_url": "",
-        "category": "Historical Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for a quiet and reflective visit"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly and respectfully out of reverence for those interred. Avoid casual or revealing clothing.",
-            "behavior": [
-                "Respect: Maintain a solemn and respectful demeanor throughout the cemetery at all times.",
-                "Noise: Keep all noise to an absolute minimum; this is a place of remembrance and reflection.",
-                "Headstones: Do not touch, lean on, or damage any headstones or memorial structures.",
-                "Photography: Photography is permitted but must be done respectfully and discreetly.",
-                "Littering: No littering of any kind is permitted within the cemetery grounds.",
-                "Flowers: Laying flowers as a tribute is welcome and encouraged as a sign of respect."
-            ],
-            "entry_requirements": ["Free entry", "Respectful conduct mandatory"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "7:00 AM - 5:00 PM"
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_panduwasnuwara",
+    "name": "Panduwasnuwara Ancient Kingdom",
+    "latitude": 7.5892,
+    "longitude": 80.2033,
+    "description": "Ruins of one of Sri Lanka’s earliest kingdoms, linked to King Panduwasdeva and Princess Unmada Chitra.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Panduwasnuwara_archaeological_site_3.jpg/1280px-Panduwasnuwara_archaeological_site_3.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "international-buddhist-museum",
-        "name": "International Buddhist Museum",
-        "latitude": 7.2938,
-        "longitude": 80.6413,
-        "description": "Located within the Sri Dalada Maligawa complex, the International Buddhist Museum showcases Buddhist art, artifacts, and traditions from countries across Asia and beyond. Each gallery represents a different Buddhist nation, offering a comprehensive journey through global Buddhist heritage and culture.",
-        "image_url": "",
-        "category": "Museum",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Weekday mornings (9:00 AM - 11:00 AM) for a quieter and more immersive experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees covered. White or light-colored clothing is preferred as a sign of respect. Remove shoes before entering.",
-            "behavior": [
-                "Dress Code: Modest attire covering shoulders and knees is mandatory. Sarongs may be available if needed.",
-                "Footwear: Remove shoes at the entrance before entering the museum galleries.",
-                "Artifacts: Do not touch or handle any artifacts or religious items on display.",
-                "Photography: Photography is allowed in most areas; follow signage regarding restricted zones.",
-                "Noise: Maintain a respectful and quiet demeanor throughout the museum.",
-                "Cultural Respect: Be mindful that the museum is situated within a sacred temple complex."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed in designated areas"]
-        },
-        "entry_fee": "Included with Sri Dalada Maligawa ticket",
-        "opening_hours": "9:00 AM - 5:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest clothing",
+      "behavior": ["Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
     },
-    {
-        "id": "old-royal-palace-kandy",
-        "name": "Old Royal Palace",
-        "latitude": 7.2940,
-        "longitude": 80.6410,
-        "description": "The historic royal palace of the Kandyan kings, located adjacent to the Sri Dalada Maligawa. The palace complex served as the seat of the last Sinhalese kingdom and is a significant landmark of Sri Lanka's royal and architectural heritage, blending Kandyan and South Indian architectural styles.",
-        "image_url": "",
-        "category": "Historical Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning hours (8:30 AM - 11:00 AM) on weekdays to explore the complex with fewer visitors"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly and respectfully given the historical and cultural significance of the site. Comfortable walking shoes are recommended.",
-            "behavior": [
-                "Respect: Treat the historical structures with great care and avoid touching or leaning on ancient walls.",
-                "Photography: Photography is generally allowed; be mindful of any restricted areas.",
-                "Noise: Maintain a respectful noise level throughout the palace complex.",
-                "Guided Tours: Engaging a guide is recommended to fully understand the historical significance of the site.",
-                "Littering: No littering of any kind within the palace grounds.",
-                "Cultural Sensitivity: Be aware of the deep cultural and historical importance of this royal site to Sri Lankan heritage."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "Included with Sri Dalada Maligawa complex ticket",
-        "opening_hours": "9:00 AM - 5:00 PM"
+    "entry_fee": "LKR 100",
+    "opening_hours": "8:00 AM - 5:00 PM"
+  },
+
+  {
+    "id": "kurunegala_yapahuwa",
+    "name": "Yapahuwa Rock Fortress",
+    "latitude": 7.8286,
+    "longitude": 80.2950,
+    "description": "A medieval rock fortress famous for its ornate stone staircase and former Sacred Tooth Relic shrine.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/yapahuwa-04-900_orig.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January", "August"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Early morning"
     },
-    {
-        "id": "kandy-national-museum",
-        "name": "Kandy National Museum",
-        "latitude": 7.2942,
-        "longitude": 80.6418,
-        "description": "Housed in a beautifully preserved colonial-era building within the former royal palace complex, the Kandy National Museum displays an extensive collection of Kandyan royal regalia, jewelry, traditional costumes, weapons, and artifacts that chronicle the glory of the last Sinhalese kingdom.",
-        "image_url": "",
-        "category": "Museum",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Weekday mornings (9:00 AM - 11:30 AM) for a calm and unhurried experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Smart casual attire is appropriate. Comfortable footwear is recommended as the museum spans several rooms.",
-            "behavior": [
-                "Exhibits: Do not touch or handle any artifacts or display items within the museum.",
-                "Photography: Photography may be restricted inside; check with museum staff before taking pictures.",
-                "Noise: Maintain a quiet and respectful atmosphere throughout the museum.",
-                "Guided Tours: Audio guides or guided tours may be available and are highly recommended.",
-                "Littering: No food or drinks are permitted inside the museum galleries.",
-                "Children: Supervise children at all times to ensure the safety of exhibits."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography may be restricted inside"]
-        },
-        "entry_fee": "LKR 500 for foreign adults",
-        "opening_hours": "9:00 AM - 5:00 PM (Closed on Fridays)"
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Wear proper footwear"],
+      "entry_requirements": ["Ticket required"]
     },
-    {
-        "id": "pallekele-international-cricket-stadium",
-        "name": "Pallekele International Cricket Stadium",
-        "latitude": 7.3254,
-        "longitude": 80.5933,
-        "description": "One of Sri Lanka's premier international cricket venues, set against the stunning backdrop of lush green hills on the outskirts of Kandy. The stadium hosts international Test matches, ODIs, and T20 games and is renowned for its scenic beauty and passionate local crowd atmosphere.",
-        "image_url": "",
-        "category": "Sports Venue",
-        "crowd_info": {
-            "peak_months": ["January", "February", "March", "July", "August"],
-            "off_peak_months": ["April", "May", "June", "September", "October", "November"],
-            "best_time_to_visit": "Match days for the full atmosphere; non-match days are ideal for a quiet stadium tour"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual clothing is appropriate. Wear comfortable footwear suitable for stadium seating and walking.",
-            "behavior": [
-                "Match Days: Follow all security and entry protocols on match days, including bag checks and restricted items.",
-                "Ticketing: Purchase tickets in advance for international matches as they sell out quickly.",
-                "Behavior: Maintain sportsmanlike conduct and avoid disruptive or offensive behavior in the stands.",
-                "Photography: Photography for personal use is generally allowed; professional equipment may require accreditation.",
-                "Food & Drink: Outside food and beverages may be restricted on match days; check event-specific rules.",
-                "Respect: Be respectful of players, officials, and fellow spectators at all times."
-            ],
-            "entry_requirements": ["Match day tickets required for games", "Stadium tours may be available on non-match days"]
-        },
-        "entry_fee": "Varies by match and seating category",
-        "opening_hours": "Match dependent; Stadium open during scheduled events"
+    "entry_fee": "LKR 100",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "kurunegala_arankele",
+    "name": "Arankele Forest Monastery",
+    "latitude": 7.7058,
+    "longitude": 80.4178,
+    "description": "A secluded ancient forest monastery used by meditation monks, surrounded by jungle and ruins.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/arankale-ancient-forest-monastery-in-the-northeast-of-sri-lanka_orig.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "February"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "british-garrison-cemetery",
-        "name": "British Garrison Cemetery",
-        "latitude": 7.2918,
-        "longitude": 80.6363,
-        "description": "A historic cemetery established during British colonial rule, containing the graves of British soldiers, civil servants, and their families from the 19th century. The site is maintained in a serene and dignified manner and offers a poignant glimpse into Kandy's colonial past and the lives of those who served the British Empire in Ceylon.",
-        "image_url": "",
-        "category": "Historical Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for a peaceful and reflective visit"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly and respectfully. Avoid casual or revealing clothing out of reverence for the site.",
-            "behavior": [
-                "Respect: Maintain a solemn and quiet demeanor throughout the cemetery at all times.",
-                "Headstones: Do not touch, sit on, or damage any headstones or memorial structures.",
-                "Photography: Photography is permitted but should be done with sensitivity and discretion.",
-                "Noise: Keep all noise to an absolute minimum as a sign of respect for those interred.",
-                "Littering: No littering of any kind is permitted within the cemetery grounds.",
-                "Guided Information: A caretaker may be present who can share historical information about notable graves."
-            ],
-            "entry_requirements": ["Free entry", "Respectful conduct is mandatory"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "8:00 AM - 4:30 PM"
+    "cultural_guidelines": {
+      "dress_code": "Simple modest clothing",
+      "behavior": ["Silence required"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "sri-lankathilake-rajamaha-viharaya",
-        "name": "Sri Lankathilake Rajamaha Viharaya",
-        "latitude": 7.2629,
-        "longitude": 80.5720,
-        "description": "A magnificent 14th-century Buddhist and Hindu temple built by King Bhuvanekabahu IV, perched dramatically on a rocky outcrop near Kandy. The temple blends Sinhalese, South Indian, and Gothic architectural styles and is dedicated to both Buddhist and Hindu deities, reflecting the syncretic religious traditions of medieval Sri Lanka.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) to experience the temple in peaceful tranquility before visitors arrive"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees fully covered. Remove shoes and hats before entering the temple. White or light-colored clothing is preferred.",
-            "behavior": [
-                "Dress Code: Modest attire is mandatory. Sarongs may be available at the entrance if needed.",
-                "Footwear: Remove shoes before climbing the steps and entering the temple premises.",
-                "Decorum: Maintain silence and reverence within the temple. Avoid loud conversation or disruptive behavior.",
-                "Photography: Photography is generally allowed outside; restrictions may apply inside the shrine rooms.",
-                "Offerings: Floral offerings and incense may be purchased nearby and offered respectfully.",
-                "Cultural Respect: Be mindful of the dual Buddhist and Hindu significance of this ancient site."
-            ],
-            "entry_requirements": ["Small entry fee may apply", "Photography allowed in most areas"]
-        },
-        "entry_fee": "LKR 300 for foreign visitors",
-        "opening_hours": "6:00 AM - 6:00 PM"
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 5:30 PM"
+  },
+
+  {
+    "id": "puttalam_kalpitiya",
+    "name": "Kalpitiya Peninsula",
+    "latitude": 8.2296,
+    "longitude": 79.7570,
+    "description": "A famous coastal destination for dolphin watching, kite surfing, and pristine beaches.",
+    "image_url": "https://nexttravelsrilanka.com/wp-content/uploads/2023/02/Kalpitiya.jpg",
+    "category": "beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Morning boat rides"
     },
-    {
-        "id": "royal-palace-park-kandy",
-        "name": "Royal Palace Park",
-        "latitude": 7.2952,
-        "longitude": 80.6400,
-        "description": "A beautifully landscaped public park adjacent to the historic Kandy royal palace complex and Kandy Lake. The park is a beloved green retreat in the heart of the city, offering manicured lawns, ornamental plants, and shaded pathways frequented by locals and tourists seeking rest and recreation.",
-        "image_url": "",
-        "category": "Park",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:00 AM - 8:00 AM) or late afternoon (4:00 PM - 6:00 PM) for a pleasant and crowd-free experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual, comfortable clothing suitable for outdoor walking. No specific dress code required.",
-            "behavior": [
-                "Littering: Strictly no littering; use designated bins to dispose of waste.",
-                "Plants: Do not pluck, damage, or remove any plants or flowers from the park.",
-                "Noise: Be respectful of other visitors and keep noise at a reasonable level.",
-                "Photography: Photography is freely allowed throughout the park.",
-                "Pets: Check local regulations regarding pets before visiting.",
-                "Respect: Be considerate of local families and elderly visitors using the park for relaxation."
-            ],
-            "entry_requirements": ["Free entry", "Photography allowed"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "6:00 AM - 6:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "Modest beachwear",
+      "behavior": ["Follow safety instructions"],
+      "entry_requirements": ["Boat ticket required"]
     },
-    {
-        "id": "st-pauls-church-kandy",
-        "name": "St Paul's Church",
-        "latitude": 7.2944,
-        "longitude": 80.6355,
-        "description": "One of the oldest Anglican churches in Kandy, built during the British colonial period in the early 19th century. St Paul's Church is known for its elegant colonial architecture, beautiful stained glass windows, and well-maintained cemetery. It continues to serve as an active place of worship for the local Anglican community.",
-        "image_url": "",
-        "category": "Church",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Weekday mornings (9:00 AM - 11:00 AM) for a quiet visit; Sunday services offer a unique cultural experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly and respectfully. Avoid casual or revealing clothing as the church is an active place of worship.",
-            "behavior": [
-                "Dress Code: Modest attire is required at all times. Shoulders should be covered.",
-                "Silence: Maintain silence and respectful behavior, especially during services.",
-                "Photography: Photography is generally permitted outside; seek permission before photographing inside during services.",
-                "Worship: Be respectful of ongoing services and avoid disrupting worshippers.",
-                "Cemetery: Treat the adjoining cemetery with respect and solemnity.",
-                "Visits During Services: If visiting during a service, participate quietly or wait until after for a full tour."
-            ],
-            "entry_requirements": ["Free entry", "Respectful conduct required"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "8:00 AM - 5:00 PM"
+    "entry_fee": "Varies",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "puttalam_dutch_fort",
+    "name": "Kalpitiya Dutch Fort",
+    "latitude": 8.2301,
+    "longitude": 79.7642,
+    "description": "A 17th-century fort built by the Dutch, reflecting colonial military architecture.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/SL_Kalpitiya_asv2020-01_img6_Dutch_fort.jpg/1920px-SL_Kalpitiya_asv2020-01_img6_Dutch_fort.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "red-mosque-kandy",
-        "name": "Red Mosque of Kandy",
-        "latitude": 7.2960,
-        "longitude": 80.6368,
-        "description": "Officially known as the Meera Makkam Mosque, the Red Mosque is a striking and iconic landmark in the heart of Kandy city, easily recognized by its vibrant red and white striped facade and Moorish architectural style. It is one of the most prominent mosques in Kandy and an active center of worship for the local Muslim community.",
-        "image_url": "",
-        "category": "Mosque",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Mid-morning (10:00 AM - 12:00 PM) on non-Friday days to avoid peak prayer times"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress very modestly. Women must cover their head, arms, and legs fully. Men should wear long trousers and avoid sleeveless tops. Remove shoes before entering.",
-            "behavior": [
-                "Dress Code: Full modest dress is mandatory. Women are required to cover their hair; headscarves may be available at the entrance.",
-                "Footwear: Remove shoes before entering the mosque premises.",
-                "Prayer Times: Avoid visiting during the five daily prayer times, especially Friday midday prayers.",
-                "Photography: Seek explicit permission before photographing inside or around the mosque.",
-                "Silence: Maintain complete silence and respectful behavior inside the mosque.",
-                "Cultural Sensitivity: Be aware of the active religious significance of the mosque and act accordingly at all times."
-            ],
-            "entry_requirements": ["Free entry", "Modest dress strictly required", "Photography by permission only"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "Open daily; avoid visiting during prayer times"
+    "cultural_guidelines": {
+      "dress_code": "Casual wear",
+      "behavior": ["Do not damage structures"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "pinnawala-elephant-orphanage",
-        "name": "Pinnawala Elephant Orphanage",
-        "latitude": 7.2996,
-        "longitude": 80.3831,
-        "description": "Established in 1975, the Pinnawala Elephant Orphanage is home to one of the world's largest herds of captive elephants. Located on the banks of the Maha Oya River, it rescues and cares for orphaned, injured, and abandoned elephants. Visitors can observe elephants feeding, bathing in the river, and interacting with their keepers in a naturalistic setting.",
-        "image_url": "",
-        "category": "Wildlife Sanctuary",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Feeding times (9:15 AM, 1:15 PM, 5:00 PM) and bathing time (10:00 AM - 12:00 PM, 2:00 PM - 4:00 PM) at the Maha Oya River for the best experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Casual, comfortable clothing suitable for an outdoor setting. Closed-toe shoes are recommended. Expect to get splashed near the river during the bathing session.",
-            "behavior": [
-                "Wildlife: Do not attempt to touch, feed, or approach elephants beyond designated viewing areas.",
-                "Safety: Maintain a safe distance from elephants at all times; follow all keeper and staff instructions.",
-                "Photography: Photography is allowed and encouraged; avoid using flash near the elephants.",
-                "Ethical Tourism: Be cautious of elephant riding or direct contact activities offered outside the main orphanage, as these may not meet ethical animal welfare standards.",
-                "Littering: Do not litter or throw food items into the elephant enclosures.",
-                "Children: Supervise children at all times and keep them within safe viewing boundaries."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 3000 for foreign adults",
-        "opening_hours": "8:30 AM - 5:30 PM"
+    "entry_fee": "Free",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "puttalam_anawilundawa",
+    "name": "Anawilundawa Wetland Sanctuary",
+    "latitude": 7.6756,
+    "longitude": 79.8822,
+    "description": "A RAMSAR-listed wetland famous for migratory birds and biodiversity.",
+    "image_url": "https://www.bestoflanka.com/images/slider/best-things-to-do-in-sri-lanka/wildlife-safaris-sri-lanka/wildlife-safaris-anawilundawa-bird-sanctuary-sri-lanka/01.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["November", "December"],
+      "off_peak_months": ["May", "June"],
+      "best_time_to_visit": "Early morning"
     },
-    {
-        "id": "sigiriya",
-        "name": "Sigiriya",
-        "latitude": 7.9570,
-        "longitude": 80.7603,
-        "description": "A UNESCO World Heritage Site and one of Sri Lanka's most iconic landmarks, Sigiriya is an ancient rock fortress rising 200 meters above the surrounding jungle. Built by King Kashyapa in the 5th century AD, it features remarkable frescoes, the famous Mirror Wall, ornamental gardens, and a breathtaking palace complex at the summit, offering panoramic views of the surrounding countryside.",
-        "image_url": "",
-        "category": "Historical Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (7:00 AM opening) to complete the climb before the midday heat and to enjoy the summit with fewer crowds"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Wear light, breathable clothing and sturdy closed-toe shoes suitable for a steep rock climb. Carry sun protection including a hat and sunscreen.",
-            "behavior": [
-                "Climbing: The ascent involves steep metal staircases and uneven rock surfaces; those with vertigo or mobility issues should assess carefully.",
-                "Frescoes: Do not touch the ancient frescoes on the rock face; this is strictly prohibited and enforced.",
-                "Mirror Wall: Writing or touching the Mirror Wall is strictly prohibited. It is a protected historical artifact.",
-                "Photography: Photography is allowed throughout the site; no flash photography near the frescoes.",
-                "Hydration: Carry sufficient water as the climb can be physically demanding, especially in warm weather.",
-                "Wildlife: Be aware of hornets' nests near the frescoes area; follow guide instructions carefully."
-            ],
-            "entry_requirements": ["Paid entry required", "No touching of frescoes or Mirror Wall"]
-        },
-        "entry_fee": "USD 30 for foreign adults",
-        "opening_hours": "7:00 AM - 5:30 PM"
+    "cultural_guidelines": {
+      "dress_code": "Comfortable outdoor clothing",
+      "behavior": ["Do not disturb wildlife"],
+      "entry_requirements": ["Permission recommended"]
     },
-    {
-        "id": "sri-natha-devalaya",
-        "name": "Sri Natha Devalaya",
-        "latitude": 7.2945,
-        "longitude": 80.6402,
-        "description": "One of the four main devalayas (shrines) within the Kandy royal complex, Sri Natha Devalaya is dedicated to the Bodhisattva Maitreya (the future Buddha), locally venerated as Natha. It is considered the oldest surviving structure in Kandy, predating the Dalada Maligawa, and is a place of great spiritual significance for both Buddhists and Hindus.",
-        "image_url": "",
-        "category": "Religious Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:30 AM - 8:30 AM) during puja (offering) sessions for an authentic spiritual experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees covered. Remove shoes before entering the shrine. White or light-colored clothing is preferred.",
-            "behavior": [
-                "Dress Code: Modest attire covering shoulders and knees is mandatory at all times.",
-                "Footwear: Remove shoes before entering the devalaya premises.",
-                "Decorum: Maintain silence and deep respect throughout the shrine complex.",
-                "Photography: Photography may be restricted inside the shrine room; follow posted signage.",
-                "Offerings: Floral offerings and incense are appropriate; follow the customs of other devotees.",
-                "Cultural Respect: This is an active place of worship; be mindful of devotees engaged in prayer and ritual."
-            ],
-            "entry_requirements": ["Free entry", "Modest dress required"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "6:00 AM - 8:00 PM"
+    "entry_fee": "LKR 100",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "puttalam_wilpattu_gate",
+    "name": "Wilpattu National Park (North Western Entrance)",
+    "latitude": 8.4500,
+    "longitude": 80.0000,
+    "description": "Sri Lanka’s largest national park, known for leopard sightings and natural lakes.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/06/LSL_B2_Wilpattu-National-Park_1920x700.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["February", "August"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Morning safari"
     },
-    {
-        "id": "ambuluwawa-biodiversity-complex",
-        "name": "Ambuluwawa Biodiversity Complex",
-        "latitude": 7.1760,
-        "longitude": 80.5686,
-        "description": "A unique multi-religious and biodiversity complex situated atop the Ambuluwawa mountain peak near Gampola. The site features a remarkable conical tower offering panoramic views across four provinces, as well as Buddhist, Hindu, Muslim, and Christian religious structures harmoniously coexisting within a lush natural forest reserve rich in biodiversity.",
-        "image_url": "",
-        "category": "Nature Reserve",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) on clear days for the best panoramic views from the tower summit"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Wear comfortable clothing and sturdy shoes suitable for uphill walking. Dress modestly when visiting the religious shrines within the complex.",
-            "behavior": [
-                "Tower Climb: The spiral tower staircase is narrow and steep; those with vertigo should exercise caution.",
-                "Religious Sites: Dress modestly and remove footwear when visiting any of the religious shrines on-site.",
-                "Wildlife: Do not disturb wildlife or damage vegetation within the biodiversity forest reserve.",
-                "Littering: Strictly no littering; carry all waste out of the nature reserve.",
-                "Photography: Photography is freely allowed throughout the complex and offers spectacular views.",
-                "Respect: Honor the multi-religious nature of the complex by being respectful of all faith traditions represented."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 500 for foreign adults",
-        "opening_hours": "7:00 AM - 6:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "Neutral colored clothing",
+      "behavior": ["Follow park rules"],
+      "entry_requirements": ["Safari ticket required"]
     },
-    {
-        "id": "ranawana-purana-rajamaha-viharaya",
-        "name": "Ranawana Purana Rajamaha Viharaya",
-        "latitude": 7.2500,
-        "longitude": 80.5800,
-        "description": "An ancient and revered Buddhist temple nestled in the countryside near Kandy, known for its historical significance and serene natural surroundings. The temple features traditional Kandyan architectural elements, ancient murals, and a deeply spiritual atmosphere that draws pilgrims and visitors seeking peace and cultural heritage.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "May", "July", "August"],
-            "off_peak_months": ["April", "June", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) during morning puja for an authentic and peaceful visit"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees fully covered. White clothing is preferred as a mark of respect. Remove shoes and hats before entering.",
-            "behavior": [
-                "Dress Code: Modest white or light-colored attire is preferred. Sarongs may be available at the entrance.",
-                "Footwear: Remove shoes before entering the temple premises.",
-                "Decorum: Maintain complete silence and reverence inside the temple.",
-                "Photography: Seek permission from temple authorities before photographing murals or sacred areas.",
-                "Offerings: Floral and lamp offerings are welcome and can typically be purchased nearby.",
-                "Cultural Respect: Be mindful of monks and devotees engaged in worship and do not interrupt rituals."
-            ],
-            "entry_requirements": ["Free entry", "Photography by permission"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "6:00 AM - 7:00 PM"
+    "entry_fee": "USD 15 (foreigners)",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "anuradhapura_sri_maha_bodhi",
+    "name": "Sri Maha Bodhi",
+    "latitude": 8.3440,
+    "longitude": 80.3955,
+    "description": "The oldest historically documented tree in the world, grown from a cutting of the Bodhi tree under which Lord Buddha attained enlightenment.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg/960px-SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "June", "December"],
+      "off_peak_months": ["September", "October"],
+      "best_time_to_visit": "Early morning or evening"
     },
-    {
-        "id": "sri-vishnu-devala",
-        "name": "Sri Vishnu Devala",
-        "latitude": 7.2948,
-        "longitude": 80.6408,
-        "description": "One of the four principal devalayas (shrines) of the Kandy royal complex, Sri Vishnu Devala is dedicated to the Hindu deity Vishnu, who is revered in Sri Lanka as the guardian deity of the island. The shrine is an important pilgrimage destination for both Hindus and Buddhists and plays a central role in the annual Kandy Esala Perahera procession.",
-        "image_url": "",
-        "category": "Religious Site",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:30 AM - 8:30 AM) during puja sessions for an authentic devotional experience"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees fully covered. Remove shoes before entering. White or light-colored clothing is appropriate.",
-            "behavior": [
-                "Dress Code: Modest attire is mandatory. Sarongs may be provided at the entrance if needed.",
-                "Footwear: Remove shoes before entering the devalaya premises.",
-                "Decorum: Maintain silence and deep respect inside the shrine at all times.",
-                "Photography: Photography inside the inner shrine may be restricted; follow posted guidelines.",
-                "Offerings: Floral offerings are welcome and can be purchased near the entrance.",
-                "Cultural Respect: Be mindful of the dual Buddhist and Hindu significance of this sacred shrine."
-            ],
-            "entry_requirements": ["Free entry", "Modest dress required"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "6:00 AM - 8:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing required",
+      "behavior": ["Remove footwear", "Maintain silence"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "asgiriya-maha-viharaya",
-        "name": "Asgiriya Maha Viharaya",
-        "latitude": 7.3020,
-        "longitude": 80.6390,
-        "description": "One of the two principal chapters of the Siam Nikaya Buddhist order in Sri Lanka and among the most respected and influential Buddhist monasteries in the country. Asgiriya Maha Viharaya is home to senior Buddhist clergy and plays a significant role in religious, cultural, and ceremonial affairs, including the Kandy Esala Perahera. The complex features traditional Kandyan architecture and well-maintained shrine rooms.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (6:30 AM - 9:00 AM) to observe morning rituals in a peaceful atmosphere"
-        },
-        "cultural_guidelines": {
-            "dress_code": "White or light-colored modest clothing is strongly preferred. Shoulders and knees must be fully covered. Remove shoes and hats before entering temple premises.",
-            "behavior": [
-                "Dress Code: White attire is highly preferred as a sign of respect. Sarongs are available if needed.",
-                "Footwear: Remove shoes at the entrance before entering any part of the temple complex.",
-                "Decorum: Maintain the utmost silence and reverence throughout this highly respected monastic complex.",
-                "Photography: Photography is restricted in many areas; always seek explicit permission from monks before photographing.",
-                "Monks: Show deep respect to monks at all times. Women should avoid direct physical contact with monks.",
-                "Cultural Respect: This is a highly revered active monastic center; visitors should behave with exceptional respect and humility."
-            ],
-            "entry_requirements": ["Free entry", "Photography restricted", "Highest standard of respectful conduct required"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "6:00 AM - 7:00 PM"
+    "entry_fee": "Free",
+    "opening_hours": "5:00 AM - 10:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_ruwanwelisaya",
+    "name": "Ruwanwelisaya",
+    "latitude": 8.3500,
+    "longitude": 80.3960,
+    "description": "A magnificent white stupa built by King Dutugemunu, considered one of the most sacred Buddhist monuments in Sri Lanka.",
+    "image_url": "https://www.trawell.in/admin/images/upload/07208983Anuradhapura_Ruwanwalisaya.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening for illumination"
     },
-    {
-        "id": "st-sylvesters-monastery-ampitiya",
-        "name": "Montefano, St. Sylvester's Monastery, Ampitiya",
-        "latitude": 7.2760,
-        "longitude": 80.6580,
-        "description": "A tranquil Franciscan monastery nestled in the hills of Ampitiya above Kandy, founded by Italian Franciscan missionaries and named after Montefano in Italy. The monastery is surrounded by lush greenery and offers a peaceful spiritual retreat. It is home to an active monastic community and features a beautiful chapel, gardens, and sweeping views of the surrounding hills.",
-        "image_url": "",
-        "category": "Monastery",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (9:00 AM - 12:00 PM) on weekdays for a peaceful visit in a serene monastic environment"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly and respectfully. Shoulders and knees should be covered. Avoid casual or revealing clothing out of respect for the monastic community.",
-            "behavior": [
-                "Dress Code: Modest attire covering shoulders and knees is required at all times on the monastery grounds.",
-                "Silence: Maintain silence and a contemplative demeanor throughout the monastery.",
-                "Photography: Seek explicit permission from the monastery community before taking any photographs.",
-                "Respect: This is an active monastic community; be mindful of the friars' routines and do not intrude on private areas.",
-                "Visits: Prior arrangement or permission may be required for visits; check with the monastery before attending.",
-                "Religious Services: Visitors are generally welcome to attend chapel services; follow the lead of worshippers."
-            ],
-            "entry_requirements": ["Prior permission may be required", "Photography by permission only", "Respectful conduct mandatory"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "By prior arrangement; generally 8:00 AM - 5:00 PM"
+    "cultural_guidelines": {
+      "dress_code": "White clothing preferred",
+      "behavior": ["Walk clockwise", "No loud behavior"],
+      "entry_requirements": ["Free entry"]
     },
-    {
-        "id": "degaldoruwa-temple",
-        "name": "Degaldoruwa Temple",
-        "latitude": 7.3051,
-        "longitude": 80.6714,
-        "description": "A remarkable 18th-century cave temple located on the outskirts of Kandy, renowned for its exceptionally well-preserved and vividly detailed murals depicting scenes from the Jataka tales (stories of the Buddha's previous lives) and daily life in ancient Sri Lanka. The temple is considered one of the finest examples of Kandyan-era painting and is a significant cultural and religious heritage site.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) in natural daylight for the best viewing of the ancient murals"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees fully covered. Remove shoes before entering the cave shrine rooms. White or light-colored clothing is preferred.",
-            "behavior": [
-                "Dress Code: Modest attire is mandatory. Sarongs may be available at the entrance if required.",
-                "Footwear: Remove shoes before entering the cave temple and shrine areas.",
-                "Murals: Do not touch the ancient murals under any circumstances; the oils from skin can cause irreversible damage.",
-                "Photography: Photography is allowed but avoid using flash, which can damage the delicate pigments of the ancient paintings.",
-                "Decorum: Maintain silence and deep respect inside the cave temple at all times.",
-                "Guided Tours: A local guide or the temple caretaker can provide valuable insight into the meaning of the murals."
-            ],
-            "entry_requirements": ["Small entry fee may apply", "No flash photography", "Do not touch murals"]
-        },
-        "entry_fee": "LKR 300 for foreign visitors",
-        "opening_hours": "8:00 AM - 5:00 PM"
+    "entry_fee": "Free",
+    "opening_hours": "5:30 AM - 9:30 PM"
+  },
+
+  {
+    "id": "anuradhapura_jetavanaramaya",
+    "name": "Jetavanaramaya",
+    "latitude": 8.3521,
+    "longitude": 80.4010,
+    "description": "Once the tallest brick structure in the world, built by King Mahasena, symbolizing ancient Sri Lankan engineering.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Jetavanaramaya_Stupa_profile.jpg/1280px-Jetavanaramaya_Stupa_profile.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January", "May"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "millennium-elephant-foundation",
-        "name": "Millennium Elephant Foundation",
-        "latitude": 7.3114,
-        "longitude": 80.4285,
-        "description": "A non-profit elephant welfare sanctuary located in Rambukkana near Kandy, dedicated to the ethical care and rehabilitation of working and retired elephants. The foundation offers visitors an opportunity to interact with elephants, assist with bathing and feeding, and learn about elephant conservation and the cultural role of elephants in Sri Lankan society.",
-        "image_url": "",
-        "category": "Wildlife Sanctuary",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August", "December"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (9:00 AM - 12:00 PM) for bathing and feeding sessions with the elephants"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Wear casual, comfortable clothing that you do not mind getting wet during the elephant bathing session. Closed-toe footwear is recommended.",
-            "behavior": [
-                "Animal Welfare: Follow all keeper instructions when interacting with elephants to ensure the safety of both visitors and animals.",
-                "Feeding: Only offer food items provided or approved by the sanctuary staff.",
-                "Photography: Photography is encouraged and welcomed throughout the sanctuary.",
-                "Ethical Tourism: The foundation prioritizes elephant welfare; avoid any activities not sanctioned by the sanctuary.",
-                "Littering: No littering of any kind within the sanctuary grounds.",
-                "Children: Children must be supervised by adults at all times when near the elephants."
-            ],
-            "entry_requirements": ["Paid entry required", "Photography allowed"]
-        },
-        "entry_fee": "LKR 2500 for foreign adults; interaction packages available at additional cost",
-        "opening_hours": "8:00 AM - 5:30 PM"
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["No climbing", "Remove footwear"],
+      "entry_requirements": ["Ticket required"]
     },
-    {
-        "id": "gadaladeniya-temple",
-        "name": "Gadaladeniya Rajamaha Viharaya",
-        "latitude": 7.2544,
-        "longitude": 80.5633,
-        "description": "A 14th-century Buddhist temple built by King Bhuvanekabahu IV, situated on a large flat rock with commanding views of the surrounding paddy fields and hills. Gadaladeniya is notable for its distinctive South Indian Dravidian architectural style blended with traditional Sinhalese elements, featuring a gopuram-style entrance tower and beautifully carved stone pillars, making it an outstanding example of medieval Sri Lankan religious architecture.",
-        "image_url": "",
-        "category": "Buddhist Temple",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Early morning (7:00 AM - 9:00 AM) for a tranquil visit with golden morning light over the surrounding landscape"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Dress modestly with shoulders and knees fully covered. Remove shoes before entering the temple. White or light-colored clothing is preferred as a sign of respect.",
-            "behavior": [
-                "Dress Code: Modest attire is mandatory. Sarongs may be available at the entrance if required.",
-                "Footwear: Remove shoes before ascending the rock and entering the temple premises.",
-                "Stone Structures: Do not touch or lean on the ancient carved stone pillars or decorative elements.",
-                "Photography: Photography is generally allowed; avoid flash photography inside the shrine room.",
-                "Decorum: Maintain silence and deep respect inside the shrine rooms and throughout the temple complex.",
-                "Offerings: Floral offerings are appropriate and can typically be purchased near the temple entrance."
-            ],
-            "entry_requirements": ["Small entry fee may apply", "Photography allowed in most areas"]
-        },
-        "entry_fee": "LKR 300 for foreign visitors",
-        "opening_hours": "6:00 AM - 6:00 PM"
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_abhayagiri",
+    "name": "Abhayagiri Monastery",
+    "latitude": 8.3539,
+    "longitude": 80.4035,
+    "description": "A major monastic complex and center of Buddhist scholarship in ancient Anuradhapura.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg/1280px-SL_Anuradhapura_asv2020-01_img31_Abhayagiriya_Stupa.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
     },
-    {
-        "id": "hulu-ganga",
-        "name": "Hulu Ganga",
-        "latitude": 7.2850,
-        "longitude": 80.5500,
-        "description": "A scenic river and natural attraction located in the lush countryside near Kandy, offering a serene natural escape surrounded by verdant forests and rural Sri Lankan landscapes. The Hulu Ganga (river) is popular for nature walks, river bathing, and experiencing the unspoiled natural beauty and tranquility of the Kandy region's rural hinterland.",
-        "image_url": "",
-        "category": "Natural Attraction",
-        "crowd_info": {
-            "peak_months": ["January", "February", "July", "August"],
-            "off_peak_months": ["April", "May", "September", "October", "November"],
-            "best_time_to_visit": "Morning (8:00 AM - 11:00 AM) for the most pleasant weather and clearest river conditions"
-        },
-        "cultural_guidelines": {
-            "dress_code": "Wear casual, comfortable clothing suitable for outdoor and riverside activities. Bring a change of clothes if planning to swim or wade in the river.",
-            "behavior": [
-                "Environment: Do not litter or dispose of any waste into the river or surrounding natural areas.",
-                "Swimming: Assess water conditions carefully before swimming; avoid strong currents, especially during and after heavy rains.",
-                "Wildlife: Do not disturb local wildlife or damage vegetation along the riverbanks.",
-                "Respect: Be respectful of local communities and private properties along the riverbanks.",
-                "Photography: Photography of the natural landscape is freely allowed and highly encouraged.",
-                "Local Guide: Engaging a local guide is recommended for navigation and to discover the best natural spots along the river."
-            ],
-            "entry_requirements": ["Free access", "Photography allowed"]
-        },
-        "entry_fee": "free",
-        "opening_hours": "Open all day"
-    }
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Respect ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_isurumuniya",
+    "name": "Isurumuniya Temple",
+    "latitude": 8.3370,
+    "longitude": 80.3870,
+    "description": "A rock temple famous for its ancient stone carvings including the iconic Isurumuniya Lovers.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/ISURUMUNIYA_ROCK_TEMPLE.JPG/1280px-ISURUMUNIYA_ROCK_TEMPLE.JPG",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Covered shoulders and knees",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 200",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_kuttam_pokuna",
+    "name": "Kuttam Pokuna (Twin Ponds)",
+    "latitude": 8.3555,
+    "longitude": 80.4020,
+    "description": "Two beautifully designed ancient bathing ponds used by Buddhist monks.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/si/thumb/b/b9/Kuttam_PokuNa_01.JPG/1280px-Kuttam_PokuNa_01.JPG",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual modest wear",
+      "behavior": ["No swimming"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_mihintale",
+    "name": "Mihintale",
+    "latitude": 8.3606,
+    "longitude": 80.5100,
+    "description": "The birthplace of Buddhism in Sri Lanka where Arahat Mahinda met King Devanampiyatissa.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Mihintale_Rock.jpg/1920px-Mihintale_Rock.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["June"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing",
+      "behavior": ["Climb carefully", "Respect sacredness"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_royal_palace",
+    "name": "Royal Palace of King Parakramabahu",
+    "latitude": 7.9403,
+    "longitude": 81.0006,
+    "description": "Ruins of the grand palace complex of King Parakramabahu I, showcasing ancient royal architecture.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/04/LS_Palace-of-King-Parakramabahu_DESK_1920x700.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest clothing",
+      "behavior": ["Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_gal_vihara",
+    "name": "Gal Vihara",
+    "latitude": 7.9668,
+    "longitude": 81.0000,
+    "description": "A rock temple featuring four magnificent Buddha statues carved into a granite cliff.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/6212668_orig.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest attire",
+      "behavior": ["No posing with Buddha statues"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_parakrama_samudra",
+    "name": "Parakrama Samudra",
+    "latitude": 7.9490,
+    "longitude": 81.0167,
+    "description": "A massive ancient reservoir built by King Parakramabahu I, symbolizing advanced irrigation engineering.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Polonnaruwa-panta.jpg/1280px-Polonnaruwa-panta.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Avoid littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "anuradhapura_lovamahapaya",
+    "name": "Lovamahapaya (Brazen Palace)",
+    "latitude": 8.3508,
+    "longitude": 80.3950,
+    "description": "An ancient multi-storied monastic building built by King Dutugemunu, once supported by bronze pillars.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/SL_Anuradhapura_asv2020-01_img09_Lovamahapaya.jpg/1280px-SL_Anuradhapura_asv2020-01_img09_Lovamahapaya.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["May", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing",
+      "behavior": ["Remove footwear", "Do not climb ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_samadhi_statue",
+    "name": "Samadhi Buddha Statue",
+    "latitude": 8.3565,
+    "longitude": 80.4009,
+    "description": "A serene Buddha statue depicting deep meditation, considered one of the finest sculptures in Sri Lanka.",
+    "image_url": "https://www.srilankanexpeditions.com/images/sri-lanka-travel-guide/history-archaeology-sri-lanka/buddha-statues-in-sri-lanka/samadhi-statue/samadhi-statue-01.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["No photography from front angle"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "anuradhapura_tissa_wewa",
+    "name": "Tissa Wewa",
+    "latitude": 8.3333,
+    "longitude": 80.3833,
+    "description": "An ancient reservoir built by King Devanampiyatissa, offering peaceful surroundings and birdlife.",
+    "image_url": "https://www.lovesrilanka.org/wp-content/uploads/2020/04/LS_Tissa-Wewa_Desktop_1920x700.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "anuradhapura_vessagiriya",
+    "name": "Vessagiriya Cave Monastery",
+    "latitude": 8.3397,
+    "longitude": 80.3906,
+    "description": "An ancient cave monastery used by meditating monks, featuring drip-ledged caves and inscriptions.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Rock_Shelters%2C_Vessagiri_083.jpg/1280px-Rock_Shelters%2C_Vessagiri_083.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "February"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest wear",
+      "behavior": ["Respect sacred caves"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_rankoth_vehera",
+    "name": "Rankoth Vehera",
+    "latitude": 7.9428,
+    "longitude": 80.9992,
+    "description": "A massive stupa inspired by Anuradhapura architecture, built during King Nissankamalla’s reign.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Rankoth_Vehera%2C_Ancient_City_of_Polonnaruwa%2C_Sri_Lanka_%285%29.jpg/1280px-Rankoth_Vehera%2C_Ancient_City_of_Polonnaruwa%2C_Sri_Lanka_%285%29.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White clothing recommended",
+      "behavior": ["Walk clockwise"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_lankatilaka",
+    "name": "Lankatilaka Image House",
+    "latitude": 7.9661,
+    "longitude": 80.9994,
+    "description": "A towering brick image house once containing a colossal standing Buddha statue.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/polonnaruwa-lankatilaka-image-house-dsc-0044-1500panoramic_orig.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Do not touch ruins"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_vatadage",
+    "name": "Polonnaruwa Vatadage",
+    "latitude": 7.9407,
+    "longitude": 81.0003,
+    "description": "A beautifully preserved circular relic house with intricate stone carvings and Buddha statues.",
+    "image_url": "https://do6raq9h04ex.cloudfront.net/sites/8/2023/09/Polonnaruwas-Archaeological-1050x700-1.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_shiva_devalaya",
+    "name": "Shiva Devalaya No.1",
+    "latitude": 7.9422,
+    "longitude": 81.0011,
+    "description": "An ancient Hindu temple showcasing Dravidian stone architecture from the Chola period.",
+    "image_url": "https://weepingredorger.wordpress.com/wp-content/uploads/2015/07/dsc07255-3.jpg?w=768",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Traditional or modest clothing",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "polonnaruwa_alahana_pirivena",
+    "name": "Alahana Pirivena",
+    "latitude": 7.9675,
+    "longitude": 81.0018,
+    "description": "A large monastic complex where monks practiced meditation and education during the Polonnaruwa era.",
+    "image_url": "https://nexttravelsrilanka.com/wp-content/uploads/2023/02/Alahana-Pirivena-Monastery.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Respect sacred space"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 25 (foreigners)",
+    "opening_hours": "8:00 AM - 6:00 PM"
+  },
+  {
+    "id": "badulla_nine_arch_bridge",
+    "name": "Nine Arches Bridge",
+    "latitude": 6.8767,
+    "longitude": 81.0603,
+    "description": "An iconic colonial-era railway bridge built entirely of stone, brick, and cement, surrounded by lush greenery.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/The_Nine_Arches_Bridge.jpg/960px-The_Nine_Arches_Bridge.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January", "April"],
+      "off_peak_months": ["May", "September"],
+      "best_time_to_visit": "Morning before train arrival"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual comfortable clothing",
+      "behavior": ["Be cautious near tracks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_ella_rock",
+    "name": "Ella Rock",
+    "latitude": 6.8665,
+    "longitude": 81.0466,
+    "description": "A popular hiking destination offering breathtaking panoramic views of Ella Gap and surrounding hills.",
+    "image_url": "https://srilanka800.com/wp-content/uploads/2025/10/Ella-Rock-3-1536x1024.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Hiking attire",
+      "behavior": ["Carry water", "Avoid littering"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_little_adams_peak",
+    "name": "Little Adam’s Peak",
+    "latitude": 6.8660,
+    "longitude": 81.0650,
+    "description": "An easy and scenic hike with stunning views of Ella town, tea estates, and surrounding mountains.",
+    "image_url": "https://nerdnomads.com/wp-content/uploads/2014/04/DSC5132-705x468.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning or sunset"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable clothing",
+      "behavior": ["Stay on trails"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_ravana_falls",
+    "name": "Ravana Falls",
+    "latitude": 6.8406,
+    "longitude": 81.0524,
+    "description": "One of Sri Lanka’s widest waterfalls, associated with the legend of King Ravana.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/SL_Ella_asv2020-01_img01_Ravana_Falls.jpg/960px-SL_Ella_asv2020-01_img01_Ravana_Falls.jpg",
+    "category": "waterfall",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["August"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual wear",
+      "behavior": ["Avoid slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_muthiyangana",
+    "name": "Muthiyangana Raja Maha Viharaya",
+    "latitude": 6.9895,
+    "longitude": 81.0557,
+    "description": "One of the Solosmasthana, believed to be visited by Lord Buddha during his third visit to Sri Lanka.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/SL_Badulla_asv2020-01_img15_Muthiyangana_Temple.jpg/960px-SL_Badulla_asv2020-01_img15_Muthiyangana_Temple.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "June"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White or modest clothing",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "5:30 AM - 8:00 PM"
+  },
+
+  {
+    "id": "badulla_dunhinda_falls",
+    "name": "Dunhinda Falls",
+    "latitude": 6.9786,
+    "longitude": 81.0566,
+    "description": "One of Sri Lanka’s most beautiful waterfalls, famous for its misty spray and forest trail access.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Dunhinda.jpg",
+    "category": "waterfall",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable outdoor wear",
+      "behavior": ["Do not cross safety barriers"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 100",
+    "opening_hours": "8:00 AM - 5:00 PM"
+  },
+
+  {
+    "id": "badulla_diyaluma_falls",
+    "name": "Diyaluma Falls",
+    "latitude": 6.7330,
+    "longitude": 81.0000,
+    "description": "Sri Lanka’s second-highest waterfall with natural infinity pools and panoramic views.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Diyaluma_Falls_1.jpg/960px-Diyaluma_Falls_1.jpg",
+    "category": "waterfall",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Hiking attire",
+      "behavior": ["Avoid risky pool edges"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_bogoda_bridge",
+    "name": "Bogoda Wooden Bridge",
+    "latitude": 6.8520,
+    "longitude": 81.0475,
+    "description": "A rare surviving wooden bridge built over 400 years ago using traditional Sri Lankan engineering.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/bogoda-bridge-and-temple-940_orig.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Daytime"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Do not damage structure"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_dowa_temple",
+    "name": "Dowa Rock Temple",
+    "latitude": 6.9150,
+    "longitude": 81.0410,
+    "description": "An ancient rock temple with an unfinished Buddha statue carved into the cliff face.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/SL_Ella_asv2020-01_img27_Dhowa_Temple.jpg/960px-SL_Ella_asv2020-01_img27_Dhowa_Temple.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "badulla_demodara_loop",
+    "name": "Demodara Railway Loop",
+    "latitude": 6.9022,
+    "longitude": 81.0575,
+    "description": "A unique railway engineering marvel where the track loops beneath itself through a tunnel.",
+    "image_url": "https://www.visitella.com/img/places/demodara-loop/570_319/1.png",
+    "category": "engineering",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Train passing times"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Stay away from tracks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_adisham",
+    "name": "Adisham Bungalow",
+    "latitude": 6.7678,
+    "longitude": 80.9590,
+    "description": "A Tudor-style country house now serving as a monastery, famous for gardens and architecture.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Adisham_Bungalow.JPG/960px-Adisham_Bungalow.JPG",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["No loud behavior"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "9:00 AM - 4:00 PM"
+  },
+
+  {
+    "id": "badulla_namunukula",
+    "name": "Namunukula Peak",
+    "latitude": 6.9630,
+    "longitude": 81.1320,
+    "description": "The highest mountain range in Uva Province, ideal for hiking and nature exploration.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Namunukula.jpg/960px-Namunukula.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "February"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Hiking gear",
+      "behavior": ["Use guides if unfamiliar"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_liptons_seat",
+    "name": "Lipton’s Seat",
+    "latitude": 6.8983,
+    "longitude": 80.9419,
+    "description": "A famous viewpoint where Sir Thomas Lipton surveyed his tea estates, offering breathtaking views.",
+    "image_url": "https://www.trawell.in/admin/images/upload/527735160Liptons_Seat.jpg",
+    "category": "viewpoint",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Sunrise"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Warm clothing recommended",
+      "behavior": ["Avoid littering"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "badulla_haputale_gap",
+    "name": "Haputale Gap Viewpoint",
+    "latitude": 6.7667,
+    "longitude": 80.9515,
+    "description": "A dramatic mountain gap offering views across Uva, Sabaragamuwa, and Southern provinces.",
+    "image_url": "https://belihuloyasrilanka.com/images/2024/09/19/haputale-gap.jpg",
+    "category": "viewpoint",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Be cautious near edges"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_ella_gap",
+    "name": "Ella Gap",
+    "latitude": 6.8725,
+    "longitude": 81.0460,
+    "description": "A natural mountain pass offering spectacular views down to the southern plains.",
+    "image_url": "https://www.greenholidaytravels.com/wp-content/uploads/2024/08/5d82195759d518535fea0472-1-768x526.jpeg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable clothing",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_sorabora_wewa",
+    "name": "Sorabora Wewa",
+    "latitude": 6.9370,
+    "longitude": 81.1050,
+    "description": "An ancient reservoir built by King Dutugemunu, featuring unique stone sluice gates.",
+    "image_url": "https://lh3.googleusercontent.com/pw/ACtC-3duKl8dzbzyNrASsW6GTWAdRPECt0BGdfKaoWB5_UwBDasq2Z5medhVg9IN-T6SNTXMH6-2HMlPWy6Kozlm9HSKeM24DRV7qhS5aVR63kbGsybPakjFi2HEJCcW7l6ISR0BE4eUtDGWaSfQyVWwhPsd=w1125-h846-no?authuser=1",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Avoid littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "badulla_mahiyanganaya",
+    "name": "Mahiyanganaya Raja Maha Viharaya",
+    "latitude": 7.3286,
+    "longitude": 81.0030,
+    "description": "One of the Solosmasthana, marking the first visit of Lord Buddha to Sri Lanka.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2021/01/Mahiyangana-Rajamaha-Viharaya--768x512.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["May", "June"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "White clothing recommended",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "5:30 AM - 9:00 PM"
+  },
+
+  {
+    "id": "badulla_fox_hill",
+    "name": "Fox Hill",
+    "latitude": 6.9870,
+    "longitude": 81.0550,
+    "description": "A historic hill in Badulla, famous for the annual Fox Hill Supercross motorsport event.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2021/01/Fox-Hill--768x512.jpg",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Daytime"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual wear",
+      "behavior": ["Follow event rules"],
+      "entry_requirements": ["Event based access"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Event based"
+  },
+
+  {
+    "id": "badulla_halpe_tea_factory",
+    "name": "Uva Halpewatte Tea Factory",
+    "latitude": 6.9005,
+    "longitude": 81.0702,
+    "description": "A working tea factory offering guided tours showcasing traditional tea production methods.",
+    "image_url": "https://www.trawell.in/admin/images/upload/527735667halpewette_tea_factory.jpg",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning tours"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual clothing",
+      "behavior": ["Follow guide instructions"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "8:30 AM - 4:30 PM"
+  },
+  {
+    "id": "monaragala_katharagama",
+    "name": "Kataragama Sacred City",
+    "latitude": 6.4135,
+    "longitude": 81.3346,
+    "description": "A multi-religious pilgrimage town sacred to Buddhists, Hindus, Muslims, and indigenous Vedda people.",
+    "image_url": "https://srilankatourismhub.com/wp-content/uploads/elementor/thumbs/Kataragama-Maha-Devalaya-o15udqxjnlupdhbxjc34boe9vtf0hrx6i6vpzwh20g.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["July", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning or evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing required",
+      "behavior": ["Respect rituals", "No photography during pooja"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "4:30 AM - 10:00 PM"
+  },
+
+  {
+    "id": "monaragala_yala_block5",
+    "name": "Yala National Park (Block 5)",
+    "latitude": 6.5500,
+    "longitude": 81.5000,
+    "description": "A wildlife-rich section of Yala National Park known for elephants, birds, and leopards.",
+    "image_url": "https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=center,quality=60,width=960,dpr=1/tour_img/23be2bc31a1c13bef49ca6461de1d743820563634d36db99ed6adda2f919601d.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["February", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning safari"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Neutral colored clothing",
+      "behavior": ["Follow park rules"],
+      "entry_requirements": ["Safari ticket required"]
+    },
+    "entry_fee": "USD 15 (foreigners)",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "monaragala_galabedda_falls",
+    "name": "Galabedda Waterfall",
+    "latitude": 6.7500,
+    "longitude": 81.2333,
+    "description": "A scenic waterfall hidden within forest surroundings, ideal for nature lovers.",
+    "image_url": "https://i0.wp.com/amazinglanka.com/wp/wp-content/uploads/2014/04/galboda-01.jpg?resize=1024%2C576&ssl=1",
+    "category": "waterfall",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor clothing",
+      "behavior": ["Avoid slippery rocks"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_buduruwayaya",
+    "name": "Buduruwagala",
+    "latitude": 6.7600,
+    "longitude": 81.0340,
+    "description": "An ancient rock temple featuring seven massive Buddha statues carved into a cliff face.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/8967612_orig.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+ 
+ {
+    "id": "monaragala_butawa_reservoir",
+    "name": "Buttala Reservoir",
+    "latitude": 6.7460,
+    "longitude": 81.2360,
+    "description": "A scenic irrigation reservoir popular for sunsets and birdwatching.",
+    "image_url": "https://www.srilankaecotourism.lk/location_img/1489648876buttala_1.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual wear",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_galabedda",
+    "name": "Galabedda Hot Springs",
+    "latitude": 6.5890,
+    "longitude": 81.2410,
+    "description": "Natural hot water springs believed to have therapeutic properties.",
+    "image_url": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800/////////////",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest swimwear",
+      "behavior": ["Respect local customs"],
+      "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "7:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "monaragala_kataragama_forest",
+    "name": "Kataragama Forest Reserve",
+    "latitude": 6.4130,
+    "longitude": 81.3330,
+    "description": "A protected forest zone rich in biodiversity and sacred importance.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/87/1a/dc/our-gem-river-natural.jpg?w=1400&h=-1&s=1",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["July", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor clothing",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  {
+    "id": "monaragala_oya_reservoir",
+    "name": "Oya Reservoir",
+    "latitude": 6.8120,
+    "longitude": 81.1980,
+    "description": "A calm reservoir supporting agriculture and local wildlife.",
+    "image_url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800/////////",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid swimming"],
+      "entry_requirements": ["Free"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_ellawala_waterfall",
+    "name": "Ellawala Waterfall",
+    "latitude": 6.7850,
+    "longitude": 81.1320,
+    "description": "A hidden seasonal waterfall surrounded by forest landscape.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2019/09/Ellewala-Waterfall.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["August"],
+      "best_time_to_visit": "After rainfall"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime only"
+  },
+
+  {
+    "id": "monaragala_bibile_hills",
+    "name": "Bibile Hills",
+    "latitude": 7.1600,
+    "longitude": 81.2300,
+    "description": "Rolling hills offering panoramic views and peaceful hiking trails.",
+    "image_url": "https://www.thingstodosrilanka.com/wp-content/uploads/2020/08/bathalegala-bible-rock.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable clothing",
+      "behavior": ["Carry water"],
+      "entry_requirements": ["Free"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_dombagahawela",
+    "name": "Dombagahawela Ancient Ruins",
+    "latitude": 6.9200,
+    "longitude": 81.1100,
+    "description": "Lesser-known archaeological ruins reflecting ancient rural settlements.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800/////////////",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["February"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Do not disturb ruins"],
+      "entry_requirements": ["Free"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "8:00 AM - 5:30 PM"
+  },
+
+  {
+    "id": "monaragala_kuda_oya",
+    "name": "Kuda Oya River",
+    "latitude": 6.6750,
+    "longitude": 81.1980,
+    "description": "A peaceful river ideal for nature walks and bird observation.",
+    "image_url": "https://media-cdn.tripadvisor.com/media/photo-s/04/bb/4b/cf/hotel-gangadhara-eco.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid strong currents"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_rajamaha_viharaya",
+    "name": "Monaragala Rajamaha Viharaya ",
+    "latitude": 6.8800,
+    "longitude": 81.0900,
+    "description": "Rock caves believed to be used by ancient forest monks.",
+    "image_url": "https://i0.wp.com/amazinglanka.com/wp/wp-content/uploads/2019/06/monaragala-14.jpg?w=640&ssl=1",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Do not climb caves"],
+      "entry_requirements": ["Free"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "monaragala_kumbukkan_oya",
+    "name": "Kumbukkan Oya",
+    "latitude": 6.5600,
+    "longitude": 81.2900,
+    "description": "A major river flowing through Monaragala, supporting wildlife and agriculture.",
+    "image_url": "https://media-cdn.tripadvisor.com/media/photo-s/15/26/87/33/natural-pool-adventures.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Beware of currents"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "monaragala_ethimale",
+    "name": "Ethimale Area",
+    "latitude": 6.4900,
+    "longitude": 81.2000,
+    "description": "A rural village area known for elephant corridors and traditional lifestyles.",
+    "image_url": "https://amazinglanka.com/wp/wp-content/uploads/2023/08/panama-01.jpg",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect wildlife"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "sinharaja",
+    "name": "Sinharaja Forest Reserve",
+    "latitude": 6.4061,
+    "longitude": 80.4603,
+    "description": "A UNESCO World Heritage rainforest rich in endemic flora and fauna, ideal for eco-tourism.",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg/1280px-20160128_Sri_Lanka_4132_Sinharaja_Forest_Preserve_sRGB_%2825674474901%29.jpg",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Use a guide", "No littering"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "USD 10",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "adams_peak",
+    "name": "Sri Pada (Adam’s Peak)",
+    "latitude": 6.8096,
+    "longitude": 80.4994,
+    "description": "A sacred mountain pilgrimage site revered by Buddhists, Hindus, Christians, and Muslims.",
+    "image_url": "https://www.ceylonexpeditions.com/medias/destination_places/big/110/sri-pada-adam-s-peak-sri-lanka.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["December", "April"],
+      "off_peak_months": ["May", "October"],
+      "best_time_to_visit": "Night climb"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Warm modest clothing",
+      "behavior": ["Respect pilgrims"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Seasonal"
+  },
+  {
+    "id": "Gem_museum",
+    "name": "Ratnapura Gem Museum",
+    "latitude": 6.6828,
+    "longitude": 80.4036,
+    "description": "A museum showcasing Sri Lanka’s world-famous gemstones and mining heritage.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2020/03/Gem-Bank-Ratnapura.jpg",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No touching displays"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "9:00 AM - 5:00 PM"
+  },
+
+  {
+    "id": "Bopath Ella",
+    "name": "Bopath Ella Waterfall",
+    "latitude": 6.6890,
+    "longitude": 80.4010,
+    "description": "A popular waterfall shaped like a Bo leaf, especially active during monsoon season.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/bopath-ella-2-455_orig.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "Saman_devalaya",
+    "name": "Maha Saman Devalaya",
+    "latitude": 6.6856,
+    "longitude": 80.4015,
+    "description": "A major shrine dedicated to God Saman, the guardian deity of Sri Pada.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/maha-saman-devale-dsc-0156-1560panoramic_orig.jpg",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January", "April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire",
+      "behavior": ["Remove footwear"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 7:00 PM"
+  },
+  {
+    "id": "ratnapura_kithulgala_edge",
+    "name": "Kithulgala Border Area",
+    "latitude": 6.9900,
+    "longitude": 80.4200,
+    "description": "A scenic river-side area near Ratnapura famous for adventure and rainforest views.",
+    "image_url": "https://www.kitulgalaadventures.com/images/kitulgala/kitulgala-06.jpg",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["Follow safety instructions"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_udawalawa_border",
+    "name": "Udawalawa National Park (Ratnapura Side)",
+    "latitude": 6.4410,
+    "longitude": 80.8920,
+    "description": "The Ratnapura-side entrance area of Udawalawa, rich in elephant sightings.",
+    "image_url": "https://www.sinharajatourguide.com/images/gallery/default/destinations/Udawalawe-National-Park-Sinharaja-Tour-Guide.webp",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["August", "September"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning safari"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Safari wear",
+      "behavior": ["Follow park rules"],
+      "entry_requirements": ["Park ticket"]
+    },
+    "entry_fee": "USD 15",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_wewelwatte",
+    "name": "Wewelwatte Tea Estate",
+    "latitude": 6.7200,
+    "longitude": 80.4600,
+    "description": "A peaceful tea estate offering scenic walks and hill-country views.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800/////////////",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable clothing",
+      "behavior": ["Respect workers"],
+      "entry_requirements": ["Permission required"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  
+  {
+    "id": "ratnapura_pahiyangala_cave",
+    "name": "Pahiyangala Cave",
+    "latitude": 6.6500,
+    "longitude": 80.2400,
+    "description": "A prehistoric cave site where evidence of early human habitation was discovered.",
+    "image_url": "https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/pahiyangala-940_orig.jpg",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest wear",
+      "behavior": ["Do not damage cave"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 500",
+    "opening_hours": "8:00 AM - 5:30 PM"
+  },
+  {
+    "id": "ratnapura_kirindi_oya",
+    "name": "Kirindi Oya Origin Area",
+    "latitude": 6.6000,
+    "longitude": 80.7000,
+    "description": "The upper basin of Kirindi Oya surrounded by forest and rural villages.",
+    "image_url": "https://cdn.lakpura.com/images/LK94009320-01-E.JPG",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Beware of currents"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_pahanthudawa",
+    "name": "Pahanthudawa Waterfall",
+    "latitude": 6.6030,
+    "longitude": 80.4560,
+    "description": "A scenic waterfall hidden within forest terrain near Kalawana.",
+    "image_url": "https://www.attractionsinsrilanka.com/wp-content/uploads/2019/09/Pahanthuda-Waterfall-Pahanthudawa-Waterfall.jpg",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "After rainfall"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Slippery rocks"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_gilimale_forest",
+    "name": "Gilimale Forest Reserve",
+    "latitude": 6.7440,
+    "longitude": 80.4420,
+    "description": "A protected forest area rich in birdlife and biodiversity.",
+    "image_url": "https://cdn.lakpura.com/images/LK943ABECA-02-E.JPG",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_madampe",
+    "name": "Madampe River Area",
+    "latitude": 6.7000,
+    "longitude": 80.3900,
+    "description": "A quiet river stretch suitable for nature walks and relaxation.",
+    "image_url": "",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Avoid swimming"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_weddagala",
+    "name": "Weddagala Forest Area",
+    "latitude": 6.6300,
+    "longitude": 80.5200,
+    "description": "A forest region known for endemic plants and rural trails.",
+    "image_url": "",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["Eco-friendly travel"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "ratnapura_ellagawa",
+    "name": "Ellagawa Village",
+    "latitude": 6.7200,
+    "longitude": 80.4300,
+    "description": "A rural village near Ratnapura offering authentic local experiences.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect privacy"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "ratnapura_udugama_edge",
+    "name": "Udugama Border Forest",
+    "latitude": 6.5600,
+    "longitude": 80.4800,
+    "description": "Forest edge area connecting Sinharaja buffer zones.",
+    "image_url": "",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Permit required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  },
+  {
+    "id": "ratnapura_nivitigala",
+    "name": "Nivitigala Town",
+    "latitude": 6.5800,
+    "longitude": 80.4600,
+    "description": "A small town surrounded by forest and tea plantations.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect local culture"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "kegalle_belilena",
+    "name": "Belilena Cave",
+    "latitude": 7.2697,
+    "longitude": 80.4144,
+    "description": "A prehistoric cave where evidence of early human habitation in Sri Lanka was discovered.",
+    "image_url": "",
+    "category": "archaeological",
+    "crowd_info": {
+      "peak_months": ["January", "December"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable modest wear",
+      "behavior": ["Do not damage cave"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "LKR 300",
+    "opening_hours": "8:00 AM - 5:30 PM"
+  },
+
+  {
+    "id": "kegalle_kitulgala",
+    "name": "Kitulgala Adventure Zone",
+    "latitude": 6.9896,
+    "longitude": 80.4273,
+    "description": "Sri Lanka’s main white-water rafting destination surrounded by rainforest.",
+    "image_url": "",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Sportswear",
+      "behavior": ["Follow safety rules"],
+      "entry_requirements": ["Operator booking"]
+    },
+    "entry_fee": "Varies",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_kelani_valley",
+    "name": "Kelani Valley Viewpoints",
+    "latitude": 7.0200,
+    "longitude": 80.4500,
+    "description": "Scenic viewpoints overlooking the Kelani River and surrounding hills.",
+    "image_url": "",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No littering"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_rambukkana_town",
+    "name": "Rambukkana Town",
+    "latitude": 7.3230,
+    "longitude": 80.3915,
+    "description": "A historic railway town close to Pinnawala and rural attractions.",
+    "image_url": "",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect locals"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_arandara_falls",
+    "name": "Arandara Waterfall",
+    "latitude": 7.0500,
+    "longitude": 80.4700,
+    "description": "A seasonal waterfall hidden in forest terrain near rural villages.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["June", "July"],
+      "off_peak_months": ["February"],
+      "best_time_to_visit": "After rainfall"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Trekking wear",
+      "behavior": ["Slippery rocks"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_mawanella",
+    "name": "Mawanella Town",
+    "latitude": 7.2500,
+    "longitude": 80.4500,
+    "description": "A busy town surrounded by hills, known for spice shops and local food.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["April"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Evening"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect cultural diversity"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hingula",
+    "name": "Hingula Tea Area",
+    "latitude": 7.1800,
+    "longitude": 80.4100,
+    "description": "A peaceful tea-growing area with scenic landscapes and village life.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Comfortable wear",
+      "behavior": ["Do not disturb workers"],
+      "entry_requirements": ["Permission may be required"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_karawanella",
+    "name": "Karawanella Town",
+    "latitude": 7.0000,
+    "longitude": 80.4200,
+    "description": "A town near rainforest zones with easy access to nature attractions.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Eco-friendly travel"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_ambepussa",
+    "name": "Ambepussa Railway Area",
+    "latitude": 7.2520,
+    "longitude": 80.4720,
+    "description": "A historic railway station area surrounded by plantations.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "historical",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Railway safety"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hemmathagama",
+    "name": "HemmataGama Area",
+    "latitude": 7.2200,
+    "longitude": 80.3600,
+    "description": "A rural agricultural area known for coconut and rubber plantations.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect private land"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_deraniyagala",
+    "name": "Deraniyagala Town",
+    "latitude": 6.9300,
+    "longitude": 80.3400,
+    "description": "A town bordering rainforest areas, ideal for eco-tourism base stays.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect nature"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_karandana",
+    "name": "Karandana Rubber Estate",
+    "latitude": 7.2800,
+    "longitude": 80.3400,
+    "description": "A rubber plantation area showcasing Sri Lanka’s plantation economy.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Permission needed"],
+      "entry_requirements": ["Estate approval"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_mahawatta",
+    "name": "Mahawatta Village",
+    "latitude": 7.1900,
+    "longitude": 80.3900,
+    "description": "A quiet village offering authentic rural Sri Lankan life.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest",
+      "behavior": ["Respect privacy"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_hulangamuwa",
+    "name": "Hulangamuwa Forest Edge",
+    "latitude": 7.0500,
+    "longitude": 80.3900,
+    "description": "A forest-edge area ideal for birdwatching and short nature walks.",
+    "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800",
+    "category": "nature",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Outdoor wear",
+      "behavior": ["No loud noise"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+
+  {
+    "id": "kegalle_thalgaspitiya",
+    "name": "Thalgaspitiya Area",
+    "latitude": 7.1400,
+    "longitude": 80.3500,
+    "description": "A calm village area surrounded by greenery and plantations.",
+    "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+    "category": "cultural",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Respect locals"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+
+  {
+    "id": "kegalle_yatiyantota",
+    "name": "Yatiyantota Area",
+    "latitude": 6.9900,
+    "longitude": 80.3000,
+    "description": "A riverside area near rainforest borders, ideal for eco-stays.",
+    "image_url": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=800",
+    "category": "eco",
+    "crowd_info": {
+      "peak_months": ["December"],
+      "off_peak_months": ["May"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Eco-friendly behavior"],
+      "entry_requirements": ["Open access"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open all day"
+  },
+  {
+    "id": "Pinnawala",
+    "name": "Pinnawala Elephant Orphanage",
+    "latitude": 7.3000,
+    "longitude": 80.3867,
+    "description": "A world-famous sanctuary for orphaned and injured elephants.",
+    "image_url": "https://images.unsplash.com/photo-1549366021-9f761d040a94?w=800",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["December", "January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Feeding time"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["Do not feed elephants"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 20",
+    "opening_hours": "8:30 AM - 6:00 PM"
+  },
+  {
+    "id": "Pinnawala_zoo",
+    "name": "Pinnawala Open Zoo",
+    "latitude": 7.3020,
+    "longitude": 80.3900,
+    "description": "Sri Lanka’s first open zoo with spacious enclosures and safari-style viewing.",
+    "image_url": "https://images.unsplash.com/photo-1599661046827-dacff0e9c7d3?w=800",
+    "category": "wildlife",
+    "crowd_info": {
+      "peak_months": ["April", "August"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": ["No teasing animals"],
+      "entry_requirements": ["Ticket required"]
+    },
+    "entry_fee": "USD 15",
+    "opening_hours": "8:30 AM - 5:30 PM"
+  },
+  {
+    "id": "Alagalla",
+    "name": "Alagalla Mountain Range",
+    "latitude": 7.2600,
+    "longitude": 80.4800,
+    "description": "A scenic mountain range popular for hiking, camping, and panoramic views.",
+    "image_url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800",
+    "category": "adventure",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["October"],
+      "best_time_to_visit": "Early morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Hiking wear",
+      "behavior": ["Carry water"],
+      "entry_requirements": ["Guide recommended"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Daytime"
+  },
+  {
+    "id": "Arankele",
+    "name": "Arankele Forest Monastery",
+    "latitude": 7.3500,
+    "longitude": 80.4500,
+    "description": "An ancient forest monastery known for meditation caves and serene surroundings.",
+    "image_url": "https://images.unsplash.com/photo-1589884334700-4f77c9f3d5dd?w=800",
+    "category": "religious",
+    "crowd_info": {
+      "peak_months": ["January"],
+      "off_peak_months": ["September"],
+      "best_time_to_visit": "Morning"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest clothing",
+      "behavior": ["Maintain silence"],
+      "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "Free",
+    "opening_hours": "6:00 AM - 6:00 PM"
+  }
+ 
+
+
+
+
 ]

@@ -135,17 +135,18 @@ const LandingPage = () => {
   const features = [
     {
       title: 'Smart Itinerary Generation',
-      description: 'AI-powered itinerary planning that creates perfect day-by-day schedules based on your preferences'
-      
+      description: 'AI-powered itinerary planning that creates perfect day-by-day schedules based on your preferences',
+      path: '/itinerary-generator',
     },
     {
       title: 'Route Optimization',
-      description: 'Intelligent route planning with live traffic data to save time and fuel on your journey'
-      
+      description: 'Intelligent route planning with live traffic data to save time and fuel on your journey',
+      path: '/planner',
     },
     {
       title: 'Voice Translation',
-      description: 'Real-time Sinhala and Tamil translation to communicate effortlessly with locals'
+      description: 'Real-time Sinhala and Tamil translation to communicate effortlessly with locals',
+      path: '/voice-translation',
     }
   ];
 
@@ -274,17 +275,16 @@ const LandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <button
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-gray-700 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
+                type="button"
+                onClick={() => navigate(feature.path)}
+                className="group relative overflow-hidden rounded-2xl border border-gray-700 bg-gray-900/40 text-left transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500/70"
                 style={{
                   animation: `fade-in-up 0.6s ease-out ${index * 0.1}s backwards`
                 }}
               >
-                <div className="absolute inset-0">
-                  <img src={feature.image} alt="" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/95 to-gray-900/90" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/95 to-gray-900/90" />
                 <div className="relative z-10 p-8">
                   <h4 className="text-2xl font-bold text-white mb-3">
                     {feature.title}
@@ -292,8 +292,11 @@ const LandingPage = () => {
                   <p className="text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
+                  <div className="mt-6 text-yellow-400 font-semibold">
+                    Explore →
+                  </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

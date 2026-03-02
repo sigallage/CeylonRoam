@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRoutes = require('./src/routes/auth');
+const itineraryRoutes = require('./src/routes/itinerary');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api', authRoutes);
+app.use('/api/itineraries', itineraryRoutes);
 
 const PORT = Number(process.env.PORT || 5001);
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -43,8 +45,18 @@ async function start() {
 
   await mongoose.connect(MONGODB_URI);
 
+  app.use((err, req, res,  next) => {
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || 'error';
+    res.status(err.statusCode).json({ 
+        status: err.status,
+        message: err.message,
+    });
+});
+
   app.listen(PORT, () => {
     console.log(`Auth service listening on port ${PORT}`);
+    console.log('Connected to MongoDB!');
   });
 }
 
