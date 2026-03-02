@@ -18,7 +18,7 @@ exports.signup = async (req, res, next) => {
         });    
 
         // Assign JWT ( json web token ) to user
-        const token = jwt.sign({id: newUser._id }, 'secretkey123', {
+        const token = jwt.sign({id: newUser._id }, process.env.JWT_SECRET, {
             expiresIn: '90d',
         });
 
@@ -54,7 +54,7 @@ exports.login = async (req, res, next) => {
             return next(new createError('Invaild email or password!', 401));
         }
 
-        const token = jwt.sign({ id: user._id }, 'secretkey123', {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
             expiresIn: '90d',
         });
 
