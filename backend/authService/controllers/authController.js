@@ -4,7 +4,14 @@ const User = require('../src/models/User');
 const createError = require('../utils/appError');
 
 
-// REGSITER USER
+// Helper function for JWT creation
+function createJwtToken(userId) {
+    return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+        expiresIn: '90d',
+    });
+}
+
+// REGISTER USER
 exports.signup = async (req, res, next) => {
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -15,12 +22,10 @@ exports.signup = async (req, res, next) => {
         const newUser = await User.create({
             ...req.body,
             password: hashedPassword,
-        });    
-
-        // Assign JWT ( json web token ) to user
-        const token = jwt.sign({id: newUser._id }, process.env.JWT_SECRET, {
-            expiresIn: '90d',
         });
+
+        // Assign JWT to user
+        const token = createJwtToken(newUser._id);
 
         res.status(201).json({
             status: 'success',
@@ -31,7 +36,7 @@ exports.signup = async (req, res, next) => {
                 name: newUser.name,
                 email: newUser.email,
             },
-        });    
+        });
 
     } catch (error) {
         next(error);
@@ -40,22 +45,20 @@ exports.signup = async (req, res, next) => {
 
 // LOGGING USER
 exports.login = async (req, res, next) => {
-    try{
+    try {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email });
 
-        if(!user) return next(new createError('User not found!', 404));
+        if (!user) return next(new createError('User not found!', 404));
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
-        if(!isPasswordValid) {
+        if (!isPasswordValid) {
             return next(new createError('Invaild email or password!', 401));
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-            expiresIn: '90d',
-        });
+        const token = createJwtToken(user._id);
 
         res.status(200).json({
             status: 'success',
