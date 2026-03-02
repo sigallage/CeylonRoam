@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRoutes = require('./src/routes/auth');
+const itineraryRoutes = require('./src/routes/itinerary');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api', authRoutes);
+app.use('/api/itineraries', itineraryRoutes);
 
 const PORT = Number(process.env.PORT || 5001);
 const MONGODB_URI = process.env.MONGODB_URI;

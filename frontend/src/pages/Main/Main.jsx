@@ -1,6 +1,6 @@
 //(Tash) Important: The component in Main.jsx renders the “results” view after the itinerary generator submits to the backend. (Tash)
 
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const formatList = (items) => {
@@ -28,6 +28,79 @@ const Main = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const aiResponse = location.state?.aiResponse ?? null;
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveError, setSaveError] = useState('');
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  const authBaseUrl = useMemo(
+    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
+    [],
+  );
+
+  const handleSaveItinerary = async () => {
+    setIsSaving(true);
+    setSaveError('');
+    setSaveSuccess(false);
+
+    try {
+      // Get user data and token from localStorage
+      const storedData = localStorage.getItem('ceylonroam_user');
+      if (!storedData) {
+        setSaveError('Please log in to save itineraries');
+        setIsSaving(false);
+        return;
+      }
+
+      const parsed = JSON.parse(storedData);
+      const token = parsed.token;
+
+      // Calculate number of days
+      const startDate = new Date(metadata?.date_range?.start);
+      const endDate = new Date(metadata?.date_range?.end);
+      const numberOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+
+      // Prepare itinerary data to save
+      const itineraryPayload = {
+        title: `${formatList(metadata?.provinces)} Trip - ${dateLabel}`,
+        destination: formatList(metadata?.provinces),
+        startDate: metadata?.date_range?.start || new Date().toISOString(),
+        endDate: metadata?.date_range?.end || new Date().toISOString(),
+        numberOfDays: numberOfDays || 1,
+        budget: metadata?.budget_label || '',
+        interests: metadata?.preferences || [],
+        itineraryData: {
+          summary,
+          itinerary,
+          generated_at,
+          metadata
+        }
+      };
+
+      // Call API to save itinerary
+      const response = await fetch(`${authBaseUrl}/api/itineraries`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(itineraryPayload)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to save itinerary');
+      }
+
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch (error) {
+      console.error('Error saving itinerary:', error);
+      setSaveError(error.message || 'Failed to save itinerary. Please try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   useEffect(() => {
     if (!aiResponse) {
@@ -89,7 +162,27 @@ const Main = () => {
           {new Date(generated_at).toLocaleString()}
         </div>
 
-        <div className="flex justify-center">
+        {/* Save/Error Messages */}
+        {saveSuccess && (
+          <div className="rounded-2xl border border-green-500 bg-green-50 px-6 py-3 text-center text-sm font-medium text-green-700">
+            ✓ Itinerary saved successfully!
+          </div>
+        )}
+        {saveError && (
+          <div className="rounded-2xl border border-red-500 bg-red-50 px-6 py-3 text-center text-sm font-medium text-red-700">
+            {saveError}
+          </div>
+        )}
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            type="button"
+            onClick={handleSaveItinerary}
+            disabled={isSaving || saveSuccess}
+            className="rounded-2xl border border-green-600 bg-green-600 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSaving ? 'Saving...' : saveSuccess ? 'Saved!' : 'Save Itinerary'}
+          </button>
           <button
             type="button"
             onClick={() => navigate("/", { replace: true })}

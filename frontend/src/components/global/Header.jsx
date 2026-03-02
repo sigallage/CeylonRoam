@@ -20,7 +20,10 @@ const Header = () => {
 			
 			<div className="flex items-center gap-4">
 				{/* Profile Icon */}
-				<button className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden hover:opacity-80 transition-opacity">
+				<button 
+					onClick={() => navigate('/profile')}
+					className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden hover:opacity-80 transition-opacity"
+				>
 					<img src={logoIcon} alt="Profile" className="w-full h-full object-cover" />
 				</button>
 				
