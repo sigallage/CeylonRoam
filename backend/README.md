@@ -2,11 +2,11 @@
 
 Multi-service backend for the CeylonRoam travel platform, built with Node.js/Express and Python/FastAPI.
 
-## 🏗 Architecture
+## 🏗 Microservices Architecture
 
 ```
 backend/
-├── authSignup/          # Authentication service (Node.js/Express)
+├── authService/         # Authentication service (Node.js/Express)
 │   ├── server.js
 │   ├── src/
 │   └── Dockerfile
@@ -16,29 +16,32 @@ backend/
 ├── routeOptimizer/      # Route optimization (Python/FastAPI)
 │   ├── main.py
 │   └── Dockerfile
+├── voiceTranslation/    # Voice translation (Python/FastAPI)
+│   ├── main.py
+│   └── Dockerfile
 ├── docker-compose.yml   # Local development orchestration
 └── aws/                 # AWS deployment configurations
-    ├── deploy.bat
-    ├── deploy.sh
-    └── ecs-task-*.json
 ```
 
-## 🚀 Services
+## 🚀 Microservices
 
 ### 1. Auth Service (Port 5001)
-- **Tech Stack:** Node.js, Express, MongoDB, bcrypt, JWT
-- **Purpose:** User authentication and authorization
+- **Tech Stack:** Node.js, Express, MongoDB, bcrypt, express-session
+- **Purpose:** User authentication and session management
 - **Endpoints:**
   - `POST /api/signup` - User registration
   - `POST /api/login` - User authentication
+  - `POST /api/logout` - End user session
+  - `GET /api/check` - Check authentication status
   - `GET /health` - Health check
 
 ### 2. Itinerary Generator (Port 8001)
-- **Tech Stack:** Python, FastAPI, OpenAI (optional)
+- **Tech Stack:** Python, FastAPI, OpenRouter (optional)
 - **Purpose:** AI-powered travel itinerary generation
 - **Endpoints:**
   - `POST /api/generate` - Generate personalized itinerary
   - `GET /health` - Health check
+  - `GET /docs` - Interactive API documentation
 
 ### 3. Route Optimizer (Port 8002)
 - **Tech Stack:** Python, FastAPI, Google Maps API
@@ -47,8 +50,48 @@ backend/
   - `POST /api/optimize` - Optimize route
   - `POST /api/traffic` - Get traffic information
   - `GET /health` - Health check
+  - `GET /docs` - Interactive API documentation
 
-## 📋 Quick Start
+### 4. Voice Translation (Port 8003)
+- **Tech Stack:** Python, FastAPI, Whisper, NLLB-200
+- **Purpose:** Voice and text translation (Sinhala/English/Tamil)
+- **Endpoints:**
+  - `POST /voice/translate` - Translate voice audio
+  - `POST /text/translate` - Translate text
+  - `GET /health` - Health check
+  - `GET /docs` - Interactive API documentation
+
+## � Docker Setup
+
+### Install Docker Desktop (Windows)
+
+1. Download from: https://www.docker.com/products/docker-desktop
+2. Install and restart computer
+3. Verify installation:
+   ```powershell
+   docker --version
+   docker-compose --version
+   ```
+
+### Build All Docker Images
+
+Use the automated build script:
+
+```powershell
+# Navigate to backend folder
+cd backend
+
+# Run automated build and push script
+.\build-and-push.bat
+
+# Or build manually:
+docker build -t your-username/ceylonroam-auth:latest ./authService
+docker build -t your-username/ceylonroam-itinerary:latest ./itineraryGenerator
+docker build -t your-username/ceylonroam-route-optimizer:latest ./routeOptimizer
+docker build -t your-username/ceylonroam-voice-translation:latest ./voiceTranslation
+```
+
+## �📋 Quick Start
 
 ### Option 1: Local Development (Docker)
 
@@ -77,17 +120,29 @@ curl http://localhost:8002/health
 
 ### Option 2: AWS Deployment
 
-**Quick (30 minutes):**
+#### FREE Deployment (AWS Free Tier - $0/month for 12 months)
+Perfect for students, learning, and testing:
+
 ```bash
-# See QUICKSTART_AWS.md
+# See FREE_AWS_DEPLOYMENT.md for step-by-step guide
+# Includes Docker setup, AWS EC2, MongoDB Atlas Free Tier
+```
+
+📖 **[FREE_AWS_DEPLOYMENT.md](FREE_AWS_DEPLOYMENT.md)** - Complete FREE deployment guide  
+📋 **[DEPLOYMENT_CHEATSHEET.md](DEPLOYMENT_CHEATSHEET.md)** - Quick reference commands
+
+#### Production Deployment (AWS ECS/Fargate - ~$50-100/month)
+For production-ready scalable deployment:
+
+```bash
+# See deployment guides
 cd backend/aws
 ./deploy.bat  # Windows
 ./deploy.sh   # Linux/Mac
 ```
 
-**Complete guide:**
-- [QUICKSTART_AWS.md](QUICKSTART_AWS.md) - Quick AWS deployment
-- [AWS_DEPLOYMENT_GUIDE.md](AWS_DEPLOYMENT_GUIDE.md) - Comprehensive guide
+📖 **[QUICKSTART_AWS.md](QUICKSTART_AWS.md)** - Quick AWS deployment (30 min)  
+📖 **[AWS_DEPLOYMENT_GUIDE.md](AWS_DEPLOYMENT_GUIDE.md)** - Comprehensive production guide
 
 ## 🔑 Environment Variables
 
