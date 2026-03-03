@@ -51,7 +51,7 @@ exports.login = async (req, res, next) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if(!isPasswordValid) {
-            return next(new createError('Invaild email or password!', 401));
+            return next(new createError('Invalid email or password!', 401));
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
