@@ -23,7 +23,7 @@ services:
   # Auth/Signup Service
   auth-service:
     build:
-      context: ./authSignup
+      context: ./authService
       dockerfile: Dockerfile
     container_name: ceylonroam-auth
     ports:

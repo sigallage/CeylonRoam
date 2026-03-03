@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRoutes = require('./src/routes/auth');
+const itineraryRoutes = require('./src/routes/itinerary');
 
 const protectedRoutes = require('./src/routes/protected');
 
@@ -33,6 +34,7 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api', authRoutes);
+app.use('/api/itineraries', itineraryRoutes);
 
 app.use('/api/protected', protectedRoutes);
 
