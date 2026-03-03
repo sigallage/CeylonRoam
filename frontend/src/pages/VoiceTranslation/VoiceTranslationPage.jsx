@@ -233,6 +233,8 @@ function VoiceTranslation() {
     audioChunksRef.current = [];
   };
 
+
+
   return (
     <>
       <style>{`
@@ -268,6 +270,7 @@ function VoiceTranslation() {
                 </label>
               </div>
             </section>
+
 
             <section className="space-y-4">
               <div className="mx-auto w-full max-w-[440px]">
