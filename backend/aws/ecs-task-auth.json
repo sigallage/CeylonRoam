@@ -1,5 +1,6 @@
 {
   "family": "ceylonroam-auth-service",
+  "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
@@ -27,7 +28,7 @@
       "secrets": [
         {
           "name": "MONGODB_URI",
-          "valueFrom": "arn:aws:secretsmanager:<REGION>:<AWS_ACCOUNT_ID>:secret:ceylonroam/mongodb_uri"
+          "valueFrom": "ceylonroam/mongodb_uri"
         }
       ],
       "logConfiguration": {
