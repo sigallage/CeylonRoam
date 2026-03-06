@@ -49,14 +49,30 @@ except ImportError:  # pragma: no cover
 
 app = FastAPI(title="CeylonRoam Route Optimizer", version="1.0.0")
 
+
+def _get_cors_origins() -> tuple[list[str], bool]:
+    raw = (os.getenv("CORS_ORIGINS") or "").strip()
+    if not raw:
+        return [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+        ], True
+
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    if any(p == "*" for p in parts):
+        # Browsers don't allow wildcard CORS with credentials.
+        return ["*"], False
+
+    return parts, True
+
+
+cors_origins, cors_allow_credentials = _get_cors_origins()
+
 # Vite dev server defaults to 5173
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_credentials=cors_allow_credentials,
     allow_methods=["*"] ,
     allow_headers=["*"],
 )
