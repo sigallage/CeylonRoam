@@ -38,48 +38,42 @@ const AboutUs = () => {
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#ffb300', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>SG</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Sasanka Gallage</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Project Lead</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Visionary behind CeylonRoam.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(33,150,243,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#2196f3', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>TF</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Tashmi Fernando</div>
-            <div style={{ color: '#888', marginTop: 4 }}>UI/UX Designer</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Crafts beautiful user experiences.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(139,195,74,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#8bc34a', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>OG</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Oshadhi Goonewardena</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Content Specialist</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Curates travel stories and guides.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(229,115,115,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#e57373', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>RD</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Rashmika Dewangi</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Backend Developer</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Ensures everything runs smoothly.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(171,71,188,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#ab47bc', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>TP</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Thamindu Perera</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Frontend Developer</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Brings ideas to life on screen.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,188,212,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; }}>
             <div style={{ background: '#00bcd4', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>SJ</div>
             <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Sandaru Jayasekara</div>
-            <div style={{ color: '#888', marginTop: 4 }}>QA & Support</div>
-            <div style={{ fontSize: 12, marginTop: 8, color: '#7a1818' }}>“Keeps the app reliable and user-friendly.”</div>
+            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
           </li>
         </ul>
       </div>
