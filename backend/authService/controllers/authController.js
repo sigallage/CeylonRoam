@@ -2,18 +2,22 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../src/models/User');
 const createError = require('../utils/appError');
+const { sendOTPEmail } = require('../utils/emailService');
+const { generateOTP, storeOTP, verifyOTP } = require('../utils/otpService');
 
 
 // REGSITER USER
 exports.signup = async (req, res, next) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const email = req.body.email.trim().toLowerCase();
+        const user = await User.findOne({ email });
         if (user) {
             return next(new createError('User already exists!', 400));
         }
         const hashedPassword = await bcrypt.hash(req.body.password, 12);
         const newUser = await User.create({
             ...req.body,
+            email,
             password: hashedPassword,
         });    
 
@@ -44,7 +48,7 @@ exports.login = async (req, res, next) => {
     try{
         const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: email.trim().toLowerCase() });
 
         if(!user) return next(new createError('User not found!', 404));
 
@@ -111,29 +115,95 @@ exports.updateProfile = async (req, res, next) => {
     }
 };
 
-// PASSWORD RESET (no OTP)
-// Step 1: check email exists (frontend can decide to proceed)
-exports.requestPasswordReset = async (req, res, next) => {
+// FORGOT PASSWORD - Send OTP
+exports.forgotPassword = async (req, res, next) => {
     try {
         const { email } = req.body;
 
-        if (!email || typeof email !== 'string') {
-            return next(new createError('Email is required!', 400));
+        console.log('=== FORGOT PASSWORD DEBUG ===');
+        console.log('Received email:', email);
+        console.log('Email type:', typeof email);
+        console.log('Email trimmed:', email?.trim());
+
+        if (!email) {
+            return next(new createError('Email is required', 400));
         }
 
-        const user = await User.findOne({ email: email.trim().toLowerCase() }).select('_id');
+        // Check if user exists
+        const trimmedEmail = email.trim().toLowerCase();
+        console.log('Searching for user with email:', trimmedEmail);
+        
+        const user = await User.findOne({ email: trimmedEmail });
+        console.log('User found:', user ? 'YES' : 'NO');
+        
+        if (!user) {
+            // Check all users in database for debugging
+            const allUsers = await User.find({}, 'email');
+            console.log('Total users in database:', allUsers.length);
+            console.log('Registered emails:', allUsers.map(u => u.email));
+            return next(new createError('No user found with this email', 404));
+        }
+
+        // Generate OTP
+        const otp = generateOTP();
+
+        // Store OTP
+        storeOTP(trimmedEmail, otp);
+
+        // Send OTP via email
+        const emailResult = await sendOTPEmail(trimmedEmail, otp);
 
         res.status(200).json({
             status: 'success',
-            exists: Boolean(user),
-            message: user ? 'Email found. You can reset your password.' : 'No account found with that email.',
+            message: 'OTP sent successfully',
+            mode: emailResult.mode || 'production',
+            ...(emailResult.mode === 'development' && { 
+                note: 'Check server console for OTP (development mode)' 
+            }),
+        });
+    } catch (error) {
+        console.error('Forgot password error:', error);
+        next(error);
+    }
+};
+
+// VERIFY OTP
+exports.verifyOTP = async (req, res, next) => {
+    try {
+        const { email, otp } = req.body;
+
+        console.log('\n=== VERIFY OTP DEBUG ===');
+        console.log('Raw email:', email);
+        console.log('Raw OTP:', otp);
+        console.log('OTP type:', typeof otp);
+
+        if (!email || !otp) {
+            return next(new createError('Email and OTP are required', 400));
+        }
+
+        const trimmedEmail = email.trim().toLowerCase();
+        const trimmedOTP = String(otp).trim();
+        
+        console.log('Trimmed email:', trimmedEmail);
+        console.log('Trimmed OTP:', trimmedOTP);
+        
+        // Verify OTP
+        const result = verifyOTP(trimmedEmail, trimmedOTP);
+
+        if (!result.valid) {
+            return next(new createError(result.message, 400));
+        }
+
+        res.status(200).json({
+            status: 'success',
+            message: result.message,
         });
     } catch (error) {
         next(error);
     }
 };
 
-// Step 2: directly set a new password by email (no OTP)
+// RESET PASSWORD - After OTP verification
 exports.resetPassword = async (req, res, next) => {
     try {
         const { email, newPassword } = req.body;
@@ -152,11 +222,7 @@ exports.resetPassword = async (req, res, next) => {
         const user = await User.findOne({ email: normalizedEmail });
 
         if (!user) {
-            // Keep response generic-ish; frontend can still show a message.
-            return res.status(200).json({
-                status: 'success',
-                message: 'If an account exists for that email, the password was updated.',
-            });
+            return next(new createError('User not found!', 404));
         }
 
         const hashedPassword = await bcrypt.hash(newPassword, 12);
@@ -166,6 +232,20 @@ exports.resetPassword = async (req, res, next) => {
         res.status(200).json({
             status: 'success',
             message: 'Password updated successfully.',
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// DEBUG ENDPOINT - Check database status
+exports.debugUsers = async (req, res, next) => {
+    try {
+        const users = await User.find({}, 'name email');
+        res.status(200).json({
+            status: 'success',
+            totalUsers: users.length,
+            users: users.map(u => ({ name: u.name, email: u.email })),
         });
     } catch (error) {
         next(error);

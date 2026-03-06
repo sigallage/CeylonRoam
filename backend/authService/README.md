@@ -14,6 +14,8 @@ npm install
 2. Create a `.env` file and set:
    - `MONGODB_URI` - MongoDB connection string
    - `SESSION_SECRET` (optional) - Secret for session encryption
+   - `EMAIL_USER` - Email address for sending OTPs (Gmail recommended)
+   - `EMAIL_PASSWORD` - App password for the email account
 
 3. Run:
 
@@ -28,6 +30,8 @@ Server runs on port `5001` by default.
 - `GET /health` - Health check
 - `POST /api/signup` - Create new user account
 - `POST /api/login` - Authenticate user
+- `POST /api/forgot-password` - Request OTP for password reset
+- `POST /api/verify-otp` - Verify OTP code
 - `POST /api/logout` - End user session
 - `GET /api/check` - Check if user is authenticated
 
@@ -85,6 +89,59 @@ Note: The `username` field accepts either username or email.
 }
 ```
 
+### POST /api/forgot-password
+
+Request an OTP code to reset password. Sends a 6-digit OTP to the user's email.
+
+**Body:**
+
+```json
+{
+  "email": "jane@example.com"
+}
+```
+
+**Response:**
+
+```json
+{
+  "status": "success",
+  "message": "OTP sent to your email successfully"
+}
+```
+
+**Notes:**
+- OTP is valid for 10 minutes
+- Email must be registered in the system
+- Previous OTP for the same email will be overwritten
+
+### POST /api/verify-otp
+
+Verify the OTP code received via email.
+
+**Body:**
+
+```json
+{
+  "email": "jane@example.com",
+  "otp": "123456"
+}
+```
+
+**Response:**
+
+```json
+{
+  "status": "success",
+  "message": "OTP verified successfully"
+}
+```
+
+**Error Responses:**
+- Invalid OTP: `{ "status": "error", "message": "Invalid OTP" }`
+- Expired OTP: `{ "status": "error", "message": "OTP has expired" }`
+- OTP not found: `{ "status": "error", "message": "OTP not found or expired" }`
+
 ### POST /api/logout
 
 End the current user session.
@@ -126,6 +183,8 @@ Check if the user is currently authenticated.
 - ✅ Password minimum length (6 characters)
 - ✅ Duplicate email/username detection
 - ✅ Secure cookies in production
+- ✅ OTP-based password reset (10-minute expiration)
+- ✅ Email verification via nodemailer
 
 ## Notes
 
