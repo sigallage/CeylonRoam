@@ -9,7 +9,7 @@ exports.verifyToken = (req, res, next) => {
             return next(new createError('Authentication required!', 401));
         }
 
-        const decoded = jwt.verify(token, 'secretkey123');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secretkey123');
         req.user = { id: decoded.id };
         next();
     } catch (error) {
