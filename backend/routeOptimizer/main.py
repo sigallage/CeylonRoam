@@ -21,7 +21,20 @@ def _load_dotenv_if_present() -> None:
         return
 
     here = Path(__file__).resolve()
-    repo_root = here.parents[2]
+
+    def _find_repo_root(start: Path) -> Path:
+        # Local dev layout: <repo>/{backend,frontend}/...
+        for candidate in (start, *start.parents):
+            if (candidate / "backend").is_dir() and (candidate / "frontend").is_dir():
+                return candidate
+        # Minimal fallback: a directory that contains `backend/`.
+        for candidate in (start, *start.parents):
+            if (candidate / "backend").is_dir():
+                return candidate
+        # Docker layout is typically just `/app` with no repo structure.
+        return start
+
+    repo_root = _find_repo_root(here.parent)
 
     # Prefer a backend-local .env, then fall back to repo-root .env.
     # If the variable exists but is empty, allow .env to override it.

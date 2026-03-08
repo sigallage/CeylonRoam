@@ -28,6 +28,7 @@ echo Step 1: Creating ECR repositories...
 aws ecr create-repository --repository-name ceylonroam-auth --region %AWS_REGION% 2>nul || echo ceylonroam-auth repository already exists
 aws ecr create-repository --repository-name ceylonroam-itinerary --region %AWS_REGION% 2>nul || echo ceylonroam-itinerary repository already exists
 aws ecr create-repository --repository-name ceylonroam-route-optimizer --region %AWS_REGION% 2>nul || echo ceylonroam-route-optimizer repository already exists
+aws ecr create-repository --repository-name ceylonroam-voice-translation --region %AWS_REGION% 2>nul || echo ceylonroam-voice-translation repository already exists
 
 REM Step 2: Login to ECR
 echo.
@@ -60,12 +61,20 @@ docker tag ceylonroam-route-optimizer:latest %AWS_ACCOUNT_ID%.dkr.ecr.%AWS_REGIO
 docker push %AWS_ACCOUNT_ID%.dkr.ecr.%AWS_REGION%.amazonaws.com/ceylonroam-route-optimizer:latest
 popd
 
+echo Building voice translation service...
+pushd "%BACKEND_DIR%\voiceTranslation"
+docker build -t ceylonroam-voice-translation .
+docker tag ceylonroam-voice-translation:latest %AWS_ACCOUNT_ID%.dkr.ecr.%AWS_REGION%.amazonaws.com/ceylonroam-voice-translation:latest
+docker push %AWS_ACCOUNT_ID%.dkr.ecr.%AWS_REGION%.amazonaws.com/ceylonroam-voice-translation:latest
+popd
+
 REM Step 4: Create CloudWatch Log Groups
 echo.
 echo Step 4: Creating CloudWatch log groups...
 aws logs create-log-group --log-group-name /ecs/ceylonroam-auth --region %AWS_REGION% 2>nul || echo Log group already exists
 aws logs create-log-group --log-group-name /ecs/ceylonroam-itinerary --region %AWS_REGION% 2>nul || echo Log group already exists
 aws logs create-log-group --log-group-name /ecs/ceylonroam-route-optimizer --region %AWS_REGION% 2>nul || echo Log group already exists
+aws logs create-log-group --log-group-name /ecs/ceylonroam-voice-translation --region %AWS_REGION% 2>nul || echo Log group already exists
 
 REM Step 5: Ensure ECS task execution role exists
 echo.
@@ -75,7 +84,7 @@ if errorlevel 1 (
 	echo Creating IAM role ecsTaskExecutionRole...
 	set "TMP_DIR=%TEMP%\ceylonroam-ecs-%RANDOM%"
 	mkdir "%TMP_DIR%" >nul 2>&1
-	powershell -NoProfile -Command "$trust = '{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [{\n    \"Effect\": \"Allow\",\n    \"Principal\": {\"Service\": \"ecs-tasks.amazonaws.com\"},\n    \"Action\": \"sts:AssumeRole\"\n  }]\n}'; Set-Content -NoNewline -Encoding ASCII -LiteralPath '%TEMP%\ceylonroam-ecs-trust.json' -Value $trust" 1>nul
+	powershell -NoProfile -Command "$trustObj = @{ Version = '2012-10-17'; Statement = @(@{ Effect = 'Allow'; Principal = @{ Service = 'ecs-tasks.amazonaws.com' }; Action = 'sts:AssumeRole' }) }; $trustJson = ($trustObj | ConvertTo-Json -Depth 5); [System.IO.File]::WriteAllText('%TEMP%\ceylonroam-ecs-trust.json', $trustJson, [System.Text.Encoding]::ASCII)" 1>nul
 	aws iam create-role --role-name ecsTaskExecutionRole --assume-role-policy-document file://"%TEMP%\ceylonroam-ecs-trust.json" 1>nul
 	aws iam attach-role-policy --role-name ecsTaskExecutionRole --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy 1>nul
 	aws iam attach-role-policy --role-name ecsTaskExecutionRole --policy-arn arn:aws:iam::aws:policy/SecretsManagerReadWrite 1>nul
@@ -91,8 +100,8 @@ set "AWS_DIR=%BACKEND_DIR%\aws"
 set "TASK_TMP_DIR=%TEMP%\ceylonroam-ecs-tasks-%RANDOM%"
 mkdir "%TASK_TMP_DIR%" >nul 2>&1
 
-for %%F in ("%AWS_DIR%\ecs-task-auth.json" "%AWS_DIR%\ecs-task-itinerary.json" "%AWS_DIR%\ecs-task-route-optimizer.json") do (
-	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; Set-Content -NoNewline -Encoding UTF8 -LiteralPath '%TASK_TMP_DIR%\%%~nxF' -Value $c" 1>nul
+for %%F in ("%AWS_DIR%\ecs-task-auth.json" "%AWS_DIR%\ecs-task-itinerary.json" "%AWS_DIR%\ecs-task-route-optimizer.json" "%AWS_DIR%\ecs-task-voice-translation.json") do (
+	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText('%TASK_TMP_DIR%\%%~nxF', $c, $utf8NoBom)" 1>nul
 	aws ecs register-task-definition --cli-input-json file://"%TASK_TMP_DIR%\%%~nxF" --region %AWS_REGION%
 )
 

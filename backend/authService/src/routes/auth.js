@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-router.put("/profile", verifyToken, authController.updateProfile);
+router.put("/profile", authController.updateProfile);
 
 module.exports = router;
