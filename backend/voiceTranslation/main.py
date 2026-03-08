@@ -59,8 +59,9 @@ async def load_models():
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
         
-        # Load Whisper Large v3
-        model_id = "openai/whisper-large-v3"
+        # Model IDs are configurable to control memory/latency tradeoffs.
+        # Default Whisper to a smaller model so it fits comfortably on CPU-only Fargate.
+        model_id = os.getenv("WHISPER_MODEL_ID", "openai/whisper-small")
         
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
             model_id, 
@@ -79,7 +80,7 @@ async def load_models():
             feature_extractor=processor.feature_extractor,
             max_new_tokens=128,
             chunk_length_s=30,
-            batch_size=16,
+            batch_size=4,
             return_timestamps=False,
             torch_dtype=torch_dtype,
             device=device,
@@ -88,7 +89,10 @@ async def load_models():
         
         # Load translation model (NLLB-200)
         logger.info("Loading NLLB translation model...")
-        translation_model_id = "facebook/nllb-200-distilled-600M"
+        translation_model_id = os.getenv(
+            "TRANSLATION_MODEL_ID",
+            "facebook/nllb-200-distilled-600M",
+        )
         
         translation_tokenizer = AutoTokenizer.from_pretrained(translation_model_id)
         translation_model = AutoModelForSeq2SeqLM.from_pretrained(translation_model_id)
@@ -231,4 +235,4 @@ async def translate_text(request: TextTranslationRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8002)
+    uvicorn.run(app, host="0.0.0.0", port=8003)

@@ -3,9 +3,13 @@ param(
   [string]$Cluster = "ceylonroam-cluster",
   [string]$TaskSecurityGroupId = "",
   [string[]]$Subnets = @(),
+  [Alias('AuthTargetGroupArn')]
   [string]$TargetGroupAuthArn = "",
+  [Alias('ItineraryTargetGroupArn')]
   [string]$TargetGroupItineraryArn = "",
+  [Alias('RouteOptimizerTargetGroupArn','RouteTargetGroupArn')]
   [string]$TargetGroupRouteArn = "",
+  [Alias('VoiceTranslationTargetGroupArn','VoiceTargetGroupArn')]
   [string]$TargetGroupVoiceArn = ""
 )
 
@@ -46,7 +50,8 @@ function Ensure-Service(
   [string]$TaskDefFamily,
   [string]$ContainerName,
   [int]$ContainerPort,
-  [string]$TargetGroupArn
+  [string]$TargetGroupArn,
+  [int]$HealthCheckGraceSeconds
 ) {
   $desc = Invoke-AwsJson "aws ecs describe-services --region $Region --cluster $Cluster --services $ServiceName"
   $exists = $false
@@ -59,28 +64,26 @@ function Ensure-Service(
 
   if ($exists) {
     Write-Host "Service exists: $ServiceName (forcing new deployment)"
-    Invoke-Expression "aws ecs update-service --region $Region --cluster $Cluster --service $ServiceName --force-new-deployment" | Out-Null
+    & aws ecs update-service --region $Region --cluster $Cluster --service $ServiceName --task-definition $TaskDefFamily --force-new-deployment --health-check-grace-period-seconds $HealthCheckGraceSeconds | Out-Null
     return
   }
 
   Write-Host "Creating service: $ServiceName"
-  Invoke-Expression @(
-    "aws ecs create-service",
-    "--region $Region",
-    "--cluster $Cluster",
-    "--service-name $ServiceName",
-    "--task-definition $TaskDefFamily",
-    "--desired-count 1",
-    "--launch-type FARGATE",
-    "--network-configuration \"$net\"",
-    "--load-balancers \"$lb\"",
-    "--health-check-grace-period-seconds 120"
-  ) -join ' ' | Out-Null
+  & aws ecs create-service `
+    --region $Region `
+    --cluster $Cluster `
+    --service-name $ServiceName `
+    --task-definition $TaskDefFamily `
+    --desired-count 1 `
+    --launch-type FARGATE `
+    --network-configuration $net `
+    --load-balancers $lb `
+    --health-check-grace-period-seconds $HealthCheckGraceSeconds | Out-Null
 }
 
-Ensure-Service -ServiceName 'auth-service' -TaskDefFamily 'ceylonroam-auth-service' -ContainerName 'auth-service' -ContainerPort 5001 -TargetGroupArn $TargetGroupAuthArn
-Ensure-Service -ServiceName 'itinerary-service' -TaskDefFamily 'ceylonroam-itinerary-service' -ContainerName 'itinerary-service' -ContainerPort 8001 -TargetGroupArn $TargetGroupItineraryArn
-Ensure-Service -ServiceName 'route-optimizer-service' -TaskDefFamily 'ceylonroam-route-optimizer-service' -ContainerName 'route-optimizer-service' -ContainerPort 8002 -TargetGroupArn $TargetGroupRouteArn
-Ensure-Service -ServiceName 'voice-translation-service' -TaskDefFamily 'ceylonroam-voice-translation-service' -ContainerName 'voice-translation-service' -ContainerPort 8003 -TargetGroupArn $TargetGroupVoiceArn
+Ensure-Service -ServiceName 'auth-service' -TaskDefFamily 'ceylonroam-auth-service' -ContainerName 'auth-service' -ContainerPort 5001 -TargetGroupArn $TargetGroupAuthArn -HealthCheckGraceSeconds 120
+Ensure-Service -ServiceName 'itinerary-service' -TaskDefFamily 'ceylonroam-itinerary-service' -ContainerName 'itinerary-service' -ContainerPort 8001 -TargetGroupArn $TargetGroupItineraryArn -HealthCheckGraceSeconds 120
+Ensure-Service -ServiceName 'route-optimizer-service' -TaskDefFamily 'ceylonroam-route-optimizer-service' -ContainerName 'route-optimizer-service' -ContainerPort 8002 -TargetGroupArn $TargetGroupRouteArn -HealthCheckGraceSeconds 120
+Ensure-Service -ServiceName 'voice-translation-service' -TaskDefFamily 'ceylonroam-voice-translation-service' -ContainerName 'voice-translation-service' -ContainerPort 8003 -TargetGroupArn $TargetGroupVoiceArn -HealthCheckGraceSeconds 900
 
 Write-Host "Done. Check ECS service events + target group health in the console."
