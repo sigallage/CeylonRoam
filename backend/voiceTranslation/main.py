@@ -7,6 +7,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import tempfile
 import os
 import logging
+from pathlib import Path
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -133,8 +134,12 @@ async def transcribe_audio(
         raise HTTPException(status_code=503, detail="Whisper model not loaded")
     
     try:
+        suffix = Path(file.filename or '').suffix
+        if not suffix:
+            suffix = '.wav'
+
         # Save uploaded file temporarily
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp_audio:
             content = await file.read()
             temp_audio.write(content)
             temp_audio_path = temp_audio.name
