@@ -296,6 +296,39 @@ function VoiceTranslation() {
               </div>
             </section>
 
+              {/* Audio File Upload Area */}
+              <section className="space-y-4">
+                <div className="mx-auto w-full max-w-[440px]">
+                  <label className="block text-[15px] font-semibold text-[#111] mb-2">
+                    Or Upload an Audio File
+                  </label>
+                  <input
+                    type="file"
+                    accept="audio/*"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        setIsPreparingAudio(true);
+                        try {
+                          // Convert to wav if needed
+                          const wavFile = await convertBlobToWavFile(file, file.name.replace(/\.[^/.]+$/, "") + ".wav");
+                          setAudioFile(wavFile);
+                          setTranscription("");
+                          setTranslationResult("");
+                          setDetectedLanguage("");
+                        } catch (error) {
+                          alert("Could not process the selected audio file.");
+                        } finally {
+                          setIsPreparingAudio(false);
+                        }
+                      }
+                    }}
+                    className="w-full rounded-[8px] border border-[#ddd] px-4 py-2 text-[15px] text-[#333]"
+                    disabled={isPreparingAudio}
+                  />
+                </div>
+              </section>
+
             <br></br>
 
             <section className="space-y-4">
