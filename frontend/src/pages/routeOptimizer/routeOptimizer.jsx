@@ -148,6 +148,13 @@ function trafficColorForSpeed(speed) {
 	return '#1e3a8a'
 }
 
+function isValidLatLngLiteral(p) {
+	if (!p || typeof p !== 'object') return false
+	const lat = Number(p.lat)
+	const lng = Number(p.lng)
+	return Number.isFinite(lat) && Number.isFinite(lng)
+}
+
 export default function RouteOptimizer() {
 	const ITIN_SOURCE_STORAGE_KEY = 'ceylonroam:routeOptimizer:itinerarySource:v1'
 	const MANUAL_ITIN_STORAGE_KEY = 'ceylonroam:routeOptimizer:manualItinerary:v1'
@@ -561,7 +568,7 @@ export default function RouteOptimizer() {
 		const cleanPath = path.startsWith('/') ? path : `/${path}`
 		return backendBaseUrl ? `${backendBaseUrl}${cleanPath}` : `/api${cleanPath}`
 	}
-	const { isLoaded } = useJsApiLoader({
+	const { isLoaded, loadError } = useJsApiLoader({
 		id: 'ceylonroam-google-maps',
 		googleMapsApiKey: googleMapsApiKey || '',
 	})
@@ -787,6 +794,8 @@ export default function RouteOptimizer() {
 			cancelled = true
 		}
 	}, [googleMapsApiKey, isLoaded, travelMode, vehicleType, activeItinerary, currentLocation, navActive, navTick, returnToStart, showRoute])
+
+	const mapsAvailable = Boolean(isLoaded && window.google?.maps)
 
 	function getCurrentPositionPromise(options) {
 		return new Promise((resolve, reject) => {
@@ -1306,8 +1315,17 @@ export default function RouteOptimizer() {
 							Missing <code>VITE_GOOGLE_MAPS_API_KEY</code>. Add it in <code>frontend/.env</code> (see
 							<code>frontend/.env.example</code>).
 						</div>
+					) : loadError ? (
+						<div className="ro-map-placeholder">
+							Google Maps failed to load. {String(loadError?.message || loadError)}
+						</div>
 					) : !isLoaded ? (
 						<div className="ro-map-placeholder">Loading Google Maps…</div>
+					) : !mapsAvailable ? (
+						<div className="ro-map-placeholder">
+							Google Maps failed to initialize. If you see <code>RefererNotAllowedMapError</code>, authorize this
+							site’s domain in your Google Maps API key settings.
+						</div>
 					) : (
 						<div className="ro-map-wrap">
 							<GoogleMap
@@ -1344,6 +1362,9 @@ export default function RouteOptimizer() {
 								) : null}
 
 								{markerItineraryWithStart.map((d) => {
+									if (!d?.location) return null
+									const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
+									if (!isValidLatLngLiteral(pos)) return null
 									const isUser = d.id === 'start-user-location'
 									const isVisited = !isUser && !isCatalogView && visitedIdSet.has(d.id)
 									const routeLabel = !isUser ? markerOrderLabelById.get(d.id) : null
@@ -1368,7 +1389,7 @@ export default function RouteOptimizer() {
 									return (
 										<MarkerF
 											key={d.id}
-											position={{ lat: d.location.lat, lng: d.location.lng }}
+											position={pos}
 											icon={icon}
 											opacity={1}
 											label={
@@ -1388,24 +1409,28 @@ export default function RouteOptimizer() {
 								})}
 
 							{selectedMarkerId ? (
-								selectedMarkerId === 'start-user-location' && currentLocation ? (
-									<InfoWindowF position={currentLocation} onCloseClick={() => setSelectedMarkerId(null)}>
+								selectedMarkerId === 'start-user-location' ? (
+									isValidLatLngLiteral(currentLocation) ? (
+										<InfoWindowF position={currentLocation} onCloseClick={() => setSelectedMarkerId(null)}>
 										<div style={{ maxWidth: 240, color: '#111827' }}>
 											<div style={{ fontWeight: 800, marginBottom: 6 }}>Your location</div>
 											<div style={{ fontSize: 12, opacity: 0.85 }}>
 												{round2(currentLocation.lat)}, {round2(currentLocation.lng)}
 											</div>
 										</div>
-									</InfoWindowF>
+										</InfoWindowF>
+									) : null
 								) : (
 									(() => {
 										const fromCatalog = destinationById.get(selectedMarkerId)
 										const fromActive = markerItineraryWithStart.find((x) => x.id === selectedMarkerId)
 										const dest = fromCatalog || fromActive
-										if (!dest) return null
+										if (!dest?.location) return null
+										const pos = { lat: Number(dest.location.lat), lng: Number(dest.location.lng) }
+										if (!isValidLatLngLiteral(pos)) return null
 										return (
 											<InfoWindowF
-												position={{ lat: dest.location.lat, lng: dest.location.lng }}
+												position={pos}
 												onCloseClick={() => setSelectedMarkerId(null)}
 											>
 												<div style={{ maxWidth: 280, color: '#111827' }}>
