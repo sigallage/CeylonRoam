@@ -4,7 +4,7 @@ This is a simplified guide to get your backend running on AWS in **under 30 minu
 
 ## What You'll Deploy
 
-- 3 microservices running on AWS Fargate (containerized)
+- 4 microservices running on AWS Fargate (containerized)
 - Application Load Balancer for routing
 - MongoDB Atlas for database
 - CloudWatch for logging
@@ -99,7 +99,7 @@ Wait for all images to build and push to AWS ECR.
 
 ### C. Create Target Groups (2 minutes)
 
-In EC2 Console → **Target Groups**, create 3 groups:
+In EC2 Console → **Target Groups**, create 4 groups:
 
 1. **ceylonroam-auth-tg**
    - Target type: IP
@@ -109,23 +109,29 @@ In EC2 Console → **Target Groups**, create 3 groups:
 
 2. **ceylonroam-itinerary-tg**
    - Target type: IP
-   - Protocol: HTTP, Port: 8000
+   - Protocol: HTTP, Port: 8001
    - Health check path: `/health`
 
 3. **ceylonroam-route-tg**
    - Target type: IP
-   - Protocol: HTTP, Port: 8001
+   - Protocol: HTTP, Port: 8002
+   - Health check path: `/health`
+
+4. **ceylonroam-voice-translation-tg**
+   - Target type: IP
+   - Protocol: HTTP, Port: 8003
    - Health check path: `/health`
 
 ### D. Configure Load Balancer Listeners (2 minutes)
 
 1. Go to your ALB → **Listeners** tab
 2. Edit **HTTP:80** listener
-3. Add rules:
-   - Default action → Forward to `ceylonroam-auth-tg`
-   - Add rule: Path is `/api/itinerary*` → Forward to `ceylonroam-itinerary-tg`
-   - Add rule: Path is `/api/route*` → Forward to `ceylonroam-route-tg`
-4. **Save**
+3. Set **default action** → Forward to `ceylonroam-auth-tg`
+4. Add additional **listeners** (port-based routing):
+   - HTTP:8001 → Forward to `ceylonroam-itinerary-tg`
+   - HTTP:8002 → Forward to `ceylonroam-route-tg`
+   - HTTP:8003 → Forward to `ceylonroam-voice-translation-tg`
+5. **Save**
 
 ### E. Create IAM Role for ECS Tasks (2 minutes)
 
@@ -151,6 +157,8 @@ Before creating services, we need to add the execution role:
 ### G. Create ECS Services (5 minutes)
 
 Repeat for each of the 3 services:
+
+(If you're deploying Voice Translation too, repeat the same steps for it as well.)
 
 1. **ECS** → **Clusters** → **ceylonroam-cluster**
 2. **Services** → **Create**
@@ -185,6 +193,12 @@ Repeat for each of the 3 services:
   - Service name: `route-optimizer-service`
   - Port: **8002**
   - Target group: `ceylonroam-route-tg`
+
+**Service 4: Voice Translation Service**
+- Task definition: `ceylonroam-voice-translation-service`
+- Service name: `voice-translation-service`
+- Port: **8003**
+- Target group: `ceylonroam-voice-translation-tg`
 
 ---
 

@@ -8,10 +8,11 @@ This guide covers deploying the CeylonRoam backend services to AWS. We provide t
 
 ## Architecture Overview
 
-Your backend consists of three microservices:
+Your backend consists of four microservices:
 - **Auth Service** (Node.js/Express) - Port 5001 - Handles authentication
 - **Itinerary Generator** (Python/FastAPI) - Port 8001 - Generates travel itineraries
 - **Route Optimizer** (Python/FastAPI) - Port 8002 - Optimizes travel routes
+- **Voice Translation** (Python/FastAPI) - Port 8003 - Speech-to-text + translation
 
 ## Prerequisites
 
@@ -143,13 +144,22 @@ Or use default VPC (easier for testing).
    - **ceylonroam-auth-tg**: Port 5001, health check: /health
    - **ceylonroam-itinerary-tg**: Port 8001, health check: /health
    - **ceylonroam-route-optimizer-tg**: Port 8002, health check: /health
+   - **ceylonroam-voice-translation-tg**: Port 8003, health check: /health
 
-6. Configure Listeners:
-   - HTTP:80 → Forward to ceylonroam-auth-tg (default)
-   - Add rules for path-based routing:
-     - `/api/auth/*` → ceylonroam-auth-tg
-     - `/api/itinerary/*` → ceylonroam-itinerary-tg
-     - `/api/route/*` → ceylonroam-route-optimizer-tg
+6. Configure Listeners (simplest approach)
+
+Your services currently listen on different ports (5001/8001/8002/8003) but they don't have distinct URL prefixes (they all use `/api/...`).
+
+The simplest ALB setup is **port-based listeners** (no path rewriting required):
+
+- HTTP:80 → Forward to `ceylonroam-auth-tg`
+- HTTP:8001 → Forward to `ceylonroam-itinerary-tg`
+- HTTP:8002 → Forward to `ceylonroam-route-optimizer-tg`
+- HTTP:8003 → Forward to `ceylonroam-voice-translation-tg`
+
+If you want everything on only 80/443 later, you can switch to:
+- API Gateway (with route mapping / path rewriting), or
+- Update each service to mount under a unique prefix (e.g., `/auth`, `/itinerary`, `/route`, `/voice`).
 
 #### 6. Create ECS Cluster
 
@@ -162,13 +172,13 @@ Or use default VPC (easier for testing).
 
 #### 7. Create ECS Services
 
-For each service (repeat 3 times):
+For each service (repeat 4 times):
 
 1. In your cluster, click **Services** → **Create**
 2. Configure:
    - **Launch type**: Fargate
    - **Task Definition**: Select the registered task definition
-   - **Service name**: `ceylonroam-auth-service` (or itinerary/route-optimizer)
+   - **Service name**: `ceylonroam-auth-service` (or itinerary/route-optimizer/voice-translation)
    - **Number of tasks**: 1 (increase for production)
    
 3. **Networking**:
@@ -200,14 +210,17 @@ Test each endpoint:
 # Get ALB DNS name
 ALB_DNS=$(aws elbv2 describe-load-balancers --names ceylonroam-alb --query 'LoadBalancers[0].DNSName' --output text)
 
-# Test auth service
+# Auth
 curl http://$ALB_DNS/health
 
-# Test itinerary service
+# Itinerary
 curl http://$ALB_DNS:8001/health
 
-# Test route optimizer
+# Route optimizer
 curl http://$ALB_DNS:8002/health
+
+# Voice translation
+curl http://$ALB_DNS:8003/health
 ```
 
 ---
@@ -266,7 +279,7 @@ Repeat for route optimizer service.
 1. **Launch EC2 Instance:**
    - AMI: Ubuntu 22.04 LTS
    - Instance type: t3.medium (or t3.small for testing)
-   - Security Group: Allow ports 22 (SSH), 80, 443, 5001, 8000, 8001
+   - Security Group: Allow ports 22 (SSH), 80, 443, 5001, 8001, 8002, 8003
 
 2. **SSH into instance:**
 ```bash
