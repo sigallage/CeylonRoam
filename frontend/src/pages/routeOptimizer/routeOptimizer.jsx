@@ -578,10 +578,10 @@ export default function RouteOptimizer() {
 	const backendBaseUrl = useMemo(() => {
 		const fromEnv = import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL
 		if (fromEnv) return String(fromEnv).replace(/\/$/, '')
-		// In dev we rely on Vite proxy (/api -> localhost:8000).
-		// In production (or file:// builds), there is no proxy, so default to local backend.
-		if (import.meta.env.DEV) return ''
-		return 'http://localhost:8000'
+		// In dev we can rely on Vite proxy (/api -> localhost:8000) OR set VITE_ROUTE_OPTIMIZER_BASE_URL.
+		// In production, never fall back to localhost (causes CORS + broken deploys). Use same-origin /api
+		// and configure a Vercel rewrite, or set VITE_ROUTE_OPTIMIZER_BASE_URL to your backend URL.
+		return ''
 	}, [])
 
 	function resolveBackendUrl(path) {

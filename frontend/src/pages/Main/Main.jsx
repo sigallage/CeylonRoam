@@ -32,10 +32,12 @@ const Main = () => {
   const [saveError, setSaveError] = useState('');
   const [saveSuccess, setSaveSuccess] = useState(false);
 
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-    [],
-  );
+  const authBaseUrl = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
+    if (fromEnv) return fromEnv;
+    if (import.meta.env.DEV) return 'http://localhost:5001';
+    return '';
+  }, []);
 
   const handleSaveItinerary = async () => {
     setIsSaving(true);
