@@ -1,5 +1,5 @@
 import SearchBar from '../../components/global/searchbar';
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Component, useEffect, useMemo, useRef, useState } from 'react'
 import {
 	CircleF,
 	DirectionsRenderer,
@@ -153,6 +153,26 @@ function isValidLatLngLiteral(p) {
 	const lat = Number(p.lat)
 	const lng = Number(p.lng)
 	return Number.isFinite(lat) && Number.isFinite(lng)
+}
+
+class MapErrorBoundary extends Component {
+	constructor(props) {
+		super(props)
+		this.state = { hasError: false }
+	}
+
+	static getDerivedStateFromError() {
+		return { hasError: true }
+	}
+
+	componentDidCatch() {
+		// no-op
+	}
+
+	render() {
+		if (this.state.hasError) return this.props.fallback || null
+		return this.props.children
+	}
 }
 
 export default function RouteOptimizer() {
@@ -1328,23 +1348,30 @@ export default function RouteOptimizer() {
 						</div>
 					) : (
 						<div className="ro-map-wrap">
-							<GoogleMap
-								mapContainerStyle={{ width: '100%', height: '100%' }}
-								center={center}
-								zoom={7}
-								options={{
-									mapTypeControl: false,
-									streetViewControl: false,
-									fullscreenControl: true,
-								}}
-								onLoad={(map) => {
-									mapRef.current = map
-								}}
-								onClick={() => {
-									setSelectedMarkerId(null)
-									setFollowUser(false)
-								}}
+							<MapErrorBoundary
+								fallback={
+									<div className="ro-map-placeholder">
+										Map failed to render. Check Google Maps API key referrer settings.
+									</div>
+								}
 							>
+								<GoogleMap
+									mapContainerStyle={{ width: '100%', height: '100%' }}
+									center={center}
+									zoom={7}
+									options={{
+										mapTypeControl: false,
+										streetViewControl: false,
+										fullscreenControl: true,
+									}}
+									onLoad={(map) => {
+										mapRef.current = map
+									}}
+									onClick={() => {
+										setSelectedMarkerId(null)
+										setFollowUser(false)
+									}}
+								>
 								{showTrafficLayer || navActive ? <TrafficLayer /> : null}
 
 								{userAccuracyM && currentLocation ? (
@@ -1553,7 +1580,8 @@ export default function RouteOptimizer() {
 									/>
 								)
 							) : null}
-						</GoogleMap>
+								</GoogleMap>
+							</MapErrorBoundary>
 
 							{navActive ? (
 								<div className="ro-nav-top" role="status" aria-live="polite">
