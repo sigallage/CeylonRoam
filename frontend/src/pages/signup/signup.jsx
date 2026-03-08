@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const navigate = useNavigate();
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-    [],
-  );
+  const authBaseUrl = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '')
+    if (fromEnv) return fromEnv
+    if (import.meta.env.DEV) return 'http://localhost:5001'
+    return ''
+  }, [])
   const [formData, setFormData] = useState({
     name: '',
     email: '',

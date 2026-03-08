@@ -21,10 +21,12 @@ const Profile = () => {
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
 
-	const authBaseUrl = useMemo(
-		() => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-		[],
-	);
+	const authBaseUrl = useMemo(() => {
+		const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '')
+		if (fromEnv) return fromEnv
+		if (import.meta.env.DEV) return 'http://localhost:5001'
+		return ''
+	}, [])
 
 	useEffect(() => {
 		// Load user data from localStorage (saved after login)
