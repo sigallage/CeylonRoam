@@ -96,12 +96,18 @@ REM Step 6: Register/Update ECS task definitions
 echo.
 echo Step 6: Registering ECS task definitions...
 
+REM Resolve Secrets Manager ARNs (ECS only treats ARNs as Secrets Manager; bare names are treated as SSM parameters)
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/mongodb_uri --query ARN --output text') do set MONGODB_URI_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/google_maps_api_key --query ARN --output text') do set GOOGLE_MAPS_API_KEY_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/openrouter_api_key --query ARN --output text') do set OPENROUTER_API_KEY_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/session_secret --query ARN --output text') do set SESSION_SECRET_SECRET_ARN=%%i
+
 set "AWS_DIR=%BACKEND_DIR%\aws"
 set "TASK_TMP_DIR=%TEMP%\ceylonroam-ecs-tasks-%RANDOM%"
 mkdir "%TASK_TMP_DIR%" >nul 2>&1
 
 for %%F in ("%AWS_DIR%\ecs-task-auth.json" "%AWS_DIR%\ecs-task-itinerary.json" "%AWS_DIR%\ecs-task-route-optimizer.json" "%AWS_DIR%\ecs-task-voice-translation.json") do (
-	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText('%TASK_TMP_DIR%\%%~nxF', $c, $utf8NoBom)" 1>nul
+	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; $c = $c -replace 'ceylonroam/mongodb_uri', '%MONGODB_URI_SECRET_ARN%'; $c = $c -replace 'ceylonroam/google_maps_api_key', '%GOOGLE_MAPS_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/openrouter_api_key', '%OPENROUTER_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/session_secret', '%SESSION_SECRET_SECRET_ARN%'; $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText('%TASK_TMP_DIR%\%%~nxF', $c, $utf8NoBom)" 1>nul
 	aws ecs register-task-definition --cli-input-json file://"%TASK_TMP_DIR%\%%~nxF" --region %AWS_REGION%
 )
 
