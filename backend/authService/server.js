@@ -7,6 +7,8 @@ require('dotenv').config();
 const authRoutes = require('./src/routes/auth');
 const itineraryRoutes = require('./src/routes/itinerary');
 
+const protectedRoutes = require('./src/routes/protected');
+
 const app = express();
 
 app.use(cors({
@@ -33,6 +35,8 @@ app.get('/health', (req, res) => {
 
 app.use('/api', authRoutes);
 app.use('/api/itineraries', itineraryRoutes);
+
+app.use('/api/protected', protectedRoutes);
 
 const PORT = Number(process.env.PORT || 5001);
 const MONGODB_URI = process.env.MONGODB_URI;
