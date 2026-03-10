@@ -28,8 +28,7 @@ function LoginPage() {
         },
         credentials: 'include',
         body: JSON.stringify({
-          // authService expects `username` but it accepts either username OR email.
-          username: email,
+          email,
           password,
         }),
       });
