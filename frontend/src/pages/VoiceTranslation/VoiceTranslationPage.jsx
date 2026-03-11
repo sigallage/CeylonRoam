@@ -4,6 +4,20 @@ const LANGUAGE_OPTIONS = [
   { code: 'si', label: 'Sinhala' },
   { code: 'en', label: 'English' },
   { code: 'ta', label: 'Tamil' },
+  { code: 'ar', label: 'Arabic' },
+  { code: 'zh', label: 'Chinese' },
+  { code: 'nl', label: 'Dutch' },
+  { code: 'fr', label: 'French' },
+  { code: 'de', label: 'German' },
+  { code: 'hi', label: 'Hindi' },
+  { code: 'it', label: 'Italian' },
+  { code: 'ja', label: 'Japanese' },
+  { code: 'ko', label: 'Korean' },
+  { code: 'pl', label: 'Polish' },
+  { code: 'pt', label: 'Portuguese' },
+  { code: 'ru', label: 'Russian' },
+  { code: 'es', label: 'Spanish' },
+  { code: 'tr', label: 'Turkish' },
 ];
 
 const createAudioContext = () => {
