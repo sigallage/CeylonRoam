@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
+import bgImage from '../../assets/9.jpg';
 
 function SignUpPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f5f5] px-4 py-8">
+    <div
+      className="min-h-screen flex items-center justify-center px-4 py-8"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="bg-white w-full max-w-[520px] rounded-[24px] border border-[#e5e7eb] shadow-[0_20px_40px_rgba(15,23,42,0.08)] px-8 py-10 sm:px-12 sm:py-12">
         <div className="max-w-[420px] mx-auto text-center">
           <h1 className="text-[26px] font-normal text-[#333] mb-3">Sign Up</h1>
