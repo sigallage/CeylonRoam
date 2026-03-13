@@ -13,6 +13,7 @@ router.put("/profile", authController.updateProfile);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/verify-otp', authController.verifyOTP);
 router.post('/reset-password', authController.resetPassword);
+router.post('/contact-us', authController.submitContactMessage);
 
 // Debug endpoint - remove in production
 router.get("/debug/users", authController.debugUsers);

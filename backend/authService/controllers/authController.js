@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../src/models/User');
+const ContactMessage = require('../src/models/ContactMessage');
 const createError = require('../utils/appError');
 const { sendOTPEmail } = require('../utils/emailService');
 const { generateOTP, storeOTP, verifyOTP } = require('../utils/otpService');
@@ -233,6 +234,49 @@ exports.resetPassword = async (req, res, next) => {
         res.status(200).json({
             status: 'success',
             message: 'Password updated successfully.',
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.submitContactMessage = async (req, res, next) => {
+    try {
+        const { name, email, message, rating } = req.body;
+
+        if (!name || typeof name !== 'string' || !name.trim()) {
+            return next(new createError('Name is required', 400));
+        }
+
+        if (!email || typeof email !== 'string' || !email.trim()) {
+            return next(new createError('Email is required', 400));
+        }
+
+        const normalizedEmail = email.trim().toLowerCase();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(normalizedEmail)) {
+            return next(new createError('Please provide a valid email address', 400));
+        }
+
+        if (!message || typeof message !== 'string' || !message.trim()) {
+            return next(new createError('Message is required', 400));
+        }
+
+        const parsedRating = Number(rating ?? 0);
+        if (!Number.isFinite(parsedRating) || parsedRating < 0 || parsedRating > 5) {
+            return next(new createError('Rating must be between 0 and 5', 400));
+        }
+
+        await ContactMessage.create({
+            name: name.trim(),
+            email: normalizedEmail,
+            message: message.trim(),
+            rating: parsedRating,
+        });
+
+        res.status(201).json({
+            status: 'success',
+            message: 'Thank you for your feedback!',
         });
     } catch (error) {
         next(error);

@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 const AboutUs = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "", rating: 0 });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const authBaseUrl = useMemo(
+    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, "") || "http://localhost:5001",
+    []
+  );
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,10 +19,47 @@ const AboutUs = () => {
     setForm({ ...form, rating });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Add logic to send form data to backend or email service if needed
+    setSubmitError("");
+    setSubmitted(false);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`${authBaseUrl}/api/contact-us`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          rating: form.rating,
+        }),
+      });
+
+      const contentType = response.headers.get("content-type") || "";
+      const payload = contentType.includes("application/json")
+        ? await response.json()
+        : await response.text();
+
+      if (!response.ok) {
+        const message = typeof payload === "string"
+          ? payload
+          : payload?.message || "Failed to send feedback. Please try again.";
+        setSubmitError(message);
+        return;
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", email: "", message: "", rating: 0 });
+    } catch (error) {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -123,7 +167,7 @@ const AboutUs = () => {
                     transition: "border 0.2s, background 0.2s",
                     display: "inline-block"
                   }}
-                  onClick={() => setForm({ ...form, rating: star })}
+                  onClick={() => handleRating(star)}
                   aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                 >
                   <svg
@@ -142,6 +186,7 @@ const AboutUs = () => {
             </div>
             <button
               type="submit"
+              disabled={isSubmitting}
               style={{
                 width: "100%",
                 background: "#111",
@@ -156,11 +201,15 @@ const AboutUs = () => {
                 boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center"
+                justifyContent: "center",
+                opacity: isSubmitting ? 0.7 : 1
               }}
             >
-              Send
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
+            {submitError && (
+              <p style={{ textAlign: "center", color: "#b91c1c", marginTop: 20 }}>{submitError}</p>
+            )}
             {submitted && (
               <p style={{ textAlign: "center", color: "green", marginTop: 20 }}>Thank you for your feedback!</p>
             )}
