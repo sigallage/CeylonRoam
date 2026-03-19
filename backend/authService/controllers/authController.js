@@ -196,6 +196,10 @@ exports.verifyOTP = async (req, res, next) => {
             return next(new createError(result.message, 400));
         }
 
+        // Store verified email in session for password reset
+        req.session.verifiedEmail = trimmedEmail;
+        req.session.verifiedAt = Date.now();
+
         res.status(200).json({
             status: 'success',
             message: result.message,
@@ -221,6 +225,22 @@ exports.resetPassword = async (req, res, next) => {
         }
 
         const normalizedEmail = email.trim().toLowerCase();
+
+        // Check if OTP was verified (session-based check)
+        const verifiedEmail = req.session?.verifiedEmail;
+        const verifiedAt = req.session?.verifiedAt;
+        const VERIFICATION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+
+        if (!verifiedEmail || verifiedEmail !== normalizedEmail) {
+            return next(new createError('Please verify OTP first!', 403));
+        }
+
+        if (!verifiedAt || Date.now() - verifiedAt > VERIFICATION_TIMEOUT) {
+            delete req.session.verifiedEmail;
+            delete req.session.verifiedAt;
+            return next(new createError('Verification expired. Please request a new OTP!', 403));
+        }
+
         const user = await User.findOne({ email: normalizedEmail });
 
         if (!user) {
@@ -231,6 +251,10 @@ exports.resetPassword = async (req, res, next) => {
         user.password = hashedPassword;
         await user.save();
 
+        // Clear verification from session
+        delete req.session.verifiedEmail;
+        delete req.session.verifiedAt;
+
         res.status(200).json({
             status: 'success',
             message: 'Password updated successfully.',
@@ -240,43 +264,30 @@ exports.resetPassword = async (req, res, next) => {
     }
 };
 
-exports.submitContactMessage = async (req, res, next) => {
+// CHECK EMAIL EXISTS - For reset password flow
+exports.checkEmailExists = async (req, res, next) => {
     try {
-        const { name, email, message, rating } = req.body;
+        const { email } = req.body;
 
-        if (!name || typeof name !== 'string' || !name.trim()) {
-            return next(new createError('Name is required', 400));
-        }
-
-        if (!email || typeof email !== 'string' || !email.trim()) {
-            return next(new createError('Email is required', 400));
+        if (!email || typeof email !== 'string') {
+            return next(new createError('Email is required!', 400));
         }
 
         const normalizedEmail = email.trim().toLowerCase();
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(normalizedEmail)) {
-            return next(new createError('Please provide a valid email address', 400));
+        const user = await User.findOne({ email: normalizedEmail });
+
+        if (!user) {
+            return res.status(200).json({
+                status: 'success',
+                exists: false,
+                message: 'No account found with that email.',
+            });
         }
 
-        if (!message || typeof message !== 'string' || !message.trim()) {
-            return next(new createError('Message is required', 400));
-        }
-
-        const parsedRating = Number(rating ?? 0);
-        if (!Number.isFinite(parsedRating) || parsedRating < 0 || parsedRating > 5) {
-            return next(new createError('Rating must be between 0 and 5', 400));
-        }
-
-        await ContactMessage.create({
-            name: name.trim(),
-            email: normalizedEmail,
-            message: message.trim(),
-            rating: parsedRating,
-        });
-
-        res.status(201).json({
+        res.status(200).json({
             status: 'success',
-            message: 'Thank you for your feedback!',
+            exists: true,
+            message: 'Account found.',
         });
     } catch (error) {
         next(error);
