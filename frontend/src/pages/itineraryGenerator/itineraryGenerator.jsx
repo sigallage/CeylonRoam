@@ -259,17 +259,16 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
     new Date(calendarCursor.year, calendarCursor.month, 1)
   );
 
-  return ( //main JSX return
+  return (
     <div
-      className="min-h-screen w-full px-3 py-6 sm:px-6 sm:py-10 lg:px-12"
-      style={{ backgroundColor: '#0a0a0a' }}
+      className="min-h-screen w-full px-3 py-6 sm:px-6 sm:py-10 lg:px-12 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 sm:gap-10">
-        <div className="space-y-2 text-center text-white">
-          <h1 className="text-2xl sm:text-3xl font-semibold uppercase tracking-wide">
+        <div className="space-y-2 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
             Plan your trip
           </h1>
-          <p className="text-sm sm:text-base italic text-white/80">
+          <p className="text-sm sm:text-base italic text-amber-200">
             Enter your trip details.
           </p>
         </div>
@@ -278,8 +277,8 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           className="flex flex-col gap-4 sm:gap-6"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-col gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl bg-black p-4 sm:p-6 shadow-xl transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(255,255,255,0.6),0_0_80px_rgba(255,255,255,0.3)] lg:p-8" style={{ boxShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)' }}>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
+          <div className="flex flex-col gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl bg-black p-4 sm:p-6 shadow-2xl transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-yellow-500/30 lg:p-8 border border-gray-800">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
                 Purpose of trip
               </span>
@@ -293,7 +292,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
                 Budget (LKR)
               </span>
@@ -310,7 +309,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
 
             <div className="relative">
               <div
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg cursor-pointer"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30 cursor-pointer"
                 onClick={() => !isSubmitting && setShowProvinceDropdown(!showProvinceDropdown)}
               >
                 <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
@@ -323,7 +322,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 </div>
               </div>
               {showProvinceDropdown && (
-                <div className="absolute z-10 mt-2 w-full rounded-lg sm:rounded-xl border border-black/10 bg-white p-3 sm:p-4 shadow-lg max-h-60 overflow-y-auto">
+                <div className="absolute z-10 mt-2 w-full rounded-lg sm:rounded-xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-lg max-h-60 overflow-y-auto">
                   <div className="space-y-2">
                     {SRI_LANKA_PROVINCES.map((province) => (
                       <label
@@ -345,7 +344,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               )}
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
                 Solo or family
               </span>
@@ -363,7 +362,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </select>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right sm:pt-3">
                 Additional preferences
               </span>
@@ -377,7 +376,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-yellow-500/20 bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-yellow-400/30">
               <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
                 Dates spending
               </span>
@@ -391,7 +390,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="rounded-xl sm:rounded-2xl border border-white/15 bg-black/40 p-4 sm:p-5">
+            <div className="rounded-xl sm:rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-gray-900 via-black to-gray-800 p-4 sm:p-5">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
                 <span className="text-xs sm:text-sm italic text-white/80">Gender</span>
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-white">
@@ -407,7 +406,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
-                    <span className="text-white">Male</span>
+                    <span className="text-yellow-300">Male</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -421,7 +420,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
-                    <span className="text-white">Female</span>
+                    <span className="text-yellow-300">Female</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -435,14 +434,14 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
                     />
-                    <span className="text-white">Other</span>
+                    <span className="text-yellow-300">Other</span>
                   </label>
                 </div>
               </div>
             </div>
           </div>
 
-          <section className="space-y-3 sm:space-y-4 rounded-2xl sm:rounded-3xl border border-black/10 bg-white p-4 sm:p-6 shadow-sm">
+          <section className="space-y-3 sm:space-y-4 rounded-2xl sm:rounded-3xl border border-yellow-500/20 bg-white p-4 sm:p-6 shadow-lg">
             <p className="text-center text-xs sm:text-sm italic text-black/70">
               Please select the start date and the end date
             </p>
@@ -452,7 +451,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(-1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
+                  className="rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white font-semibold shadow-md transition hover:scale-105 hover:shadow-yellow-400/40 active:bg-yellow-700 min-w-[60px] sm:min-w-0"
                   disabled={isSubmitting}
                 >
                   Prev
@@ -463,7 +462,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
+                  className="rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white font-semibold shadow-md transition hover:scale-105 hover:shadow-yellow-400/40 active:bg-yellow-700 min-w-[60px] sm:min-w-0"
                   disabled={isSubmitting}
                 >
                   Next
@@ -491,10 +490,10 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         !isCurrentMonth || isPast
                           ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
                           : isStartEnd
-                            ? "border-gray-300 bg-white font-semibold text-black shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+                            ? "border-yellow-500 bg-gradient-to-r from-yellow-400 to-amber-500 font-bold text-black shadow-[0_0_16px_rgba(251,191,36,0.5)]"
                             : inRange
-                              ? "border-gray-200 bg-gray-100 text-black"
-                              : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
+                              ? "border-yellow-200 bg-yellow-50 text-yellow-900"
+                              : "border-black/10 bg-white text-black hover:border-yellow-400 hover:shadow-[0_0_10px_rgba(251,191,36,0.3)] active:bg-yellow-50"
                       }
                     `}
                   >
@@ -508,7 +507,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           <div className="flex justify-end">
             <button
               type="submit"
-              className="w-full rounded-xl sm:rounded-2xl bg-black px-4 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-semibold uppercase tracking-wide text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(255,255,255,0.6)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-black/40 disabled:shadow-none touch-manipulation min-h-[44px]"
+              className="w-full rounded-xl sm:rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-600 px-4 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-bold uppercase tracking-wide text-white shadow-xl transition hover:-translate-y-0.5 hover:shadow-yellow-500/50 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-yellow-100 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-yellow-200 disabled:shadow-none touch-manipulation min-h-[44px]"
               disabled={isSubmitting}
             >
               Enter
