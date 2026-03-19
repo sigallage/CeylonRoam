@@ -1,15 +1,64 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import bgImage from '../../assets/8.jpg';
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  const authBaseUrl = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
+    if (fromEnv) return fromEnv;
+    if (import.meta.env.DEV) return 'http://localhost:5001';
+    return '';
+  }, []);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log('Login attempted with:', { email, password });
+
+    setError('');
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${authBaseUrl}/api/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      const payload = contentType.includes('application/json')
+        ? await response.json()
+        : await response.text();
+
+      if (!response.ok) {
+        const message = typeof payload === 'string'
+          ? payload
+          : payload?.error || 'Login failed. Please try again.';
+        setError(message);
+        return;
+      }
+
+      try {
+        window.localStorage.setItem('ceylonroam_user', JSON.stringify(payload));
+      } catch {
+        // ignore storage failures (private mode, quota, etc.)
+      }
+
+      navigate('/planner');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -68,11 +117,16 @@ function LoginPage() {
 
             <button 
               type="submit" 
-              className="w-full py-3.5 bg-[#1a1a1a] rounded-[6px] text-[16px] font-medium hover:bg-[#333] transition-colors mt-2"
+              disabled={isLoading}
+              className="w-full py-3.5 bg-[#1a1a1a] rounded-[6px] text-[16px] font-medium hover:bg-[#333] transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
               style={{ color: '#ffffff' , height: '45px'}}
             >
-              <span style={{ color: '#ffffff'}}>Login</span>
+              <span style={{ color: '#ffffff'}}>{isLoading ? 'Logging in...' : 'Login'}</span>
             </button>
+
+            {error ? (
+              <p className="text-red-600 text-[14px] mt-1">{error}</p>
+            ) : null}
           </form>
 
           <div className="relative my-8">
@@ -105,14 +159,9 @@ function LoginPage() {
             </div>
             <div className="mt-1">
               <span>New to CeylonRoam? </span>
-              <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                aria-disabled="true"
-                className="text-[#f59e0b] font-medium hover:underline"
-              >
+              <Link to="/signup" className="text-[#f59e0b] font-medium hover:underline">
                 Sign-up
-              </a>
+              </Link>
             </div>
           </div>
         </div>

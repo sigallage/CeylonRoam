@@ -1,11 +1,25 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function ForgotPassword() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const email = location?.state?.email || '';
+
+  const authBaseUrl = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
+    if (fromEnv) return fromEnv;
+    if (import.meta.env.DEV) return 'http://localhost:5001';
+    return '';
+  }, []);
 
   const passwordsMatch = useMemo(() => {
     if (!newPassword || !confirmPassword) return true;
@@ -14,12 +28,48 @@ function ForgotPassword() {
 
   const canSubmit = newPassword.length > 0 && confirmPassword.length > 0 && passwordsMatch;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!canSubmit) return;
 
-    // TODO: wire to your backend reset-password endpoint
-    console.log('Reset password submitted');
+    setMessage('');
+    if (!email) {
+      setMessage('Missing email. Please start from Reset Password.');
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${authBaseUrl}/api/reset-password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email, newPassword }),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      const payload = contentType.includes('application/json')
+        ? await response.json()
+        : await response.text();
+
+      if (!response.ok) {
+        const msg = typeof payload === 'string'
+          ? payload
+          : payload?.message || 'Reset failed. Please try again.';
+        setMessage(msg);
+        return;
+      }
+
+      setMessage(payload?.message || 'Password updated successfully.');
+      navigate('/login', { replace: true });
+    } catch (err) {
+      console.error('Reset password error:', err);
+      setMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -125,12 +175,16 @@ function ForgotPassword() {
 
             <button
               type="submit"
-              disabled={!canSubmit}
+              disabled={!canSubmit || isLoading}
               className="mt-3 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/90 transition-colors"
             >
-              Reset password
+              {isLoading ? 'Resetting…' : 'Reset password'}
             </button>
           </form>
+
+          {message ? (
+            <div className="mt-5 text-center text-[14px] text-black/70">{message}</div>
+          ) : null}
 
           <div className="mt-6 text-center">
             <Link to="/login" className="text-[15px] text-black/70 hover:underline">

@@ -10,45 +10,62 @@ function ResetPassword() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [otp, setOtp] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const emailOk = useMemo(() => isValidEmail(email), [email]);
-  const otpOk = useMemo(() => /^\d{6}$/.test(otp), [otp]);
 
-  const handleSendOtp = (e) => {
+  const authBaseUrl = useMemo(() => {
+    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
+    if (fromEnv) return fromEnv;
+    if (import.meta.env.DEV) return 'http://localhost:5001';
+    return '';
+  }, []);
+
+  const handleContinue = async (e) => {
     e.preventDefault();
     setMessage('');
 
     if (!emailOk) {
       setMessage('Please enter a valid email address.');
-      setEmailSubmitted(false);
       return;
     }
 
-    // TODO: call backend to send OTP
-    console.log('Send OTP to', email);
-    setEmailSubmitted(true);
-    setMessage('OTP sent. Please check your email.');
-  };
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${authBaseUrl}/api/reset-password/request`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ email }),
+      });
 
-  const handleVerifyOtp = (e) => {
-    e.preventDefault();
-    setMessage('');
+      const contentType = response.headers.get('content-type') || '';
+      const payload = contentType.includes('application/json')
+        ? await response.json()
+        : await response.text();
 
-    if (!emailSubmitted) return;
+      if (!response.ok) {
+        const msg = typeof payload === 'string'
+          ? payload
+          : payload?.message || 'Request failed. Please try again.';
+        setMessage(msg);
+        return;
+      }
 
-    if (!otpOk) {
-      setMessage('Enter the 6-digit OTP.');
-      return;
+      if (payload?.exists) {
+        navigate('/forgot-password', { replace: true, state: { email } });
+      } else {
+        setMessage(payload?.message || 'No account found with that email.');
+      }
+    } catch (err) {
+      console.error('Reset password request error:', err);
+      setMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
     }
-
-    // TODO: call backend to verify OTP
-    console.log('Verify OTP', { email, otp });
-
-    // Go to Change Password page
-    navigate('/forgot-password', { replace: true, state: { email } });
   };
 
   return (
@@ -57,10 +74,10 @@ function ResetPassword() {
         <div className="max-w-[380px] mx-auto text-center">
           <h1 className="text-[28px] font-normal text-[#111]">Reset Password</h1>
           <p className="mt-3 text-[15px] text-[#444]">
-            Enter your email. If it’s valid, we’ll show the OTP field.
+            Enter your email to continue.
           </p>
 
-          <form onSubmit={handleSendOtp} className="mt-8 text-left">
+          <form onSubmit={handleContinue} className="mt-8 text-left">
             <label htmlFor="resetEmail" className="block text-[14px] text-black/70 mb-2">
               Email
             </label>
@@ -77,40 +94,12 @@ function ResetPassword() {
 
             <button
               type="submit"
-              className="mt-4 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium hover:bg-black/90 transition-colors"
+              disabled={isLoading}
+              className="mt-4 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/90 transition-colors"
             >
-              Send OTP
+              {isLoading ? 'Checking…' : 'Continue'}
             </button>
           </form>
-
-          {emailSubmitted && (
-            <form onSubmit={handleVerifyOtp} className="mt-6 text-left">
-              <label htmlFor="otp" className="block text-[14px] text-black/70 mb-2">
-                OTP
-              </label>
-              <input
-                id="otp"
-                inputMode="numeric"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value.replace(/[^\d]/g, '').slice(0, 6))}
-                placeholder="6-digit OTP"
-                className="w-full h-12 rounded-[8px] border border-black/20 px-4 text-[16px] placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 tracking-widest"
-                aria-describedby="otpHelp"
-                required
-              />
-              <div id="otpHelp" className="mt-2 text-[13px] text-black/60">
-                Use the 6-digit code sent to your email.
-              </div>
-
-              <button
-                type="submit"
-                className="mt-4 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/90 transition-colors"
-                disabled={!otpOk}
-              >
-                Verify OTP
-              </button>
-            </form>
-          )}
 
           {message && <div className="mt-5 text-center text-[14px] text-black/70">{message}</div>}
 
