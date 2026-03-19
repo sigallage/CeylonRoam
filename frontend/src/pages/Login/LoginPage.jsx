@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -8,10 +9,7 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-    [],
-  );
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,8 +24,7 @@ function LoginPage() {
         },
         credentials: 'include',
         body: JSON.stringify({
-          // authService expects `username` but it accepts either username OR email.
-          username: email,
+          email,
           password,
         }),
       });
@@ -51,7 +48,7 @@ function LoginPage() {
         // ignore storage failures (private mode, quota, etc.)
       }
 
-      navigate('/planner');
+      navigate('/');
     } catch (err) {
       console.error('Login error:', err);
       setError('Network error. Please check your connection and try again.');

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from datetime import date, datetime, timedelta, timezone
 from typing import Any, Dict, Literal
 
@@ -20,13 +21,30 @@ load_dotenv()
 
 app = FastAPI(title="TRAVEL-AI API", version="0.1.0")
 
+
+def _get_cors_settings() -> tuple[list[str], bool, str | None]:
+    raw = (os.getenv("CORS_ORIGINS") or "").strip()
+    if not raw:
+        # Default dev origins:
+        # - Vite dev server
+        # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
+        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
+
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    if any(p == "*" for p in parts):
+        # Browsers don't allow wildcard CORS with credentials.
+        return ["*"], False, None
+
+    return parts, True, None
+
+
+cors_origins, cors_allow_credentials, cors_origin_regex = _get_cors_settings()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_origin_regex=cors_origin_regex,
+    allow_credentials=cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -73,6 +91,7 @@ def read_meta() -> MetaResponse:
     )
 
 
+@app.get("/health", response_model=HealthResponse)
 @app.get("/api/health", response_model=HealthResponse)
 def health_check() -> HealthResponse:
     return HealthResponse(status="ok")

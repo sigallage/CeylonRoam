@@ -12,6 +12,8 @@ import ItineraryGenerator from '../itineraryGenerator/itineraryGenerator.jsx';
 import Profile from '../Profile/Profile.jsx';
 import Main from '../Main/Main.jsx';
 import ItineraryHistory from '../ItineraryHistory/ItineraryHistory.jsx';
+import AboutUs from '../about/aboutUs.jsx';
+import SplashScreen from '../splashScreen/SplashScreen.jsx';
 
 function Router() {
 	return (
@@ -31,6 +33,8 @@ function Router() {
 				<Route path="/main" element={<Main />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/itinerary-history" element={<ItineraryHistory />} />
+				<Route path="/about-us" element={<AboutUs />} />
+				<Route path="/splash" element={<SplashScreen />} />
 			</Route>
 		</Routes>
 	);

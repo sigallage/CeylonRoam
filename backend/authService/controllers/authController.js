@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../src/models/User');
+const ContactMessage = require('../src/models/ContactMessage');
 const createError = require('../utils/appError');
 const { sendOTPEmail } = require('../utils/emailService');
 const { generateOTP, storeOTP, verifyOTP } = require('../utils/otpService');
@@ -75,6 +76,7 @@ exports.login = async (req, res, next) => {
         });
     }
     catch(error){
+        console.error('Login error:', error);
         next(error);
     }
 

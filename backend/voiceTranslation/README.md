@@ -27,14 +27,14 @@ start_backend.bat
 On first run, this will:
 - Create a virtual environment
 - Install all dependencies (~2-3 GB download including models)
-- Start the API server on http://localhost:8002
+- Start the API server on http://localhost:8003
 
 **Note:** First run may take 10-15 minutes to download models.
 
 ### 3. Verify It's Running
 Open your browser and go to:
 ```
-http://localhost:8002
+http://localhost:8003
 ```
 
 You should see:
@@ -114,7 +114,7 @@ The service will automatically use GPU if available.
 - Use a lighter model variant
 - Reduce batch size in main.py
 
-### Port 8002 already in use?
+### Port 8003 already in use?
 Change the port in `main.py`:
 ```python
 uvicorn.run(app, host="0.0.0.0", port=8003)  # Change port here
@@ -138,7 +138,7 @@ A Dockerfile is provided for containerized deployment. To build and run:
 
 ```bash
 docker build -t voice-translation .
-docker run -p 8002:8002 voice-translation
+docker run -p 8003:8003 voice-translation
 ```
 
 ## Configuration

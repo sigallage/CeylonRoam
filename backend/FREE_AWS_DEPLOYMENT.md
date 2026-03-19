@@ -151,6 +151,18 @@ docker-compose down
    aws --version
    ```
 
+    **If you get** `aws : The term 'aws' is not recognized`:
+    - Close and reopen PowerShell/VS Code terminal (the installer updates `PATH`, but existing terminals won't see it).
+    - Or run AWS CLI directly:
+       ```powershell
+       & "C:\Program Files\Amazon\AWSCLIV2\aws.exe" --version
+       ```
+    - Optional (current session only) PATH refresh:
+       ```powershell
+       $env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')
+       aws --version
+       ```
+
 ### Step 3: Configure AWS CLI
 
 1. **Create Access Keys:**

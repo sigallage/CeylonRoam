@@ -1,0 +1,86 @@
+name: Deploy Backend (ECS)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend-ecs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: us-east-1
+  ECS_CLUSTER: ceylonroam-cluster
+
+  # Update these to match the ECS Service names you create in AWS
+  ECS_SERVICE_AUTH: auth-service
+  ECS_SERVICE_ITINERARY: itinerary-service
+  ECS_SERVICE_ROUTE_OPTIMIZER: route-optimizer-service
+  ECS_SERVICE_VOICE_TRANSLATION: voice-translation-service
+
+  # ECR repositories
+  ECR_REPO_AUTH: ceylonroam-auth
+  ECR_REPO_ITINERARY: ceylonroam-itinerary
+  ECR_REPO_ROUTE_OPTIMIZER: ceylonroam-route-optimizer
+  ECR_REPO_VOICE_TRANSLATION: ceylonroam-voice-translation
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+
+      - name: Login to Amazon ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set image tags
+        shell: bash
+        run: |
+          echo "ECR_REGISTRY=${{ steps.ecr.outputs.registry }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${GITHUB_SHA}" >> $GITHUB_ENV
+
+      - name: Build & push auth-service
+        shell: bash
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPO_AUTH:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPO_AUTH:latest backend/authService
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPO_AUTH
+
+      - name: Build & push itinerary-service
+        shell: bash
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPO_ITINERARY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPO_ITINERARY:latest backend/itineraryGenerator
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPO_ITINERARY
+
+      - name: Build & push route-optimizer-service
+        shell: bash
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPO_ROUTE_OPTIMIZER:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPO_ROUTE_OPTIMIZER:latest backend/routeOptimizer
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPO_ROUTE_OPTIMIZER
+
+      - name: Build & push voice-translation-service
+        shell: bash
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPO_VOICE_TRANSLATION:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPO_VOICE_TRANSLATION:latest backend/voiceTranslation
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPO_VOICE_TRANSLATION
+
+      # This assumes your ECS task definitions reference :latest (as in backend/aws/ecs-task-*.json)
+      - name: Trigger ECS deployments
+        shell: bash
+        run: |
+          aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE_AUTH" --force-new-deployment
+          aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE_ITINERARY" --force-new-deployment
+          aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE_ROUTE_OPTIMIZER" --force-new-deployment
+          aws ecs update-service --cluster "$ECS_CLUSTER" --service "$ECS_SERVICE_VOICE_TRANSLATION" --force-new-deployment

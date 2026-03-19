@@ -1,0 +1,4 @@
+# AWS / SSH private keys (never commit)
+ceylonroam-key*.pem
+.npm-cache
+node_modules

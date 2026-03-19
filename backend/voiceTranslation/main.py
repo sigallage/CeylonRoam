@@ -7,6 +7,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import tempfile
 import os
 import logging
+from pathlib import Path
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -14,11 +15,29 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Voice Translation API")
 
-# Enable CORS
+def _get_cors_settings():
+    raw = (os.getenv("CORS_ORIGINS") or "").strip()
+    if not raw:
+        # Default dev origins:
+        # - Vite dev server
+        # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
+        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
+
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    if any(p == "*" for p in parts):
+        # Browsers don't allow wildcard CORS with credentials.
+        return ["*"], False, None
+
+    return parts, True, None
+
+
+cors_origins, cors_allow_credentials, cors_origin_regex = _get_cors_settings()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_origin_regex=cors_origin_regex,
+    allow_credentials=cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -33,6 +52,20 @@ WHISPER_LANG_MAP = {
     'si': 'si',  # Sinhala
     'en': 'en',  # English
     'ta': 'ta',  # Tamil
+    'ar': 'ar',  # Arabic
+    'zh': 'zh',  # Chinese
+    'nl': 'nl',  # Dutch
+    'fr': 'fr',  # French
+    'de': 'de',  # German
+    'hi': 'hi',  # Hindi
+    'it': 'it',  # Italian
+    'ja': 'ja',  # Japanese
+    'ko': 'ko',  # Korean
+    'pl': 'pl',  # Polish
+    'pt': 'pt',  # Portuguese
+    'ru': 'ru',  # Russian
+    'es': 'es',  # Spanish
+    'tr': 'tr',  # Turkish
 }
 
 # Language mapping for NLLB translation model
@@ -40,6 +73,20 @@ NLLB_LANG_MAP = {
     'si': 'sin_Sinh',  # Sinhala
     'en': 'eng_Latn',  # English
     'ta': 'tam_Taml',  # Tamil
+    'ar': 'arb_Arab',  # Arabic
+    'zh': 'zho_Hans',  # Chinese (Simplified)
+    'nl': 'nld_Latn',  # Dutch
+    'fr': 'fra_Latn',  # French
+    'de': 'deu_Latn',  # German
+    'hi': 'hin_Deva',  # Hindi
+    'it': 'ita_Latn',  # Italian
+    'ja': 'jpn_Jpan',  # Japanese
+    'ko': 'kor_Hang',  # Korean
+    'pl': 'pol_Latn',  # Polish
+    'pt': 'por_Latn',  # Portuguese
+    'ru': 'rus_Cyrl',  # Russian
+    'es': 'spa_Latn',  # Spanish
+    'tr': 'tur_Latn',  # Turkish
 }
 
 
@@ -59,8 +106,9 @@ async def load_models():
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
         
-        # Load Whisper Large v3
-        model_id = "openai/whisper-large-v3"
+        # Model IDs are configurable to control memory/latency tradeoffs.
+        # Default Whisper to a smaller model so it fits comfortably on CPU-only Fargate.
+        model_id = os.getenv("WHISPER_MODEL_ID", "openai/whisper-small")
         
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
             model_id, 
@@ -79,7 +127,7 @@ async def load_models():
             feature_extractor=processor.feature_extractor,
             max_new_tokens=128,
             chunk_length_s=30,
-            batch_size=16,
+            batch_size=4,
             return_timestamps=False,
             torch_dtype=torch_dtype,
             device=device,
@@ -88,7 +136,10 @@ async def load_models():
         
         # Load translation model (NLLB-200)
         logger.info("Loading NLLB translation model...")
-        translation_model_id = "facebook/nllb-200-distilled-600M"
+        translation_model_id = os.getenv(
+            "TRANSLATION_MODEL_ID",
+            "facebook/nllb-200-distilled-600M",
+        )
         
         translation_tokenizer = AutoTokenizer.from_pretrained(translation_model_id)
         translation_model = AutoModelForSeq2SeqLM.from_pretrained(translation_model_id)
@@ -129,8 +180,12 @@ async def transcribe_audio(
         raise HTTPException(status_code=503, detail="Whisper model not loaded")
     
     try:
+        suffix = Path(file.filename or '').suffix
+        if not suffix:
+            suffix = '.wav'
+
         # Save uploaded file temporarily
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp_audio:
             content = await file.read()
             temp_audio.write(content)
             temp_audio_path = temp_audio.name
@@ -231,4 +286,4 @@ async def translate_text(request: TextTranslationRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8002)
+    uvicorn.run(app, host="0.0.0.0", port=8003)

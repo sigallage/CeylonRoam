@@ -1,5 +1,6 @@
 import SearchBar from '../../components/global/searchbar';
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Component, useEffect, useMemo, useRef, useState } from 'react'
+import { getRouteOptimizerBaseUrl } from '../../config/backendUrls'
 import {
 	CircleF,
 	DirectionsRenderer,
@@ -146,6 +147,33 @@ function trafficColorForSpeed(speed) {
 	if (speed === 'SLOW') return '#f59e0b'
 	if (speed === 'TRAFFIC_JAM') return '#ef4444'
 	return '#1e3a8a'
+}
+
+function isValidLatLngLiteral(p) {
+	if (!p || typeof p !== 'object') return false
+	const lat = Number(p.lat)
+	const lng = Number(p.lng)
+	return Number.isFinite(lat) && Number.isFinite(lng)
+}
+
+class MapErrorBoundary extends Component {
+	constructor(props) {
+		super(props)
+		this.state = { hasError: false }
+	}
+
+	static getDerivedStateFromError() {
+		return { hasError: true }
+	}
+
+	componentDidCatch() {
+		// no-op
+	}
+
+	render() {
+		if (this.state.hasError) return this.props.fallback || null
+		return this.props.children
+	}
 }
 
 export default function RouteOptimizer() {
@@ -549,19 +577,14 @@ export default function RouteOptimizer() {
 	const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 	const visitedMarkerUrl = useMemo(() => `${import.meta.env.BASE_URL}visited-pin.svg`, [])
 	const backendBaseUrl = useMemo(() => {
-		const fromEnv = import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL
-		if (fromEnv) return String(fromEnv).replace(/\/$/, '')
-		// In dev we rely on Vite proxy (/api -> localhost:8000).
-		// In production (or file:// builds), there is no proxy, so default to local backend.
-		if (import.meta.env.DEV) return ''
-		return 'http://localhost:8000'
+		return getRouteOptimizerBaseUrl()
 	}, [])
 
 	function resolveBackendUrl(path) {
 		const cleanPath = path.startsWith('/') ? path : `/${path}`
 		return backendBaseUrl ? `${backendBaseUrl}${cleanPath}` : `/api${cleanPath}`
 	}
-	const { isLoaded } = useJsApiLoader({
+	const { isLoaded, loadError } = useJsApiLoader({
 		id: 'ceylonroam-google-maps',
 		googleMapsApiKey: googleMapsApiKey || '',
 	})
@@ -787,6 +810,8 @@ export default function RouteOptimizer() {
 			cancelled = true
 		}
 	}, [googleMapsApiKey, isLoaded, travelMode, vehicleType, activeItinerary, currentLocation, navActive, navTick, returnToStart, showRoute])
+
+	const mapsAvailable = Boolean(isLoaded && window.google?.maps)
 
 	function getCurrentPositionPromise(options) {
 		return new Promise((resolve, reject) => {
@@ -1306,27 +1331,43 @@ export default function RouteOptimizer() {
 							Missing <code>VITE_GOOGLE_MAPS_API_KEY</code>. Add it in <code>frontend/.env</code> (see
 							<code>frontend/.env.example</code>).
 						</div>
+					) : loadError ? (
+						<div className="ro-map-placeholder">
+							Google Maps failed to load. {String(loadError?.message || loadError)}
+						</div>
 					) : !isLoaded ? (
 						<div className="ro-map-placeholder">Loading Google Maps…</div>
+					) : !mapsAvailable ? (
+						<div className="ro-map-placeholder">
+							Google Maps failed to initialize. If you see <code>RefererNotAllowedMapError</code>, authorize this
+							site’s domain in your Google Maps API key settings.
+						</div>
 					) : (
 						<div className="ro-map-wrap">
-							<GoogleMap
-								mapContainerStyle={{ width: '100%', height: '100%' }}
-								center={center}
-								zoom={7}
-								options={{
-									mapTypeControl: false,
-									streetViewControl: false,
-									fullscreenControl: true,
-								}}
-								onLoad={(map) => {
-									mapRef.current = map
-								}}
-								onClick={() => {
-									setSelectedMarkerId(null)
-									setFollowUser(false)
-								}}
+							<MapErrorBoundary
+								fallback={
+									<div className="ro-map-placeholder">
+										Map failed to render. Check Google Maps API key referrer settings.
+									</div>
+								}
 							>
+								<GoogleMap
+									mapContainerStyle={{ width: '100%', height: '100%' }}
+									center={center}
+									zoom={7}
+									options={{
+										mapTypeControl: false,
+										streetViewControl: false,
+										fullscreenControl: true,
+									}}
+									onLoad={(map) => {
+										mapRef.current = map
+									}}
+									onClick={() => {
+										setSelectedMarkerId(null)
+										setFollowUser(false)
+									}}
+								>
 								{showTrafficLayer || navActive ? <TrafficLayer /> : null}
 
 								{userAccuracyM && currentLocation ? (
@@ -1344,6 +1385,9 @@ export default function RouteOptimizer() {
 								) : null}
 
 								{markerItineraryWithStart.map((d) => {
+									if (!d?.location) return null
+									const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
+									if (!isValidLatLngLiteral(pos)) return null
 									const isUser = d.id === 'start-user-location'
 									const isVisited = !isUser && !isCatalogView && visitedIdSet.has(d.id)
 									const routeLabel = !isUser ? markerOrderLabelById.get(d.id) : null
@@ -1368,7 +1412,7 @@ export default function RouteOptimizer() {
 									return (
 										<MarkerF
 											key={d.id}
-											position={{ lat: d.location.lat, lng: d.location.lng }}
+											position={pos}
 											icon={icon}
 											opacity={1}
 											label={
@@ -1388,24 +1432,28 @@ export default function RouteOptimizer() {
 								})}
 
 							{selectedMarkerId ? (
-								selectedMarkerId === 'start-user-location' && currentLocation ? (
-									<InfoWindowF position={currentLocation} onCloseClick={() => setSelectedMarkerId(null)}>
+								selectedMarkerId === 'start-user-location' ? (
+									isValidLatLngLiteral(currentLocation) ? (
+										<InfoWindowF position={currentLocation} onCloseClick={() => setSelectedMarkerId(null)}>
 										<div style={{ maxWidth: 240, color: '#111827' }}>
 											<div style={{ fontWeight: 800, marginBottom: 6 }}>Your location</div>
 											<div style={{ fontSize: 12, opacity: 0.85 }}>
 												{round2(currentLocation.lat)}, {round2(currentLocation.lng)}
 											</div>
 										</div>
-									</InfoWindowF>
+										</InfoWindowF>
+									) : null
 								) : (
 									(() => {
 										const fromCatalog = destinationById.get(selectedMarkerId)
 										const fromActive = markerItineraryWithStart.find((x) => x.id === selectedMarkerId)
 										const dest = fromCatalog || fromActive
-										if (!dest) return null
+										if (!dest?.location) return null
+										const pos = { lat: Number(dest.location.lat), lng: Number(dest.location.lng) }
+										if (!isValidLatLngLiteral(pos)) return null
 										return (
 											<InfoWindowF
-												position={{ lat: dest.location.lat, lng: dest.location.lng }}
+												position={pos}
 												onCloseClick={() => setSelectedMarkerId(null)}
 											>
 												<div style={{ maxWidth: 280, color: '#111827' }}>
@@ -1528,7 +1576,8 @@ export default function RouteOptimizer() {
 									/>
 								)
 							) : null}
-						</GoogleMap>
+								</GoogleMap>
+							</MapErrorBoundary>
 
 							{navActive ? (
 								<div className="ro-nav-top" role="status" aria-live="polite">

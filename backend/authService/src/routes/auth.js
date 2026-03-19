@@ -7,12 +7,13 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-router.put("/profile", verifyToken, authController.updateProfile);
+router.put("/profile", authController.updateProfile);
 
 // Password reset with OTP
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/verify-otp', authController.verifyOTP);
 router.post('/reset-password', authController.resetPassword);
+router.post('/contact-us', authController.submitContactMessage);
 
 // Check if email exists (for reset password flow)
 router.post('/reset-password/request', authController.checkEmailExists);

@@ -3,7 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";  // used for animations
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; //used to navigate between pages
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "/api").replace(/\/$/, ""); //ensures axios hits the correct backend in dev/prod
+import { getItineraryApiBaseUrl } from '../../config/backendUrls';
+
+const API_BASE_URL = getItineraryApiBaseUrl(); //ensures axios hits the correct backend in dev/prod
 
 const toLocalISODate = (date) => { //converts a date to ISO format
   const year = date.getFullYear();
