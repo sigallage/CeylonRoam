@@ -52,7 +52,7 @@ function LoginPage() {
         // ignore storage failures (private mode, quota, etc.)
       }
 
-      navigate('/planner');
+      navigate('/');
     } catch (err) {
       console.error('Login error:', err);
       setError('Network error. Please check your connection and try again.');

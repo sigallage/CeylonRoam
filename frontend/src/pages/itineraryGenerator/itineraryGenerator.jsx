@@ -308,33 +308,31 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
     new Date(calendarCursor.year, calendarCursor.month, 1)
   );
 
-  return ( //main JSX return
+  return (
     <div
       className="min-h-screen w-full px-3 py-6 sm:px-6 sm:py-10 lg:px-12"
-      style={{ backgroundColor: '#0a0a0a' }}
+      style={{ backgroundColor: "#0a0a0a" }}
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 sm:gap-10">
         <div className="space-y-2 text-center text-white">
-          <h1 className="text-2xl sm:text-3xl font-semibold uppercase tracking-wide">
+          <h1 className="text-2xl font-semibold uppercase tracking-wide sm:text-3xl">
             Plan your trip
           </h1>
-          <p className="text-sm sm:text-base italic text-white/80">
-            Enter your trip details.
-          </p>
+          <p className="text-sm italic text-white/80 sm:text-base">Enter your trip details.</p>
         </div>
 
-        <form
-          className="flex flex-col gap-4 sm:gap-6"
-          onSubmit={handleSubmit}
-        >
-          <div className="flex flex-col gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl bg-black p-4 sm:p-6 shadow-xl transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(255,255,255,0.6),0_0_80px_rgba(255,255,255,0.3)] lg:p-8" style={{ boxShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)' }}>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
-              <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
+        <form className="flex flex-col gap-4 sm:gap-6" onSubmit={handleSubmit}>
+          <div
+            className="flex flex-col gap-4 rounded-2xl bg-black p-4 shadow-xl transition-all duration-300 sm:gap-5 sm:rounded-3xl sm:p-6 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(255,255,255,0.6),0_0_80px_rgba(255,255,255,0.3)] lg:p-8"
+            style={{ boxShadow: "0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)" }}
+          >
+            <div className="flex flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
+              <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
                 Purpose of trip
               </span>
               <input
                 aria-label="Purpose of trip"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="order-2 w-full flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
                 placeholder="e.g., surfing, cultural, wellness"
                 value={formState.purposeInput}
                 onChange={(event) => handleFieldChange("purposeInput", event.target.value)}
@@ -342,13 +340,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
-              <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
+            <div className="flex flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
+              <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
                 Budget (LKR)
               </span>
               <input
                 aria-label="Budget in LKR"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="order-2 w-full flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
                 placeholder="Budget (LKR)"
                 value={formState.budget}
                 inputMode="numeric"
@@ -359,34 +357,34 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
 
             <div className="relative">
               <div
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg cursor-pointer"
+                className="flex cursor-pointer flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4"
                 onClick={() => !isSubmitting && setShowProvinceDropdown(!showProvinceDropdown)}
               >
-                <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
+                <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
                   Provinces to visit
                 </span>
-                <div className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner order-2 sm:order-1">
+                <div className="order-2 w-full flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base">
                   {formState.selectedProvinces.length > 0
                     ? formState.selectedProvinces.join(", ")
                     : "Select provinces"}
                 </div>
               </div>
               {showProvinceDropdown && (
-                <div className="absolute z-10 mt-2 w-full rounded-lg sm:rounded-xl border border-black/10 bg-white p-3 sm:p-4 shadow-lg max-h-60 overflow-y-auto">
+                <div className="absolute z-10 mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-black/10 bg-white p-3 shadow-lg sm:rounded-xl sm:p-4">
                   <div className="space-y-2">
                     {SRI_LANKA_PROVINCES.map((province) => (
                       <label
                         key={province}
-                        className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 sm:p-2 transition hover:bg-gray-50 active:bg-gray-100"
+                        className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 transition hover:bg-gray-50 active:bg-gray-100 sm:p-2"
                       >
                         <input
                           type="checkbox"
                           checked={formState.selectedProvinces.includes(province)}
                           onChange={() => toggleProvinceSelection(province)}
                           disabled={isSubmitting}
-                          className="h-5 w-5 sm:h-4 sm:w-4 rounded border-black/30 text-white focus:ring-white"
+                          className="h-5 w-5 rounded border-black/30 text-white focus:ring-white sm:h-4 sm:w-4"
                         />
-                        <span className="text-sm sm:text-sm text-black">{province}</span>
+                        <span className="text-sm text-black">{province}</span>
                       </label>
                     ))}
                   </div>
@@ -394,17 +392,15 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               )}
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
-              <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
+            <div className="flex flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
+              <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
                 Solo or family
               </span>
               <select
                 aria-label="Solo or family"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="order-2 w-full flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
                 value={formState.tripType}
-                onChange={(event) =>
-                  handleFieldChange("tripType", event.target.value)
-                }
+                onChange={(event) => handleFieldChange("tripType", event.target.value)}
                 disabled={isSubmitting}
               >
                 <option value="solo">Solo</option>
@@ -412,13 +408,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               </select>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
-              <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right sm:pt-3">
+            <div className="flex flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
+              <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:pt-3 sm:text-right sm:text-sm">
                 Additional preferences
               </span>
               <textarea
                 aria-label="Additional preferences"
-                className="h-24 w-full flex-1 resize-none rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="order-2 h-24 w-full flex-1 resize-none rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
                 placeholder="Any additional preferences (e.g., vegetarian meals, wheelchair access)"
                 value={formState.preferencesInput}
                 onChange={(event) => handleFieldChange("preferencesInput", event.target.value)}
@@ -426,13 +422,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 rounded-xl sm:rounded-2xl border border-[#1f29331a] bg-white p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-lg">
-              <span className="text-xs sm:text-sm italic text-black/75 order-1 sm:order-2 sm:shrink-0 sm:text-right">
+            <div className="flex flex-col gap-2 rounded-xl border border-[#1f29331a] bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
+              <span className="order-1 text-xs italic text-black/75 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
                 Dates spending
               </span>
               <input
                 aria-label="Selected travel dates"
-                className="w-full flex-1 rounded-lg sm:rounded-xl border border-black/10 bg-white px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 order-2 sm:order-1"
+                className="order-2 w-full flex-1 rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm text-black shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/5 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
                 placeholder="Select dates from the calendar"
                 value={formattedSelectedDates}
                 readOnly
@@ -440,49 +436,43 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
               />
             </div>
 
-            <div className="rounded-xl sm:rounded-2xl border border-white/15 bg-black/40 p-4 sm:p-5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-                <span className="text-xs sm:text-sm italic text-white/80">Gender</span>
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-white">
-                  <label className="flex items-center gap-2 cursor-pointer">
+            <div className="rounded-xl border border-white/15 bg-black/40 p-4 sm:rounded-2xl sm:p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                <span className="text-xs italic text-white/80 sm:text-sm">Gender</span>
+                <div className="flex flex-wrap items-center gap-3 text-sm text-white sm:gap-4">
+                  <label className="flex cursor-pointer items-center gap-2">
                     <input
                       type="radio"
                       name="gender"
                       value="male"
                       checked={formState.gender === "male"}
-                      onChange={(event) =>
-                        handleFieldChange("gender", event.target.value)
-                      }
+                      onChange={(event) => handleFieldChange("gender", event.target.value)}
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
+                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
                     <span className="text-white">Male</span>
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  <label className="flex cursor-pointer items-center gap-2">
                     <input
                       type="radio"
                       name="gender"
                       value="female"
                       checked={formState.gender === "female"}
-                      onChange={(event) =>
-                        handleFieldChange("gender", event.target.value)
-                      }
+                      onChange={(event) => handleFieldChange("gender", event.target.value)}
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
+                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
                     <span className="text-white">Female</span>
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
+                  <label className="flex cursor-pointer items-center gap-2">
                     <input
                       type="radio"
                       name="gender"
                       value="other"
                       checked={formState.gender === "other"}
-                      onChange={(event) =>
-                        handleFieldChange("gender", event.target.value)
-                      }
+                      onChange={(event) => handleFieldChange("gender", event.target.value)}
                       disabled={isSubmitting}
-                      className="h-5 w-5 sm:h-4 sm:w-4 border-white/60 text-white focus:ring-white"
+                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
                     <span className="text-white">Other</span>
                   </label>
@@ -491,35 +481,35 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
             </div>
           </div>
 
-          <section className="space-y-3 sm:space-y-4 rounded-2xl sm:rounded-3xl border border-black/10 bg-white p-4 sm:p-6 shadow-sm">
-            <p className="text-center text-xs sm:text-sm italic text-black/70">
+          <section className="space-y-3 rounded-2xl border border-black/10 bg-white p-4 shadow-sm sm:space-y-4 sm:rounded-3xl sm:p-6">
+            <p className="text-center text-xs italic text-black/70 sm:text-sm">
               Please select the start date and the end date
             </p>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <h2 className="text-base sm:text-lg font-semibold text-black text-center sm:text-left">Calendar</h2>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="text-center text-base font-semibold text-black sm:text-left sm:text-lg">Calendar</h2>
               <div className="flex items-center justify-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(-1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
+                  className="min-w-[60px] rounded-full bg-gray-500 px-3 py-1.5 text-xs text-white transition hover:bg-gray-700 active:bg-gray-800 sm:min-w-0 sm:px-3 sm:py-1 sm:text-sm"
                   disabled={isSubmitting}
                 >
                   Prev
                 </button>
-                <p className="text-xs sm:text-sm font-medium text-black/80 min-w-[120px] sm:min-w-0 text-center">
+                <p className="min-w-[120px] text-center text-xs font-medium text-black/80 sm:min-w-0 sm:text-sm">
                   {currentMonthLabel}
                 </p>
                 <button
                   type="button"
                   onClick={() => goToAdjacentMonth(1)}
-                  className="rounded-full bg-gray-500 px-3 sm:px-3 py-1.5 sm:py-1 text-xs sm:text-sm text-white transition hover:bg-gray-700 active:bg-gray-800 min-w-[60px] sm:min-w-0"
+                  className="min-w-[60px] rounded-full bg-gray-500 px-3 py-1.5 text-xs text-white transition hover:bg-gray-700 active:bg-gray-800 sm:min-w-0 sm:px-3 sm:py-1 sm:text-sm"
                   disabled={isSubmitting}
                 >
                   Next
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-7 gap-1 sm:gap-2 text-center text-[10px] sm:text-xs font-medium uppercase tracking-wide text-black/60">
+            <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase tracking-wide text-black/60 sm:gap-2 sm:text-xs">
               {WEEKDAY_LABELS.map((weekday) => (
                 <span key={weekday}>{weekday}</span>
               ))}
@@ -529,23 +519,22 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 const inRange = isDateInRange(isoValue);
                 const isStartEnd = isStartOrEndDate(isoValue);
                 const isPast = isPastDate(isoValue);
+
                 return (
                   <button
                     type="button"
                     key={isoValue}
                     onClick={() => handleDateClick(isoValue)}
                     disabled={!isCurrentMonth || isSubmitting || isPast}
-                    className={`flex h-10 sm:h-12 w-full items-center justify-center rounded-lg sm:rounded-xl border text-xs sm:text-sm transition touch-manipulation
-                      ${
-                        !isCurrentMonth || isPast
-                          ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
-                          : isStartEnd
-                            ? "border-gray-300 bg-white font-semibold text-black shadow-[0_0_12px_rgba(255,255,255,0.6)]"
-                            : inRange
-                              ? "border-gray-200 bg-gray-100 text-black"
-                              : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
-                      }
-                    `}
+                    className={`flex h-10 w-full items-center justify-center rounded-lg border text-xs transition touch-manipulation sm:h-12 sm:rounded-xl sm:text-sm ${
+                      !isCurrentMonth || isPast
+                        ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
+                        : isStartEnd
+                          ? "border-gray-300 bg-white font-semibold text-black shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+                          : inRange
+                            ? "border-gray-200 bg-gray-100 text-black"
+                            : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
+                    }`}
                   >
                     {label}
                   </button>
@@ -557,7 +546,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           <div className="flex justify-end">
             <button
               type="submit"
-              className="w-full rounded-xl sm:rounded-2xl bg-black px-4 sm:px-6 py-3 sm:py-3 text-sm sm:text-base font-semibold uppercase tracking-wide text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(255,255,255,0.6)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-black/40 disabled:shadow-none touch-manipulation min-h-[44px]"
+              className="min-h-[44px] w-full rounded-xl bg-black px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(255,255,255,0.6)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-black/40 disabled:shadow-none touch-manipulation sm:rounded-2xl sm:px-6 sm:py-3 sm:text-base"
               disabled={isSubmitting}
             >
               Enter
@@ -565,25 +554,25 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
           </div>
 
           {error && (
-            <p className="rounded-lg sm:rounded-xl border border-gray-300 bg-gray-100 px-3 sm:px-4 py-2.5 sm:py-3 text-center text-xs sm:text-sm font-medium text-black">
+            <p className="rounded-lg border border-gray-300 bg-gray-100 px-3 py-2.5 text-center text-xs font-medium text-black sm:rounded-xl sm:px-4 sm:py-3 sm:text-sm">
               {error}
             </p>
           )}
         </form>
 
-        <AnimatePresence>  {/* Animates the presence of the message */}
+        <AnimatePresence>
           {showMessage && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="mx-auto w-full max-w-md rounded-xl sm:rounded-2xl border border-black/10 bg-white px-4 sm:px-6 py-3 sm:py-4 text-center shadow-lg"
+              className="mx-auto w-full max-w-md rounded-xl border border-black/10 bg-white px-4 py-3 text-center shadow-lg sm:rounded-2xl sm:px-6 sm:py-4"
             >
-              <p className="text-sm sm:text-base font-medium text-black">Message: Generating...</p>
+              <p className="text-sm font-medium text-black sm:text-base">Message: Generating...</p>
             </motion.div>
           )}
-        </AnimatePresence> 
+        </AnimatePresence>
       </div>
     </div>
   );
