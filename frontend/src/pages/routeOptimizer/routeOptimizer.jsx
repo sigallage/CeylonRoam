@@ -1,5 +1,6 @@
 import SearchBar from '../../components/global/searchbar';
 import { Component, useEffect, useMemo, useRef, useState } from 'react'
+import { getRouteOptimizerBaseUrl } from '../../config/backendUrls'
 import {
 	CircleF,
 	DirectionsRenderer,
@@ -576,12 +577,7 @@ export default function RouteOptimizer() {
 	const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 	const visitedMarkerUrl = useMemo(() => `${import.meta.env.BASE_URL}visited-pin.svg`, [])
 	const backendBaseUrl = useMemo(() => {
-		const fromEnv = import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL
-		if (fromEnv) return String(fromEnv).replace(/\/$/, '')
-		// In dev we can rely on Vite proxy (/api -> localhost:8000) OR set VITE_ROUTE_OPTIMIZER_BASE_URL.
-		// In production, never fall back to localhost (causes CORS + broken deploys). Use same-origin /api
-		// and configure a Vercel rewrite, or set VITE_ROUTE_OPTIMIZER_BASE_URL to your backend URL.
-		return ''
+		return getRouteOptimizerBaseUrl()
 	}, [])
 
 	function resolveBackendUrl(path) {

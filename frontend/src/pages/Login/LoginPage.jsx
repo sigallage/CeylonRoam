@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -8,12 +9,7 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const authBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
-    if (fromEnv) return fromEnv;
-    if (import.meta.env.DEV) return 'http://localhost:5001';
-    return '';
-  }, []);
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

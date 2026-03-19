@@ -1,13 +1,11 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 function SignUp() {
   const navigate = useNavigate();
   const authBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '')
-    if (fromEnv) return fromEnv
-    if (import.meta.env.DEV) return 'http://localhost:5001'
-    return ''
+    return getAuthBaseUrl();
   }, [])
   const [formData, setFormData] = useState({
     name: '',

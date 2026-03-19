@@ -144,6 +144,11 @@ cd backend/aws
 📖 **[QUICKSTART_AWS.md](QUICKSTART_AWS.md)** - Quick AWS deployment (30 min)  
 📖 **[AWS_DEPLOYMENT_GUIDE.md](AWS_DEPLOYMENT_GUIDE.md)** - Comprehensive production guide
 
+
+## 1.8 Deployments / CI/CD Pipeline
+
+📘 **[DEPLOYMENTS_CICD_PIPELINE.md](DEPLOYMENTS_CICD_PIPELINE.md)** - Report-ready explanation of the GitHub Actions -> ECR -> ECS pipeline (with screenshot placeholders + justifications)
+
 ## 🔑 Environment Variables
 
 Create a `.env` file with:

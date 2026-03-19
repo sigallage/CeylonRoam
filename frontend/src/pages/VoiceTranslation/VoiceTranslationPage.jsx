@@ -1,4 +1,5 @@
 import { useState, useRef, useMemo } from 'react';
+import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
 
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English' },
@@ -108,12 +109,7 @@ function VoiceTranslation() {
   const [detectedLanguage, setDetectedLanguage] = useState('');
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
-  const apiBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_API_URL?.replace(/\/$/, '');
-    if (fromEnv) return fromEnv;
-    if (import.meta.env.DEV) return 'http://localhost:8003';
-    return '';
-  }, []);
+  const apiBaseUrl = useMemo(() => getVoiceTranslationBaseUrl(), []);
 
   const startRecording = async () => {
     if (!recordingLanguage) {

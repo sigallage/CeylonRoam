@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 function ForgotPassword() {
   const location = useLocation();
@@ -14,12 +15,7 @@ function ForgotPassword() {
 
   const email = location?.state?.email || '';
 
-  const authBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
-    if (fromEnv) return fromEnv;
-    if (import.meta.env.DEV) return 'http://localhost:5001';
-    return '';
-  }, []);
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const passwordsMatch = useMemo(() => {
     if (!newPassword || !confirmPassword) return true;
