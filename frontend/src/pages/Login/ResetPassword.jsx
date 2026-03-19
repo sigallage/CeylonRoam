@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 const isValidEmail = (value) => {
   // Simple, practical check (not RFC-perfect)
@@ -15,12 +16,7 @@ function ResetPassword() {
 
   const emailOk = useMemo(() => isValidEmail(email), [email]);
 
-  const authBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
-    if (fromEnv) return fromEnv;
-    if (import.meta.env.DEV) return 'http://localhost:5001';
-    return '';
-  }, []);
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const handleContinue = async (e) => {
     e.preventDefault();

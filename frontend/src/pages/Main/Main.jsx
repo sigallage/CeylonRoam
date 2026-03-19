@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getAuthBaseUrl } from "../../config/backendUrls";
 
 const formatList = (items) => {
   if (!items || items.length === 0) {
@@ -32,12 +33,7 @@ const Main = () => {
   const [saveError, setSaveError] = useState('');
   const [saveSuccess, setSaveSuccess] = useState(false);
 
-  const authBaseUrl = useMemo(() => {
-    const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '');
-    if (fromEnv) return fromEnv;
-    if (import.meta.env.DEV) return 'http://localhost:5001';
-    return '';
-  }, []);
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const handleSaveItinerary = async () => {
     setIsSaving(true);

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiTrash2, FiCalendar, FiMapPin } from 'react-icons/fi';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 const ItineraryHistory = () => {
 	const navigate = useNavigate();
@@ -9,12 +10,7 @@ const ItineraryHistory = () => {
 	const [error, setError] = useState('');
 	const [deletingId, setDeletingId] = useState(null);
 
-	const authBaseUrl = useMemo(() => {
-		const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '')
-		if (fromEnv) return fromEnv
-		if (import.meta.env.DEV) return 'http://localhost:5001'
-		return ''
-	}, [])
+	const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
 	useEffect(() => {
 		fetchItineraries();

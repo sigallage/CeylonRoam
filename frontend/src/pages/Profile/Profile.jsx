@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
 import { FaUser } from 'react-icons/fa';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 const Profile = () => {
 	const navigate = useNavigate();
@@ -21,12 +22,7 @@ const Profile = () => {
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
 
-	const authBaseUrl = useMemo(() => {
-		const fromEnv = import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '')
-		if (fromEnv) return fromEnv
-		if (import.meta.env.DEV) return 'http://localhost:5001'
-		return ''
-	}, [])
+	const authBaseUrl = useMemo(() => getAuthBaseUrl(), [])
 
 	useEffect(() => {
 		// Load user data from localStorage (saved after login)
