@@ -1,11 +1,9 @@
-import { useState, useRef, useMemo } from 'react';
+﻿import { useState, useRef, useMemo } from 'react';
 import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
 
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English' },
   { code: 'ta', label: 'Tamil' },
-<<<<<<< HEAD
-=======
   { code: 'ar', label: 'Arabic' },
   { code: 'zh', label: 'Chinese' },
   { code: 'nl', label: 'Dutch' },
@@ -21,7 +19,6 @@ const LANGUAGE_OPTIONS = [
   { code: 'ru', label: 'Russian' },
   { code: 'es', label: 'Spanish' },
   { code: 'tr', label: 'Turkish' },
->>>>>>> 6c60e0c2a8cba4367c710ef08c6ca6a332d097ca
 ];
 
 const createAudioContext = () => {
