@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
-import bgImage from '../../assets/9.jpg';
+import bgImage from '../../assets/5.jpg';
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -65,103 +65,108 @@ function SignUpPage() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 py-8"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      <div className="bg-white w-full max-w-[520px] rounded-[24px] border border-[#e5e7eb] shadow-[0_20px_40px_rgba(15,23,42,0.08)] px-8 py-10 sm:px-12 sm:py-12">
-        <div className="max-w-[380px] mx-auto">
-          <h1 className="text-[30px] font-normal text-[#333] mb-10 text-center leading-tight">
-            Create Your Account
-          </h1>
+    <div className="min-h-screen w-full bg-black">
+      <div className="min-h-screen flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden mx-auto">
+            <img
+              src={bgImage}
+              alt="Sri Lanka"
+              className="w-full h-64 object-cover md:h-full"
+              loading="lazy"
+            />
+          </div>
 
-          <form onSubmit={handleSignup} className="flex flex-col gap-4">
-            <div>
-              <label htmlFor="name" className="block mb-2 text-[#333] font-normal text-[17px]">
-                Full Name <span className="text-[#999] text-[14px]">(optional)</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="John Doe"
-                className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
-                style={{ height: '48px' }}
-              />
+          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12 mx-auto">
+            <div className="max-w-[380px] mx-auto">
+              <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
+                Create Your Account
+              </h1>
+
+              <form onSubmit={handleSignup} className="flex flex-col gap-4">
+                <div>
+                  <label htmlFor="name" className="block mb-2 text-white font-normal text-[17px]">
+                    Full Name <span className="text-gray-400 text-[14px]">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="John Doe"
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    style={{ height: '48px' }}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="username" className="block mb-2 text-white font-normal text-[17px]">
+                    Username <span className="text-gray-400 text-[14px]">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="janedoe"
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    style={{ height: '48px' }}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block mb-2 text-white font-normal text-[17px]">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="me@example.com"
+                    required
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    style={{ height: '48px' }}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="At least 6 characters"
+                    required
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    style={{ height: '48px' }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{ height: '45px' }}
+                >
+                  {isLoading ? 'Creating account...' : 'Sign Up'}
+                </button>
+
+                {error ? (
+                  <p className="text-red-600 text-[14px] mt-1">{error}</p>
+                ) : null}
+              </form>
+
+              <div className="mt-6 text-center text-[15px] text-gray-300">
+                <span>Already have an account? </span>
+                <Link to="/login" className="text-[#f59e0b] font-medium hover:underline">
+                  Login
+                </Link>
+              </div>
             </div>
-
-            <div>
-              <label htmlFor="username" className="block mb-2 text-[#333] font-normal text-[17px]">
-                Username <span className="text-[#999] text-[14px]">(optional)</span>
-              </label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="janedoe"
-                className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
-                style={{ height: '48px' }}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block mb-2 text-[#333] font-normal text-[17px]">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="me@example.com"
-                required
-                className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
-                style={{ height: '48px' }}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block mb-2 text-[#333] font-normal text-[17px]">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="At least 6 characters"
-                required
-                className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
-                style={{ height: '48px' }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full py-3.5 bg-[#1a1a1a] rounded-[6px] text-[16px] font-medium hover:bg-[#333] transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-              style={{ color: '#ffffff', height: '45px' }}
-            >
-              <span style={{ color: '#ffffff' }}>{isLoading ? 'Creating account...' : 'Sign Up'}</span>
-            </button>
-
-            {error ? (
-              <p className="text-red-600 text-[14px] mt-1">{error}</p>
-            ) : null}
-          </form>
-
-          <div className="mt-6 text-center text-[15px] text-[#666]">
-            <span>Already have an account? </span>
-            <Link to="/login" className="text-[#f59e0b] font-medium hover:underline">
-              Login
-            </Link>
           </div>
         </div>
       </div>
