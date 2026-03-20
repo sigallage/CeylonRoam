@@ -129,7 +129,7 @@ function SignUp() {
             {/* Name Field */}
             <div>
               <label htmlFor="name" className="block mb-2 text-[#333] font-normal text-[17px]">
-                Full Name <span className="text-[#999] text-[14px]">(optional)</span>
+                Full Name <span className="text-[#999] text-[14px]"></span>
               </label>
               <input
                 type="text"
