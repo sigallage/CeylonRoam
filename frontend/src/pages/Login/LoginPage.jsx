@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
-import bgImage from '../../assets/8.jpg';
+import bgImage from '../../assets/5.jpg';
 
 function LoginPage() {
   const navigate = useNavigate();
