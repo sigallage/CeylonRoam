@@ -11,6 +11,25 @@ const protectedRoutes = require('./src/routes/protected');
 
 const app = express();
 
+async function connectWithRetry(uri, { maxRetries = 10, initialDelayMs = 1000 } = {}) {
+  let attempt = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      await mongoose.connect(uri);
+      return;
+    } catch (err) {
+      attempt += 1;
+      if (attempt > maxRetries) {
+        throw err;
+      }
+      const delay = Math.min(initialDelayMs * Math.pow(2, attempt - 1), 15000);
+      console.warn(`MongoDB connection failed (attempt ${attempt}/${maxRetries}). Retrying in ${delay}ms...`);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+}
+
 function resolveJwtSecret() {
   const raw = String(process.env.JWT_SECRET || '').trim();
   if (!raw) return '';
