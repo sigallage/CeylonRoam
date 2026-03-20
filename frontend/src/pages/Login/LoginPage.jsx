@@ -64,18 +64,27 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full bg-black">
       <div className="min-h-screen flex flex-col md:flex-row">
+        <div className="w-full md:w-1/2">
+          <img
+            src={bgImage}
+            alt="Sri Lanka"
+            className="h-64 w-full object-cover md:h-full"
+            loading="lazy"
+          />
+        </div>
+
         <div className="flex-1 flex items-center justify-center px-4 py-8">
-          <div className="bg-white w-full max-w-[520px] rounded-[24px] border border-[#e5e7eb] shadow-[0_20px_40px_rgba(15,23,42,0.08)] px-8 py-10 sm:px-12 sm:py-12">
+          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12">
             <div className="max-w-[380px] mx-auto">
-              <h1 className="text-[30px] font-normal text-[#333] mb-10 text-center leading-tight">
+              <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
                 Welcome to Your Next Adventure
               </h1>
 
               <form onSubmit={handleLogin} className="flex flex-col gap-4">
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-[#333] font-normal text-[17px]">
+                  <label htmlFor="email" className="block mb-2 text-white font-normal text-[17px]">
                     Email
                   </label>
                   <input
@@ -85,13 +94,13 @@ function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="me@example.com"
                     required
-                    className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
                     style={{ height: '48px' }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-[#333] font-normal text-[17px]">
+                  <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
                     Password
                   </label>
                   <input
@@ -101,7 +110,7 @@ function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     required
-                    className="w-full px-4 border border-[#ddd] rounded-[6px] text-[16px] placeholder:text-[#999] focus:outline-none focus:border-[#2c3e9e] transition-colors box-border"
+                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
                     style={{ height: '48px' }}
                   />
                 </div>
@@ -109,10 +118,10 @@ function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 bg-[#1a1a1a] rounded-[6px] text-[16px] font-medium hover:bg-[#333] transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ color: '#ffffff', height: '45px' }}
+                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{ height: '45px' }}
                 >
-                  <span style={{ color: '#ffffff' }}>{isLoading ? 'Logging in...' : 'Login'}</span>
+                  {isLoading ? 'Logging in...' : 'Login'}
                 </button>
 
                 {error ? (
@@ -122,16 +131,16 @@ function LoginPage() {
 
               <div className="relative my-8">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-[#ddd]"></div>
+                  <div className="w-full border-t border-gray-800"></div>
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="px-4 bg-white text-[#666] text-[14px]">or login with</span>
+                  <span className="px-4 bg-black text-gray-300 text-[14px]">or login with</span>
                 </div>
               </div>
 
               <button
                 onClick={handleGoogleLogin}
-                className="w-full py-2.5 bg-white border border-[#ddd] rounded-[6px] flex items-center justify-center hover:bg-[#f5f5f5] transition-colors"
+                className="w-full py-2.5 bg-black border border-gray-800 rounded-[6px] flex items-center justify-center hover:bg-gray-900 transition-colors"
               >
                 <svg width="20" height="28" viewBox="0 0 24 24" className="flex-shrink-0">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -141,7 +150,7 @@ function LoginPage() {
                 </svg>
               </button>
 
-              <div className="mt-3 text-center text-[15px] text-[#666]">
+              <div className="mt-3 text-center text-[15px] text-gray-300">
                 <div>
                   <span>Forgot Password? </span>
                   <Link to="/reset-password" className="text-[#f59e0b] font-medium hover:underline">
@@ -157,15 +166,6 @@ function LoginPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="w-full md:w-1/2">
-          <img
-            src={bgImage}
-            alt="Sri Lanka"
-            className="h-64 w-full object-cover md:h-full"
-            loading="lazy"
-          />
         </div>
       </div>
     </div>
