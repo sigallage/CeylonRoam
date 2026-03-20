@@ -294,6 +294,38 @@ exports.checkEmailExists = async (req, res, next) => {
     }
 };
 
+// CONTACT US - Store message
+exports.submitContactMessage = async (req, res, next) => {
+    try {
+        const { name, email, message, rating } = req.body || {};
+
+        if (!name || typeof name !== 'string' || !name.trim()) {
+            return next(new createError('Name is required!', 400));
+        }
+        if (!email || typeof email !== 'string' || !email.trim()) {
+            return next(new createError('Email is required!', 400));
+        }
+        if (!message || typeof message !== 'string' || !message.trim()) {
+            return next(new createError('Message is required!', 400));
+        }
+
+        const doc = await ContactMessage.create({
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            message: message.trim(),
+            ...(rating !== undefined && rating !== null && rating !== '' ? { rating: Number(rating) } : {}),
+        });
+
+        res.status(201).json({
+            status: 'success',
+            message: 'Message submitted successfully',
+            id: doc._id,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 // DEBUG ENDPOINT - Check database status
 exports.debugUsers = async (req, res, next) => {
     try {
