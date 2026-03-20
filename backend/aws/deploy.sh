@@ -109,6 +109,8 @@ GOOGLE_MAPS_API_KEY_SECRET_ARN=$(aws secretsmanager describe-secret --region "$A
 OPENROUTER_API_KEY_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/openrouter_api_key' --query ARN --output text)
 SESSION_SECRET_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/session_secret' --query ARN --output text)
 JWT_SECRET_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/jwt_secret' --query ARN --output text)
+EMAIL_USER_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/email_user' --query ARN --output text)
+EMAIL_PASSWORD_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/email_password' --query ARN --output text)
 
 fail_if_missing() {
     local name="$1"
@@ -124,10 +126,12 @@ fail_if_missing 'ceylonroam/session_secret' "$SESSION_SECRET_SECRET_ARN"
 fail_if_missing 'ceylonroam/jwt_secret' "$JWT_SECRET_SECRET_ARN"
 fail_if_missing 'ceylonroam/google_maps_api_key' "$GOOGLE_MAPS_API_KEY_SECRET_ARN"
 fail_if_missing 'ceylonroam/openrouter_api_key' "$OPENROUTER_API_KEY_SECRET_ARN"
+fail_if_missing 'ceylonroam/email_user' "$EMAIL_USER_SECRET_ARN"
+fail_if_missing 'ceylonroam/email_password' "$EMAIL_PASSWORD_SECRET_ARN"
 
 for file in "$TASK_SRC_DIR"/ecs-task-*.json; do
     out="$TASK_TMP_DIR/$(basename "$file")"
-    sed "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g; s/<REGION>/$AWS_REGION/g; s|ceylonroam/mongodb_uri|$MONGODB_URI_SECRET_ARN|g; s|ceylonroam/google_maps_api_key|$GOOGLE_MAPS_API_KEY_SECRET_ARN|g; s|ceylonroam/openrouter_api_key|$OPENROUTER_API_KEY_SECRET_ARN|g; s|ceylonroam/session_secret|$SESSION_SECRET_SECRET_ARN|g; s|ceylonroam/jwt_secret|$JWT_SECRET_SECRET_ARN|g" "$file" > "$out"
+    sed "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g; s/<REGION>/$AWS_REGION/g; s|ceylonroam/mongodb_uri|$MONGODB_URI_SECRET_ARN|g; s|ceylonroam/google_maps_api_key|$GOOGLE_MAPS_API_KEY_SECRET_ARN|g; s|ceylonroam/openrouter_api_key|$OPENROUTER_API_KEY_SECRET_ARN|g; s|ceylonroam/session_secret|$SESSION_SECRET_SECRET_ARN|g; s|ceylonroam/jwt_secret|$JWT_SECRET_SECRET_ARN|g; s|ceylonroam/email_user|$EMAIL_USER_SECRET_ARN|g; s|ceylonroam/email_password|$EMAIL_PASSWORD_SECRET_ARN|g" "$file" > "$out"
 done
 
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-auth.json" --region $AWS_REGION
