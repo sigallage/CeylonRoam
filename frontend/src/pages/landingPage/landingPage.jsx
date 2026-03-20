@@ -25,6 +25,22 @@ const LandingPage = () => {
 
   const heroImages = [flagImage, colomboImage, templeImage];
 
+  const isLoggedIn = () => {
+    try {
+      return Boolean(window.localStorage.getItem('ceylonroam_user'));
+    } catch {
+      return false;
+    }
+  };
+
+  const navigateProtected = (path) => {
+    if (isLoggedIn()) {
+      navigate(path);
+      return;
+    }
+    navigate('/login');
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
@@ -230,7 +246,7 @@ const LandingPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => navigate('/planner')}
+                onClick={() => navigateProtected('/planner')}
                 className="group px-8 py-4 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300"
               >
                 Start Planning Your Journey
@@ -278,7 +294,7 @@ const LandingPage = () => {
               <button
                 key={index}
                 type="button"
-                onClick={() => navigate(feature.path)}
+                onClick={() => navigateProtected(feature.path)}
                 className="group relative overflow-hidden rounded-2xl border border-gray-700 bg-gray-900/40 text-left transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500/70"
                 style={{
                   animation: `fade-in-up 0.6s ease-out ${index * 0.1}s backwards`
@@ -419,7 +435,7 @@ const LandingPage = () => {
             with our intelligent route planning and real-time navigation
           </p>
           <button
-            onClick={() => navigate('/planner')}
+            onClick={() => navigateProtected('/planner')}
             className="group px-12 py-5 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300"
           >
             Plan Your Journey Now
