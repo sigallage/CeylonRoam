@@ -65,18 +65,18 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen w-full bg-black">
-      <div className="min-h-screen flex flex-col md:flex-row">
-        <div className="w-full md:w-1/2">
-          <img
-            src={bgImage}
-            alt="Sri Lanka"
-            className="h-64 w-full object-cover md:h-full"
-            loading="lazy"
-          />
-        </div>
+      <div className="min-h-screen flex items-center justify-center px-4 py-8">
+        <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden mx-auto">
+            <img
+              src={bgImage}
+              alt="Sri Lanka"
+              className="w-full h-64 object-cover md:h-full"
+              loading="lazy"
+            />
+          </div>
 
-        <div className="flex-1 flex items-center justify-center px-4 py-8">
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12">
+          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12 mx-auto">
             <div className="max-w-[380px] mx-auto">
               <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
                 Welcome to Your Next Adventure
