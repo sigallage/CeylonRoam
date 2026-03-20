@@ -1,8 +1,7 @@
-import { useState, useRef, useMemo } from 'react';
+﻿import { useState, useRef, useMemo } from 'react';
 import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
 
 const LANGUAGE_OPTIONS = [
-  { code: 'si', label: 'Sinhala' },
   { code: 'en', label: 'English' },
   { code: 'ta', label: 'Tamil' },
   { code: 'ar', label: 'Arabic' },
@@ -11,6 +10,7 @@ const LANGUAGE_OPTIONS = [
   { code: 'fr', label: 'French' },
   { code: 'de', label: 'German' },
   { code: 'hi', label: 'Hindi' },
+  { code: 'si', label: 'Sinhala' },
   { code: 'it', label: 'Italian' },
   { code: 'ja', label: 'Japanese' },
   { code: 'ko', label: 'Korean' },
@@ -372,7 +372,11 @@ function VoiceTranslation() {
                     className="min-h-[140px] w-full rounded-[8px] border border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-[15px] text-[#333]"
                   />
                   {detectedLanguage && (
-                    <p className="text-sm text-[#555]">Detected language: {detectedLanguage.toUpperCase()}</p>
+                    <p className="text-sm text-[#555]">
+                      Detected language: {
+                        (LANGUAGE_OPTIONS.find(opt => opt.code === detectedLanguage)?.label || detectedLanguage)
+                      }
+                    </p>
                   )}
                 </div><br></br>
               </section>

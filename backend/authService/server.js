@@ -62,20 +62,6 @@ app.use('/api/protected', protectedRoutes);
 const PORT = Number(process.env.PORT || 5001);
 const MONGODB_URI = process.env.MONGODB_URI;
 
-async function connectWithRetry(uri, retries = 10, delayMs = 5000) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      await mongoose.connect(uri);
-      return;
-    } catch (err) {
-      console.error(`MongoDB connection attempt ${attempt}/${retries} failed: ${err.message}`);
-      if (attempt === retries) throw err;
-      console.log(`Retrying in ${delayMs / 1000}s...`);
-      await new Promise((res) => setTimeout(res, delayMs));
-    }
-  }
-}
-
 async function start() {
   if (!MONGODB_URI) {
     // Keep this explicit so it fails fast in dev.
