@@ -46,6 +46,26 @@ const Header = () => {
 			{isMenuOpen && (
 				<div className="absolute top-full right-4 mt-2 w-80 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
 					<div className="flex flex-col p-4 gap-2">
+						<button
+							type="button"
+							onClick={() => {
+								navigate('/login');
+								setIsMenuOpen(false);
+							}}
+							className="text-left text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl"
+						>
+							Log In
+						</button>
+						<button
+							type="button"
+							onClick={() => {
+								navigate('/signup');
+								setIsMenuOpen(false);
+							}}
+							className="text-left text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl"
+						>
+							Sign Up
+						</button>
 						<a 
 							href="#features" 
 							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
