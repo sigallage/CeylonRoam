@@ -31,7 +31,11 @@ async function connectWithRetry(uri, { maxRetries = 10, initialDelayMs = 1000 } 
 }
 
 function resolveJwtSecret() {
-  const raw = String(process.env.JWT_SECRET || '').trim();
+  return resolveEnvSecretString('JWT_SECRET');
+}
+
+function resolveEnvSecretString(name) {
+  const raw = String(process.env[name] || '').trim();
   if (!raw) return '';
 
   // When pulled from AWS Secrets Manager, this can be a JSON string
@@ -39,10 +43,13 @@ function resolveJwtSecret() {
   if (raw.startsWith('{')) {
     try {
       const parsed = JSON.parse(raw);
-      const fromJson = parsed?.JWT_SECRET;
-      if (typeof fromJson === 'string' && fromJson.trim()) {
-        return fromJson.trim();
-      }
+      // Prefer an exact key match (e.g., {"EMAIL_USER":"..."}).
+      const exact = parsed?.[name];
+      if (typeof exact === 'string' && exact.trim()) return exact.trim();
+
+      // Common alternative shapes.
+      const value = parsed?.value;
+      if (typeof value === 'string' && value.trim()) return value.trim();
     } catch {
       // Fall through and treat it as a raw secret string.
     }
@@ -94,6 +101,12 @@ async function start() {
 
   // Normalize so all modules read a consistent value.
   process.env.JWT_SECRET = jwtSecret;
+
+  // Normalize email credentials too (supports Secrets Manager JSON secrets).
+  const emailUser = resolveEnvSecretString('EMAIL_USER');
+  const emailPassword = resolveEnvSecretString('EMAIL_PASSWORD');
+  if (emailUser) process.env.EMAIL_USER = emailUser;
+  if (emailPassword) process.env.EMAIL_PASSWORD = emailPassword;
 
   await connectWithRetry(MONGODB_URI);
 
