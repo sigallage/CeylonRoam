@@ -2,11 +2,15 @@ const nodemailer = require('nodemailer');
 
 // Create transporter
 const createTransporter = () => {
+  // Google displays App Passwords with spaces; SMTP auth expects them without spaces.
+  const rawPass = String(process.env.EMAIL_PASSWORD || '');
+  const normalizedPass = rawPass.replace(/\s+/g, '');
+
   return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
+      pass: normalizedPass,
     },
   });
 };
@@ -75,14 +79,19 @@ const sendOTPEmail = async (email, otp) => {
     console.log('✅ OTP email sent successfully:', info.messageId);
     return { success: true, mode: 'production', messageId: info.messageId };
   } catch (error) {
-    console.error('❌ Error sending OTP email:', {
+    const smtp = {
       message: error?.message,
       code: error?.code,
       responseCode: error?.responseCode,
       response: error?.response,
       command: error?.command,
-    });
-    throw new Error('Failed to send OTP email');
+    };
+
+    console.error('❌ Error sending OTP email:', smtp);
+
+    const publicError = new Error('Failed to send OTP email');
+    publicError.smtp = smtp;
+    throw publicError;
   }
 };
 
