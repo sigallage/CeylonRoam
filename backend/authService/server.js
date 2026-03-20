@@ -11,6 +11,27 @@ const protectedRoutes = require('./src/routes/protected');
 
 const app = express();
 
+function resolveJwtSecret() {
+  const raw = String(process.env.JWT_SECRET || '').trim();
+  if (!raw) return '';
+
+  // When pulled from AWS Secrets Manager, this can be a JSON string
+  // if the secret was stored as key/value pairs in the console.
+  if (raw.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(raw);
+      const fromJson = parsed?.JWT_SECRET;
+      if (typeof fromJson === 'string' && fromJson.trim()) {
+        return fromJson.trim();
+      }
+    } catch {
+      // Fall through and treat it as a raw secret string.
+    }
+  }
+
+  return raw;
+}
+
 app.use(cors({
   origin: true,
   credentials: true
@@ -60,6 +81,14 @@ async function start() {
     // Keep this explicit so it fails fast in dev.
     throw new Error('Missing MONGODB_URI in environment');
   }
+
+  const jwtSecret = resolveJwtSecret();
+  if (!jwtSecret) {
+    throw new Error('Missing JWT_SECRET in environment');
+  }
+
+  // Normalize so all modules read a consistent value.
+  process.env.JWT_SECRET = jwtSecret;
 
   await connectWithRetry(MONGODB_URI);
 
