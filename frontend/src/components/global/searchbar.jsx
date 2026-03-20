@@ -14,7 +14,17 @@ const SearchBar = () => {
 			const searchString = `${dest.name} ${dest.category} ${dest.description}`.toLowerCase();
 			return searchString.includes(query.toLowerCase());
 		});
-		setResults(filtered);
+		// `destinations.json` can contain duplicate `id`s.
+		// Dedupe by id to avoid React key collisions.
+		const seen = new Set();
+		const unique = [];
+		for (const dest of filtered) {
+			const id = dest?.id;
+			if (!id || seen.has(id)) continue;
+			seen.add(id);
+			unique.push(dest);
+		}
+		setResults(unique);
 	}, [query]);
 
 	return (
