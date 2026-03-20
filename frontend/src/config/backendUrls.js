@@ -40,7 +40,9 @@ export function getAuthBaseUrl() {
   if (fromEnv) return fromEnv
 
   if (isNativePlatform()) return defaultHttpBase(5001)
-  if (import.meta.env.DEV) return 'http://localhost:5001'
+  // In web dev, prefer same-origin /api and let Vite proxy to the auth service.
+  // This avoids CORS and allows session cookies for OTP flows.
+  if (import.meta.env.DEV) return ''
 
   // Web production builds must provide VITE_AUTH_URL.
   return ''
