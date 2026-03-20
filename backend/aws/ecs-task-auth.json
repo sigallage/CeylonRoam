@@ -31,6 +31,10 @@
           "valueFrom": "ceylonroam/mongodb_uri"
         },
         {
+          "name": "JWT_SECRET",
+          "valueFrom": "ceylonroam/jwt_secret"
+        },
+        {
           "name": "SESSION_SECRET",
           "valueFrom": "ceylonroam/session_secret"
         }
