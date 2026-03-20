@@ -40,11 +40,26 @@ export default defineConfig({
       ignored: ['**/android/**', '**/dist/**', '**/build/**'],
     },
     proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
+      // Route Optimizer (FastAPI) does NOT use the /api prefix.
+      // Use explicit paths (instead of regex keys) to ensure Vite matches them.
+      '/api/optimize': {
+        target: 'http://127.0.0.1:8002',
         changeOrigin: true,
         secure: false,
-        // Don't rewrite the path - backend expects /api prefix
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/api/traffic-route': {
+        target: 'http://127.0.0.1:8002',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+
+      // Itinerary Generator (FastAPI) DOES use the /api prefix.
+      '/api': {
+        target: 'http://127.0.0.1:8001',
+        changeOrigin: true,
+        secure: false,
       },
     },
   },
