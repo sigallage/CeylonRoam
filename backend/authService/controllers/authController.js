@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../src/models/User');
+const ContactMessage = require('../src/models/ContactMessage');
 const createError = require('../utils/appError');
 const { sendOTPEmail } = require('../utils/emailService');
 const { generateOTP, storeOTP, verifyOTP } = require('../utils/otpService');
@@ -75,6 +76,7 @@ exports.login = async (req, res, next) => {
         });
     }
     catch(error){
+        console.error('Login error:', error);
         next(error);
     }
 
@@ -194,6 +196,10 @@ exports.verifyOTP = async (req, res, next) => {
             return next(new createError(result.message, 400));
         }
 
+        // Store verified email in session for password reset
+        req.session.verifiedEmail = trimmedEmail;
+        req.session.verifiedAt = Date.now();
+
         res.status(200).json({
             status: 'success',
             message: result.message,
@@ -219,6 +225,22 @@ exports.resetPassword = async (req, res, next) => {
         }
 
         const normalizedEmail = email.trim().toLowerCase();
+
+        // Check if OTP was verified (session-based check)
+        const verifiedEmail = req.session?.verifiedEmail;
+        const verifiedAt = req.session?.verifiedAt;
+        const VERIFICATION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+
+        if (!verifiedEmail || verifiedEmail !== normalizedEmail) {
+            return next(new createError('Please verify OTP first!', 403));
+        }
+
+        if (!verifiedAt || Date.now() - verifiedAt > VERIFICATION_TIMEOUT) {
+            delete req.session.verifiedEmail;
+            delete req.session.verifiedAt;
+            return next(new createError('Verification expired. Please request a new OTP!', 403));
+        }
+
         const user = await User.findOne({ email: normalizedEmail });
 
         if (!user) {
@@ -229,9 +251,43 @@ exports.resetPassword = async (req, res, next) => {
         user.password = hashedPassword;
         await user.save();
 
+        // Clear verification from session
+        delete req.session.verifiedEmail;
+        delete req.session.verifiedAt;
+
         res.status(200).json({
             status: 'success',
             message: 'Password updated successfully.',
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// CHECK EMAIL EXISTS - For reset password flow
+exports.checkEmailExists = async (req, res, next) => {
+    try {
+        const { email } = req.body;
+
+        if (!email || typeof email !== 'string') {
+            return next(new createError('Email is required!', 400));
+        }
+
+        const normalizedEmail = email.trim().toLowerCase();
+        const user = await User.findOne({ email: normalizedEmail });
+
+        if (!user) {
+            return res.status(200).json({
+                status: 'success',
+                exists: false,
+                message: 'No account found with that email.',
+            });
+        }
+
+        res.status(200).json({
+            status: 'success',
+            exists: true,
+            message: 'Account found.',
         });
     } catch (error) {
         next(error);

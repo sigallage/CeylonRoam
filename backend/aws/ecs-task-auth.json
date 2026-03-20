@@ -29,6 +29,10 @@
         {
           "name": "MONGODB_URI",
           "valueFrom": "ceylonroam/mongodb_uri"
+        },
+        {
+          "name": "SESSION_SECRET",
+          "valueFrom": "ceylonroam/session_secret"
         }
       ],
       "logConfiguration": {

@@ -1,0 +1,44 @@
+{
+  "family": "ceylonroam-voice-translation-service",
+  "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "8192",
+  "containerDefinitions": [
+    {
+      "name": "voice-translation-service",
+      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/ceylonroam-voice-translation:latest",
+      "portMappings": [
+        {
+          "containerPort": 8003,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "PORT",
+          "value": "8003"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ceylonroam-voice-translation",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8003/health').read()\" || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 10,
+        "retries": 10,
+        "startPeriod": 300
+      }
+    }
+  ]
+}

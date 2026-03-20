@@ -1,9 +1,27 @@
 import { useState, useRef, useMemo } from 'react';
+import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
 
 const LANGUAGE_OPTIONS = [
-  { code: 'si', label: 'Sinhala' },
   { code: 'en', label: 'English' },
   { code: 'ta', label: 'Tamil' },
+<<<<<<< HEAD
+=======
+  { code: 'ar', label: 'Arabic' },
+  { code: 'zh', label: 'Chinese' },
+  { code: 'nl', label: 'Dutch' },
+  { code: 'fr', label: 'French' },
+  { code: 'de', label: 'German' },
+  { code: 'hi', label: 'Hindi' },
+  { code: 'si', label: 'Sinhala' },
+  { code: 'it', label: 'Italian' },
+  { code: 'ja', label: 'Japanese' },
+  { code: 'ko', label: 'Korean' },
+  { code: 'pl', label: 'Polish' },
+  { code: 'pt', label: 'Portuguese' },
+  { code: 'ru', label: 'Russian' },
+  { code: 'es', label: 'Spanish' },
+  { code: 'tr', label: 'Turkish' },
+>>>>>>> 6c60e0c2a8cba4367c710ef08c6ca6a332d097ca
 ];
 
 const createAudioContext = () => {
@@ -94,10 +112,7 @@ function VoiceTranslation() {
   const [detectedLanguage, setDetectedLanguage] = useState('');
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
-  const apiBaseUrl = useMemo(
-    () => import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:8002',
-    [],
-  );
+  const apiBaseUrl = useMemo(() => getVoiceTranslationBaseUrl(), []);
 
   const startRecording = async () => {
     if (!recordingLanguage) {
@@ -296,6 +311,39 @@ function VoiceTranslation() {
               </div>
             </section>
 
+              {/* Audio File Upload Area */}
+              <section className="space-y-4">
+                <div className="mx-auto w-full max-w-[440px]">
+                  <label className="block text-[15px] font-semibold text-[#111] mb-2">
+                    Or Upload an Audio File
+                  </label>
+                  <input
+                    type="file"
+                    accept="audio/*"
+                    onChange={async (e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        setIsPreparingAudio(true);
+                        try {
+                          // Convert to wav if needed
+                          const wavFile = await convertBlobToWavFile(file, file.name.replace(/\.[^/.]+$/, "") + ".wav");
+                          setAudioFile(wavFile);
+                          setTranscription("");
+                          setTranslationResult("");
+                          setDetectedLanguage("");
+                        } catch (error) {
+                          alert("Could not process the selected audio file.");
+                        } finally {
+                          setIsPreparingAudio(false);
+                        }
+                      }
+                    }}
+                    className="w-full rounded-[8px] border border-[#ddd] px-4 py-2 text-[15px] text-[#333]"
+                    disabled={isPreparingAudio}
+                  />
+                </div>
+              </section>
+
             <br></br>
 
             <section className="space-y-4">
@@ -327,7 +375,11 @@ function VoiceTranslation() {
                     className="min-h-[140px] w-full rounded-[8px] border border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-[15px] text-[#333]"
                   />
                   {detectedLanguage && (
-                    <p className="text-sm text-[#555]">Detected language: {detectedLanguage.toUpperCase()}</p>
+                    <p className="text-sm text-[#555]">
+                      Detected language: {
+                        (LANGUAGE_OPTIONS.find(opt => opt.code === detectedLanguage)?.label || detectedLanguage)
+                      }
+                    </p>
                   )}
                 </div><br></br>
               </section>

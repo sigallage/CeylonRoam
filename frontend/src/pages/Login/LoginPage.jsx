@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -8,10 +9,7 @@ function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-    [],
-  );
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,8 +24,7 @@ function LoginPage() {
         },
         credentials: 'include',
         body: JSON.stringify({
-          // authService expects `username` but it accepts either username OR email.
-          username: email,
+          email,
           password,
         }),
       });
@@ -51,7 +48,7 @@ function LoginPage() {
         // ignore storage failures (private mode, quota, etc.)
       }
 
-      navigate('/planner');
+      navigate('/');
     } catch (err) {
       console.error('Login error:', err);
       setError('Network error. Please check your connection and try again.');
@@ -66,7 +63,15 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f5f5f5] px-4 py-8">
+    <div
+      className="min-h-screen flex items-center justify-center px-4 py-8"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="bg-white w-full max-w-[520px] rounded-[24px] border border-[#e5e7eb] shadow-[0_20px_40px_rgba(15,23,42,0.08)] px-8 py-10 sm:px-12 sm:py-12">
         <div className="max-w-[380px] mx-auto">
           <h1 className="text-[30px] font-normal text-[#333] mb-10 text-center leading-tight">

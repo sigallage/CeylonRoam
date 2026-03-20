@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
 import { FaUser } from 'react-icons/fa';
+import { getAuthBaseUrl } from '../../config/backendUrls';
 
 const Profile = () => {
 	const navigate = useNavigate();
@@ -21,10 +22,7 @@ const Profile = () => {
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
 
-	const authBaseUrl = useMemo(
-		() => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, '') || 'http://localhost:5001',
-		[],
-	);
+	const authBaseUrl = useMemo(() => getAuthBaseUrl(), [])
 
 	useEffect(() => {
 		// Load user data from localStorage (saved after login)
@@ -250,7 +248,7 @@ const Profile = () => {
 
 						{/* User Information */}
 						<div className="w-full space-y-4 mb-6">
-							<div className="flex items-center justify-between py-3 border-b border-gray-200">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">User name</span>
 								{isEditing ? (
 									<input
@@ -266,19 +264,19 @@ const Profile = () => {
 									</span>
 								)}
 							</div>
-							<div className="flex items-center justify-between py-3 border-b border-gray-200">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">Email</span>
-								<span className="text-gray-900 font-semibold text-sm">
+								<span className="text-gray-900 font-semibold">
 									{userData.email || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 border-b border-gray-200">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">User ID</span>
-								<span className="text-gray-900 font-semibold text-xs">
+								<span className="text-gray-900 font-semibold">
 									{userData.userId || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 border-b border-gray-200">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
 								<span className="text-gray-600 font-medium">Phone</span>
 								{isEditing ? (
 									<input

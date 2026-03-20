@@ -21,7 +21,20 @@ def _load_dotenv_if_present() -> None:
         return
 
     here = Path(__file__).resolve()
-    repo_root = here.parents[2]
+
+    def _find_repo_root(start: Path) -> Path:
+        # Local dev layout: <repo>/{backend,frontend}/...
+        for candidate in (start, *start.parents):
+            if (candidate / "backend").is_dir() and (candidate / "frontend").is_dir():
+                return candidate
+        # Minimal fallback: a directory that contains `backend/`.
+        for candidate in (start, *start.parents):
+            if (candidate / "backend").is_dir():
+                return candidate
+        # Docker layout is typically just `/app` with no repo structure.
+        return start
+
+    repo_root = _find_repo_root(here.parent)
 
     # Prefer a backend-local .env, then fall back to repo-root .env.
     # If the variable exists but is empty, allow .env to override it.
@@ -50,28 +63,29 @@ except ImportError:  # pragma: no cover
 app = FastAPI(title="CeylonRoam Route Optimizer", version="1.0.0")
 
 
-def _get_cors_origins() -> tuple[list[str], bool]:
+def _get_cors_settings() -> tuple[list[str], bool, str | None]:
     raw = (os.getenv("CORS_ORIGINS") or "").strip()
     if not raw:
-        return [
-            "http://localhost:5173",
-            "http://127.0.0.1:5173",
-        ], True
+        # Default dev origins:
+        # - Vite dev server
+        # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
+        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     if any(p == "*" for p in parts):
         # Browsers don't allow wildcard CORS with credentials.
-        return ["*"], False
+        return ["*"], False, None
 
-    return parts, True
+    return parts, True, None
 
 
-cors_origins, cors_allow_credentials = _get_cors_origins()
+cors_origins, cors_allow_credentials, cors_origin_regex = _get_cors_settings()
 
 # Vite dev server defaults to 5173
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=cors_origin_regex,
     allow_credentials=cors_allow_credentials,
     allow_methods=["*"] ,
     allow_headers=["*"],
@@ -241,4 +255,6 @@ if __name__ == "__main__":
     import uvicorn
 
     # When running this file directly, `reload=True` can't reliably resolve imports.
-    uvicorn.run(app, host="127.0.0.1", port=8002)
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "8002"))
+    uvicorn.run(app, host=host, port=port)
