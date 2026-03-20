@@ -318,173 +318,178 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 sm:gap-10">
         <div className="space-y-2 text-center text-white">
-          <h1 className="text-2xl font-semibold uppercase tracking-wide sm:text-3xl">
+          <h1 className="text-2xl font-semibold uppercase tracking-wide sm:text-3xl bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,193,7,0.25)]">
             Plan your trip
           </h1>
           <p className="text-sm italic text-white/80 sm:text-base">Enter your trip details.</p>
         </div>
 
         <form className="flex flex-col gap-4 sm:gap-6" onSubmit={handleSubmit}>
+          {/* Gradient border wrapper */}
           <div
-            className="flex flex-col gap-4 rounded-2xl bg-black p-4 shadow-xl transition-all duration-300 sm:gap-5 sm:rounded-3xl sm:p-6 sm:hover:scale-105 sm:hover:shadow-[0_0_40px_rgba(255,255,255,0.6),0_0_80px_rgba(255,255,255,0.3)] lg:p-8"
-            style={{ boxShadow: "0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)" }}
+            className="rounded-[3.5rem] p-1 p-[2px] sm:rounded-[5rem]"
+            style={{
+              width: '100%',
+              boxSizing: 'border-box',
+              background: 'linear-gradient(to right, #facc15, #f97316)',
+            }}
           >
-            <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
-              <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
-                Purpose of trip
-              </span>
-              <input
-                aria-label="Purpose of trip"
-                className="order-2 w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
-                placeholder="e.g., surfing, cultural, wellness"
-                value={formState.purposeInput}
-                onChange={(event) => handleFieldChange("purposeInput", event.target.value)}
-                disabled={isSubmitting}
-              />
-            </div>
-
-            <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
-              <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
-                Budget (LKR)
-              </span>
-              <input
-                aria-label="Budget in LKR"
-                className="order-2 w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
-                placeholder="Budget (LKR)"
-                value={formState.budget}
-                inputMode="numeric"
-                onChange={(event) => handleFieldChange("budget", event.target.value)}
-                disabled={isSubmitting}
-              />
-            </div>
-
-            <div className="relative">
-              <div
-                className="flex cursor-pointer flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4"
-                onClick={() => !isSubmitting && setShowProvinceDropdown(!showProvinceDropdown)}
-              >
-                <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
-                  Provinces to visit
-                </span>
-                <div className="order-2 w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base">
-                  {formState.selectedProvinces.length > 0
-                    ? formState.selectedProvinces.join(", ")
-                    : "Select provinces"}
-                </div>
+            <div
+              className="flex flex-col gap-4 rounded-[3.5rem] bg-black p-8 transition-all duration-300 sm:gap-5 sm:rounded-[5rem] sm:p-12 lg:p-16"
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4">
+                <span className="text-lg font-bold text-white mb-1">Purpose of trip</span>
+                <input
+                  aria-label="Purpose of trip"
+                  className="w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white placeholder:text-gray-400 shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
+                  placeholder="e.g., surfing, cultural, wellness"
+                  value={formState.purposeInput}
+                  onChange={(event) => handleFieldChange("purposeInput", event.target.value)}
+                  disabled={isSubmitting}
+                />
               </div>
-              {showProvinceDropdown && (
-                <div className="absolute z-10 mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-gray-700 bg-black p-3 shadow-lg sm:rounded-xl sm:p-4">
-                  <div className="space-y-2">
-                    {SRI_LANKA_PROVINCES.map((province) => (
-                      <label
-                        key={province}
-                        className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 transition hover:bg-gray-800 active:bg-gray-900 sm:p-2"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={formState.selectedProvinces.includes(province)}
-                          onChange={() => toggleProvinceSelection(province)}
-                          disabled={isSubmitting}
-                          className="h-5 w-5 rounded border-white/30 text-yellow-300 focus:ring-white sm:h-4 sm:w-4 bg-black"
-                        />
-                        <span className="text-sm text-white">{province}</span>
-                      </label>
-                    ))}
+
+              <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4">
+                <span className="text-base font-bold text-white mb-1">Budget (LKR)</span>
+                <input
+                  aria-label="Budget in LKR"
+                  className="w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white placeholder:text-gray-400 shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
+                  placeholder="Budget (LKR)"
+                  value={formState.budget}
+                  inputMode="numeric"
+                  onChange={(event) => handleFieldChange("budget", event.target.value)}
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div className="relative">
+                <div
+                  className="flex cursor-pointer flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4"
+                  onClick={() => !isSubmitting && setShowProvinceDropdown(!showProvinceDropdown)}
+                >
+                  <span className="text-base font-bold text-white mb-1">Provinces to visit</span>
+                  <div className="w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner sm:rounded-xl sm:px-4 sm:py-3 sm:text-base">
+                    {formState.selectedProvinces.length > 0
+                      ? formState.selectedProvinces.join(", ")
+                      : "Select provinces"}
                   </div>
                 </div>
-              )}
-            </div>
+                {showProvinceDropdown && (
+                  <div className="absolute z-10 mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-gray-700 bg-black p-3 shadow-lg sm:rounded-xl sm:p-4">
+                    <div className="space-y-2">
+                      {SRI_LANKA_PROVINCES.map((province) => (
+                        <label
+                          key={province}
+                          className="flex cursor-pointer items-center gap-3 rounded-lg p-2.5 transition hover:bg-gray-800 active:bg-gray-900 sm:p-2"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={formState.selectedProvinces.includes(province)}
+                            onChange={() => toggleProvinceSelection(province)}
+                            disabled={isSubmitting}
+                            className="h-5 w-5 rounded border-white/30 text-yellow-300 focus:ring-white sm:h-4 sm:w-4 bg-black"
+                          />
+                          <span className="text-sm text-white">{province}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-            <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
-              <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
-                Solo or family
-              </span>
-              <select
-                aria-label="Solo or family"
-                className="order-2 w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
-                value={formState.tripType}
-                onChange={(event) => handleFieldChange("tripType", event.target.value)}
-                disabled={isSubmitting}
-              >
-                <option value="solo">Solo</option>
-                <option value="family">Family</option>
-              </select>
-            </div>
+              <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4">
+                <span className="text-base font-bold text-white mb-1">Solo or family</span>
+                <select
+                  aria-label="Solo or family"
+                  className="w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
+                  value={formState.tripType}
+                  onChange={(event) => handleFieldChange("tripType", event.target.value)}
+                  disabled={isSubmitting}
+                >
+                  <option value="solo">Solo</option>
+                  <option value="family">Family</option>
+                </select>
+              </div>
 
-            <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
-              <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:pt-3 sm:text-right sm:text-sm">
-                Additional preferences
-              </span>
-              <textarea
-                aria-label="Additional preferences"
-                className="order-2 h-24 w-full flex-1 resize-none rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
-                placeholder="Any additional preferences (e.g., vegetarian meals, wheelchair access)"
-                value={formState.preferencesInput}
-                onChange={(event) => handleFieldChange("preferencesInput", event.target.value)}
-                disabled={isSubmitting}
-              />
-            </div>
+              <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4">
+                <span className="text-base font-bold text-white mb-1">Additional preferences</span>
+                <textarea
+                  aria-label="Additional preferences"
+                  className="h-24 w-full flex-1 resize-none rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
+                  placeholder="Any additional preferences (e.g., vegetarian meals, wheelchair access)"
+                  value={formState.preferencesInput}
+                  onChange={(event) => handleFieldChange("preferencesInput", event.target.value)}
+                  disabled={isSubmitting}
+                />
+              </div>
 
-            <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-2xl sm:p-4">
-              <span className="order-1 text-xs italic text-white/80 sm:order-2 sm:shrink-0 sm:text-right sm:text-sm">
-                Dates spending
-              </span>
-              <input
-                aria-label="Selected travel dates"
-                className="order-2 w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:order-1 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
-                placeholder="Select dates from the calendar"
-                value={formattedSelectedDates}
-                readOnly
-                disabled={isSubmitting}
-                onClick={() => setShowCalendarOnly(true)}
-                style={{ cursor: 'pointer', background: isSubmitting ? undefined : '#18181b' }}
-              />
-            </div>
+              <div className="flex flex-col gap-2 rounded-xl border border-[#444] bg-black p-3 shadow-sm transition-shadow hover:shadow-lg sm:rounded-2xl sm:p-4">
+                <span className="text-base font-bold text-white mb-1">Dates spending</span>
+                <input
+                  aria-label="Selected travel dates"
+                  className="w-full flex-1 rounded-lg border border-gray-700 bg-black px-3 py-2.5 text-sm text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white disabled:cursor-not-allowed disabled:bg-black/30 sm:rounded-xl sm:px-4 sm:py-3 sm:text-base"
+                  placeholder="Select dates from the calendar"
+                  value={formattedSelectedDates}
+                  readOnly
+                  disabled={isSubmitting}
+                  onClick={() => setShowCalendarOnly(true)}
+                  style={{ cursor: 'pointer', background: isSubmitting ? undefined : '#18181b' }}
+                />
+              </div>
 
-            <div className="rounded-xl border border-white/15 bg-black/40 p-4 sm:rounded-2xl sm:p-5">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                <span className="text-xs italic text-white/80 sm:text-sm">Gender</span>
-                <div className="flex flex-wrap items-center gap-3 text-sm text-white sm:gap-4">
-                  <label className="flex cursor-pointer items-center gap-2">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="male"
-                      checked={formState.gender === "male"}
-                      onChange={(event) => handleFieldChange("gender", event.target.value)}
-                      disabled={isSubmitting}
-                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
-                    />
-                    <span className="text-yellow-300">Male</span>
-                  </label>
-                  <label className="flex cursor-pointer items-center gap-2">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="female"
-                      checked={formState.gender === "female"}
-                      onChange={(event) => handleFieldChange("gender", event.target.value)}
-                      disabled={isSubmitting}
-                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
-                    />
-                    <span className="text-yellow-300">Female</span>
-                  </label>
-                  <label className="flex cursor-pointer items-center gap-2">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="other"
-                      checked={formState.gender === "other"}
-                      onChange={(event) => handleFieldChange("gender", event.target.value)}
-                      disabled={isSubmitting}
-                      className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
-                    />
-                    <span className="text-yellow-300">Other</span>
-                  </label>
+              <div className="rounded-xl border border-white/15 bg-black/40 p-4 sm:rounded-2xl sm:p-5">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                  <span className="text-base font-bold text-white mb-1">Gender</span>
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-white sm:gap-4">
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={formState.gender === "male"}
+                        onChange={(event) => handleFieldChange("gender", event.target.value)}
+                        disabled={isSubmitting}
+                        className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
+                        style={{ accentColor: '#fbbf24' }}
+                      />
+                      <span className="text-yellow-300">Male</span>
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={formState.gender === "female"}
+                        onChange={(event) => handleFieldChange("gender", event.target.value)}
+                        disabled={isSubmitting}
+                        className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
+                        style={{ accentColor: '#fbbf24' }}
+                      />
+                      <span className="text-yellow-300">Female</span>
+                    </label>
+                    <label className="flex cursor-pointer items-center gap-2">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="other"
+                        checked={formState.gender === "other"}
+                        onChange={(event) => handleFieldChange("gender", event.target.value)}
+                        disabled={isSubmitting}
+                        className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
+                        style={{ accentColor: '#fbbf24' }}
+                      />
+                      <span className="text-yellow-300">Other</span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          {/* End gradient border wrapper */}
 
           {showCalendarOnly && (
             <section className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
