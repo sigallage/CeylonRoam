@@ -146,6 +146,15 @@ for %%F in ("%AWS_DIR%\ecs-task-auth.json" "%AWS_DIR%\ecs-task-itinerary.json" "
 	aws ecs register-task-definition --cli-input-json file://"%TASK_TMP_DIR%\%%~nxF" --region %AWS_REGION%
 )
 
+REM Step 6b: Update existing ECS services to the latest task definitions
+echo.
+echo Step 6b: Updating ECS services (if they already exist)...
+
+call :UpdateService auth-service ceylonroam-auth-service
+call :UpdateService itinerary-service ceylonroam-itinerary-service
+call :UpdateService route-optimizer-service ceylonroam-route-optimizer-service
+call :UpdateService voice-translation-service ceylonroam-voice-translation-service
+
 REM Step 7: Create ECS cluster (if not exists)
 echo.
 echo Step 7: Creating ECS cluster (if needed)...
@@ -166,3 +175,19 @@ echo For detailed instructions, see AWS_DEPLOYMENT_GUIDE.md
 echo.
 
 pause
+
+goto :eof
+
+:UpdateService
+set "SERVICE_NAME=%~1"
+set "TASK_FAMILY=%~2"
+
+REM If service doesn't exist, update-service fails. We treat that as informational.
+aws ecs update-service --region %AWS_REGION% --cluster %CLUSTER_NAME% --service %SERVICE_NAME% --task-definition %TASK_FAMILY% --force-new-deployment 1>nul 2>nul
+if errorlevel 1 (
+	echo - Skipping %SERVICE_NAME% (service not found or not ready yet)
+) else (
+	echo - Updated %SERVICE_NAME% -> %TASK_FAMILY% (forced new deployment)
+)
+
+exit /b 0

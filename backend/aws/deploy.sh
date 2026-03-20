@@ -139,6 +139,25 @@ aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-route-optimizer.json" --region $AWS_REGION
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-voice-translation.json" --region $AWS_REGION
 
+echo ""
+echo "Step 4b: Updating ECS services (if they already exist)..."
+
+update_service_if_exists() {
+    local service="$1"
+    local task_family="$2"
+
+    if aws ecs update-service --region "$AWS_REGION" --cluster "$CLUSTER_NAME" --service "$service" --task-definition "$task_family" --force-new-deployment >/dev/null 2>&1; then
+        echo "- Updated $service -> $task_family (forced new deployment)"
+    else
+        echo "- Skipping $service (service not found or not ready yet)"
+    fi
+}
+
+update_service_if_exists 'auth-service' 'ceylonroam-auth-service'
+update_service_if_exists 'itinerary-service' 'ceylonroam-itinerary-service'
+update_service_if_exists 'route-optimizer-service' 'ceylonroam-route-optimizer-service'
+update_service_if_exists 'voice-translation-service' 'ceylonroam-voice-translation-service'
+
 # Step 5: Create ECS Cluster (if not exists)
 echo ""
 echo "Step 5: Creating ECS cluster..."
