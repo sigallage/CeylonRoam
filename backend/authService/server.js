@@ -47,6 +47,26 @@ function resolveEnvSecretString(name) {
       const exact = parsed?.[name];
       if (typeof exact === 'string' && exact.trim()) return exact.trim();
 
+      // Common alternative key spellings when the secret is stored as key/value JSON.
+      const lower = name.toLowerCase();
+      const candidates = new Set([
+        lower,
+        lower.replace(/_/g, ''),
+        lower.replace(/_/g, '-'),
+      ]);
+
+      if (name === 'EMAIL_USER') {
+        ['email_user', 'email', 'user', 'username', 'gmail', 'emailUser'].forEach(k => candidates.add(k));
+      }
+      if (name === 'EMAIL_PASSWORD') {
+        ['email_password', 'password', 'pass', 'app_password', 'appPassword', 'emailPass'].forEach(k => candidates.add(k));
+      }
+
+      for (const key of candidates) {
+        const value = parsed?.[key];
+        if (typeof value === 'string' && value.trim()) return value.trim();
+      }
+
       // Common alternative shapes.
       const value = parsed?.value;
       if (typeof value === 'string' && value.trim()) return value.trim();
