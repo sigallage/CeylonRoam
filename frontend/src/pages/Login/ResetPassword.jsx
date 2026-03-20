@@ -51,7 +51,11 @@ function ResetPassword() {
         return;
       }
 
-      setMessage('OTP sent to your email. Check your inbox (or console in dev mode).');
+      if (payload && typeof payload === 'object' && payload.mode === 'development') {
+        setMessage(payload?.note || 'Email is not configured. Check server logs for OTP (development mode).');
+      } else {
+        setMessage('OTP sent to your email. Check your inbox (or spam).');
+      }
       // Navigate to OTP verification page
       setTimeout(() => {
         navigate('/forgot-password', { replace: true, state: { email } });

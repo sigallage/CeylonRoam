@@ -27,7 +27,9 @@ $requiredSecrets = @(
   'ceylonroam/jwt_secret',
   'ceylonroam/google_maps_api_key',
   'ceylonroam/openrouter_api_key',
-  'ceylonroam/session_secret'
+  'ceylonroam/session_secret',
+  'ceylonroam/email_user',
+  'ceylonroam/email_password'
 )
 
 foreach ($s in $requiredSecrets) {
