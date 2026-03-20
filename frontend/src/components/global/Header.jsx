@@ -1,11 +1,38 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logoIcon from '../../assets/icon.jpeg';
-import { LogoutButton } from '../loginButton';
+import { LoginButton, LogoutButton, SignUpButton } from '../loginButton';
 
 const Header = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	useEffect(() => {
+		function readAuthState() {
+			try {
+				setIsLoggedIn(Boolean(window.localStorage.getItem('ceylonroam_user')));
+			} catch {
+				setIsLoggedIn(false);
+			}
+		}
+
+		readAuthState();
+		window.addEventListener('storage', readAuthState);
+		return () => window.removeEventListener('storage', readAuthState);
+	}, [location.pathname]);
+
+	function handleLogout() {
+		try {
+			window.localStorage.removeItem('ceylonroam_user');
+		} catch {
+			// ignore storage issues
+		}
+		setIsLoggedIn(false);
+		setIsMenuOpen(false);
+		navigate('/login');
+	}
 
 	return (
 		<nav className="relative z-20 flex justify-between items-center px-8 py-6 bg-black">
@@ -19,13 +46,22 @@ const Header = () => {
 			</div>
 			
 			<div className="flex items-center gap-4">
-				{/* Profile Icon */}
-				<button 
-					onClick={() => navigate('/profile')}
-					className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden hover:opacity-80 transition-opacity"
-				>
-					<img src={logoIcon} alt="Profile" className="w-full h-full object-cover" />
-				</button>
+				{!isLoggedIn ? (
+					<>
+						<LoginButton
+							onClick={() => {
+								navigate('/login');
+								setIsMenuOpen(false);
+							}}
+						/>
+						<SignUpButton
+							onClick={() => {
+								navigate('/signup');
+								setIsMenuOpen(false);
+							}}
+						/>
+					</>
+				) : null}
 				
 				{/* Hamburger Menu Button */}
 				<button 
@@ -44,7 +80,7 @@ const Header = () => {
 
 			{/* Menu */}
 			{isMenuOpen && (
-				<div className="absolute top-full right-4 mt-2 w-80 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
+				<div className="absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
 					<div className="flex flex-col p-4 gap-2">
 						<a 
 							href="#features" 
@@ -67,9 +103,11 @@ const Header = () => {
 						>
 							About
 						</a>
-						<div className="mt-2 pt-4 border-t border-white/20">
-							<LogoutButton />
-						</div>
+						{isLoggedIn ? (
+							<div className="mt-2 pt-4 border-t border-white/20">
+								<LogoutButton onClick={handleLogout} />
+							</div>
+						) : null}
 					</div>
 				</div>
 			)}

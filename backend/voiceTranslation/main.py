@@ -21,7 +21,8 @@ def _get_cors_settings():
         # Default dev origins:
         # - Vite dev server
         # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
-        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
+        # - Always allow http://localhost:5173 for development
+        return ["http://localhost:5173"], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     if any(p == "*" for p in parts):
@@ -52,20 +53,6 @@ WHISPER_LANG_MAP = {
     'si': 'si',  # Sinhala
     'en': 'en',  # English
     'ta': 'ta',  # Tamil
-    'ar': 'ar',  # Arabic
-    'zh': 'zh',  # Chinese
-    'nl': 'nl',  # Dutch
-    'fr': 'fr',  # French
-    'de': 'de',  # German
-    'hi': 'hi',  # Hindi
-    'it': 'it',  # Italian
-    'ja': 'ja',  # Japanese
-    'ko': 'ko',  # Korean
-    'pl': 'pl',  # Polish
-    'pt': 'pt',  # Portuguese
-    'ru': 'ru',  # Russian
-    'es': 'es',  # Spanish
-    'tr': 'tr',  # Turkish
 }
 
 # Language mapping for NLLB translation model
@@ -73,20 +60,6 @@ NLLB_LANG_MAP = {
     'si': 'sin_Sinh',  # Sinhala
     'en': 'eng_Latn',  # English
     'ta': 'tam_Taml',  # Tamil
-    'ar': 'arb_Arab',  # Arabic
-    'zh': 'zho_Hans',  # Chinese (Simplified)
-    'nl': 'nld_Latn',  # Dutch
-    'fr': 'fra_Latn',  # French
-    'de': 'deu_Latn',  # German
-    'hi': 'hin_Deva',  # Hindi
-    'it': 'ita_Latn',  # Italian
-    'ja': 'jpn_Jpan',  # Japanese
-    'ko': 'kor_Hang',  # Korean
-    'pl': 'pol_Latn',  # Polish
-    'pt': 'por_Latn',  # Portuguese
-    'ru': 'rus_Cyrl',  # Russian
-    'es': 'spa_Latn',  # Spanish
-    'tr': 'tur_Latn',  # Turkish
 }
 
 

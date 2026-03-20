@@ -1,4 +1,7 @@
 # AWS / SSH private keys (never commit)
 ceylonroam-key*.pem
-.npm-cache
-node_modules
+
+# Environment variables (never commit)
+.env
+.env.*
+!.env.example

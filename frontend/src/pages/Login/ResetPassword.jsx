@@ -29,7 +29,7 @@ function ResetPassword() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${authBaseUrl}/api/reset-password/request`, {
+      const response = await fetch(`${authBaseUrl}/api/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,11 +51,11 @@ function ResetPassword() {
         return;
       }
 
-      if (payload?.exists) {
+      setMessage('OTP sent to your email. Check your inbox (or console in dev mode).');
+      // Navigate to OTP verification page
+      setTimeout(() => {
         navigate('/forgot-password', { replace: true, state: { email } });
-      } else {
-        setMessage(payload?.message || 'No account found with that email.');
-      }
+      }, 1500);
     } catch (err) {
       console.error('Reset password request error:', err);
       setMessage('Network error. Please check your connection and try again.');
