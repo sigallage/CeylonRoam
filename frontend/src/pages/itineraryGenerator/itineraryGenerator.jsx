@@ -4,7 +4,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; //used to navigate between pages
 import destinationsRaw from "../../dataset/destinations.json";
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "/api").replace(/\/$/, ""); //ensures axios hits the correct backend in dev/prod
+import { getItineraryApiBaseUrl } from '../../config/backendUrls';
+
+const API_BASE_URL = getItineraryApiBaseUrl(); //ensures axios hits the correct backend in dev/prod
 
 const ROUTE_OPTIMIZER_GENERATED_ITIN_KEY = "ceylonroam:itineraryGenerator:itinerary:v1";
 
@@ -450,7 +452,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
-                    <span className="text-white">Male</span>
+                    <span className="text-yellow-300">Male</span>
                   </label>
                   <label className="flex cursor-pointer items-center gap-2">
                     <input
@@ -462,7 +464,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
-                    <span className="text-white">Female</span>
+                    <span className="text-yellow-300">Female</span>
                   </label>
                   <label className="flex cursor-pointer items-center gap-2">
                     <input
@@ -474,7 +476,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       disabled={isSubmitting}
                       className="h-5 w-5 border-white/60 text-white focus:ring-white sm:h-4 sm:w-4"
                     />
-                    <span className="text-white">Other</span>
+                    <span className="text-yellow-300">Other</span>
                   </label>
                 </div>
               </div>

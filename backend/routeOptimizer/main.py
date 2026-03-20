@@ -63,28 +63,29 @@ except ImportError:  # pragma: no cover
 app = FastAPI(title="CeylonRoam Route Optimizer", version="1.0.0")
 
 
-def _get_cors_origins() -> tuple[list[str], bool]:
+def _get_cors_settings() -> tuple[list[str], bool, str | None]:
     raw = (os.getenv("CORS_ORIGINS") or "").strip()
     if not raw:
-        return [
-            "http://localhost:5173",
-            "http://127.0.0.1:5173",
-        ], True
+        # Default dev origins:
+        # - Vite dev server
+        # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
+        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     if any(p == "*" for p in parts):
         # Browsers don't allow wildcard CORS with credentials.
-        return ["*"], False
+        return ["*"], False, None
 
-    return parts, True
+    return parts, True, None
 
 
-cors_origins, cors_allow_credentials = _get_cors_origins()
+cors_origins, cors_allow_credentials, cors_origin_regex = _get_cors_settings()
 
 # Vite dev server defaults to 5173
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=cors_origin_regex,
     allow_credentials=cors_allow_credentials,
     allow_methods=["*"] ,
     allow_headers=["*"],
@@ -254,4 +255,6 @@ if __name__ == "__main__":
     import uvicorn
 
     # When running this file directly, `reload=True` can't reliably resolve imports.
-    uvicorn.run(app, host="127.0.0.1", port=8002)
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "8002"))
+    uvicorn.run(app, host=host, port=port)
