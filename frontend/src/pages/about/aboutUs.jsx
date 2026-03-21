@@ -218,7 +218,7 @@ const AboutUs = () => {
               <p className="text-center text-green-600 mt-5">Thank you for your feedback!</p>
             )}
           </form>
-        </RevealOnScroll>
+        </div>
       </div>
       </div>
     </div>
