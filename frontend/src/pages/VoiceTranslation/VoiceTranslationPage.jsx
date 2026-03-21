@@ -1,5 +1,6 @@
 ﻿import { useState, useRef, useMemo } from 'react';
 import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
+import { useTheme } from '../../context/ThemeContext';
 
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English' },
@@ -97,6 +98,7 @@ const convertBlobToWavFile = async (blob, fileName) => {
 };
 
 function VoiceTranslation() {
+  const { isDarkMode } = useTheme();
   const [isRecording, setIsRecording] = useState(false);
   const [audioFile, setAudioFile] = useState(null);
   const [transcription, setTranscription] = useState('');
@@ -110,6 +112,39 @@ function VoiceTranslation() {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const apiBaseUrl = useMemo(() => getVoiceTranslationBaseUrl(), []);
+
+  const panelClass = isDarkMode
+    ? 'space-y-3 rounded-2xl border border-[#444] bg-black p-4'
+    : 'space-y-3 rounded-2xl border border-gray-300 bg-white p-4';
+
+  const fieldClass = isDarkMode
+    ? 'w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white'
+    : 'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 shadow-inner focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300';
+
+  const textAreaClass = isDarkMode
+    ? 'min-h-[140px] w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white'
+    : 'min-h-[140px] w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300';
+
+  const uploadInputClass = isDarkMode
+    ? 'w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-[#d8c4ad] file:px-3 file:py-2 file:text-sm file:font-medium file:text-black'
+    : 'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 file:mr-4 file:rounded-md file:border-0 file:bg-amber-200 file:px-3 file:py-2 file:text-sm file:font-medium file:text-black';
+
+  const audioReadyClass = isDarkMode
+    ? 'rounded-xl border border-green-500/40 bg-green-900/20 px-4 py-3 text-sm text-green-200'
+    : 'rounded-xl border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800';
+
+  const buildNetworkErrorMessage = (error, actionLabel) => {
+    const rawMessage = error?.message || '';
+    const isNetworkError =
+      rawMessage === 'Failed to fetch' ||
+      /network|fetch/i.test(rawMessage);
+
+    if (isNetworkError) {
+      return `Could not reach the Voice Translation service (${apiBaseUrl}). Make sure the backend is running, then try again.`;
+    }
+
+    return rawMessage || `Could not ${actionLabel}.`;
+  };
 
   const startRecording = async () => {
     if (!recordingLanguage) {
@@ -194,7 +229,7 @@ function VoiceTranslation() {
       setDetectedLanguage(data.detected_language || languageHint);
     } catch (error) {
       console.error('Transcription error:', error);
-      setTranscription(`Error: ${error.message || 'Could not transcribe audio.'}`);
+      setTranscription(`Error: ${buildNetworkErrorMessage(error, 'transcribe audio')}`);
     } finally {
       setIsTranscribing(false);
     }
@@ -231,7 +266,7 @@ function VoiceTranslation() {
       setTranslationResult(data.text || 'Translation result will appear here');
     } catch (error) {
       console.error('Translation error:', error);
-      setTranslationResult('Error: Could not translate text.');
+      setTranslationResult(`Error: ${buildNetworkErrorMessage(error, 'translate text')}`);
     } finally {
       setIsTranslating(false);
     }
@@ -248,31 +283,30 @@ function VoiceTranslation() {
 
 
   return (
-    <div
-      className="voice-translation min-h-screen w-full px-4 py-10 sm:px-6"
-      style={{ backgroundColor: '#0a0a0a' }}
-    >
+    <div className="voice-translation min-h-screen w-full px-4 py-10 sm:px-6">
       <div className="mx-auto w-full max-w-2xl space-y-8">
-        <div className="space-y-2 text-center text-white">
+        <div className={`space-y-2 text-center ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           <h1 className="text-3xl font-semibold uppercase tracking-wide">Voice Translation</h1>
-          <p className="text-sm italic text-white/80">Speak, transcribe, and translate in a few steps.</p>
+          <p className={`text-sm italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Speak, transcribe, and translate in a few steps.</p>
         </div>
 
         <div
-          className="space-y-6 rounded-3xl bg-black p-5 shadow-xl sm:p-8"
+          className={`space-y-6 rounded-3xl p-5 shadow-xl sm:p-8 ${isDarkMode ? 'bg-black' : 'bg-white'}`}
           style={{
             border: '1px solid transparent',
-            backgroundImage: 'linear-gradient(#000, #000), linear-gradient(to right, #facc15, #f97316)',
+            backgroundImage: isDarkMode
+              ? 'linear-gradient(#000, #000), linear-gradient(to right, #facc15, #f97316)'
+              : 'linear-gradient(#fff, #fff), linear-gradient(to right, #facc15, #f97316)',
             backgroundOrigin: 'border-box',
             backgroundClip: 'padding-box, border-box',
           }}
         >
-          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-            <label className="block text-sm font-bold italic text-white/80">Step 1: Select Speaking Language</label>
+          <section className={panelClass}>
+            <label className={`block text-sm font-bold italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Step 1: Select Speaking Language</label>
             <select
               value={recordingLanguage}
               onChange={(event) => setRecordingLanguage(event.target.value)}
-              className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+              className={fieldClass}
             >
               <option value="">Choose a language</option>
               {LANGUAGE_OPTIONS.map((option) => (
@@ -283,8 +317,8 @@ function VoiceTranslation() {
             </select>
           </section>
 
-          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-            <div className="text-sm font-bold italic text-white/80">Step 2: Record Audio</div>
+          <section className={panelClass}>
+            <div className={`text-sm font-bold italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Step 2: Record Audio</div>
             {!isRecording ? (
               <button
                 onClick={startRecording}
@@ -297,15 +331,17 @@ function VoiceTranslation() {
             ) : (
               <button
                 onClick={stopRecording}
-                className="w-full rounded-xl border border-gray-600 bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#1c1c1c]"
+                className={isDarkMode
+                  ? 'w-full rounded-xl border border-gray-600 bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#1c1c1c]'
+                  : 'w-full rounded-xl border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-900 transition-colors hover:bg-gray-100'}
               >
                 Stop Recording
               </button>
             )}
           </section>
 
-          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-            <label className="block text-sm italic text-white/80">Or Upload an Audio File</label>
+          <section className={panelClass}>
+            <label className={`block text-sm italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Or Upload an Audio File</label>
             <input
               type="file"
               accept="audio/*"
@@ -326,12 +362,12 @@ function VoiceTranslation() {
                   }
                 }
               }}
-              className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-[#d8c4ad] file:px-3 file:py-2 file:text-sm file:font-medium file:text-black"
+              className={uploadInputClass}
               disabled={isPreparingAudio}
             />
           </section>
 
-          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+          <section className={panelClass}>
             <button
               onClick={() => runTranscription()}
               disabled={!audioFile || isTranscribing || isPreparingAudio}
@@ -343,21 +379,21 @@ function VoiceTranslation() {
           </section>
 
           {audioFile && (
-            <div className="rounded-xl border border-green-500/40 bg-green-900/20 px-4 py-3 text-sm text-green-200">
+            <div className={audioReadyClass}>
               Audio ready for transcription ({audioFile.size ? Math.round(audioFile.size / 1024) + ' KB' : 'File loaded'})
             </div>
           )}
 
           {transcription && (
-            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-              <label className="block text-sm font-bold italic text-white/80">Step 3: Review What You Said</label>
+            <section className={panelClass}>
+              <label className={`block text-sm font-bold italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Step 3: Review What You Said</label>
               <textarea
                 value={transcription}
                 onChange={(event) => setTranscription(event.target.value)}
-                className="min-h-[140px] w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+                className={textAreaClass}
               />
               {detectedLanguage && (
-                <p className="text-sm text-white/80">
+                <p className={`text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                   Detected language: {(LANGUAGE_OPTIONS.find((opt) => opt.code === detectedLanguage)?.label || detectedLanguage)}
                 </p>
               )}
@@ -365,12 +401,12 @@ function VoiceTranslation() {
           )}
 
           {transcription && (
-            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-              <label className="block text-sm font-bold italic text-white/80">Step 4: Select a language to translate</label>
+            <section className={panelClass}>
+              <label className={`block text-sm font-bold italic ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>Step 4: Select a language to translate</label>
               <select
                 value={translationLanguage}
                 onChange={(event) => setTranslationLanguage(event.target.value)}
-                className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+                className={fieldClass}
               >
                 {LANGUAGE_OPTIONS.map((option) => (
                   <option key={option.code} value={option.code}>
@@ -390,9 +426,11 @@ function VoiceTranslation() {
           )}
 
           {translationResult && (
-            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-              <h2 className="text-base font-semibold text-white">Translated Result</h2>
-              <div className="min-h-[120px] whitespace-pre-wrap rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white">
+            <section className={panelClass}>
+              <h2 className={`text-base font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Translated Result</h2>
+              <div className={isDarkMode
+                ? 'min-h-[120px] whitespace-pre-wrap rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white'
+                : 'min-h-[120px] whitespace-pre-wrap rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900'}>
                 {translationResult}
               </div>
             </section>
@@ -401,7 +439,7 @@ function VoiceTranslation() {
           {(audioFile || transcription) && (
             <button
               onClick={clearAll}
-              className="w-full rounded-xl border-2 border-yellow-400/70 bg-transparent px-6 py-3 text-sm font-semibold text-yellow-100 transition-colors hover:bg-yellow-500/10 hover:border-yellow-300"
+              className="w-full rounded-xl border-2 border-yellow-300/80 bg-gradient-to-r from-yellow-200 via-yellow-300 to-orange-300 px-6 py-3 text-sm font-semibold text-black transition-colors hover:from-yellow-300 hover:via-yellow-400 hover:to-orange-400 hover:border-yellow-200"
             >
               Clear All
             </button>

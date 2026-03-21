@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Footer = () => {
 	const navigate = useNavigate();
 	return (
-		<footer className="relative py-8 px-8 bg-black">
+		<footer className={footerClass}>
 			<div className="max-w-7xl mx-auto">
 				<div className="flex flex-col md:flex-row justify-between items-center gap-8">
 					{/* Logo */}
@@ -12,7 +12,7 @@ const Footer = () => {
 						<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
 							<img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
 						</div>
-						<h1 className="text-3xl font-bold text-white tracking-tight">
+						<h1 className={titleClass}>
 							Ceylon<span className="text-yellow-400">Roam</span>
 						</h1>
 					</div>
@@ -59,8 +59,8 @@ const Footer = () => {
 				</div>
 
 				{/* Bottom Copyright */}
-				<div className="mt-8 pt-6 border-t border-gray-800 text-center">
-					<p className="text-gray-400 text-sm">© 2025 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
+				<div className={isDarkMode ? 'mt-8 pt-6 border-t border-gray-800 text-center' : 'mt-8 pt-6 border-t border-gray-200 text-center'}>
+					<p className={bodyTextClass}>© 2025 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
 				</div>
 			</div>
 		</footer>

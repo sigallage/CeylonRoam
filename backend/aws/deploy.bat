@@ -40,6 +40,19 @@ REM Step 3: Build and Push Docker Images
 echo.
 echo Step 3: Building and pushing Docker images...
 
+echo.
+echo Syncing destinations dataset for itinerary service...
+if exist "%BACKEND_DIR%\..\frontend\src\dataset\destinations.json" (
+	copy /Y "%BACKEND_DIR%\..\frontend\src\dataset\destinations.json" "%BACKEND_DIR%\itineraryGenerator\destinations.json" >nul
+	if errorlevel 1 (
+		echo WARNING: Failed to copy destinations.json into itineraryGenerator build context.
+	) else (
+		echo ✓ destinations.json synced
+	)
+) else (
+	echo WARNING: Could not find frontend dataset destinations.json (itinerary service will use fallback catalog).
+)
+
 echo Building auth service...
 pushd "%BACKEND_DIR%\authService"
 docker build -t ceylonroam-auth .

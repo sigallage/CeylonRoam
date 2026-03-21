@@ -46,3 +46,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Synced at build time from frontend/src/dataset/destinations.json
+destinations.json

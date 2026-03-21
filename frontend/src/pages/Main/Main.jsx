@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuthBaseUrl } from "../../config/backendUrls";
+import { useTheme } from '../../context/ThemeContext';
 
 const formatList = (items) => {
   if (!items || items.length === 0) {
@@ -28,6 +29,7 @@ const formatTravelDescriptor = (value) => {
 const Main = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { isDarkMode } = useTheme();
   const aiResponse = location.state?.aiResponse ?? null;
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState('');
@@ -112,7 +114,9 @@ const Main = () => {
 
   if (!aiResponse) {
     return (
-      <div className="flex min-h-screen w-full items-center justify-center bg-white px-6 text-center text-black">
+      <div className={isDarkMode
+        ? 'flex min-h-screen w-full items-center justify-center bg-black px-6 text-center text-white'
+        : 'flex min-h-screen w-full items-center justify-center bg-white px-6 text-center text-black'}>
         <p className="text-lg font-medium">No travel prompt generated. Redirecting to the planner…</p>
       </div>
     );
@@ -122,7 +126,10 @@ const Main = () => {
   const dateLabel = metadata?.date_range?.label ?? "Dates not specified";
 
   return (
-    <div className="min-h-screen w-full px-4 py-10 sm:px-6 lg:px-12" style={{ background: '#0a0a0a' }}>
+    <div
+      className="min-h-screen w-full px-4 py-10 sm:px-6 lg:px-12"
+      style={{ background: isDarkMode ? '#0a0a0a' : '#f3f4f6' }}
+    >
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
         {/* Header OUTSIDE the form card */}
         <header className="space-y-2 text-center mb-2">
@@ -139,7 +146,7 @@ const Main = () => {
           >
             Generated Travel Plan
           </h1>
-          <p className="text-base italic text-white">Here is your tailored travel itinerary.</p>
+          <p className={isDarkMode ? 'text-base italic text-white' : 'text-base italic text-gray-700'}>Here is your tailored travel itinerary.</p>
         </header>
         <div
           className="rounded-[2.5rem] p-1 sm:rounded-[3rem]"

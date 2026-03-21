@@ -2,9 +2,11 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
 import bgImage from '../../assets/2.jpg';
+import { useTheme } from '../../context/ThemeContext';
 
 function SignUp() {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const authBaseUrl = useMemo(() => {
     return getAuthBaseUrl();
   }, [])
@@ -117,11 +119,25 @@ function SignUp() {
   };
 
 
+  const pageClass = isDarkMode ? 'min-h-screen w-full bg-black' : 'min-h-screen w-full bg-gray-100';
+  const cardClass = isDarkMode
+    ? 'bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)]'
+    : 'bg-white w-full max-w-[520px] rounded-[24px] border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)]';
+  const titleClass = isDarkMode
+    ? 'text-[30px] font-normal text-white mb-10 text-center leading-tight'
+    : 'text-[30px] font-normal text-gray-900 mb-10 text-center leading-tight';
+  const labelClass = isDarkMode ? 'block mb-2 text-white font-normal text-[17px]' : 'block mb-2 text-gray-900 font-normal text-[17px]';
+  const helperClass = isDarkMode ? 'text-gray-400 text-[14px]' : 'text-gray-500 text-[14px]';
+  const inputBase = isDarkMode
+    ? 'w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border'
+    : 'w-full px-4 border bg-white text-gray-900 rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border';
+  const inputBorderOk = isDarkMode ? 'border-gray-700 focus:border-gray-400' : 'border-gray-300 focus:border-amber-500';
+
   return (
-    <div className="min-h-screen w-full bg-black">
+    <div className={pageClass}>
       <div className="min-h-screen flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden mx-auto">
+          <div className={`${cardClass} overflow-hidden mx-auto`}>
             <img
               src={bgImage}
               alt="Sri Lanka"
@@ -130,23 +146,16 @@ function SignUp() {
             />
           </div>
 
-          <div
-            className="w-full max-w-[520px] rounded-[24px] p-[2.5px] mx-auto"
-            style={{
-              background: 'linear-gradient(to right, #facc15, #f97316)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
-            }}
-          >
-            <div className="bg-black rounded-[22px] w-full h-full px-8 py-10 sm:px-12 sm:py-12">
-              <div className="max-w-[380px] mx-auto">
-              <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
+          <div className={`${cardClass} px-8 py-10 sm:px-12 sm:py-12 mx-auto`}>
+            <div className="max-w-[380px] mx-auto">
+              <h1 className={titleClass}>
                 Create Your Account
               </h1>
 
               <form onSubmit={handleSignup} className="flex flex-col gap-4">
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-white font-normal text-[17px]">
-                    Full Name
+                  <label htmlFor="name" className={labelClass}>
+                    Full Name <span className={helperClass}>(optional)</span>
                   </label>
                   <input
                     type="text"
@@ -155,10 +164,7 @@ function SignUp() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your full name"
-                    required
-                    className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                      errors.name ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                    }`}
+                    className={`${inputBase} ${inputBorderOk}`}
                     style={{ height: '48px' }}
                   />
                   {errors.name ? (
@@ -167,7 +173,7 @@ function SignUp() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-white font-normal text-[17px]">
+                  <label htmlFor="email" className={labelClass}>
                     Email
                   </label>
                   <input
@@ -178,9 +184,7 @@ function SignUp() {
                     onChange={handleChange}
                     placeholder="me@example.com"
                     required
-                    className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                      errors.email ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                    }`}
+                    className={`${inputBase} ${errors.email ? 'border-red-500' : inputBorderOk}`}
                     style={{ height: '48px' }}
                   />
                   {errors.email ? (
@@ -189,118 +193,40 @@ function SignUp() {
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
+                  <label htmlFor="password" className={labelClass}>
                     Password
                   </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      id="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="At least 6 characters"
-                      required
-                      className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                        errors.password ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                      }`}
-                      style={{ height: '48px' }}
-                    />
-                    {formData.password && (
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
-                        tabIndex={-1}
-                        aria-label={showPassword ? 'Hide password' : 'Show password'}
-                        style={{ background: 'none', border: 'none', outline: 'none', cursor: 'pointer' }}
-                      >
-                        {showPassword ? (
-                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                            <defs>
-                              <linearGradient id="eyeGradientSignup" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stopColor="#facc15" />
-                                <stop offset="100%" stopColor="#f97316" />
-                              </linearGradient>
-                            </defs>
-                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
-                          </svg>
-                        ) : (
-                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                            <defs>
-                              <linearGradient id="eyeGradientSignup" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stopColor="#facc15" />
-                                <stop offset="100%" stopColor="#f97316" />
-                              </linearGradient>
-                            </defs>
-                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
-                            <path d="M4 4l16 16" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
-                          </svg>
-                        )}
-                      </button>
-                    )}
-                  </div>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="At least 6 characters"
+                    required
+                    className={`${inputBase} ${errors.password ? 'border-red-500' : inputBorderOk}`}
+                    style={{ height: '48px' }}
+                  />
                   {errors.password ? (
                     <p className="text-red-600 text-[14px] mt-1">{errors.password}</p>
                   ) : null}
                 </div>
 
                 <div>
-                  <label htmlFor="confirmPassword" className="block mb-2 text-white font-normal text-[17px]">
+                  <label htmlFor="confirmPassword" className={labelClass}>
                     Confirm Password
                   </label>
-                  <div className="relative">
-                    <input
-                      type={showConfirmPassword ? "text" : "password"}
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      placeholder="Re-enter your password"
-                      required
-                      className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                        errors.confirmPassword ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                      }`}
-                      style={{ height: '48px' }}
-                    />
-                    {formData.confirmPassword && (
-                      <button
-                        type="button"
-                        onClick={() => setShowConfirmPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
-                        tabIndex={-1}
-                        aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
-                        style={{ background: 'none', border: 'none', outline: 'none', cursor: 'pointer' }}
-                      >
-                        {showConfirmPassword ? (
-                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                            <defs>
-                              <linearGradient id="eyeGradientSignup2" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stopColor="#facc15" />
-                                <stop offset="100%" stopColor="#f97316" />
-                              </linearGradient>
-                            </defs>
-                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
-                          </svg>
-                        ) : (
-                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                            <defs>
-                              <linearGradient id="eyeGradientSignup2" x1="0" y1="0" x2="1" y2="0">
-                                <stop offset="0%" stopColor="#facc15" />
-                                <stop offset="100%" stopColor="#f97316" />
-                              </linearGradient>
-                            </defs>
-                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
-                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
-                            <path d="M4 4l16 16" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
-                          </svg>
-                        )}
-                      </button>
-                    )}
-                  </div>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder="Re-enter your password"
+                    required
+                    className={`${inputBase} ${errors.confirmPassword ? 'border-red-500' : inputBorderOk}`}
+                    style={{ height: '48px' }}
+                  />
                   {errors.confirmPassword ? (
                     <p className="text-red-600 text-[14px] mt-1">{errors.confirmPassword}</p>
                   ) : null}
@@ -319,7 +245,7 @@ function SignUp() {
                     }}
                     className="mt-1 w-4 h-4"
                   />
-                  <label htmlFor="terms" className="text-gray-300 text-[14px]">
+                  <label htmlFor="terms" className={isDarkMode ? 'text-gray-300 text-[14px]' : 'text-gray-700 text-[14px]'}>
                     I agree to the{' '}
                     <a href="#" className="text-[#f59e0b] hover:underline">
                       Terms and Conditions
@@ -354,7 +280,7 @@ function SignUp() {
               </form>
 
 
-              <div className="mt-6 text-center text-[15px] text-gray-300">
+              <div className={isDarkMode ? 'mt-6 text-center text-[15px] text-gray-300' : 'mt-6 text-center text-[15px] text-gray-700'}>
                 <span>Already have an account? </span>
                 <Link to="/login" className="text-[#f59e0b] font-medium hover:underline">
                   Login

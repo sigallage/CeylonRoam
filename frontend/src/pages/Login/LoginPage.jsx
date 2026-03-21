@@ -2,10 +2,12 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
 import bgImage from '../../assets/5.jpg';
+import { useTheme } from '../../context/ThemeContext';
 
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,11 +63,30 @@ function LoginPage() {
   };
 
 
+  const pageClass = isDarkMode ? 'min-h-screen w-full bg-black' : 'min-h-screen w-full bg-gray-100';
+  const cardClass = isDarkMode
+    ? 'bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)]'
+    : 'bg-white w-full max-w-[520px] rounded-[24px] border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)]';
+  const titleClass = isDarkMode
+    ? 'text-[30px] font-normal text-white mb-10 text-center leading-tight'
+    : 'text-[30px] font-normal text-gray-900 mb-10 text-center leading-tight';
+  const labelClass = isDarkMode ? 'block mb-2 text-white font-normal text-[17px]' : 'block mb-2 text-gray-900 font-normal text-[17px]';
+  const inputClass = isDarkMode
+    ? 'w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border'
+    : 'w-full px-4 border border-gray-300 bg-white text-gray-900 rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-amber-500 transition-colors box-border';
+  const dividerBorderClass = isDarkMode ? 'w-full border-t border-gray-800' : 'w-full border-t border-gray-300';
+  const dividerLabelClass = isDarkMode ? 'px-4 bg-black text-gray-300 text-[14px]' : 'px-4 bg-gray-100 text-gray-600 text-[14px]';
+  const googleButtonClass = isDarkMode
+    ? 'w-full py-2.5 bg-black border border-gray-800 rounded-[6px] flex items-center justify-center hover:bg-gray-900 transition-colors'
+    : 'w-full py-2.5 bg-white border border-gray-300 rounded-[6px] flex items-center justify-center hover:bg-gray-50 transition-colors';
+  const footerTextClass = isDarkMode ? 'mt-3 text-center text-[15px] text-gray-300' : 'mt-3 text-center text-[15px] text-gray-700';
+  const linkClass = 'text-[#f59e0b] font-medium hover:underline';
+
   return (
-    <div className="min-h-screen w-full bg-black">
+    <div className={pageClass}>
       <div className="min-h-screen flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden mx-auto">
+          <div className={`${cardClass} overflow-hidden mx-auto`}>
             <img
               src={bgImage}
               alt="Sri Lanka"
@@ -99,7 +120,7 @@ function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="me@example.com"
                     required
-                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    className={inputClass}
                     style={{ height: '48px' }}
                   />
                 </div>
@@ -182,14 +203,19 @@ function LoginPage() {
               </form>
 
 
-              <div className="mt-3 text-center text-[15px] text-gray-300">
+              <div className={footerTextClass}>
                 <div>
+                  <span>Forgot Password? </span>
+                  <Link to="/reset-password" className={linkClass}>
+                    Reset
+                  </Link>
+                </div>
+                <div className="mt-1">
                   <span>New to CeylonRoam? </span>
-                  <Link to="/signup" className="text-[#f59e0b] font-medium hover:underline">
+                  <Link to="/signup" className={linkClass}>
                     Sign-up
                   </Link>
                 </div>
-              </div>
               </div>
             </div>
           </div>
