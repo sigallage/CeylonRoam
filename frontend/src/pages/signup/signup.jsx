@@ -36,6 +36,11 @@ function SignUp() {
   const validateForm = () => {
     const newErrors = {};
 
+    // Full Name validation
+    if (!formData.name || !formData.name.trim()) {
+      newErrors.name = 'Full Name is required';
+    }
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email) {
@@ -128,8 +133,15 @@ function SignUp() {
             />
           </div>
 
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12 mx-auto">
-            <div className="max-w-[380px] mx-auto">
+          <div
+            className="w-full max-w-[520px] rounded-[24px] p-[2.5px] mx-auto"
+            style={{
+              background: 'linear-gradient(to right, #facc15, #f97316)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+            }}
+          >
+            <div className="bg-black rounded-[22px] w-full h-full px-8 py-10 sm:px-12 sm:py-12">
+              <div className="max-w-[380px] mx-auto">
               <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
                 Create Your Account
               </h1>
@@ -137,7 +149,7 @@ function SignUp() {
               <form onSubmit={handleSignup} className="flex flex-col gap-4">
                 <div>
                   <label htmlFor="name" className="block mb-2 text-white font-normal text-[17px]">
-                    Full Name <span className="text-gray-400 text-[14px]">(optional)</span>
+                    Full Name
                   </label>
                   <input
                     type="text"
@@ -146,9 +158,15 @@ function SignUp() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your full name"
-                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    required
+                    className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
+                      errors.name ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
+                    }`}
                     style={{ height: '48px' }}
                   />
+                  {errors.name ? (
+                    <p className="text-red-600 text-[14px] mt-1">{errors.name}</p>
+                  ) : null}
                 </div>
 
                 <div>
@@ -252,8 +270,13 @@ function SignUp() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ height: '45px' }}
+                  className="w-full py-3.5 rounded-[6px] text-[16px] font-medium transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{
+                    height: '45px',
+                    background: 'linear-gradient(to right, #facc15, #f97316)',
+                    color: '#222',
+                    boxShadow: '0 0 12px rgba(250,204,21,0.10)'
+                  }}
                 >
                   {isLoading ? 'Creating Account...' : 'Sign Up'}
                 </button>
@@ -286,6 +309,7 @@ function SignUp() {
                 <Link to="/login" className="text-[#f59e0b] font-medium hover:underline">
                   Login
                 </Link>
+              </div>
               </div>
             </div>
           </div>
