@@ -1,11 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
-import { FaUser } from 'react-icons/fa';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { useTheme } from '../../context/ThemeContext';
 
 const Profile = () => {
 	const navigate = useNavigate();
+	const { isDarkMode } = useTheme();
 	const [userData, setUserData] = useState({
 		username: '',
 		userId: '',
@@ -21,8 +22,31 @@ const Profile = () => {
 	});
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
+	const profileInitial = ((isEditing ? editedData.username : userData.username)?.trim()?.charAt(0)
+		|| userData.email?.trim()?.charAt(0)
+		|| 'U').toUpperCase();
 
 	const authBaseUrl = useMemo(() => getAuthBaseUrl(), [])
+
+	const panelClass = isDarkMode
+		? 'bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md'
+		: 'bg-white border border-yellow-500/30 rounded-2xl shadow-md';
+	const hoverIconButtonClass = isDarkMode
+		? 'absolute top-6 left-6 p-2 hover:bg-white/10 rounded-full transition-colors'
+		: 'absolute top-6 left-6 p-2 hover:bg-black/5 rounded-full transition-colors';
+	const iconClass = isDarkMode ? 'w-6 h-6 text-white/80' : 'w-6 h-6 text-gray-700';
+	const titleClass = isDarkMode ? 'text-2xl font-bold text-yellow-400 text-center mb-8' : 'text-2xl font-bold text-yellow-600 text-center mb-8';
+	const mutedTextClass = isDarkMode ? 'text-white/70' : 'text-gray-600';
+	const labelTextClass = isDarkMode ? 'text-white/70 font-medium' : 'text-gray-700 font-medium';
+	const valueTextClass = isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold';
+	const rowBorderClass = isDarkMode ? 'border-b border-white/10' : 'border-b border-gray-200';
+	const editFieldClass = isDarkMode
+		? 'bg-black/40 text-white font-semibold text-right border border-white/20 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400'
+		: 'bg-white text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-amber-300';
+	const menuButtonClass = isDarkMode
+		? 'w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors'
+		: 'w-full flex items-center justify-between p-5 hover:bg-black/5 transition-colors';
+	const menuIconClass = isDarkMode ? 'w-6 h-6 text-white/60' : 'w-6 h-6 text-gray-500';
 
 	useEffect(() => {
 		// Load user data from localStorage (saved after login)
@@ -190,26 +214,26 @@ const Profile = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-gray-600 to-black">
+		<div className="min-h-screen">
 			{/* Profile Content */}
 			<div className="max-w-4xl mx-auto px-6 py-8">
 				{/* Profile Picture Section */}
-				<div className="bg-white rounded-2xl shadow-md p-8 mb-6 relative">
+				<div className={`${panelClass} p-8 mb-6 relative`}>
 					{/* Cancel Button */}
 					<button 
 						onClick={() => navigate(-1)}
-						className="absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+						className={hoverIconButtonClass}
 					>
-						<FiX className="w-6 h-6 text-gray-700" />
+						<FiX className={iconClass} />
 					</button>
 
 					{/* Centered Title */}
-					<h1 className="text-2xl font-bold text-gray-900 text-center mb-8">User Profile</h1>
+					<h1 className={titleClass}>User Profile</h1>
 
 					<div className="flex flex-col items-center">
 						{/* Profile Picture */}
 						<div className="relative mb-4">
-							<div className="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden border-4 border-gray-200">
+							<div className="w-32 h-32 rounded-full bg-yellow-100 flex items-center justify-center overflow-hidden border-4 border-yellow-200">
 								{(isEditing ? editedData.profilePicture : userData.profilePicture) ? (
 									<img 
 										src={isEditing ? editedData.profilePicture : userData.profilePicture} 
@@ -217,7 +241,7 @@ const Profile = () => {
 										className="w-full h-full object-cover"
 									/>
 								) : (
-									<FaUser className="w-16 h-16 text-gray-500" />
+									<span className="text-5xl font-bold text-gray-600">{profileInitial}</span>
 								)}
 							</div>
 							<label 
@@ -244,50 +268,50 @@ const Profile = () => {
 							)}
 						</div>
 
-						<p className="text-sm text-gray-600 mb-6">Edit Profile Picture</p>
+						<p className={`text-sm mb-6 ${mutedTextClass}`}>Edit Profile Picture</p>
 
 						{/* User Information */}
 						<div className="w-full space-y-4 mb-6">
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">User name</span>
+							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+								<span className={labelTextClass}>User name</span>
 								{isEditing ? (
 									<input
 										type="text"
 										value={editedData.username}
 										onChange={handleUsernameChange}
-										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										className={editFieldClass}
 										placeholder="Enter username"
 									/>
 								) : (
-									<span className="text-gray-900 font-semibold">
+									<span className={valueTextClass}>
 										{userData.username || 'Not set'}
 									</span>
 								)}
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">Email</span>
-								<span className="text-gray-900 font-semibold">
+							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+								<span className={labelTextClass}>Email</span>
+								<span className={valueTextClass}>
 									{userData.email || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">User ID</span>
-								<span className="text-gray-900 font-semibold">
+							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+								<span className={labelTextClass}>User ID</span>
+								<span className={valueTextClass}>
 									{userData.userId || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">Phone</span>
+							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+								<span className={labelTextClass}>Phone</span>
 								{isEditing ? (
 									<input
 										type="tel"
 										value={editedData.phone}
 										onChange={handlePhoneChange}
-										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										className={editFieldClass}
 										placeholder="Enter phone number"
 									/>
 								) : (
-									<span className="text-gray-900 font-semibold">
+									<span className={valueTextClass}>
 										{userData.phone || 'Not set'}
 									</span>
 								)}
@@ -335,20 +359,20 @@ const Profile = () => {
 				</div>
 
 				{/* Menu Options */}
-				<div className="bg-white rounded-2xl shadow-md overflow-hidden">
+				<div className={`${panelClass} overflow-hidden`}>
 					<button 
 						onClick={handleItineraryHistory}
-						className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors border-b border-gray-100"
+						className={`${menuButtonClass} ${isDarkMode ? 'border-b border-white/10' : 'border-b border-gray-200'}`}
 					>
-						<span className="text-gray-900 font-semibold text-lg">Itinerary history</span>
-						<FiChevronRight className="w-6 h-6 text-gray-400" />
+						<span className={isDarkMode ? 'text-white font-semibold text-lg' : 'text-gray-900 font-semibold text-lg'}>Itinerary history</span>
+						<FiChevronRight className={menuIconClass} />
 					</button>
 					<button 
 						onClick={handleResetPassword}
-						className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors"
+						className={menuButtonClass}
 					>
-						<span className="text-gray-900 font-semibold text-lg">Reset Password</span>
-						<FiChevronRight className="w-6 h-6 text-gray-400" />
+						<span className={isDarkMode ? 'text-white font-semibold text-lg' : 'text-gray-900 font-semibold text-lg'}>Reset Password</span>
+						<FiChevronRight className={menuIconClass} />
 					</button>
 				</div>
 			</div>

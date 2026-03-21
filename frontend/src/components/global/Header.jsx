@@ -1,20 +1,43 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logoIcon from '../../assets/icon.jpeg';
-import { LoginButton, LogoutButton, SignUpButton } from '../loginButton';
+import { LoginButton, SignUpButton } from '../loginButton';
+import { useTheme } from '../../context/ThemeContext';
 
 const Header = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { isDarkMode, toggleTheme } = useTheme();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [profile, setProfile] = useState({ name: '', email: '', avatar: '' });
 
 	useEffect(() => {
 		function readAuthState() {
 			try {
-				setIsLoggedIn(Boolean(window.localStorage.getItem('ceylonroam_user')));
+				const rawUser = window.localStorage.getItem('ceylonroam_user');
+				const loggedIn = Boolean(rawUser);
+				setIsLoggedIn(loggedIn);
+
+				if (rawUser) {
+					let parsed = {};
+					try {
+						parsed = JSON.parse(rawUser);
+					} catch {
+						parsed = {};
+					}
+
+					setProfile({
+						name: parsed?.name || parsed?.fullName || '',
+						email: parsed?.email || '',
+						avatar: parsed?.avatar || parsed?.photoURL || parsed?.profileImage || '',
+					});
+				} else {
+					setProfile({ name: '', email: '', avatar: '' });
+				}
 			} catch {
 				setIsLoggedIn(false);
+				setProfile({ name: '', email: '', avatar: '' });
 			}
 		}
 
@@ -30,23 +53,44 @@ const Header = () => {
 			// ignore storage issues
 		}
 		setIsLoggedIn(false);
+		setProfile({ name: '', email: '', avatar: '' });
 		setIsMenuOpen(false);
 		navigate('/login');
 	}
 
+	const firstInitial = (profile.name?.trim()?.charAt(0) || profile.email?.trim()?.charAt(0) || 'U').toUpperCase();
+
+	const navClass = isDarkMode
+		? 'relative z-20 flex justify-between items-center px-8 py-6 bg-black'
+		: 'relative z-20 flex justify-between items-center px-8 py-6 bg-white border-b border-gray-200';
+
+	const titleClass = isDarkMode ? 'text-3xl font-bold text-white tracking-tight' : 'text-3xl font-bold text-gray-900 tracking-tight';
+	const iconButtonClass = isDarkMode ? 'text-white focus:outline-none' : 'text-gray-900 focus:outline-none';
+
 	return (
-		<nav className="relative z-20 flex justify-between items-center px-8 py-6 bg-black">
+		<nav className={navClass}>
 			<div className="flex items-center gap-3 animate-fade-in cursor-pointer" onClick={() => navigate('/') }>
 				<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
 					<img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
 				</div>
-				<h1 className="text-3xl font-bold text-white tracking-tight">
+				<h1 className={titleClass}>
 					Ceylon<span className="text-yellow-400">Roam</span>
 				</h1>
 			</div>
 			
 			<div className="flex items-center gap-4">
-				{!isLoggedIn ? (
+				<button
+					onClick={() => {
+						toggleTheme();
+						setIsMenuOpen(false);
+					}}
+					className="rounded-lg border border-yellow-400/70 bg-gradient-to-r from-yellow-200 via-yellow-300 to-orange-300 px-3 py-2 text-xs font-semibold text-black"
+					title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+				>
+					{isDarkMode ? 'Light Mode' : 'Dark Mode'}
+				</button>
+
+				{!isLoggedIn && (
 					<>
 						<LoginButton
 							onClick={() => {
@@ -61,13 +105,37 @@ const Header = () => {
 							}}
 						/>
 					</>
-				) : (
-					<LogoutButton onClick={handleLogout} />
 				)}
+
+				{isLoggedIn && (
+					<div className={isDarkMode
+						? 'hidden sm:flex items-center gap-3 rounded-full border border-yellow-500/40 bg-black/40 px-3 py-1.5'
+						: 'hidden sm:flex items-center gap-3 rounded-full border border-yellow-500/30 bg-white px-3 py-1.5'}>
+						{profile.avatar ? (
+							<img
+								src={profile.avatar}
+								alt={profile.name}
+								className="h-8 w-8 rounded-full object-cover border border-yellow-500/60"
+							/>
+						) : (
+							<div className="h-8 w-8 rounded-full border border-yellow-500/60 bg-gradient-to-br from-yellow-500 to-amber-600 text-xs font-bold text-black flex items-center justify-center">
+								{firstInitial}
+							</div>
+						)}
+						{profile.name && (
+							<div className={isDarkMode
+								? 'max-w-[160px] truncate text-sm font-semibold text-white'
+								: 'max-w-[160px] truncate text-sm font-semibold text-gray-900'}>
+								{profile.name}
+							</div>
+						)}
+					</div>
+				)}
+
 				
 				{/* Hamburger Menu Button */}
 				<button 
-					className="text-white focus:outline-none"
+					className={iconButtonClass}
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
 				>
 					<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,32 +150,60 @@ const Header = () => {
 
 			{/* Menu */}
 			{isMenuOpen && (
-				<div className="absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
+				<div className={isDarkMode
+					? 'absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in'
+					: 'absolute top-full right-4 mt-2 w-50 bg-white border border-gray-200 rounded-2xl shadow-2xl animate-fade-in'}>
 					<div className="flex flex-col p-4 gap-2">
+						{isLoggedIn && (
+							<button
+								onClick={() => {
+									navigate('/profile');
+									setIsMenuOpen(false);
+								}}
+								className={isDarkMode
+									? 'text-left text-white text-lg font-medium hover:text-yellow-300 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
+									: 'text-left text-gray-900 text-lg font-medium hover:text-yellow-600 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
+							>
+								Profile
+							</button>
+						)}
 						<a 
 							href="#features" 
-							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
+							className={isDarkMode
+								? 'text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
+								: 'text-gray-900 text-lg font-medium hover:text-yellow-600 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
 							onClick={() => setIsMenuOpen(false)}
 						>
 							Features
 						</a>
 						<a 
 							href="#destinations" 
-							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
+							className={isDarkMode
+								? 'text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
+								: 'text-gray-900 text-lg font-medium hover:text-amber-600 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
 							onClick={() => setIsMenuOpen(false)}
 						>
 							Experiences
 						</a>
-						<button
-							type="button"
-							className="text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
-							onClick={() => {
-								setIsMenuOpen(false);
-								navigate('/about-us');
-							}}
+						<a 
+							href="#about" 
+							className={isDarkMode
+								? 'text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
+								: 'text-gray-900 text-lg font-medium hover:text-orange-600 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
+							onClick={() => setIsMenuOpen(false)}
 						>
 							About
-						</button>
+						</a>
+						{isLoggedIn && (
+							<button
+								onClick={handleLogout}
+								className={isDarkMode
+									? 'text-left text-white text-lg font-medium hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 py-3 px-4 rounded-xl'
+									: 'text-left text-gray-900 text-lg font-medium hover:text-red-600 hover:bg-red-500/10 transition-all duration-300 py-3 px-4 rounded-xl'}
+							>
+								Logout
+							</button>
+						)}
 					</div>
 				</div>
 			)}

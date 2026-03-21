@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";  // used for animations
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; //used to navigate between pages
 import destinationsRaw from "../../dataset/destinations.json";
+import { useTheme } from '../../context/ThemeContext';
 
 import { getItineraryApiBaseUrl } from '../../config/backendUrls';
 
@@ -79,6 +80,7 @@ const SRI_LANKA_PROVINCES = [
 
 const ItineraryGenerator = () => { //main component for the itinerary generator
   const navigate = useNavigate();
+	const { isDarkMode } = useTheme();
   const [formState, setFormState] = useState({
     purposeInput: "",
     budget: "",
@@ -314,14 +316,14 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
   return (
     <div
       className="min-h-screen w-full px-3 py-6 sm:px-6 sm:py-10 lg:px-12"
-      style={{ backgroundColor: "#0a0a0a" }}
+			style={{ backgroundColor: isDarkMode ? '#0a0a0a' : '#f3f4f6' }}
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 sm:gap-10">
-        <div className="space-y-2 text-center text-white">
+        <div className={isDarkMode ? 'space-y-2 text-center text-white' : 'space-y-2 text-center text-gray-900'}>
           <h1 className="text-2xl font-semibold uppercase tracking-wide sm:text-3xl bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,193,7,0.25)]">
             Plan your trip
           </h1>
-          <p className="text-sm italic text-white/80 sm:text-base">Enter your trip details.</p>
+				<p className={isDarkMode ? 'text-sm italic text-white/80 sm:text-base' : 'text-sm italic text-gray-700 sm:text-base'}>Enter your trip details.</p>
         </div>
 
         <form className="flex flex-col gap-4 sm:gap-6" onSubmit={handleSubmit}>
