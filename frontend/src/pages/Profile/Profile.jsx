@@ -192,26 +192,26 @@ const Profile = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-gray-600 to-black">
+		<div className="min-h-screen bg-black">
 			{/* Profile Content */}
 			<div className="max-w-4xl mx-auto px-6 py-8">
 				{/* Profile Picture Section */}
-				<div className="bg-white rounded-2xl shadow-md p-8 mb-6 relative">
+				<div className="bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md p-8 mb-6 relative">
 					{/* Cancel Button */}
 					<button 
 						onClick={() => navigate(-1)}
-						className="absolute top-6 left-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+						className="absolute top-6 left-6 p-2 hover:bg-white/10 rounded-full transition-colors"
 					>
-						<FiX className="w-6 h-6 text-gray-700" />
+						<FiX className="w-6 h-6 text-white/80" />
 					</button>
 
 					{/* Centered Title */}
-					<h1 className="text-2xl font-bold text-gray-900 text-center mb-8">User Profile</h1>
+					<h1 className="text-2xl font-bold text-yellow-400 text-center mb-8">User Profile</h1>
 
 					<div className="flex flex-col items-center">
 						{/* Profile Picture */}
 						<div className="relative mb-4">
-							<div className="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden border-4 border-gray-200">
+							<div className="w-32 h-32 rounded-full bg-yellow-100 flex items-center justify-center overflow-hidden border-4 border-yellow-200">
 								{(isEditing ? editedData.profilePicture : userData.profilePicture) ? (
 									<img 
 										src={isEditing ? editedData.profilePicture : userData.profilePicture} 
@@ -246,50 +246,50 @@ const Profile = () => {
 							)}
 						</div>
 
-						<p className="text-sm text-gray-600 mb-6">Edit Profile Picture</p>
+						<p className="text-sm text-white/70 mb-6">Edit Profile Picture</p>
 
 						{/* User Information */}
 						<div className="w-full space-y-4 mb-6">
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">User name</span>
+							<div className="flex items-center justify-between py-3 px-24 border-b border-white/10">
+								<span className="text-white/70 font-medium">User name</span>
 								{isEditing ? (
 									<input
 										type="text"
 										value={editedData.username}
 										onChange={handleUsernameChange}
-										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										className="bg-black/40 text-white font-semibold text-right border border-white/20 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"
 										placeholder="Enter username"
 									/>
 								) : (
-									<span className="text-gray-900 font-semibold">
+									<span className="text-white font-semibold">
 										{userData.username || 'Not set'}
 									</span>
 								)}
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">Email</span>
-								<span className="text-gray-900 font-semibold">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-white/10">
+								<span className="text-white/70 font-medium">Email</span>
+								<span className="text-white font-semibold">
 									{userData.email || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">User ID</span>
-								<span className="text-gray-900 font-semibold">
+							<div className="flex items-center justify-between py-3 px-24 border-b border-white/10">
+								<span className="text-white/70 font-medium">User ID</span>
+								<span className="text-white font-semibold">
 									{userData.userId || 'Not set'}
 								</span>
 							</div>
-							<div className="flex items-center justify-between py-3 px-24 border-b border-gray-200">
-								<span className="text-gray-600 font-medium">Phone</span>
+							<div className="flex items-center justify-between py-3 px-24 border-b border-white/10">
+								<span className="text-white/70 font-medium">Phone</span>
 								{isEditing ? (
 									<input
 										type="tel"
 										value={editedData.phone}
 										onChange={handlePhoneChange}
-										className="text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-gray-800"
+										className="bg-black/40 text-white font-semibold text-right border border-white/20 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"
 										placeholder="Enter phone number"
 									/>
 								) : (
-									<span className="text-gray-900 font-semibold">
+									<span className="text-white font-semibold">
 										{userData.phone || 'Not set'}
 									</span>
 								)}
@@ -337,20 +337,20 @@ const Profile = () => {
 				</div>
 
 				{/* Menu Options */}
-				<div className="bg-white rounded-2xl shadow-md overflow-hidden">
+				<div className="bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md overflow-hidden">
 					<button 
 						onClick={handleItineraryHistory}
-						className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors border-b border-gray-100"
+						className="w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors border-b border-white/10"
 					>
-						<span className="text-gray-900 font-semibold text-lg">Itinerary history</span>
-						<FiChevronRight className="w-6 h-6 text-gray-400" />
+						<span className="text-white font-semibold text-lg">Itinerary history</span>
+						<FiChevronRight className="w-6 h-6 text-white/60" />
 					</button>
 					<button 
 						onClick={handleResetPassword}
-						className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors"
+						className="w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors"
 					>
-						<span className="text-gray-900 font-semibold text-lg">Reset Password</span>
-						<FiChevronRight className="w-6 h-6 text-gray-400" />
+						<span className="text-white font-semibold text-lg">Reset Password</span>
+						<FiChevronRight className="w-6 h-6 text-white/60" />
 					</button>
 				</div>
 			</div>
