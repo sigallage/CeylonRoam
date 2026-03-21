@@ -1,4 +1,44 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
+const RevealOnScroll = ({ as: Component = "div", children, className = "", delay = 0 }) => {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.16 }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <Component
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={[
+        className,
+        "transition-all duration-700 ease-out will-change-transform",
+        isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-95",
+      ].join(" ")}
+    >
+      {children}
+    </Component>
+  );
+};
 
 const AboutUs = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "", rating: 0 });
@@ -65,7 +105,10 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-[#050505]">
       <div className="max-w-5xl mx-auto px-5 py-10">
-        <div className="rounded-3xl border-2 border-transparent px-6 py-8 mb-12 shadow-[0_0_0_1px_rgba(251,191,36,0.35)] bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+        <RevealOnScroll
+          delay={0}
+          className="rounded-3xl border-2 border-transparent px-6 py-8 mb-12 shadow-[0_0_0_1px_rgba(251,191,36,0.35)] bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+        >
           <h1 className="text-center text-[#fbbf24] mb-7 text-4xl md:text-5xl font-semibold tracking-wide">
             ABOUT US
           </h1>
@@ -87,10 +130,13 @@ const AboutUs = () => {
             ceylon.roam144@gmail.com and let’s make travel better together. Join us on CeylonRoam and embark on a
             journey filled with adventure, discovery, and unforgettable memories.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <div className="grid gap-6 mb-12 md:grid-cols-2">
-          <div className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+          <RevealOnScroll
+            delay={80}
+            className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+          >
             <h2 className="text-[#fbbf24] text-2xl md:text-[26px] mb-4 font-semibold">
               Why CeylonRoam Matters
             </h2>
@@ -107,9 +153,12 @@ const AboutUs = () => {
             <p className="text-gray-200 text-base md:text-lg leading-relaxed">
               CeylonRoam was created to solve these problems and enhance the overall travel experience.
             </p>
-          </div>
+          </RevealOnScroll>
 
-          <div className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+          <RevealOnScroll
+            delay={160}
+            className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+          >
             <h2 className="text-[#fbbf24] text-2xl md:text-[26px] mb-4 font-semibold">
               Our Vision
             </h2>
@@ -120,59 +169,89 @@ const AboutUs = () => {
             <p className="text-gray-200 text-base md:text-lg leading-relaxed">
               CeylonRoam is more than just a travel app, it’s your smart companion for discovering Sri Lanka.
             </p>
-          </div>
+          </RevealOnScroll>
         </div>
 
-        <div className="mt-10 mb-10 rounded-3xl border-2 border-transparent px-6 py-7 shadow-xl bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+        <RevealOnScroll
+          delay={140}
+          className="mt-10 mb-10 rounded-3xl border-2 border-transparent px-6 py-7 shadow-xl bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+        >
           <h2 className="text-center text-[#fbbf24] text-2xl md:text-3xl font-semibold mb-6">Founders</h2>
           <ul className="grid gap-6 max-w-4xl mx-auto list-none p-0 md:grid-cols-3">
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            <RevealOnScroll
+              as="li"
+              delay={0}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-amber-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 SG
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Sasanka Gallage</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            </RevealOnScroll>
+            <RevealOnScroll
+              as="li"
+              delay={80}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 TF
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Tashmi Fernando</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            </RevealOnScroll>
+            <RevealOnScroll
+              as="li"
+              delay={160}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-lime-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 OG
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Oshadhi Goonewardena</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            </RevealOnScroll>
+            <RevealOnScroll
+              as="li"
+              delay={240}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-red-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 RD
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Rashmika Dewangi</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            </RevealOnScroll>
+            <RevealOnScroll
+              as="li"
+              delay={320}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 TP
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Thamindu Perera</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
-            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            </RevealOnScroll>
+            <RevealOnScroll
+              as="li"
+              delay={400}
+              className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            >
               <div className="bg-cyan-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 SJ
               </div>
               <div className="font-semibold mt-3 text-lg text-gray-100">Sandaru Jayasekara</div>
               <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
-            </li>
+            </RevealOnScroll>
           </ul>
-        </div>
+        </RevealOnScroll>
 
         <div className="mt-16 flex justify-center">
-          <div className="rounded-3xl border-2 border-transparent px-6 py-8 max-w-sm w-full flex flex-col items-center shadow-lg bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+          <RevealOnScroll
+            delay={180}
+            className="rounded-3xl border-2 border-transparent px-6 py-8 max-w-sm w-full flex flex-col items-center shadow-lg bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+          >
             <div className="mb-6">{/* Icon removed */}</div>
             <h2 className="text-center text-2xl md:text-[28px] font-bold text-[#fbbf24] mb-8">Contact Us</h2>
             <form onSubmit={handleSubmit} className="w-full space-y-4">
@@ -236,7 +315,7 @@ const AboutUs = () => {
               <p className="text-center text-green-600 mt-5">Thank you for your feedback!</p>
             )}
           </form>
-        </div>
+        </RevealOnScroll>
       </div>
       </div>
     </div>
