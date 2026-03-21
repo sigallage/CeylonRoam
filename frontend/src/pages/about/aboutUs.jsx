@@ -63,13 +63,13 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black/60 backdrop-blur-md">
+    <div className="min-h-screen bg-[#050505]">
       <div className="max-w-5xl mx-auto px-5 py-10">
-        <div className="bg-gray-200/90 border border-black/10 rounded-3xl px-6 py-8 mb-12">
-          <h1 className="text-center text-[#7a1818] mb-7 text-4xl md:text-5xl font-semibold tracking-wide">
+        <div className="rounded-3xl border-2 border-transparent px-6 py-8 mb-12 shadow-[0_0_0_1px_rgba(251,191,36,0.35)] bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+          <h1 className="text-center text-[#fbbf24] mb-7 text-4xl md:text-5xl font-semibold tracking-wide">
             ABOUT US
           </h1>
-          <p className="text-center text-gray-800 text-lg mb-7 leading-relaxed">
+          <p className="text-center text-gray-200 text-lg mb-7 leading-relaxed">
             <b>CeylonRoam</b> is an AI-powered travel assistant designed to transform how people explore Sri Lanka. Our
             platform combines advanced artificial intelligence with modern web technologies to provide travelers with a
             seamless, personalized, and stress-free journey. What sets CeylonRoam apart is our use of advanced AI to
@@ -77,12 +77,12 @@ const AboutUs = () => {
             one easy-to-use app. Whether you’re a local adventurer or a first-time visitor, CeylonRoam helps you save
             time, discover hidden gems, and travel confidently.
           </p>
-          <p className="text-center text-gray-800 text-lg mb-7 leading-relaxed">
+          <p className="text-center text-gray-200 text-lg mb-7 leading-relaxed">
             <b>Our mission</b> is to make travel in Sri Lanka smarter, easier, and more memorable by connecting
             travelers with enriching experiences while supporting sustainable tourism. We believe every journey should
             be unique, accessible, and filled with discovery.
           </p>
-          <p className="text-center text-gray-800 text-lg leading-relaxed">
+          <p className="text-center text-gray-200 text-lg leading-relaxed">
             Have questions, feedback, or partnership ideas? We’d love to hear from you! Get in touch with us at
             ceylon.roam144@gmail.com and let’s make travel better together. Join us on CeylonRoam and embark on a
             journey filled with adventure, discovery, and unforgettable memories.
@@ -90,91 +90,91 @@ const AboutUs = () => {
         </div>
 
         <div className="grid gap-6 mb-12 md:grid-cols-2">
-          <div className="bg-gray-200/90 border border-black/10 rounded-3xl px-6 py-7 shadow-md">
-            <h2 className="text-[#7a1818] text-2xl md:text-[26px] mb-4 font-semibold">
+          <div className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            <h2 className="text-[#fbbf24] text-2xl md:text-[26px] mb-4 font-semibold">
               Why CeylonRoam Matters
             </h2>
-            <p className="text-gray-800 text-base md:text-lg mb-4 leading-relaxed">
+            <p className="text-gray-200 text-base md:text-lg mb-4 leading-relaxed">
               Tourism plays a vital role in Sri Lanka’s economy, contributing significantly to employment and national
               income. With over 1.48 million tourists visiting the country in 2023, the industry is rapidly growing.
             </p>
-            <p className="text-gray-800 text-base md:text-lg mb-2">However, travelers still face several challenges:</p>
-            <ul className="list-disc pl-5 mb-4 text-gray-800 text-base md:text-lg space-y-1">
+            <p className="text-gray-200 text-base md:text-lg mb-2">However, travelers still face several challenges:</p>
+            <ul className="list-disc pl-5 mb-4 text-gray-200 text-base md:text-lg space-y-1">
               <li>Fragmented and unreliable travel information</li>
               <li>Language barriers with local communities</li>
               <li>Complex transportation and route planning</li>
             </ul>
-            <p className="text-gray-800 text-base md:text-lg leading-relaxed">
+            <p className="text-gray-200 text-base md:text-lg leading-relaxed">
               CeylonRoam was created to solve these problems and enhance the overall travel experience.
             </p>
           </div>
 
-          <div className="bg-gray-200/90 border border-black/10 rounded-3xl px-6 py-7 shadow-md">
-            <h2 className="text-[#7a1818] text-2xl md:text-[26px] mb-4 font-semibold">
+          <div className="rounded-3xl border-2 border-transparent px-6 py-7 shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+            <h2 className="text-[#fbbf24] text-2xl md:text-[26px] mb-4 font-semibold">
               Our Vision
             </h2>
-            <p className="text-gray-800 text-base md:text-lg mb-4 leading-relaxed">
+            <p className="text-gray-200 text-base md:text-lg mb-4 leading-relaxed">
               We envision a future where every traveler can explore Sri Lanka with confidence, ease, and personalized
               guidance powered by AI.
             </p>
-            <p className="text-gray-800 text-base md:text-lg leading-relaxed">
-              CeylonRoam is more than just a travel app — it’s your smart companion for discovering Sri Lanka.
+            <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+              CeylonRoam is more than just a travel app, it’s your smart companion for discovering Sri Lanka.
             </p>
           </div>
         </div>
 
-        <div className="mt-10 mb-10 bg-gray-200/90 border border-black/10 rounded-3xl px-6 py-7 shadow-xl">
-          <h2 className="text-center text-[#7a1818] text-2xl md:text-3xl font-semibold mb-6">Founders</h2>
+        <div className="mt-10 mb-10 rounded-3xl border-2 border-transparent px-6 py-7 shadow-xl bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
+          <h2 className="text-center text-[#fbbf24] text-2xl md:text-3xl font-semibold mb-6">Founders</h2>
           <ul className="grid gap-6 max-w-4xl mx-auto list-none p-0 md:grid-cols-3">
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-amber-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 SG
               </div>
-              <div className="font-semibold mt-3 text-lg">Sasanka Gallage</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Sasanka Gallage</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 TF
               </div>
-              <div className="font-semibold mt-3 text-lg">Tashmi Fernando</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Tashmi Fernando</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-lime-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 OG
               </div>
-              <div className="font-semibold mt-3 text-lg">Oshadhi Goonewardena</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Oshadhi Goonewardena</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-red-400 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 RD
               </div>
-              <div className="font-semibold mt-3 text-lg">Rashmika Dewangi</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Rashmika Dewangi</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 TP
               </div>
-              <div className="font-semibold mt-3 text-lg">Thamindu Perera</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Thamindu Perera</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
-            <li className="text-center bg-gray-200 shadow-md rounded-2xl p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03]">
+            <li className="text-center rounded-2xl border border-transparent p-6 flex flex-col items-center transition duration-200 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.03] shadow-md bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
               <div className="bg-cyan-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold">
                 SJ
               </div>
-              <div className="font-semibold mt-3 text-lg">Sandaru Jayasekara</div>
-              <div className="text-gray-500 mt-1 text-sm">Full-Stack Developer</div>
+              <div className="font-semibold mt-3 text-lg text-gray-100">Sandaru Jayasekara</div>
+              <div className="text-gray-400 mt-1 text-sm">Full-Stack Developer</div>
             </li>
           </ul>
         </div>
 
         <div className="mt-16 flex justify-center">
-          <div className="bg-white shadow-lg rounded-3xl px-6 py-8 max-w-sm w-full flex flex-col items-center">
+          <div className="rounded-3xl border-2 border-transparent px-6 py-8 max-w-sm w-full flex flex-col items-center shadow-lg bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]">
             <div className="mb-6">{/* Icon removed */}</div>
-            <h2 className="text-center text-2xl md:text-[28px] font-bold text-gray-900 mb-8">Contact Us</h2>
+            <h2 className="text-center text-2xl md:text-[28px] font-bold text-[#fbbf24] mb-8">Contact Us</h2>
             <form onSubmit={handleSubmit} className="w-full space-y-4">
               <input
                 type="text"
@@ -183,7 +183,7 @@ const AboutUs = () => {
                 onChange={handleChange}
                 required
                 placeholder="Full Name"
-                className="w-full px-4 py-3 text-base border border-gray-200 rounded-lg outline-none bg-gray-100 focus:ring-2 focus:ring-[#7a1818]/60 focus:border-transparent"
+                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
               />
               <input
                 type="email"
@@ -192,7 +192,7 @@ const AboutUs = () => {
                 onChange={handleChange}
                 required
                 placeholder="Email Address"
-                className="w-full px-4 py-3 text-base border border-gray-200 rounded-lg outline-none bg-gray-100 focus:ring-2 focus:ring-[#7a1818]/60 focus:border-transparent"
+                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
               />
               <textarea
                 name="message"
@@ -200,13 +200,13 @@ const AboutUs = () => {
                 onChange={handleChange}
                 rows={3}
                 placeholder="Your Message"
-                className="w-full px-4 py-3 text-base border border-gray-200 rounded-lg outline-none bg-gray-100 focus:ring-2 focus:ring-[#7a1818]/60 focus:border-transparent resize-none"
+                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent resize-none bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
               />
               <div className="flex justify-between mb-6">
               {[1,2,3,4,5].map(star => (
                 <span
                   key={star}
-                  className="cursor-pointer bg-white rounded-lg px-3 py-1 border border-gray-200 inline-block hover:border-[#ffb300]/70"
+                  className="cursor-pointer rounded-lg px-3 py-1 border border-transparent inline-block bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box] hover:bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffef9e_0%,#ffd76a_45%,#ff8a2b_100%)]"
                   onClick={() => handleRating(star)}
                   aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                 >
@@ -225,7 +225,7 @@ const AboutUs = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-black text-white py-3 font-bold tracking-wide text-lg rounded-full shadow-md flex items-center justify-center disabled:opacity-70"
+              className="w-full bg-gradient-to-r from-[#ffe066] via-[#ffc233] to-[#ff6a00] text-black py-3 font-bold tracking-wide text-lg rounded-full shadow-md flex items-center justify-center disabled:opacity-70"
             >
               {isSubmitting ? "Sending..." : "Send"}
             </button>
