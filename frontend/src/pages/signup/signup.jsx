@@ -286,7 +286,6 @@ function SignUp() {
                   Login
                 </Link>
               </div>
-              </div>
             </div>
           </div>
         </div>
