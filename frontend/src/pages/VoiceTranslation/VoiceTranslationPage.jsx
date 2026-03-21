@@ -260,10 +260,15 @@ function VoiceTranslation() {
 
         <div
           className="space-y-6 rounded-3xl bg-black p-5 shadow-xl sm:p-8"
-          style={{ boxShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2)' }}
+          style={{
+            border: '1px solid transparent',
+            backgroundImage: 'linear-gradient(#000, #000), linear-gradient(to right, #facc15, #f97316)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
+          }}
         >
           <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-            <label className="block text-sm italic text-white/80">Step 1: Select Speaking Language</label>
+            <label className="block text-sm font-bold italic text-white/80">Step 1: Select Speaking Language</label>
             <select
               value={recordingLanguage}
               onChange={(event) => setRecordingLanguage(event.target.value)}
@@ -279,7 +284,7 @@ function VoiceTranslation() {
           </section>
 
           <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-            <div className="text-sm italic text-white/80">Step 2: Record Audio</div>
+            <div className="text-sm font-bold italic text-white/80">Step 2: Record Audio</div>
             {!isRecording ? (
               <button
                 onClick={startRecording}
@@ -345,7 +350,7 @@ function VoiceTranslation() {
 
           {transcription && (
             <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-              <h2 className="text-base font-semibold text-white">Step 3: Review What You Said</h2>
+              <label className="block text-sm font-bold italic text-white/80">Step 3: Review What You Said</label>
               <textarea
                 value={transcription}
                 onChange={(event) => setTranscription(event.target.value)}
@@ -361,7 +366,7 @@ function VoiceTranslation() {
 
           {transcription && (
             <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
-              <label className="block text-sm italic text-white/80">Step 4: Select a language to translate</label>
+              <label className="block text-sm font-bold italic text-white/80">Step 4: Select a language to translate</label>
               <select
                 value={translationLanguage}
                 onChange={(event) => setTranslationLanguage(event.target.value)}
@@ -376,7 +381,8 @@ function VoiceTranslation() {
               <button
                 onClick={translateText}
                 disabled={isTranslating || isPreparingAudio}
-                className="w-full rounded-xl border border-gray-600 bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#1c1c1c] disabled:cursor-not-allowed disabled:border-gray-700 disabled:text-white/50"
+                className="w-full rounded-xl border border-yellow-400/60 bg-gradient-to-r from-yellow-500 to-amber-600 px-6 py-3 text-base font-semibold text-white shadow transition-all duration-200 hover:shadow-yellow-500/40 disabled:cursor-not-allowed disabled:border-gray-700 disabled:bg-gray-700 disabled:text-white/50 disabled:shadow-none"
+                style={{ color: '#ffffff' }}
               >
                 {isTranslating ? 'Translating...' : 'Translate Text'}
               </button>
@@ -395,7 +401,7 @@ function VoiceTranslation() {
           {(audioFile || transcription) && (
             <button
               onClick={clearAll}
-              className="w-full rounded-xl border border-gray-700 bg-transparent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#1c1c1c]"
+              className="w-full rounded-xl border-2 border-yellow-400/70 bg-transparent px-6 py-3 text-sm font-semibold text-yellow-100 transition-colors hover:bg-yellow-500/10 hover:border-yellow-300"
             >
               Clear All
             </button>
