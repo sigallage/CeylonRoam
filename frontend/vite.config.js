@@ -40,11 +40,85 @@ export default defineConfig({
       ignored: ['**/android/**', '**/dist/**', '**/build/**'],
     },
     proxy: {
-      '/api': {
-        target: 'http://localhost:8000',
+      // Route Optimizer (FastAPI) does NOT use the /api prefix.
+      // Use explicit paths (instead of regex keys) to ensure Vite matches them.
+      '/api/optimize': {
+        target: 'http://127.0.0.1:8002',
         changeOrigin: true,
         secure: false,
-        // Don't rewrite the path - backend expects /api prefix
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/api/traffic-route': {
+        target: 'http://127.0.0.1:8002',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+
+      // Auth service (Express) uses the /api prefix.
+      // Proxying through Vite keeps requests same-origin in web dev,
+      // avoiding CORS + SameSite cookie issues for session-based OTP flows.
+      '/api/signup': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/login': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/profile': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/forgot-password': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/verify-otp': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/reset-password': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/reset-password/request': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/contact-us': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/debug/users': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/itineraries': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/api/protected': {
+        target: 'http://127.0.0.1:5001',
+        changeOrigin: true,
+        secure: false,
+      },
+
+      // Itinerary Generator (FastAPI) DOES use the /api prefix.
+      '/api': {
+        target: 'http://127.0.0.1:8001',
+        changeOrigin: true,
+        secure: false,
       },
     },
   },

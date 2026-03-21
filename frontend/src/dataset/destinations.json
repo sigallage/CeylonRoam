@@ -3828,29 +3828,6 @@
 
 
   {
-    "id": "sinharaja",
-    "name": "Sinharaja Forest Reserve",
-    "latitude": 6.3833,
-    "longitude": 80.4333,
-    "description": "Sinharaja Forest Reserve is Sri Lanka's most biologically extraordinary place — the last remaining viable area of primary tropical lowland rainforest on the island, and one of the most biodiverse places on earth for its size. Located approximately 90 km southeast of Colombo in the southwest wet zone, it was declared a UNESCO Biosphere Reserve in April 1978 and inscribed as a UNESCO Natural World Heritage Site in 1988 under Criteria ix (outstanding example of ongoing ecological and biological processes) and x (exceptional biodiversity and threatened species). The reserve covers 8,864 hectares (88 km²), a narrow 21-km-long by 4-km-wide strip of ridges and valleys drained by the Gin Ganga to the south and the Kalu Ganga to the north. Altitude ranges from 300 to 1,170 metres. Annual rainfall is extraordinary — between 3,614 and 5,006 mm — making Sinharaja one of the wettest places in Sri Lanka. The biodiversity statistics are exceptional: over 60% of the reserve's tree species are endemic to Sri Lanka (out of 211 woody tree species, 139 are endemic); the reserve harbours 85–95% of Sri Lanka's 26 endemic bird species, over 50% of endemic mammals and butterflies, and 23% of all Sri Lanka's endemic species. Key endemic bird species include the Sri Lanka Blue Magpie (Urocissa ornata), Red-faced Malkoha (Phaenicophaeus pyrrhocephalus), Green-billed Coucal (Centropus chlororrhynchus — one of Sri Lanka's rarest birds), Sri Lanka White-headed Starling (Sturnus senex), and Ashy-headed Babbler (Garrulax cinereifrons). Threatened mammals include the Sri Lankan Leopard (Panthera pardus kotiya), Sri Lankan Elephant, and the endemic Purple-faced Langur (Trachypithecus vetulus). Sinharaja's bird-following mixed-species flocks — where up to 20 bird species join together in feeding parties — are a noted phenomenon giving birdwatchers reliable close encounters. Reptiles include the endemic Green Pit Viper and Hump-nosed Viper. Leeches are extremely abundant on trails — particularly during the southwest monsoon — and leech-proof socks/gaiters are strongly recommended. The reserve has four main entrances: Kudawa (northwest — the primary tourist entrance, with the Conservation Centre and resident guides), Weddagala, Rakwana (northeast), and Deniyaya-Mederipitiya (southeast). All visitors must be accompanied by a licensed Forest Department guide. Visitor numbers are capped to protect the ecosystem. The best time to visit is during the inter-monsoon seasons: January–April and August–September. May–June (southwest monsoon) and October–November (northeast monsoon) bring heavy rain and greatly reduced visibility.",
-    "image_url": "",
-    "category": "UNESCO World Heritage / Nature Reserve / Birdwatching",
-    "crowd_info": {
-      "peak_months": ["January", "February", "March", "August", "September"],
-      "off_peak_months": ["May", "June", "October", "November"],
-      "best_time_to_visit": "January–April for the best weather and peak birding (mixed-species flocks most active); August–September (second inter-monsoon). Early morning (6:00–9:00 AM) for peak bird activity. Book licensed guides in advance, especially for weekends."
-    },
-    "cultural_guidelines": {
-      "dress_code": "Long-sleeved shirts and long trousers for leech and insect protection; waterproof footwear or boots; neutral/dark colours; no bright clothing that disturbs wildlife",
-      "behavior": "Mandatory licensed guide at all times; stay on designated trails; no littering; no noise (silence is essential for bird and mammal sightings); do not collect plants or animals; no flash photography of nocturnal species",
-      "entry_requirements": "National Heritage Wilderness Area entry permit required (purchased at entrance); mandatory licensed guide fee; per-person entry + guide fees (verify current rates at the Kudawa Conservation Centre)"
-    },
-    "entry_fee": "Entry permit + mandatory guide fee (verify current rates; approximately USD 10–15 per person for entry, plus guide fees)",
-    "opening_hours": "6:00 AM – 6:00 PM daily; book guide in advance for early morning birding"
-  },
-
-
-  {
     "id": "bentota",
     "name": "Bentota",
     "latitude": 6.4247,
@@ -3870,29 +3847,6 @@
     },
     "entry_fee": "Free (beach); water sports, boat safaris, and nearby attractions at commercial rates",
     "opening_hours": "Open 24 hours (beach); water sports centres typically 8:00 AM – 6:00 PM"
-  },
-
-
-  {
-    "id": "st-marys-church",
-    "name": "St. Mary's Cathedral",
-    "latitude": 6.0359,
-    "longitude": 80.2151,
-    "description": "St. Mary's Cathedral is the Roman Catholic cathedral of Galle, serving as the seat of the Diocese of Galle and the principal Catholic place of worship for the region. Roman Catholicism was introduced to the southern coast of Sri Lanka during the Portuguese colonial period (1505–1640), when the Portuguese actively — and sometimes coercively — converted coastal communities to Christianity. The Catholics of the southern province descend from these conversions, and Catholic churches in Galle and the surrounding area reflect centuries of unbroken faith. The cathedral is located in the Galle town area adjacent to the fort. The building displays a blend of Gothic and colonial architectural features. As the diocesan cathedral, St. Mary's hosts the most significant Catholic services in the Galle District, including feasts of the Virgin Mary, Easter services, and Christmas masses. The Catholic population of the southern province has maintained a distinct community identity. The cathedral is an active place of worship serving thousands of parishioners, and visitors are welcome during non-service hours to admire the architecture and learn about the Catholic heritage of Sri Lanka's south.",
-    "image_url": "",
-    "category": "Religious / Heritage",
-    "crowd_info": {
-      "peak_months": ["December", "January", "February", "March"],
-      "off_peak_months": ["June", "July"],
-      "best_time_to_visit": "Morning for quiet exploration; Christmas and Easter for major services and observances"
-    },
-    "cultural_guidelines": {
-      "dress_code": "Modest attire — shoulders and knees covered; respectful dress for an active cathedral",
-      "behavior": "Respectful silence during masses and services; photography with permission; no disruption of worship",
-      "entry_requirements": "Free entry; donations welcomed"
-    },
-    "entry_fee": "Free",
-    "opening_hours": "Open daily during service times and visiting hours; verify locally"
   },
 
 

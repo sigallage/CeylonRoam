@@ -156,6 +156,8 @@ Create a `.env` file with:
 ```env
 # Required
 MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/ceylonroam
+JWT_SECRET=your_long_random_jwt_secret
+SESSION_SECRET=your_long_random_session_secret
 GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 # Optional

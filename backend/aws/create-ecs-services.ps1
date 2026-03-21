@@ -24,9 +24,12 @@ function Invoke-AwsJson([string]$Command) {
 # Basic sanity checks
 $requiredSecrets = @(
   'ceylonroam/mongodb_uri',
+  'ceylonroam/jwt_secret',
   'ceylonroam/google_maps_api_key',
   'ceylonroam/openrouter_api_key',
-  'ceylonroam/session_secret'
+  'ceylonroam/session_secret',
+  'ceylonroam/email_user',
+  'ceylonroam/email_password'
 )
 
 foreach ($s in $requiredSecrets) {

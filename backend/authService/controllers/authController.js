@@ -200,9 +200,18 @@ exports.verifyOTP = async (req, res, next) => {
         req.session.verifiedEmail = trimmedEmail;
         req.session.verifiedAt = Date.now();
 
+        // Also return a short-lived token so production deployments that don't
+        // preserve session cookies (e.g., via reverse proxies) can still reset.
+        const resetToken = jwt.sign(
+            { email: trimmedEmail, purpose: 'password_reset' },
+            process.env.JWT_SECRET,
+            { expiresIn: '10m' }
+        );
+
         res.status(200).json({
             status: 'success',
             message: result.message,
+            resetToken,
         });
     } catch (error) {
         next(error);
@@ -212,7 +221,7 @@ exports.verifyOTP = async (req, res, next) => {
 // RESET PASSWORD - After OTP verification
 exports.resetPassword = async (req, res, next) => {
     try {
-        const { email, newPassword } = req.body;
+        const { email, newPassword, resetToken } = req.body;
 
         if (!email || typeof email !== 'string') {
             return next(new createError('Email is required!', 400));
@@ -226,19 +235,38 @@ exports.resetPassword = async (req, res, next) => {
 
         const normalizedEmail = email.trim().toLowerCase();
 
-        // Check if OTP was verified (session-based check)
-        const verifiedEmail = req.session?.verifiedEmail;
-        const verifiedAt = req.session?.verifiedAt;
-        const VERIFICATION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+        // Verification can be session-based (local) OR token-based (production-safe).
+        let verified = false;
 
-        if (!verifiedEmail || verifiedEmail !== normalizedEmail) {
-            return next(new createError('Please verify OTP first!', 403));
+        // Token-based verification (preferred for production behind proxies).
+        if (resetToken && typeof resetToken === 'string') {
+            try {
+                const decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
+                if (decoded?.purpose === 'password_reset' && decoded?.email === normalizedEmail) {
+                    verified = true;
+                }
+            } catch {
+                // fall back to session verification
+            }
         }
 
-        if (!verifiedAt || Date.now() - verifiedAt > VERIFICATION_TIMEOUT) {
-            delete req.session.verifiedEmail;
-            delete req.session.verifiedAt;
-            return next(new createError('Verification expired. Please request a new OTP!', 403));
+        // Session-based verification (original behavior).
+        if (!verified) {
+            const verifiedEmail = req.session?.verifiedEmail;
+            const verifiedAt = req.session?.verifiedAt;
+            const VERIFICATION_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+
+            if (!verifiedEmail || verifiedEmail !== normalizedEmail) {
+                return next(new createError('Please verify OTP first!', 403));
+            }
+
+            if (!verifiedAt || Date.now() - verifiedAt > VERIFICATION_TIMEOUT) {
+                delete req.session.verifiedEmail;
+                delete req.session.verifiedAt;
+                return next(new createError('Verification expired. Please request a new OTP!', 403));
+            }
+
+            verified = true;
         }
 
         const user = await User.findOne({ email: normalizedEmail });
@@ -288,6 +316,38 @@ exports.checkEmailExists = async (req, res, next) => {
             status: 'success',
             exists: true,
             message: 'Account found.',
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// CONTACT US - Store message
+exports.submitContactMessage = async (req, res, next) => {
+    try {
+        const { name, email, message, rating } = req.body || {};
+
+        if (!name || typeof name !== 'string' || !name.trim()) {
+            return next(new createError('Name is required!', 400));
+        }
+        if (!email || typeof email !== 'string' || !email.trim()) {
+            return next(new createError('Email is required!', 400));
+        }
+        if (!message || typeof message !== 'string' || !message.trim()) {
+            return next(new createError('Message is required!', 400));
+        }
+
+        const doc = await ContactMessage.create({
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            message: message.trim(),
+            ...(rating !== undefined && rating !== null && rating !== '' ? { rating: Number(rating) } : {}),
+        });
+
+        res.status(201).json({
+            status: 'success',
+            message: 'Message submitted successfully',
+            id: doc._id,
         });
     } catch (error) {
         next(error);

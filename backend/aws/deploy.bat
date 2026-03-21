@@ -101,15 +101,59 @@ for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGI
 for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/google_maps_api_key --query ARN --output text') do set GOOGLE_MAPS_API_KEY_SECRET_ARN=%%i
 for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/openrouter_api_key --query ARN --output text') do set OPENROUTER_API_KEY_SECRET_ARN=%%i
 for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/session_secret --query ARN --output text') do set SESSION_SECRET_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/jwt_secret --query ARN --output text') do set JWT_SECRET_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/email_user --query ARN --output text') do set EMAIL_USER_SECRET_ARN=%%i
+for /f "tokens=*" %%i in ('aws secretsmanager describe-secret --region %AWS_REGION% --secret-id ceylonroam/email_password --query ARN --output text') do set EMAIL_PASSWORD_SECRET_ARN=%%i
+
+if "%MONGODB_URI_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/mongodb_uri
+	exit /b 1
+)
+if "%SESSION_SECRET_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/session_secret
+	exit /b 1
+)
+if "%JWT_SECRET_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/jwt_secret
+	echo Make sure you created the secret in AWS Secrets Manager in region %AWS_REGION%.
+	exit /b 1
+)
+if "%GOOGLE_MAPS_API_KEY_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/google_maps_api_key
+	exit /b 1
+)
+if "%OPENROUTER_API_KEY_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/openrouter_api_key
+	exit /b 1
+)
+if "%EMAIL_USER_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/email_user
+	echo OTP emails will not send without EMAIL_USER/EMAIL_PASSWORD.
+	exit /b 1
+)
+if "%EMAIL_PASSWORD_SECRET_ARN%"=="" (
+	echo ERROR: Could not resolve Secrets Manager ARN for ceylonroam/email_password
+	echo OTP emails will not send without EMAIL_USER/EMAIL_PASSWORD.
+	exit /b 1
+)
 
 set "AWS_DIR=%BACKEND_DIR%\aws"
 set "TASK_TMP_DIR=%TEMP%\ceylonroam-ecs-tasks-%RANDOM%"
 mkdir "%TASK_TMP_DIR%" >nul 2>&1
 
 for %%F in ("%AWS_DIR%\ecs-task-auth.json" "%AWS_DIR%\ecs-task-itinerary.json" "%AWS_DIR%\ecs-task-route-optimizer.json" "%AWS_DIR%\ecs-task-voice-translation.json") do (
-	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; $c = $c -replace 'ceylonroam/mongodb_uri', '%MONGODB_URI_SECRET_ARN%'; $c = $c -replace 'ceylonroam/google_maps_api_key', '%GOOGLE_MAPS_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/openrouter_api_key', '%OPENROUTER_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/session_secret', '%SESSION_SECRET_SECRET_ARN%'; $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText('%TASK_TMP_DIR%\%%~nxF', $c, $utf8NoBom)" 1>nul
+	powershell -NoProfile -Command "$c = Get-Content -Raw -LiteralPath '%%~fF'; $c = $c -replace '<AWS_ACCOUNT_ID>', '%AWS_ACCOUNT_ID%'; $c = $c -replace '<REGION>', '%AWS_REGION%'; $c = $c -replace 'ceylonroam/mongodb_uri', '%MONGODB_URI_SECRET_ARN%'; $c = $c -replace 'ceylonroam/google_maps_api_key', '%GOOGLE_MAPS_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/openrouter_api_key', '%OPENROUTER_API_KEY_SECRET_ARN%'; $c = $c -replace 'ceylonroam/session_secret', '%SESSION_SECRET_SECRET_ARN%'; $c = $c -replace 'ceylonroam/jwt_secret', '%JWT_SECRET_SECRET_ARN%'; $c = $c -replace 'ceylonroam/email_user', '%EMAIL_USER_SECRET_ARN%'; $c = $c -replace 'ceylonroam/email_password', '%EMAIL_PASSWORD_SECRET_ARN%'; $utf8NoBom = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllText('%TASK_TMP_DIR%\%%~nxF', $c, $utf8NoBom)" 1>nul
 	aws ecs register-task-definition --cli-input-json file://"%TASK_TMP_DIR%\%%~nxF" --region %AWS_REGION%
 )
+
+REM Step 6b: Update existing ECS services to the latest task definitions
+echo.
+echo Step 6b: Updating ECS services (if they already exist)...
+
+call :UpdateService auth-service ceylonroam-auth-service
+call :UpdateService itinerary-service ceylonroam-itinerary-service
+call :UpdateService route-optimizer-service ceylonroam-route-optimizer-service
+call :UpdateService voice-translation-service ceylonroam-voice-translation-service
 
 REM Step 7: Create ECS cluster (if not exists)
 echo.
@@ -131,3 +175,19 @@ echo For detailed instructions, see AWS_DEPLOYMENT_GUIDE.md
 echo.
 
 pause
+
+goto :eof
+
+:UpdateService
+set "SERVICE_NAME=%~1"
+set "TASK_FAMILY=%~2"
+
+REM If service doesn't exist, update-service fails. We treat that as informational.
+aws ecs update-service --region %AWS_REGION% --cluster %CLUSTER_NAME% --service %SERVICE_NAME% --task-definition %TASK_FAMILY% --force-new-deployment 1>nul 2>nul
+if errorlevel 1 (
+	echo - Skipping %SERVICE_NAME% (service not found or not ready yet)
+) else (
+	echo - Updated %SERVICE_NAME% -> %TASK_FAMILY% (forced new deployment)
+)
+
+exit /b 0

@@ -108,16 +108,55 @@ MONGODB_URI_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGIO
 GOOGLE_MAPS_API_KEY_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/google_maps_api_key' --query ARN --output text)
 OPENROUTER_API_KEY_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/openrouter_api_key' --query ARN --output text)
 SESSION_SECRET_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/session_secret' --query ARN --output text)
+JWT_SECRET_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/jwt_secret' --query ARN --output text)
+EMAIL_USER_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/email_user' --query ARN --output text)
+EMAIL_PASSWORD_SECRET_ARN=$(aws secretsmanager describe-secret --region "$AWS_REGION" --secret-id 'ceylonroam/email_password' --query ARN --output text)
+
+fail_if_missing() {
+    local name="$1"
+    local value="$2"
+    if [ -z "$value" ] || [ "$value" = "None" ]; then
+        echo "ERROR: Could not resolve Secrets Manager ARN for $name (region: $AWS_REGION)" >&2
+        exit 1
+    fi
+}
+
+fail_if_missing 'ceylonroam/mongodb_uri' "$MONGODB_URI_SECRET_ARN"
+fail_if_missing 'ceylonroam/session_secret' "$SESSION_SECRET_SECRET_ARN"
+fail_if_missing 'ceylonroam/jwt_secret' "$JWT_SECRET_SECRET_ARN"
+fail_if_missing 'ceylonroam/google_maps_api_key' "$GOOGLE_MAPS_API_KEY_SECRET_ARN"
+fail_if_missing 'ceylonroam/openrouter_api_key' "$OPENROUTER_API_KEY_SECRET_ARN"
+fail_if_missing 'ceylonroam/email_user' "$EMAIL_USER_SECRET_ARN"
+fail_if_missing 'ceylonroam/email_password' "$EMAIL_PASSWORD_SECRET_ARN"
 
 for file in "$TASK_SRC_DIR"/ecs-task-*.json; do
     out="$TASK_TMP_DIR/$(basename "$file")"
-    sed "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g; s/<REGION>/$AWS_REGION/g; s|ceylonroam/mongodb_uri|$MONGODB_URI_SECRET_ARN|g; s|ceylonroam/google_maps_api_key|$GOOGLE_MAPS_API_KEY_SECRET_ARN|g; s|ceylonroam/openrouter_api_key|$OPENROUTER_API_KEY_SECRET_ARN|g; s|ceylonroam/session_secret|$SESSION_SECRET_SECRET_ARN|g" "$file" > "$out"
+    sed "s/<AWS_ACCOUNT_ID>/$AWS_ACCOUNT_ID/g; s/<REGION>/$AWS_REGION/g; s|ceylonroam/mongodb_uri|$MONGODB_URI_SECRET_ARN|g; s|ceylonroam/google_maps_api_key|$GOOGLE_MAPS_API_KEY_SECRET_ARN|g; s|ceylonroam/openrouter_api_key|$OPENROUTER_API_KEY_SECRET_ARN|g; s|ceylonroam/session_secret|$SESSION_SECRET_SECRET_ARN|g; s|ceylonroam/jwt_secret|$JWT_SECRET_SECRET_ARN|g; s|ceylonroam/email_user|$EMAIL_USER_SECRET_ARN|g; s|ceylonroam/email_password|$EMAIL_PASSWORD_SECRET_ARN|g" "$file" > "$out"
 done
 
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-auth.json" --region $AWS_REGION
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-itinerary.json" --region $AWS_REGION
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-route-optimizer.json" --region $AWS_REGION
 aws ecs register-task-definition --cli-input-json file://"$TASK_TMP_DIR/ecs-task-voice-translation.json" --region $AWS_REGION
+
+echo ""
+echo "Step 4b: Updating ECS services (if they already exist)..."
+
+update_service_if_exists() {
+    local service="$1"
+    local task_family="$2"
+
+    if aws ecs update-service --region "$AWS_REGION" --cluster "$CLUSTER_NAME" --service "$service" --task-definition "$task_family" --force-new-deployment >/dev/null 2>&1; then
+        echo "- Updated $service -> $task_family (forced new deployment)"
+    else
+        echo "- Skipping $service (service not found or not ready yet)"
+    fi
+}
+
+update_service_if_exists 'auth-service' 'ceylonroam-auth-service'
+update_service_if_exists 'itinerary-service' 'ceylonroam-itinerary-service'
+update_service_if_exists 'route-optimizer-service' 'ceylonroam-route-optimizer-service'
+update_service_if_exists 'voice-translation-service' 'ceylonroam-voice-translation-service'
 
 # Step 5: Create ECS Cluster (if not exists)
 echo ""

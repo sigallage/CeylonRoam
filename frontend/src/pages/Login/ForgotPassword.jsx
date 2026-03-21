@@ -10,6 +10,7 @@ function ForgotPassword() {
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [resetToken, setResetToken] = useState('');
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -61,6 +62,10 @@ function ForgotPassword() {
         return;
       }
 
+      if (payload && typeof payload === 'object' && payload.resetToken) {
+        setResetToken(String(payload.resetToken));
+      }
+
       setMessage('OTP verified! Now set your new password.');
       setTimeout(() => {
         setMessage('');
@@ -92,7 +97,7 @@ function ForgotPassword() {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-        body: JSON.stringify({ email, newPassword }),
+        body: JSON.stringify({ email, newPassword, ...(resetToken ? { resetToken } : {}) }),
       });
 
       const contentType = response.headers.get('content-type') || '';
