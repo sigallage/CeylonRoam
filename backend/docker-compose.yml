@@ -50,6 +50,9 @@ services:
       - "8001:8001"
     environment:
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+      - DESTINATIONS_JSON_PATH=/app/destinations.json
+    volumes:
+      - ../frontend/src/dataset/destinations.json:/app/destinations.json:ro
     networks:
       - ceylonroam-network
     restart: unless-stopped
