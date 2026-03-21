@@ -76,8 +76,15 @@ function LoginPage() {
             />
           </div>
 
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12 mx-auto">
-            <div className="max-w-[380px] mx-auto">
+          <div
+            className="w-full max-w-[520px] rounded-[24px] p-[2.5px] mx-auto"
+            style={{
+              background: 'linear-gradient(to right, #facc15, #f97316)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+            }}
+          >
+            <div className="bg-black rounded-[22px] w-full h-full px-8 py-10 sm:px-12 sm:py-12">
+              <div className="max-w-[380px] mx-auto">
               <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
                 Welcome to Your Next Adventure
               </h1>
@@ -118,10 +125,15 @@ function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ height: '45px' }}
+                  className="w-full py-3.5 rounded-[6px] text-[16px] font-medium transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{
+                    height: '45px',
+                    background: 'linear-gradient(to right, #facc15, #f97316)',
+                    color: '#222',
+                    boxShadow: '0 0 12px rgba(250,204,21,0.10)'
+                  }}
                 >
-                  {isLoading ? 'Logging in...' : 'Login'}
+                  {isLoading ? 'Logging in...' : <span style={{ fontWeight: 700 }}>Login</span>}
                 </button>
 
                 {error ? (
@@ -163,6 +175,7 @@ function LoginPage() {
                     Sign-up
                   </Link>
                 </div>
+              </div>
               </div>
             </div>
           </div>
