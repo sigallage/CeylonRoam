@@ -7,6 +7,7 @@ WORKDIR /app
 # - libsndfile1: required by the Python soundfile package on slim images
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ffmpeg libsndfile1 \
+  && ffmpeg -version \
   && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies

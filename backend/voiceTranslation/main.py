@@ -8,12 +8,31 @@ import tempfile
 import os
 import logging
 from pathlib import Path
+import shutil
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Voice Translation API")
+
+
+def _ffmpeg_available() -> bool:
+    return shutil.which("ffmpeg") is not None
+
+
+def _require_ffmpeg() -> None:
+    if _ffmpeg_available():
+        return
+
+    # This service relies on ffmpeg for decoding uploaded audio files.
+    # Without it, transformers/librosa audio loading fails.
+    raise RuntimeError(
+        "ffmpeg was not found but is required to load audio files. "
+        "Install FFmpeg and ensure the `ffmpeg` executable is on PATH. "
+        "On Windows: `winget install Gyan.FFmpeg` (or `choco install ffmpeg`). "
+        "In Docker/ECS: ensure the image installs ffmpeg (see backend/voiceTranslation/Dockerfile)."
+    )
 
 def _get_cors_settings():
     raw = (os.getenv("CORS_ORIGINS") or "").strip()
@@ -75,6 +94,8 @@ async def load_models():
     global whisper_pipe, translation_model, translation_tokenizer
     
     try:
+        _require_ffmpeg()
+
         logger.info("Loading Whisper model...")
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
@@ -130,13 +151,19 @@ async def root():
         "message": "Voice Translation API is running",
         "whisper_loaded": whisper_pipe is not None,
         "translation_loaded": translation_model is not None,
-        "device": "cuda" if torch.cuda.is_available() else "cpu"
+        "device": "cuda" if torch.cuda.is_available() else "cpu",
+        "ffmpeg_available": _ffmpeg_available(),
     }
 
 
 @app.get("/health")
 async def health():
-    return {"ok": True}
+    return {
+        "ok": True,
+        "ffmpeg_available": _ffmpeg_available(),
+        "whisper_loaded": whisper_pipe is not None,
+        "translation_loaded": translation_model is not None,
+    }
 
 
 @app.post("/voice/translate")

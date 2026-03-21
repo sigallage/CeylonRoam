@@ -25,7 +25,7 @@ echo.
 
 REM Start the server
 echo ====================================
-echo Starting Voice Translation API on http://localhost:8002
+echo Starting Voice Translation API on http://localhost:8003
 echo Press Ctrl+C to stop the server
 echo ====================================
 echo.

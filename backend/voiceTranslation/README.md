@@ -18,6 +18,19 @@ This backend service provides **speech-to-text** and **text translation** capabi
 ### 1. Install Python
 Make sure you have Python 3.8+ installed.
 
+### 1.5. Install FFmpeg (Required)
+This service uses FFmpeg to decode uploaded audio files. If FFmpeg is missing, `/voice/translate` will fail.
+
+- **Windows (recommended):** `winget install Gyan.FFmpeg`
+- **Windows (alternative):** `choco install ffmpeg`
+- **macOS:** `brew install ffmpeg`
+- **Linux (Debian/Ubuntu):** `sudo apt-get update && sudo apt-get install -y ffmpeg`
+
+Verify:
+```bash
+ffmpeg -version
+```
+
 ### 2. Run the Backend
 Simply double-click `start_backend.bat` or run:
 ```bash
@@ -103,6 +116,10 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 The service will automatically use GPU if available.
 
 ## Troubleshooting
+
+### `ffmpeg was not found` / audio upload returns 500
+- Install FFmpeg and ensure `ffmpeg` is on your PATH (see step 1.5 above).
+- For Docker/ECS deployments, make sure you rebuilt and redeployed the `backend/voiceTranslation` image.
 
 ### Models taking too long to load?
 - First download is slow (2-3 GB of models)
