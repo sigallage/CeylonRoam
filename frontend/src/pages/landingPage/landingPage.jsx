@@ -226,7 +226,14 @@ const LandingPage = () => {
           <div className="hidden md:flex gap-8 text-white font-medium">
             <a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
             <a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
-            <a href="#about" className="hover:text-orange-400 transition-colors">About</a>
+            <button
+              type="button"
+              className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+              style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+              onClick={() => navigate('/about-us')}
+            >
+              About
+            </button>
           </div>
         </nav>
 
@@ -462,7 +469,14 @@ const LandingPage = () => {
             <div className="flex flex-wrap justify-center gap-8 text-white font-medium">
               <a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
               <a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
-              <a href="#about" className="hover:text-orange-400 transition-colors">About</a>
+              <button
+                type="button"
+                className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+                style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+                onClick={() => navigate('/about-us')}
+              >
+                About
+              </button>
               <a href="#" className="hover:text-yellow-400 transition-colors">Contact</a>
             </div>
 

@@ -4,6 +4,7 @@ import { getAuthBaseUrl } from '../../config/backendUrls';
 import bgImage from '../../assets/5.jpg';
 import { useTheme } from '../../context/ThemeContext';
 
+
 function LoginPage() {
   const navigate = useNavigate();
   const { isDarkMode } = useTheme();
@@ -11,6 +12,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
@@ -139,10 +141,15 @@ function LoginPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ height: '45px' }}
+                  className="w-full py-3.5 rounded-[6px] text-[16px] font-medium transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{
+                    height: '45px',
+                    background: 'linear-gradient(to right, #facc15, #f97316)',
+                    color: '#222',
+                    boxShadow: '0 0 12px rgba(250,204,21,0.10)'
+                  }}
                 >
-                  {isLoading ? 'Logging in...' : 'Login'}
+                  {isLoading ? 'Logging in...' : <span style={{ fontWeight: 700 }}>Login</span>}
                 </button>
 
                 {error ? (
@@ -184,6 +191,7 @@ function LoginPage() {
                     Sign-up
                   </Link>
                 </div>
+              </div>
               </div>
             </div>
           </div>
