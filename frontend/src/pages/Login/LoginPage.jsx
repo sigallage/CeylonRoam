@@ -2,9 +2,11 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
 import bgImage from '../../assets/5.jpg';
+import { useTheme } from '../../context/ThemeContext';
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -63,11 +65,30 @@ function LoginPage() {
     console.log('Google login clicked');
   };
 
+  const pageClass = isDarkMode ? 'min-h-screen w-full bg-black' : 'min-h-screen w-full bg-gray-100';
+  const cardClass = isDarkMode
+    ? 'bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)]'
+    : 'bg-white w-full max-w-[520px] rounded-[24px] border border-gray-200 shadow-[0_20px_40px_rgba(0,0,0,0.12)]';
+  const titleClass = isDarkMode
+    ? 'text-[30px] font-normal text-white mb-10 text-center leading-tight'
+    : 'text-[30px] font-normal text-gray-900 mb-10 text-center leading-tight';
+  const labelClass = isDarkMode ? 'block mb-2 text-white font-normal text-[17px]' : 'block mb-2 text-gray-900 font-normal text-[17px]';
+  const inputClass = isDarkMode
+    ? 'w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border'
+    : 'w-full px-4 border border-gray-300 bg-white text-gray-900 rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-amber-500 transition-colors box-border';
+  const dividerBorderClass = isDarkMode ? 'w-full border-t border-gray-800' : 'w-full border-t border-gray-300';
+  const dividerLabelClass = isDarkMode ? 'px-4 bg-black text-gray-300 text-[14px]' : 'px-4 bg-gray-100 text-gray-600 text-[14px]';
+  const googleButtonClass = isDarkMode
+    ? 'w-full py-2.5 bg-black border border-gray-800 rounded-[6px] flex items-center justify-center hover:bg-gray-900 transition-colors'
+    : 'w-full py-2.5 bg-white border border-gray-300 rounded-[6px] flex items-center justify-center hover:bg-gray-50 transition-colors';
+  const footerTextClass = isDarkMode ? 'mt-3 text-center text-[15px] text-gray-300' : 'mt-3 text-center text-[15px] text-gray-700';
+  const linkClass = 'text-[#f59e0b] font-medium hover:underline';
+
   return (
-    <div className="min-h-screen w-full bg-black">
+    <div className={pageClass}>
       <div className="min-h-screen flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden mx-auto">
+          <div className={`${cardClass} overflow-hidden mx-auto`}>
             <img
               src={bgImage}
               alt="Sri Lanka"
@@ -76,15 +97,15 @@ function LoginPage() {
             />
           </div>
 
-          <div className="bg-black w-full max-w-[520px] rounded-[24px] border border-gray-800 shadow-[0_20px_40px_rgba(0,0,0,0.5)] px-8 py-10 sm:px-12 sm:py-12 mx-auto">
+          <div className={`${cardClass} px-8 py-10 sm:px-12 sm:py-12 mx-auto`}>
             <div className="max-w-[380px] mx-auto">
-              <h1 className="text-[30px] font-normal text-white mb-10 text-center leading-tight">
+              <h1 className={titleClass}>
                 Welcome to Your Next Adventure
               </h1>
 
               <form onSubmit={handleLogin} className="flex flex-col gap-4">
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-white font-normal text-[17px]">
+                  <label htmlFor="email" className={labelClass}>
                     Email
                   </label>
                   <input
@@ -94,13 +115,13 @@ function LoginPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="me@example.com"
                     required
-                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    className={inputClass}
                     style={{ height: '48px' }}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
+                  <label htmlFor="password" className={labelClass}>
                     Password
                   </label>
                   <input
@@ -110,7 +131,7 @@ function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     required
-                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                    className={inputClass}
                     style={{ height: '48px' }}
                   />
                 </div>
@@ -131,16 +152,16 @@ function LoginPage() {
 
               <div className="relative my-8">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-800"></div>
+                  <div className={dividerBorderClass}></div>
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="px-4 bg-black text-gray-300 text-[14px]">or login with</span>
+                  <span className={dividerLabelClass}>or login with</span>
                 </div>
               </div>
 
               <button
                 onClick={handleGoogleLogin}
-                className="w-full py-2.5 bg-black border border-gray-800 rounded-[6px] flex items-center justify-center hover:bg-gray-900 transition-colors"
+                className={googleButtonClass}
               >
                 <svg width="20" height="28" viewBox="0 0 24 24" className="flex-shrink-0">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -150,16 +171,16 @@ function LoginPage() {
                 </svg>
               </button>
 
-              <div className="mt-3 text-center text-[15px] text-gray-300">
+              <div className={footerTextClass}>
                 <div>
                   <span>Forgot Password? </span>
-                  <Link to="/reset-password" className="text-[#f59e0b] font-medium hover:underline">
+                  <Link to="/reset-password" className={linkClass}>
                     Reset
                   </Link>
                 </div>
                 <div className="mt-1">
                   <span>New to CeylonRoam? </span>
-                  <Link to="/signup" className="text-[#f59e0b] font-medium hover:underline">
+                  <Link to="/signup" className={linkClass}>
                     Sign-up
                   </Link>
                 </div>

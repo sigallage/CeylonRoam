@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
+import { useTheme } from '../../context/ThemeContext';
 
 const AboutUs = () => {
+  const { isDarkMode } = useTheme();
   const [form, setForm] = useState({ name: "", email: "", message: "", rating: 0 });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,7 +68,7 @@ const AboutUs = () => {
     <div
       style={{
         minHeight: "100vh",
-        background: "rgba(0, 0, 0, 0.6)",
+        background: isDarkMode ? "rgba(0, 0, 0, 0.6)" : "#f3f4f6",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
       }}
@@ -74,21 +76,21 @@ const AboutUs = () => {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}>
       <div
         style={{
-          background: "#ececec",
-          border: "1px solid rgba(0, 0, 0, 0.08)",
+          background: isDarkMode ? "#1f1f1f" : "#ececec",
+          border: isDarkMode ? "1px solid rgba(250, 204, 21, 0.25)" : "1px solid rgba(0, 0, 0, 0.08)",
           borderRadius: 24,
           padding: "32px 24px",
           marginBottom: 50,
         }}
       >
-        <h1 style={{ textAlign: "center", color: "#7a1818", marginBottom: 30, fontSize: 48 }}>ABOUT US</h1>
-        <p style={{ textAlign: "center", color: "#1f2937", fontSize: 18, marginBottom: 30 }}>
+        <h1 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", marginBottom: 30, fontSize: 48 }}>ABOUT US</h1>
+        <p style={{ textAlign: "center", color: isDarkMode ? "rgba(255,255,255,0.85)" : "#1f2937", fontSize: 18, marginBottom: 30 }}>
           <b>CeylonRoam</b> is an AI-powered travel assistant designed to transform how people explore Sri Lanka. Our platform combines advanced artificial intelligence with modern web technologies to provide travelers with a seamless, personalized, and stress-free journey.What sets CeylonRoam apart is our use of advanced AI to generate personalized itineraries, optimize travel routes, and provide real-time voice translation — all in one easy-to-use app. Whether you’re a local adventurer or a first-time visitor, CeylonRoam helps you save time, discover hidden gems, and travel confidently.
         </p>
-        <p style={{ textAlign: "center", color: "#1f2937", fontSize: 18, marginBottom: 30 }}>
+        <p style={{ textAlign: "center", color: isDarkMode ? "rgba(255,255,255,0.85)" : "#1f2937", fontSize: 18, marginBottom: 30 }}>
           <b>Our mission</b> is to make travel in Sri Lanka smarter, easier, and more memorable by connecting travelers with enriching experiences while supporting sustainable tourism. We believe every journey should be unique, accessible, and filled with discovery.
         </p>
-        <p style={{ textAlign: "center", color: "#1f2937", fontSize: 18, marginBottom: 0 }}>
+        <p style={{ textAlign: "center", color: isDarkMode ? "rgba(255,255,255,0.85)" : "#1f2937", fontSize: 18, marginBottom: 0 }}>
           Have questions, feedback, or partnership ideas? We’d love to hear from you! Get in touch with us at ceylon.roam144@gmail.com
     and let’s make travel better together. Join us on CeylonRoam and embark on a journey filled with adventure, discovery, and unforgettable memories.</p>
       </div>
@@ -96,14 +98,14 @@ const AboutUs = () => {
         style={{
           marginTop: 40,
           marginBottom: 40,
-          background: "#ececec",
-          border: "1px solid rgba(0, 0, 0, 0.08)",
+          background: isDarkMode ? "#1f1f1f" : "#ececec",
+          border: isDarkMode ? "1px solid rgba(250, 204, 21, 0.25)" : "1px solid rgba(0, 0, 0, 0.08)",
           borderRadius: 24,
           padding: "28px 20px",
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
         }}
       >
-        <h2 style={{ textAlign: "center", color: "#7a1818", fontSize: 28, marginBottom: 24 }}>Founders</h2>
+        <h2 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", fontSize: 28, marginBottom: 24 }}>Founders</h2>
         <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, justifyContent: 'center', listStyle: 'none', padding: 0, maxWidth: 900, margin: '0 auto' }}>
           <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(122,24,24,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}

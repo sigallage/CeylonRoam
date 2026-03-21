@@ -2,9 +2,11 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiTrash2, FiCalendar, FiMapPin } from 'react-icons/fi';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { useTheme } from '../../context/ThemeContext';
 
 const ItineraryHistory = () => {
 	const navigate = useNavigate();
+	const { isDarkMode } = useTheme();
 	const [itineraries, setItineraries] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState('');
@@ -107,24 +109,28 @@ const ItineraryHistory = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-black">
+		<div className="min-h-screen">
 			<div className="max-w-6xl mx-auto px-6 py-8">
-				<div className="bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md p-8 relative">
+				<div className={isDarkMode
+					? 'bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md p-8 relative'
+					: 'bg-white border border-yellow-500/30 rounded-2xl shadow-md p-8 relative'}>
 					{/* Back Button */}
 					<button 
 						onClick={() => navigate(-1)}
-						className="absolute top-6 left-6 p-2 hover:bg-white/10 rounded-full transition-colors"
+						className={isDarkMode
+							? 'absolute top-6 left-6 p-2 hover:bg-white/10 rounded-full transition-colors'
+							: 'absolute top-6 left-6 p-2 hover:bg-black/5 rounded-full transition-colors'}
 					>
-						<FiX className="w-6 h-6 text-white/80" />
+						<FiX className={isDarkMode ? 'w-6 h-6 text-white/80' : 'w-6 h-6 text-gray-700'} />
 					</button>
 
 					{/* Title */}
-					<h1 className="text-2xl font-bold text-yellow-400 text-center mb-8">Itinerary History</h1>
+					<h1 className={isDarkMode ? 'text-2xl font-bold text-yellow-400 text-center mb-8' : 'text-2xl font-bold text-yellow-600 text-center mb-8'}>Itinerary History</h1>
 
 					{/* Loading State */}
 					{isLoading && (
 						<div className="text-center py-12">
-							<p className="text-white/70">Loading your itineraries...</p>
+							<p className={isDarkMode ? 'text-white/70' : 'text-gray-700'}>Loading your itineraries...</p>
 						</div>
 					)}
 
@@ -134,7 +140,9 @@ const ItineraryHistory = () => {
 							<p className="text-red-600 mb-4">{error}</p>
 							<button 
 								onClick={fetchItineraries}
-								className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors"
+								className={isDarkMode
+									? 'bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors'
+									: 'bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-colors'}
 							>
 								Try Again
 							</button>
@@ -144,7 +152,7 @@ const ItineraryHistory = () => {
 					{/* Empty State */}
 					{!isLoading && !error && itineraries.length === 0 && (
 						<div className="text-center py-12">
-							<p className="text-white/70 mb-4">You haven't saved any itineraries yet.</p>
+							<p className={isDarkMode ? 'text-white/70 mb-4' : 'text-gray-700 mb-4'}>You haven't saved any itineraries yet.</p>
 							<button 
 								onClick={() => navigate('/planner')}
 								className="bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-xl transition-colors font-semibold"
@@ -160,14 +168,16 @@ const ItineraryHistory = () => {
 							{itineraries.map((itinerary) => (
 								<div 
 									key={itinerary._id}
-									className="bg-black/20 border border-white/10 rounded-xl p-6 hover:shadow-lg transition-shadow"
+									className={isDarkMode
+										? 'bg-black/20 border border-white/10 rounded-xl p-6 hover:shadow-lg transition-shadow'
+										: 'bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow'}
 								>
 									<div className="flex justify-between items-start">
 										<div className="flex-1">
-											<h3 className="text-lg font-semibold text-white mb-2">
+											<h3 className={isDarkMode ? 'text-lg font-semibold text-white mb-2' : 'text-lg font-semibold text-gray-900 mb-2'}>
 												{itinerary.title}
 											</h3>
-											<div className="flex flex-wrap gap-4 text-sm text-white/70 mb-3">
+											<div className={isDarkMode ? 'flex flex-wrap gap-4 text-sm text-white/70 mb-3' : 'flex flex-wrap gap-4 text-sm text-gray-700 mb-3'}>
 												<div className="flex items-center gap-2">
 													<FiMapPin className="w-4 h-4" />
 													<span>{itinerary.destination}</span>
@@ -178,16 +188,16 @@ const ItineraryHistory = () => {
 														{formatDate(itinerary.startDate)} - {formatDate(itinerary.endDate)}
 													</span>
 												</div>
-												<span className="text-white/60">
+												<span className={isDarkMode ? 'text-white/60' : 'text-gray-500'}>
 													{itinerary.numberOfDays} {itinerary.numberOfDays === 1 ? 'day' : 'days'}
 												</span>
 											</div>
 											{itinerary.budget && (
-												<p className="text-sm text-white/70">
+												<p className={isDarkMode ? 'text-sm text-white/70' : 'text-sm text-gray-700'}>
 													<span className="font-medium">Budget:</span> {itinerary.budget} LKR
 												</p>
 											)}
-											<p className="text-xs text-white/55 mt-2">
+											<p className={isDarkMode ? 'text-xs text-white/55 mt-2' : 'text-xs text-gray-500 mt-2'}>
 												Created: {formatDate(itinerary.createdAt)}
 											</p>
 										</div>
