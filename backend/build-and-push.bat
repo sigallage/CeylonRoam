@@ -49,6 +49,19 @@ echo Building Docker Images...
 echo ============================================
 echo.
 
+REM Sync shared destinations dataset into the itinerary build context (used in production containers)
+echo Syncing destinations dataset for itinerary service...
+if exist "..\frontend\src\dataset\destinations.json" (
+    copy /Y "..\frontend\src\dataset\destinations.json" ".\itineraryGenerator\destinations.json" >nul
+    if errorlevel 1 (
+        echo WARNING: Failed to copy destinations.json into itineraryGenerator build context.
+    ) else (
+        echo ✓ destinations.json synced
+    )
+) else (
+    echo WARNING: Could not find ..\frontend\src\dataset\destinations.json (itinerary service will use fallback catalog).
+)
+
 REM Build Auth Service
 echo [1/4] Building Auth Service...
 docker build -t %DOCKER_USERNAME%/ceylonroam-auth:latest ./authService

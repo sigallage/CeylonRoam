@@ -31,6 +31,16 @@ aws ecr create-repository --repository-name ceylonroam-voice-translation --regio
 echo ""
 echo "Step 2: Building and pushing Docker images..."
 
+# Sync shared destinations dataset into the itinerary build context (used in production containers)
+echo ""
+echo "Syncing destinations dataset for itinerary service..."
+if [ -f "$BACKEND_DIR/../frontend/src/dataset/destinations.json" ]; then
+    cp -f "$BACKEND_DIR/../frontend/src/dataset/destinations.json" "$BACKEND_DIR/itineraryGenerator/destinations.json" || true
+    echo "✓ destinations.json synced"
+else
+    echo "WARNING: Could not find frontend dataset destinations.json (itinerary service will use fallback catalog)."
+fi
+
 # Login to ECR
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
