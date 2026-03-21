@@ -183,7 +183,7 @@ const Header = () => {
 							}}
 						>
 							About
-						</a>
+					</button>
 						{isLoggedIn && (
 							<button
 								onClick={handleLogout}
