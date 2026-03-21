@@ -157,7 +157,8 @@ def _shorten(text: str, max_len: int = 180) -> str:
 
 
 def _try_parse_json_file(path: Path) -> Any:
-    with path.open("r", encoding="utf-8") as f:
+    # Use utf-8-sig to tolerate an optional UTF-8 BOM (common on Windows).
+    with path.open("r", encoding="utf-8-sig") as f:
         return json.load(f)
 
 
@@ -184,18 +185,154 @@ def _resolve_destinations_json_path() -> Path:
     return Path("/app/destinations.json")
 
 
+def _fallback_destinations_catalog() -> list[Destination]:
+    # Minimal built-in catalog to keep the service functional even when the
+    # full dataset isn't packaged into the container image.
+    fallback_raw: list[dict[str, Any]] = [
+        {
+            "id": "galle-face-green",
+            "name": "Galle Face Green",
+            "latitude": 6.9275,
+            "longitude": 79.8428,
+            "description": "Ocean-side promenade in Colombo popular for sunsets and street food.",
+            "category": "Urban Park",
+        },
+        {
+            "id": "gangaramaya-temple",
+            "name": "Gangaramaya Temple",
+            "latitude": 6.9271,
+            "longitude": 79.8612,
+            "description": "Prominent Buddhist temple complex in Colombo.",
+            "category": "Buddhist Temple",
+        },
+        {
+            "id": "kandy-temple-of-tooth",
+            "name": "Temple of the Sacred Tooth Relic",
+            "latitude": 7.2936,
+            "longitude": 80.6413,
+            "description": "Sacred Buddhist temple in Kandy, a key cultural landmark.",
+            "category": "Buddhist Temple",
+        },
+        {
+            "id": "sigiriya-rock-fortress",
+            "name": "Sigiriya Rock Fortress",
+            "latitude": 7.9570,
+            "longitude": 80.7603,
+            "description": "Iconic ancient rock fortress with frescoes and panoramic views.",
+            "category": "Heritage Site",
+        },
+        {
+            "id": "galle-fort",
+            "name": "Galle Fort",
+            "latitude": 6.0267,
+            "longitude": 80.2170,
+            "description": "Historic fort area with colonial architecture, cafes, and ocean views.",
+            "category": "Heritage Site",
+        },
+        {
+            "id": "ella-nine-arch-bridge",
+            "name": "Nine Arch Bridge",
+            "latitude": 6.8780,
+            "longitude": 81.0590,
+            "description": "Scenic railway viaduct near Ella, popular for viewpoints and walks.",
+            "category": "Scenic Spot",
+        },
+        {
+            "id": "nuwara-eliya-tea",
+            "name": "Nuwara Eliya Tea Country",
+            "latitude": 6.9497,
+            "longitude": 80.7891,
+            "description": "Cool-climate hill town region known for tea estates and gardens.",
+            "category": "Nature",
+        },
+        {
+            "id": "yala-national-park",
+            "name": "Yala National Park",
+            "latitude": 6.3667,
+            "longitude": 81.5167,
+            "description": "Wildlife park known for safaris and leopard sightings.",
+            "category": "Wildlife",
+        },
+        {
+            "id": "mirissa-beach",
+            "name": "Mirissa Beach",
+            "latitude": 5.9460,
+            "longitude": 80.4716,
+            "description": "Popular south-coast beach for swimming, cafes, and whale watching seasons.",
+            "category": "Beach",
+        },
+        {
+            "id": "arugam-bay",
+            "name": "Arugam Bay",
+            "latitude": 6.8420,
+            "longitude": 81.8360,
+            "description": "East-coast surf town with laid-back beaches and reef breaks.",
+            "category": "Beach",
+        },
+        {
+            "id": "horton-plains",
+            "name": "Horton Plains & World’s End",
+            "latitude": 6.8018,
+            "longitude": 80.8113,
+            "description": "Highland plateau park with trails and dramatic escarpment viewpoints.",
+            "category": "Nature",
+        },
+        {
+            "id": "udawalawe-national-park",
+            "name": "Udawalawe National Park",
+            "latitude": 6.4750,
+            "longitude": 80.8889,
+            "description": "Safari park especially known for elephant sightings.",
+            "category": "Wildlife",
+        },
+    ]
+
+    destinations: list[Destination] = []
+    for item in fallback_raw:
+        try:
+            destinations.append(Destination.model_validate(item))
+        except Exception:
+            logger.exception("Skipping invalid fallback destination entry")
+    return destinations
+
+
 @lru_cache(maxsize=1)
 def _load_destinations_catalog() -> list[Destination]:
     path = _resolve_destinations_json_path()
     if not path.exists():
-        raise FileNotFoundError(
-            "destinations.json not found. Set DESTINATIONS_JSON_PATH or provide the file at one of: "
-            f"{path}, ./destinations.json, or frontend/src/dataset/destinations.json"
+        logger.error(
+            "destinations.json not found at %s; using fallback catalog. "
+            "To use the full catalog, set DESTINATIONS_JSON_PATH or package destinations.json into the container.",
+            path,
         )
+        fallback = _fallback_destinations_catalog()
+        if not fallback:
+            raise FileNotFoundError(
+                "destinations.json missing and fallback catalog could not be initialized. "
+                "Set DESTINATIONS_JSON_PATH or provide destinations.json in the container."
+            )
+        return fallback
 
-    raw = _try_parse_json_file(path)
+    try:
+        raw = _try_parse_json_file(path)
+    except Exception:
+        logger.exception(
+            "Failed to read destinations catalog from %s; using fallback catalog.",
+            path,
+        )
+        fallback = _fallback_destinations_catalog()
+        if not fallback:
+            raise
+        return fallback
     if not isinstance(raw, list):
-        raise ValueError(f"destinations.json must be a JSON array, got: {type(raw).__name__}")
+        logger.error(
+            "destinations.json must be a JSON array, got: %s; using fallback catalog.",
+            type(raw).__name__,
+        )
+        fallback = _fallback_destinations_catalog()
+        if not fallback:
+            raise ValueError(f"destinations.json must be a JSON array, got: {type(raw).__name__}")
+        return fallback
 
     destinations: list[Destination] = []
     for item in raw:
@@ -206,7 +343,11 @@ def _load_destinations_catalog() -> list[Destination]:
             logger.exception("Skipping invalid destination entry")
 
     if not destinations:
-        raise ValueError("destinations.json loaded but contained no valid destinations")
+        logger.error("destinations.json loaded but contained no valid destinations; using fallback catalog.")
+        fallback = _fallback_destinations_catalog()
+        if not fallback:
+            raise ValueError("destinations.json loaded but contained no valid destinations")
+        return fallback
 
     logger.info(f"Loaded {len(destinations)} destinations from {path}")
     return destinations
