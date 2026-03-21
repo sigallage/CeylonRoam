@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
 import bgImage from '../../assets/5.jpg';
 
+
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
@@ -107,19 +109,61 @@ function LoginPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    required
-                    className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
-                    style={{ height: '48px' }}
-                  />
+                  <div className="flex justify-between items-end mb-2">
+                    <label htmlFor="password" className="text-white font-normal text-[17px]">
+                      Password
+                    </label>
+                    <Link to="/reset-password" className="text-[#f59e0b] text-[14px] hover:underline font-medium">
+                      Forgot Password?
+                    </Link>
+                  </div>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      required
+                      className="w-full px-4 border border-gray-700 bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none focus:border-gray-400 transition-colors box-border"
+                      style={{ height: '48px' }}
+                    />
+                    {password && (
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((v) => !v)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                        tabIndex={-1}
+                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        style={{ background: 'none', border: 'none', outline: 'none', cursor: 'pointer' }}
+                      >
+                        {showPassword ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradient" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradient)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradient)" strokeWidth="1.6"/>
+                          </svg>
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradient" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradient)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradient)" strokeWidth="1.6"/>
+                            <path d="M4 4l16 16" stroke="url(#eyeGradient)" strokeWidth="1.6"/>
+                          </svg>
+                        )}
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 <button
@@ -164,12 +208,6 @@ function LoginPage() {
 
               <div className="mt-3 text-center text-[15px] text-gray-300">
                 <div>
-                  <span>Forgot Password? </span>
-                  <Link to="/reset-password" className="text-[#f59e0b] font-medium hover:underline">
-                    Reset
-                  </Link>
-                </div>
-                <div className="mt-1">
                   <span>New to CeylonRoam? </span>
                   <Link to="/signup" className="text-[#f59e0b] font-medium hover:underline">
                     Sign-up

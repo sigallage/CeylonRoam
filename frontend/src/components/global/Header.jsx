@@ -98,13 +98,16 @@ const Header = () => {
 						>
 							Experiences
 						</a>
-						<a 
-							href="#about" 
-							className="text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
-							onClick={() => setIsMenuOpen(false)}
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/about-us');
+							}}
 						>
 							About
-						</a>
+						</button>
 					</div>
 				</div>
 			)}

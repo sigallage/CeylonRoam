@@ -17,6 +17,8 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -195,19 +197,56 @@ function SignUp() {
                   <label htmlFor="password" className="block mb-2 text-white font-normal text-[17px]">
                     Password
                   </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="At least 6 characters"
-                    required
-                    className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                      errors.password ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                    }`}
-                    style={{ height: '48px' }}
-                  />
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="At least 6 characters"
+                      required
+                      className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
+                        errors.password ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
+                      }`}
+                      style={{ height: '48px' }}
+                    />
+                    {formData.password && (
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((v) => !v)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                        tabIndex={-1}
+                        aria-label={showPassword ? 'Hide password' : 'Show password'}
+                        style={{ background: 'none', border: 'none', outline: 'none', cursor: 'pointer' }}
+                      >
+                        {showPassword ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradientSignup" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
+                          </svg>
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradientSignup" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
+                            <path d="M4 4l16 16" stroke="url(#eyeGradientSignup)" strokeWidth="1.6"/>
+                          </svg>
+                        )}
+                      </button>
+                    )}
+                  </div>
                   {errors.password ? (
                     <p className="text-red-600 text-[14px] mt-1">{errors.password}</p>
                   ) : null}
@@ -217,19 +256,56 @@ function SignUp() {
                   <label htmlFor="confirmPassword" className="block mb-2 text-white font-normal text-[17px]">
                     Confirm Password
                   </label>
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Re-enter your password"
-                    required
-                    className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
-                      errors.confirmPassword ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
-                    }`}
-                    style={{ height: '48px' }}
-                  />
+                  <div className="relative">
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      placeholder="Re-enter your password"
+                      required
+                      className={`w-full px-4 border bg-black text-white rounded-[6px] text-[16px] placeholder:text-gray-400 focus:outline-none transition-colors box-border ${
+                        errors.confirmPassword ? 'border-red-500' : 'border-gray-700 focus:border-gray-400'
+                      }`}
+                      style={{ height: '48px' }}
+                    />
+                    {formData.confirmPassword && (
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword((v) => !v)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 p-2"
+                        tabIndex={-1}
+                        aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                        style={{ background: 'none', border: 'none', outline: 'none', cursor: 'pointer' }}
+                      >
+                        {showConfirmPassword ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradientSignup2" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
+                          </svg>
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                            <defs>
+                              <linearGradient id="eyeGradientSignup2" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stopColor="#facc15" />
+                                <stop offset="100%" stopColor="#f97316" />
+                              </linearGradient>
+                            </defs>
+                            <path d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
+                            <circle cx="12" cy="12" r="3" fill="none" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
+                            <path d="M4 4l16 16" stroke="url(#eyeGradientSignup2)" strokeWidth="1.6"/>
+                          </svg>
+                        )}
+                      </button>
+                    )}
+                  </div>
                   {errors.confirmPassword ? (
                     <p className="text-red-600 text-[14px] mt-1">{errors.confirmPassword}</p>
                   ) : null}
