@@ -1,5 +1,5 @@
 [
-
+    
 
     {
         "id": "gangaramaya-temple",
@@ -443,7 +443,7 @@
 
 
 {
-        "id": "Gampaha",
+        "id": "henarathgoda_botanical_garden",
         "name": "Henarathgoda Botanical Garden",
         "latitude": 7.1021,
         "longitude": 79.9868,
@@ -469,8 +469,386 @@
         },
         "entry_fee": "Rs. 100 for Adults, Rs. 50 for Children (Local); Higher rates apply for foreign visitors",
         "opening_hours": "7:30 AM - 6:00 PM"
-       },
-       {
+    },
+
+
+{
+    "id": "national-basilica-of-our-lady-of-lanka",
+    "name": "National Basilica of Our Lady of Lanka",
+    "latitude": 7.0306,
+    "longitude": 79.9172,
+    "description": "A major Roman Catholic pilgrimage site in Sri Lanka, built as a thanksgiving offering after World War II. It is known for its peaceful atmosphere and annual feast celebrations.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/national-basilica-of-our-lady-of-lanka/",
+    "category": "Catholic Church / Pilgrimage Site",
+    "crowd_info": {
+        "peak_months": ["February", "March", "September"],
+        "off_peak_months": ["April", "May", "June", "July", "October", "November", "December", "January"],
+        "best_time_to_visit": "Morning (7:00 AM - 10:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Modest clothing required covering shoulders and knees.",
+        "behavior": [
+            "Maintain silence during prayers.",
+            "Photography allowed outside; ask before taking photos inside.",
+            "Respect clergy and worshippers."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "6.00 AM - 6.00 PM"
+},
+
+
+{
+    "id": "st-marys-church",
+    "name": "St. Mary's Church",
+    "latitude": 7.2083,
+    "longitude": 79.8358,
+    "description": "One of the largest cathedrals in Sri Lanka, located in Grand Street, Negombo. It features beautiful ceiling paintings and impressive architecture.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/st-marys-church-negombo/",
+    "category": "Catholic Church",
+    "crowd_info": {
+        "peak_months": ["December", "April"],
+        "off_peak_months": ["May", "June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Morning hours outside mass times"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Modest attire required.",
+        "behavior": [
+            "Avoid visiting during mass unless attending.",
+            "Maintain silence inside.",
+            "Photography allowed without flash."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "6.00 AM - 6.00 PM"
+},
+
+
+{
+    "id": "water-world-kelaniya",
+    "name": "Water World Kelaniya",
+    "latitude": 6.9566,
+    "longitude": 79.9226,
+    "description": "Sri Lanka’s first public aquarium and underwater tunnel experience. It features freshwater and marine species along with educational exhibits.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/water-world-kelaniya/",
+    "category": "Aquarium / Educational Park",
+    "crowd_info": {
+        "peak_months": ["December", "April", "August"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning (9:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Do not tap on aquarium glass.",
+            "Follow staff instructions.",
+            "Supervise children."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "9.00 AM - 5.00 PM"
+},
+
+
+{
+    "id": "guruge_nature_park",
+    "name": "Guruge Nature Park",
+    "latitude": 7.0835,
+    "longitude": 79.8930,
+    "description": "A family-friendly theme and cultural park featuring replicas of Sri Lankan heritage sites, small zoo areas, and entertainment facilities.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/guruge-nature-park/",
+    "category": "Theme Park / Cultural Park",
+    "crowd_info": {
+        "peak_months": ["December", "April", "August"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning or late afternoon"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Follow park rules.",
+            "Do not disturb animals.",
+            "Keep environment clean."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "8.30 AM - 6.00 PM"
+},
+
+
+{
+    "id": "negombo_beach",
+    "name": "Negombo Beach",
+    "latitude": 7.2390,
+    "longitude": 79.8417,
+    "description": "A popular coastal destination known for golden sands, fishing boats, beachside hotels, and stunning sunsets.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/negombo-beach/",
+    "category": "Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Evening (4:30 PM - sunset)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Beachwear allowed; modest attire outside beach area.",
+        "behavior": [
+            "Avoid swimming in rough sea conditions.",
+            "Do not litter.",
+            "Be respectful in public spaces."
+        ],
+        "entry_requirements": ["Free public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+},
+
+
+{
+    "id": "horagolla_national_park",
+    "name": "Horagolla National Park",
+    "latitude": 7.1400,
+    "longitude": 80.0900,
+    "description": "A small national park known for secondary forest vegetation and wildlife including monkeys, birds, and deer.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/horagolla-national-park/",
+    "category": "National Park / Wildlife",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (6:00 AM - 9:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Outdoor comfortable clothing.",
+        "behavior": [
+            "Do not feed wildlife.",
+            "Stay on designated paths.",
+            "Follow park regulations."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "6.00 AM - 6.00 PM"
+},
+
+
+{
+    "id": "negombo_lagoon",
+    "name": "Negombo Lagoon",
+    "latitude": 7.1800,
+    "longitude": 79.8300,
+    "description": "A large estuarine lagoon famous for fishing, boat rides, mangroves, and birdwatching.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/negombo-lagoon/",
+    "category": "Lagoon / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Early morning or sunset"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual comfortable clothing.",
+        "behavior": [
+            "Use life jackets during boat rides.",
+            "Avoid polluting water.",
+            "Respect local fishermen."
+        ],
+        "entry_requirements": ["Free access", "Boat rides available at extra cost"]
+    },
+    "entry_fee": "free (boat rides paid)",
+    "opening_hours": "Open 24 hours"
+},
+
+
+{
+    "id": "richmond_castle",
+    "name": "Richmond Castle",
+    "latitude": 6.5753,
+    "longitude": 79.9608,
+    "description": "A grand Edwardian mansion built in the early 20th century, showcasing colonial architecture and beautiful gardens. It is one of the most famous heritage mansions in Sri Lanka.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/richmond-castle/",
+    "category": "Historical Mansion / Heritage Site",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July", "September", "October", "November"],
+        "best_time_to_visit": "Morning (9:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual but modest clothing recommended.",
+        "behavior": [
+            "Do not touch antique furniture or artifacts.",
+            "Follow staff instructions.",
+            "Photography allowed in permitted areas."
+        ],
+        "entry_requirements": ["Tickets required"]
+    },
+    "entry_fee": "Paid entry",
+    "opening_hours": "9.00 AM - 5.00 PM"
+},
+
+
+
+{
+    "id": "kalutara_bodhiya",
+    "name": "Kalutara Bodhiya",
+    "latitude": 6.5833,
+    "longitude": 79.9594,
+    "description": "A sacred Buddhist temple located along the Kalu River. It is famous for its hollow stupa where visitors can enter and worship.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalutara-bodhiya/",
+    "category": "Buddhist Temple",
+    "crowd_info": {
+        "peak_months": ["April", "May", "December"],
+        "off_peak_months": ["June", "July", "August", "September", "October", "November"],
+        "best_time_to_visit": "Early morning (6:00 AM - 9:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "White or modest clothing covering shoulders and knees.",
+        "behavior": [
+            "Remove shoes before entering.",
+            "Maintain silence.",
+            "Do not turn your back directly to Buddha statues for photos."
+        ],
+        "entry_requirements": ["Free entry"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "5.00 AM - 9.00 PM"
+},
+    
+
+{
+    "id": "calido_beach",
+    "name": "Calido Beach",
+    "latitude": 6.5817,
+    "longitude": 79.9580,
+    "description": "A peaceful beach located near the mouth of the Kalu River. It offers scenic views where the river meets the sea.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/calido-beach/",
+    "category": "Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Evening (4:30 PM - sunset)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Beachwear allowed; modest attire outside beach area.",
+        "behavior": [
+            "Be cautious of strong currents.",
+            "Avoid littering.",
+            "Follow local safety signs."
+        ],
+        "entry_requirements": ["Free public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+},
+
+
+{
+    "id": "kalido_public_beach",
+    "name": "Kalido Public Beach",
+    "latitude": 6.5825,
+    "longitude": 79.9575,
+    "description": "A public beach area popular among locals for relaxation, swimming, and enjoying sunsets.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalido-public-beach/",
+    "category": "Public Beach",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Late afternoon (4:30 PM - 6:30 PM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual beachwear acceptable.",
+        "behavior": [
+            "Respect families and other visitors.",
+            "Keep the beach clean.",
+            "Avoid swimming during rough sea conditions."
+        ],
+        "entry_requirements": ["Free access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+},
+
+
+{
+    "id": "kalutara_bridge",
+    "name": "Kalutara Bridge",
+    "latitude": 6.5839,
+    "longitude": 79.9598,
+    "description": "A major bridge crossing the Kalu River, connecting Kalutara town. It offers scenic river views and is a key landmark in the area.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kalutara-bridge/",
+    "category": "Landmark / Bridge",
+    "crowd_info": {
+        "peak_months": ["December", "January"],
+        "off_peak_months": ["May", "June"],
+        "best_time_to_visit": "Sunset for scenic river views"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Casual attire.",
+        "behavior": [
+            "Follow traffic and pedestrian safety rules.",
+            "Avoid standing in restricted areas."
+        ],
+        "entry_requirements": ["Public access"]
+    },
+    "entry_fee": "free",
+    "opening_hours": "Open 24 hours"
+},
+
+
+{
+    "id": "thudugala_ella",
+    "name": "Thudugala Ella",
+    "latitude": 6.5240,
+    "longitude": 80.1400,
+    "description": "A scenic waterfall located in a tea estate area, surrounded by lush greenery. It is a popular eco-tourism destination.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/thudugala-ella/",
+    "category": "Waterfall / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (8:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Comfortable outdoor clothing.",
+        "behavior": [
+            "Avoid littering.",
+            "Be cautious on slippery rocks.",
+            "Respect local estate property."
+        ],
+        "entry_requirements": ["Small entrance fee may apply"]
+    },
+    "entry_fee": "Paid (small fee)",
+    "opening_hours": "8.00 AM - 5.00 PM"
+},
+
+
+{
+    "id": "thudugala_waterfall",
+    "name": "Thudugala Waterfall",
+    "latitude": 6.5240,
+    "longitude": 80.1400,
+    "description": "Also known as Thudugala Ella, this natural waterfall is surrounded by tea plantations and is ideal for nature lovers and photographers.",
+    "image_url": "https://www.attractionsinsrilanka.com/travel-directory/thudugala-ella/",
+    "category": "Waterfall / Nature Attraction",
+    "crowd_info": {
+        "peak_months": ["December", "January", "April"],
+        "off_peak_months": ["May", "June", "July"],
+        "best_time_to_visit": "Morning (8:00 AM - 11:00 AM)"
+    },
+    "cultural_guidelines": {
+        "dress_code": "Outdoor comfortable clothing.",
+        "behavior": [
+            "Be careful of slippery surfaces.",
+            "Do not pollute the water.",
+            "Follow eco-tourism rules."
+        ],
+        "entry_requirements": ["Small entrance fee may apply"]
+    },
+    "entry_fee": "Paid (small fee)",
+    "opening_hours": "8.00 AM - 5.00 PM"
+},
+   {
         "id": "koneswaram_temple",
         "name": "Koneswaram Temple",
         "latitude": 8.5700,
@@ -3170,10 +3548,421 @@
     },
     "entry_fee": "Free",
     "opening_hours": "6:00 AM - 6:00 PM"
+  },
+
+  
+  {
+    "id": "galle_dutch_fort",
+    "name": "Galle Dutch Fort",
+    "latitude": 6.0267,
+    "longitude": 80.2170,
+    "description": "Galle Dutch Fort is Sri Lanka's most celebrated UNESCO World Heritage Site — inscribed in 1988 as the 'Old Town of Galle and its Fortifications' — and the finest surviving example of a European colonial fortified city in South and Southeast Asia. The fort occupies a rocky promontory of 52 hectares (130 acres) on the southwest coast, enclosed on three sides by the Indian Ocean. The Portuguese established the original earthwork fortifications in 1588 when they were forced south from Colombo, constructing a rampart with three bastions (including the still-surviving Zwart/Black Bastion, the oldest Portuguese-era structure). In 1640 the Dutch East India Company (VOC), allied with the Kandyan King Rajasinha II, captured the fort from the Portuguese with a force of 2,500 men. From 1649 the Dutch entirely rebuilt and massively extended the fortifications — encircling the whole peninsula with coral-and-granite bastioned walls up to 13 metres thick — building 13 additional bastions by 1663. The sea wall was completed in 1729. The fort's most technically remarkable feature is its 17th-century underground sewer system flushed by tidal seawater — an engineering achievement still operational today. The VOC gate (1669) bears the original VOC coat of arms: a rooster above the initials 'VOC' flanked by two lions. The British took possession peacefully on 24 February 1796 and added the outer gate bearing King George III's Royal Arms — its lion and unicorn and the motto 'Dieu et Mon Droit' clearly visible. Inside the fort, the street layout retains the Dutch grid plan of shaded streets and verandahed houses adapted to the tropical climate — European models built from locally-quarried coral and granite, with verandahs, louvred shutters, and internal courtyards managing heat. Significant buildings within the fort include: the Dutch Reformed Church (1706/1755, oldest Protestant church in Sri Lanka), the All Saints' Anglican Church (1871), the National Maritime Archaeology Museum (in the VOC warehouse), the Historical Mansion Museum, and the Old Dutch Hospital (now a restaurant/shopping precinct). The fort survived the 2004 Indian Ocean tsunami largely intact — its thick rampart walls protected the interior from the worst of the waves. Today the fort is a living town of approximately 400 families, with Dutch-era Moor merchants, Sinhalese, and descendants of VOC settlers. It hosts boutique hotels, galleries, cafés, jewellery workshops, and local residences alongside its monuments. Walking the ramparts — especially at sunset from the Flag Rock Bastion on the southern tip — offers sweeping views over the Indian Ocean and back over the fort's red-tiled rooftops. Allow a full day for thorough exploration.",
+    "image_url": "",
+    "category": "UNESCO World Heritage / Colonial Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Early morning (7:00–9:00 AM) when the lanes are quiet and the light is golden; late afternoon (4:00–6:30 PM) for sunset from the ramparts. December–April for best weather. Weekday mornings are the least crowded."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; modest attire when entering churches and the mosque (shoulders and knees covered). Swimwear not appropriate on the fort streets.",
+      "behavior": "Respect residents within the fort (it is a living community); do not enter private properties; photography freely permitted in public areas; be mindful of active courts and government buildings",
+      "entry_requirements": "Free entry to the fort grounds and ramparts; individual museums have separate entry fees"
+    },
+    "entry_fee": "Free (fort grounds and ramparts); museum entry fees vary (see individual museum entries)",
+    "opening_hours": "Open 24 hours (fort grounds); museums and attractions have individual hours"
+  },
+
+
+  {
+    "id": "old_dutch_hospital",
+    "name": "Old Dutch Hospital",
+    "latitude": 6.0295,
+    "longitude": 80.2163,
+    "description": "The Old Dutch Hospital in Galle Fort is one of the oldest surviving buildings in the fort complex, dating to the Dutch colonial era of the 17th century. It was constructed by the VOC (Dutch East India Company) to provide medical care for Dutch officers and Company staff — including early experimental treatments against smallpox, a disease then spreading widely in the Galle region, predating the formal development of smallpox vaccination in Europe. The building is a striking example of 17th-century Dutch colonial architecture: the walls are 50 cm (20 inches) thick, the structure features massive teak beams, wooden staircases, wooden floors on the upper level, and long open verandahs running the full length of each wing. The building was erected between the Black Fort (Zwart Bastion) and the Aurora Bastion. Under British rule from 1796, the building was repurposed first as the office of the Collector of Galle and then as the Galle Kachcheri (Office of the Government Agent of the Southern Province). In 2014 the Government of Sri Lanka completed a major restoration that preserved the historic architecture while transforming the interior into a sophisticated shopping and dining precinct. The restoration has been widely praised as a model of adaptive heritage reuse. Today the Old Dutch Hospital houses some of the fort's finest restaurants, jewellery and gem boutiques, a pharmacy, cafés, and craft shops within its beautifully restored colonnaded verandahs. The central courtyard is an atmospheric gathering space. It is an excellent starting point for exploring the fort's culinary and shopping scene.",
+    "image_url": "",
+    "category": "Heritage / Dining / Shopping",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Evenings (6:00–9:00 PM) for the best atmosphere at the restaurants; morning for browsing shops with fewer crowds"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Smart casual; standard attire appropriate for a heritage complex with restaurants",
+      "behavior": "Respect the historic fabric of the building; photography welcomed in the public areas",
+      "entry_requirements": "Free to enter (shopping and restaurant complex); individual establishment fees apply"
+    },
+    "entry_fee": "Free entry; dining and shopping at commercial rates",
+    "opening_hours": "Generally 10:00 AM – 10:00 PM daily (individual restaurants and shops vary)"
+  },
+
+
+  {
+    "id": "maritime_archaeology_museum",
+    "name": "Maritime Archaeology Museum",
+    "latitude": 6.0302,
+    "longitude": 80.2157,
+    "description": "The National Maritime Archaeology Museum at Galle Fort is Sri Lanka's premier maritime archaeology institution, housed in a Dutch-era VOC warehouse within the fort. The museum showcases the extraordinary underwater archaeological wealth of Sri Lanka's southern coastal waters — one of the most significant maritime archaeology zones in the Indian Ocean, lying astride a major ancient trade route that connected China, Southeast Asia, India, Arabia, East Africa, and the Mediterranean. The museum's collection includes artefacts recovered from dozens of historic shipwrecks off the southern coast, spanning ancient to colonial-era vessels: Chinese porcelain, Delftware, trade ceramics, navigation instruments, cannon, anchors, rigging hardware, bottles, coins, and personal items recovered from wrecked merchant ships and VOC vessels. A particular highlight is material from the Avondster, a VOC ship that sank in 1659 in Galle Harbour — one of the few reasonably well-documented Dutch East India Company wrecks recovered in Asia. The museum provides interpretive context for the rich history of Galle as a major Indian Ocean port, mentioned in the 6th-century Cosmography of Cosmas Indicopleustes as one of the most important ports in the world. The UNESCO-listed fort setting adds profound resonance to the exhibits on European colonial trade. Exhibits are presented bilingually in English and Sinhala. The museum is maintained in partnership with international maritime archaeology institutions.",
+    "image_url": "",
+    "category": "Museum / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning (9:00–11:00 AM) for the fewest visitors; December–April for the best overall Galle Fort visit conditions"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Smart casual; standard museum attire",
+      "behavior": "No touching displays; photography may be restricted in certain areas — check signage; respectful behaviour",
+      "entry_requirements": "Entry fee charged (verify current rate)"
+    },
+    "entry_fee": "Charged entry (verify current rate at the museum)",
+    "opening_hours": "9:00 AM – 5:00 PM (closed Mondays; verify current schedule)"
+  },
+
+
+  {
+    "id": "galle_lighthouse",
+    "name": "Galle Lighthouse",
+    "latitude": 6.0258,
+    "longitude": 80.2197,
+    "description": "The Galle Lighthouse, standing on the southeastern tip of Galle Fort at the Point Utrecht Bastion, is the oldest lighthouse in Sri Lanka. A lighthouse was first erected on this site in 1848 during British colonial rule — Sri Lanka's first permanent lighthouse — to guide ships safely around the rocky promontory into Galle Harbour, which was then the primary port of Ceylon. The current 27-metre (88-foot) white cylindrical structure replaced the original in 1939 after the first tower was damaged. It remains an operational navigational lighthouse. The lighthouse is closely flanked by the 1782 Dutch powder magazine (with its engraved Dutch inscription), the rampart walls, and the Point Utrecht Bastion. The view from the lighthouse area encompasses the open Indian Ocean to the south and east, Galle Harbour to the north, and the fort's red-tiled buildings crowding the peninsula. The lighthouse and the surrounding bastion is one of the most photographed spots in Galle Fort and among the most iconic images of Sri Lanka — particularly at sunset when the white tower glows orange against the sky and sea. The lighthouse is surrounded by palms and manicured lawns. It is managed by the Sri Lanka Ports Authority; access to the interior of the tower is generally restricted to port authority staff.",
+    "image_url": "",
+    "category": "Landmark / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Sunset (4:30–6:30 PM) for the most spectacular photography and views; early morning (6:30–8:00 AM) for quieter atmosphere and soft golden light"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": "Viewable from the exterior; do not attempt to enter the operational lighthouse without authority permission; photography freely permitted in the grounds",
+      "entry_requirements": "Free access to the surrounding grounds within the fort"
+    },
+    "entry_fee": "Free (exterior viewable within fort grounds)",
+    "opening_hours": "Grounds accessible during daylight hours; tower interior restricted"
+  },
+
+
+  {
+    "id": "national_museum_galle",
+    "name": "National Museum Galle",
+    "latitude": 6.0303,
+    "longitude": 80.2148,
+    "description": "The National Museum of Galle is one of Sri Lanka's regional national museums, located within Galle Fort in a well-preserved Dutch colonial building that served as the Dutch Commandant's residence during the VOC period. The museum documents the archaeological, historical, and cultural heritage of the Galle District and southern Sri Lanka, presenting artefacts spanning from prehistoric periods through the Portuguese, Dutch, and British colonial eras to Sri Lankan independence. The collection includes Chinese, Islamic, and Portuguese trade ceramics from Galle's ancient maritime history; Dutch-period household items, furniture, and documents; traditional costumes; traditional weapons; ancient coins and inscriptions; Buddhist religious objects; and exhibits on the natural history of the southern province. The museum building itself is an attraction — the thick coral walls, Dutch roof tiles, and high ceilings are among the best-preserved examples of Dutch colonial domestic architecture in the fort. The museum provides important contextual depth for visitors exploring the fort; it is recommended to visit before touring the wider fort complex for a fuller understanding of the layers of history. Managed by the Department of National Museums of Sri Lanka.",
+    "image_url": "",
+    "category": "Museum / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning (9:00–11:00 AM); combine with a full fort heritage walk; December–April for best weather"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Smart casual",
+      "behavior": "No photography of certain exhibits (check signage); no touching displays; respectful behaviour",
+      "entry_requirements": "Entry fee: approximately Rs. 200 (Sri Lankan adults); higher rates for foreigners (verify current rates)"
+    },
+    "entry_fee": "Rs. 200 (adults, Sri Lankan); higher for non-residents — verify current fees",
+    "opening_hours": "9:00 AM – 5:00 PM (closed Mondays; verify current schedule)"
+  },
+
+
+  {
+    "id": "martin_wickramasinghe_folk_museum",
+    "name": "Martin Wickramasinghe Folk Museum",
+    "latitude": 6.0006,
+    "longitude": 80.3103,
+    "description": "The Martin Wickramasinghe Folk Museum Complex in Koggala is Sri Lanka's most important cultural museum of rural folk life, and simultaneously a literary memorial to Martin Wickramasinghe (29 May 1890 – 23 July 1976), revered as the father of modern Sinhala literature. Wickramasinghe was born in the village of Malagama in Koggala — between a coral reef on the coast and a marshy mangrove lagoon — and his childhood surroundings near the sea and lake deeply shaped his literary imagination. He began writing in 1914 and became one of the most prolific and influential intellectual figures in 20th-century Sri Lanka, producing novels, essays, literary criticism, anthropological studies, and works introducing Darwinian evolution and philosophy to Sinhala readers. His most celebrated novel, Viragaya (1956), is considered the greatest work of Sinhala fiction; his trilogy Gamperaliya (1944), Yuganthaya (1949), and Kaliyugaya (1957) was adapted for film by director Lester James Peiris. His ancestral home was commandeered by the Royal Air Force in 1941 when RAF Koggala was established — the village was evacuated in 24 hours and nearly all homes demolished. Wickramasinghe's house was one of the very few to survive because a senior RAF officer chose it as personal quarters. The government returned it to Wickramasinghe in 1962. Following his death, the Martin Wickramasinghe Trust was established in 1976, and the museum opened in 1981. The complex spans 7 acres planted with hundreds of native trees and shrubs. The ancestral house (believed to be nearly 200 years old, with distinctive Dutch architectural features — whitewashed walls, square brick floors, thick walls) has been preserved with original furniture, recreating the rooms as they were in Wickramasinghe's childhood. The Hall of Life celebrates his life and work through photographs, manuscripts, awards, and personal effects. The folk culture pavilions house Sri Lanka's most comprehensive collection of rural folk artefacts: traditional agricultural tools, fishing implements, pottery, metalcraft, ceremonial items, masks, puppets, traditional costumes, and objects from folk dances and religious ceremonies. An antique traditional rice storage structure on stilts (to prevent pest intrusion) stands behind the house. The ashes of Martin Wickramasinghe and his wife Prema Wickramasinghe are interred beneath a grass-covered mound surmounted by a rock from the Koggala reef. Location: beside the Galle–Matara A2 Main Road, near the Koggala Free Trade Zone, opposite The Fortress Hotel. Accessible by any Galle–Matara bus.",
+    "image_url": "",
+    "category": "Museum / Literary Heritage / Cultural",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Weekday mornings (9:00–11:00 AM) for a quiet, personal experience; guides are available and add significant depth to the visit. Year-round; closed two days during Sinhala and Tamil New Year (April)."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual; shoes removed before entering the ancestral house",
+      "behavior": "Respectful of the memorial and literary heritage; guides are recommended; photography permitted in most areas",
+      "entry_requirements": "Entry fee: Rs. 100 (Sri Lankan adults), Rs. 50 (children); Rs. 1,000 (non-resident adults); verify current rates"
+    },
+    "entry_fee": "Rs. 100 (resident adult); Rs. 1,000 (non-resident adult); verify current rates",
+    "opening_hours": "9:00 AM – 5:00 PM daily; closed two days at Sinhala and Tamil New Year (April)"
+  },
+
+
+  {
+    "id": "dutch_reformed_church",
+    "name": "Dutch Reformed Church",
+    "latitude": 6.0308,
+    "longitude": 80.2152,
+    "description": "The Dutch Reformed Church (Groote Kerk) within Galle Fort is the oldest Protestant church in Sri Lanka and one of the most significant colonial ecclesiastical buildings in South Asia. The VOC constructed the original church on this site in 1640 immediately after capturing the fort from the Portuguese. The current building was entirely reconstructed in 1755, with further modifications in 1760, and remains in active use today — making it one of the few Dutch Reformed churches in Asia still regularly used for worship. The architecture is a refined example of Dutch colonial baroque: a gabled white façade, a pitched terracotta-tiled roof, arched windows allowing cross ventilation in the tropical heat, and walls of the characteristic 50-cm-thick Dutch coral and limestone construction. The interior is remarkable — the floor is laid entirely with grave slabs dating from 1686 onwards, commemorating Dutch VOC officers, their wives, children, and prominent Company members who died in Ceylon. These inscribed marble and granite slabs — in Dutch, Latin, and occasionally Portuguese — form an extraordinary historical record of the colonial community. The church also features an original 18th-century carved wooden pulpit, period pews, a Dutch-era organ, a chancel, and beautiful stained glass. A plaque records the reconstruction date and key historical episodes. The church is managed by the Church of Ceylon (Anglican) and remains consecrated. It is on the UNESCO World Heritage property register. Located diagonally opposite the National Museum within the fort's central precinct.",
+    "image_url": "",
+    "category": "Heritage / Religious / Colonial Architecture",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Weekday mornings (9:00–11:30 AM) for quiet exploration; Sunday mornings for active worship service; December–April for best weather"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire — shoulders and knees covered; respectful dress as in any active church",
+      "behavior": "Respectful silence especially during services; do not walk on or damage the historic floor gravestones; photography generally permitted (confirm with caretaker)",
+      "entry_requirements": "Free entry; voluntary donations for maintenance welcomed"
+    },
+    "entry_fee": "Free; voluntary donation",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM; Sunday services (verify current schedule)"
+  },
+
+
+  {
+    "id": "galle_fort_clock_tower",
+    "name": "Galle Fort Clock Tower",
+    "latitude": 6.0316,
+    "longitude": 80.2143,
+    "description": "The Galle Fort Clock Tower is one of the most recognisable landmarks inside Galle Fort, standing four storeys high within the inner rampart area near the Moon Bastion, overlooking the fort's main entrance and the Galle Cricket Stadium (immediately outside the fort walls). The clock tower dates to 1883 — constructed during British rule on the site of a former guard room — and was built as a visible time-keeping monument for the fort community and the port. Its four clock faces (one on each side) are visible from different points within the fort. Constructed from the same coral and granite used throughout the fort, the tower integrates naturally into the fortification landscape. Like the Matara Clock Tower (also 1883), the Galle tower reflects the Victorian British fondness for prominent civic timepieces at major administrative sites. The tower sits at the northern end of the fort near the inner gate, flanked by the remains of Dutch ruins, making it a natural starting point for exploring the fort from the landward entrance. Sunset and sunrise views from the ramparts near the clock tower encompass the cricket stadium, the town of Galle, and the surrounding southern landscape — a sharp contrast to the ocean views from the fort's southern and western ramparts.",
+    "image_url": "",
+    "category": "Heritage / Landmark",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Viewable at any time; combine with the main fort entrance walk; early morning and late afternoon for the best light"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": "Viewable from outside; do not climb the tower structure; photography freely permitted",
+      "entry_requirements": "Free (within the Galle Fort public access area)"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Viewable at all times (exterior)"
+  },
+
+
+  {
+    "id": "japan_peace_pagoda",
+    "name": "Japanese Peace Pagoda - Rumassala",
+    "latitude": 6.0153,
+    "longitude": 80.2418,
+    "description": "The Japanese Peace Pagoda at Rumassala (officially known as the Sama Ceitya) is a gleaming white Buddhist stupa perched on the summit of Rumassala Hill above Unawatuna Bay, approximately 4 km from Galle Fort. It was commissioned by the Japanese Buddhist monastic order Nipponzan Myohoji and consecrated on 23 February 2004. The order was founded by the Japanese monk Nichidatsu Fujii (1885–1985), who was profoundly influenced by Mahatma Gandhi's doctrine of non-violence after their meeting in 1931, and who thereafter dedicated his life to constructing 'Peace Pagodas' — symbolic stupas — in conflict zones and war-scarred nations around the world as beacons of peace and healing in the wake of the atomic bombings of Hiroshima and Nagasaki. Over 80 such Peace Pagodas have been built globally (in Japan, India, Nepal, UK, USA, Australia, and Sri Lanka). The Rumassala pagoda is one of five in Sri Lanka (the others are at Sri Pada, Bandarawela, Walapane, and Ampara). It was built specifically because Sri Lanka was then in the midst of its devastating civil war (1983–2009). The structure is architecturally characteristic: a large hemispherical white stupa mounted on a tiered circular platform, encircled by a wide processional walkway. Four gilded standing Buddha statues placed at equal intervals around the stupa represent four key events in the Buddha's life — his birth, his enlightenment, his first sermon (Dhammacakkappavattana), and his Parinibbana (passing into nirvana). The summit offers panoramic 360-degree views over Unawatuna Bay, Galle Fort (clearly visible across the water), the Indian Ocean, and the densely forested Rumassala Hill. Rumassala Hill itself is steeped in legend — in Ramayana tradition, Hanuman dropped a fragment of the Himalayan mountain here while searching for medicinal herbs, and the hill is said to still harbour rare medicinal plants. Arthur C. Clarke noted a major magnetic anomaly near Rumassala, speculating on a possible meteorite impact. Access: a 1.6 km narrow road from the A2 Highway leads to the summit (suitable for tuk-tuks); or a steep 20-minute hike from the western end of Unawatuna beach. Nearby: Jungle Beach lies on the eastern slope just below the pagoda. The resident monk conducts daily drumming meditation; visitors arriving around 4:45 PM can participate.",
+    "image_url": "",
+    "category": "Religious / Landmark / Viewpoint",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Late afternoon (4:00–6:30 PM) for the spectacular sunset over Galle Bay and the optional drumming meditation at 4:45 PM; early morning (6:30–8:00 AM) for tranquil atmosphere and soft light photography"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire mandatory — shoulders and knees covered; shoes removed at the pagoda; sarongs may be available to borrow from the caretaker",
+      "behavior": "Respectful silence; clockwise circumambulation of the stupa; no back to Buddha figures; do not disturb monks in meditation; donations welcomed",
+      "entry_requirements": "Free entry; donations welcomed; be cautious of vendors soliciting donations aggressively"
+    },
+    "entry_fee": "Free; donations welcome",
+    "opening_hours": "7:00 AM – 9:00 PM daily"
+  },
+
+
+  {
+    "id": "ariapala_mask_museum",
+    "name": "Āriapāla Mask Museum",
+    "latitude": 6.1490,
+    "longitude": 80.0560,
+    "description": "The Āriapāla Mask Museum (Ariapala Mask Museum) in Ambalangoda is one of Sri Lanka's most distinctive cultural museums, dedicated to the traditional art of mask-making that has been practised in the Ambalangoda–Balapitiya area for centuries. Ambalangoda (approximately 35 km north of Galle on the A2) is the undisputed capital of Sri Lankan mask-making — a craft of extraordinary cultural complexity that serves both ritual and performative functions. Traditional Sri Lankan masks fall into several categories: the Kolam masks, used in the Kolam ritual theatre performance narrating the story of a queen's craving for a Kolam dance during pregnancy; the Raksha (demon) masks used in Tovil exorcism ceremonies and healing rituals to ward off evil spirits and cure illness; and Sanni masks representing the 18 demons (Sanni Yakku) of disease — each mask embodying a specific illness from cobra-bite to deafness, cholera, and madness. The masks are carved from the wood of the Kaduru tree (Nux Vomica, Indian strychnine), which is simultaneously toxic and easy to carve, and painted in vivid natural and synthetic colours. The most iconic is the Naga Raksha (serpent demon) mask — a coiling cobra-hood headdress and bulging eyes — one of the most recognisable images of Sri Lankan folk art worldwide. The Ariapala family (Ariyapala & Sons) are among the most celebrated hereditary mask-carving dynasties of Ambalangoda, with multiple generations of master carvers. The museum displays a comprehensive collection of traditional and ceremonial masks, and a working workshop where visitors can observe carvers at work. A theatre space hosts occasional demonstrations of Kolam and devil-dance (Tovil) performances. The adjacent Ariyapala & Sons shop sells masks at a range of price points — from affordable souvenir sizes to large ceremonial-quality pieces.",
+    "image_url": "",
+    "category": "Museum / Cultural / Craft Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning (9:00–11:30 AM) to watch carvers at work; December–April for best south coast travel conditions; inquire about scheduled performances when booking"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual",
+      "behavior": "Respectful of the artisans at work; do not touch workshop items without permission; photography of the museum generally permitted; performances may require advance booking",
+      "entry_requirements": "Entry fee charged (verify current rate)"
+    },
+    "entry_fee": "Charged entry (verify current rate at the museum)",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM daily"
+  },
+
+
+  {
+    "id": "all_saints_church",
+    "name": "All Saints' Church",
+    "latitude": 6.0305,
+    "longitude": 80.2155,
+    "description": "All Saints' Church is a beautifully maintained Anglican church located within Galle Fort, directly opposite the Maritime Archaeology Museum. It was built in 1871 by the Anglican community (Church of England) during the British colonial period to serve the Protestant English-speaking population of Galle. The building is a graceful example of Gothic Revival architecture adapted to the tropical climate — a style widely favoured by the British in their colonial churches across South Asia and the Indian Ocean region. The church features finely carved stone arches, elegant stone columns, original stained-glass windows, and ornate interior woodwork. The stained glass is particularly noteworthy — the windows have been carefully preserved in their original Victorian configuration. The church is a listed protected monument within the UNESCO Galle Fort World Heritage Site. It remains a consecrated Anglican church with active services. As one of the few colonial-era Anglican churches in southern Sri Lanka, All Saints' provides a tangible connection to the British chapter of Galle's history — a chapter that began with the peaceful handover from the Dutch in 1796 and lasted until Ceylon's independence in 1948. The church is maintained in excellent condition and is open to visitors at most times of day.",
+    "image_url": "",
+    "category": "Religious / Heritage / Colonial Architecture",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning visits (9:00–11:00 AM); Sunday services for an active experience; combine with the Dutch Reformed Church and Maritime Museum for a heritage circuit"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Modest attire — shoulders and knees covered; standard respectful church dress",
+      "behavior": "Respectful silence, especially during services; photography generally permitted outside service times; donations for maintenance welcomed",
+      "entry_requirements": "Free entry; voluntary donation"
+    },
+    "entry_fee": "Free; voluntary donation",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM daily; Sunday services (verify times)"
+  },
+
+
+  {
+    "id": "dalawella_beach",
+    "name": "Dalawella Beach",
+    "latitude": 6.0220,
+    "longitude": 80.2360,
+    "description": "Dalawella Beach is a compact, characterful beach located east of Unawatuna, approximately 3 km from Galle Fort on the coast road toward Koggala. The beach is best known for a single swing — suspended from the bough of a large tree overhanging the sea — that became one of the most iconic and widely shared photographs of Sri Lanka in the social media era, drawing visitors from around the world seeking the image of swinging over tropical blue water. The beach is small, fringed by palms and a handful of low-key beach restaurants and guesthouses that give it a relaxed, bohemian character. It is notably quieter and less commercialised than the main Unawatuna beach a few minutes' drive west. The water along this stretch is generally calmer than open-coast beaches, with partial reef protection. Snorkelling is possible near the rocky sections. The beach is popular with a mix of backpackers, digital nomads, and day visitors from Galle town. Nearby Jungle Beach (on the other side of the Rumassala headland) and the Japanese Peace Pagoda are accessible from here. Sunsets over the headland are particularly beautiful.",
+    "image_url": "",
+    "category": "Beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "November–April for calm seas; early morning or late afternoon for the most peaceful experience and best light photography on the swing; weekdays to avoid weekend crowds"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Standard beach attire; cover up when walking away from the beach",
+      "behavior": "Be patient when waiting for the swing (queues form at peak times); respect other beach users; no littering",
+      "entry_requirements": "Free public beach; swing use by arrangement with beachside restaurant owner (small charge or purchase expected)"
+    },
+    "entry_fee": "Free (beach); swing typically requires a small fee or purchase from the adjacent beach restaurant",
+    "opening_hours": "Open 24 hours (public beach); restaurants typically 8:00 AM – 9:00 PM"
+  },
+
+
+  {
+    "id": "bentota",
+    "name": "Bentota",
+    "latitude": 6.4247,
+    "longitude": 79.9992,
+    "description": "Bentota is Sri Lanka's premier beach resort town, located in Galle District on the west coast approximately 65 km south of Colombo and 56 km north of Galle. The town sits on a narrow sandy peninsula between the wide Indian Ocean beach and the Bentota River (Bentara Ganga), giving it the distinctive character of a place surrounded by water on three sides. Bentota has been identified as the ancient 'Bhimatirtha' — mentioned in the ancient Mahavamsa chronicle and in medieval messenger poems (sandesha kavya) — and has been a landing point and traveller's rest for many centuries. In the 17th century the Portuguese built a small fort at the river mouth (Parangi Kotuwa); the Dutch allowed it to fall into disrepair but converted a building within it into a rest house; the British then developed it into a coastal sanatorium. The British colonial secretary Sir James Emerson Tennent (1849) wrote that Bentota's rest house was 'one of the coolest and most agreeable in Ceylon.' The entire character of the town changed in 1970s-1980s when the National Holiday Resort Complex was developed, attracting Sri Lanka's first purpose-built five-star beach hotels — including properties designed by the celebrated Sri Lankan architect Geoffrey Bawa, who pioneered a new tropical modernist aesthetic. Bentota Beach — the long, palm-lined western shore — is one of Sri Lanka's finest beaches: golden sand, calm waters (between the monsoon periods), and barely commercialised at the water's edge. The town is the primary water sports destination on Sri Lanka's west coast: jet-skiing, water-skiing, windsurfing, parasailing, wakeboarding, boat rides, and speed-boating on Bentota Beach and the river. The Bentota River and connected lagoons support eco-boat and mangrove safaris (Madu Ganga, 14 km south, is a Ramsar-listed mangrove wetland accessible from Balapitiya). Key nearby attractions include: Brief Garden (11 km inland, the extraordinary home and garden of Bevis Bawa, older brother of Geoffrey Bawa, a work of inspired landscape art created from 1929 amid a former rubber estate); Kosgoda Sea Turtle Hatchery (11 km south, one of Sri Lanka's oldest turtle conservation projects); Galapatha Rajamaha Viharaya (a 12th-century Buddhist temple on the Bentota River, 3 km inland, with a stone doorway of exquisite Kandyan-period carvings including the Narilatha motif, and a 25-foot reclining Buddha); and Cinnamon Island (a cinnamon plantation island in the river). Bentota's toddy (coconut flower sap) and arrack production is traditional; corkscrew palm trees line the coastline. Best season: October–April (dry season, calm seas). June–September: southwest monsoon brings rough seas and reduced water sports.",
+    "image_url": "",
+    "category": "Beach Resort / Water Sports / Nature",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "October–April for calm seas and ideal beach and water sports conditions; early morning for beach walks before the heat; late afternoon for river safaris"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Beach and resort attire; cover up when visiting Galapatha Viharaya (shoulders and knees covered) and other temples",
+      "behavior": "Respect local fishing communities; follow water sports safety briefings; no alcohol at the temple or sacred sites",
+      "entry_requirements": "Free public beach; individual attraction and activity fees apply"
+    },
+    "entry_fee": "Free (beach); water sports, boat safaris, and nearby attractions at commercial rates",
+    "opening_hours": "Open 24 hours (beach); water sports centres typically 8:00 AM – 6:00 PM"
+  },
+
+
+  {
+    "id": "historical_mansion_museum",
+    "name": "Historical Mansion Museum",
+    "latitude": 6.0299,
+    "longitude": 80.2161,
+    "description": "The Historical Mansion Museum (also referred to as the Galle Fort Museum or the Antique Gallery) is a private museum within Galle Fort housing one of the largest and most eclectic private collections of historical artefacts and antiques in Sri Lanka. The collection reflects Galle's extraordinary position as a junction point of Indian Ocean trade routes over two millennia: it includes Chinese Admiral Zheng He memorabilia and a gold-plated life-size statue (Zheng He visited Ceylon/Sri Lanka multiple times between 1405 and 1433, and the trilingual Zheng He stone inscription found near Galle is one of the most important historical artefacts of the Indian Ocean world); Portuguese, Dutch, and British colonial items; traditional furniture of teak and ebony; turtle-shell ware; ivory; bronzeware; lacework; ancient weapons; historical coins; traditional jewellery; and a significant collection of gems — Galle District historically being part of Sri Lanka's gem-rich southern zone. The museum also preserves items related to the island's Chinese and Arab trading connections. The building in which it is housed is itself a notable Dutch colonial structure within the fort. The museum provides an intimate, personally curated alternative to the government's National Museum — its private character means the exhibits are presented with individual stories and context. Entry fees are charged. The adjacent shop sells antiques, gems, and replicas.",
+    "image_url": "",
+    "category": "Museum / Heritage",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Morning or early afternoon; combine with the National Museum and Maritime Museum for a full museum circuit within the fort"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Smart casual",
+      "behavior": "Do not touch exhibits; follow museum guide instructions; photography may be restricted in certain areas",
+      "entry_requirements": "Entry fee charged (verify current rate)"
+    },
+    "entry_fee": "Charged entry (verify current rate at the museum)",
+    "opening_hours": "Generally 9:00 AM – 5:00 PM daily"
+  },
+
+
+  {
+    "id": "mihiripenna_beach",
+    "name": "Mihiripenna Beach",
+    "latitude": 6.0135,
+    "longitude": 80.2440,
+    "description": "Mihiripenna Beach is a small, tranquil stretch of sand tucked between Unawatuna and Dalawella on the coast between Galle Fort and Koggala, within the Unawatuna area. It is less visited than the main Unawatuna beach, offering a quieter and more intimate coastal experience. The beach is compact with palm trees, clear water, and a selection of small beachside guesthouses and cafés. Its proximity to Jungle Beach (a short walk over the Rumassala headland), Dalawella Beach's famous tree swing, and the Japanese Peace Pagoda makes it part of a cluster of Unawatuna-area beaches accessible to explore on foot or by tuk-tuk. The swimming conditions are generally calmer than the main open coast due to partial reef and headland protection. The area is popular with long-stay budget and mid-range travellers who prefer a quieter atmosphere. It exemplifies the southern coast's mosaic of small coves and beaches interspersed between the more visited spots.",
+    "image_url": "",
+    "category": "Beach",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "November–April for calm seas; morning or late afternoon for the most peaceful experience"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Standard beach attire; cover up when walking through the village",
+      "behavior": "Respect local residents; no littering",
+      "entry_requirements": "Free public beach"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours (public beach)"
+  },
+
+
+  {
+    "id": "jungle_beach",
+    "name": "Jungle Beach",
+    "latitude": 6.0181,
+    "longitude": 80.2451,
+    "description": "Jungle Beach (also sometimes called Rumassala Beach) is one of Galle's most celebrated hidden beaches — a small, forested cove on the eastern flank of Rumassala Hill between Unawatuna and Koggala, accessible only by walking through dense jungle or by boat from Unawatuna. The beach's defining characteristic is its seclusion: hemmed in by the steep, tree-covered Rumassala headland on three sides, with no direct road access to the shoreline itself. The approach is either via a jungle walking path from the Japanese Peace Pagoda (approximately 15 minutes downhill through dense trees, following a path lined with mature tropical vegetation) or from Dalawella beach along the shoreline at low tide. The cove is sheltered, the water typically clear and calm, and the surrounding greenery is remarkably lush — giving the impression of a true tropical hideaway. A few basic beach shacks and bars have established themselves on the sand, serving cold drinks and simple food, which has given the beach a cult following among backpackers. Snorkelling in the rocky areas at the cove's edges can be rewarding. The combination of the jungle hike, the Peace Pagoda visit, and the beach below makes for one of the most satisfying half-day outings from Galle Fort. Note: the beach is more crowded on weekends and school holidays; the path can be slippery after rain.",
+    "image_url": "",
+    "category": "Beach / Nature",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July", "August"],
+      "best_time_to_visit": "Weekday mornings (9:00 AM–1:00 PM) for the quietest experience; November–April for calm swimming conditions; combine with the Peace Pagoda visit above"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Standard beach attire; sturdy footwear recommended for the jungle path",
+      "behavior": "Carry out all rubbish; take care on the jungle path after rain (slippery); heed local advice on sea conditions; respect the forest environment on Rumassala Hill",
+      "entry_requirements": "Free access (public beach and path); small informal charge sometimes requested for parking near the path access"
+    },
+    "entry_fee": "Free",
+    "opening_hours": "Open 24 hours; best visited during daylight hours due to jungle path"
+  },
+
+
+  {
+    "id": "river_safari",
+    "name": "Eco Friendly River Safari & Canoeing Excursion Mahamodara",
+    "latitude": 6.0480,
+    "longitude": 80.2700,
+    "description": "The Mahamodara River (Mahamodara Oya) eco-friendly river safari and canoeing excursions near Galle offer one of the most rewarding nature experiences in the greater Galle District — a boat journey through a coastal mangrove wetland ecosystem just a short distance from Galle Fort. The Mahamodara area encompasses mangrove-lined tidal rivers, lagoons, and wetland channels flowing through the coastal lowlands east of Galle town. Guided boat safaris and canoeing excursions through these waterways provide an intimate encounter with southern Sri Lanka's coastal biodiversity: birdwatching opportunities include kingfishers (multiple species including the resplendent Common Kingfisher and White-throated Kingfisher), cormorants, herons, egrets, whistling ducks, and migratory waterbirds. The mangrove corridors harbour Water Monitor Lizards (up to 2 metres long), freshwater crocodiles (Mugger), turtles, and numerous fish and reptile species. The mangrove forest itself — with its extraordinary aerial root systems (pneumatophores) and tidal channels — is of ecological and educational interest. Local eco-tourism operators run these excursions from Mahamodara landing points near Galle, typically lasting 1.5 to 3 hours depending on the package. Sea Turtle Farm & Hatchery Galle Mahamodara — a well-regarded sea turtle conservation project — operates in the same area, providing visitors with close encounters with rescued sea turtles and information on the five species nesting on Sri Lanka's southern coast. Sunrise and sunset are the prime times for wildlife activity on the water.",
+    "image_url": "",
+    "category": "Eco-Tourism / Nature / Wildlife",
+    "crowd_info": {
+      "peak_months": ["December", "January", "February", "March"],
+      "off_peak_months": ["June", "July"],
+      "best_time_to_visit": "Early morning (6:00–8:30 AM) for peak bird activity and calm water; late afternoon (4:00–6:00 PM) for sunset river light; November–April for best conditions"
+    },
+    "cultural_guidelines": {
+      "dress_code": "Light, neutral-coloured long-sleeved clothing for protection from sun and insects; closed-toe shoes; hat recommended",
+      "behavior": "No noise on the water to avoid disturbing wildlife; no littering in the waterway; follow guide instructions; no feeding wildlife",
+      "entry_requirements": "Guided excursion fees charged by eco-tourism operators (verify current rates; typically Rs. 2,000–3,500 per person for a 1.5–2 hour safari)"
+    },
+    "entry_fee": "Guided excursion fee (approximately Rs. 2,000–3,500 per person; verify with operators)",
+    "opening_hours": "Tours typically depart 6:00–9:00 AM and 3:00–6:00 PM daily; book in advance"
+  },
+
+
+  {
+    "id": "stilt_fisherman",
+    "name": "Stilt Fisherman",
+    "latitude": 6.0110,
+    "longitude": 80.2803,
+    "description": "The stilt fishermen of Koggala and Ahangama are one of the most iconic images of Sri Lanka — a fishing tradition unique in the world, practised on the southern coast between Galle and Weligama that has become a symbol of the country's coastal heritage. The technique, known locally as 'ritipanna', originated during or just after the Second World War, when food shortages and overcrowded nearshore fishing grounds prompted local fishermen to experiment with fishing from stilts inserted into the shallow coral-reef and sand seabed. A narrow vertical kithul wood pole (3–4 metres long) is driven into the seabed a few metres offshore; a horizontal crossbar is lashed to it approximately 2 metres above the water. The fisherman sits on the crossbar with a fishing rod (also traditionally made from kithul or bamboo wood) for hours at a time, casting his line in patient silence — both hands occupied with balancing and the rod simultaneously — catching small reef fish such as spotted herring, sardines, and mackerel. The height minimises the fisherman's shadow on the water below (which would scare fish away). Each stilt position has historically been considered 'owned' by a fishing family and passed from father to son — a significant property right in the community. Today there are estimated to be approximately 150 stilt fishermen remaining across the villages of Koggala, Ahangama, Welipenna, Kathaluwa, and Thalarambe. The practice has been affected by environmental changes reducing inshore fish stocks, but tourism income — visitors paying to photograph the fishermen or to try the technique themselves — has provided an important supplementary income that helps sustain the tradition. The fishermen fish most actively at dawn (from approximately 5:00 AM to 9:00 AM) and again in the late afternoon/early evening (approximately 3:30–6:00 PM) when fish approach the shallows. The silhouettes of the fishermen against a gold-and-orange sunset or sunrise are among the most photographed scenes in all of Asia. Visitors should offer payment when photographing fishermen (typically Rs. 100–500 is appreciated) and may arrange to try the stilt themselves. Stilt fishermen are most reliably seen along the coast road (A2) between Ahangama and Welipenna.",
+    "image_url": "",
+    "category": "Cultural Heritage / Traditional Craft",
+    "crowd_info": {
+      "peak_months": ["April", "May", "June", "July"],
+      "off_peak_months": ["October", "November"],
+      "best_time_to_visit": "Early morning (5:30–8:00 AM) and late afternoon/sunset (3:30–6:00 PM) for active fishing and the best photography light. April is peak fishing season. October–April for dry weather. The fishermen are present year-round along the Koggala–Ahangama coast road."
+    },
+    "cultural_guidelines": {
+      "dress_code": "Casual beach clothing; sun protection recommended",
+      "behavior": "Always offer payment before or after photographing the fishermen (this is their livelihood and cultural heritage; photographing without payment is considered disrespectful); be patient and quiet while fishermen are active; do not wade into the water near stilts without invitation; respect that this is a genuine traditional fishing activity, not just a tourist show",
+      "entry_requirements": "No formal entry fee; payment/tip to fishermen for photography or stilt experience (Rs. 100–500 per person is customary)"
+    },
+    "entry_fee": "No formal entry; customary tip/payment to fishermen for photography",
+    "opening_hours": "Best observed 5:30–9:00 AM and 3:30–6:00 PM along the coastal road (A2) between Ahangama and Koggala; year-round"
   }
- 
-
-
 
 
 ]

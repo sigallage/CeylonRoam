@@ -25,6 +25,22 @@ const LandingPage = () => {
 
   const heroImages = [flagImage, colomboImage, templeImage];
 
+  const isLoggedIn = () => {
+    try {
+      return Boolean(window.localStorage.getItem('ceylonroam_user'));
+    } catch {
+      return false;
+    }
+  };
+
+  const navigateProtected = (path) => {
+    if (isLoggedIn()) {
+      navigate(path);
+      return;
+    }
+    navigate('/login');
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
@@ -135,17 +151,18 @@ const LandingPage = () => {
   const features = [
     {
       title: 'Smart Itinerary Generation',
-      description: 'AI-powered itinerary planning that creates perfect day-by-day schedules based on your preferences'
-      
+      description: 'AI-powered itinerary planning that creates perfect day-by-day schedules based on your preferences',
+      path: '/itinerary-generator',
     },
     {
       title: 'Route Optimization',
-      description: 'Intelligent route planning with live traffic data to save time and fuel on your journey'
-      
+      description: 'Intelligent route planning with live traffic data to save time and fuel on your journey',
+      path: '/planner',
     },
     {
       title: 'Voice Translation',
-      description: 'Real-time Sinhala and Tamil translation to communicate effortlessly with locals'
+      description: 'Real-time Sinhala and Tamil translation to communicate effortlessly with locals',
+      path: '/voice-translation',
     }
   ];
 
@@ -229,7 +246,7 @@ const LandingPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => navigate('/planner')}
+                onClick={() => navigateProtected('/planner')}
                 className="group px-8 py-4 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-lg font-semibold rounded-full shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300"
               >
                 Start Planning Your Journey
@@ -274,17 +291,16 @@ const LandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div
+              <button
                 key={index}
-                className="group relative overflow-hidden rounded-2xl border border-gray-700 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl"
+                type="button"
+                onClick={() => navigateProtected(feature.path)}
+                className="group relative overflow-hidden rounded-2xl border border-gray-700 bg-gray-900/40 text-left transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500/70"
                 style={{
                   animation: `fade-in-up 0.6s ease-out ${index * 0.1}s backwards`
                 }}
               >
-                <div className="absolute inset-0">
-                  <img src={feature.image} alt="" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/95 to-gray-900/90" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/95 to-gray-900/90" />
                 <div className="relative z-10 p-8">
                   <h4 className="text-2xl font-bold text-white mb-3">
                     {feature.title}
@@ -292,8 +308,11 @@ const LandingPage = () => {
                   <p className="text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
+                  <div className="mt-6 text-yellow-400 font-semibold">
+                    Explore →
+                  </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -416,7 +435,7 @@ const LandingPage = () => {
             with our intelligent route planning and real-time navigation
           </p>
           <button
-            onClick={() => navigate('/planner')}
+            onClick={() => navigateProtected('/planner')}
             className="group px-12 py-5 bg-gradient-to-r from-yellow-500 to-amber-600 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300"
           >
             Plan Your Journey Now

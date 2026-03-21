@@ -1,0 +1,47 @@
+{
+  "family": "ceylonroam-itinerary-service",
+  "executionRoleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "itinerary-service",
+      "image": "<AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/ceylonroam-itinerary:latest",
+      "portMappings": [
+        {
+          "containerPort": 8001,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "PORT",
+          "value": "8001"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "OPENROUTER_API_KEY",
+          "valueFrom": "ceylonroam/openrouter_api_key"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ceylonroam-itinerary",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8001/health').read()\" || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ]
+}

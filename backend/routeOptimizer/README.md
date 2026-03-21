@@ -8,8 +8,10 @@ From repository root:
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r backend/routeOptimizer/requirements.txt
-uvicorn backend.routeOptimizer.main:app --reload --port 8000
+uvicorn backend.routeOptimizer.main:app --reload --port 8002
 ```
+
+Note: the frontend dev proxy expects the route optimizer on port `8002`.
 
 ## Live traffic (Google)
 
@@ -38,7 +40,7 @@ GOOGLE_MAPS_API_KEY=YOUR_KEY_HERE
 
 To draw per-segment traffic colors (blue/yellow/red) similar to the native Google Maps app, the frontend calls:
 
-- `POST http://localhost:8000/traffic-route`
+- `POST http://localhost:8002/traffic-route`
 
 This uses Google **Routes API** (v2) with `TRAFFIC_ON_POLYLINE` to return `speedReadingIntervals`.
 
@@ -61,7 +63,7 @@ Example request (PowerShell):
 
 ```powershell
 $body = @{ itinerary = @() ; metric = 'google' ; optimize_for = 'hybrid' ; distance_weight = 1 ; time_weight = 1 } | ConvertTo-Json -Depth 10
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/optimize -ContentType 'application/json' -Body $body
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8002/optimize -ContentType 'application/json' -Body $body
 ```
 Alternative (also works):
 
@@ -72,8 +74,8 @@ python -m backend.routeOptimizer
 If you're inside `backend/routeOptimizer`, `python main.py` also works, but it runs without auto-reload.
 
 Frontend can call:
-- `POST http://localhost:8000/optimize`
-- `POST http://localhost:8000/traffic-route`
+- `POST http://localhost:8002/optimize`
+- `POST http://localhost:8002/traffic-route`
 
 ## Smoke test (no server)
 
