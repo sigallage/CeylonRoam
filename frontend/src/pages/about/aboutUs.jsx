@@ -1,6 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 
 const AboutUs = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state && location.state.scrollTo === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
   const [form, setForm] = useState({ name: "", email: "", message: "", rating: 0 });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);

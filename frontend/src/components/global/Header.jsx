@@ -84,23 +84,29 @@ const Header = () => {
 			{isMenuOpen && (
 				<div className="absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
 					<div className="flex flex-col p-4 gap-2">
-						<a 
-							href="#features" 
-							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
-							onClick={() => setIsMenuOpen(false)}
-						>
-							Features
-						</a>
-						<a 
-							href="#destinations" 
-							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
-							onClick={() => setIsMenuOpen(false)}
-						>
-							Experiences
-						</a>
 						<button
 							type="button"
-							className="text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/', { state: { scrollTo: 'features' } });
+							}}
+						>
+							Features
+						</button>
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/', { state: { scrollTo: 'destinations' } });
+							}}
+						>
+							Experiences
+						</button>
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
 							onClick={() => {
 								setIsMenuOpen(false);
 								navigate('/about-us');

@@ -1,6 +1,8 @@
 import logoIcon from '../../assets/icon.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+	const navigate = useNavigate();
 	return (
 		<footer className="relative py-8 px-8 bg-black">
 			<div className="max-w-7xl mx-auto">
@@ -16,17 +18,43 @@ const Footer = () => {
 					</div>
 
 					{/* Navigation Links */}
-					<div className="flex flex-wrap justify-center gap-8 text-white font-medium">
-						<a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
-						<a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
-						<a href="#about" className="hover:text-orange-400 transition-colors">About</a>
-						<a href="#" className="hover:text-yellow-400 transition-colors">Contact</a>
+					<div className="flex flex-wrap justify-center gap-8 text-white font-medium ml-[-60px]">
+						<button
+							type="button"
+							className="hover:text-yellow-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/', { state: { scrollTo: 'features' } });
+							}}
+						>
+							Features
+						</button>
+						<button
+							type="button"
+							className="hover:text-amber-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/', { state: { scrollTo: 'destinations' } });
+							}}
+						>
+							Experiences
+						</button>
+						<button
+							type="button"
+							className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								window.location.href = '/about-us#top';
+							}}
+						>
+							About
+						</button>
+						{/* Contact link removed */}
 					</div>
 
 					{/* Contact Info */}
 					<div className="text-center md:text-right">
-						<p className="text-gray-400 text-sm">info@ceylonroam.lk</p>
-						<p className="text-gray-400 text-sm">+94 11 234 5678</p>
+						<p className="text-gray-400 text-sm">ceylon.roam144@gmail.com</p>
 					</div>
 				</div>
 
