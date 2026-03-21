@@ -161,9 +161,11 @@ const Main = () => {
             <section className="rounded-3xl border border-[#FFD700]/40 p-6 shadow-sm"
               style={{ background: '#FFD180' }}>
               <h2 className="text-lg font-semibold text-black">Travel Itinerary</h2>
-              <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-black">
-                {itinerary}
-              </p>
+              <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-black" dangerouslySetInnerHTML={{
+                __html: itinerary
+                  ? itinerary.replace(/(Day \d+(?:\s*[–-][^\n]*)?)/g, match => `<strong>${match}</strong>`)
+                  : ''
+              }} />
             </section>
 
             <section className="rounded-3xl border border-[#FFD700]/40 bg-black p-6 text-sm shadow-sm">
