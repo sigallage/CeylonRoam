@@ -19,6 +19,8 @@ function SignUp() {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +39,11 @@ function SignUp() {
 
   const validateForm = () => {
     const newErrors = {};
+
+    // Full Name validation
+    if (!formData.name || !formData.name.trim()) {
+      newErrors.name = 'Full Name is required';
+    }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -165,6 +172,9 @@ function SignUp() {
                     className={`${inputBase} ${inputBorderOk}`}
                     style={{ height: '48px' }}
                   />
+                  {errors.name ? (
+                    <p className="text-red-600 text-[14px] mt-1">{errors.name}</p>
+                  ) : null}
                 </div>
 
                 <div>
@@ -262,8 +272,13 @@ function SignUp() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3.5 bg-white text-black rounded-[6px] text-[16px] font-medium hover:bg-gray-200 transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ height: '45px' }}
+                  className="w-full py-3.5 rounded-[6px] text-[16px] font-medium transition-colors mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  style={{
+                    height: '45px',
+                    background: 'linear-gradient(to right, #facc15, #f97316)',
+                    color: '#222',
+                    boxShadow: '0 0 12px rgba(250,204,21,0.10)'
+                  }}
                 >
                   {isLoading ? 'Creating Account...' : 'Sign Up'}
                 </button>
@@ -298,6 +313,7 @@ function SignUp() {
                 <Link to="/login" className="text-[#f59e0b] font-medium hover:underline">
                   Login
                 </Link>
+              </div>
               </div>
             </div>
           </div>

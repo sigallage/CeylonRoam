@@ -188,26 +188,16 @@ const AboutUs = () => {
               {[1,2,3,4,5].map(star => (
                 <span
                   key={star}
-                  style={{
-                    cursor: "pointer",
-                    background: "#fff",
-                    borderRadius: 8,
-                    padding: "4px 12px",
-                    border: "1px solid #eee",
-                    transition: "border 0.2s, background 0.2s",
-                    display: "inline-block"
-                  }}
+                  className="cursor-pointer rounded-lg px-3 py-1 border border-transparent inline-block bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box] hover:bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffef9e_0%,#ffd76a_45%,#ff8a2b_100%)]"
                   onClick={() => handleRating(star)}
                   aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                 >
                   <svg
-                    width="32"
-                    height="32"
+                    className="w-8 h-8 block"
                     viewBox="0 0 24 24"
                     fill={star <= form.rating ? "#ffb300" : "#ccc"}
                     stroke="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{ display: "block" }}
                   >
                     <polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9" />
                   </svg>
@@ -217,34 +207,18 @@ const AboutUs = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              style={{
-                width: "100%",
-                background: "#111",
-                color: "#fff",
-                padding: "12px 0",
-                fontWeight: 700,
-                letterSpacing: 1,
-                fontSize: 18,
-                border: "none",
-                cursor: "pointer",
-                borderRadius: 40,
-                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                opacity: isSubmitting ? 0.7 : 1
-              }}
+              className="w-full bg-gradient-to-r from-[#ffe066] via-[#ffc233] to-[#ff6a00] text-black py-3 font-bold tracking-wide text-lg rounded-full shadow-md flex items-center justify-center disabled:opacity-70"
             >
               {isSubmitting ? "Sending..." : "Send"}
             </button>
             {submitError && (
-              <p style={{ textAlign: "center", color: "#b91c1c", marginTop: 20 }}>{submitError}</p>
+              <p className="text-center text-red-700 mt-5">{submitError}</p>
             )}
             {submitted && (
-              <p style={{ textAlign: "center", color: "green", marginTop: 20 }}>Thank you for your feedback!</p>
+              <p className="text-center text-green-600 mt-5">Thank you for your feedback!</p>
             )}
           </form>
-        </div>
+        </RevealOnScroll>
       </div>
       </div>
     </div>
