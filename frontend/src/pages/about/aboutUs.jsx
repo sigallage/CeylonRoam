@@ -21,44 +21,25 @@ const AboutUs = () => {
     setForm({ ...form, rating });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitError("");
     setSubmitted(false);
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${authBaseUrl}/api/contact-us`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          rating: form.rating,
-        }),
-      });
+      const subject = encodeURIComponent(`Contact Us - ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nRating: ${form.rating || "Not provided"}\n\nMessage:\n${form.message}`
+      );
 
-      const contentType = response.headers.get("content-type") || "";
-      const payload = contentType.includes("application/json")
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
-        const message = typeof payload === "string"
-          ? payload
-          : payload?.message || "Failed to send feedback. Please try again.";
-        setSubmitError(message);
-        return;
-      }
+      const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ceylon.roam144@gmail.com&su=${subject}&body=${body}`;
+      window.location.href = gmailComposeUrl;
 
       setSubmitted(true);
       setForm({ name: "", email: "", message: "", rating: 0 });
     } catch (error) {
-      setSubmitError("Network error. Please check your connection and try again.");
+      setSubmitError("Could not open your email app. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
