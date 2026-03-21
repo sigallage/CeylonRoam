@@ -154,43 +154,33 @@ const Header = () => {
 					? 'absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in'
 					: 'absolute top-full right-4 mt-2 w-50 bg-white border border-gray-200 rounded-2xl shadow-2xl animate-fade-in'}>
 					<div className="flex flex-col p-4 gap-2">
-						{isLoggedIn && (
-							<button
-								onClick={() => {
-									navigate('/profile');
-									setIsMenuOpen(false);
-								}}
-								className={isDarkMode
-									? 'text-left text-white text-lg font-medium hover:text-yellow-300 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
-									: 'text-left text-gray-900 text-lg font-medium hover:text-yellow-600 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
-							>
-								Profile
-							</button>
-						)}
-						<a 
-							href="#features" 
-							className={isDarkMode
-								? 'text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
-								: 'text-gray-900 text-lg font-medium hover:text-yellow-600 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
-							onClick={() => setIsMenuOpen(false)}
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/', { state: { scrollTo: 'features' } });
+							}}
 						>
 							Features
-						</a>
-						<a 
-							href="#destinations" 
-							className={isDarkMode
-								? 'text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
-								: 'text-gray-900 text-lg font-medium hover:text-amber-600 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
-							onClick={() => setIsMenuOpen(false)}
+						</button>
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/', { state: { scrollTo: 'destinations' } });
+							}}
 						>
 							Experiences
-						</a>
-						<a 
-							href="#about" 
-							className={isDarkMode
-								? 'text-white text-lg font-medium hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl'
-								: 'text-gray-900 text-lg font-medium hover:text-orange-600 hover:bg-orange-400/10 transition-all duration-300 py-3 px-4 rounded-xl'}
-							onClick={() => setIsMenuOpen(false)}
+						</button>
+						<button
+							type="button"
+							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							onClick={() => {
+								setIsMenuOpen(false);
+								navigate('/about-us');
+							}}
 						>
 							About
 						</a>

@@ -1,13 +1,8 @@
 import logoIcon from '../../assets/icon.jpeg';
-import { useTheme } from '../../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-	const { isDarkMode } = useTheme();
-
-	const footerClass = isDarkMode ? 'relative py-8 px-8 bg-black' : 'relative py-8 px-8 bg-white border-t border-gray-200';
-	const titleClass = isDarkMode ? 'text-3xl font-bold text-white tracking-tight' : 'text-3xl font-bold text-gray-900 tracking-tight';
-	const linkClass = isDarkMode ? 'hover:text-yellow-400 transition-colors' : 'hover:text-yellow-600 transition-colors';
-	const bodyTextClass = isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm';
+	const navigate = useNavigate();
 	return (
 		<footer className={footerClass}>
 			<div className="max-w-7xl mx-auto">
@@ -23,17 +18,43 @@ const Footer = () => {
 					</div>
 
 					{/* Navigation Links */}
-					<div className={isDarkMode ? 'flex flex-wrap justify-center gap-8 text-white font-medium' : 'flex flex-wrap justify-center gap-8 text-gray-900 font-medium'}>
-						<a href="#features" className={linkClass}>Features</a>
-						<a href="#destinations" className={linkClass}>Experiences</a>
-						<a href="#about" className={linkClass}>About</a>
-						<a href="#" className={linkClass}>Contact</a>
+					<div className="flex flex-wrap justify-center gap-8 text-white font-medium ml-[-60px]">
+						<button
+							type="button"
+							className="hover:text-yellow-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/', { state: { scrollTo: 'features' } });
+							}}
+						>
+							Features
+						</button>
+						<button
+							type="button"
+							className="hover:text-amber-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/', { state: { scrollTo: 'destinations' } });
+							}}
+						>
+							Experiences
+						</button>
+						<button
+							type="button"
+							className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								window.location.href = '/about-us#top';
+							}}
+						>
+							About
+						</button>
+						{/* Contact link removed */}
 					</div>
 
 					{/* Contact Info */}
 					<div className="text-center md:text-right">
-						<p className={bodyTextClass}>info@ceylonroam.lk</p>
-						<p className={bodyTextClass}>+94 11 234 5678</p>
+						<p className="text-gray-400 text-sm">ceylon.roam144@gmail.com</p>
 					</div>
 				</div>
 

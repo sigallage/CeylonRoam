@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import flagImage from '../../assets/1.jpg';
 import logoIcon from '../../assets/icon.jpeg';
 import colomboImage from '../../assets/2.jpg';
@@ -12,6 +12,19 @@ import templesImage from '../../assets/5.jpg';
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+    // Scroll to features or destinations section if navigated with state.scrollTo
+    useEffect(() => {
+      if (location.state && location.state.scrollTo) {
+        const sectionId = location.state.scrollTo;
+        const section = document.getElementById(sectionId);
+        if (section) {
+          setTimeout(() => {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }, 100); // slight delay to ensure DOM is ready
+        }
+      }
+    }, [location]);
   const [scrollY, setScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [statsInView, setStatsInView] = useState(false);
@@ -473,17 +486,15 @@ const LandingPage = () => {
                 type="button"
                 className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
                 style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
-                onClick={() => navigate('/about-us')}
+                onClick={() => navigate('/about-us', { state: { scrollTo: 'top' } })}
               >
                 About
               </button>
-              <a href="#" className="hover:text-yellow-400 transition-colors">Contact</a>
             </div>
 
             {/* Contact Info */}
             <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm">info@ceylonroam.lk</p>
-              <p className="text-gray-400 text-sm">+94 11 234 5678</p>
+              <p className="text-gray-400 text-sm">ceylon.roam144@gmail.com</p>
             </div>
           </div>
 
