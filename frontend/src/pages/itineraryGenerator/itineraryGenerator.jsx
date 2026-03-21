@@ -556,7 +556,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                       };
                     } else if (inRange) {
                       buttonStyle = {
-                        background: 'linear-gradient(to right, #facc15b3, #f97316b3)', // even lighter gradient (70% opacity)
+                        background: 'linear-gradient(to right, #facc1599, #f9731699)', // lighter gradient (60% opacity)
                         fontWeight: 600,
                         color: '#222',
                         border: 0
