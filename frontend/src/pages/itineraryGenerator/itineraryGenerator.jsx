@@ -508,10 +508,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                   <button
                     type="button"
                     onClick={() => goToAdjacentMonth(-1)}
-                    className="min-w-[80px] rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 px-4 py-2 text-base font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none touch-manipulation"
+                    className="min-w-[44px] h-10 flex items-center justify-center rounded-full bg-transparent hover:bg-black/10 active:bg-black/20 transition text-black disabled:opacity-40 disabled:cursor-not-allowed"
                     disabled={isSubmitting}
+                    aria-label="Previous Month"
                   >
-                    Prev
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.5 19L9.5 12L15.5 5" stroke="#222" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </button>
                   <p className="min-w-[120px] text-center text-base font-medium text-black">
                     {currentMonthLabel}
@@ -519,10 +522,13 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                   <button
                     type="button"
                     onClick={() => goToAdjacentMonth(1)}
-                    className="min-w-[80px] rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 px-4 py-2 text-base font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(255,255,255,0.4)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-white disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none touch-manipulation"
+                    className="min-w-[44px] h-10 flex items-center justify-center rounded-full bg-transparent hover:bg-black/10 active:bg-black/20 transition text-black disabled:opacity-40 disabled:cursor-not-allowed"
                     disabled={isSubmitting}
+                    aria-label="Next Month"
                   >
-                    Next
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.5 5L14.5 12L8.5 19" stroke="#222" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </button>
                 </div>
                 <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase tracking-wide text-black/60 sm:gap-2 sm:text-xs mb-2">
@@ -535,6 +541,29 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                     const inRange = isDateInRange(isoValue);
                     const isStartEnd = isStartOrEndDate(isoValue);
                     const isPast = isPastDate(isoValue);
+
+                    // Determine if this is the start or end date
+                    const isStart = startDate && isoValue === startDate;
+                    const isEnd = endDate && isoValue === endDate;
+
+                    let buttonStyle = undefined;
+                    if (isStart || isEnd) {
+                      buttonStyle = {
+                        background: 'linear-gradient(to right, #facc15, #f97316)',
+                        fontWeight: 700,
+                        color: '#222',
+                        border: 0
+                      };
+                    } else if (inRange) {
+                      buttonStyle = {
+                        background: 'linear-gradient(to right, #facc15b3, #f97316b3)', // even lighter gradient (70% opacity)
+                        fontWeight: 600,
+                        color: '#222',
+                        border: 0
+                      };
+                    } else if (isStartEnd) {
+                      buttonStyle = { background: '#fff' };
+                    }
 
                     return (
                       <button
@@ -559,19 +588,11 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         className={`flex h-10 w-full items-center justify-center rounded-lg border text-xs transition touch-manipulation sm:h-12 sm:rounded-xl sm:text-sm ${
                           !isCurrentMonth || isPast
                             ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
-                            : inRange
+                            : (inRange || isStart || isEnd)
                               ? "border-0 font-semibold text-black shadow-[0_0_12px_rgba(255,193,7,0.25)]"
                               : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
                         }`}
-                        style={
-                          inRange
-                            ? {
-                                background: 'linear-gradient(to right, #facc15, #f97316)'
-                              }
-                            : isStartEnd
-                              ? { background: '#fff' }
-                              : undefined
-                        }
+                        style={buttonStyle}
                       >
                         {label}
                       </button>
