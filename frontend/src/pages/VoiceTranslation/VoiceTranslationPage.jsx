@@ -248,196 +248,167 @@ function VoiceTranslation() {
 
 
   return (
-    <>
-      <style>{`
-        .voice-translation label {
-          color: #333 !important;
-          font-weight: 600 !important;
-          margin-bottom: 8px !important;
-          display: block !important;
-        }
-      `}</style>
+    <div
+      className="voice-translation min-h-screen w-full px-4 py-10 sm:px-6"
+      style={{ backgroundColor: '#0a0a0a' }}
+    >
+      <div className="mx-auto w-full max-w-2xl space-y-8">
+        <div className="space-y-2 text-center text-white">
+          <h1 className="text-3xl font-semibold uppercase tracking-wide">Voice Translation</h1>
+          <p className="text-sm italic text-white/80">Speak, transcribe, and translate in a few steps.</p>
+        </div>
 
-      <div className="voice-translation min-h-screen flex items-center justify-center bg-[#f5f5f5] px-4 py-12">
-        <div className="bg-white px-10 py-12 rounded-[16px] border border-[#e5e7eb] shadow-[0_20px_40px_rgba(15,23,42,0.08)] w-full max-w-[560px]">
-          <div className="space-y-8">
-            <h1 className="text-[30px] font-semibold text-[#333] text-center">Voice Translation</h1><br></br>
+        <div
+          className="space-y-6 rounded-3xl bg-black p-5 shadow-xl sm:p-8"
+          style={{
+            border: '1px solid transparent',
+            backgroundImage: 'linear-gradient(#000, #000), linear-gradient(to right, #facc15, #f97316)',
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
+          }}
+        >
+          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+            <label className="block text-sm font-bold italic text-white/80">Step 1: Select Speaking Language</label>
+            <select
+              value={recordingLanguage}
+              onChange={(event) => setRecordingLanguage(event.target.value)}
+              className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+            >
+              <option value="">Choose a language</option>
+              {LANGUAGE_OPTIONS.map((option) => (
+                <option key={option.code} value={option.code}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </section>
 
-            <section className="space-y-4">
-              <div className="mx-auto w-full max-w-[440px] space-y-3">
-                <label className="space-y-2">
-                  <span className="block text-[15px] font-semibold text-[#111]">Step 1: Select Speaking Language</span>
-                  <select
-                    value={recordingLanguage}
-                    onChange={(event) => setRecordingLanguage(event.target.value)}
-                    className="w-full rounded-[8px] border border-[#ddd] px-4 py-3 text-[15px] text-[#333]"
-                  >
-                    <option value="">Choose a language</option>
-                    {LANGUAGE_OPTIONS.map((option) => (
-                      <option key={option.code} value={option.code}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+            <div className="text-sm font-bold italic text-white/80">Step 2: Record Audio</div>
+            {!isRecording ? (
+              <button
+                onClick={startRecording}
+                className="w-full rounded-xl border border-yellow-400/60 bg-gradient-to-r from-yellow-500 to-amber-600 px-6 py-3 text-base font-semibold text-white shadow transition-all duration-200 hover:shadow-yellow-500/40 disabled:cursor-not-allowed disabled:border-gray-700 disabled:bg-gray-700 disabled:text-white/50 disabled:shadow-none"
+                style={{ color: '#ffffff' }}
+                disabled={!recordingLanguage || isPreparingAudio}
+              >
+                {isPreparingAudio ? 'Processing audio...' : 'Start Recording'}
+              </button>
+            ) : (
+              <button
+                onClick={stopRecording}
+                className="w-full rounded-xl border border-gray-600 bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-[#1c1c1c]"
+              >
+                Stop Recording
+              </button>
+            )}
+          </section>
+
+          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+            <label className="block text-sm italic text-white/80">Or Upload an Audio File</label>
+            <input
+              type="file"
+              accept="audio/*"
+              onChange={async (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setIsPreparingAudio(true);
+                  try {
+                    const wavFile = await convertBlobToWavFile(file, file.name.replace(/\.[^/.]+$/, '') + '.wav');
+                    setAudioFile(wavFile);
+                    setTranscription('');
+                    setTranslationResult('');
+                    setDetectedLanguage('');
+                  } catch (error) {
+                    alert('Could not process the selected audio file.');
+                  } finally {
+                    setIsPreparingAudio(false);
+                  }
+                }
+              }}
+              className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-[#d8c4ad] file:px-3 file:py-2 file:text-sm file:font-medium file:text-black"
+              disabled={isPreparingAudio}
+            />
+          </section>
+
+          <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+            <button
+              onClick={() => runTranscription()}
+              disabled={!audioFile || isTranscribing || isPreparingAudio}
+              className="w-full rounded-xl border border-yellow-400/60 bg-gradient-to-r from-yellow-500 to-amber-600 px-6 py-3 text-base font-semibold text-white shadow transition-all duration-200 hover:shadow-yellow-500/40 disabled:cursor-not-allowed disabled:border-gray-700 disabled:bg-gray-700 disabled:text-white/50 disabled:shadow-none"
+              style={{ color: '#ffffff' }}
+            >
+              {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
+            </button>
+          </section>
+
+          {audioFile && (
+            <div className="rounded-xl border border-green-500/40 bg-green-900/20 px-4 py-3 text-sm text-green-200">
+              Audio ready for transcription ({audioFile.size ? Math.round(audioFile.size / 1024) + ' KB' : 'File loaded'})
+            </div>
+          )}
+
+          {transcription && (
+            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+              <label className="block text-sm font-bold italic text-white/80">Step 3: Review What You Said</label>
+              <textarea
+                value={transcription}
+                onChange={(event) => setTranscription(event.target.value)}
+                className="min-h-[140px] w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+              />
+              {detectedLanguage && (
+                <p className="text-sm text-white/80">
+                  Detected language: {(LANGUAGE_OPTIONS.find((opt) => opt.code === detectedLanguage)?.label || detectedLanguage)}
+                </p>
+              )}
+            </section>
+          )}
+
+          {transcription && (
+            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+              <label className="block text-sm font-bold italic text-white/80">Step 4: Select a language to translate</label>
+              <select
+                value={translationLanguage}
+                onChange={(event) => setTranslationLanguage(event.target.value)}
+                className="w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                {LANGUAGE_OPTIONS.map((option) => (
+                  <option key={option.code} value={option.code}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <button
+                onClick={translateText}
+                disabled={isTranslating || isPreparingAudio}
+                className="w-full rounded-xl border border-yellow-400/60 bg-gradient-to-r from-yellow-500 to-amber-600 px-6 py-3 text-base font-semibold text-white shadow transition-all duration-200 hover:shadow-yellow-500/40 disabled:cursor-not-allowed disabled:border-gray-700 disabled:bg-gray-700 disabled:text-white/50 disabled:shadow-none"
+                style={{ color: '#ffffff' }}
+              >
+                {isTranslating ? 'Translating...' : 'Translate Text'}
+              </button>
+            </section>
+          )}
+
+          {translationResult && (
+            <section className="space-y-3 rounded-2xl border border-[#444] bg-black p-4">
+              <h2 className="text-base font-semibold text-white">Translated Result</h2>
+              <div className="min-h-[120px] whitespace-pre-wrap rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white">
+                {translationResult}
               </div>
             </section>
+          )}
 
-
-            <section className="space-y-4">
-              <div className="mx-auto w-full max-w-[440px]">
-                <div className="mb-1 text-[16px] font-semibold text-[#111]">Step 2: Record Audio</div>
-                {!isRecording ? (
-                  <button
-                    onClick={startRecording}
-                    className="w-full rounded-[8px] bg-[#1a1a1a] px-6 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#1f1f1f]"
-                    style={{ color: '#ffffff', height: '52px' }}
-                    disabled={!recordingLanguage || isPreparingAudio}
-                  >
-                    {isPreparingAudio ? 'Processing audio...' : 'Start Recording'}
-                  </button>
-                ) : (
-                  <button
-                    onClick={stopRecording}
-                    className="w-full rounded-[8px] bg-[#1a1a1a] px-6 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#1f1f1f]"
-                    style={{ color: '#ffffff', height: '52px' }}
-                  >
-                    Stop Recording
-                  </button>
-                )}
-              </div>
-            </section>
-
-              {/* Audio File Upload Area */}
-              <section className="space-y-4">
-                <div className="mx-auto w-full max-w-[440px]">
-                  <label className="block text-[15px] font-semibold text-[#111] mb-2">
-                    Or Upload an Audio File
-                  </label>
-                  <input
-                    type="file"
-                    accept="audio/*"
-                    onChange={async (e) => {
-                      const file = e.target.files[0];
-                      if (file) {
-                        setIsPreparingAudio(true);
-                        try {
-                          // Convert to wav if needed
-                          const wavFile = await convertBlobToWavFile(file, file.name.replace(/\.[^/.]+$/, "") + ".wav");
-                          setAudioFile(wavFile);
-                          setTranscription("");
-                          setTranslationResult("");
-                          setDetectedLanguage("");
-                        } catch (error) {
-                          alert("Could not process the selected audio file.");
-                        } finally {
-                          setIsPreparingAudio(false);
-                        }
-                      }
-                    }}
-                    className="w-full rounded-[8px] border border-[#ddd] px-4 py-2 text-[15px] text-[#333]"
-                    disabled={isPreparingAudio}
-                  />
-                </div>
-              </section>
-
-            <br></br>
-
-            <section className="space-y-4">
-              <div className="mx-auto w-full max-w-[440px]">
-                <button
-                  onClick={() => runTranscription()}
-                  disabled={!audioFile || isTranscribing || isPreparingAudio}
-                  className="w-full rounded-[8px] bg-[#1a1a1a] px-6 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#333] disabled:bg-[#3b3b3b] disabled:text-white disabled:hover:bg-[#3b3b3b] disabled:cursor-not-allowed"
-                  style={{ color: '#ffffff', height: '52px' }}
-                >
-                  {isTranscribing ? 'Transcribing...' : 'Transcribe Audio'}
-                </button>
-              </div>
-            </section><br></br>
-
-            {audioFile && (
-              <div className="mx-auto w-full max-w-[440px] rounded-[8px] border border-green-200 bg-green-50 px-4 py-3 text-[14px] text-green-800">
-                Audio ready for transcription ({audioFile.size ? Math.round(audioFile.size / 1024) + ' KB' : 'File loaded'})
-              </div>
-            )}<br></br>
-
-            {transcription && (
-              <section className="space-y-3">
-                <div className="mx-auto w-full max-w-[440px] space-y-3">
-                  <h2 className="text-[16px] font-semibold text-[#333]">Step 3: Review What You Said</h2>
-                  <textarea
-                    value={transcription}
-                    onChange={(event) => setTranscription(event.target.value)}
-                    className="min-h-[140px] w-full rounded-[8px] border border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-[15px] text-[#333]"
-                  />
-                  {detectedLanguage && (
-                    <p className="text-sm text-[#555]">
-                      Detected language: {
-                        (LANGUAGE_OPTIONS.find(opt => opt.code === detectedLanguage)?.label || detectedLanguage)
-                      }
-                    </p>
-                  )}
-                </div><br></br>
-              </section>
-            )}
-
-            {transcription && (
-              <section className="space-y-4">
-                <div className="mx-auto w-full max-w-[440px] space-y-3">
-                  <label className="space-y-2">
-                    <span className="block text-[15px] font-semibold text-[#111]">Step 4: Select a language to translate</span>
-                    <select
-                      value={translationLanguage}
-                      onChange={(event) => setTranslationLanguage(event.target.value)}
-                      className="w-full rounded-[8px] border border-[#ddd] px-4 py-3 text-[15px] text-[#333]"
-                    >
-                      {LANGUAGE_OPTIONS.map((option) => (
-                        <option key={option.code} value={option.code}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <button
-                    onClick={translateText}
-                    disabled={isTranslating || isPreparingAudio}
-                    className="w-full rounded-[8px] bg-[#1a1a1a] px-6 py-4 text-[17px] font-medium text-white transition-colors hover:bg-[#333] disabled:bg-[#3b3b3b]"
-                    style={{ color: '#ffffff', height: '52px' }}
-                  >
-                    {isTranslating ? 'Translating...' : 'Translate Text'}
-                  </button>
-                </div>
-              </section>
-            )}
-
-            {translationResult && (
-              <section className="space-y-3">
-                <div className="mx-auto w-full max-w-[440px] space-y-3">
-                  <h2 className="text-[16px] font-semibold text-[#333]">Translated Result</h2>
-                  <div className="min-h-[120px] rounded-[8px] border border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-[15px] text-[#333] whitespace-pre-wrap">
-                    {translationResult}
-                  </div>
-                </div>
-              </section>
-            )}
-
-
-            {(audioFile || transcription) && (
-              <div className="mx-auto w-full max-w-[440px]">
-                <button
-                  onClick={clearAll}
-                  className="w-full rounded-[8px] border border-[#ddd] bg-white px-6 py-3 text-[15px] font-medium text-[#666] transition-colors hover:bg-[#f5f5f5]"
-                  style={{ height: '48px' }}
-                >
-                  Clear All
-                </button><br></br><br></br>
-              </div>
-            )}
-          </div>
+          {(audioFile || transcription) && (
+            <button
+              onClick={clearAll}
+              className="w-full rounded-xl border-2 border-yellow-400/70 bg-transparent px-6 py-3 text-sm font-semibold text-yellow-100 transition-colors hover:bg-yellow-500/10 hover:border-yellow-300"
+            >
+              Clear All
+            </button>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

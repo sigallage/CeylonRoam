@@ -61,7 +61,9 @@ const Header = () => {
 							}}
 						/>
 					</>
-				) : null}
+				) : (
+					<LogoutButton onClick={handleLogout} />
+				)}
 				
 				{/* Hamburger Menu Button */}
 				<button 
@@ -103,11 +105,6 @@ const Header = () => {
 						>
 							About
 						</a>
-						{isLoggedIn ? (
-							<div className="mt-2 pt-4 border-t border-white/20">
-								<LogoutButton onClick={handleLogout} />
-							</div>
-						) : null}
 					</div>
 				</div>
 			)}
