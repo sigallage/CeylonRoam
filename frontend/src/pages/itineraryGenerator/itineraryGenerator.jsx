@@ -541,19 +541,37 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                         type="button"
                         key={isoValue}
                         onClick={() => {
+                          const prevStart = startDate;
+                          const prevEnd = endDate;
                           handleDateClick(isoValue);
-                          setShowCalendarOnly(false);
+                          // After clicking, if both start and end are set (and changed), close calendar
+                          setTimeout(() => {
+                            if (
+                              (!prevStart || !prevEnd) &&
+                              startDate && endDate &&
+                              (startDate !== prevStart || endDate !== prevEnd)
+                            ) {
+                              setShowCalendarOnly(false);
+                            }
+                          }, 0);
                         }}
                         disabled={!isCurrentMonth || isSubmitting || isPast}
                         className={`flex h-10 w-full items-center justify-center rounded-lg border text-xs transition touch-manipulation sm:h-12 sm:rounded-xl sm:text-sm ${
                           !isCurrentMonth || isPast
                             ? "cursor-not-allowed border-transparent bg-black/5 text-black/30"
-                            : isStartEnd
-                              ? "border-gray-300 bg-white font-semibold text-black shadow-[0_0_12px_rgba(255,255,255,0.6)]"
-                              : inRange
-                                ? "border-gray-200 bg-gray-100 text-black"
-                                : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
+                            : inRange
+                              ? "border-0 font-semibold text-black shadow-[0_0_12px_rgba(255,193,7,0.25)]"
+                              : "border-black/10 bg-white text-black hover:border-gray-300 hover:shadow-[0_0_10px_rgba(255,255,255,0.5)] active:bg-gray-50"
                         }`}
+                        style={
+                          inRange
+                            ? {
+                                background: 'linear-gradient(to right, #facc15, #f97316)'
+                              }
+                            : isStartEnd
+                              ? { background: '#fff' }
+                              : undefined
+                        }
                       >
                         {label}
                       </button>
