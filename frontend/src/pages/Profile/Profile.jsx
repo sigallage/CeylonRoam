@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
-import { FaUser } from 'react-icons/fa';
 import { getAuthBaseUrl } from '../../config/backendUrls';
 
 const Profile = () => {
@@ -21,6 +20,9 @@ const Profile = () => {
 	});
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
+	const profileInitial = ((isEditing ? editedData.username : userData.username)?.trim()?.charAt(0)
+		|| userData.email?.trim()?.charAt(0)
+		|| 'U').toUpperCase();
 
 	const authBaseUrl = useMemo(() => getAuthBaseUrl(), [])
 
@@ -217,7 +219,7 @@ const Profile = () => {
 										className="w-full h-full object-cover"
 									/>
 								) : (
-									<FaUser className="w-16 h-16 text-gray-500" />
+									<span className="text-5xl font-bold text-gray-600">{profileInitial}</span>
 								)}
 							</div>
 							<label 

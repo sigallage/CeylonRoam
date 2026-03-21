@@ -1,20 +1,41 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logoIcon from '../../assets/icon.jpeg';
-import { LoginButton, LogoutButton, SignUpButton } from '../loginButton';
+import { LoginButton, SignUpButton } from '../loginButton';
 
 const Header = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [profile, setProfile] = useState({ name: '', email: '', avatar: '' });
 
 	useEffect(() => {
 		function readAuthState() {
 			try {
-				setIsLoggedIn(Boolean(window.localStorage.getItem('ceylonroam_user')));
+				const rawUser = window.localStorage.getItem('ceylonroam_user');
+				const loggedIn = Boolean(rawUser);
+				setIsLoggedIn(loggedIn);
+
+				if (rawUser) {
+					let parsed = {};
+					try {
+						parsed = JSON.parse(rawUser);
+					} catch {
+						parsed = {};
+					}
+
+					setProfile({
+						name: parsed?.name || parsed?.fullName || '',
+						email: parsed?.email || '',
+						avatar: parsed?.avatar || parsed?.photoURL || parsed?.profileImage || '',
+					});
+				} else {
+					setProfile({ name: '', email: '', avatar: '' });
+				}
 			} catch {
 				setIsLoggedIn(false);
+				setProfile({ name: '', email: '', avatar: '' });
 			}
 		}
 
@@ -30,9 +51,12 @@ const Header = () => {
 			// ignore storage issues
 		}
 		setIsLoggedIn(false);
+		setProfile({ name: '', email: '', avatar: '' });
 		setIsMenuOpen(false);
 		navigate('/login');
 	}
+
+	const firstInitial = (profile.name?.trim()?.charAt(0) || profile.email?.trim()?.charAt(0) || 'U').toUpperCase();
 
 	return (
 		<nav className="relative z-20 flex justify-between items-center px-8 py-6 bg-black">
@@ -46,7 +70,7 @@ const Header = () => {
 			</div>
 			
 			<div className="flex items-center gap-4">
-				{!isLoggedIn ? (
+				{!isLoggedIn && (
 					<>
 						<LoginButton
 							onClick={() => {
@@ -61,9 +85,29 @@ const Header = () => {
 							}}
 						/>
 					</>
-				) : (
-					<LogoutButton onClick={handleLogout} />
 				)}
+
+				{isLoggedIn && (
+					<div className="hidden sm:flex items-center gap-3 rounded-full border border-yellow-500/40 bg-black/40 px-3 py-1.5">
+						{profile.avatar ? (
+							<img
+								src={profile.avatar}
+								alt={profile.name}
+								className="h-8 w-8 rounded-full object-cover border border-yellow-500/60"
+							/>
+						) : (
+							<div className="h-8 w-8 rounded-full border border-yellow-500/60 bg-gradient-to-br from-yellow-500 to-amber-600 text-xs font-bold text-black flex items-center justify-center">
+								{firstInitial}
+							</div>
+						)}
+						{profile.name && (
+							<div className="max-w-[160px] truncate text-sm font-semibold text-white">
+								{profile.name}
+							</div>
+						)}
+					</div>
+				)}
+
 				
 				{/* Hamburger Menu Button */}
 				<button 
@@ -84,6 +128,17 @@ const Header = () => {
 			{isMenuOpen && (
 				<div className="absolute top-full right-4 mt-2 w-50 bg-gradient-to-br from-black/30 via-gray-900/30 to-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
 					<div className="flex flex-col p-4 gap-2">
+						{isLoggedIn && (
+							<button
+								onClick={() => {
+									navigate('/profile');
+									setIsMenuOpen(false);
+								}}
+								className="text-left text-white text-lg font-medium hover:text-yellow-300 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl"
+							>
+								Profile
+							</button>
+						)}
 						<a 
 							href="#features" 
 							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl" 
@@ -105,6 +160,14 @@ const Header = () => {
 						>
 							About
 						</a>
+						{isLoggedIn && (
+							<button
+								onClick={handleLogout}
+								className="text-left text-white text-lg font-medium hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 py-3 px-4 rounded-xl"
+							>
+								Logout
+							</button>
+						)}
 					</div>
 				</div>
 			)}
