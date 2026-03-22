@@ -189,12 +189,18 @@ def _resolve_destinations_json_path() -> Path:
             return configured_path
 
     here = Path(__file__).resolve().parent
-    candidates = [
+    candidates: list[Path] = [
         here / "destinations.json",
         here / "data" / "destinations.json",
-        # Repo layout fallback: backend/itineraryGenerator/main.py -> ../../frontend/src/dataset/destinations.json
-        here.parents[1] / "frontend" / "src" / "dataset" / "destinations.json",
     ]
+
+    # Repo layout fallback (only valid in the monorepo checkout, not inside the container image).
+    # In ECS the code lives at /app/main.py so `here.parents` has length 1 ("/") and
+    # indexing `parents[1]` would raise IndexError and crash /api/generate.
+    try:
+        candidates.append(here.parents[1] / "frontend" / "src" / "dataset" / "destinations.json")
+    except IndexError:
+        pass
 
     for candidate in candidates:
         if candidate.exists():
