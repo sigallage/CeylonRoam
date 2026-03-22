@@ -18,6 +18,18 @@ const ItineraryHistory = () => {
 		fetchItineraries();
 	}, []);
 
+	const readJsonBody = async (response) => {
+		// Using response.text() avoids JSON parse crashes when the body is empty
+		// (e.g. proxy errors, backend down, HTML error pages).
+		const text = await response.text();
+		if (!text) return { json: null, text: '' };
+		try {
+			return { json: JSON.parse(text), text };
+		} catch {
+			return { json: null, text };
+		}
+	};
+
 	const fetchItineraries = async () => {
 		setIsLoading(true);
 		setError('');
@@ -31,7 +43,12 @@ const ItineraryHistory = () => {
 			}
 
 			const parsed = JSON.parse(storedData);
-			const token = parsed.token;
+			const token = parsed?.token;
+			if (!token) {
+				setError('Please log in again to view your itineraries');
+				setIsLoading(false);
+				return;
+			}
 
 			const response = await fetch(`${authBaseUrl}/api/itineraries`, {
 				method: 'GET',
@@ -40,13 +57,16 @@ const ItineraryHistory = () => {
 				}
 			});
 
-			const result = await response.json();
+			const { json, text } = await readJsonBody(response);
 
 			if (!response.ok) {
-				throw new Error(result.message || 'Failed to fetch itineraries');
+				const message = json?.message
+					|| (text ? text.slice(0, 200) : '')
+					|| `Failed to fetch itineraries (HTTP ${response.status})`;
+				throw new Error(message);
 			}
 
-			setItineraries(result.itineraries || []);
+			setItineraries(json?.itineraries || []);
 		} catch (error) {
 			console.error('Error fetching itineraries:', error);
 			setError(error.message || 'Failed to load itineraries');
@@ -65,7 +85,10 @@ const ItineraryHistory = () => {
 		try {
 			const storedData = localStorage.getItem('ceylonroam_user');
 			const parsed = JSON.parse(storedData);
-			const token = parsed.token;
+			const token = parsed?.token;
+			if (!token) {
+				throw new Error('Please log in again to delete itineraries');
+			}
 
 			const response = await fetch(`${authBaseUrl}/api/itineraries/${id}`, {
 				method: 'DELETE',
@@ -74,10 +97,13 @@ const ItineraryHistory = () => {
 				}
 			});
 
-			const result = await response.json();
+			const { json, text } = await readJsonBody(response);
 
 			if (!response.ok) {
-				throw new Error(result.message || 'Failed to delete itinerary');
+				const message = json?.message
+					|| (text ? text.slice(0, 200) : '')
+					|| `Failed to delete itinerary (HTTP ${response.status})`;
+				throw new Error(message);
 			}
 
 			// Remove from local state

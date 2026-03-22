@@ -66,6 +66,8 @@ const Header = () => {
 
 	const titleClass = isDarkMode ? 'text-3xl font-bold text-white tracking-tight' : 'text-3xl font-bold text-gray-900 tracking-tight';
 	const iconButtonClass = isDarkMode ? 'text-white focus:outline-none' : 'text-gray-900 focus:outline-none';
+	const menuItemBaseClass = 'text-left text-lg font-medium transition-all duration-300 py-3 px-4 rounded-xl';
+	const menuItemTextClass = isDarkMode ? 'text-white' : 'text-gray-900';
 
 	return (
 		<nav className={navClass}>
@@ -156,7 +158,7 @@ const Header = () => {
 					<div className="flex flex-col p-4 gap-2">
 						<button
 							type="button"
-							className="text-white text-lg font-medium hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							className={`${menuItemBaseClass} ${menuItemTextClass} hover:text-yellow-400 hover:bg-yellow-400/10`}
 							onClick={() => {
 								setIsMenuOpen(false);
 								navigate('/', { state: { scrollTo: 'features' } });
@@ -166,7 +168,7 @@ const Header = () => {
 						</button>
 						<button
 							type="button"
-							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							className={`${menuItemBaseClass} ${menuItemTextClass} hover:text-amber-400 hover:bg-amber-400/10`}
 							onClick={() => {
 								setIsMenuOpen(false);
 								navigate('/', { state: { scrollTo: 'destinations' } });
@@ -176,7 +178,7 @@ const Header = () => {
 						</button>
 						<button
 							type="button"
-							className="text-white text-lg font-medium hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300 py-3 px-4 rounded-xl text-left"
+							className={`${menuItemBaseClass} ${menuItemTextClass} hover:text-amber-400 hover:bg-amber-400/10`}
 							onClick={() => {
 								setIsMenuOpen(false);
 								navigate('/about-us');
@@ -185,14 +187,24 @@ const Header = () => {
 							About
 					</button>
 						{isLoggedIn && (
-							<button
-								onClick={handleLogout}
-								className={isDarkMode
-									? 'text-left text-white text-lg font-medium hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 py-3 px-4 rounded-xl'
-									: 'text-left text-gray-900 text-lg font-medium hover:text-red-600 hover:bg-red-500/10 transition-all duration-300 py-3 px-4 rounded-xl'}
-							>
-								Logout
-							</button>
+							<>
+								<button
+									type="button"
+									className={`${menuItemBaseClass} ${menuItemTextClass} hover:text-yellow-400 hover:bg-yellow-400/10`}
+									onClick={() => {
+										setIsMenuOpen(false);
+										navigate('/profile');
+									}}
+								>
+									Profile
+								</button>
+								<button
+									onClick={handleLogout}
+									className={`${menuItemBaseClass} ${menuItemTextClass} ${isDarkMode ? 'hover:text-red-300' : 'hover:text-red-600'} hover:bg-red-500/10`}
+								>
+									Logout
+								</button>
+							</>
 						)}
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiX, FiChevronRight, FiEdit2, FiCamera, FiSave, FiTrash2 } from 'react-icons/fi';
 import { getAuthBaseUrl } from '../../config/backendUrls';
@@ -20,6 +20,9 @@ const Profile = () => {
 		phone: '',
 		profilePicture: null
 	});
+	const [isProfilePicMenuOpen, setIsProfilePicMenuOpen] = useState(false);
+	const fileInputRef = useRef(null);
+	const profilePicContainerRef = useRef(null);
 	const [isSaving, setIsSaving] = useState(false);
 	const [saveError, setSaveError] = useState('');
 	const profileInitial = ((isEditing ? editedData.username : userData.username)?.trim()?.charAt(0)
@@ -67,6 +70,18 @@ const Profile = () => {
 				console.error('Error parsing user data:', error);
 			}
 		}
+	}, []);
+
+	useEffect(() => {
+		const handleOutsideClick = (event) => {
+			if (!profilePicContainerRef.current) return;
+			if (!profilePicContainerRef.current.contains(event.target)) {
+				setIsProfilePicMenuOpen(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleOutsideClick);
+		return () => document.removeEventListener('mousedown', handleOutsideClick);
 	}, []);
 
 	const handleEditProfile = () => {
@@ -161,23 +176,41 @@ const Profile = () => {
 		if (file) {
 			const reader = new FileReader();
 			reader.onloadend = () => {
+				const nextProfilePicture = reader.result;
 				if (isEditing) {
 					// Store in editedData during edit mode
 					setEditedData(prev => ({
 						...prev,
-						profilePicture: reader.result
+						profilePicture: nextProfilePicture
 					}));
 				} else {
 					// Direct update if not in edit mode
 					setUserData(prev => ({
 						...prev,
-						profilePicture: reader.result
+						profilePicture: nextProfilePicture
 					}));
-					const updatedData = { ...userData, profilePicture: reader.result };
-					localStorage.setItem('userData', JSON.stringify(updatedData));
+					try {
+						const storedData = localStorage.getItem('ceylonroam_user');
+						if (storedData) {
+							const parsed = JSON.parse(storedData);
+							const updatedStoredData = {
+								...parsed,
+								user: {
+									...(parsed.user || {}),
+									profilePicture: nextProfilePicture
+								}
+							};
+							localStorage.setItem('ceylonroam_user', JSON.stringify(updatedStoredData));
+						}
+					} catch (error) {
+						console.error('Error saving profile picture:', error);
+					}
 				}
+				setIsProfilePicMenuOpen(false);
 			};
 			reader.readAsDataURL(file);
+			// allow picking the same file again
+			e.target.value = '';
 		}
 	};
 
@@ -208,9 +241,28 @@ const Profile = () => {
 				...prev,
 				profilePicture: null
 			}));
-			const updatedData = { ...userData, profilePicture: null };
-			localStorage.setItem('userData', JSON.stringify(updatedData));
+			try {
+				const storedData = localStorage.getItem('ceylonroam_user');
+				if (storedData) {
+					const parsed = JSON.parse(storedData);
+					const updatedStoredData = {
+						...parsed,
+						user: {
+							...(parsed.user || {}),
+							profilePicture: null
+						}
+					};
+					localStorage.setItem('ceylonroam_user', JSON.stringify(updatedStoredData));
+				}
+			} catch (error) {
+				console.error('Error removing profile picture:', error);
+			}
 		}
+		setIsProfilePicMenuOpen(false);
+	};
+
+	const openProfilePicturePicker = () => {
+		fileInputRef.current?.click();
 	};
 
 	return (
@@ -233,7 +285,20 @@ const Profile = () => {
 					<div className="flex flex-col items-center">
 						{/* Profile Picture */}
 						<div className="relative mb-4">
-							<div className="w-32 h-32 rounded-full bg-yellow-100 flex items-center justify-center overflow-hidden border-4 border-yellow-200">
+							<input 
+								type="file" 
+								ref={fileInputRef}
+								accept="image/*"
+								onChange={handleProfilePictureChange}
+								className="hidden"
+							/>
+							<div ref={profilePicContainerRef} className="relative">
+								<button
+									type="button"
+									onClick={() => setIsProfilePicMenuOpen(prev => !prev)}
+									className="w-32 h-32 rounded-full bg-yellow-100 flex items-center justify-center overflow-hidden border-4 border-yellow-200"
+									aria-label="Profile picture"
+								>
 								{(isEditing ? editedData.profilePicture : userData.profilePicture) ? (
 									<img 
 										src={isEditing ? editedData.profilePicture : userData.profilePicture} 
@@ -243,29 +308,29 @@ const Profile = () => {
 								) : (
 									<span className="text-5xl font-bold text-gray-600">{profileInitial}</span>
 								)}
-							</div>
-							<label 
-								htmlFor="profile-picture-input"
-								className="absolute bottom-0 right-0 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 cursor-pointer transition-colors shadow-lg"
-							>
-								<FiCamera className="w-5 h-5" />
-								<input 
-									type="file" 
-									id="profile-picture-input"
-									accept="image/*"
-									onChange={handleProfilePictureChange}
-									className="hidden"
-								/>
-							</label>
-							{(isEditing ? editedData.profilePicture : userData.profilePicture) && (
-								<button
-									onClick={handleRemoveProfilePicture}
-								className="absolute bottom-0 left-0 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 cursor-pointer transition-colors shadow-lg"
-									title="Remove profile picture"
-								>
-									<FiTrash2 className="w-5 h-5" />
 								</button>
-							)}
+								{isProfilePicMenuOpen && (
+									<>
+										<button
+											type="button"
+											onClick={openProfilePicturePicker}
+											className="absolute bottom-0 right-0 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 cursor-pointer transition-colors shadow-lg"
+											aria-label="Upload profile picture"
+										>
+											<FiCamera className="w-5 h-5" />
+										</button>
+										{(isEditing ? editedData.profilePicture : userData.profilePicture) && (
+											<button
+												onClick={handleRemoveProfilePicture}
+												className="absolute bottom-0 left-0 bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 cursor-pointer transition-colors shadow-lg"
+												title="Remove profile picture"
+											>
+												<FiTrash2 className="w-5 h-5" />
+											</button>
+										)}
+									</>
+								)}
+							</div>
 						</div>
 
 						<p className={`text-sm mb-6 ${mutedTextClass}`}>Edit Profile Picture</p>
