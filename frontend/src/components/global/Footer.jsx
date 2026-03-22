@@ -1,8 +1,29 @@
 import logoIcon from '../../assets/icon.jpeg';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 const Footer = () => {
 	const navigate = useNavigate();
+	const { isDarkMode } = useTheme();
+
+	const footerClass = isDarkMode
+		? 'w-full bg-black px-6 py-10'
+		: 'w-full bg-white px-6 py-10 border-t border-gray-200';
+
+	const titleClass = isDarkMode
+		? 'text-2xl font-bold text-white tracking-tight'
+		: 'text-2xl font-bold text-gray-900 tracking-tight';
+
+	const bodyTextClass = isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm';
+
+	const linkRowClass = isDarkMode
+		? 'flex flex-wrap justify-center gap-8 text-white font-medium ml-[-60px]'
+		: 'flex flex-wrap justify-center gap-8 text-gray-900 font-medium ml-[-60px]';
+
+	const linkBaseClass = isDarkMode
+		? 'transition-colors bg-transparent border-none outline-none text-white font-medium'
+		: 'transition-colors bg-transparent border-none outline-none text-gray-900 font-medium';
+
 	return (
 		<footer className={footerClass}>
 			<div className="max-w-7xl mx-auto">
@@ -18,10 +39,10 @@ const Footer = () => {
 					</div>
 
 					{/* Navigation Links */}
-					<div className="flex flex-wrap justify-center gap-8 text-white font-medium ml-[-60px]">
+					<div className={linkRowClass}>
 						<button
 							type="button"
-							className="hover:text-yellow-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							className={`${linkBaseClass} hover:text-yellow-400`}
 							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
 							onClick={() => {
 								navigate('/', { state: { scrollTo: 'features' } });
@@ -31,7 +52,7 @@ const Footer = () => {
 						</button>
 						<button
 							type="button"
-							className="hover:text-amber-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							className={`${linkBaseClass} hover:text-amber-400`}
 							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
 							onClick={() => {
 								navigate('/', { state: { scrollTo: 'destinations' } });
@@ -41,7 +62,7 @@ const Footer = () => {
 						</button>
 						<button
 							type="button"
-							className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+							className={`${linkBaseClass} hover:text-orange-400`}
 							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
 							onClick={() => {
 								window.location.href = '/about-us#top';
