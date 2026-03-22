@@ -490,6 +490,14 @@ const LandingPage = () => {
               >
                 About
               </button>
+              <button
+                type="button"
+                className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
+                style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+                onClick={() => navigate('/faq', { state: { scrollTo: 'top' } })}
+              >
+                Faq
+              </button>
             </div>
 
             {/* Contact Info */}

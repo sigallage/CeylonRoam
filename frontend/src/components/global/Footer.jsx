@@ -65,10 +65,20 @@ const Footer = () => {
 							className={`${linkBaseClass} hover:text-orange-400`}
 							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
 							onClick={() => {
-								window.location.href = '/about-us#top';
+								navigate('/about-us');
 							}}
 						>
 							About
+						</button>
+						<button
+							type="button"
+							className={`${linkBaseClass} hover:text-orange-400`}
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/faq');
+							}}
+						>
+							Faq
 						</button>
 						{/* Contact link removed */}
 					</div>
