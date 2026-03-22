@@ -134,7 +134,7 @@ const AboutUs = () => {
           <b>CeylonRoam</b> is an AI-powered travel assistant designed to transform how people explore Sri Lanka. Our platform combines advanced artificial intelligence with modern web technologies to provide travelers with a seamless, personalized, and stress-free journey. What sets CeylonRoam apart is our use of advanced AI to generate personalized itineraries, optimize travel routes, and provide real-time voice translation, all in one easy-to-use app. Whether you’re a local adventurer or a first-time visitor, CeylonRoam helps you save time, discover hidden gems, and travel confidently.
         </p>
         <p style={{ textAlign: "justify", color: isDarkMode ? "rgba(255,255,255,0.9)" : "#1f2937", fontSize: 16, marginBottom: 20, lineHeight: 1.7 }}>
-          <b>Our mission</b> is to make travel in Sri Lanka smarter, easier, and more memorable by connecting travelers with enriching experiences while supporting sustainable tourism. We believe every journey should be unique, accessible, and filled with discovery.
+          <b>Our mission</b> is to make travel in Sri Lanka smarter and more accessible, helping travelers discover meaningful experiences while supporting sustainable tourism. We believe every journey should be unique, accessible, and filled with discovery.
         </p>
         <p style={{ textAlign: "justify", color: isDarkMode ? "rgba(255,255,255,0.9)" : "#1f2937", fontSize: 16, marginBottom: 0, lineHeight: 1.6 }}>
           Have questions, feedback, or partnership ideas? We’d love to hear from you! Get in touch with us at ceylon.roam144@gmail.com and let’s make travel better together. Join us on CeylonRoam and embark on a journey filled with adventure, discovery, and unforgettable memories.
