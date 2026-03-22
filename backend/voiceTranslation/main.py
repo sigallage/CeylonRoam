@@ -69,16 +69,44 @@ translation_tokenizer = None
 
 # Language mapping for Whisper
 WHISPER_LANG_MAP = {
-    'si': 'si',  # Sinhala
     'en': 'en',  # English
     'ta': 'ta',  # Tamil
+    'ar': 'ar',  # Arabic
+    'zh': 'zh',  # Chinese
+    'nl': 'nl',  # Dutch
+    'fr': 'fr',  # French
+    'de': 'de',  # German
+    'hi': 'hi',  # Hindi
+    'si': 'si',  # Sinhala
+    'it': 'it',  # Italian
+    'ja': 'ja',  # Japanese
+    'ko': 'ko',  # Korean
+    'pl': 'pl',  # Polish
+    'pt': 'pt',  # Portuguese
+    'ru': 'ru',  # Russian
+    'es': 'es',  # Spanish
+    'tr': 'tr',  # Turkish
 }
 
 # Language mapping for NLLB translation model
 NLLB_LANG_MAP = {
-    'si': 'sin_Sinh',  # Sinhala
-    'en': 'eng_Latn',  # English
-    'ta': 'tam_Taml',  # Tamil
+    'en': 'en',  # English
+    'ta': 'ta',  # Tamil
+    'ar': 'ar',  # Arabic
+    'zh': 'zh',  # Chinese
+    'nl': 'nl',  # Dutch
+    'fr': 'fr',  # French
+    'de': 'de',  # German
+    'hi': 'hi',  # Hindi
+    'si': 'si',  # Sinhala
+    'it': 'it',  # Italian
+    'ja': 'ja',  # Japanese
+    'ko': 'ko',  # Korean
+    'pl': 'pl',  # Polish
+    'pt': 'pt',  # Portuguese
+    'ru': 'ru',  # Russian
+    'es': 'es',  # Spanish
+    'tr': 'tr',  # Turkish
 }
 
 
