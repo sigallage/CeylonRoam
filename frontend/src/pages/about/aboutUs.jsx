@@ -122,7 +122,7 @@ const AboutUs = () => {
           border: "4px solid transparent",
           borderRadius: 18,
           padding: "44px 24px 28px",
-          marginTop: 12,
+          marginTop: 28,
           marginBottom: 56,
           maxWidth: 880,
           margin: '0 auto',
