@@ -94,13 +94,13 @@ const AboutUs = () => {
       }}
     >
       {/* Background image layer (blurred) */}
-      <div style={{
+        <div style={{
         position: 'absolute',
         inset: 0,
         backgroundImage: `url(${bgImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        filter: 'blur(6px) brightness(0.8) contrast(1)',
+        filter: 'blur(5px) brightness(0.8) contrast(1)',
         transform: 'scale(1.03)',
         zIndex: 0
       }} />
