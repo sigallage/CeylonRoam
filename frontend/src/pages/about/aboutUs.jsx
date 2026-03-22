@@ -109,7 +109,7 @@ const AboutUs = () => {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: isDarkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.12)',
+        background: isDarkMode ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.08)',
         backdropFilter: isDarkMode ? 'blur(2px)' : 'blur(1px)',
         WebkitBackdropFilter: isDarkMode ? 'blur(2px)' : 'blur(1px)',
         zIndex: 0
