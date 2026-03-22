@@ -100,6 +100,25 @@ class Destination(BaseModel):
         extra = "ignore"
 
 
+def _validate_destination(item: dict[str, Any]) -> Destination:
+    """Validate a destination payload across Pydantic v1/v2.
+
+    Some older container images may still ship Pydantic v1 where
+    `BaseModel.model_validate` does not exist. This helper keeps the
+    service functional across both versions.
+    """
+
+    model_validate = getattr(Destination, "model_validate", None)
+    if callable(model_validate):
+        return model_validate(item)  # type: ignore[no-any-return]
+
+    parse_obj = getattr(Destination, "parse_obj", None)
+    if callable(parse_obj):
+        return parse_obj(item)  # type: ignore[no-any-return]
+
+    return Destination(**item)
+
+
 @app.get("/api/meta", response_model=MetaResponse)
 def read_meta() -> MetaResponse:
     return MetaResponse(
@@ -290,7 +309,7 @@ def _fallback_destinations_catalog() -> list[Destination]:
     destinations: list[Destination] = []
     for item in fallback_raw:
         try:
-            destinations.append(Destination.model_validate(item))
+            destinations.append(_validate_destination(item))
         except Exception:
             logger.exception("Skipping invalid fallback destination entry")
     return destinations
@@ -337,7 +356,10 @@ def _load_destinations_catalog() -> list[Destination]:
     destinations: list[Destination] = []
     for item in raw:
         try:
-            destinations.append(Destination.model_validate(item))
+            if isinstance(item, dict):
+                destinations.append(_validate_destination(item))
+            else:
+                raise TypeError(f"Destination entry must be an object, got {type(item).__name__}")
         except Exception:
             # Skip malformed entries rather than failing the whole service.
             logger.exception("Skipping invalid destination entry")
