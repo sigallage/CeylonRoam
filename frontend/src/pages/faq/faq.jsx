@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import bgImage from "../../assets/2.jpg";
 
 const RevealOnScroll = ({ as: Component = "div", children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -114,12 +115,89 @@ const faqItems = [
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
+  const computeIsDarkFromBg = () => {
+    if (typeof document === "undefined") return false;
+    const el = document.body || document.documentElement;
+    const style = window.getComputedStyle(el);
+    const bg = style.backgroundColor || style.color || "rgb(0,0,0)";
+
+    const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return false;
+    const r = Number(m[1]);
+    const g = Number(m[2]);
+    const b = Number(m[3]);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness < 150; // lower = darker
+  };
+
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof document === "undefined") return false;
+    const prefersDark = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return computeIsDarkFromBg() || prefersDark || document.documentElement.classList.contains("dark");
+  });
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const update = () => setIsDarkMode(computeIsDarkFromBg() || document.documentElement.classList.contains("dark") || (document.body && document.body.classList && document.body.classList.contains("dark")));
+
+    const observer = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.type === "attributes") {
+          update();
+          break;
+        }
+      }
+    });
+
+    if (document.documentElement) observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "style", "data-theme"] });
+    if (document.body) observer.observe(document.body, { attributes: true, attributeFilter: ["class", "style", "data-theme"] });
+
+    const media = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaHandler = (e) => setIsDarkMode(e.matches || computeIsDarkFromBg());
+    if (media) {
+      if (media.addEventListener) media.addEventListener("change", mediaHandler);
+      else if (media.addListener) media.addListener(mediaHandler);
+    }
+
+    const storageHandler = () => update();
+    window.addEventListener("storage", storageHandler);
+
+    // also poll briefly in case styles change without mutations (fallback)
+    const interval = setInterval(update, 500);
+
+    return () => {
+      observer.disconnect();
+      if (media) {
+        if (media.removeEventListener) media.removeEventListener("change", mediaHandler);
+        else if (media.removeListener) media.removeListener(mediaHandler);
+      }
+      window.removeEventListener("storage", storageHandler);
+      clearInterval(interval);
+    };
+  }, []);
+
   const toggleItem = (index) => {
     setOpenIndex((prev) => (prev === index ? -1 : index));
   };
 
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="relative min-h-screen bg-[#050505]">
+      <img
+        src={bgImage}
+        alt=""
+        className="pointer-events-none absolute inset-0 w-full h-full object-cover transition-all duration-700"
+        style={{
+          filter: `blur(${isDarkMode ? 2 : 1}px) brightness(${isDarkMode ? 0.78 : 1})`,
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 transition-colors duration-300"
+        style={{
+          backgroundColor: isDarkMode ? "rgba(0,0,0,0.22)" : "rgba(255,255,255,0.14)",
+        }}
+      />
       <div className="max-w-4xl mx-auto px-4 py-10">
         <RevealOnScroll
           delay={0}
