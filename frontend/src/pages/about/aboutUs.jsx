@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import bgImg from '../../assets/2.jpg';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -56,22 +57,24 @@ const AboutUs = () => {
     <div
       style={{
         minHeight: "100vh",
-        background: isDarkMode ? "rgba(0, 0, 0, 0.6)" : "#f3f4f6",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
+        backgroundImage: `url(${bgImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
       }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}>
+      <div style={{ position: 'absolute', inset: 0, background: isDarkMode ? 'rgba(0,0,0,0.55)' : 'rgba(0,0,0,0.45)', backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)' }} />
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 16px", position: 'relative', zIndex: 1 }}>
       <div
         style={{
           background: isDarkMode ? "#1f1f1f" : "#ececec",
           border: isDarkMode ? "1px solid rgba(250, 204, 21, 0.25)" : "1px solid rgba(0, 0, 0, 0.08)",
-          borderRadius: 24,
-          padding: "32px 24px",
-          marginBottom: 50,
+          borderRadius: 16,
+          padding: "20px 16px",
+          marginBottom: 30,
         }}
       >
-        <h1 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", marginBottom: 30, fontSize: 48 }}>ABOUT US</h1>
+        <h1 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", marginBottom: 20, fontSize: 40 }}>ABOUT US</h1>
         <p style={{ textAlign: "center", color: isDarkMode ? "rgba(255,255,255,0.85)" : "#1f2937", fontSize: 18, marginBottom: 30 }}>
           <b>CeylonRoam</b> is an AI-powered travel assistant designed to transform how people explore Sri Lanka. Our platform combines advanced artificial intelligence with modern web technologies to provide travelers with a seamless, personalized, and stress-free journey.What sets CeylonRoam apart is our use of advanced AI to generate personalized itineraries, optimize travel routes, and provide real-time voice translation — all in one easy-to-use app. Whether you’re a local adventurer or a first-time visitor, CeylonRoam helps you save time, discover hidden gems, and travel confidently.
         </p>
@@ -82,39 +85,70 @@ const AboutUs = () => {
           Have questions, feedback, or partnership ideas? We’d love to hear from you! Get in touch with us at ceylon.roam144@gmail.com
     and let’s make travel better together. Join us on CeylonRoam and embark on a journey filled with adventure, discovery, and unforgettable memories.</p>
       </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 16, marginBottom: 16, maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
+        <div style={{ background: isDarkMode ? '#111' : '#111', border: isDarkMode ? '1px solid rgba(250, 204, 21, 0.25)' : '1px solid rgba(0, 0, 0, 0.08)', borderRadius: 12, padding: '16px', maxWidth: 420 }}>
+          <h3 style={{ color: isDarkMode ? '#facc15' : '#7a1818', marginBottom: 10, fontSize: 20 }}>Why CeylonRoam Matters</h3>
+          <p style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', lineHeight: 1.7 }}>
+            Tourism plays a vital role in Sri Lanka's economy, contributing significantly to employment and national income. With over 1.48 million tourists visiting the country in 2023, the industry is rapidly growing.
+          </p>
+          <p style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', marginTop: 8 }}>
+            However, travelers still face several challenges:
+          </p>
+          <ul style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', marginLeft: 20 }}>
+            <li>Fragmented and unreliable travel information</li>
+            <li>Language barriers with local communities</li>
+            <li>Complex transportation and route planning</li>
+          </ul>
+          <p style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', marginTop: 8 }}>
+            CeylonRoam was created to solve these problems and enhance the overall travel experience.
+          </p>
+        </div>
+
+        <div style={{ background: isDarkMode ? '#111' : '#111', border: isDarkMode ? '1px solid rgba(250, 204, 21, 0.25)' : '1px solid rgba(0, 0, 0, 0.08)', borderRadius: 12, padding: '16px', maxWidth: 420 }}>
+          <h3 style={{ color: isDarkMode ? '#facc15' : '#7a1818', marginBottom: 10, fontSize: 20 }}>Our Vision</h3>
+          <p style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', lineHeight: 1.7 }}>
+            We envision a future where every traveler can explore Sri Lanka with confidence, ease, and personalized guidance powered by AI.
+          </p>
+          <p style={{ color: isDarkMode ? 'rgba(255,255,255,0.85)' : '#1f2937', marginTop: 8 }}>
+            CeylonRoam is more than just a travel app, it's your smart companion for discovering Sri Lanka.
+          </p>
+        </div>
+      </div>
+
       <div
         style={{
-          marginTop: 40,
-          marginBottom: 40,
+          marginTop: 24,
+          marginBottom: 24,
           background: isDarkMode ? "#1f1f1f" : "#ececec",
           border: isDarkMode ? "1px solid rgba(250, 204, 21, 0.25)" : "1px solid rgba(0, 0, 0, 0.08)",
-          borderRadius: 24,
-          padding: "28px 20px",
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+          borderRadius: 16,
+          padding: "20px 16px",
+          boxShadow: "0 8px 20px rgba(0, 0, 0, 0.05)",
         }}
       >
-        <h2 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", fontSize: 28, marginBottom: 24 }}>Founders</h2>
-        <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, justifyContent: 'center', listStyle: 'none', padding: 0, maxWidth: 900, margin: '0 auto' }}>
-          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
+        <h2 style={{ textAlign: "center", color: isDarkMode ? "#facc15" : "#7a1818", fontSize: 24, marginBottom: 18 }}>Founders</h2>
+        <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, justifyContent: 'center', listStyle: 'none', padding: 0, maxWidth: 900, margin: '0 auto' }}>
+          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(122,24,24,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.background = '#ececec'; }}>
-            <div style={{ background: '#ffb300', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>SG</div>
-            <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Sasanka Gallage</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
+            <div style={{ background: '#ffb300', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>SG</div>
+            <div style={{ fontWeight: 700, marginTop: 10, fontSize: 16 }}>Sasanka Gallage</div>
+            <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
           </li>
-          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
+          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(33,150,243,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.background = '#ececec'; }}>
-            <div style={{ background: '#2196f3', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>TF</div>
-            <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Tashmi Fernando</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
+            <div style={{ background: '#2196f3', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>TF</div>
+            <div style={{ fontWeight: 700, marginTop: 10, fontSize: 16 }}>Tashmi Fernando</div>
+            <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
           </li>
-          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
+          <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(139,195,74,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.background = '#ececec'; }}>
-            <div style={{ background: '#8bc34a', color: '#fff', borderRadius: '50%', width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700 }}>OG</div>
-            <div style={{ fontWeight: 700, marginTop: 12, fontSize: 18 }}>Oshadhi Goonewardena</div>
-            <div style={{ color: '#888', marginTop: 4 }}>Full-Stack Developer</div>
+            <div style={{ background: '#8bc34a', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>OG</div>
+            <div style={{ fontWeight: 700, marginTop: 10, fontSize: 16 }}>Oshadhi Goonewardena</div>
+            <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
           </li>
           <li style={{ textAlign: 'center', background: '#ececec', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 16, padding: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(229,115,115,0.15)'; e.currentTarget.style.transform = 'translateY(-4px) scale(1.03)'; }}
@@ -139,12 +173,12 @@ const AboutUs = () => {
           </li>
         </ul>
       </div>
-      <div style={{ marginTop: 60, display: "flex", justifyContent: "center" }}>
-        <div style={{ background: "#fff", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", borderRadius: 24, padding: "32px 24px", maxWidth: 400, width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ marginTop: 40, display: "flex", justifyContent: "center" }}>
+        <div style={{ background: "#fff", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", borderRadius: 16, padding: "20px 16px", maxWidth: 360, width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <div style={{ marginBottom: 24 }}>
             {/* Icon removed */}
           </div>
-          <h2 style={{ textAlign: "center", color: "#222", marginBottom: 34, fontSize: 28, fontWeight: 700 }}>Contact Us</h2>
+          <h2 style={{ textAlign: "center", color: "#222", marginBottom: 20, fontSize: 22, fontWeight: 700 }}>Contact Us</h2>
           <form onSubmit={handleSubmit} style={{ width: "100%" }}>
             <input
               type="text"
