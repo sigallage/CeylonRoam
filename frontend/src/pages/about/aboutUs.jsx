@@ -278,6 +278,7 @@ const AboutUs = () => {
             </div>
             <button
               type="submit"
+              aria-label="Send feedback"
               disabled={isSubmitting}
               style={{ width: '100%', padding: '14px 18px', borderRadius: 999, fontWeight: 800, fontSize: 16, color: '#111', background: 'linear-gradient(90deg,#ffe066,#ffc233,#ff6a00)', boxShadow: isDarkMode ? '0 12px 30px rgba(255,180,50,0.14), 0 0 18px rgba(255,160,40,0.06)' : '0 6px 20px rgba(0,0,0,0.08)' }}
             >
