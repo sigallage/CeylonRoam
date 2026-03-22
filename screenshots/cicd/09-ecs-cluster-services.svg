@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="440" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="440" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">ECS Cluster – Services Overview</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">Cluster: ceylonroam-cluster · Region: us-east-1 · Launch type: FARGATE</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="66" width="190" height="30" rx="4" fill="#1e293b"/>
+  <text x="125" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Service Name</text>
+  <rect x="230" y="66" width="100" height="30" rx="4" fill="#1e293b"/>
+  <text x="280" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Status</text>
+  <rect x="340" y="66" width="80" height="30" rx="4" fill="#1e293b"/>
+  <text x="380" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Tasks</text>
+  <rect x="430" y="66" width="200" height="30" rx="4" fill="#1e293b"/>
+  <text x="530" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Task Definition</text>
+  <rect x="640" y="66" width="146" height="30" rx="4" fill="#1e293b"/>
+  <text x="713" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Target Group</text>
+
+  <!-- Row auth -->
+  <rect x="30" y="102" width="756" height="48" rx="4" fill="#eff6ff"/>
+  <text x="40" y="122" font-size="12" font-weight="600" fill="#1e40af">auth-service</text>
+  <text x="40" y="140" font-size="11" fill="#3b82f6">Node/Express · port 5001</text>
+  <rect x="232" y="110" width="92" height="24" rx="12" fill="#dcfce7"/>
+  <text x="278" y="127" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● ACTIVE</text>
+  <text x="380" y="130" text-anchor="middle" font-size="12" fill="#374151">1 / 1</text>
+  <text x="435" y="130" font-size="11" font-family="Consolas, monospace" fill="#374151">ceylonroam-auth-service:N</text>
+  <text x="645" y="130" font-size="11" font-family="Consolas, monospace" fill="#0369a1">ceylonroam-auth-tg</text>
+
+  <!-- Row itinerary -->
+  <rect x="30" y="156" width="756" height="48" rx="4" fill="#f0fdf4"/>
+  <text x="40" y="176" font-size="12" font-weight="600" fill="#14532d">itinerary-service</text>
+  <text x="40" y="194" font-size="11" fill="#16a34a">FastAPI · port 8001</text>
+  <rect x="232" y="164" width="92" height="24" rx="12" fill="#dcfce7"/>
+  <text x="278" y="181" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● ACTIVE</text>
+  <text x="380" y="184" text-anchor="middle" font-size="12" fill="#374151">1 / 1</text>
+  <text x="435" y="184" font-size="11" font-family="Consolas, monospace" fill="#374151">ceylonroam-itinerary-service:N</text>
+  <text x="645" y="184" font-size="11" font-family="Consolas, monospace" fill="#0369a1">ceylonroam-itinerary-tg</text>
+
+  <!-- Row route-optimizer -->
+  <rect x="30" y="210" width="756" height="48" rx="4" fill="#fefce8"/>
+  <text x="40" y="230" font-size="12" font-weight="600" fill="#854d0e">route-optimizer-service</text>
+  <text x="40" y="248" font-size="11" fill="#ca8a04">FastAPI · port 8002</text>
+  <rect x="232" y="218" width="92" height="24" rx="12" fill="#dcfce7"/>
+  <text x="278" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● ACTIVE</text>
+  <text x="380" y="238" text-anchor="middle" font-size="12" fill="#374151">1 / 1</text>
+  <text x="435" y="238" font-size="11" font-family="Consolas, monospace" fill="#374151">ceylonroam-route-optimizer-service:N</text>
+  <text x="645" y="238" font-size="11" font-family="Consolas, monospace" fill="#0369a1">ceylonroam-route-optimizer-tg</text>
+
+  <!-- Row voice-translation -->
+  <rect x="30" y="264" width="756" height="48" rx="4" fill="#fdf4ff"/>
+  <text x="40" y="284" font-size="12" font-weight="600" fill="#86198f">voice-translation-service</text>
+  <text x="40" y="302" font-size="11" fill="#a21caf">FastAPI · port 8003</text>
+  <rect x="232" y="272" width="92" height="24" rx="12" fill="#dcfce7"/>
+  <text x="278" y="289" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● ACTIVE</text>
+  <text x="380" y="292" text-anchor="middle" font-size="12" fill="#374151">1 / 1</text>
+  <text x="435" y="292" font-size="11" font-family="Consolas, monospace" fill="#374151">ceylonroam-voice-translation-service:N</text>
+  <text x="645" y="292" font-size="11" font-family="Consolas, monospace" fill="#0369a1">ceylonroam-voice-translation-tg</text>
+
+  <!-- Justification -->
+  <rect x="30" y="328" width="756" height="95" rx="8" fill="#dcfce7" stroke="#059669" stroke-width="1.5"/>
+  <text x="46" y="348" font-size="13" font-weight="700" fill="#065f46">✓ Why ECS Fargate?</text>
+  <text x="46" y="368" font-size="12" fill="#065f46">• Serverless containers: no EC2 instances to patch or manage. AWS handles capacity, networking, and scaling.</text>
+  <text x="46" y="385" font-size="12" fill="#065f46">• Each service runs in its own task: independent CPU/memory allocation, restart policies, and scaling rules.</text>
+  <text x="46" y="402" font-size="12" fill="#065f46">• Services created with create-ecs-services.ps1 (one-time) then managed by CI/CD (force-new-deployment).</text>
+  <text x="46" y="419" font-size="12" fill="#065f46">• N in task definition revision indicates latest registered revision — automatically incremented each deploy.</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="470" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrd" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="820" height="470" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">ECS Rolling Deployment – Service Events</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">Triggered by: aws ecs update-service --force-new-deployment (all 4 services)</text>
+
+  <!-- Timeline -->
+  <line x1="100" y1="90" x2="100" y2="390" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- Events -->
+  <!-- Event 1 -->
+  <circle cx="100" cy="110" r="10" fill="#3b82f6"/>
+  <text x="118" y="106" font-size="12" font-weight="600" fill="#1e293b">GitHub Actions triggers ECS update</text>
+  <text x="118" y="122" font-size="11" fill="#64748b">aws ecs update-service --cluster ceylonroam-cluster --service auth-service --force-new-deployment</text>
+
+  <!-- Event 2 -->
+  <circle cx="100" cy="165" r="10" fill="#8b5cf6"/>
+  <text x="118" y="161" font-size="12" font-weight="600" fill="#1e293b">ECS scheduler starts new task(s) with :latest image</text>
+  <text x="118" y="177" font-size="11" fill="#64748b">Pulls ceylonroam-auth:latest from ECR · Container starts · Runs health check on /health</text>
+
+  <!-- Event 3 -->
+  <circle cx="100" cy="220" r="10" fill="#059669"/>
+  <text x="118" y="216" font-size="12" font-weight="600" fill="#1e293b">New task passes ALB health check</text>
+  <text x="118" y="232" font-size="11" fill="#64748b">ALB target group registers new container IP · HTTP 200 on /health endpoint</text>
+
+  <!-- Event 4 -->
+  <circle cx="100" cy="275" r="10" fill="#0ea5e9"/>
+  <text x="118" y="271" font-size="12" font-weight="600" fill="#1e293b">Old task(s) gracefully drain and stop</text>
+  <text x="118" y="287" font-size="11" fill="#64748b">In-flight requests complete · ALB deregisters old targets · Old container stops</text>
+
+  <!-- Event 5 -->
+  <circle cx="100" cy="330" r="10" fill="#16a34a"/>
+  <text x="118" y="326" font-size="12" font-weight="600" fill="#1e293b">Deployment complete — zero downtime</text>
+  <text x="118" y="342" font-size="11" fill="#64748b">All 4 services updated: auth · itinerary · route-optimizer · voice-translation</text>
+
+  <!-- Connecting lines -->
+  <line x1="100" y1="120" x2="100" y2="155" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="100" y1="175" x2="100" y2="210" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="100" y1="230" x2="100" y2="265" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="100" y1="285" x2="100" y2="320" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Justification box -->
+  <rect x="30" y="368" width="756" height="84" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="46" y="388" font-size="13" font-weight="700" fill="#14532d">✓ Why rolling deployments with force-new-deployment?</text>
+  <text x="46" y="407" font-size="12" fill="#14532d">• ECS replaces tasks incrementally (minimumHealthyPercent=100 by default) — service stays available throughout.</text>
+  <text x="46" y="424" font-size="12" fill="#14532d">• No manual image digest update needed: task definitions reference :latest, forcing ECS to pull the newest image.</text>
+  <text x="46" y="441" font-size="12" fill="#14532d">• All 4 microservices can be deployed in parallel (separate update-service calls in the same workflow step).</text>
+</svg>

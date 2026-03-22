@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="420" fill="#0a0a0a" rx="12"/>
+  <!-- Header bar -->
+  <rect x="0" y="0" width="820" height="48" rx="12" fill="#111"/>
+  <!-- Vercel logo text -->
+  <text x="40" y="30" font-size="18" font-weight="700" fill="white">▲</text>
+  <text x="65" y="30" font-size="14" font-weight="600" fill="white">Vercel</text>
+  <text x="140" y="30" font-size="12" fill="#888">/ sigallage / CeylonRoam</text>
+  <rect x="660" y="14" width="140" height="22" rx="4" fill="#1c1c1c" stroke="#333"/>
+  <text x="730" y="30" text-anchor="middle" font-size="11" fill="#888">Deployments ▾</text>
+
+  <!-- Deployment rows -->
+  <!-- Row 1 - latest -->
+  <rect x="20" y="60" width="780" height="66" rx="6" fill="#111" stroke="#222"/>
+  <rect x="20" y="60" width="4" height="66" rx="2" fill="#00e599"/>
+  <text x="40" y="84" font-size="12" font-weight="600" fill="white">Production Deployment</text>
+  <text x="40" y="102" font-size="11" fill="#888">⬦ main</text>
+  <text x="130" y="102" font-size="11" fill="#666">a1b2c3d</text>
+  <text x="200" y="102" font-size="11" fill="#666">feat: add voice translation service</text>
+  <rect x="600" y="70" width="90" height="22" rx="10" fill="#0a2a1a" stroke="#00e599"/>
+  <text x="645" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="#00e599">● Ready</text>
+  <text x="710" y="102" font-size="10" fill="#555">2 min ago</text>
+
+  <!-- Row 2 -->
+  <rect x="20" y="134" width="780" height="60" rx="6" fill="#111" stroke="#222"/>
+  <rect x="20" y="134" width="4" height="60" rx="2" fill="#00e599"/>
+  <text x="40" y="156" font-size="12" fill="#ccc">Production Deployment</text>
+  <text x="40" y="172" font-size="11" fill="#888">⬦ main</text>
+  <text x="130" y="172" font-size="11" fill="#666">f7e8d9c</text>
+  <text x="200" y="172" font-size="11" fill="#666">fix: itinerary API path rewrite</text>
+  <rect x="600" y="142" width="90" height="22" rx="10" fill="#0a2a1a" stroke="#00e599"/>
+  <text x="645" y="158" text-anchor="middle" font-size="11" font-weight="600" fill="#00e599">● Ready</text>
+  <text x="710" y="172" font-size="10" fill="#555">1 day ago</text>
+
+  <!-- Row 3 -->
+  <rect x="20" y="202" width="780" height="60" rx="6" fill="#111" stroke="#222"/>
+  <rect x="20" y="202" width="4" height="60" rx="2" fill="#00e599"/>
+  <text x="40" y="224" font-size="12" fill="#ccc">Production Deployment</text>
+  <text x="40" y="240" font-size="11" fill="#888">⬦ main</text>
+  <text x="130" y="240" font-size="11" fill="#666">9c8b7a6</text>
+  <text x="200" y="240" font-size="11" fill="#666">chore: update vercel.json rewrites</text>
+  <rect x="600" y="210" width="90" height="22" rx="10" fill="#0a2a1a" stroke="#00e599"/>
+  <text x="645" y="226" text-anchor="middle" font-size="11" font-weight="600" fill="#00e599">● Ready</text>
+  <text x="710" y="240" font-size="10" fill="#555">3 days ago</text>
+
+  <!-- Row 4 -->
+  <rect x="20" y="270" width="780" height="60" rx="6" fill="#111" stroke="#222"/>
+  <rect x="20" y="270" width="4" height="60" rx="2" fill="#555"/>
+  <text x="40" y="292" font-size="12" fill="#888">Preview Deployment</text>
+  <text x="40" y="308" font-size="11" fill="#888">⬦ feature/auth-redesign</text>
+  <text x="200" y="308" font-size="11" fill="#666">refactor: redesign login page</text>
+  <rect x="600" y="278" width="90" height="22" rx="10" fill="#1c1c1c" stroke="#555"/>
+  <text x="645" y="294" text-anchor="middle" font-size="11" fill="#888">● Ready</text>
+  <text x="710" y="308" font-size="10" fill="#555">5 days ago</text>
+
+  <!-- Justification -->
+  <rect x="20" y="344" width="780" height="60" rx="6" fill="#111" stroke="#333"/>
+  <text x="36" y="364" font-size="12" font-weight="600" fill="#00e599">✓  Why Vercel for the frontend?</text>
+  <text x="36" y="382" font-size="11" fill="#888">Zero-config deployments on every push to main. Preview deployments for every PR. CDN-based global distribution.</text>
+  <text x="36" y="399" font-size="11" fill="#888">vercel.json rewrites proxy /api/* and /voice/* to the ALB, keeping the frontend API surface clean and CORS-free.</text>
+</svg>

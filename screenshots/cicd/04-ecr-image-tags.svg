@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="480" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="480" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">Amazon ECR – Container Image Tags per Service</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">Each microservice has its own ECR repository. Images are double-tagged on every CI/CD run.</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="68" width="175" height="32" rx="4" fill="#1e40af"/>
+  <text x="117" y="89" text-anchor="middle" font-size="12" font-weight="700" fill="white">ECR Repository</text>
+  <rect x="215" y="68" width="130" height="32" rx="4" fill="#059669"/>
+  <text x="280" y="89" text-anchor="middle" font-size="12" font-weight="700" fill="white">:latest tag</text>
+  <rect x="355" y="68" width="200" height="32" rx="4" fill="#7c3aed"/>
+  <text x="455" y="89" text-anchor="middle" font-size="12" font-weight="700" fill="white">:&lt;commit-sha&gt; tag</text>
+  <rect x="565" y="68" width="225" height="32" rx="4" fill="#0284c7"/>
+  <text x="677" y="89" text-anchor="middle" font-size="12" font-weight="700" fill="white">Docker Build Context</text>
+
+  <!-- Row colours -->
+  <!-- auth -->
+  <rect x="30" y="108" width="756" height="48" rx="4" fill="#eff6ff"/>
+  <text x="40" y="128" font-size="12" font-weight="600" fill="#1e40af">ceylonroam-auth</text>
+  <text x="40" y="146" font-size="11" fill="#3b82f6">auth-service (Node/Express)</text>
+  <text x="215" y="137" font-size="12" fill="#047857" font-family="Consolas, monospace">:latest</text>
+  <text x="355" y="137" font-size="11" fill="#6d28d9" font-family="Consolas, monospace">:a1b2c3d4e5f6...</text>
+  <text x="565" y="137" font-size="11" fill="#0369a1" font-family="Consolas, monospace">backend/authService/</text>
+
+  <!-- itinerary -->
+  <rect x="30" y="162" width="756" height="48" rx="4" fill="#f0fdf4"/>
+  <text x="40" y="182" font-size="12" font-weight="600" fill="#14532d">ceylonroam-itinerary</text>
+  <text x="40" y="200" font-size="11" fill="#16a34a">itinerary-service (FastAPI)</text>
+  <text x="215" y="190" font-size="12" fill="#047857" font-family="Consolas, monospace">:latest</text>
+  <text x="355" y="190" font-size="11" fill="#6d28d9" font-family="Consolas, monospace">:b2c3d4e5f6a7...</text>
+  <text x="565" y="190" font-size="11" fill="#0369a1" font-family="Consolas, monospace">backend/itineraryGenerator/</text>
+
+  <!-- route-optimizer -->
+  <rect x="30" y="216" width="756" height="48" rx="4" fill="#fefce8"/>
+  <text x="40" y="236" font-size="12" font-weight="600" fill="#854d0e">ceylonroam-route-optimizer</text>
+  <text x="40" y="254" font-size="11" fill="#ca8a04">route-optimizer-service (FastAPI)</text>
+  <text x="215" y="244" font-size="12" fill="#047857" font-family="Consolas, monospace">:latest</text>
+  <text x="355" y="244" font-size="11" fill="#6d28d9" font-family="Consolas, monospace">:c3d4e5f6a7b8...</text>
+  <text x="565" y="244" font-size="11" fill="#0369a1" font-family="Consolas, monospace">backend/routeOptimizer/</text>
+
+  <!-- voice-translation -->
+  <rect x="30" y="270" width="756" height="48" rx="4" fill="#fdf4ff"/>
+  <text x="40" y="290" font-size="12" font-weight="600" fill="#86198f">ceylonroam-voice-translation</text>
+  <text x="40" y="308" font-size="11" fill="#a21caf">voice-translation-service (FastAPI)</text>
+  <text x="215" y="298" font-size="12" fill="#047857" font-family="Consolas, monospace">:latest</text>
+  <text x="355" y="298" font-size="11" fill="#6d28d9" font-family="Consolas, monospace">:d4e5f6a7b8c9...</text>
+  <text x="565" y="298" font-size="11" fill="#0369a1" font-family="Consolas, monospace">backend/voiceTranslation/</text>
+
+  <!-- Justification boxes -->
+  <rect x="30" y="332" width="370" height="130" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="46" y="352" font-size="13" font-weight="700" fill="#14532d">:latest tag</text>
+  <text x="46" y="372" font-size="12" fill="#14532d">ECS task definitions reference :latest.</text>
+  <text x="46" y="390" font-size="12" fill="#14532d">No JSON update needed when new images are</text>
+  <text x="46" y="408" font-size="12" fill="#14532d">pushed — force-new-deployment re-pulls the</text>
+  <text x="46" y="426" font-size="12" fill="#14532d">newest :latest automatically.</text>
+  <text x="46" y="444" font-size="12" fill="#14532d">✓ Keeps CI/CD pipeline simple and fast.</text>
+  <text x="46" y="456" font-size="11" fill="#16a34a">Workflow: docker push --all-tags $ECR_REGISTRY/$REPO</text>
+
+  <rect x="416" y="332" width="370" height="130" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="432" y="352" font-size="13" font-weight="700" fill="#4c1d95">:commit-sha tag</text>
+  <text x="432" y="372" font-size="12" fill="#4c1d95">IMAGE_TAG = $&#123;GITHUB_SHA&#125; (full 40-char SHA).</text>
+  <text x="432" y="390" font-size="12" fill="#4c1d95">Provides an immutable, traceable version tied</text>
+  <text x="432" y="408" font-size="12" fill="#4c1d95">directly to the exact source commit.</text>
+  <text x="432" y="426" font-size="12" fill="#4c1d95">✓ Enables rollback: retag SHA→latest and</text>
+  <text x="432" y="444" font-size="12" fill="#4c1d95">  trigger force-new-deployment.</text>
+  <text x="432" y="456" font-size="11" fill="#7c3aed">Used for audit trails and emergency rollbacks.</text>
+</svg>

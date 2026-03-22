@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="430" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">ALB Target Groups – Health Check Status</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">AWS Application Load Balancer routes traffic only to healthy ECS tasks</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="66" width="200" height="30" rx="4" fill="#0369a1"/>
+  <text x="130" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Target Group</text>
+  <rect x="240" y="66" width="70" height="30" rx="4" fill="#0369a1"/>
+  <text x="275" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Port</text>
+  <rect x="320" y="66" width="140" height="30" rx="4" fill="#0369a1"/>
+  <text x="390" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Health Check Path</text>
+  <rect x="470" y="66" width="80" height="30" rx="4" fill="#0369a1"/>
+  <text x="510" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Status</text>
+  <rect x="560" y="66" width="230" height="30" rx="4" fill="#0369a1"/>
+  <text x="675" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Target (ECS Task IP)</text>
+
+  <!-- Rows -->
+  <rect x="30" y="102" width="756" height="42" rx="4" fill="#f0fdf4"/>
+  <text x="46" y="127" font-size="12" fill="#1e293b">ceylonroam-auth-tg</text>
+  <text x="275" y="127" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">5001</text>
+  <text x="390" y="127" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">/health</text>
+  <rect x="473" y="108" width="72" height="26" rx="12" fill="#dcfce7"/>
+  <text x="509" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● healthy</text>
+  <text x="565" y="127" font-size="11" font-family="Consolas, monospace" fill="#6b7280">10.0.1.42 : 5001</text>
+
+  <rect x="30" y="150" width="756" height="42" rx="4" fill="#f0fdf4"/>
+  <text x="46" y="175" font-size="12" fill="#1e293b">ceylonroam-itinerary-tg</text>
+  <text x="275" y="175" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">8001</text>
+  <text x="390" y="175" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">/health</text>
+  <rect x="473" y="156" width="72" height="26" rx="12" fill="#dcfce7"/>
+  <text x="509" y="174" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● healthy</text>
+  <text x="565" y="175" font-size="11" font-family="Consolas, monospace" fill="#6b7280">10.0.2.17 : 8001</text>
+
+  <rect x="30" y="198" width="756" height="42" rx="4" fill="#f0fdf4"/>
+  <text x="46" y="223" font-size="12" fill="#1e293b">ceylonroam-route-optimizer-tg</text>
+  <text x="275" y="223" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">8002</text>
+  <text x="390" y="223" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">/health</text>
+  <rect x="473" y="204" width="72" height="26" rx="12" fill="#dcfce7"/>
+  <text x="509" y="222" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● healthy</text>
+  <text x="565" y="223" font-size="11" font-family="Consolas, monospace" fill="#6b7280">10.0.1.89 : 8002</text>
+
+  <rect x="30" y="246" width="756" height="42" rx="4" fill="#f0fdf4"/>
+  <text x="46" y="271" font-size="12" fill="#1e293b">ceylonroam-voice-translation-tg</text>
+  <text x="275" y="271" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">8003</text>
+  <text x="390" y="271" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#1e293b">/health</text>
+  <rect x="473" y="252" width="72" height="26" rx="12" fill="#dcfce7"/>
+  <text x="509" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">● healthy</text>
+  <text x="565" y="271" font-size="11" font-family="Consolas, monospace" fill="#6b7280">10.0.2.55 : 8003</text>
+
+  <!-- Health check config box -->
+  <rect x="30" y="306" width="370" height="106" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="46" y="326" font-size="13" font-weight="700" fill="#075985">Health Check Configuration</text>
+  <text x="46" y="344" font-size="12" fill="#0c4a6e">Protocol: HTTP  ·  Path: /health  ·  Interval: 30s</text>
+  <text x="46" y="362" font-size="12" fill="#0c4a6e">Timeout: 5s  ·  Healthy threshold: 2 checks</text>
+  <text x="46" y="380" font-size="12" fill="#0c4a6e">Unhealthy threshold: 3 checks  ·  Matcher: 200</text>
+  <text x="46" y="398" font-size="11" fill="#0369a1">Configured in provision-infra.ps1 (Get-Or-CreateTargetGroup)</text>
+
+  <rect x="416" y="306" width="370" height="106" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="432" y="326" font-size="13" font-weight="700" fill="#14532d">✓ Why health checks?</text>
+  <text x="432" y="344" font-size="12" fill="#14532d">ALB only routes traffic to healthy targets.</text>
+  <text x="432" y="362" font-size="12" fill="#14532d">During rolling deploy, old tasks drain first;</text>
+  <text x="432" y="380" font-size="12" fill="#14532d">new tasks must pass health checks before</text>
+  <text x="432" y="398" font-size="12" fill="#14532d">receiving production traffic.</text>
+</svg>

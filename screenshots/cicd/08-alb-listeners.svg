@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="400" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">AWS Application Load Balancer – Listener Rules</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">ALB: ceylonroam-alb (us-east-1, internet-facing) · DNS: ceylonroam-alb-*.us-east-1.elb.amazonaws.com</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="66" width="100" height="30" rx="4" fill="#075985"/>
+  <text x="80" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Port</text>
+  <rect x="140" y="66" width="100" height="30" rx="4" fill="#075985"/>
+  <text x="190" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Protocol</text>
+  <rect x="250" y="66" width="240" height="30" rx="4" fill="#075985"/>
+  <text x="370" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Default Action (Forward To)</text>
+  <rect x="500" y="66" width="140" height="30" rx="4" fill="#075985"/>
+  <text x="570" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Service</text>
+  <rect x="650" y="66" width="136" height="30" rx="4" fill="#075985"/>
+  <text x="718" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Container Port</text>
+
+  <!-- Rows -->
+  <rect x="30" y="102" width="756" height="42" rx="4" fill="#eff6ff"/>
+  <text x="80" y="127" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">80</text>
+  <text x="190" y="127" text-anchor="middle" font-size="12" fill="#374151">HTTP</text>
+  <text x="370" y="127" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">ceylonroam-auth-tg</text>
+  <text x="570" y="127" text-anchor="middle" font-size="12" fill="#374151">auth-service</text>
+  <text x="718" y="127" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">5001</text>
+
+  <rect x="30" y="150" width="756" height="42" rx="4" fill="#f0fdf4"/>
+  <text x="80" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">8001</text>
+  <text x="190" y="175" text-anchor="middle" font-size="12" fill="#374151">HTTP</text>
+  <text x="370" y="175" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">ceylonroam-itinerary-tg</text>
+  <text x="570" y="175" text-anchor="middle" font-size="12" fill="#374151">itinerary-service</text>
+  <text x="718" y="175" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">8001</text>
+
+  <rect x="30" y="198" width="756" height="42" rx="4" fill="#fefce8"/>
+  <text x="80" y="223" text-anchor="middle" font-size="14" font-weight="700" fill="#a16207">8002</text>
+  <text x="190" y="223" text-anchor="middle" font-size="12" fill="#374151">HTTP</text>
+  <text x="370" y="223" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">ceylonroam-route-optimizer-tg</text>
+  <text x="570" y="223" text-anchor="middle" font-size="12" fill="#374151">route-optimizer-service</text>
+  <text x="718" y="223" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">8002</text>
+
+  <rect x="30" y="246" width="756" height="42" rx="4" fill="#fdf4ff"/>
+  <text x="80" y="271" text-anchor="middle" font-size="14" font-weight="700" fill="#7e22ce">8003</text>
+  <text x="190" y="271" text-anchor="middle" font-size="12" fill="#374151">HTTP</text>
+  <text x="370" y="271" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">ceylonroam-voice-translation-tg</text>
+  <text x="570" y="271" text-anchor="middle" font-size="12" fill="#374151">voice-translation-service</text>
+  <text x="718" y="271" text-anchor="middle" font-size="12" font-family="Consolas, monospace" fill="#374151">8003</text>
+
+  <!-- Justification -->
+  <rect x="30" y="306" width="756" height="76" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="46" y="326" font-size="13" font-weight="700" fill="#075985">✓ Why separate ports per service?</text>
+  <text x="46" y="346" font-size="12" fill="#0c4a6e">• A single ALB with multiple listeners is cost-effective (one ALB instead of four). Each service has a dedicated listener port.</text>
+  <text x="46" y="363" font-size="12" fill="#0c4a6e">• Vercel rewrites map clean frontend paths (/api/generate, /api/optimize, /voice/translate) to the correct ALB port.</text>
+  <text x="46" y="380" font-size="12" fill="#0c4a6e">• Security groups only allow the ALB SG to reach task SG on these specific ports — no direct public access to tasks.</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="480" font-family="Consolas, monospace">
+  <rect width="820" height="480" fill="#0d1117" rx="12"/>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="820" height="40" rx="12" fill="#161b22"/>
+  <circle cx="22" cy="20" r="7" fill="#ff5f57"/>
+  <circle cx="42" cy="20" r="7" fill="#febc2e"/>
+  <circle cx="62" cy="20" r="7" fill="#28c840"/>
+  <text x="410" y="25" text-anchor="middle" font-size="13" fill="#8b949e" font-family="Segoe UI, Arial, sans-serif">vercel.json – Rewrite Rules (Route Mapping to AWS ALB)</text>
+
+  <text x="18" y="66" font-size="12" fill="#6e7681">1</text>
+  <text x="40" y="66" font-size="12" fill="#e6edf3">&#123;</text>
+
+  <text x="18" y="84" font-size="12" fill="#6e7681">2</text>
+  <text x="52" y="84" font-size="12" fill="#79c0ff">  "rewrites"</text><text x="136" y="84" font-size="12" fill="#e6edf3">: [</text>
+
+  <!-- Route optimizer -->
+  <text x="18" y="104" font-size="12" fill="#6e7681">3</text>
+  <text x="52" y="104" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="104" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="104" font-size="12" fill="#e6edf3">: </text><text x="152" y="104" font-size="12" fill="#a5d6ff">"/api/optimize"</text><text x="270" y="104" font-size="12" fill="#e6edf3">, </text><text x="282" y="104" font-size="12" fill="#79c0ff">"destination"</text><text x="370" y="104" font-size="12" fill="#e6edf3">: </text><text x="382" y="104" font-size="12" fill="#f0883e">"http://ceylonroam-alb-*.us-east-1.elb.amazonaws.com:8002/optimize"</text><text x="792" y="104" font-size="12" fill="#e6edf3"> &#125;</text>
+
+  <text x="18" y="122" font-size="12" fill="#6e7681">4</text>
+  <text x="52" y="122" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="122" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="122" font-size="12" fill="#e6edf3">: </text><text x="152" y="122" font-size="12" fill="#a5d6ff">"/api/traffic-route"</text><text x="282" y="122" font-size="12" fill="#e6edf3">, </text><text x="294" y="122" font-size="12" fill="#79c0ff">"destination"</text><text x="382" y="122" font-size="12" fill="#e6edf3">: </text><text x="394" y="122" font-size="12" fill="#f0883e">"http://ceylonroam-alb-*.us-east-1.elb.amazonaws.com:8002/traffic-route"</text><text x="790" y="122" font-size="12" fill="#e6edf3"> &#125;</text>
+
+  <!-- Itinerary -->
+  <text x="18" y="140" font-size="12" fill="#6e7681">5</text>
+  <text x="52" y="140" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="140" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="140" font-size="12" fill="#e6edf3">: </text><text x="152" y="140" font-size="12" fill="#a5d6ff">"/api/generate"</text><text x="270" y="140" font-size="12" fill="#e6edf3">, </text><text x="282" y="140" font-size="12" fill="#79c0ff">"destination"</text><text x="370" y="140" font-size="12" fill="#e6edf3">: </text><text x="382" y="140" font-size="12" fill="#f0883e">"http://ceylonroam-alb-*.us-east-1.elb.amazonaws.com:8001/api/generate"</text><text x="790" y="140" font-size="12" fill="#e6edf3"> &#125;</text>
+
+  <!-- Voice -->
+  <text x="18" y="158" font-size="12" fill="#6e7681">6</text>
+  <text x="52" y="158" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="158" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="158" font-size="12" fill="#e6edf3">: </text><text x="152" y="158" font-size="12" fill="#a5d6ff">"/voice/translate"</text><text x="282" y="158" font-size="12" fill="#e6edf3">, </text><text x="294" y="158" font-size="12" fill="#79c0ff">"destination"</text><text x="382" y="158" font-size="12" fill="#e6edf3">: </text><text x="394" y="158" font-size="12" fill="#f0883e">"http://ceylonroam-alb-*.us-east-1.elb.amazonaws.com:8003/voice/translate"</text><text x="790" y="158" font-size="12" fill="#e6edf3"> &#125;</text>
+
+  <!-- Catchall -->
+  <text x="18" y="178" font-size="12" fill="#6e7681">7</text>
+  <text x="52" y="178" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="178" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="178" font-size="12" fill="#e6edf3">: </text><text x="152" y="178" font-size="12" fill="#a5d6ff">"/api/:path*"</text><text x="252" y="178" font-size="12" fill="#e6edf3">, </text><text x="264" y="178" font-size="12" fill="#79c0ff">"destination"</text><text x="352" y="178" font-size="12" fill="#e6edf3">: </text><text x="364" y="178" font-size="12" fill="#f0883e">"http://ceylonroam-alb-*.us-east-1.elb.amazonaws.com/api/:path*"</text><text x="740" y="178" font-size="12" fill="#e6edf3"> &#125;</text>
+
+  <!-- SPA fallback -->
+  <text x="18" y="198" font-size="12" fill="#6e7681">8</text>
+  <text x="52" y="198" font-size="12" fill="#e6edf3">    &#123; </text><text x="84" y="198" font-size="12" fill="#79c0ff">"source"</text><text x="140" y="198" font-size="12" fill="#e6edf3">: </text><text x="152" y="198" font-size="12" fill="#a5d6ff">"/:path*"</text><text x="226" y="198" font-size="12" fill="#e6edf3">, </text><text x="238" y="198" font-size="12" fill="#79c0ff">"destination"</text><text x="326" y="198" font-size="12" fill="#e6edf3">: </text><text x="338" y="198" font-size="12" fill="#a5d6ff">"/"</text><text x="358" y="198" font-size="12" fill="#e6edf3"> &#125;</text>
+  <text x="380" y="198" font-size="11" fill="#8b949e">  // SPA catch-all – React Router handles client-side routing</text>
+
+  <text x="18" y="218" font-size="12" fill="#6e7681">9</text>
+  <text x="40" y="218" font-size="12" fill="#e6edf3">  ]</text>
+
+  <text x="18" y="238" font-size="12" fill="#6e7681">10</text>
+  <text x="40" y="238" font-size="12" fill="#e6edf3">&#125;</text>
+
+  <!-- Flow diagram -->
+  <rect x="20" y="258" width="780" height="200" rx="8" fill="#161b22"/>
+  <text x="410" y="282" text-anchor="middle" font-size="13" font-weight="600" fill="#8b949e" font-family="Segoe UI, Arial, sans-serif">How Rewrites Work at Runtime</text>
+
+  <!-- Browser -->
+  <rect x="40" y="295" width="120" height="44" rx="6" fill="#21262d" stroke="#30363d"/>
+  <text x="100" y="313" text-anchor="middle" font-size="12" fill="#e6edf3" font-family="Segoe UI, Arial, sans-serif">Browser</text>
+  <text x="100" y="330" text-anchor="middle" font-size="10" fill="#8b949e" font-family="Consolas, monospace">GET /api/generate</text>
+
+  <line x1="160" y1="317" x2="198" y2="317" stroke="#555" stroke-width="1.5" marker-end="url(#arrs)"/>
+
+  <!-- Vercel Edge -->
+  <rect x="200" y="295" width="130" height="44" rx="6" fill="#21262d" stroke="#00e599" stroke-width="1.5"/>
+  <text x="265" y="313" text-anchor="middle" font-size="12" fill="#00e599" font-family="Segoe UI, Arial, sans-serif">Vercel Edge</text>
+  <text x="265" y="330" text-anchor="middle" font-size="10" fill="#8b949e" font-family="Consolas, monospace">matches rewrite rule</text>
+
+  <line x1="330" y1="317" x2="378" y2="317" stroke="#555" stroke-width="1.5" marker-end="url(#arrs)"/>
+  <text x="355" y="310" text-anchor="middle" font-size="10" fill="#555" font-family="Segoe UI, Arial, sans-serif">proxy</text>
+
+  <!-- ALB -->
+  <rect x="380" y="295" width="130" height="44" rx="6" fill="#21262d" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="445" y="313" text-anchor="middle" font-size="12" fill="#38bdf8" font-family="Segoe UI, Arial, sans-serif">AWS ALB</text>
+  <text x="445" y="330" text-anchor="middle" font-size="10" fill="#8b949e" font-family="Consolas, monospace">ceylonroam-alb:8001</text>
+
+  <line x1="510" y1="317" x2="558" y2="317" stroke="#555" stroke-width="1.5" marker-end="url(#arrs)"/>
+
+  <!-- ECS itinerary -->
+  <rect x="560" y="295" width="200" height="44" rx="6" fill="#21262d" stroke="#059669" stroke-width="1.5"/>
+  <text x="660" y="313" text-anchor="middle" font-size="12" fill="#34d399" font-family="Segoe UI, Arial, sans-serif">itinerary-service</text>
+  <text x="660" y="330" text-anchor="middle" font-size="10" fill="#8b949e" font-family="Consolas, monospace">ECS Fargate · port 8001</text>
+
+  <!-- Benefits text -->
+  <text x="40" y="374" font-size="11" fill="#3fb950" font-family="Segoe UI, Arial, sans-serif">✓  Frontend never hardcodes service URLs — only /api/* paths used in React code.</text>
+  <text x="40" y="392" font-size="11" fill="#3fb950" font-family="Segoe UI, Arial, sans-serif">✓  CORS not an issue — browser sees single origin (Vercel), Vercel proxies to ALB server-side.</text>
+  <text x="40" y="410" font-size="11" fill="#3fb950" font-family="Segoe UI, Arial, sans-serif">✓  Updating ALB DNS only requires changing vercel.json, not rebuilding the React app.</text>
+
+  <defs>
+    <marker id="arrs" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+</svg>

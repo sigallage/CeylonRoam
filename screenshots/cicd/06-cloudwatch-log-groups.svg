@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="820" height="400" fill="#f8fafc" rx="12"/>
+  <text x="410" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">AWS CloudWatch – ECS Log Groups</text>
+  <text x="410" y="54" text-anchor="middle" font-size="12" fill="#64748b">Centralized logging for all CeylonRoam backend microservices</text>
+
+  <!-- Header row -->
+  <rect x="30" y="66" width="380" height="30" rx="4" fill="#374151"/>
+  <text x="220" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Log Group Name</text>
+  <rect x="420" y="66" width="160" height="30" rx="4" fill="#374151"/>
+  <text x="500" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Retention</text>
+  <rect x="590" y="66" width="200" height="30" rx="4" fill="#374151"/>
+  <text x="690" y="86" text-anchor="middle" font-size="12" font-weight="700" fill="white">Stream Pattern</text>
+
+  <!-- Rows -->
+  <rect x="30" y="102" width="756" height="40" rx="4" fill="#eff6ff"/>
+  <text x="46" y="127" font-size="12" font-family="Consolas, monospace" fill="#1d4ed8">/ecs/ceylonroam-auth</text>
+  <text x="500" y="127" text-anchor="middle" font-size="12" fill="#374151">7 days</text>
+  <text x="600" y="127" font-size="11" font-family="Consolas, monospace" fill="#6b7280">auth-service/{container}/{task-id}</text>
+
+  <rect x="30" y="148" width="756" height="40" rx="4" fill="#f0fdf4"/>
+  <text x="46" y="173" font-size="12" font-family="Consolas, monospace" fill="#15803d">/ecs/ceylonroam-itinerary</text>
+  <text x="500" y="173" text-anchor="middle" font-size="12" fill="#374151">7 days</text>
+  <text x="600" y="173" font-size="11" font-family="Consolas, monospace" fill="#6b7280">itinerary-service/{container}/{task-id}</text>
+
+  <rect x="30" y="194" width="756" height="40" rx="4" fill="#fefce8"/>
+  <text x="46" y="219" font-size="12" font-family="Consolas, monospace" fill="#a16207">/ecs/ceylonroam-route-optimizer</text>
+  <text x="500" y="219" text-anchor="middle" font-size="12" fill="#374151">7 days</text>
+  <text x="600" y="219" font-size="11" font-family="Consolas, monospace" fill="#6b7280">route-optimizer-service/{container}/{task-id}</text>
+
+  <rect x="30" y="240" width="756" height="40" rx="4" fill="#fdf4ff"/>
+  <text x="46" y="265" font-size="12" font-family="Consolas, monospace" fill="#7e22ce">/ecs/ceylonroam-voice-translation</text>
+  <text x="500" y="265" text-anchor="middle" font-size="12" fill="#374151">7 days</text>
+  <text x="600" y="265" font-size="11" font-family="Consolas, monospace" fill="#6b7280">voice-translation-service/{container}/{task-id}</text>
+
+  <!-- Justification -->
+  <rect x="30" y="298" width="756" height="84" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="46" y="318" font-size="13" font-weight="700" fill="#991b1b">✓ Why CloudWatch Logs?</text>
+  <text x="46" y="337" font-size="12" fill="#7f1d1d">• Each container emits stdout/stderr to its log group automatically (awslogs driver in ECS task definition).</text>
+  <text x="46" y="354" font-size="12" fill="#7f1d1d">• Centralized location: engineers can query all services in one place during post-deploy health checks.</text>
+  <text x="46" y="371" font-size="12" fill="#7f1d1d">• Log groups created by deploy.sh during infrastructure provisioning (aws logs create-log-group).</text>
+</svg>
