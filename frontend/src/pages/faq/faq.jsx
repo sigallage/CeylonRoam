@@ -120,7 +120,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-[#050505]">
-      <div className="max-w-5xl mx-auto px-5 py-10">
+      <div className="max-w-4xl mx-auto px-4 py-10">
         <RevealOnScroll
           delay={0}
           className="rounded-3xl border-2 border-transparent px-6 py-8 mb-8 shadow-[0_0_0_1px_rgba(251,191,36,0.35)] bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
@@ -141,12 +141,12 @@ const FAQ = () => {
               <RevealOnScroll
                 key={item.question}
                 delay={index * 55}
-                className="rounded-2xl border-2 border-transparent shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+                className="rounded-2xl border-2 border-transparent shadow-md bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box] mx-auto max-w-3xl"
               >
                 <button
                   type="button"
                   onClick={() => toggleItem(index)}
-                  className="w-full text-left px-5 md:px-6 py-4 flex items-center justify-between gap-3"
+                  className="w-full text-left px-4 md:px-5 py-3 flex items-center justify-between gap-3"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                 >
