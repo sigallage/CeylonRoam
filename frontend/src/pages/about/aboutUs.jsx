@@ -1,8 +1,10 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 const AboutUs = () => {
   const location = useLocation();
+  const { isDarkMode } = useTheme();
   useEffect(() => {
     if (location.state && location.state.scrollTo === 'top') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
