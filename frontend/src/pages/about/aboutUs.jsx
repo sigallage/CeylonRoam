@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const RevealOnScroll = ({ as: Component = "div", children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -41,48 +41,6 @@ const RevealOnScroll = ({ as: Component = "div", children, className = "", delay
 };
 
 const AboutUs = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "", rating: 0 });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
-
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, "") || "http://localhost:5001",
-    []
-  );
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleRating = (rating) => {
-    setForm({ ...form, rating });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitError("");
-    setSubmitted(false);
-    setIsSubmitting(true);
-
-    try {
-      const subject = encodeURIComponent(`Contact Us - ${form.name}`);
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\nRating: ${form.rating || "Not provided"}\n\nMessage:\n${form.message}`
-      );
-
-      const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ceylon.roam144@gmail.com&su=${subject}&body=${body}`;
-      window.location.href = gmailComposeUrl;
-
-      setSubmitted(true);
-      setForm({ name: "", email: "", message: "", rating: 0 });
-    } catch (error) {
-      setSubmitError("Could not open your email app. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#050505]">
       <div className="max-w-5xl mx-auto px-5 py-10">
@@ -231,71 +189,9 @@ const AboutUs = () => {
         <div className="mt-16 flex justify-center">
           <RevealOnScroll
             delay={180}
-            className="rounded-3xl border-2 border-transparent px-6 py-8 max-w-sm w-full flex flex-col items-center shadow-lg bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
+            className="rounded-3xl border-2 border-transparent px-6 py-8 max-w-sm w-full h-[330px] flex items-center shadow-lg bg-[linear-gradient(#0b0b0b,#0b0b0b),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
           >
-            <div className="mb-6">{/* Icon removed */}</div>
-            <h2 className="text-center text-2xl md:text-[28px] font-bold text-[#fbbf24] mb-8">Contact Us</h2>
-            <form onSubmit={handleSubmit} className="w-full space-y-4">
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Full Name"
-                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
-              />
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                placeholder="Email Address"
-                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
-              />
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows={3}
-                placeholder="Your Message"
-                className="w-full rounded-lg border border-transparent px-4 py-3 text-base outline-none text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-[#fbbf24]/60 focus:border-transparent resize-none bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box]"
-              />
-              <div className="flex justify-between mb-6">
-              {[1,2,3,4,5].map(star => (
-                <span
-                  key={star}
-                  className="cursor-pointer rounded-lg px-3 py-1 border border-transparent inline-block bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffe066_0%,#ffc233_45%,#ff6a00_100%)] [background-origin:border-box] [background-clip:padding-box,border-box] hover:bg-[linear-gradient(#111111,#111111),linear-gradient(90deg,#ffef9e_0%,#ffd76a_45%,#ff8a2b_100%)]"
-                  onClick={() => handleRating(star)}
-                  aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
-                >
-                  <svg
-                    className="w-8 h-8 block"
-                    viewBox="0 0 24 24"
-                    fill={star <= form.rating ? "#ffb300" : "#ccc"}
-                    stroke="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <polygon points="12,2 15,9 22,9 17,14 18,21 12,17 6,21 7,14 2,9 9,9" />
-                  </svg>
-                </span>
-              ))}
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-[#ffe066] via-[#ffc233] to-[#ff6a00] text-black py-3 font-bold tracking-wide text-lg rounded-full shadow-md flex items-center justify-center disabled:opacity-70"
-            >
-              {isSubmitting ? "Sending..." : "Send"}
-            </button>
-            {submitError && (
-              <p className="text-center text-red-700 mt-5">{submitError}</p>
-            )}
-            {submitted && (
-              <p className="text-center text-green-600 mt-5">Thank you for your feedback!</p>
-            )}
-          </form>
+            <div className="w-full h-10 rounded-full bg-gradient-to-r from-[#ffe066] via-[#ffc233] to-[#ff9f00] shadow-[0_0_22px_rgba(255,194,51,0.55)]" />
         </RevealOnScroll>
       </div>
       </div>
