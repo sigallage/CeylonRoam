@@ -69,44 +69,44 @@ translation_tokenizer = None
 
 # Language mapping for Whisper
 WHISPER_LANG_MAP = {
-    'en': 'en',  # English
-    'ta': 'ta',  # Tamil
-    'ar': 'ar',  # Arabic
-    'zh': 'zh',  # Chinese
-    'nl': 'nl',  # Dutch
-    'fr': 'fr',  # French
-    'de': 'de',  # German
-    'hi': 'hi',  # Hindi
-    'si': 'si',  # Sinhala
-    'it': 'it',  # Italian
-    'ja': 'ja',  # Japanese
-    'ko': 'ko',  # Korean
-    'pl': 'pl',  # Polish
-    'pt': 'pt',  # Portuguese
-    'ru': 'ru',  # Russian
-    'es': 'es',  # Spanish
-    'tr': 'tr',  # Turkish
+    'en': 'English',  # English
+    'ta': 'Tamil',  # Tamil
+    'ar': 'Arabic',  # Arabic
+    'zh': 'Chinese',  # Chinese
+    'nl': 'Dutch',  # Dutch
+    'fr': 'French',  # French
+    'de': 'German',  # German
+    'hi': 'Hindi',  # Hindi
+    'si': 'Sinhala',  # Sinhala
+    'it': 'Italian',  # Italian
+    'ja': 'Japanese',  # Japanese
+    'ko': 'Korean',  # Korean
+    'pl': 'Polish',  # Polish
+    'pt': 'Portuguese',  # Portuguese
+    'ru': 'Russian',  # Russian
+    'es': 'Spanish',  # Spanish
+    'tr': 'Turkish',  # Turkish
 }
 
 # Language mapping for NLLB translation model
 NLLB_LANG_MAP = {
-    'en': 'en',  # English
-    'ta': 'ta',  # Tamil
-    'ar': 'ar',  # Arabic
-    'zh': 'zh',  # Chinese
-    'nl': 'nl',  # Dutch
-    'fr': 'fr',  # French
-    'de': 'de',  # German
-    'hi': 'hi',  # Hindi
-    'si': 'si',  # Sinhala
-    'it': 'it',  # Italian
-    'ja': 'ja',  # Japanese
-    'ko': 'ko',  # Korean
-    'pl': 'pl',  # Polish
-    'pt': 'pt',  # Portuguese
-    'ru': 'ru',  # Russian
-    'es': 'es',  # Spanish
-    'tr': 'tr',  # Turkish
+    'en': 'eng_Latn',      # English
+    'hi': 'hin_Deva',      # Hindi
+    'si': 'sin_Sinh',      # Sinhala
+    'ta': 'tam_Taml',      # Tamil
+    'ar': 'arb_Arab',      # Arabic
+    'zh': 'zho_Hans',      # Chinese (Simplified)
+    'fr': 'fra_Latn',      # French
+    'de': 'deu_Latn',      # German
+    'es': 'spa_Latn',      # Spanish
+    'nl': 'nld_Latn',      # Dutch
+    'it': 'ita_Latn',      # Italian
+    'ja': 'jpn_Jpan',      # Japanese
+    'ko': 'kor_Hang',      # Korean
+    'pl': 'pol_Latn',      # Polish
+    'pt': 'por_Latn',      # Portuguese
+    'ru': 'rus_Cyrl',      # Russian
+    'tr': 'tur_Latn',      # Turkish
 }
 
 
