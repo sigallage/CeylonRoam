@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import bgImg from '../../assets/2.jpg';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
@@ -15,11 +15,6 @@ const AboutUs = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-
-  const authBaseUrl = useMemo(
-    () => import.meta.env.VITE_AUTH_URL?.replace(/\/$/, "") || "http://localhost:5001",
-    []
-  );
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

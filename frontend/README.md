@@ -8,6 +8,13 @@ This app uses the Google Maps JavaScript API (via `@react-google-maps/api`) to r
 2. Set `VITE_GOOGLE_MAPS_API_KEY` (enable **Maps JavaScript API** for that key)
 3. Start the dev server: `npm run dev`
 
+## Android APK: fixing "Network Error"
+
+When you build an APK, the app runs on the phone/emulator, so backend URLs like `http://localhost:5001` point to the device itself (and will fail).
+
+- **Android emulator:** keep your backend running on your PC, and the app will use `10.0.2.2` by default.
+- **Physical device:** set `VITE_DEV_HOST` to your PC's LAN IP (e.g. `192.168.1.50`) *or* set the full remote URLs (`VITE_AUTH_URL`, `VITE_ROUTE_OPTIMIZER_BASE_URL`, etc.) to your deployed backend.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

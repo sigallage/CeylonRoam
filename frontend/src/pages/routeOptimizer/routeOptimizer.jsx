@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getAuthBaseUrl, getRouteOptimizerBaseUrl } from '../../config/backendUrls'
+import { Capacitor } from '@capacitor/core'
 import {
 	GoogleMap,
 	InfoWindowF,
@@ -156,7 +157,14 @@ function buildRouteOptimizerStopsFromAiResponse(aiResponse, catalogStops) {
 }
 
 export default function RouteOptimizer() {
-	const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+	let googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+	try {
+		if (Capacitor.isNativePlatform?.()) {
+			googleMapsApiKey = import.meta.env.VITE_NATIVE_GOOGLE_MAPS_API_KEY || googleMapsApiKey
+		}
+	} catch {
+		// ignore
+	}
 
 	const [currentLocation, setCurrentLocation] = useState(null)
 	const [locationError, setLocationError] = useState('')
@@ -345,8 +353,7 @@ export default function RouteOptimizer() {
 		setError('')
 		setLoading(true)
 		try {
-			const url = getRouteOptimizerBaseUrl() || '/api'
-			const basePath = url.endsWith('/api') ? url : `${url}/api`
+			const basePath = getRouteOptimizerBaseUrl() || '/api'
 
 			if (remainingItinerary.length === 0) {
 				throw new Error('Add destinations to optimize')
@@ -398,7 +405,7 @@ export default function RouteOptimizer() {
 
 	function startNavigation() {
 		if (!googleMapsApiKey) {
-			setError('Missing Google Maps API key. Add VITE_GOOGLE_MAPS_API_KEY to .env.development')
+			setError('Missing Google Maps API key. Add VITE_GOOGLE_MAPS_API_KEY to frontend/.env')
 			return
 		}
 		setShowTrafficLayer(true)
@@ -522,6 +529,7 @@ export default function RouteOptimizer() {
 
 	function loadSavedItinerary(itinerary) {
 		setError('')
+		setSelectedMarkerId(null)
 		try {
 			const directStops = itinerary?.stops
 			const stops = Array.isArray(directStops) && directStops.length > 0
@@ -904,7 +912,7 @@ export default function RouteOptimizer() {
 						<div className="flex flex-col items-center justify-center h-full text-slate-400 p-5 text-center gap-2">
 							<div className="text-base font-semibold">Missing Google Maps API Key</div>
 							<div className="text-xs opacity-70">
-								Add to frontend/.env.development:
+								Add to frontend/.env:
 								<br />
 								VITE_GOOGLE_MAPS_API_KEY=your_key_here
 							</div>
@@ -949,8 +957,11 @@ function RouteOptimizerMap({
 
 	if (loadError) {
 		return (
-			<div className="flex items-center justify-center h-full text-red-500">
-				Google Maps failed to initialize
+			<div className="flex flex-col items-center justify-center h-full text-red-500 p-5 text-center gap-2">
+				<div className="font-semibold">Google Maps failed to initialize</div>
+				<div className="text-xs opacity-80 text-red-300">
+					{String(loadError?.message || loadError || '').slice(0, 220) || 'Unknown error'}
+				</div>
 			</div>
 		)
 	}
@@ -1017,20 +1028,20 @@ function RouteOptimizerMap({
 						opacity={1}
 						label={isUser ? { text: '●', fontSize: '20px' } : { text: String(idx), fontWeight: '800' }}
 						onClick={() => setSelectedMarkerId(d.id)}
-					/>
+					>
+						{isUser && selectedMarkerId === 'start-user-location' && (
+							<InfoWindowF position={pos} onCloseClick={() => setSelectedMarkerId(null)}>
+								<div className="text-slate-900">
+									<div className="font-bold">Your Location</div>
+									<div className="text-xs mt-1">
+										{pos.lat.toFixed(4)}, {pos.lng.toFixed(4)}
+									</div>
+								</div>
+							</InfoWindowF>
+						)}
+					</MarkerF>
 				)
 			})}
-
-			{selectedMarkerId === 'start-user-location' && userPos && (
-				<InfoWindowF position={userPos} onCloseClick={() => setSelectedMarkerId(null)}>
-					<div className="text-slate-900">
-						<div className="font-bold">Your Location</div>
-						<div className="text-xs mt-1">
-							{userPos.lat.toFixed(4)}, {userPos.lng.toFixed(4)}
-						</div>
-					</div>
-				</InfoWindowF>
-			)}
 
 			{showRoute && directions && (
 				<>

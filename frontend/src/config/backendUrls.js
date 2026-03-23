@@ -4,6 +4,18 @@ function normalizeBaseUrl(value) {
   return String(value || '').trim().replace(/\/+$/, '')
 }
 
+function isLoopbackBaseUrl(baseUrl) {
+  const normalized = normalizeBaseUrl(baseUrl)
+  if (!normalized) return false
+
+  try {
+    const url = new URL(normalized)
+    return url.hostname === 'localhost' || url.hostname === '127.0.0.1' || url.hostname === '::1'
+  } catch {
+    return false
+  }
+}
+
 function isNativePlatform() {
   try {
     return Boolean(Capacitor.isNativePlatform?.())
@@ -18,6 +30,21 @@ function getPlatform() {
   } catch {
     return 'web'
   }
+}
+
+function resolveEnvBaseUrl({ webKey, nativeKey }) {
+  const isNative = isNativePlatform()
+  const raw = isNative
+    ? (import.meta.env[nativeKey] || import.meta.env[webKey])
+    : import.meta.env[webKey]
+
+  const normalized = normalizeBaseUrl(raw)
+  if (!normalized) return ''
+
+  // Avoid a common footgun: in an installed APK, localhost points to the phone.
+  if (isNative && isLoopbackBaseUrl(normalized)) return ''
+
+  return normalized
 }
 
 export function getDevHost() {
@@ -36,7 +63,7 @@ function defaultHttpBase(port) {
 }
 
 export function getAuthBaseUrl() {
-  const fromEnv = normalizeBaseUrl(import.meta.env.VITE_AUTH_URL)
+  const fromEnv = resolveEnvBaseUrl({ webKey: 'VITE_AUTH_URL', nativeKey: 'VITE_NATIVE_AUTH_URL' })
   if (fromEnv) return fromEnv
 
   if (isNativePlatform()) return defaultHttpBase(5001)
@@ -50,7 +77,7 @@ export function getAuthBaseUrl() {
 
 export function getItineraryApiBaseUrl() {
   // Historical env var used by the itinerary generator page.
-  const fromEnv = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL)
+  const fromEnv = resolveEnvBaseUrl({ webKey: 'VITE_API_BASE_URL', nativeKey: 'VITE_NATIVE_API_BASE_URL' })
   if (fromEnv) return fromEnv
 
   if (isNativePlatform()) return `${defaultHttpBase(8001)}/api`
@@ -61,7 +88,7 @@ export function getItineraryApiBaseUrl() {
 }
 
 export function getRouteOptimizerBaseUrl() {
-  const fromEnv = normalizeBaseUrl(import.meta.env.VITE_ROUTE_OPTIMIZER_BASE_URL)
+  const fromEnv = resolveEnvBaseUrl({ webKey: 'VITE_ROUTE_OPTIMIZER_BASE_URL', nativeKey: 'VITE_NATIVE_ROUTE_OPTIMIZER_BASE_URL' })
   if (fromEnv) return fromEnv
 
   if (isNativePlatform()) return defaultHttpBase(8002)
@@ -71,7 +98,7 @@ export function getRouteOptimizerBaseUrl() {
 }
 
 export function getVoiceTranslationBaseUrl() {
-  const fromEnv = normalizeBaseUrl(import.meta.env.VITE_API_URL)
+  const fromEnv = resolveEnvBaseUrl({ webKey: 'VITE_API_URL', nativeKey: 'VITE_NATIVE_API_URL' })
   if (fromEnv) return fromEnv
 
   if (isNativePlatform()) return defaultHttpBase(8003)
