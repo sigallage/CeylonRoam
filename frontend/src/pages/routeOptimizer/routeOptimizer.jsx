@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { getRouteOptimizerBaseUrl } from '../../config/backendUrls'
+import { getAuthBaseUrl, getRouteOptimizerBaseUrl } from '../../config/backendUrls'
 import {
 	GoogleMap,
 	InfoWindowF,
@@ -12,7 +12,6 @@ import {
 import { FiPlus } from 'react-icons/fi'
 import { BiTrash } from 'react-icons/bi'
 
-import { mockItinerary } from '../../mockData/itineraryData.js'
 import destinationsRaw from '../../dataset/destinations.json'
 
 // Transform destinations.json format
@@ -24,6 +23,9 @@ const destinationData = destinationsRaw.map(dest => ({
 }))
 
 const SRI_LANKA_CENTER = { lat: 7.8731, lng: 80.7718 }
+
+const ROUTE_OPTIMIZER_GENERATED_ITIN_KEY = 'ceylonroam:itineraryGenerator:itinerary:v1'
+const ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY = 'ceylonroam:itineraryGenerator:itineraryHistory:v1'
 
 // Eco-travel tips
 const ECO_TIPS = [
@@ -112,12 +114,49 @@ function isValidLatLngLiteral(p) {
 	return Number.isFinite(lat) && Number.isFinite(lng)
 }
 
+function formatShortDate(dateString) {
+	if (!dateString) return '—'
+	try {
+		const date = new Date(dateString)
+		if (Number.isNaN(date.getTime())) return '—'
+		return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+	} catch {
+		return '—'
+	}
+}
+
+function buildRouteOptimizerStopsFromAiResponse(aiResponse, catalogStops) {
+	const summary = typeof aiResponse?.summary === 'string' ? aiResponse.summary : ''
+	const itinerary = typeof aiResponse?.itinerary === 'string' ? aiResponse.itinerary : ''
+	const haystack = `${summary}\n${itinerary}`.toLowerCase()
+
+	const matches = catalogStops
+		.map(stop => ({
+			idx: haystack.indexOf(String(stop.name || '').toLowerCase()),
+			stop,
+		}))
+		.filter(m => m.idx >= 0)
+		.sort((a, b) => a.idx - b.idx)
+
+	const uniqueIds = new Set()
+	const stops = []
+	for (const { stop } of matches) {
+		if (!stop?.id || uniqueIds.has(stop.id)) continue
+		uniqueIds.add(stop.id)
+		stops.push({
+			id: stop.id,
+			name: stop.name,
+			location: stop.location,
+			description: stop.description || '',
+		})
+		if (stops.length >= 30) break
+	}
+
+	return stops
+}
+
 export default function RouteOptimizer() {
 	const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-	const { isLoaded, loadError } = useJsApiLoader({
-		id: 'ceylonroam-google-maps',
-		googleMapsApiKey: googleMapsApiKey || 'AIzaSyDummyKeyForTesting',
-	})
 
 	const [currentLocation, setCurrentLocation] = useState(null)
 	const [locationError, setLocationError] = useState('')
@@ -134,6 +173,7 @@ export default function RouteOptimizer() {
 	const [showTrafficLayer, setShowTrafficLayer] = useState(true)
 	const [directions, setDirections] = useState(null)
 	const [directionsTotals, setDirectionsTotals] = useState({ durationS: null, distanceM: null, originalDistanceKm: null })
+	const [mapsReady, setMapsReady] = useState(false)
 	const [customName, setCustomName] = useState('')
 	const [customLat, setCustomLat] = useState('')
 	const [customLng, setCustomLng] = useState('')
@@ -144,6 +184,10 @@ export default function RouteOptimizer() {
 	const [userAccuracyM, setUserAccuracyM] = useState(null)
 	const [ecoTipIndex, setEcoTipIndex] = useState(0)
 	const [currentStepIndex, setCurrentStepIndex] = useState(0)
+	const [showSavedItineraries, setShowSavedItineraries] = useState(false)
+	const [savedItineraries, setSavedItineraries] = useState([])
+	const [savedLoading, setSavedLoading] = useState(false)
+	const [savedError, setSavedError] = useState('')
 
 	const mapRef = useRef(null)
 	const locationRequestedRef = useRef(false)
@@ -173,7 +217,7 @@ export default function RouteOptimizer() {
 
 	// Update directions
 	useEffect(() => {
-		if (!isLoaded || !googleMapsApiKey || !window.google?.maps) return
+		if (!mapsReady || !googleMapsApiKey || !window.google?.maps) return
 		if (manualItinerary.length < 1) {
 			setDirections(null)
 			return
@@ -221,7 +265,7 @@ export default function RouteOptimizer() {
 				}
 			}
 		)
-	}, [isLoaded, googleMapsApiKey, manualItinerary, returnToStart, travelMode, currentLocation, navActive])
+	}, [mapsReady, googleMapsApiKey, manualItinerary, returnToStart, travelMode, currentLocation, navActive])
 
 	// Navigation timer
 	useEffect(() => {
@@ -371,6 +415,131 @@ export default function RouteOptimizer() {
 		setEcoTipIndex((prev) => (prev + 1) % ECO_TIPS.length)
 	}
 
+	async function fetchSavedItineraries() {
+		setSavedError('')
+		setSavedLoading(true)
+		try {
+			// Prefer the user's saved itinerary history (backend), if logged in.
+			const storedUser = localStorage.getItem('ceylonroam_user')
+			let token = null
+			if (storedUser) {
+				try {
+					const parsed = JSON.parse(storedUser)
+					token = parsed?.token || null
+				} catch {
+					token = null
+				}
+			}
+
+			if (token) {
+				const authBaseUrl = getAuthBaseUrl()
+				const response = await fetch(`${authBaseUrl}/api/itineraries`, {
+					method: 'GET',
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+				const text = await response.text()
+				let json = null
+				if (text) {
+					try {
+						json = JSON.parse(text)
+					} catch {
+						json = null
+					}
+				}
+				if (!response.ok) {
+					const message = json?.message || (text ? text.slice(0, 200) : '') || `Failed to fetch itineraries (HTTP ${response.status})`
+					throw new Error(message)
+				}
+
+				const serverItems = Array.isArray(json?.itineraries) ? json.itineraries : []
+				const normalized = serverItems.map(item => ({
+					id: item?._id || `srv-${item?.createdAt || Date.now()}`,
+					title: item?.title || 'Saved itinerary',
+					createdAt: item?.createdAt || null,
+					startDate: item?.startDate || null,
+					endDate: item?.endDate || null,
+					itineraryData: item?.itineraryData,
+				}))
+				setSavedItineraries(normalized)
+				return
+			}
+
+			// Fallback: locally generated itinerary history (from Itinerary Generator)
+			const rawHistory = localStorage.getItem(ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY)
+			let history = []
+			if (rawHistory) {
+				try {
+					const parsed = JSON.parse(rawHistory)
+					history = Array.isArray(parsed) ? parsed : []
+				} catch {
+					history = []
+				}
+			}
+
+			// Backward-compat: if there is no history but there is a last generated itinerary, show it.
+			if (history.length === 0) {
+				const rawLatest = localStorage.getItem(ROUTE_OPTIMIZER_GENERATED_ITIN_KEY)
+				if (rawLatest) {
+					try {
+						const stops = JSON.parse(rawLatest)
+						if (Array.isArray(stops) && stops.length > 0) {
+							history = [{ id: 'latest', createdAt: null, stops }]
+						}
+					} catch {
+						// ignore
+					}
+				}
+			}
+
+			const localNormalized = history.map(item => ({
+				id: item?.id || `gen-${item?.createdAt || Date.now()}`,
+				title: 'Generated itinerary',
+				createdAt: item?.createdAt || null,
+				startDate: item?.startDate || null,
+				endDate: item?.endDate || null,
+				stops: item?.stops,
+			}))
+			setSavedItineraries(localNormalized)
+		} catch (e) {
+			setSavedItineraries([])
+			setSavedError(e?.message || 'Failed to load itineraries')
+		} finally {
+			setSavedLoading(false)
+		}
+	}
+
+	function onToggleSavedItineraries() {
+		setShowSavedItineraries(prev => {
+			const next = !prev
+			if (next && savedItineraries.length === 0 && !savedLoading) {
+				fetchSavedItineraries()
+			}
+			return next
+		})
+	}
+
+	function loadSavedItinerary(itinerary) {
+		setError('')
+		try {
+			const directStops = itinerary?.stops
+			const stops = Array.isArray(directStops) && directStops.length > 0
+				? directStops
+				: buildRouteOptimizerStopsFromAiResponse(itinerary?.itineraryData, destinationData)
+			if (!stops.length) {
+				setError('Selected itinerary does not contain recognizable destinations for route optimization')
+				return
+			}
+			setManualItinerary(stops)
+			setVisitedIds([])
+			setResult(null)
+			setShowSavedItineraries(false)
+		} catch {
+			setError('Failed to load the selected itinerary')
+		}
+	}
+
 	// Extract all steps from directions
 	function getAllSteps() {
 		if (!directions?.routes?.[0]?.legs) return []
@@ -392,7 +561,6 @@ export default function RouteOptimizer() {
 	const allSteps = getAllSteps()
 	const currentStep = allSteps[currentStepIndex] || null
 
-	const mapsAvailable = isLoaded && window.google?.maps
 	const showRoute = activeItinerary.length >= 2
 
 	return (
@@ -418,9 +586,63 @@ export default function RouteOptimizer() {
 					}}>Route Mode</div>
 					<div className="flex gap-2 bg-slate-800/60 p-2 rounded-lg border border-slate-700/20">
 						<button className="flex-1 px-3 py-2 border border-slate-700/20 bg-slate-700/50 text-slate-300 rounded text-xs font-semibold hover:border-yellow-400 hover:bg-slate-700/80 transition-all active:bg-yellow-400 active:text-black active:border-yellow-400">Manual</button>
-						<button className="flex-1 px-3 py-2 border border-slate-700/20 bg-slate-700/50 text-slate-300 rounded text-xs font-semibold hover:border-yellow-400 hover:bg-slate-700/80 transition-all">Generate</button>
+						<button
+							className="flex-1 px-3 py-2 border border-slate-700/20 bg-slate-700/50 text-slate-300 rounded text-xs font-semibold hover:border-yellow-400 hover:bg-slate-700/80 transition-all"
+							onClick={onToggleSavedItineraries}
+						>
+							Saved Itineraries
+						</button>
 					</div>
 				</div>
+
+				{/* Saved Itineraries */}
+				{showSavedItineraries && (
+					<div className="bg-slate-800/60 border border-slate-700/20 rounded-lg p-3">
+						<div className="flex items-center justify-between mb-2">
+							<div className="text-xs font-semibold uppercase tracking-widest opacity-90" style={{ color: '#facc15' }}>
+								Saved Itineraries
+							</div>
+							<button
+								className="text-xs text-slate-300 hover:text-yellow-400 transition-colors disabled:opacity-60"
+								onClick={fetchSavedItineraries}
+								disabled={savedLoading}
+							>
+								Refresh
+							</button>
+						</div>
+
+						{savedError && (
+							<div className="bg-red-950/15 border border-red-700/30 text-red-300 px-3 py-2 rounded text-xs mb-2">
+								{savedError}
+							</div>
+						)}
+
+						{savedLoading ? (
+							<div className="text-xs text-slate-400 py-2">Loading saved itineraries...</div>
+						) : savedItineraries.length === 0 ? (
+							<div className="text-xs text-slate-400 py-2">No saved itineraries found.</div>
+						) : (
+							<div className="max-h-48 overflow-y-auto">
+								{savedItineraries.map(itin => (
+									<button
+										key={itin.id || `${itin.createdAt || 'unknown'}-${itin.title || 'itinerary'}`}
+										className="w-full text-left p-2 rounded hover:bg-slate-700/40 transition-colors"
+										onClick={() => loadSavedItinerary(itin)}
+										title="Load this itinerary into the route"
+									>
+										<div className="text-sm font-semibold text-slate-200">{itin.title || 'Itinerary'}</div>
+										{(itin.startDate || itin.endDate) && (
+											<div className="text-xs text-slate-500">
+												{formatShortDate(itin.startDate)}{itin.endDate ? ` - ${formatShortDate(itin.endDate)}` : ''}
+											</div>
+										)}
+										<div className="text-xs text-slate-500">Created: {formatShortDate(itin.createdAt)}</div>
+									</button>
+								))}
+							</div>
+						)}
+					</div>
+				)}
 
 				{/* Available Destinations */}
 				<div>
@@ -516,7 +738,7 @@ export default function RouteOptimizer() {
 									{result.total_distance_km.toFixed(1)} km
 								</div>
 								<div className="text-xs mt-1" style={{color: '#86efac'}}>
-									✓ Saved {(directionsTotals.originalDistanceKm - result.total_distance_km).toFixed(1)} km
+									Saved {(directionsTotals.originalDistanceKm - result.total_distance_km).toFixed(1)} km
 								</div>
 							</div>
 						) : (
@@ -545,14 +767,14 @@ export default function RouteOptimizer() {
 					color: '#facc15',
 					boxShadow: '0 0 8px rgba(250,204,21,0.1)'
 				}}>
-					{loading ? '⟳ Optimizing' : 'Optimize'}
+					{loading ? 'Optimizing...' : 'Optimize'}
 				</button>
 				<button className="flex-1 py-3 rounded font-semibold text-sm uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:shadow-lg" onClick={navActive ? stopNavigation : startNavigation} disabled={loading || activeItinerary.length < 2} style={{
 					background: 'linear-gradient(to right, #facc15, #f97316)',
 					color: '#000',
 					boxShadow: '0 0 12px rgba(250,204,21,0.2)'
 				}}>
-					{navActive ? '⊘ Stop Route' : '▶ Start Route'}
+					{navActive ? 'Stop Route' : 'Start Route'}
 				</button>
 			</div>
 
@@ -561,7 +783,7 @@ export default function RouteOptimizer() {
 				background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(34,197,94,0.05) 100%)',
 				border: '1px solid rgba(34,197,94,0.3)'
 			}}>
-				<div className="text-xl mb-2">🌿</div>
+				<div className="text-xl mb-2"></div>
 				<div className="text-xs font-semibold mb-1" style={{color: '#86efac'}}>ECO-TRAVEL INSIGHT</div>
 				<div className="text-xs leading-relaxed mb-2" style={{color: '#a7f3d0'}}>{ECO_TIPS[ecoTipIndex]}</div>
 				<button className="w-full py-2 rounded text-xs font-medium active:scale-95 transition-all" onClick={nextEcoTip} title="Next tip" style={{
@@ -569,13 +791,13 @@ export default function RouteOptimizer() {
 					border: '1px solid rgba(34,197,94,0.4)',
 					color: '#86efac'
 				}}>
-						💡 More tips
+						More tips
 					</button>
 				</div>
 			</div>
 
-			{/* RIGHT MAP SECTION */}
-			<div className="flex-1 relative bg-slate-800 flex flex-col">
+				{/* RIGHT MAP SECTION */}
+				<div className="flex-1 relative bg-slate-800 flex flex-col">
 				{/* Google Maps Style Navigation Card */}
 				{navActive && allSteps.length > 0 && (
 					<div className="absolute top-4 left-4 right-4 z-10" style={{
@@ -593,7 +815,7 @@ export default function RouteOptimizer() {
 
 							{/* Main Instruction */}
 							<div className="flex items-start gap-3 mb-3">
-								<div className="text-2xl">🧭</div>
+								<div className="text-2xl"></div>
 								<div className="flex-1">
 									<div className="text-sm font-bold text-slate-200" dangerouslySetInnerHTML={{__html: currentStep?.instruction || 'Navigation'}} />
 								</div>
@@ -661,117 +883,178 @@ export default function RouteOptimizer() {
 
 				{/* Map Container */}
 				<div className="flex-1 relative">
-				{!googleMapsApiKey ? (
-					<div className="flex flex-col items-center justify-center h-full text-slate-400 p-5 text-center gap-2">
-						<div className="text-base font-semibold">Missing Google Maps API Key</div>
-						<div className="text-xs opacity-70">
-							Add to frontend/.env.development:
-							<br />
-							VITE_GOOGLE_MAPS_API_KEY=your_key_here
+					{googleMapsApiKey ? (
+						<RouteOptimizerMap
+							googleMapsApiKey={googleMapsApiKey}
+							onMapsReady={setMapsReady}
+							mapCenter={mapCenter}
+							mapRef={mapRef}
+							setSelectedMarkerId={setSelectedMarkerId}
+							setFollowUser={setFollowUser}
+							showTrafficLayer={showTrafficLayer}
+							navActive={navActive}
+							userAccuracyM={userAccuracyM}
+							currentLocation={currentLocation}
+							activeItinerary={activeItinerary}
+							selectedMarkerId={selectedMarkerId}
+							showRoute={showRoute}
+							directions={directions}
+						/>
+					) : (
+						<div className="flex flex-col items-center justify-center h-full text-slate-400 p-5 text-center gap-2">
+							<div className="text-base font-semibold">Missing Google Maps API Key</div>
+							<div className="text-xs opacity-70">
+								Add to frontend/.env.development:
+								<br />
+								VITE_GOOGLE_MAPS_API_KEY=your_key_here
+							</div>
 						</div>
-					</div>
-				) : loadError ? (
-					<div className="flex items-center justify-center h-full text-red-500">
-						Google Maps failed to initialize
-					</div>
-				) : !isLoaded ? (
-					<div className="flex items-center justify-center h-full text-slate-400">
-						Loading Google Maps…
-					</div>
-				) : !mapsAvailable ? (
-					<div className="flex items-center justify-center h-full text-slate-400">
-						Map not available
-					</div>
-				) : (
-					<GoogleMap
-						mapContainerClassName="w-full h-full"
-						center={mapCenter}
-						zoom={8}
-						options={{
-							mapTypeControl: false,
-							streetViewControl: false,
-							fullscreenControl: true,
-							backgroundColor: '#1e293b',
-						}}
-						onLoad={map => {
-							mapRef.current = map
-						}}
-						onClick={() => {
-							setSelectedMarkerId(null)
-							setFollowUser(false)
-						}}
-					>
-						{showTrafficLayer && navActive && <TrafficLayer />}
-
-						{userAccuracyM && currentLocation && (
-							<CircleF
-								center={currentLocation}
-								radius={Math.min(userAccuracyM, 120)}
-								options={{
-									fillColor: '#3b82f6',
-									fillOpacity: 0.12,
-									strokeColor: '#3b82f6',
-									strokeOpacity: 0.25,
-									strokeWeight: 2,
-								}}
-							/>
-						)}
-
-						{activeItinerary.map((d, idx) => {
-							if (!d?.location) return null
-							const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
-							if (!isValidLatLngLiteral(pos)) return null
-							const isUser = d.id === 'start-user-location'
-
-							return (
-								<MarkerF
-									key={d.id}
-									position={pos}
-									opacity={1}
-									label={isUser ? { text: '●', fontSize: '20px' } : { text: String(idx), fontWeight: '800' }}
-									onClick={() => setSelectedMarkerId(d.id)}
-								/>
-							)
-						})}
-
-						{selectedMarkerId === 'start-user-location' && isValidLatLngLiteral(currentLocation) && (
-							<InfoWindowF position={currentLocation} onCloseClick={() => setSelectedMarkerId(null)}>
-								<div className="text-slate-900">
-									<div className="font-bold">Your Location</div>
-									<div className="text-xs mt-1">
-										{currentLocation.lat.toFixed(4)}, {currentLocation.lng.toFixed(4)}
-									</div>
-								</div>
-							</InfoWindowF>
-						)}
-
-						{showRoute && directions && (
-							<>
-								{directions.routes?.[0]?.legs?.map((leg, legIdx) =>
-									leg.steps?.map((step, stepIdx) => {
-										const pathCoords = (step.path || []).map(p => ({ lat: p.lat(), lng: p.lng() }))
-										if (pathCoords.length < 2) return null
-										const color = trafficColorForLeg(leg)
-										return (
-											<PolylineF
-												key={`${legIdx}-${stepIdx}`}
-												path={pathCoords}
-												options={{
-													strokeColor: color,
-													strokeOpacity: 0.9,
-													strokeWeight: 5,
-													zIndex: 5,
-												}}
-											/>
-										)
-									})
-								)}
-							</>
-						)}
-					</GoogleMap>
-				)}
-			</div>
+					)}
+				</div>
 		</div>
 	</div>
+	)
+}
+
+function RouteOptimizerMap({
+	googleMapsApiKey,
+	onMapsReady,
+	mapCenter,
+	mapRef,
+	setSelectedMarkerId,
+	setFollowUser,
+	showTrafficLayer,
+	navActive,
+	userAccuracyM,
+	currentLocation,
+	activeItinerary,
+	selectedMarkerId,
+	showRoute,
+	directions,
+}) {
+	const { isLoaded, loadError } = useJsApiLoader({
+		id: 'ceylonroam-google-maps',
+		googleMapsApiKey,
+	})
+
+	useEffect(() => {
+		onMapsReady?.(Boolean(isLoaded && !loadError && window.google?.maps))
+		return () => onMapsReady?.(false)
+	}, [isLoaded, loadError, onMapsReady])
+
+	const mapsAvailable = isLoaded && window.google?.maps
+	const userPos = isValidLatLngLiteral(currentLocation)
+		? { lat: Number(currentLocation.lat), lng: Number(currentLocation.lng) }
+		: null
+
+	if (loadError) {
+		return (
+			<div className="flex items-center justify-center h-full text-red-500">
+				Google Maps failed to initialize
+			</div>
+		)
+	}
+	if (!isLoaded) {
+		return (
+			<div className="flex items-center justify-center h-full text-slate-400">
+				Loading Google Maps...
+			</div>
+		)
+	}
+	if (!mapsAvailable) {
+		return (
+			<div className="flex items-center justify-center h-full text-slate-400">
+				Map not available
+			</div>
+		)
+	}
+
+	return (
+		<GoogleMap
+			mapContainerClassName="w-full h-full"
+			center={mapCenter}
+			zoom={8}
+			options={{
+				mapTypeControl: false,
+				streetViewControl: false,
+				fullscreenControl: true,
+				backgroundColor: '#1e293b',
+			}}
+			onLoad={map => {
+				mapRef.current = map
+			}}
+			onClick={() => {
+				setSelectedMarkerId(null)
+				setFollowUser(false)
+			}}
+		>
+			{showTrafficLayer && navActive && <TrafficLayer />}
+
+			{userAccuracyM && userPos && (
+				<CircleF
+					center={userPos}
+					radius={Math.min(userAccuracyM, 120)}
+					options={{
+						fillColor: '#3b82f6',
+						fillOpacity: 0.12,
+						strokeColor: '#3b82f6',
+						strokeOpacity: 0.25,
+						strokeWeight: 2,
+					}}
+				/>
+			)}
+
+			{activeItinerary.map((d, idx) => {
+				if (!d?.location) return null
+				const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
+				if (!isValidLatLngLiteral(pos)) return null
+				const isUser = d.id === 'start-user-location'
+
+				return (
+					<MarkerF
+						key={d.id}
+						position={pos}
+						opacity={1}
+						label={isUser ? { text: '●', fontSize: '20px' } : { text: String(idx), fontWeight: '800' }}
+						onClick={() => setSelectedMarkerId(d.id)}
+					/>
+				)
+			})}
+
+			{selectedMarkerId === 'start-user-location' && userPos && (
+				<InfoWindowF position={userPos} onCloseClick={() => setSelectedMarkerId(null)}>
+					<div className="text-slate-900">
+						<div className="font-bold">Your Location</div>
+						<div className="text-xs mt-1">
+							{userPos.lat.toFixed(4)}, {userPos.lng.toFixed(4)}
+						</div>
+					</div>
+				</InfoWindowF>
+			)}
+
+			{showRoute && directions && (
+				<>
+					{directions.routes?.[0]?.legs?.map((leg, legIdx) =>
+						leg.steps?.map((step, stepIdx) => {
+							const pathCoords = (step.path || []).map(p => ({ lat: p.lat(), lng: p.lng() }))
+							if (pathCoords.length < 2) return null
+							const color = trafficColorForLeg(leg)
+							return (
+								<PolylineF
+									key={`${legIdx}-${stepIdx}`}
+									path={pathCoords}
+									options={{
+										strokeColor: color,
+										strokeOpacity: 0.9,
+										strokeWeight: 5,
+										zIndex: 5,
+									}}
+								/>
+							)
+						})
+					)}
+				</>
+			)}
+		</GoogleMap>
 	)
 }

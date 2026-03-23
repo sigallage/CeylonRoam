@@ -10,6 +10,8 @@ import { getItineraryApiBaseUrl } from '../../config/backendUrls';
 const API_BASE_URL = getItineraryApiBaseUrl(); //ensures axios hits the correct backend in dev/prod
 
 const ROUTE_OPTIMIZER_GENERATED_ITIN_KEY = "ceylonroam:itineraryGenerator:itinerary:v1";
+const ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY = "ceylonroam:itineraryGenerator:itineraryHistory:v1";
+const ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_MAX = 25;
 
 const DESTINATION_CATALOG_STOPS = destinationsRaw.map((dest) => ({
   id: dest.id || dest.name,
@@ -277,6 +279,26 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
             ROUTE_OPTIMIZER_GENERATED_ITIN_KEY,
             JSON.stringify(derivedStops)
           );
+
+        // Append to history (most-recent-first)
+        const historyEntry = {
+        id: `gen-${Date.now()}`,
+        createdAt: new Date().toISOString(),
+        startDate: startDate,
+        endDate: endDate,
+        stops: derivedStops,
+        };
+        try {
+        const raw = window.localStorage.getItem(ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        const nextHistory = Array.isArray(parsed) ? [historyEntry, ...parsed] : [historyEntry];
+        window.localStorage.setItem(
+          ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY,
+          JSON.stringify(nextHistory.slice(0, ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_MAX))
+        );
+        } catch {
+        // ignore history storage failures
+        }
         } catch {
           // ignore storage failures (private mode / quota / etc.)
         }
