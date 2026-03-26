@@ -1107,6 +1107,9 @@ export default function RouteOptimizer() {
 										top: navCardPos?.y ?? 16,
 										width: 'calc(100% - 32px)',
 										maxWidth: 520,
+										maxHeight: 'calc(100% - 16px)',
+										display: 'flex',
+										flexDirection: 'column',
 										background: 'linear-gradient(135deg, rgba(15,23,42,0.98) 0%, rgba(15,23,42,0.95) 100%)',
 										border: '1px solid rgba(250,204,21,0.22)',
 										boxShadow: '0 10px 36px rgba(0,0,0,0.55)',
@@ -1136,8 +1139,8 @@ export default function RouteOptimizer() {
 										</div>
 									</div>
 
-										<div className="px-4 py-4">
-										<div className="text-lg font-extrabold text-slate-100 leading-snug">
+										<div className="px-4 py-4 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+										<div className="text-base md:text-lg font-extrabold text-slate-100 leading-snug break-words" style={{ overflowWrap: 'anywhere' }}>
 											{stripHtml(currentStep?.instruction || 'Navigation')}
 										</div>
 										<div className="mt-2 flex items-center gap-3 text-sm">
@@ -1151,7 +1154,7 @@ export default function RouteOptimizer() {
 										</div>
 
 										{nextStep && (
-											<div className="mt-3 pt-3 border-t border-slate-700/60 text-sm text-slate-300">
+											<div className="mt-3 pt-3 border-t border-slate-700/60 text-sm text-slate-300 break-words" style={{ overflowWrap: 'anywhere' }}>
 												<span className="text-slate-500">Then:</span> {stripHtml(nextStep.instruction || 'Continue')}
 											</div>
 										)}
