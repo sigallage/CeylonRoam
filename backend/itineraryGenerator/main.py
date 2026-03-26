@@ -31,7 +31,7 @@ def _get_cors_settings() -> tuple[list[str], bool, str | None]:
         # Default dev origins:
         # - Vite dev server
         # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
-        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
+        return [], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\d+)?$|^https?://127\.0\.0\.1(:\d+)?$"
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     if any(p == "*" for p in parts):

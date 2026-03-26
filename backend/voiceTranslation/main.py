@@ -41,7 +41,7 @@ def _get_cors_settings():
         # - Vite dev server
         # - Capacitor WebView (commonly capacitor://localhost or http://localhost)
         # - Always allow http://localhost:5173 for development
-        return ["http://localhost:5173"], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$"
+        return ["http://localhost:5173"], True, r"^(capacitor|ionic)://localhost$|^https?://localhost(:\d+)?$|^https?://127\.0\.0\.1(:\d+)?$"
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     if any(p == "*" for p in parts):
