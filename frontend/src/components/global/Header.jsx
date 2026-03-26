@@ -61,18 +61,18 @@ const Header = () => {
 	const firstInitial = (profile.name?.trim()?.charAt(0) || profile.email?.trim()?.charAt(0) || 'U').toUpperCase();
 
 	const navClass = isDarkMode
-		? 'relative z-20 flex justify-between items-center px-8 py-6 bg-black'
-		: 'relative z-20 flex justify-between items-center px-8 py-6 bg-white border-b border-gray-200';
+		? 'relative z-20 flex flex-wrap justify-between items-center gap-y-3 px-4 sm:px-8 py-4 sm:py-6 bg-black'
+		: 'relative z-20 flex flex-wrap justify-between items-center gap-y-3 px-4 sm:px-8 py-4 sm:py-6 bg-white border-b border-gray-200';
 
-	const titleClass = isDarkMode ? 'text-3xl font-bold text-white tracking-tight' : 'text-3xl font-bold text-gray-900 tracking-tight';
+	const titleClass = isDarkMode ? 'text-xl sm:text-3xl font-bold text-white tracking-tight truncate' : 'text-xl sm:text-3xl font-bold text-gray-900 tracking-tight truncate';
 	const iconButtonClass = isDarkMode ? 'text-white focus:outline-none' : 'text-gray-900 focus:outline-none';
 	const menuItemBaseClass = 'text-left text-lg font-medium transition-all duration-300 py-3 px-4 rounded-xl';
 	const menuItemTextClass = isDarkMode ? 'text-white' : 'text-gray-900';
 
 	return (
 		<nav className={navClass}>
-			<div className="flex items-center gap-3 animate-fade-in cursor-pointer" onClick={() => navigate('/') }>
-				<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+			<div className="flex items-center gap-2 sm:gap-3 animate-fade-in cursor-pointer min-w-0" onClick={() => navigate('/') }>
+				<div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden flex-shrink-0">
 					<img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
 				</div>
 				<h1 className={titleClass}>
@@ -80,29 +80,12 @@ const Header = () => {
 				</h1>
 			</div>
 			
-			<div className="flex items-center gap-4">
-				<button
-					onClick={() => {
-						toggleTheme();
-						setIsMenuOpen(false);
-					}}
-					className="rounded-lg border border-yellow-400/70 bg-gradient-to-r from-yellow-200 via-yellow-300 to-orange-300 px-3 py-2 text-xs font-semibold text-black"
-					title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-				>
-					{isDarkMode ? 'Light Mode' : 'Dark Mode'}
-				</button>
-
+			<div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-end max-w-full">
 				{!isLoggedIn && (
 					<>
 						<LoginButton
 							onClick={() => {
 								navigate('/login');
-								setIsMenuOpen(false);
-							}}
-						/>
-						<SignUpButton
-							onClick={() => {
-								navigate('/signup');
 								setIsMenuOpen(false);
 							}}
 						/>
@@ -186,6 +169,35 @@ const Header = () => {
 						>
 							About
 					</button>
+						{!isLoggedIn && (
+							<SignUpButton
+								onClick={() => {
+									setIsMenuOpen(false);
+									navigate('/signup');
+								}}
+							/>
+						)}
+						<button
+							type="button"
+							role="switch"
+							aria-checked={isDarkMode}
+							className={`${menuItemBaseClass} ${menuItemTextClass} flex items-center justify-between gap-3 hover:bg-yellow-400/10 hover:text-yellow-400`}
+							onClick={() => toggleTheme()}
+						>
+							<span>Dark mode</span>
+							<span
+								aria-hidden="true"
+								className={`relative inline-flex h-6 w-11 flex-shrink-0 items-center rounded-full border transition-colors duration-200 ${
+									isDarkMode ? 'bg-yellow-500/80 border-yellow-400/70' : 'bg-gray-300 border-gray-400/60'
+								}`}
+							>
+								<span
+									className={`inline-block h-5 w-5 transform rounded-full bg-white transition duration-200 ${
+										isDarkMode ? 'translate-x-5' : 'translate-x-1'
+									}`}
+								/>
+							</span>
+						</button>
 						{isLoggedIn && (
 							<>
 								<button

@@ -35,6 +35,7 @@ const LandingPage = () => {
     rating: 0,
     support: 0
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const heroImages = [flagImage, colomboImage, templeImage];
 
@@ -227,15 +228,16 @@ const LandingPage = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="relative z-20 flex justify-between items-center px-8 py-6">
-          <div className="flex items-center gap-3 animate-fade-in">
-            <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+        <nav className="relative z-20 flex flex-wrap justify-between items-center gap-y-3 px-4 sm:px-8 py-4 sm:py-6">
+          <div className="flex items-center gap-2 sm:gap-3 animate-fade-in min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden flex-shrink-0">
               <img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">
+            <h1 className="text-xl sm:text-3xl font-bold text-white tracking-tight truncate">
               Ceylon<span className="text-yellow-400">Roam</span>
             </h1>
           </div>
+
           <div className="hidden md:flex gap-8 text-white font-medium">
             <a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
             <a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
@@ -247,6 +249,60 @@ const LandingPage = () => {
             >
               About
             </button>
+          </div>
+
+          <div className="md:hidden">
+            <button
+              type="button"
+              className="text-white focus:outline-none"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setIsMobileMenuOpen(v => !v)}
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+
+            {isMobileMenuOpen && (
+              <div className="absolute top-full right-4 mt-2 w-56 bg-black/40 backdrop-blur-xl border border-yellow-500/30 rounded-2xl shadow-2xl shadow-yellow-500/10 animate-fade-in">
+                <div className="flex flex-col p-3 gap-1">
+                  <button
+                    type="button"
+                    className="text-left text-base font-medium py-3 px-4 rounded-xl text-white hover:text-yellow-400 hover:bg-yellow-400/10 transition-all duration-300"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Features
+                  </button>
+                  <button
+                    type="button"
+                    className="text-left text-base font-medium py-3 px-4 rounded-xl text-white hover:text-amber-400 hover:bg-amber-400/10 transition-all duration-300"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Experiences
+                  </button>
+                  <button
+                    type="button"
+                    className="text-left text-base font-medium py-3 px-4 rounded-xl text-white hover:text-orange-400 hover:bg-orange-400/10 transition-all duration-300"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigate('/about-us');
+                    }}
+                  >
+                    About
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </nav>
 
