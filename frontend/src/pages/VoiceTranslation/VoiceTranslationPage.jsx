@@ -184,7 +184,9 @@ function VoiceTranslation() {
       setIsRecording(true);
     } catch (error) {
       console.error('Error accessing microphone:', error);
-      alert('Could not access microphone. Please check permissions.');
+      const name = error?.name ? ` (${error.name})` : '';
+      const message = error?.message ? `\n${error.message}` : '';
+      alert(`Could not access microphone${name}. Please check permissions.${message}`);
     }
   };
 

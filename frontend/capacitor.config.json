@@ -2,5 +2,10 @@
   "appId": "com.ceylonroam.app",
   "appName": "CeylonRoam",
   "webDir": "dist",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "server": {
+    "hostname": "localhost",
+    "androidScheme": "https",
+    "cleartext": true
+  }
 }
