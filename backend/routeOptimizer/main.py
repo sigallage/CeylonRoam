@@ -72,7 +72,7 @@ def _get_cors_settings() -> tuple[list[str], bool, str | None]:
         return (
             [],
             True,
-            r"^(capacitor|ionic)://localhost$|^https?://localhost(:\\d+)?$|^https?://127\\.0\\.0\\.1(:\\d+)?$|^https?://(www\\.)?ceylonroam\\.dev$",
+            r"^(capacitor|ionic)://localhost$|^https?://localhost(:\d+)?$|^https?://127\.0\.0\.1(:\d+)?$|^https?://(www\.)?ceylonroam\.dev$",
         )
 
     parts = [p.strip() for p in raw.split(",") if p.strip()]

@@ -41,11 +41,6 @@ function SignUp() {
   const validateForm = () => {
     const newErrors = {};
 
-    // Full Name validation
-    if (!formData.name || !formData.name.trim()) {
-      newErrors.name = 'Full Name is required';
-    }
-
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email) {
@@ -88,7 +83,7 @@ function SignUp() {
     
     try {
       const resp = await postJson(`${authBaseUrl}/api/signup`, {
-        name: formData.name,
+        name: formData.name.trim() || undefined,
         email: formData.email,
         password: formData.password,
       });
@@ -101,7 +96,6 @@ function SignUp() {
         setErrors({ submit: message });
         return;
       }
-      console.log('Signup successful:', data);
       alert('Account created successfully! Please login.');
       navigate('/login');
     } catch (error) {

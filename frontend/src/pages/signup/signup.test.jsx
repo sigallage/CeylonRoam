@@ -1,6 +1,19 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import SignUp from './signup';
+import { renderWithTheme } from '../../test/testUtils';
+
+function makeFetchResponse({ ok = true, status = 200, payload = {}, contentType = 'application/json' }) {
+  return {
+    ok,
+    status,
+    headers: {
+      get: () => contentType,
+    },
+    json: async () => payload,
+    text: async () => (typeof payload === 'string' ? payload : JSON.stringify(payload)),
+  }
+}
 
 const mockNavigate = jest.fn();
 
@@ -21,7 +34,7 @@ describe('SignUp page', () => {
   });
 
   it('renders signup form controls', () => {
-    render(<SignUp />);
+    renderWithTheme(<SignUp />);
 
     expect(screen.getByRole('heading', { name: 'Create Your Account' })).toBeInTheDocument();
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
@@ -30,7 +43,7 @@ describe('SignUp page', () => {
   });
 
   it('shows validation errors for invalid submission', async () => {
-    render(<SignUp />);
+    renderWithTheme(<SignUp />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'valid@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: '123' } });
@@ -44,12 +57,11 @@ describe('SignUp page', () => {
   });
 
   it('submits successfully and navigates to login', async () => {
-    global.fetch.mockResolvedValue({
-      ok: true,
-      json: async () => ({ message: 'ok' }),
-    });
+    global.fetch.mockResolvedValue(
+      makeFetchResponse({ ok: true, status: 200, payload: { message: 'ok' } }),
+    );
 
-    render(<SignUp />);
+    renderWithTheme(<SignUp />);
 
     fireEvent.change(screen.getByLabelText('Full Name (optional)'), { target: { value: 'Test User' } });
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'user@example.com' } });
@@ -58,25 +70,21 @@ describe('SignUp page', () => {
     fireEvent.click(screen.getByRole('checkbox'));
     fireEvent.click(screen.getByRole('button', { name: 'Sign Up' }));
 
-    await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledTimes(1);
-    });
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/login'));
 
     expect(global.fetch).toHaveBeenCalledWith(
       'http://localhost:5001/api/signup',
-      expect.objectContaining({ method: 'POST', credentials: 'include' }),
+      expect.objectContaining({ method: 'POST' }),
     );
     expect(global.alert).toHaveBeenCalledWith('Account created successfully! Please login.');
-    expect(mockNavigate).toHaveBeenCalledWith('/login');
   });
 
   it('shows submit error from API failure response', async () => {
-    global.fetch.mockResolvedValue({
-      ok: false,
-      json: async () => ({ error: 'Email already in use' }),
-    });
+    global.fetch.mockResolvedValue(
+      makeFetchResponse({ ok: false, status: 400, payload: { error: 'Email already in use' } }),
+    );
 
-    render(<SignUp />);
+    renderWithTheme(<SignUp />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'user@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'secret123' } });

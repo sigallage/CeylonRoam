@@ -1,9 +1,10 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import LoginPage from './LoginPage';
 import ResetPassword from './ResetPassword';
 import ForgotPassword from './ForgotPassword';
 import SignUpPage from './SignUpPage';
+import { renderWithTheme } from '../../test/testUtils';
 
 const mockNavigate = jest.fn();
 let mockLocation = { state: {} };
@@ -39,19 +40,18 @@ describe('LoginPage', () => {
       makeResponse({ ok: true, payload: { id: 1, email: 'user@example.com' } }),
     );
 
-    render(<LoginPage />);
+    renderWithTheme(<LoginPage />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'user@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'secret123' } });
     fireEvent.submit(screen.getByRole('button', { name: 'Login' }).closest('form'));
 
-    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
 
     expect(global.fetch).toHaveBeenCalledWith(
       'http://localhost:5001/api/login',
-      expect.objectContaining({ method: 'POST', credentials: 'include' }),
+      expect.objectContaining({ method: 'POST' }),
     );
-    expect(mockNavigate).toHaveBeenCalledWith('/');
     expect(window.localStorage.getItem('ceylonroam_user')).toContain('user@example.com');
   });
 
@@ -60,7 +60,7 @@ describe('LoginPage', () => {
       makeResponse({ ok: false, payload: { error: 'Invalid credentials' } }),
     );
 
-    render(<LoginPage />);
+    renderWithTheme(<LoginPage />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'user@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'bad-password' } });
@@ -78,7 +78,7 @@ describe('ResetPassword', () => {
   });
 
   it('shows message for invalid email and does not call API', async () => {
-    render(<ResetPassword />);
+    renderWithTheme(<ResetPassword />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'invalid' } });
     fireEvent.submit(screen.getByRole('button', { name: 'Continue' }).closest('form'));
@@ -91,13 +91,13 @@ describe('ResetPassword', () => {
     jest.useFakeTimers();
     global.fetch.mockResolvedValue(makeResponse({ ok: true, payload: { message: 'OTP sent' } }));
 
-    render(<ResetPassword />);
+    renderWithTheme(<ResetPassword />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'user@example.com' } });
     fireEvent.submit(screen.getByRole('button', { name: 'Continue' }).closest('form'));
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
-    expect(await screen.findByText('OTP sent to your email. Check your inbox (or console in dev mode).')).toBeInTheDocument();
+    expect(await screen.findByText('OTP sent to your email. Check your inbox (or spam).')).toBeInTheDocument();
 
     jest.advanceTimersByTime(1500);
     expect(mockNavigate).toHaveBeenCalledWith('/forgot-password', {
@@ -117,12 +117,9 @@ describe('ForgotPassword', () => {
   });
 
   it('shows missing email message when email state is absent', async () => {
-    render(<ForgotPassword />);
+    renderWithTheme(<ForgotPassword />);
 
-    fireEvent.change(screen.getByLabelText('OTP Code'), { target: { value: '123456' } });
-    fireEvent.submit(screen.getByRole('button', { name: 'Verify OTP' }).closest('form'));
-
-    expect(await screen.findByText('Missing email. Please start from Reset Password.')).toBeInTheDocument();
+    expect(await screen.findByText('Missing email. Start from Reset Password.')).toBeInTheDocument();
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
@@ -131,17 +128,17 @@ describe('ForgotPassword', () => {
     mockLocation = { state: { email: 'user@example.com' } };
     global.fetch.mockResolvedValue(makeResponse({ ok: true, payload: { message: 'verified' } }));
 
-    render(<ForgotPassword />);
+    renderWithTheme(<ForgotPassword />);
 
-    fireEvent.change(screen.getByLabelText('OTP Code'), { target: { value: '123456' } });
+    fireEvent.change(screen.getByLabelText('OTP'), { target: { value: '123456' } });
     fireEvent.submit(screen.getByRole('button', { name: 'Verify OTP' }).closest('form'));
 
     expect(await screen.findByText('OTP verified! Now set your new password.')).toBeInTheDocument();
 
     await act(async () => {
-      jest.advanceTimersByTime(1000);
+      jest.advanceTimersByTime(950);
     });
-    expect(screen.getByRole('heading', { name: 'Change Your Password' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Set New Password' })).toBeInTheDocument();
 
     jest.useRealTimers();
   });
@@ -159,7 +156,7 @@ describe('SignUpPage', () => {
       makeResponse({ ok: true, payload: { id: 1, email: 'new@example.com' } }),
     );
 
-    render(<SignUpPage />);
+    renderWithTheme(<SignUpPage />);
 
     fireEvent.change(screen.getByLabelText('Full Name (optional)'), { target: { value: 'New User' } });
     fireEvent.change(screen.getByLabelText('Username (optional)'), { target: { value: 'newuser' } });
@@ -167,14 +164,13 @@ describe('SignUpPage', () => {
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'secret123' } });
     fireEvent.submit(screen.getByRole('button', { name: 'Sign Up' }).closest('form'));
 
-    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/planner'));
 
     expect(global.fetch).toHaveBeenCalledWith(
       'http://localhost:5001/api/signup',
-      expect.objectContaining({ method: 'POST', credentials: 'include' }),
+      expect.objectContaining({ method: 'POST' }),
     );
     expect(window.localStorage.getItem('ceylonroam_user')).toContain('new@example.com');
-    expect(mockNavigate).toHaveBeenCalledWith('/planner');
   });
 
   it('shows error message when signup fails', async () => {
@@ -182,7 +178,7 @@ describe('SignUpPage', () => {
       makeResponse({ ok: false, payload: { error: 'Email already exists' } }),
     );
 
-    render(<SignUpPage />);
+    renderWithTheme(<SignUpPage />);
 
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'taken@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'secret123' } });

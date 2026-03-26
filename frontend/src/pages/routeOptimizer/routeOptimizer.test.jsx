@@ -7,6 +7,7 @@ jest.mock("../../components/global/searchbar", () => () => (
 ));
 
 jest.mock("../../config/backendUrls", () => ({
+  getAuthBaseUrl: () => "",
   getRouteOptimizerBaseUrl: () => "",
 }));
 
@@ -27,14 +28,38 @@ jest.mock("@react-google-maps/api", () => {
 describe("RouteOptimizer", () => {
   beforeEach(() => {
     window.localStorage.clear();
+
+    const mockGeolocation = {
+      getCurrentPosition: jest.fn((success) =>
+        success({
+          coords: {
+            latitude: 7.8731,
+            longitude: 80.7718,
+            accuracy: 10,
+          },
+        })
+      ),
+      watchPosition: jest.fn(() => 1),
+      clearWatch: jest.fn(),
+    };
+
+    Object.defineProperty(global.navigator, "geolocation", {
+      value: mockGeolocation,
+      configurable: true,
+    });
   });
 
   it("renders core route optimizer controls", () => {
     render(<RouteOptimizer />);
 
-    expect(screen.getByRole("heading", { name: "Route Optimizer" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Optimize route" })).toBeInTheDocument();
-    expect(screen.getByText("No selected places yet. Add destinations above.")).toBeInTheDocument();
+    expect(screen.getByText("Route Mode")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Manual" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Saved Itineraries" })).toBeInTheDocument();
+    expect(screen.getByText("Available Destinations")).toBeInTheDocument();
+    expect(screen.getByText("Current Route")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Optimize" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "Start Route" })).toBeDisabled();
+    expect(screen.getByText("Add destinations to start planning")).toBeInTheDocument();
   });
 
   it("adds a destination in manual mode", () => {
@@ -43,32 +68,18 @@ describe("RouteOptimizer", () => {
     const addButtons = screen.getAllByRole("button", { name: "Add" });
     fireEvent.click(addButtons[0]);
 
-    expect(screen.getByRole("button", { name: "Clear visited" })).toBeInTheDocument();
-    expect(screen.getAllByLabelText("Visited").length).toBeGreaterThan(0);
-    expect(screen.queryByText("No selected places yet. Add destinations above.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Add destinations to start planning")).not.toBeInTheDocument();
+    expect(screen.getByText("Your location")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Optimize" })).not.toBeDisabled();
+    expect(screen.getByRole("button", { name: "Start Route" })).not.toBeDisabled();
   });
 
-  it("shows validation error when optimizing with no selected destinations", async () => {
+  it("enables Start Route after adding one destination", () => {
     render(<RouteOptimizer />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Optimize route" }));
+    expect(screen.getByRole("button", { name: "Start Route" })).toBeDisabled();
 
-    expect(
-      await screen.findByText("Add destinations first, then click “Optimize route”.")
-    ).toBeInTheDocument();
-  });
-
-  it("shows generator source error when no generated itinerary is stored", () => {
-    render(<RouteOptimizer />);
-
-    fireEvent.change(screen.getByRole("combobox", { name: "Source" }), {
-      target: { value: "generator" },
-    });
-
-    expect(
-      screen.getByText(
-        "No generated itinerary found. Generate one in the Itinerary Generator feature, or switch to Manual."
-      )
-    ).toBeInTheDocument();
+    fireEvent.click(screen.getAllByRole("button", { name: "Add" })[0]);
+    expect(screen.getByRole("button", { name: "Start Route" })).not.toBeDisabled();
   });
 });

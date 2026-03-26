@@ -63,6 +63,24 @@ function formatDistance(meters) {
 	return `${km >= 10 ? Math.round(km) : Math.round(km * 10) / 10}km`
 }
 
+function formatShortDistance(meters) {
+	if (meters == null || Number.isNaN(meters)) return '—'
+	if (meters < 950) return `${Math.round(meters)} m`
+	return `${(meters / 1000).toFixed(1)} km`
+}
+
+function formatEtaFromNow(durationSeconds) {
+	if (durationSeconds == null || Number.isNaN(durationSeconds)) return '—'
+	try {
+		const t = new Date(Date.now() + Math.max(0, Number(durationSeconds)) * 1000)
+		const hh = String(t.getHours()).padStart(2, '0')
+		const mm = String(t.getMinutes()).padStart(2, '0')
+		return `${hh}:${mm}`
+	} catch {
+		return '—'
+	}
+}
+
 function formatTimeOfDay(date) {
 	try {
 		return new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit' }).format(date)
@@ -179,6 +197,7 @@ export default function RouteOptimizer() {
 	const [navActive, setNavActive] = useState(false)
 	const [followUser, setFollowUser] = useState(true)
 	const [showTrafficLayer, setShowTrafficLayer] = useState(true)
+	const [routePreviewActive, setRoutePreviewActive] = useState(false)
 	const [directions, setDirections] = useState(null)
 	const [directionsTotals, setDirectionsTotals] = useState({ durationS: null, distanceM: null, originalDistanceKm: null })
 	const [mapsReady, setMapsReady] = useState(false)
@@ -190,6 +209,8 @@ export default function RouteOptimizer() {
 	const [visitedIds, setVisitedIds] = useState([])
 	const [navTick, setNavTick] = useState(0)
 	const [userAccuracyM, setUserAccuracyM] = useState(null)
+	const [userSpeedKmh, setUserSpeedKmh] = useState(0)
+	const [userHeadingDeg, setUserHeadingDeg] = useState(null)
 	const [ecoTipIndex, setEcoTipIndex] = useState(0)
 	const [currentStepIndex, setCurrentStepIndex] = useState(0)
 	const [showSavedItineraries, setShowSavedItineraries] = useState(false)
@@ -198,7 +219,14 @@ export default function RouteOptimizer() {
 	const [savedError, setSavedError] = useState('')
 
 	const mapRef = useRef(null)
+	const rightMapSectionRef = useRef(null)
+	const navOverlayCardRef = useRef(null)
 	const locationRequestedRef = useRef(false)
+	const locationWatchIdRef = useRef(null)
+	const navDragRef = useRef({ pointerId: null, startX: 0, startY: 0, originX: 16, originY: 16 })
+
+	const [navCardPos, setNavCardPos] = useState(null) // { x, y }
+	const [navCardDragging, setNavCardDragging] = useState(false)
 
 	// Get current location
 	useEffect(() => {
@@ -215,6 +243,12 @@ export default function RouteOptimizer() {
 			(pos) => {
 				setCurrentLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude })
 				setSelectedMarkerId('start-user-location')
+				if (Number.isFinite(pos.coords.speed)) {
+					setUserSpeedKmh(Math.max(0, Math.round(pos.coords.speed * 3.6)))
+				}
+				if (Number.isFinite(pos.coords.heading)) {
+					setUserHeadingDeg(((Number(pos.coords.heading) % 360) + 360) % 360)
+				}
 			},
 			(err) => {
 				setLocationError('Enable location permissions to use this feature')
@@ -223,10 +257,120 @@ export default function RouteOptimizer() {
 		)
 	}, [])
 
-	// Update directions
+	// Live location updates while navigating
+	useEffect(() => {
+		if (!navActive) return
+		if (!navigator.geolocation) {
+			setLocationError('Geolocation not supported')
+			return
+		}
+
+		setLocationError('')
+		try {
+			const watchId = navigator.geolocation.watchPosition(
+				(pos) => {
+					setCurrentLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude })
+					setUserAccuracyM(Number.isFinite(pos.coords.accuracy) ? pos.coords.accuracy : null)
+					if (Number.isFinite(pos.coords.speed)) {
+						setUserSpeedKmh(Math.max(0, Math.round(pos.coords.speed * 3.6)))
+					}
+					if (Number.isFinite(pos.coords.heading)) {
+						setUserHeadingDeg(((Number(pos.coords.heading) % 360) + 360) % 360)
+					}
+				},
+				() => {
+					setLocationError('Enable location permissions to use this feature')
+				},
+				{ enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
+			)
+			locationWatchIdRef.current = watchId
+		} catch {
+			locationWatchIdRef.current = null
+		}
+
+		return () => {
+			const watchId = locationWatchIdRef.current
+			locationWatchIdRef.current = null
+			if (watchId != null) {
+				try {
+					navigator.geolocation.clearWatch(watchId)
+				} catch {
+					// ignore
+				}
+			}
+		}
+	}, [navActive])
+
+	// Device compass heading fallback (helps when GPS heading isn't available)
+	useEffect(() => {
+		if (!navActive) return
+		if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') return
+		if (!('DeviceOrientationEvent' in window)) return
+
+		const onOrientation = (ev) => {
+			try {
+				let heading = null
+				if (typeof ev?.webkitCompassHeading === 'number' && Number.isFinite(ev.webkitCompassHeading)) {
+					heading = ev.webkitCompassHeading
+				} else if (typeof ev?.alpha === 'number' && Number.isFinite(ev.alpha)) {
+					const a = Number(ev.alpha)
+					heading = ((360 - a) % 360 + 360) % 360
+				}
+				if (heading == null || !Number.isFinite(heading)) return
+				setUserHeadingDeg(((Number(heading) % 360) + 360) % 360)
+			} catch {
+				// ignore
+			}
+		}
+
+		window.addEventListener('deviceorientationabsolute', onOrientation, true)
+		window.addEventListener('deviceorientation', onOrientation, true)
+		return () => {
+			window.removeEventListener('deviceorientationabsolute', onOrientation, true)
+			window.removeEventListener('deviceorientation', onOrientation, true)
+		}
+	}, [navActive])
+
+	function pickBestRoute(result, { preferTrafficTime }) {
+		try {
+			const routes = Array.isArray(result?.routes) ? result.routes : []
+			if (routes.length <= 1) return result
+
+			let bestIdx = 0
+			let bestScore = Number.POSITIVE_INFINITY
+
+			routes.forEach((route, idx) => {
+				const legs = route?.legs || []
+				let totalDistance = 0
+				let totalDuration = 0
+				for (const leg of legs) {
+					totalDistance += leg?.distance?.value || 0
+					if (preferTrafficTime) {
+						totalDuration += leg?.duration_in_traffic?.value || leg?.duration?.value || 0
+					} else {
+						totalDuration += leg?.duration?.value || 0
+					}
+				}
+
+				const score = preferTrafficTime ? totalDuration : totalDistance
+				if (score > 0 && score < bestScore) {
+					bestScore = score
+					bestIdx = idx
+				}
+			})
+
+			const chosen = routes[bestIdx]
+			if (!chosen) return result
+			return { ...result, routes: [chosen] }
+		} catch {
+			return result
+		}
+	}
+
+	// Update directions (only when a route is requested)
 	useEffect(() => {
 		if (!mapsReady || !googleMapsApiKey || !window.google?.maps) return
-		if (manualItinerary.length < 1) {
+		if (!routePreviewActive || manualItinerary.length < 1) {
 			setDirections(null)
 			return
 		}
@@ -256,15 +400,29 @@ export default function RouteOptimizer() {
 				waypoints: waypoints.length > 0 ? waypoints : undefined,
 				optimizeWaypoints: false,
 				travelMode: window.google.maps.TravelMode[travelMode] || window.google.maps.TravelMode.DRIVING,
+				provideRouteAlternatives: true,
+				...(navActive && travelMode === 'DRIVING'
+					? {
+						drivingOptions: {
+							departureTime: new Date(),
+							trafficModel: window.google.maps.TrafficModel?.BEST_GUESS || 'bestguess',
+						},
+					}
+					: {}),
 			},
 			(result, status) => {
 				if (status === 'OK' && result) {
-					setDirections(result)
-					const legs = result.routes?.[0]?.legs || []
+					const chosen = pickBestRoute(result, { preferTrafficTime: Boolean(navActive && travelMode === 'DRIVING') })
+					setDirections(chosen)
+					const legs = chosen.routes?.[0]?.legs || []
 					let totalDuration = 0
 					let totalDistance = 0
 					for (const leg of legs) {
-						totalDuration += leg?.duration?.value || 0
+						if (navActive && travelMode === 'DRIVING') {
+							totalDuration += leg?.duration_in_traffic?.value || leg?.duration?.value || 0
+						} else {
+							totalDuration += leg?.duration?.value || 0
+						}
 						totalDistance += leg?.distance?.value || 0
 					}
 					setDirectionsTotals({ durationS: totalDuration, distanceM: totalDistance })
@@ -273,7 +431,7 @@ export default function RouteOptimizer() {
 				}
 			}
 		)
-	}, [mapsReady, googleMapsApiKey, manualItinerary, returnToStart, travelMode, currentLocation, navActive])
+	}, [mapsReady, googleMapsApiKey, manualItinerary, returnToStart, travelMode, currentLocation, navActive, navTick, routePreviewActive])
 
 	// Navigation timer
 	useEffect(() => {
@@ -298,7 +456,9 @@ export default function RouteOptimizer() {
 		description: 'Starting point',
 	} : null
 
-	const remainingItinerary = manualItinerary.filter(d => !visitedSet.has(d.id))
+	// Ensure we never duplicate the synthetic start marker.
+	// `manualItinerary` can temporarily contain it after optimization responses.
+	const remainingItinerary = manualItinerary.filter(d => d?.id !== 'start-user-location' && !visitedSet.has(d.id))
 
 	const activeItinerary = startPlace && remainingItinerary.length > 0
 		? [startPlace, ...remainingItinerary]
@@ -322,6 +482,7 @@ export default function RouteOptimizer() {
 		if (!d || manualItinerary.some(x => x.id === id)) return
 		setManualItinerary([...manualItinerary, d])
 		setResult(null)
+		setRoutePreviewActive(false)
 	}
 
 	function addCustom() {
@@ -342,11 +503,13 @@ export default function RouteOptimizer() {
 		setCustomDesc('')
 		setShowCustomForm(false)
 		setResult(null)
+		setRoutePreviewActive(false)
 	}
 
 	function removeManual(id) {
 		setManualItinerary(manualItinerary.filter(d => d.id !== id))
 		setResult(null)
+		setRoutePreviewActive(false)
 	}
 
 	async function optimize() {
@@ -392,10 +555,12 @@ export default function RouteOptimizer() {
 			setResult(json)
 			console.log('Optimized distance:', json.total_distance_km, 'km | Original was:', currentDistanceKm, 'km')
 			
-			// Apply optimized itinerary order if available
+			// Apply optimized itinerary order if available.
+			// The backend may include our synthetic start marker; keep it separate.
 			if (json.optimized_itinerary && Array.isArray(json.optimized_itinerary)) {
-				setManualItinerary(json.optimized_itinerary)
+				setManualItinerary(json.optimized_itinerary.filter(s => s?.id !== 'start-user-location'))
 			}
+			setRoutePreviewActive(true)
 		} catch (e) {
 			setError(e?.message || 'Optimization failed')
 		} finally {
@@ -409,13 +574,110 @@ export default function RouteOptimizer() {
 			return
 		}
 		setShowTrafficLayer(true)
+		setRoutePreviewActive(true)
 		setNavActive(true)
 		setCurrentStepIndex(0)
+		try {
+			const DOE = window?.DeviceOrientationEvent
+			if (DOE && typeof DOE.requestPermission === 'function') {
+				DOE.requestPermission().catch(() => null)
+			}
+		} catch {
+			// ignore
+		}
 	}
 
 	function stopNavigation() {
 		setNavActive(false)
 		setFollowUser(true)
+		setNavCardDragging(false)
+	}
+
+	function clampNumber(value, min, max) {
+		const v = Number(value)
+		if (!Number.isFinite(v)) return Number.isFinite(min) ? min : 0
+		if (!Number.isFinite(min) || !Number.isFinite(max)) return v
+		if (max < min) return min
+		return Math.min(max, Math.max(min, v))
+	}
+
+	// Initialize the draggable navigation card position when navigation starts.
+	useEffect(() => {
+		if (!navActive) {
+			setNavCardPos(null)
+			return
+		}
+		if (navCardPos) return
+		const panel = rightMapSectionRef.current
+		if (!panel?.getBoundingClientRect) {
+			setNavCardPos({ x: 16, y: 16 })
+			return
+		}
+		const rect = panel.getBoundingClientRect()
+		const panelW = Number(rect?.width) || 0
+		// Prefer centered start; fall back to top-left if we can't measure.
+		const desiredMaxW = 520
+		const startX = panelW > 0
+			? clampNumber(Math.round((panelW - desiredMaxW) / 2), 16, Math.max(16, panelW - 16))
+			: 16
+		setNavCardPos({ x: startX, y: 16 })
+	}, [navActive, navCardPos])
+
+	function beginDragNavCard(e) {
+		if (!navActive) return
+		// Ignore right/middle clicks.
+		if (typeof e.button === 'number' && e.button !== 0) return
+		// Don't start drag when clicking actionable elements.
+		if (e.target?.closest?.('button')) return
+		const pointerId = e.pointerId
+		navDragRef.current = {
+			pointerId,
+			startX: e.clientX,
+			startY: e.clientY,
+			originX: navCardPos?.x ?? 16,
+			originY: navCardPos?.y ?? 16,
+		}
+		setNavCardDragging(true)
+		try {
+			e.currentTarget.setPointerCapture(pointerId)
+		} catch {
+			// ignore
+		}
+		try {
+			e.preventDefault()
+		} catch {
+			// ignore
+		}
+	}
+
+	function onDragNavCard(e) {
+		if (!navCardDragging) return
+		if (navDragRef.current.pointerId != null && e.pointerId !== navDragRef.current.pointerId) return
+		const panel = rightMapSectionRef.current
+		const card = navOverlayCardRef.current
+		const dx = e.clientX - navDragRef.current.startX
+		const dy = e.clientY - navDragRef.current.startY
+		let nextX = navDragRef.current.originX + dx
+		let nextY = navDragRef.current.originY + dy
+
+		if (panel?.getBoundingClientRect && card?.getBoundingClientRect) {
+			const panelRect = panel.getBoundingClientRect()
+			const cardRect = card.getBoundingClientRect()
+			const margin = 8
+			const maxX = (Number(panelRect?.width) || 0) - (Number(cardRect?.width) || 0) - margin
+			const maxY = (Number(panelRect?.height) || 0) - (Number(cardRect?.height) || 0) - margin
+			nextX = clampNumber(nextX, margin, maxX)
+			nextY = clampNumber(nextY, margin, maxY)
+		}
+
+		setNavCardPos({ x: nextX, y: nextY })
+	}
+
+	function endDragNavCard(e) {
+		if (!navCardDragging) return
+		if (navDragRef.current.pointerId != null && e.pointerId !== navDragRef.current.pointerId) return
+		setNavCardDragging(false)
+		navDragRef.current.pointerId = null
 	}
 
 	function nextEcoTip() {
@@ -542,6 +804,7 @@ export default function RouteOptimizer() {
 			setManualItinerary(stops)
 			setVisitedIds([])
 			setResult(null)
+			setRoutePreviewActive(false)
 			setShowSavedItineraries(false)
 		} catch {
 			setError('Failed to load the selected itinerary')
@@ -568,8 +831,16 @@ export default function RouteOptimizer() {
 
 	const allSteps = getAllSteps()
 	const currentStep = allSteps[currentStepIndex] || null
+	const nextStep = currentStepIndex < allSteps.length - 1 ? allSteps[currentStepIndex + 1] : null
+	const navDurationText = directionsTotals.durationS
+		? (directionsTotals.durationS < 3600
+			? `${Math.max(1, Math.round(directionsTotals.durationS / 60))} min`
+			: formatMinutesToHhMm(directionsTotals.durationS / 60))
+		: '—'
+	const navDistanceText = directionsTotals.distanceM ? formatShortDistance(directionsTotals.distanceM) : '—'
+	const navEtaText = directionsTotals.durationS ? formatEtaFromNow(directionsTotals.durationS) : '—'
 
-	const showRoute = activeItinerary.length >= 2
+	const showRoute = routePreviewActive && activeItinerary.length >= 2
 
 	return (
 		<div className="flex h-screen w-full bg-slate-950 text-slate-200 overflow-hidden" style={{
@@ -615,7 +886,7 @@ export default function RouteOptimizer() {
 								onClick={fetchSavedItineraries}
 								disabled={savedLoading}
 							>
-								Refresh
+								{savedLoading ? 'Refreshing...' : 'Refresh'}
 							</button>
 						</div>
 
@@ -654,7 +925,7 @@ export default function RouteOptimizer() {
 
 				{/* Available Destinations */}
 				<div>
-				<div className="flex items-center gap-2 mb-3 text-xs font-semibold uppercase tracking-widest opacity-90" style={{color: '#facc15', backgroundColor: 'rgba(250,204,21,0.1)', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #facc15'}}>Available Destinations</div>
+					<div className="flex items-center gap-2 mb-3 text-xs font-semibold uppercase tracking-widest opacity-90" style={{color: '#facc15', backgroundColor: 'rgba(250,204,21,0.1)', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #facc15'}}>Available Destinations</div>
 					<div className="bg-slate-800/60 border border-slate-700/20 rounded-lg p-3 max-h-48 overflow-y-auto">
 						{destinationData.map(d => (
 							<div key={d.id} className="flex items-center justify-between py-2 px-2 border-b border-slate-700/10 last:border-b-0 text-sm">
@@ -665,12 +936,14 @@ export default function RouteOptimizer() {
 							</div>
 						))}
 					</div>
-				<button className="w-full mt-2 py-2 bg-transparent rounded text-xs transition-all flex items-center justify-center gap-1" onClick={() => setShowCustomForm(!showCustomForm)}
-					style={{
-						border: '1px dashed #facc15',
-						color: '#facc15'
-					}}
-				>
+					<button
+						className="w-full mt-2 py-2 bg-transparent rounded text-xs transition-all flex items-center justify-center gap-1"
+						onClick={() => setShowCustomForm(!showCustomForm)}
+						style={{
+							border: '1px dashed #facc15',
+							color: '#facc15',
+						}}
+					>
 						<FiPlus size={14} /> Add New Stop
 					</button>
 				</div>
@@ -716,7 +989,22 @@ export default function RouteOptimizer() {
 							<div key={stop.id} className="flex items-start gap-3 p-2 mb-2 bg-slate-700/40 last:mb-0 rounded" style={{borderLeft: '4px solid #facc15'}}>
 								<div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style={{backgroundColor: '#facc15', color: '#000'}}>{idx}</div>
 									<div className="flex-1">
-										<div className="text-sm font-semibold text-slate-200">{stop.name}</div>
+										<div
+											className="text-sm font-semibold text-slate-200 cursor-pointer hover:text-yellow-400 transition-colors"
+											onClick={() => {
+												setSelectedMarkerId(stop.id)
+												try {
+													if (mapRef.current && stop?.location) {
+														mapRef.current.panTo({ lat: Number(stop.location.lat), lng: Number(stop.location.lng) })
+														if (mapRef.current.getZoom() < 12) mapRef.current.setZoom(13)
+													}
+												} catch {
+													// ignore
+												}
+											}}
+										>
+											{stop.name}
+										</div>
 										<div className="text-xs text-slate-500">
 											{new Date().getHours().toString().padStart(2, '0')}:{new Date().getMinutes().toString().padStart(2, '0')}
 										</div>
@@ -799,95 +1087,147 @@ export default function RouteOptimizer() {
 					border: '1px solid rgba(34,197,94,0.4)',
 					color: '#86efac'
 				}}>
-						More tips
-					</button>
-				</div>
+					More tips
+				</button>
+			</div>
 			</div>
 
-				{/* RIGHT MAP SECTION */}
-				<div className="flex-1 relative bg-slate-800 flex flex-col">
-				{/* Google Maps Style Navigation Card */}
-				{navActive && allSteps.length > 0 && (
-					<div className="absolute top-4 left-4 right-4 z-10" style={{
-						maxWidth: '280px'
-					}}>
-						<div className="bg-slate-900 rounded-2xl p-4 shadow-2xl border border-slate-700" style={{
-							background: 'linear-gradient(135deg, rgba(15,23,42,0.98) 0%, rgba(15,23,42,0.95) 100%)',
-							border: '1px solid rgba(250,204,21,0.2)',
-							boxShadow: '0 8px 32px rgba(0,0,0,0.6)'
-						}}>
-							{/* Step Counter */}
-							<div className="text-xs font-semibold mb-2" style={{color: '#facc15'}}>
-								STEP {currentStepIndex + 1}/{allSteps.length}
-							</div>
-
-							{/* Main Instruction */}
-							<div className="flex items-start gap-3 mb-3">
-								<div className="text-2xl"></div>
-								<div className="flex-1">
-									<div className="text-sm font-bold text-slate-200" dangerouslySetInnerHTML={{__html: currentStep?.instruction || 'Navigation'}} />
-								</div>
-							</div>
-
-							{/* Distance and Duration */}
-							<div className="flex items-center gap-3 mb-3 bg-slate-800/40 rounded-lg p-2">
-								<div>
-									<div className="text-xs text-slate-400">Distance</div>
-									<div className="text-lg font-bold" style={{color: '#facc15'}}>
-										{currentStep?.distance || '—'}
+			{/* RIGHT MAP SECTION */}
+			<div ref={rightMapSectionRef} className="flex-1 relative bg-slate-800 flex flex-col">
+					{/* In-app Navigation Overlay (Google-Maps-like) */}
+					{navActive && allSteps.length > 0 && (
+						<>
+							<div className="absolute inset-0 z-10 pointer-events-none">
+								<div
+									ref={navOverlayCardRef}
+									className="pointer-events-auto overflow-hidden rounded-2xl"
+									style={{
+										position: 'absolute',
+										left: navCardPos?.x ?? 16,
+										top: navCardPos?.y ?? 16,
+										width: 'calc(100% - 32px)',
+										maxWidth: 520,
+										background: 'linear-gradient(135deg, rgba(15,23,42,0.98) 0%, rgba(15,23,42,0.95) 100%)',
+										border: '1px solid rgba(250,204,21,0.22)',
+										boxShadow: '0 10px 36px rgba(0,0,0,0.55)',
+									}}
+								>
+									<div
+										className="px-4 py-3 cursor-move select-none"
+										style={{ background: 'linear-gradient(to right, #facc15, #f97316)', touchAction: 'none' }}
+										onPointerDown={beginDragNavCard}
+										onPointerMove={onDragNavCard}
+										onPointerUp={endDragNavCard}
+										onPointerCancel={endDragNavCard}
+									>
+										<div className="flex items-center gap-3">
+											<div className="text-xs font-extrabold tracking-widest" style={{ color: '#000' }}>
+												STEP {currentStepIndex + 1}/{allSteps.length}
+											</div>
+											<div className="flex-1" />
+											<button
+												onClick={stopNavigation}
+												className="w-9 h-9 rounded-full flex items-center justify-center"
+												style={{ backgroundColor: 'rgba(0,0,0,0.12)', color: '#000' }}
+												title="Stop"
+											>
+												<span className="text-xl leading-none">×</span>
+											</button>
+										</div>
 									</div>
-								</div>
-								<div className="w-px h-8 bg-slate-700"></div>
-								<div>
-									<div className="text-xs text-slate-400">Time</div>
-									<div className="text-lg font-bold" style={{color: '#facc15'}}>
-										{currentStep?.duration || '—'}
-									</div>
-								</div>
-							</div>
 
-							{/* Next Step Preview */}
-							{currentStepIndex < allSteps.length - 1 && (
-								<div className="mb-3 text-xs text-slate-400 border-t border-slate-700 pt-2">
-									<div className="text-slate-500 mb-1">Then</div>
-									<div className="text-slate-300 line-clamp-2">
-										{allSteps[currentStepIndex + 1]?.instruction ? (
-											<span dangerouslySetInnerHTML={{__html: allSteps[currentStepIndex + 1].instruction}} />
-										) : (
-											'Continue'
+										<div className="px-4 py-4">
+										<div className="text-lg font-extrabold text-slate-100 leading-snug">
+											{stripHtml(currentStep?.instruction || 'Navigation')}
+										</div>
+										<div className="mt-2 flex items-center gap-3 text-sm">
+											<div className="text-slate-300">
+												<span className="text-slate-400">Dist:</span> {currentStep?.distance || '—'}
+											</div>
+											<div className="w-px h-4 bg-slate-700" />
+											<div className="text-slate-300">
+												<span className="text-slate-400">Time:</span> {currentStep?.duration || '—'}
+											</div>
+										</div>
+
+										{nextStep && (
+											<div className="mt-3 pt-3 border-t border-slate-700/60 text-sm text-slate-300">
+												<span className="text-slate-500">Then:</span> {stripHtml(nextStep.instruction || 'Continue')}
+											</div>
 										)}
+
+										<div className="mt-4 flex gap-2">
+											<button
+												onClick={() => setCurrentStepIndex(prev => Math.max(0, prev - 1))}
+												disabled={currentStepIndex === 0}
+												className="flex-1 px-3 py-2 rounded-lg text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+												style={{
+													background: 'rgba(250,204,21,0.15)',
+													border: '1px solid rgba(250,204,21,0.3)',
+													color: '#facc15',
+												}}
+											>
+												← Back
+											</button>
+											<button
+												onClick={() => setCurrentStepIndex(prev => Math.min(allSteps.length - 1, prev + 1))}
+												disabled={currentStepIndex === allSteps.length - 1}
+												className="flex-1 px-3 py-2 rounded-lg text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+												style={{
+													background: 'linear-gradient(to right, #facc15, #f97316)',
+													color: '#000',
+													border: 'none',
+												}}
+											>
+												Next →
+											</button>
+										</div>
+										</div>
 									</div>
 								</div>
-							)}
 
-							{/* Navigation Buttons */}
-							<div className="flex gap-2 mt-3">
-								<button 
-									onClick={() => setCurrentStepIndex(prev => Math.max(0, prev - 1))}
-									disabled={currentStepIndex === 0}
-									className="flex-1 px-3 py-2 rounded-lg text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+							<div className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none">
+								<div
+									className="pointer-events-auto max-w-[520px] mx-auto rounded-2xl px-4 py-3"
 									style={{
-										background: 'rgba(250,204,21,0.15)',
-										border: '1px solid rgba(250,204,21,0.3)',
-										color: '#facc15'
-									}}>
-									← Back
-								</button>
-								<button 
-									onClick={() => setCurrentStepIndex(prev => Math.min(allSteps.length - 1, prev + 1))}
-									disabled={currentStepIndex === allSteps.length - 1}
-									className="flex-1 px-3 py-2 rounded-lg text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-									style={{
-										background: 'linear-gradient(to right, #facc15, #f97316)',
-										color: '#000',
-										border: 'none'
-									}}>
-									Next →
-								</button>
+										background: 'linear-gradient(135deg, rgba(15,23,42,0.98) 0%, rgba(15,23,42,0.95) 100%)',
+										border: '1px solid rgba(250,204,21,0.18)',
+										boxShadow: '0 10px 36px rgba(0,0,0,0.45)',
+									}}
+								>
+									<div className="flex items-center gap-4">
+										<div className="w-14 h-14 rounded-full flex flex-col items-center justify-center" style={{
+											backgroundColor: 'rgba(250,204,21,0.10)',
+											border: '1px solid rgba(250,204,21,0.22)',
+										}}>
+											<div className="text-lg font-extrabold leading-none" style={{ color: '#facc15' }}>
+												{Number.isFinite(userSpeedKmh) ? userSpeedKmh : 0}
+											</div>
+											<div className="text-[10px] text-slate-400">km/h</div>
+										</div>
+										<div className="flex-1 min-w-0">
+											<div className="text-2xl font-extrabold text-slate-100 leading-none">{navDurationText}</div>
+											<div className="text-sm text-slate-300 mt-1">
+												{navDistanceText} · {navEtaText}
+											</div>
+										</div>
+										<button
+											onClick={() => setFollowUser(v => !v)}
+											className="w-12 h-12 rounded-full flex items-center justify-center"
+											style={{
+												backgroundColor: 'rgba(250,204,21,0.10)',
+												border: '1px solid rgba(250,204,21,0.22)',
+												color: '#facc15',
+											}}
+											title={followUser ? 'Free map' : 'Follow me'}
+										>
+											<span className="text-lg">⌖</span>
+										</button>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				)}
+						</>
+					)}
 
 				{/* Map Container */}
 				<div className="flex-1 relative">
@@ -902,7 +1242,9 @@ export default function RouteOptimizer() {
 							showTrafficLayer={showTrafficLayer}
 							navActive={navActive}
 							userAccuracyM={userAccuracyM}
+								userHeadingDeg={userHeadingDeg}
 							currentLocation={currentLocation}
+								allDestinations={destinationData}
 							activeItinerary={activeItinerary}
 							selectedMarkerId={selectedMarkerId}
 							showRoute={showRoute}
@@ -934,7 +1276,9 @@ function RouteOptimizerMap({
 	showTrafficLayer,
 	navActive,
 	userAccuracyM,
+	userHeadingDeg,
 	currentLocation,
+	allDestinations,
 	activeItinerary,
 	selectedMarkerId,
 	showRoute,
@@ -953,6 +1297,32 @@ function RouteOptimizerMap({
 	const mapsAvailable = isLoaded && window.google?.maps
 	const userPos = isValidLatLngLiteral(currentLocation)
 		? { lat: Number(currentLocation.lat), lng: Number(currentLocation.lng) }
+		: null
+	const itineraryIdSet = useMemo(() => new Set((activeItinerary || []).map(s => s?.id).filter(Boolean)), [activeItinerary])
+	const hasChosenStops = itineraryIdSet.size > (itineraryIdSet.has('start-user-location') ? 1 : 0)
+	const showAllDestinationPins = !navActive && !hasChosenStops
+	const allPinsIcon = window.google?.maps?.SymbolPath
+		? {
+			path: window.google.maps.SymbolPath.CIRCLE,
+			scale: 5,
+			fillColor: '#facc15',
+			fillOpacity: 0.9,
+			strokeColor: '#0f172a',
+			strokeOpacity: 0.8,
+			strokeWeight: 1,
+		}
+		: null
+	const userNavIcon = navActive && window.google?.maps?.SymbolPath
+		? {
+			path: window.google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+			scale: 6,
+			rotation: Number.isFinite(userHeadingDeg) ? userHeadingDeg : 0,
+			fillColor: '#3b82f6',
+			fillOpacity: 1,
+			strokeColor: '#ffffff',
+			strokeOpacity: 1,
+			strokeWeight: 2,
+		}
 		: null
 
 	if (loadError) {
@@ -1001,6 +1371,37 @@ function RouteOptimizerMap({
 		>
 			{showTrafficLayer && navActive && <TrafficLayer />}
 
+			{/* All destination pins (on entry / planning mode) */}
+			{showAllDestinationPins && Array.isArray(allDestinations) && allDestinations.map((d) => {
+				if (!d?.location) return null
+				if (itineraryIdSet.has(d.id)) return null
+				const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
+				if (!isValidLatLngLiteral(pos)) return null
+				return (
+					<MarkerF
+						key={`dest-${d.id}`}
+						position={pos}
+						opacity={0.9}
+						icon={allPinsIcon || undefined}
+						onClick={() => setSelectedMarkerId(d.id)}
+					>
+						{selectedMarkerId === d.id && (
+							<InfoWindowF position={pos} onCloseClick={() => setSelectedMarkerId(null)}>
+								<div className="text-slate-900 max-w-[220px]">
+									<div className="font-bold">{d.name || 'Destination'}</div>
+									{d.description ? (
+										<div className="text-xs mt-1 text-slate-700">{stripHtml(d.description)}</div>
+									) : null}
+									<div className="text-[11px] mt-2 text-slate-600">
+										{pos.lat.toFixed(4)}, {pos.lng.toFixed(4)}
+									</div>
+							</div>
+						</InfoWindowF>
+						)}
+					</MarkerF>
+				)
+			})}
+
 			{userAccuracyM && userPos && (
 				<CircleF
 					center={userPos}
@@ -1026,7 +1427,8 @@ function RouteOptimizerMap({
 						key={d.id}
 						position={pos}
 						opacity={1}
-						label={isUser ? { text: '●', fontSize: '20px' } : { text: String(idx), fontWeight: '800' }}
+						icon={isUser && userNavIcon ? userNavIcon : undefined}
+						label={isUser ? (userNavIcon ? undefined : { text: '●', fontSize: '20px' }) : { text: String(idx), fontWeight: '800' }}
 						onClick={() => setSelectedMarkerId(d.id)}
 					>
 						{isUser && selectedMarkerId === 'start-user-location' && (
@@ -1034,6 +1436,20 @@ function RouteOptimizerMap({
 								<div className="text-slate-900">
 									<div className="font-bold">Your Location</div>
 									<div className="text-xs mt-1">
+										{pos.lat.toFixed(4)}, {pos.lng.toFixed(4)}
+									</div>
+								</div>
+							</InfoWindowF>
+						)}
+
+						{!isUser && selectedMarkerId === d.id && (
+							<InfoWindowF position={pos} onCloseClick={() => setSelectedMarkerId(null)}>
+								<div className="text-slate-900 max-w-[220px]">
+									<div className="font-bold">{d.name || 'Stop'}</div>
+									{d.description ? (
+										<div className="text-xs mt-1 text-slate-700">{stripHtml(d.description)}</div>
+									) : null}
+									<div className="text-[11px] mt-2 text-slate-600">
 										{pos.lat.toFixed(4)}, {pos.lng.toFixed(4)}
 									</div>
 								</div>
