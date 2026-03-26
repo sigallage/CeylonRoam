@@ -35,8 +35,8 @@ const Profile = () => {
 		? 'bg-[#1f1f1f] border border-yellow-500/40 rounded-2xl shadow-md'
 		: 'bg-white border border-yellow-500/30 rounded-2xl shadow-md';
 	const hoverIconButtonClass = isDarkMode
-		? 'absolute top-6 left-6 p-2 hover:bg-white/10 rounded-full transition-colors'
-		: 'absolute top-6 left-6 p-2 hover:bg-black/5 rounded-full transition-colors';
+		? 'absolute top-4 left-4 sm:top-6 sm:left-6 p-2 hover:bg-white/10 rounded-full transition-colors'
+		: 'absolute top-4 left-4 sm:top-6 sm:left-6 p-2 hover:bg-black/5 rounded-full transition-colors';
 	const iconClass = isDarkMode ? 'w-6 h-6 text-white/80' : 'w-6 h-6 text-gray-700';
 	const titleClass = isDarkMode ? 'text-2xl font-bold text-yellow-400 text-center mb-8' : 'text-2xl font-bold text-yellow-600 text-center mb-8';
 	const mutedTextClass = isDarkMode ? 'text-white/70' : 'text-gray-600';
@@ -44,8 +44,8 @@ const Profile = () => {
 	const valueTextClass = isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold';
 	const rowBorderClass = isDarkMode ? 'border-b border-white/10' : 'border-b border-gray-200';
 	const editFieldClass = isDarkMode
-		? 'bg-black/40 text-white font-semibold text-right border border-white/20 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400'
-		: 'bg-white text-gray-900 font-semibold text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-amber-300';
+		? 'bg-black/40 text-white font-semibold text-left sm:text-right border border-white/20 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full sm:w-auto'
+		: 'bg-white text-gray-900 font-semibold text-left sm:text-right border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-amber-300 w-full sm:w-auto';
 	const menuButtonClass = isDarkMode
 		? 'w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors'
 		: 'w-full flex items-center justify-between p-5 hover:bg-black/5 transition-colors';
@@ -268,9 +268,9 @@ const Profile = () => {
 	return (
 		<div className="min-h-screen">
 			{/* Profile Content */}
-			<div className="max-w-4xl mx-auto px-6 py-8">
+			<div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
 				{/* Profile Picture Section */}
-				<div className={`${panelClass} p-8 mb-6 relative`}>
+				<div className={`${panelClass} p-5 sm:p-8 mb-6 relative`}>
 					{/* Cancel Button */}
 					<button 
 						onClick={() => navigate(-1)}
@@ -337,7 +337,7 @@ const Profile = () => {
 
 						{/* User Information */}
 						<div className="w-full space-y-4 mb-6">
-							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+							<div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-6 py-3 px-3 sm:px-24 ${rowBorderClass}`}>
 								<span className={labelTextClass}>User name</span>
 								{isEditing ? (
 									<input
@@ -348,24 +348,24 @@ const Profile = () => {
 										placeholder="Enter username"
 									/>
 								) : (
-									<span className={valueTextClass}>
+									<span className={`${valueTextClass} max-w-full break-words text-left sm:text-right`}>
 										{userData.username || 'Not set'}
 									</span>
 								)}
 							</div>
-							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+							<div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-6 py-3 px-3 sm:px-24 ${rowBorderClass}`}>
 								<span className={labelTextClass}>Email</span>
-								<span className={valueTextClass}>
+								<span className={`${valueTextClass} max-w-full break-words text-left sm:text-right`}>
 									{userData.email || 'Not set'}
 								</span>
 							</div>
-							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+							<div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-6 py-3 px-3 sm:px-24 ${rowBorderClass}`}>
 								<span className={labelTextClass}>User ID</span>
-								<span className={valueTextClass}>
+								<span className={`${valueTextClass} max-w-full break-all text-left sm:text-right`}>
 									{userData.userId || 'Not set'}
 								</span>
 							</div>
-							<div className={`flex items-center justify-between py-3 px-24 ${rowBorderClass}`}>
+							<div className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-6 py-3 px-3 sm:px-24 ${rowBorderClass}`}>
 								<span className={labelTextClass}>Phone</span>
 								{isEditing ? (
 									<input
@@ -376,7 +376,7 @@ const Profile = () => {
 										placeholder="Enter phone number"
 									/>
 								) : (
-									<span className={valueTextClass}>
+									<span className={`${valueTextClass} max-w-full break-words text-left sm:text-right`}>
 										{userData.phone || 'Not set'}
 									</span>
 								)}

@@ -113,7 +113,7 @@ const AboutUs = () => {
       }}
     >
       <div style={{ position: 'absolute', inset: 0, background: isDarkMode ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.28)', backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)' }} />
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 16px", position: 'relative', zIndex: 1 }}>
+      <div className="mx-auto max-w-[900px] px-4 sm:px-6 py-8 sm:py-10" style={{ position: 'relative', zIndex: 1 }}>
       <style>{`
         /* Animations disabled: keep boxes static to avoid collisions */
         .animate-box{ opacity:1 !important; transform: none !important; transition: none !important; box-shadow: none !important; filter: none !important; will-change: auto; position: relative; z-index: 0; }
@@ -132,49 +132,47 @@ const AboutUs = () => {
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
           borderRadius: 16,
-            padding: "56px 28px 36px",
-            marginTop: 56,
-            marginBottom: 48,
+            padding: "28px 16px 20px",
         }}
-        className="animate-box hoverable"
+        className="animate-box hoverable mt-6 sm:mt-14 mb-8 sm:mb-12 sm:p-7 md:p-10"
       >
-        <h1 style={{ textAlign: "center", color: '#facc15', marginBottom: 20, fontSize: 48, fontWeight: 800 }}>ABOUT US</h1>
-        <p style={{ textAlign: "justify", textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', fontSize: 18, marginBottom: 18 }}>
+        <h1 className="text-center font-extrabold tracking-wide text-yellow-400 text-3xl sm:text-5xl mb-4 sm:mb-5">ABOUT US</h1>
+        <p className="text-justify text-white/90 text-base sm:text-lg mb-4">
           <b>CeylonRoam</b> is an AI-powered travel assistant designed to transform how people explore Sri Lanka. Our platform combines advanced artificial intelligence with modern web technologies to provide travelers with a seamless, personalized, and stress-free journey.What sets CeylonRoam apart is our use of advanced AI to generate personalized itineraries, optimize travel routes, and provide real-time voice translation, all in one easy-to-use app. Whether you’re a local adventurer or a first-time visitor, CeylonRoam helps you save time, discover hidden gems, and travel confidently.
         </p>
-        <p style={{ textAlign: "justify", textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', fontSize: 18, marginBottom: 18 }}>
+        <p className="text-justify text-white/90 text-base sm:text-lg mb-4">
           <b>Our mission</b> is to make travel in Sri Lanka smarter, easier, and more memorable by connecting travelers with enriching experiences while supporting sustainable tourism. We believe every journey should be unique, accessible, and filled with discovery.
         </p>
-        <p style={{ textAlign: "justify", textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', fontSize: 18, marginBottom: 0 }}>
+        <p className="text-justify text-white/90 text-base sm:text-lg mb-0">
           Have questions, feedback, or partnership ideas? We’d love to hear from you! Get in touch with us at ceylon.roam144@gmail.com
     and let’s make travel better together. Join us on CeylonRoam and embark on a journey filled with adventure, discovery, and unforgettable memories.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, marginTop: 28, marginBottom: 28, maxWidth: 800, marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="animate-box hoverable" style={{ border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', borderRadius: 12, padding: '14px 20px', maxWidth: 380 }}>
-          <h3 style={{ color: '#facc15', marginBottom: 8, fontSize: 26, fontWeight: 800, textAlign: 'center' }}>Why CeylonRoam Matters</h3>
-          <p style={{ textAlign: 'justify', textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', lineHeight: 1.6, marginBottom: 6 }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 mt-6 mb-6 max-w-[800px] mx-auto">
+        <div className="animate-box hoverable w-full" style={{ border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', borderRadius: 12, padding: '14px 16px' }}>
+          <h3 className="text-yellow-400 text-center font-extrabold text-xl sm:text-2xl mb-2">Why CeylonRoam Matters</h3>
+          <p className="text-justify text-white/90 leading-relaxed text-sm sm:text-base mb-2">
             Tourism plays a vital role in Sri Lanka's economy, contributing significantly to employment and national income. With over 1.48 million tourists visiting the country in 2023, the industry is rapidly growing.
           </p>
-          <p style={{ textAlign: 'justify', textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', marginTop: 8, marginBottom: 8 }}>
+          <p className="text-justify text-white/90 text-sm sm:text-base mt-2 mb-2">
             However, travelers still face several challenges:
           </p>
-          <ul style={{ color: 'rgba(255,255,255,0.92)', marginLeft: 22, marginBottom: 8, textAlign: 'left' }}>
-            <li style={{ marginBottom: 6 }}>• Fragmented and unreliable travel information.</li>
-            <li style={{ marginBottom: 6 }}>• Language barriers with local communities.</li>
-            <li style={{ marginBottom: 6 }}>• Complex transportation and route planning.</li>
+          <ul className="text-white/90 ml-5 mb-2 text-left text-sm sm:text-base">
+            <li className="mb-2">• Fragmented and unreliable travel information.</li>
+            <li className="mb-2">• Language barriers with local communities.</li>
+            <li className="mb-2">• Complex transportation and route planning.</li>
           </ul>
-          <p style={{ textAlign: 'justify', textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', marginTop: 8, marginBottom: 4 }}>
+          <p className="text-justify text-white/90 text-sm sm:text-base mt-2 mb-1">
             CeylonRoam was created to solve these problems and enhance the overall travel experience.
           </p>
         </div>
 
-        <div className="animate-box hoverable" style={{ border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', borderRadius: 12, padding: '14px 20px', maxWidth: 380 }}>
-          <h3 style={{ color: '#facc15', marginBottom: 8, fontSize: 26, fontWeight: 800, textAlign: 'center' }}>Our Vision</h3>
-            <p style={{ textAlign: 'justify', textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', lineHeight: 1.6, marginBottom: 6 }}>
+        <div className="animate-box hoverable w-full" style={{ border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', borderRadius: 12, padding: '14px 16px' }}>
+          <h3 className="text-yellow-400 text-center font-extrabold text-xl sm:text-2xl mb-2">Our Vision</h3>
+            <p className="text-justify text-white/90 leading-relaxed text-sm sm:text-base mb-2">
             We envision a future where every traveler can explore Sri Lanka with confidence, ease, and personalized guidance powered by AI.
           </p>
-            <p style={{ textAlign: 'justify', textJustify: 'inter-word', color: 'rgba(255,255,255,0.92)', marginTop: 8, marginBottom: 4 }}>
+            <p className="text-justify text-white/90 text-sm sm:text-base mt-2 mb-1">
             CeylonRoam is more than just a travel app, it's your smart companion for discovering Sri Lanka.
           </p>
         </div>
@@ -197,8 +195,8 @@ const AboutUs = () => {
           marginRight: 'auto'
         }}
       >
-        <h2 style={{ textAlign: "center", color: '#facc15', fontSize: 28, marginBottom: 18, fontWeight: 800 }}>Founders</h2>
-        <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28, justifyContent: 'center', listStyle: 'none', padding: 0, maxWidth: 800, margin: '0 auto' }}>
+        <h2 className="text-center text-yellow-400 font-extrabold text-2xl sm:text-3xl mb-4 sm:mb-5">Founders</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" style={{ listStyle: 'none', padding: 0, margin: '0 auto' }}>
           <li className="hoverable" style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(122,24,24,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
             onMouseOut={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'; e.currentTarget.style.transform = 'none'; e.currentTarget.style.background = '#1f1f1f'; }}>
@@ -243,10 +241,17 @@ const AboutUs = () => {
           </li>
         </ul>
       </div>
-      <div style={{ marginTop: 56, display: "flex", justifyContent: "center" }}>
-        <div style={{ width: '100%', maxWidth: 960, height: 90, borderRadius: 12, background: 'linear-gradient(90deg,#facc15,#ff8a00)', boxShadow: '0 6px 28px rgba(0,0,0,0.18)', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-          <div style={{ fontWeight: 800, fontSize: 20, color: '#111', marginBottom: 6 }}>CONTACT US</div>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ceylon.roam144@gmail.com" target="_blank" rel="noopener noreferrer" style={{ color: '#111', textDecoration: 'underline', fontSize: 16 }}>ceylon.roam144@gmail.com</a>
+      <div className="mt-10 sm:mt-14 flex justify-center">
+        <div className="w-full max-w-[960px] rounded-xl px-4 py-4 sm:px-6 sm:py-5 text-center" style={{ background: 'linear-gradient(90deg,#facc15,#ff8a00)', boxShadow: '0 6px 28px rgba(0,0,0,0.18)' }}>
+          <div className="font-extrabold text-base sm:text-xl text-slate-900 mb-1">CONTACT US</div>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ceylon.roam144@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-900 underline text-sm sm:text-base break-words"
+          >
+            ceylon.roam144@gmail.com
+          </a>
         </div>
       </div>
       </div>

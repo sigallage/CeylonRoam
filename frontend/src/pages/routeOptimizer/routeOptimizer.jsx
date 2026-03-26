@@ -24,6 +24,12 @@ const destinationData = destinationsRaw.map(dest => ({
 }))
 
 const SRI_LANKA_CENTER = { lat: 7.8731, lng: 80.7718 }
+const SRI_LANKA_BOUNDS = {
+	north: 10.05,
+	south: 5.75,
+	east: 82.20,
+	west: 79.45,
+}
 
 const ROUTE_OPTIMIZER_GENERATED_ITIN_KEY = 'ceylonroam:itineraryGenerator:itinerary:v1'
 const ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY = 'ceylonroam:itineraryGenerator:itineraryHistory:v1'
@@ -217,6 +223,7 @@ export default function RouteOptimizer() {
 	const [savedItineraries, setSavedItineraries] = useState([])
 	const [savedLoading, setSavedLoading] = useState(false)
 	const [savedError, setSavedError] = useState('')
+	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
 	const mapRef = useRef(null)
 	const rightMapSectionRef = useRef(null)
@@ -848,9 +855,25 @@ export default function RouteOptimizer() {
 			boxShadow: 'inset 0 0 0 1px rgba(250,204,21,0.1)'
 		}}>
 			{/* LEFT SIDEBAR */}
-			<div className="w-[350px] bg-gradient-to-b from-slate-800 to-slate-950 border-r border-slate-700/20 overflow-y-auto p-5 flex flex-col gap-5" style={{
-				borderRight: '1px solid rgba(250,204,21,0.2)'
-			}}>
+			{isSidebarOpen && (
+				<div className="w-[350px] bg-gradient-to-b from-slate-800 to-slate-950 border-r border-slate-700/20 overflow-y-auto p-5 flex flex-col gap-5" style={{
+					borderRight: '1px solid rgba(250,204,21,0.2)'
+				}}>
+					<div className="flex items-center justify-start">
+						<button
+							type="button"
+							onClick={() => setIsSidebarOpen(false)}
+							title="Close panel"
+							className="w-9 h-9 rounded-full flex items-center justify-center text-xl leading-none transition-all"
+							style={{
+								backgroundColor: 'rgba(250,204,21,0.10)',
+								border: '1px solid rgba(250,204,21,0.25)',
+								color: '#facc15',
+							}}
+						>
+							×
+						</button>
+					</div>
 				{error && <div className="bg-red-950/15 border border-red-700/30 text-red-300 px-3 py-2 rounded text-sm mb-2">{error}</div>}
 				{locationError && <div className="bg-red-950/15 border border-red-700/30 text-red-300 px-3 py-2 rounded text-sm mb-2">{locationError}</div>}
 
@@ -1090,7 +1113,8 @@ export default function RouteOptimizer() {
 					More tips
 				</button>
 			</div>
-			</div>
+				</div>
+			)}
 
 			{/* RIGHT MAP SECTION */}
 			<div ref={rightMapSectionRef} className="flex-1 relative bg-slate-800 flex flex-col">
@@ -1234,6 +1258,24 @@ export default function RouteOptimizer() {
 
 				{/* Map Container */}
 				<div className="flex-1 relative">
+					{!isSidebarOpen && (
+						<div className="absolute top-4 left-4 z-20">
+							<button
+								type="button"
+								onClick={() => setIsSidebarOpen(true)}
+								title="Open panel"
+								className="w-11 h-11 rounded-2xl flex items-center justify-center text-lg font-bold transition-all"
+								style={{
+									background: 'linear-gradient(to right, rgba(250,204,21,0.25), rgba(249,115,22,0.25))',
+									border: '1px solid rgba(250,204,21,0.35)',
+									color: '#facc15',
+									boxShadow: '0 0 12px rgba(0,0,0,0.35)',
+								}}
+							>
+								☰
+							</button>
+						</div>
+					)}
 					{googleMapsApiKey ? (
 						<RouteOptimizerMap
 							googleMapsApiKey={googleMapsApiKey}
@@ -1363,6 +1405,11 @@ function RouteOptimizerMap({
 				streetViewControl: false,
 				fullscreenControl: true,
 				backgroundColor: '#1e293b',
+				restriction: {
+					latLngBounds: SRI_LANKA_BOUNDS,
+					strictBounds: true,
+				},
+				minZoom: 7,
 			}}
 			onLoad={map => {
 				mapRef.current = map

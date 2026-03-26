@@ -7,7 +7,7 @@ const LayoutShell = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className={isDarkMode ? 'flex min-h-screen flex-col bg-[#0a0a0a] text-white' : 'flex min-h-screen flex-col bg-gray-100 text-gray-900'}>
+      <div className={`${isDarkMode ? 'flex min-h-screen flex-col bg-[#0a0a0a] text-white' : 'flex min-h-screen flex-col bg-gray-100 text-gray-900'} overflow-x-hidden`}>
       <Header />
       <main className="flex-grow">
         <Outlet />
