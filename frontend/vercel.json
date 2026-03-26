@@ -14,6 +14,42 @@
   ],
   "rewrites": [
     {
+      "source": "/api/signup",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/signup"
+    },
+    {
+      "source": "/api/login",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/login"
+    },
+    {
+      "source": "/api/profile",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/profile"
+    },
+    {
+      "source": "/api/forgot-password",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/forgot-password"
+    },
+    {
+      "source": "/api/verify-otp",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/verify-otp"
+    },
+    {
+      "source": "/api/reset-password",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/reset-password"
+    },
+    {
+      "source": "/api/reset-password/request",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/reset-password/request"
+    },
+    {
+      "source": "/api/contact-us",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/contact-us"
+    },
+    {
+      "source": "/api/debug/users",
+      "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:5001/api/debug/users"
+    },
+    {
       "source": "/api/optimize",
       "destination": "http://ceylonroam-alb-1374093111.us-east-1.elb.amazonaws.com:8002/optimize"
     },

@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 const User = require('../src/models/User');
 const ContactMessage = require('../src/models/ContactMessage');
 const createError = require('../utils/appError');
@@ -358,8 +359,19 @@ exports.submitContactMessage = async (req, res, next) => {
 exports.debugUsers = async (req, res, next) => {
     try {
         const users = await User.find({}, 'name email');
+
+        const dbName = mongoose.connection?.name || '';
+        const host = mongoose.connection?.host || '';
+        const userCollection = User.collection?.name || '';
         res.status(200).json({
             status: 'success',
+            db: {
+                name: dbName,
+                host,
+            },
+            collections: {
+                users: userCollection,
+            },
             totalUsers: users.length,
             users: users.map(u => ({ name: u.name, email: u.email })),
         });

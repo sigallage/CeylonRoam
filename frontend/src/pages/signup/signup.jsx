@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { postJson } from '../../utils/httpClient';
 import bgImage from '../../assets/2.jpg';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -86,30 +87,23 @@ function SignUp() {
     setIsLoading(true);
     
     try {
-      const response = await fetch(`${authBaseUrl}/api/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password
-        })
+      const resp = await postJson(`${authBaseUrl}/api/signup`, {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        // Success - redirect to login or dashboard
-        console.log('Signup successful:', data);
-        alert('Account created successfully! Please login.');
-        navigate('/login');
-      } else {
-        // Handle error response
-        setErrors({ submit: data.error || 'Signup failed. Please try again.' });
+      const data = resp.data;
+      if (!resp.ok) {
+        const message = typeof data === 'string'
+          ? data
+          : data?.message || data?.error || `Signup failed (HTTP ${resp.status})`;
+        setErrors({ submit: message });
+        return;
       }
+      console.log('Signup successful:', data);
+      alert('Account created successfully! Please login.');
+      navigate('/login');
     } catch (error) {
       console.error('Signup error:', error);
       setErrors({ submit: 'Network error. Please check your connection and try again.' });
@@ -117,7 +111,6 @@ function SignUp() {
       setIsLoading(false);
     }
   };
-
 
   const pageClass = isDarkMode ? 'min-h-screen w-full bg-black' : 'min-h-screen w-full bg-gray-100';
   const cardClass = isDarkMode

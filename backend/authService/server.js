@@ -11,6 +11,20 @@ const protectedRoutes = require('./src/routes/protected');
 
 const app = express();
 
+function describeMongoTarget(uri) {
+  try {
+    const url = new URL(uri);
+    const dbName = String(url.pathname || '').replace(/^\//, '');
+    return {
+      protocol: url.protocol,
+      host: url.host,
+      dbName,
+    };
+  } catch {
+    return { protocol: '', host: '', dbName: '' };
+  }
+}
+
 async function connectWithRetry(uri, { maxRetries = 10, initialDelayMs = 1000 } = {}) {
   let attempt = 0;
   // eslint-disable-next-line no-constant-condition
@@ -112,6 +126,13 @@ async function start() {
   if (!MONGODB_URI) {
     // Keep this explicit so it fails fast in dev.
     throw new Error('Missing MONGODB_URI in environment');
+  }
+
+  const mongoTarget = describeMongoTarget(MONGODB_URI);
+  if (mongoTarget.dbName) {
+    console.log(`MongoDB target: ${mongoTarget.host}/${mongoTarget.dbName}`);
+  } else {
+    console.warn('MongoDB target database name is missing from MONGODB_URI; MongoDB may default to "test".');
   }
 
   const jwtSecret = resolveJwtSecret();

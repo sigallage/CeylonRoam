@@ -1,79 +1,60 @@
 import { useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { postJson } from '../../utils/httpClient';
 import { useTheme } from '../../context/ThemeContext';
 
 function ForgotPassword() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
 
-	const { isDarkMode } = useTheme();
+  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
   const [step, setStep] = useState(1); // 1: OTP verification, 2: Password reset
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [resetToken, setResetToken] = useState('');
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const email = location?.state?.email || '';
+  const email = String(location?.state?.email || '').trim();
 
-  const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
+  const canVerifyOtp = useMemo(() => {
+    const trimmed = String(otp || '').trim();
+    return Boolean(email) && trimmed.length >= 4;
+  }, [email, otp]);
 
-  const passwordsMatch = useMemo(() => {
-    if (!newPassword || !confirmPassword) return true;
-    return newPassword === confirmPassword;
-  }, [newPassword, confirmPassword]);
-
-  const canVerifyOtp = otp.trim().length > 0;
-  const canSubmitPassword = newPassword.length > 0 && confirmPassword.length > 0 && passwordsMatch;
+  const canSubmitPassword = useMemo(() => {
+    return Boolean(email) && String(newPassword || '').length >= 6 && newPassword === confirmPassword;
+  }, [email, newPassword, confirmPassword]);
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     if (!canVerifyOtp) return;
-
     setMessage('');
-    if (!email) {
-      setMessage('Missing email. Please start from Reset Password.');
-      return;
-    }
-
     setIsLoading(true);
     try {
-      const response = await fetch(`${authBaseUrl}/api/verify-otp`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email, otp: otp.trim() }),
-      });
-
-      const contentType = response.headers.get('content-type') || '';
-      const payload = contentType.includes('application/json')
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
-        const msg = typeof payload === 'string'
+      const resp = await postJson(`${authBaseUrl}/api/verify-otp`, { email, otp: String(otp).trim() });
+      if (!resp.ok) {
+        const payload = resp.data;
+        const errorMessage = typeof payload === 'string'
           ? payload
-          : payload?.message || 'OTP verification failed. Please try again.';
-        setMessage(msg);
+          : payload?.message || payload?.error || `Invalid OTP (HTTP ${resp.status})`;
+        setMessage(errorMessage);
         return;
       }
 
+      const payload = resp.data;
       if (payload && typeof payload === 'object' && payload.resetToken) {
         setResetToken(String(payload.resetToken));
       }
-
       setMessage('OTP verified! Now set your new password.');
       setTimeout(() => {
         setMessage('');
         setStep(2);
-      }, 1000);
+      }, 900);
     } catch (err) {
       console.error('OTP verification error:', err);
       setMessage('Network error. Please check your connection and try again.');
@@ -85,41 +66,25 @@ function ForgotPassword() {
   const handleSubmitPassword = async (e) => {
     e.preventDefault();
     if (!canSubmitPassword) return;
-
     setMessage('');
-    if (!email) {
-      setMessage('Missing email. Please start from Reset Password.');
-      return;
-    }
-
     setIsLoading(true);
     try {
-      const response = await fetch(`${authBaseUrl}/api/reset-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email, newPassword, ...(resetToken ? { resetToken } : {}) }),
+      const resp = await postJson(`${authBaseUrl}/api/reset-password`, {
+        email,
+        newPassword,
+        ...(resetToken ? { resetToken } : {}),
       });
-
-      const contentType = response.headers.get('content-type') || '';
-      const payload = contentType.includes('application/json')
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
-        const msg = typeof payload === 'string'
+      if (!resp.ok) {
+        const payload = resp.data;
+        const errorMessage = typeof payload === 'string'
           ? payload
-          : payload?.message || 'Reset failed. Please try again.';
-        setMessage(msg);
+          : payload?.message || payload?.error || `Reset failed (HTTP ${resp.status})`;
+        setMessage(errorMessage);
         return;
       }
 
       setMessage('Password updated successfully! Redirecting to login...');
-      setTimeout(() => {
-        navigate('/login', { replace: true });
-      }, 1500);
+      setTimeout(() => navigate('/login', { replace: true }), 1200);
     } catch (err) {
       console.error('Reset password error:', err);
       setMessage('Network error. Please check your connection and try again.');
@@ -128,176 +93,121 @@ function ForgotPassword() {
     }
   };
 
+  if (!email) {
+    return (
+      <div className={isDarkMode ? 'min-h-screen bg-black/95 px-4 py-10 flex items-center justify-center' : 'min-h-screen bg-gray-100 px-4 py-10 flex items-center justify-center'}>
+        <div className={isDarkMode
+          ? 'w-full max-w-[480px] bg-[#1f1f1f] rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.45)] border border-yellow-500/40 px-8 py-10 sm:px-12 sm:py-12'
+          : 'w-full max-w-[480px] bg-white rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] border border-gray-200 px-8 py-10 sm:px-12 sm:py-12'}>
+          <div className="max-w-[380px] mx-auto text-center">
+            <h1 className={isDarkMode ? 'text-[28px] font-normal text-yellow-400' : 'text-[28px] font-normal text-gray-900'}>
+              Forgot Password
+            </h1>
+            <p className={isDarkMode ? 'mt-3 text-[15px] text-white/75' : 'mt-3 text-[15px] text-gray-700'}>
+              Missing email. Start from Reset Password.
+            </p>
+            <div className="mt-6 text-center">
+              <Link to="/reset-password" className={isDarkMode ? 'text-[15px] text-white hover:text-yellow-300 hover:underline' : 'text-[15px] text-gray-900 hover:text-amber-700 hover:underline'}>
+                Go to Reset Password
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={isDarkMode ? 'min-h-screen bg-black/95 px-4 py-10 flex items-center justify-center' : 'min-h-screen bg-gray-100 px-4 py-10 flex items-center justify-center'}>
       <div className={isDarkMode
         ? 'w-full max-w-[480px] bg-[#1f1f1f] rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.45)] border border-yellow-500/40 px-8 py-10 sm:px-12 sm:py-12'
         : 'w-full max-w-[480px] bg-white rounded-[24px] shadow-[0_30px_80px_rgba(0,0,0,0.12)] border border-gray-200 px-8 py-10 sm:px-12 sm:py-12'}>
         <div className="max-w-[380px] mx-auto text-center">
+          <h1 className={isDarkMode ? 'text-[28px] font-normal text-yellow-400' : 'text-[28px] font-normal text-gray-900'}>
+            {step === 1 ? 'Verify OTP' : 'Set New Password'}
+          </h1>
+          <p className={isDarkMode ? 'mt-3 text-[15px] text-white/75' : 'mt-3 text-[15px] text-gray-700'}>
+            {step === 1
+              ? `Enter the OTP sent to ${email}.`
+              : 'Choose a new password (min 6 characters).'}
+          </p>
 
           {step === 1 ? (
-            <>
-              <h1 className={isDarkMode ? 'text-[28px] font-normal text-yellow-400' : 'text-[28px] font-normal text-gray-900'}>Verify OTP</h1>
-              <p className={isDarkMode ? 'mt-3 text-[15px] text-white/75' : 'mt-3 text-[15px] text-gray-700'}>
-                We sent a 6-digit code to your email. Please enter it below.
-              </p>
+            <form onSubmit={handleVerifyOtp} className="mt-8 text-left">
+              <label htmlFor="otp" className={isDarkMode ? 'block text-[14px] text-white/75 mb-2' : 'block text-[14px] text-gray-700 mb-2'}>
+                OTP
+              </label>
+              <input
+                id="otp"
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="Enter OTP"
+                className={isDarkMode
+                  ? 'w-full h-12 rounded-[8px] border border-white/20 bg-black/40 px-4 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30 focus:border-yellow-400/50'
+                  : 'w-full h-12 rounded-[8px] border border-gray-300 bg-white px-4 text-[16px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-amber-500'}
+                autoComplete="one-time-code"
+                required
+              />
 
-              <form onSubmit={handleVerifyOtp} className="mt-8 text-left">
-                <label htmlFor="otp" className={isDarkMode ? 'block text-[14px] text-white/75 mb-2' : 'block text-[14px] text-black/70 mb-2'}>
-                  OTP Code
-                </label>
-                <input
-                  id="otp"
-                  type="text"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  placeholder="Enter 6-digit code"
-                  maxLength={6}
-                  className={isDarkMode
-                    ? 'w-full h-12 rounded-[8px] border border-white/20 bg-black/40 px-4 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30 focus:border-yellow-400/50'
-                    : 'w-full h-12 rounded-[8px] border border-black/20 bg-white px-4 text-[16px] text-gray-900 placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30'}
-                  autoComplete="one-time-code"
-                  required
-                />
-
-                <button
-                  type="submit"
-                  disabled={!canVerifyOtp || isLoading}
-                  className={isDarkMode
-                    ? 'mt-4 h-12 w-full rounded-[10px] bg-yellow-500 text-black text-[16px] font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-yellow-400 transition-colors'
-                    : 'mt-4 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/90 transition-colors'}
-                >
-                  {isLoading ? 'Verifying…' : 'Verify OTP'}
-                </button>
-              </form>
-            </>
+              <button
+                type="submit"
+                disabled={isLoading || !canVerifyOtp}
+                className="mt-4 h-12 w-full rounded-[10px] bg-yellow-500 text-black text-[16px] font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-yellow-400 transition-colors"
+              >
+                {isLoading ? 'Verifying…' : 'Verify OTP'}
+              </button>
+            </form>
           ) : (
-            <>
-              <h1 className={isDarkMode ? 'text-[28px] font-normal text-yellow-400' : 'text-[28px] font-normal text-gray-900'}>Change Your Password</h1>
-              <p className={isDarkMode ? 'mt-3 text-[15px] text-white/75' : 'mt-3 text-[15px] text-gray-700'}>
-                Enter a new password below to change your password.
-              </p>
+            <form onSubmit={handleSubmitPassword} className="mt-8 text-left">
+              <label htmlFor="newPassword" className={isDarkMode ? 'block text-[14px] text-white/75 mb-2' : 'block text-[14px] text-gray-700 mb-2'}>
+                New Password
+              </label>
+              <input
+                id="newPassword"
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="At least 6 characters"
+                className={isDarkMode
+                  ? 'w-full h-12 rounded-[8px] border border-white/20 bg-black/40 px-4 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30 focus:border-yellow-400/50'
+                  : 'w-full h-12 rounded-[8px] border border-gray-300 bg-white px-4 text-[16px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-amber-500'}
+                required
+              />
 
-              <form onSubmit={handleSubmitPassword} className="mt-8 flex flex-col gap-4 text-left">
-                <div>
-                  <label htmlFor="newPassword" className="sr-only">
-                    New password
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="newPassword"
-                      type={showNewPassword ? 'text' : 'password'}
-                      value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
-                      placeholder="New password*"
-                      className={isDarkMode
-                        ? 'w-full h-12 rounded-[8px] border border-white/20 bg-black/40 px-4 pr-12 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30 focus:border-yellow-400/50'
-                        : 'w-full h-12 rounded-[8px] border border-black/20 bg-white px-4 pr-12 text-[16px] text-gray-900 placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30'}
-                      autoComplete="new-password"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowNewPassword((v) => !v)}
-                      className={isDarkMode
-                        ? 'absolute right-3 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white'
-                        : 'absolute right-3 top-1/2 -translate-y-1/2 p-2 text-black/60 hover:text-black'}
-                      aria-label={showNewPassword ? 'Hide password' : 'Show password'}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                        />
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="3"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+              <label htmlFor="confirmPassword" className={isDarkMode ? 'block text-[14px] text-white/75 mb-2 mt-4' : 'block text-[14px] text-gray-700 mb-2 mt-4'}>
+                Confirm Password
+              </label>
+              <input
+                id="confirmPassword"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Re-enter your password"
+                className={isDarkMode
+                  ? 'w-full h-12 rounded-[8px] border border-white/20 bg-black/40 px-4 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30 focus:border-yellow-400/50'
+                  : 'w-full h-12 rounded-[8px] border border-gray-300 bg-white px-4 text-[16px] text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-amber-500'}
+                required
+              />
 
-                <div>
-                  <label htmlFor="confirmPassword" className="sr-only">
-                    Re-enter new password
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="confirmPassword"
-                      type={showConfirmPassword ? 'text' : 'password'}
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      placeholder="Re-enter new password*"
-                      className={isDarkMode
-                        ? 'w-full h-12 rounded-[8px] border bg-black/40 px-4 pr-12 text-[16px] text-white placeholder:text-white/45 focus:outline-none focus:ring-2 focus:ring-yellow-400/30'
-                        : 'w-full h-12 rounded-[8px] border bg-white px-4 pr-12 text-[16px] text-gray-900 placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20'}
-                      style={{
-                        borderColor: passwordsMatch
-                          ? (isDarkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)')
-                          : (isDarkMode ? 'rgba(250,204,21,0.7)' : 'rgba(0,0,0,0.45)'),
-                      }}
-                      autoComplete="new-password"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowConfirmPassword((v) => !v)}
-                      className={isDarkMode
-                        ? 'absolute right-3 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white'
-                        : 'absolute right-3 top-1/2 -translate-y-1/2 p-2 text-black/60 hover:text-black'}
-                      aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M1.5 12s4-7.5 10.5-7.5S22.5 12 22.5 12s-4 7.5-10.5 7.5S1.5 12 1.5 12z"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                        />
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="3"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.6"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                  {!passwordsMatch && (
-                    <p className={isDarkMode ? 'mt-2 text-[13px] text-white/75' : 'mt-2 text-[13px] text-black/70'}>
-                      Passwords do not match.
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={!canSubmitPassword || isLoading}
-                  className={isDarkMode
-                    ? 'mt-3 h-12 w-full rounded-[10px] bg-yellow-500 text-black text-[16px] font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-yellow-400 transition-colors'
-                    : 'mt-3 h-12 w-full rounded-[10px] bg-black text-white text-[16px] font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/90 transition-colors'}
-                >
-                  {isLoading ? 'Resetting…' : 'Reset password'}
-                </button>
-              </form>
-            </>
+              <button
+                type="submit"
+                disabled={isLoading || !canSubmitPassword}
+                className="mt-4 h-12 w-full rounded-[10px] bg-yellow-500 text-black text-[16px] font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-yellow-400 transition-colors"
+              >
+                {isLoading ? 'Updating…' : 'Update Password'}
+              </button>
+            </form>
           )}
 
-          {message ? (
-            <div className={isDarkMode ? 'mt-5 text-center text-[14px] text-white/75' : 'mt-5 text-center text-[14px] text-black/70'}>{message}</div>
-          ) : null}
+          {message && (
+            <div className={isDarkMode ? 'mt-5 text-center text-[14px] text-white/75' : 'mt-5 text-center text-[14px] text-gray-700'}>
+              {message}
+            </div>
+          )}
 
           <div className="mt-6 text-center">
-            <Link to="/login" className={isDarkMode ? 'text-[15px] text-white hover:text-yellow-300 hover:underline' : 'text-[15px] text-black/70 hover:underline'}>
+            <Link to="/login" className={isDarkMode ? 'text-[15px] text-white hover:text-yellow-300 hover:underline' : 'text-[15px] text-gray-900 hover:text-amber-700 hover:underline'}>
               Back to Login
             </Link>
           </div>
