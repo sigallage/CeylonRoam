@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { postJson } from '../../utils/httpClient';
 import { useTheme } from '../../context/ThemeContext';
 
 const isValidEmail = (value) => {
@@ -31,24 +32,13 @@ function ResetPassword() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${authBaseUrl}/api/forgot-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email }),
-      });
+      const resp = await postJson(`${authBaseUrl}/api/forgot-password`, { email });
+      const payload = resp.data;
 
-      const contentType = response.headers.get('content-type') || '';
-      const payload = contentType.includes('application/json')
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
+      if (!resp.ok) {
         const msg = typeof payload === 'string'
           ? payload
-          : payload?.message || 'Request failed. Please try again.';
+          : payload?.message || payload?.error || `Request failed (HTTP ${resp.status})`;
         setMessage(msg);
         return;
       }

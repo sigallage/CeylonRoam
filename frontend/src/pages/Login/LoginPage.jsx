@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { postJson } from '../../utils/httpClient';
 import bgImage from '../../assets/5.jpg';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -22,30 +23,19 @@ function LoginPage() {
     setError('');
     setIsLoading(true);
     try {
-      const response = await fetch(`${authBaseUrl}/api/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const url = `${authBaseUrl}/api/login`;
+      const resp = await postJson(url, { email, password });
 
-      const contentType = response.headers.get('content-type') || '';
-      const payload = contentType.includes('application/json')
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
+      if (!resp.ok) {
+        const payload = resp.data;
         const message = typeof payload === 'string'
           ? payload
-          : payload?.error || 'Login failed. Please try again.';
+          : payload?.message || payload?.error || `Login failed (HTTP ${resp.status})`;
         setError(message);
         return;
       }
+
+      const payload = resp.data;
 
       try {
         window.localStorage.setItem('ceylonroam_user', JSON.stringify(payload));
@@ -56,7 +46,8 @@ function LoginPage() {
       navigate('/');
     } catch (err) {
       console.error('Login error:', err);
-      setError('Network error. Please check your connection and try again.');
+      const detail = String(err?.message || err || '').slice(0, 160);
+      setError(`Network error while contacting ${authBaseUrl}. ${detail}`.trim());
     } finally {
       setIsLoading(false);
     }

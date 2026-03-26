@@ -24,6 +24,17 @@ function isNativePlatform() {
   }
 }
 
+export function isNativeApp() {
+  return isNativePlatform()
+}
+
+export function getDefaultFetchCredentials() {
+  // In an installed APK the origin is typically `capacitor://localhost`.
+  // Using `credentials: 'include'` in cross-origin requests can trigger CORS
+  // failures that surface as a generic "Network error" in fetch.
+  return isNativePlatform() ? 'omit' : 'include'
+}
+
 function getPlatform() {
   try {
     return String(Capacitor.getPlatform?.() || 'web')

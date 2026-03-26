@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuthBaseUrl } from '../../config/backendUrls';
+import { postJson } from '../../utils/httpClient';
 import bgImage from '../../assets/5.jpg';
 
 function SignUpPage() {
@@ -20,32 +21,23 @@ function SignUpPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${authBaseUrl}/api/signup`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          name: name.trim() || undefined,
-          username: username.trim() || undefined,
-          email,
-          password,
-        }),
+      const resp = await postJson(`${authBaseUrl}/api/signup`, {
+        name: name.trim() || undefined,
+        username: username.trim() || undefined,
+        email,
+        password,
       });
 
-      const contentType = response.headers.get('content-type') || '';
-      const payload = contentType.includes('application/json')
-        ? await response.json()
-        : await response.text();
-
-      if (!response.ok) {
+      if (!resp.ok) {
+        const payload = resp.data;
         const message = typeof payload === 'string'
           ? payload
-          : payload?.error || 'Signup failed. Please try again.';
+          : payload?.message || payload?.error || `Signup failed (HTTP ${resp.status})`;
         setError(message);
         return;
       }
+
+      const payload = resp.data;
 
       // Save user data to localStorage for auto-login
       try {
