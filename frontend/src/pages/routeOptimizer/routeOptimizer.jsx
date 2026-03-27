@@ -35,6 +35,7 @@ const SRI_LANKA_BOUNDS = {
 
 const ROUTE_OPTIMIZER_GENERATED_ITIN_KEY = 'ceylonroam:itineraryGenerator:itinerary:v1'
 const ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY = 'ceylonroam:itineraryGenerator:itineraryHistory:v1'
+const ROUTE_OPTIMIZER_SIDEBAR_OPEN_KEY = 'ceylonroam:routeOptimizer:sidebarOpen:v1'
 
 // Eco-travel tips
 const ECO_TIPS = [
@@ -232,28 +233,42 @@ export default function RouteOptimizer() {
 	const [ecoTipIndex, setEcoTipIndex] = useState(0)
 
 	// If the itinerary generator produced route-optimizer stops, load the latest set
-	// so the user sees the generated route immediately.
+	// On reopen, start fresh: keep destinations visible but clear any previously
+	// generated/current route state that may be persisted in localStorage.
 	useEffect(() => {
 		try {
-			const rawLatest = localStorage.getItem(ROUTE_OPTIMIZER_GENERATED_ITIN_KEY)
-			if (!rawLatest) return
-			const parsed = JSON.parse(rawLatest)
-			if (Array.isArray(parsed) && parsed.length > 0) {
-				setManualItinerary(parsed)
-				setVisitedIds([])
-				setResult(null)
-				setRoutePreviewActive(false)
-			}
+			window.localStorage.removeItem(ROUTE_OPTIMIZER_GENERATED_ITIN_KEY)
+			window.localStorage.removeItem(ROUTE_OPTIMIZER_GENERATED_ITIN_HISTORY_KEY)
 		} catch {
 			// ignore
 		}
+		setManualItinerary([])
+		setVisitedIds([])
+		setResult(null)
+		setRoutePreviewActive(false)
 	}, [])
 	const [currentStepIndex, setCurrentStepIndex] = useState(0)
 	const [showSavedItineraries, setShowSavedItineraries] = useState(false)
 	const [savedItineraries, setSavedItineraries] = useState([])
 	const [savedLoading, setSavedLoading] = useState(false)
 	const [savedError, setSavedError] = useState('')
-	const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+	const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
+		try {
+			const raw = window.localStorage.getItem(ROUTE_OPTIMIZER_SIDEBAR_OPEN_KEY)
+			if (raw == null) return true
+			return raw === 'true'
+		} catch {
+			return true
+		}
+	})
+
+	useEffect(() => {
+		try {
+			window.localStorage.setItem(ROUTE_OPTIMIZER_SIDEBAR_OPEN_KEY, String(Boolean(isSidebarOpen)))
+		} catch {
+			// ignore
+		}
+	}, [isSidebarOpen])
 
 	const mapRef = useRef(null)
 	const rightMapSectionRef = useRef(null)
@@ -495,11 +510,29 @@ export default function RouteOptimizer() {
 
 	// Ensure we never duplicate the synthetic start marker.
 	// `manualItinerary` can temporarily contain it after optimization responses.
-	const remainingItinerary = manualItinerary.filter(d => d?.id !== 'start-user-location' && !visitedSet.has(d.id))
+	const remainingItinerary = manualItinerary.filter(d => d?.id !== 'start-user-location')
 
-	const activeItinerary = startPlace && remainingItinerary.length > 0
-		? [startPlace, ...remainingItinerary]
-		: remainingItinerary
+	// Route path should exclude visited stops (so navigation/preview auto-updates),
+	// but the list UI can still show them with a tick.
+	const routeItineraryStops = remainingItinerary.filter(d => !visitedSet.has(d.id))
+
+	const activeItinerary = startPlace && routeItineraryStops.length > 0
+		? [startPlace, ...routeItineraryStops]
+		: routeItineraryStops
+
+	function toggleVisited(id) {
+		if (!id || id === 'start-user-location') return
+		setVisitedIds(prev => {
+			const next = Array.isArray(prev) ? [...prev] : []
+			const idx = next.indexOf(id)
+			if (idx >= 0) {
+				next.splice(idx, 1)
+				return next
+			}
+			next.push(id)
+			return next
+		})
+	}
 
 	const pathPoints = activeItinerary.map(d => ({
 		lat: Number(d.location.lat),
@@ -520,6 +553,26 @@ export default function RouteOptimizer() {
 		setManualItinerary([...manualItinerary, d])
 		setResult(null)
 		setRoutePreviewActive(false)
+	}
+
+	function previewDestinationOnMap(dest) {
+		if (!dest?.id) return
+		setSelectedMarkerId(dest.id)
+		setFollowUser(false)
+		try {
+			const loc = dest?.location
+			if (!loc) return
+			const pos = { lat: Number(loc.lat), lng: Number(loc.lng) }
+			if (!Number.isFinite(pos.lat) || !Number.isFinite(pos.lng)) return
+			if (mapRef.current && typeof mapRef.current.panTo === 'function') {
+				mapRef.current.panTo(pos)
+				if (typeof mapRef.current.getZoom === 'function' && typeof mapRef.current.setZoom === 'function') {
+					if (mapRef.current.getZoom() < 11) mapRef.current.setZoom(11)
+				}
+			}
+		} catch {
+			// ignore
+		}
 	}
 
 	function addCustom() {
@@ -545,8 +598,21 @@ export default function RouteOptimizer() {
 
 	function removeManual(id) {
 		setManualItinerary(manualItinerary.filter(d => d.id !== id))
+		setVisitedIds(prev => (Array.isArray(prev) ? prev.filter(x => x !== id) : []))
 		setResult(null)
 		setRoutePreviewActive(false)
+	}
+
+	function clearAllRoute() {
+		setManualItinerary([])
+		setVisitedIds([])
+		setSelectedMarkerId(null)
+		setResult(null)
+		setRoutePreviewActive(false)
+		setDirections(null)
+		setDirectionsTotals({ durationS: null, distanceM: null, originalDistanceKm: null })
+		setCurrentStepIndex(0)
+		setNavActive(false)
 	}
 
 	async function optimize() {
@@ -610,6 +676,7 @@ export default function RouteOptimizer() {
 			setError('Missing Google Maps API key. Add VITE_GOOGLE_MAPS_API_KEY to frontend/.env')
 			return
 		}
+		setFollowUser(true)
 		setShowTrafficLayer(true)
 		setRoutePreviewActive(true)
 		setNavActive(true)
@@ -986,7 +1053,13 @@ export default function RouteOptimizer() {
 					<div className="bg-slate-800/60 border border-slate-700/20 rounded-lg p-3 max-h-48 overflow-y-auto">
 						{destinationData.map(d => (
 							<div key={d.id} className="flex items-center justify-between py-2 px-2 border-b border-slate-700/10 last:border-b-0 text-sm">
-								<span className="flex-1 text-slate-200 hover:text-yellow-400 cursor-pointer transition-colors">{d.name}</span>
+									<span
+										className="flex-1 text-slate-200 hover:text-yellow-400 cursor-pointer transition-colors"
+										onClick={() => previewDestinationOnMap(d)}
+										title={d.description ? stripHtml(d.description).slice(0, 140) : 'View on map'}
+									>
+										{d.name}
+									</span>
 								<button className="px-2 py-1 rounded text-xs transition-all flex items-center gap-1" onClick={() => addFromCatalog(d.id)} title="Add to route" style={{border: '1px solid #f97316', color: '#f97316', background: 'transparent'}}>
 									<FiPlus size={14} /> Add
 								</button>
@@ -1039,15 +1112,40 @@ export default function RouteOptimizer() {
 
 				{/* Current Route */}
 				<div>
-					<div className="flex items-center gap-2 mb-3 text-xs font-semibold uppercase tracking-widest opacity-90" style={{color: '#facc15', backgroundColor: 'rgba(250,204,21,0.1)', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #facc15'}}>Current Route</div>
+					<div className="flex items-center justify-between gap-2 mb-3">
+						<div
+							className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest opacity-90"
+							style={{ color: '#facc15', backgroundColor: 'rgba(250,204,21,0.1)', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #facc15' }}
+						>
+							Current Route
+						</div>
+						<button
+							type="button"
+							onClick={clearAllRoute}
+							disabled={manualItinerary.length === 0 && visitedIds.length === 0}
+							title="Clear current route"
+							className="px-3 py-2 rounded text-xs font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+							style={{ border: '1px solid rgba(250,204,21,0.35)', color: '#facc15', background: 'transparent' }}
+						>
+							<BiTrash /> Clear All
+						</button>
+					</div>
 					<div className="bg-slate-800/60 border border-slate-700/20 rounded-lg p-3">
-						{activeItinerary.length > 0 ? (
-							activeItinerary.map((stop, idx) => (
-							<div key={stop.id} className="flex items-start gap-3 p-2 mb-2 bg-slate-700/40 last:mb-0 rounded" style={{borderLeft: '4px solid #facc15'}}>
+						{(startPlace ? [startPlace, ...remainingItinerary] : remainingItinerary).length > 0 ? (
+							(startPlace ? [startPlace, ...remainingItinerary] : remainingItinerary).map((stop, idx) => (
+							<div
+								key={stop.id}
+								className="flex items-start gap-3 p-2 mb-2 bg-slate-700/40 last:mb-0 rounded"
+								style={{ borderLeft: visitedSet.has(stop.id) ? '4px solid rgba(148,163,184,0.8)' : '4px solid #facc15' }}
+							>
 								<div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style={{backgroundColor: '#facc15', color: '#000'}}>{idx}</div>
 									<div className="flex-1">
 										<div
-											className="text-sm font-semibold text-slate-200 cursor-pointer hover:text-yellow-400 transition-colors"
+										className={
+											visitedSet.has(stop.id)
+												? 'text-sm font-semibold text-slate-400 cursor-pointer hover:text-yellow-400 transition-colors line-through'
+												: 'text-sm font-semibold text-slate-200 cursor-pointer hover:text-yellow-400 transition-colors'
+										}
 											onClick={() => {
 												setSelectedMarkerId(stop.id)
 												try {
@@ -1065,6 +1163,17 @@ export default function RouteOptimizer() {
 										<div className="text-xs text-slate-500">
 											{new Date().getHours().toString().padStart(2, '0')}:{new Date().getMinutes().toString().padStart(2, '0')}
 										</div>
+									{stop.id !== 'start-user-location' && (
+										<label className="mt-2 flex items-center gap-2 text-xs text-slate-300 select-none">
+											<input
+												type="checkbox"
+												checked={visitedSet.has(stop.id)}
+												onChange={() => toggleVisited(stop.id)}
+												className="accent-yellow-400"
+											/>
+											Already visited
+										</label>
+									)}
 									</div>
 									{stop.id !== 'start-user-location' && (
 										<button className="text-slate-400 hover:text-red-400 transition-colors" onClick={() => removeManual(stop.id)} title="Remove">
@@ -1380,15 +1489,22 @@ function RouteOptimizerMap({
 	const itineraryIdSet = useMemo(() => new Set((activeItinerary || []).map(s => s?.id).filter(Boolean)), [activeItinerary])
 	const hasChosenStops = itineraryIdSet.size > (itineraryIdSet.has('start-user-location') ? 1 : 0)
 	const showAllDestinationPins = !navActive && !hasChosenStops
+	const selectedCatalogDestination = useMemo(() => {
+		if (!selectedMarkerId || !Array.isArray(allDestinations)) return null
+		return allDestinations.find(d => d?.id === selectedMarkerId) || null
+	}, [allDestinations, selectedMarkerId])
 	const allPinsIcon = window.google?.maps?.SymbolPath
 		? {
-			path: window.google.maps.SymbolPath.CIRCLE,
-			scale: 5,
+			// Custom "map pin" (teardrop) shape.
+			// Tip is at (0,0); body extends upward into negative Y.
+			path: 'M0 0 C-8 -12 -14 -22 -14 -30 C-14 -40 -6 -48 0 -48 C6 -48 14 -40 14 -30 C14 -22 8 -12 0 0 Z',
+			scale: 0.65,
 			fillColor: '#facc15',
-			fillOpacity: 0.9,
+			fillOpacity: 1,
 			strokeColor: '#0f172a',
-			strokeOpacity: 0.8,
-			strokeWeight: 1,
+			strokeOpacity: 0.95,
+			strokeWeight: 2,
+			anchor: new window.google.maps.Point(0, 0),
 		}
 		: null
 	const userNavIcon = navActive && window.google?.maps?.SymbolPath
@@ -1433,7 +1549,7 @@ function RouteOptimizerMap({
 		<GoogleMap
 			mapContainerClassName="w-full h-full"
 			center={mapCenter}
-			zoom={8}
+			zoom={7}
 			options={{
 				mapTypeControl: false,
 				streetViewControl: false,
@@ -1466,6 +1582,7 @@ function RouteOptimizerMap({
 						key={`dest-${d.id}`}
 						position={pos}
 						opacity={0.9}
+						zIndex={10}
 						icon={allPinsIcon || undefined}
 						onClick={() => setSelectedMarkerId(d.id)}
 					>
@@ -1485,6 +1602,36 @@ function RouteOptimizerMap({
 					</MarkerF>
 				)
 			})}
+
+			{/* Selected destination pin (so clicking from the catalog always shows its description) */}
+			{!showAllDestinationPins && selectedCatalogDestination && !itineraryIdSet.has(selectedCatalogDestination.id) && (() => {
+				const d = selectedCatalogDestination
+				if (!d?.location) return null
+				const pos = { lat: Number(d.location.lat), lng: Number(d.location.lng) }
+				if (!isValidLatLngLiteral(pos)) return null
+				return (
+					<MarkerF
+						key={`selected-dest-${d.id}`}
+						position={pos}
+						opacity={0.95}
+						zIndex={11}
+						icon={allPinsIcon || undefined}
+						onClick={() => setSelectedMarkerId(d.id)}
+					>
+						<InfoWindowF position={pos} onCloseClick={() => setSelectedMarkerId(null)}>
+							<div className="text-slate-900 max-w-[220px]">
+								<div className="font-bold">{d.name || 'Destination'}</div>
+								{d.description ? (
+									<div className="text-xs mt-1 text-slate-700">{stripHtml(d.description)}</div>
+								) : null}
+								<div className="text-[11px] mt-2 text-slate-600">
+									{pos.lat.toFixed(4)}, {pos.lng.toFixed(4)}
+								</div>
+							</div>
+						</InfoWindowF>
+					</MarkerF>
+				)
+			})()}
 
 			{userAccuracyM && userPos && (
 				<CircleF

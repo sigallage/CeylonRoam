@@ -59,7 +59,9 @@ describe("RouteOptimizer", () => {
     expect(screen.getByText("Current Route")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Optimize" })).toBeDisabled();
     expect(screen.getByRole("button", { name: "Start Route" })).toBeDisabled();
-    expect(screen.getByText("Add destinations to start planning")).toBeInTheDocument();
+
+    // When geolocation is available, the synthetic start marker is shown in the route list.
+    expect(screen.getByText("Your location")).toBeInTheDocument();
   });
 
   it("adds a destination in manual mode", () => {
@@ -68,7 +70,6 @@ describe("RouteOptimizer", () => {
     const addButtons = screen.getAllByRole("button", { name: "Add" });
     fireEvent.click(addButtons[0]);
 
-    expect(screen.queryByText("Add destinations to start planning")).not.toBeInTheDocument();
     expect(screen.getByText("Your location")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Optimize" })).not.toBeDisabled();
     expect(screen.getByRole("button", { name: "Start Route" })).not.toBeDisabled();
