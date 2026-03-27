@@ -37,12 +37,29 @@ const Main = () => {
 
   const authBaseUrl = useMemo(() => getAuthBaseUrl(), []);
 
+  const readJsonBody = async (response) => {
+    const text = await response.text();
+    if (!text) return { json: null, text: '' };
+    try {
+      return { json: JSON.parse(text), text };
+    } catch {
+      return { json: null, text };
+    }
+  };
+
   const handleSaveItinerary = async () => {
     setIsSaving(true);
     setSaveError('');
     setSaveSuccess(false);
 
     try {
+      if (!aiResponse) {
+        throw new Error('No itinerary data to save');
+      }
+
+      const { summary, itinerary, generated_at, metadata } = aiResponse;
+      const dateLabel = metadata?.date_range?.label ?? 'Dates not specified';
+
       // Get user data and token from localStorage
       const storedData = localStorage.getItem('ceylonroam_user');
       if (!storedData) {
@@ -51,13 +68,26 @@ const Main = () => {
         return;
       }
 
-      const parsed = JSON.parse(storedData);
-      const token = parsed.token;
+      let token = null;
+      try {
+        const parsed = JSON.parse(storedData);
+        token = parsed?.token || null;
+      } catch {
+        token = null;
+      }
+
+      if (!token) {
+        setSaveError('Please log in again to save itineraries');
+        setIsSaving(false);
+        return;
+      }
 
       // Calculate number of days
       const startDate = new Date(metadata?.date_range?.start);
       const endDate = new Date(metadata?.date_range?.end);
-      const numberOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+      const numberOfDays = Number.isFinite(startDate.getTime()) && Number.isFinite(endDate.getTime())
+        ? Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1
+        : 1;
 
       // Prepare itinerary data to save
       const itineraryPayload = {
@@ -86,10 +116,13 @@ const Main = () => {
         body: JSON.stringify(itineraryPayload)
       });
 
-      const result = await response.json();
+      const { json, text } = await readJsonBody(response);
 
       if (!response.ok) {
-        throw new Error(result.message || 'Failed to save itinerary');
+        const message = json?.message
+          || (text ? text.slice(0, 200) : '')
+          || 'Failed to save itinerary';
+        throw new Error(message);
       }
 
       setSaveSuccess(true);

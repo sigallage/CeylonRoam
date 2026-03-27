@@ -309,7 +309,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
         timeoutRef.current = window.setTimeout(() => { //sets a timeout to ensure minimum display time
           setShowMessage(false);
           setIsSubmitting(false);
-          navigate("/main", { state: { aiResponse: response.data } });
+          navigate("/main", { state: { aiResponse: response.data, derivedStops } });
           timeoutRef.current = null;
         }, remaining);
       })
