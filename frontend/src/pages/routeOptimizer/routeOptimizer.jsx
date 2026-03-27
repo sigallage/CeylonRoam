@@ -218,6 +218,24 @@ export default function RouteOptimizer() {
 	const [userSpeedKmh, setUserSpeedKmh] = useState(0)
 	const [userHeadingDeg, setUserHeadingDeg] = useState(null)
 	const [ecoTipIndex, setEcoTipIndex] = useState(0)
+
+	// If the itinerary generator produced route-optimizer stops, load the latest set
+	// so the user sees the generated route immediately.
+	useEffect(() => {
+		try {
+			const rawLatest = localStorage.getItem(ROUTE_OPTIMIZER_GENERATED_ITIN_KEY)
+			if (!rawLatest) return
+			const parsed = JSON.parse(rawLatest)
+			if (Array.isArray(parsed) && parsed.length > 0) {
+				setManualItinerary(parsed)
+				setVisitedIds([])
+				setResult(null)
+				setRoutePreviewActive(false)
+			}
+		} catch {
+			// ignore
+		}
+	}, [])
 	const [currentStepIndex, setCurrentStepIndex] = useState(0)
 	const [showSavedItineraries, setShowSavedItineraries] = useState(false)
 	const [savedItineraries, setSavedItineraries] = useState([])
@@ -730,14 +748,18 @@ export default function RouteOptimizer() {
 				}
 
 				const serverItems = Array.isArray(json?.itineraries) ? json.itineraries : []
-				const normalized = serverItems.map(item => ({
+				const normalized = serverItems.map(item => {
+					const derivedStops = buildRouteOptimizerStopsFromAiResponse(item?.itineraryData, destinationData)
+					return ({
 					id: item?._id || `srv-${item?.createdAt || Date.now()}`,
 					title: item?.title || 'Saved itinerary',
 					createdAt: item?.createdAt || null,
 					startDate: item?.startDate || null,
 					endDate: item?.endDate || null,
 					itineraryData: item?.itineraryData,
-				}))
+					stops: derivedStops,
+				})
+				})
 				setSavedItineraries(normalized)
 				return
 			}
