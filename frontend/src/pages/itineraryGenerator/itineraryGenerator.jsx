@@ -273,8 +273,9 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
         const elapsed = Date.now() - submissionStartedAt; //calculates elapsed time
         const remaining = Math.max(0, 5000 - elapsed);
 
+        let derivedStops;
         try {
-          const derivedStops = buildRouteOptimizerStopsFromAiResponse(response.data);
+          derivedStops = buildRouteOptimizerStopsFromAiResponse(response.data);
           window.localStorage.setItem(
             ROUTE_OPTIMIZER_GENERATED_ITIN_KEY,
             JSON.stringify(derivedStops)
