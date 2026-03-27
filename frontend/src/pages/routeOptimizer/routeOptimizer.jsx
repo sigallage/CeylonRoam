@@ -23,6 +23,8 @@ const destinationData = destinationsRaw.map(dest => ({
 	description: dest.description || '',
 }))
 
+const BUILD_STAMP = import.meta.env.VITE_BUILD_STAMP || 'dev'
+
 const SRI_LANKA_CENTER = { lat: 7.8731, lng: 80.7718 }
 const SRI_LANKA_BOUNDS = {
 	north: 10.05,
@@ -181,6 +183,16 @@ function buildRouteOptimizerStopsFromAiResponse(aiResponse, catalogStops) {
 }
 
 export default function RouteOptimizer() {
+	useEffect(() => {
+		// Helps verify Vercel is serving the latest bundle.
+		// Safe in prod: minimal log, no PII.
+		try {
+			console.info(`[CeylonRoam] RouteOptimizer build=${BUILD_STAMP}; catalogDestinations=${destinationData.length}`)
+		} catch {
+			// ignore
+		}
+	}, [])
+
 	let googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 	try {
 		if (Capacitor.isNativePlatform?.()) {

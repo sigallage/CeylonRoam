@@ -34,6 +34,9 @@ export default defineConfig({
   optimizeDeps: {
     entries: ['index.html'],
   },
+  define: {
+    'import.meta.env.VITE_BUILD_STAMP': JSON.stringify(process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA || process.env.BUILD_STAMP || ''),
+  },
   server: {
     port: 5173, // added from new code
     watch: {
