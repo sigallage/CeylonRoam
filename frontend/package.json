@@ -17,8 +17,8 @@
     "cap:run:android": "cap run android"
   },
   "dependencies": {
-    "@capacitor/android": "^8.0.2",
-    "@capacitor/core": "^8.0.2",
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/core": "^8.3.0",
     "@react-google-maps/api": "^2.20.7",
     "axios": "^1.13.5",
     "framer-motion": "^12.34.3",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
-    "@capacitor/cli": "^8.0.2",
+    "@capacitor/cli": "^8.3.0",
     "@eslint/js": "^9.39.1",
     "@jest/globals": "^30.3.0",
     "@tailwindcss/postcss": "^4.1.18",
