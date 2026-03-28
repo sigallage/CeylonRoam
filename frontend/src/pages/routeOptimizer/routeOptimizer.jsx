@@ -118,6 +118,118 @@ function stripHtml(html) {
 	}
 }
 
+const MATCH_STOPWORDS = new Set([
+	'the',
+	'of',
+	'and',
+	'to',
+	'a',
+	'an',
+	'in',
+	'on',
+	'at',
+	'for',
+	'with',
+	'from',
+	'by',
+	'near',
+	'around',
+	'sri',
+	'lanka',
+	'mr',
+	'ms',
+	'dr',
+	'jr',
+	'sr',
+])
+
+function normalizeMatchText(input) {
+	return String(input || '')
+		.normalize('NFKD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.replace(/[’‘]/g, "'")
+		.replace(/&/g, ' and ')
+		.toLowerCase()
+		.replace(/\bst\b/g, 'saint')
+		.replace(/\bmt\b/g, 'mount')
+		.replace(/[^a-z0-9]+/g, ' ')
+		.replace(/\s+/g, ' ')
+		.trim()
+}
+
+function meaningfulNameTokens(name) {
+	const normalized = normalizeMatchText(name)
+	if (!normalized) return []
+	return normalized
+		.split(' ')
+		.map(t => t.trim())
+		.filter(t => t.length >= 3)
+		.filter(t => !MATCH_STOPWORDS.has(t))
+}
+
+function buildTokenFrequency(catalogStops) {
+	const freq = new Map()
+	for (const stop of catalogStops || []) {
+		for (const token of meaningfulNameTokens(stop?.name)) {
+			freq.set(token, (freq.get(token) || 0) + 1)
+		}
+	}
+	return freq
+}
+
+function computeStopMatch(haystackNormalized, stop, tokenFreq) {
+	const stopName = String(stop?.name || '')
+	const normalizedName = normalizeMatchText(stopName)
+	if (!normalizedName) return null
+
+	const idxExact = haystackNormalized.indexOf(normalizedName)
+	if (idxExact >= 0) return { idx: idxExact, score: 100 }
+
+	const tokens = meaningfulNameTokens(stopName)
+	if (tokens.length === 0) return null
+
+	// Choose a "primary" token that is rare across the catalog to reduce false positives.
+	let primary = tokens[0]
+	let bestFreq = tokenFreq?.get(primary) ?? Number.POSITIVE_INFINITY
+	let bestLen = primary.length
+	for (const token of tokens) {
+		const f = tokenFreq?.get(token) ?? Number.POSITIVE_INFINITY
+		if (f < bestFreq || (f === bestFreq && token.length > bestLen)) {
+			primary = token
+			bestFreq = f
+			bestLen = token.length
+		}
+	}
+
+	const idxPrimary = haystackNormalized.indexOf(primary)
+	if (idxPrimary < 0) return null
+
+	if (tokens.length === 1) {
+		// Only allow single-token fallback if the token is unique and reasonably distinctive.
+		if ((tokenFreq?.get(primary) || 0) === 1 && primary.length >= 6) {
+			return { idx: idxPrimary, score: 60 }
+		}
+		return null
+	}
+
+	let extraHits = 0
+	let earliestOtherIdx = Number.POSITIVE_INFINITY
+	for (const token of tokens) {
+		if (token === primary) continue
+		const idx = haystackNormalized.indexOf(token)
+		if (idx >= 0) {
+			extraHits += 1
+			earliestOtherIdx = Math.min(earliestOtherIdx, idx)
+		}
+	}
+	if (extraHits <= 0) return null
+
+	return {
+		idx: Math.min(idxPrimary, earliestOtherIdx),
+		score: 50 + extraHits,
+	}
+}
+
 function trafficColorForLeg(leg) {
 	const base = leg?.duration?.value
 	const traffic = leg?.duration_in_traffic?.value
@@ -156,15 +268,17 @@ function formatShortDate(dateString) {
 function buildRouteOptimizerStopsFromAiResponse(aiResponse, catalogStops) {
 	const summary = typeof aiResponse?.summary === 'string' ? aiResponse.summary : ''
 	const itinerary = typeof aiResponse?.itinerary === 'string' ? aiResponse.itinerary : ''
-	const haystack = `${summary}\n${itinerary}`.toLowerCase()
+	const haystackNormalized = normalizeMatchText(`${summary}\n${itinerary}`)
+	const tokenFreq = buildTokenFrequency(catalogStops)
 
-	const matches = catalogStops
-		.map(stop => ({
-			idx: haystack.indexOf(String(stop.name || '').toLowerCase()),
-			stop,
-		}))
-		.filter(m => m.idx >= 0)
-		.sort((a, b) => a.idx - b.idx)
+	const matches = (catalogStops || [])
+		.map(stop => {
+			const m = computeStopMatch(haystackNormalized, stop, tokenFreq)
+			if (!m) return null
+			return { idx: m.idx, score: m.score, stop }
+		})
+		.filter(Boolean)
+		.sort((a, b) => (a.idx - b.idx) || (b.score - a.score))
 
 	const uniqueIds = new Set()
 	const stops = []
