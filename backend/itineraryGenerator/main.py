@@ -195,12 +195,10 @@ def _resolve_destinations_json_path() -> Path:
     ]
 
     # Repo layout fallback (only valid in the monorepo checkout, not inside the container image).
-    # In ECS the code lives at /app/main.py so `here.parents` has length 1 ("/") and
-    # indexing `parents[1]` would raise IndexError and crash /api/generate.
-    try:
-        candidates.append(here.parents[1] / "frontend" / "src" / "dataset" / "destinations.json")
-    except IndexError:
-        pass
+    # Walk up parent directories and look for the frontend dataset.
+    # This avoids fragile parent indexing (repo root depth can vary).
+    for parent in here.parents:
+        candidates.append(parent / "frontend" / "src" / "dataset" / "destinations.json")
 
     for candidate in candidates:
         if candidate.exists():
