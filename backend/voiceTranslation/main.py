@@ -14,7 +14,16 @@ import shutil
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Voice Translation API")
+
+from contextlib import asynccontextmanager
+
+# Lifespan event handler for FastAPI
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await load_models()
+    yield
+
+app = FastAPI(title="Voice Translation API", lifespan=lifespan)
 
 
 def _ffmpeg_available() -> bool:
@@ -116,32 +125,30 @@ class TextTranslationRequest(BaseModel):
     target_language: str
 
 
-@app.on_event("startup")
 async def load_models():
     """Load models on startup"""
     global whisper_pipe, translation_model, translation_tokenizer
-    
     try:
         _require_ffmpeg()
 
         logger.info("Loading Whisper model...")
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
-        
+
         # Model IDs are configurable to control memory/latency tradeoffs.
         # Default Whisper to a smaller model so it fits comfortably on CPU-only Fargate.
         model_id = os.getenv("WHISPER_MODEL_ID", "openai/whisper-small")
-        
+
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            model_id, 
-            torch_dtype=torch_dtype, 
-            low_cpu_mem_usage=True, 
+            model_id,
+            torch_dtype=torch_dtype,
+            low_cpu_mem_usage=True,
             use_safetensors=True
         )
         model.to(device)
-        
+
         processor = AutoProcessor.from_pretrained(model_id)
-        
+
         whisper_pipe = pipeline(
             "automatic-speech-recognition",
             model=model,
@@ -155,19 +162,19 @@ async def load_models():
             device=device,
         )
         logger.info("✓ Whisper model loaded successfully")
-        
+
         # Load translation model (NLLB-200)
         logger.info("Loading NLLB translation model...")
         translation_model_id = os.getenv(
             "TRANSLATION_MODEL_ID",
             "facebook/nllb-200-distilled-600M",
         )
-        
+
         translation_tokenizer = AutoTokenizer.from_pretrained(translation_model_id)
         translation_model = AutoModelForSeq2SeqLM.from_pretrained(translation_model_id)
         translation_model.to(device)
-        logger.info("✓ Translation model loaded successfully")
-        
+        logger.info(" Translation model loaded successfully")
+
     except Exception as e:
         logger.error(f"Error loading models: {e}")
         raise
