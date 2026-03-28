@@ -80,6 +80,16 @@ const Footer = () => {
 						>
 							Faq
 						</button>
+						<button
+							type="button"
+							className={`${linkBaseClass} hover:text-orange-400`}
+							style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
+							onClick={() => {
+								navigate('/privacy-policy', { state: { scrollTo: 'top' } });
+							}}
+						>
+							Privacy
+						</button>
 						{/* Contact link removed */}
 					</div>
 

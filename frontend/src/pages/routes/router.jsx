@@ -15,6 +15,7 @@ import ItineraryHistory from '../ItineraryHistory/ItineraryHistory.jsx';
 import AboutUs from '../about/aboutUs.jsx';
 import FAQ from '../faq/faq.jsx';
 import SplashScreen from '../splashScreen/SplashScreen.jsx';
+import PrivacyPolicy from '../privacyPolicy/privacyPolicy.jsx';
 
 function Router() {
 	return (
@@ -36,6 +37,7 @@ function Router() {
 				<Route path="/itinerary-history" element={<ItineraryHistory />} />
 				<Route path="/about-us" element={<AboutUs />} />
 				<Route path="/faq" element={<FAQ />} />
+				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 				<Route path="/splash" element={<SplashScreen />} />
 			</Route>
 		</Routes>
