@@ -234,11 +234,7 @@ function SignUp() {
                   />
                   <label htmlFor="terms" className={isDarkMode ? 'text-gray-300 text-[14px]' : 'text-gray-700 text-[14px]'}>
                     I agree to the{' '}
-                    <a href="#" className="text-[#f59e0b] hover:underline">
-                      Terms and Conditions
-                    </a>
-                    {' '}and{' '}
-                    <a href="#" className="text-[#f59e0b] hover:underline">
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] hover:underline">
                       Privacy Policy
                     </a>
                   </label>
