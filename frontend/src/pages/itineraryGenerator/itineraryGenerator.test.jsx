@@ -68,5 +68,5 @@ describe('ItineraryGenerator', () => {
     expect(submitBtn).toBeDisabled();
   });
 
-  // Add more tests for calendar, preferences, and error handling as needed
+  // This file is for the unit testing for itinerary generator feature.
 });

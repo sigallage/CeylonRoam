@@ -1,7 +1,11 @@
-﻿import { useState, useRef, useMemo } from 'react';
+﻿// React imports for state, refs, and memoization
+import { useState, useRef, useMemo } from 'react';
+// Import backend URL helper for API calls
 import { getVoiceTranslationBaseUrl } from '../../config/backendUrls';
+// Import theme context for dark/light mode support
 import { useTheme } from '../../context/ThemeContext';
 
+// These are actually the supported language options for recording and translation
 const LANGUAGE_OPTIONS = [
   { code: 'en', label: 'English' },
   { code: 'ta', label: 'Tamil' },
@@ -22,6 +26,7 @@ const LANGUAGE_OPTIONS = [
   { code: 'tr', label: 'Turkish' },
 ];
 
+// Helper to create an AudioContext, handling browser compatibility
 const createAudioContext = () => {
   const AudioContextImpl = window.AudioContext || window.webkitAudioContext;
   if (!AudioContextImpl) {
@@ -30,6 +35,7 @@ const createAudioContext = () => {
   return new AudioContextImpl();
 };
 
+// Converts an AudioBuffer to a WAV file ArrayBuffer
 const audioBufferToWav = (audioBuffer) => {
   const numChannels = audioBuffer.numberOfChannels;
   const sampleRate = audioBuffer.sampleRate;
@@ -84,6 +90,7 @@ const audioBufferToWav = (audioBuffer) => {
   return buffer;
 };
 
+// Converts a Blob (possibly not WAV) to a WAV File object
 const convertBlobToWavFile = async (blob, fileName) => {
   if (blob.type === 'audio/wav' || blob.type === 'audio/wave') {
     return new File([blob], fileName, { type: 'audio/wav' });
@@ -97,42 +104,60 @@ const convertBlobToWavFile = async (blob, fileName) => {
   return new File([wavBlob], fileName, { type: 'audio/wav' });
 };
 
+// Main VoiceTranslation component for recording, uploading, transcribing, and translating audio
 function VoiceTranslation() {
+
+  // Theme (dark/light mode)
   const { isDarkMode } = useTheme();
+  // State for recording status
   const [isRecording, setIsRecording] = useState(false);
+  // Holds the recorded or uploaded audio file
   const [audioFile, setAudioFile] = useState(null);
+  // Holds the transcribed text from audio
   const [transcription, setTranscription] = useState('');
+  // Holds the translated text result
   const [translationResult, setTranslationResult] = useState('');
+  // Loading states for UI feedback
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
   const [isPreparingAudio, setIsPreparingAudio] = useState(false);
+  // Selected languages
   const [recordingLanguage, setRecordingLanguage] = useState('');
   const [translationLanguage, setTranslationLanguage] = useState('en');
+  // Detected language from backend (if any)
   const [detectedLanguage, setDetectedLanguage] = useState('');
+  // Refs for MediaRecorder and audio chunks
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
+  // Memoized API base URL for backend calls
   const apiBaseUrl = useMemo(() => getVoiceTranslationBaseUrl(), []);
 
+  // CSS classes for panel styling based on theme
   const panelClass = isDarkMode
     ? 'space-y-3 rounded-2xl border border-[#444] bg-black p-4'
     : 'space-y-3 rounded-2xl border border-gray-300 bg-white p-4';
 
+  // CSS classes for input fields based on theme
   const fieldClass = isDarkMode
     ? 'w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-base text-white shadow-inner focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white'
     : 'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 shadow-inner focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300';
 
+  // CSS classes for textarea fields based on theme
   const textAreaClass = isDarkMode
     ? 'min-h-[140px] w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-white'
     : 'min-h-[140px] w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300';
 
+  // CSS classes for file upload input based on theme
   const uploadInputClass = isDarkMode
     ? 'w-full rounded-xl border border-gray-700 bg-black px-4 py-3 text-sm text-white file:mr-4 file:rounded-md file:border-0 file:bg-[#d8c4ad] file:px-3 file:py-2 file:text-sm file:font-medium file:text-black'
     : 'w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 file:mr-4 file:rounded-md file:border-0 file:bg-amber-200 file:px-3 file:py-2 file:text-sm file:font-medium file:text-black';
 
+  // CSS classes for audio ready message based on theme
   const audioReadyClass = isDarkMode
     ? 'rounded-xl border border-green-500/40 bg-green-900/20 px-4 py-3 text-sm text-green-200'
     : 'rounded-xl border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800';
 
+  // Helper to build user-friendly network error messages
   const buildNetworkErrorMessage = (error, actionLabel) => {
     const rawMessage = error?.message || '';
     const isNetworkError =
@@ -146,6 +171,7 @@ function VoiceTranslation() {
     return rawMessage || `Could not ${actionLabel}.`;
   };
 
+  // Starts audio recording using MediaRecorder API
   const startRecording = async () => {
     if (!recordingLanguage) {
       alert('Please choose the language you will speak before recording.');
@@ -190,6 +216,7 @@ function VoiceTranslation() {
     }
   };
 
+  // Stops the current audio recording
   const stopRecording = () => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stop();
@@ -197,6 +224,7 @@ function VoiceTranslation() {
     }
   };
 
+  // Sends audio file to backend for transcription
   const runTranscription = async (fileToTranscribe = audioFile, languageHint = recordingLanguage) => {
     if (!fileToTranscribe) {
       alert('Please record an audio first.');
@@ -237,6 +265,7 @@ function VoiceTranslation() {
     }
   };
 
+  // Sends transcribed text to backend for translation
   const translateText = async () => {
     if (!transcription.trim()) {
       alert('Transcription is empty. Record audio first.');
@@ -274,6 +303,7 @@ function VoiceTranslation() {
     }
   };
 
+  // Clears all state (audio, transcription, translation)
   const clearAll = () => {
     setAudioFile(null);
     setTranscription('');
@@ -284,6 +314,7 @@ function VoiceTranslation() {
 
 
 
+  // Render the Voice Translation UI
   return (
     <div className="voice-translation min-h-screen w-full px-4 py-10 sm:px-6">
       <div className="mx-auto w-full max-w-2xl space-y-8">
