@@ -86,7 +86,12 @@ exports.login = async (req, res, next) => {
 // UPDATE USER PROFILE
 exports.updateProfile = async (req, res, next) => {
     try {
-        const userId = req.user.id; // from JWT middleware
+        console.log('updateProfile DEBUG: req.user =', req.user);
+        console.log('updateProfile DEBUG: req.body =', req.body);
+        const userId = req.user && req.user.id; // from JWT middleware
+        if (!userId) {
+            return next(new createError('User ID missing from token!', 401));
+        }
         const { name, phone } = req.body;
 
         const updateData = {};
@@ -114,6 +119,7 @@ exports.updateProfile = async (req, res, next) => {
             },
         });
     } catch (error) {
+        console.error('updateProfile ERROR:', error);
         next(error);
     }
 };
