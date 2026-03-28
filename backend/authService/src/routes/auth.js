@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-router.put("/profile", authController.updateProfile);
+router.put("/profile", verifyToken, authController.updateProfile);
 
 // Password reset with OTP
 router.post('/forgot-password', authController.forgotPassword);

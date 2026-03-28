@@ -60,11 +60,11 @@ const Profile = () => {
 				// Extract user data from login response
 				const user = parsed.user || parsed;
 				setUserData({
-					username: user.name || '',
-					userId: user._id || '',
-					phone: user.phone || '',
-					email: user.email || '',
-					profilePicture: user.profilePicture || null
+					username: user?.name || '',
+					userId: user?._id || '',
+					phone: user?.phone || '',
+					email: user?.email || '',
+					profilePicture: user?.profilePicture || null
 				});
 			} catch (error) {
 				console.error('Error parsing user data:', error);
@@ -101,10 +101,22 @@ const Profile = () => {
 		try {
 			// Get token from localStorage
 			const storedData = localStorage.getItem('ceylonroam_user');
+			if (!storedData) {
+				setSaveError('User data not found. Please log in again.');
+				setIsSaving(false);
+				return;
+			}
 			const parsed = JSON.parse(storedData);
 			const token = parsed.token;
+			const user = parsed.user || parsed;
+			if (!user || !user._id) {
+				setSaveError('User ID is missing. Please log in again.');
+				setIsSaving(false);
+				return;
+			}
 
 			// Call API to update profile
+
 			const response = await fetch(`${authBaseUrl}/api/profile`, {
 				method: 'PUT',
 				headers: {
@@ -117,7 +129,16 @@ const Profile = () => {
 				})
 			});
 
-			const result = await response.json();
+			// Handle empty or non-JSON responses gracefully
+			let result = {};
+			const text = await response.text();
+			if (text) {
+				try {
+					result = JSON.parse(text);
+				} catch (e) {
+					// Not valid JSON, keep result as empty object
+				}
+			}
 
 			if (!response.ok) {
 				throw new Error(result.message || 'Failed to update profile');
