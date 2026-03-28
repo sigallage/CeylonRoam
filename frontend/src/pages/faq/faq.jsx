@@ -79,7 +79,7 @@ const faqItems = [
   {
     question: "Which languages are supported?",
     answer:
-      "The app supports Sinhala, Tamil, and English, with plans to expand to more languages in the future.",
+      "The app supports Sinhala, Tamil, English, and a wide range of other languages for voice translation, including Arabic, Chinese, Dutch, French, German, Hindi, Italian, Japanese, Korean, Polish, Portuguese, Russian, Spanish and Turkish. We plan to expand to even more languages in the future.",
   },
   {
     question: "How does the route optimizer help me?",
