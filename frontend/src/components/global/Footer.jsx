@@ -18,19 +18,19 @@ const Footer = () => {
 	const bodyTextClass = isDarkMode ? 'text-gray-400 text-sm' : 'text-gray-600 text-sm';
 
 	const linkRowClass = isDarkMode
-		? 'flex flex-wrap justify-center gap-8 text-white font-medium ml-[-60px]'
-		: 'flex flex-wrap justify-center gap-8 text-gray-900 font-medium ml-[-60px]';
+		? 'flex flex-wrap justify-center gap-3 md:gap-8 text-white font-medium'
+		: 'flex flex-wrap justify-center gap-3 md:gap-8 text-gray-900 font-medium';
 
 	const linkBaseClass = isDarkMode
-		? 'transition-colors bg-transparent border-none outline-none text-white font-medium'
-		: 'transition-colors bg-transparent border-none outline-none text-gray-900 font-medium';
+		? 'transition-colors bg-transparent border-none outline-none text-white font-medium text-sm md:text-base'
+		: 'transition-colors bg-transparent border-none outline-none text-gray-900 font-medium text-sm md:text-base';
 
 	return (
 		<footer className={footerClass}>
-			<div className="max-w-7xl mx-auto">
-				<div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+			<div className="max-w-7xl mx-auto px-4">
+				<div className="flex flex-col items-center md:flex-row md:justify-between gap-6 md:gap-8">
 					{/* Logo & Description */}
-					<div className="flex flex-col items-start md:items-center gap-2">
+					<div className="flex flex-col items-center gap-2">
 						<div className="flex items-center gap-3">
 							<div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
 								<img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
@@ -39,7 +39,7 @@ const Footer = () => {
 								Ceylon<span className="text-yellow-400">Roam</span>
 							</h1>
 						</div>
-						<p className={`${bodyTextClass} text-xs md:text-sm`} style={{marginLeft: '3.5rem'}}>
+						<p className={`${bodyTextClass} text-xs md:text-sm text-center`} style={{marginLeft: '0'}}>
 							Explore Sri Lanka's beauty
 						</p>
 					</div>
@@ -100,7 +100,7 @@ const Footer = () => {
 					</div>
 
 					{/* Social Media Icons */}
-					<div className="flex justify-center items-center gap-6">
+					<div className="flex justify-center items-center gap-4 md:gap-6">
 						<a
 							href="https://www.linkedin.com/company/ceylon-roam/posts/?feedView=all"
 							target="_blank"
