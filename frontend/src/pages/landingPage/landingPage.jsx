@@ -564,7 +564,7 @@ const LandingPage = () => {
 
           {/* Bottom Copyright */}
           <div className="mt-8 pt-6 border-t border-gray-800 text-center">
-            <p className="text-gray-400 text-sm">© 2025 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
+            <p className="text-gray-400 text-sm">© 2026 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
           </div>
         </div>
       </footer>
