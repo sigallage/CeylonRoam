@@ -848,31 +848,7 @@
     "entry_fee": "Paid (small fee)",
     "opening_hours": "8.00 AM - 5.00 PM"
 },
-   {
-        "id": "koneswaram_temple",
-        "name": "Koneswaram Temple",
-        "latitude": 8.5700,
-        "longitude": 81.2330,
-        "description": "A historic Hindu temple perched on Swami Rock overlooking the Indian Ocean, Koneswaram is one of the Pancha Ishwarams dedicated to Lord Shiva.",
-        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spiritual_16.jpg/1280px-Spiritual_16.jpg",
-        "category": "religious",
-        "crowd_info": {
-            "peak_months": ["April", "July", "August"],
-            "off_peak_months": ["May", "October"],
-            "best_time_to_visit": "Early morning or evening"
-        },
-        "cultural_guidelines": {
-        "dress_code": "Modest attire required",
-        "behavior": [
-            "Remove footwear",
-            "Photography restricted in inner shrine"
-        ],
-        "entry_requirements": ["Temple rules apply"]
-    },
-    "entry_fee": "Free",
-    "opening_hours": "6:00 AM - 7:00 PM"
-
-    },
+  
     {
   "id": "nallur_kovil",
   "name": "Nallur Kandaswamy Kovil",
@@ -4212,7 +4188,209 @@
   },
   "entry_fee": "Paid entry",
   "opening_hours": "6:00 AM - 6:00 PM"
+},
+{
+  "id": "gal_oya_national_park",
+  "name": "Gal Oya National Park",
+  "latitude": 7.2200,
+  "longitude": 81.4800,
+  "description": "A wildlife park famous for boat safaris where elephants can be seen swimming between islands in Senanayake Samudraya.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/gal-oya-national-park/",
+  "category": "Wildlife National Park",
+  "crowd_info": {
+    "peak_months": ["July", "August", "September"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Early morning or evening safari"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Comfortable safari clothing.",
+    "behavior": [
+      "Maintain silence during wildlife viewing.",
+      "Do not feed animals.",
+      "Follow park ranger instructions."
+    ],
+    "entry_requirements": ["Park entry ticket required"]
+  },
+  "entry_fee": "Paid entry",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+{
+  "id": "senanayake_samudraya",
+  "name": "Senanayake Samudraya",
+  "latitude": 7.2500,
+  "longitude": 81.5000,
+  "description": "The largest reservoir in Sri Lanka located within Gal Oya National Park, surrounded by wildlife and islands.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/senanayake-samudraya/",
+  "category": "Reservoir / Nature Attraction",
+  "crowd_info": {
+    "peak_months": ["July", "August"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Sunrise or sunset"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual outdoor clothing.",
+    "behavior": [
+      "Avoid littering.",
+      "Respect wildlife habitat.",
+      "Follow boat safety rules."
+    ],
+    "entry_requirements": ["Boat rides available"]
+  },
+  "entry_fee": "free (boat rides paid)",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "maduru_oya_national_park",
+  "name": "Maduru Oya National Park",
+  "latitude": 7.6500,
+  "longitude": 81.2000,
+  "description": "A large wildlife sanctuary known for elephants, birds, and ancient reservoirs.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/maduru-oya-national-park/",
+  "category": "Wildlife National Park",
+  "crowd_info": {
+    "peak_months": ["July", "August"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning safari"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Safari clothing.",
+    "behavior": [
+      "Do not disturb wildlife.",
+      "Stay inside safari vehicles.",
+      "Follow park regulations."
+    ],
+    "entry_requirements": ["Park entry ticket required"]
+  },
+  "entry_fee": "Paid entry",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+{
+  "id": "nilgala_forest_reserve",
+  "name": "Nilgala Forest Reserve",
+  "latitude": 7.1500,
+  "longitude": 81.3500,
+  "description": "A vast dry zone forest rich in medicinal plants and wildlife, located near Bibile.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/nilgala-forest-reserve/",
+  "category": "Forest Reserve / Nature Attraction",
+  "crowd_info": {
+    "peak_months": ["June", "July"],
+    "off_peak_months": ["November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Hiking clothing.",
+    "behavior": [
+      "Do not damage plants.",
+      "Respect wildlife.",
+      "Stay on trails."
+    ],
+    "entry_requirements": ["Forest permit recommended"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "sorabora_wewa",
+  "name": "Sorabora Wewa",
+  "latitude": 7.1200,
+  "longitude": 81.2200,
+  "description": "An ancient reservoir built during the reign of King Dutugemunu, famous for its unique stone sluice gate.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/sorabora-wewa/",
+  "category": "Historical Reservoir",
+  "crowd_info": {
+    "peak_months": ["April", "August"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Sunset"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual clothing.",
+    "behavior": [
+      "Respect local fishermen.",
+      "Avoid polluting water.",
+      "Keep surroundings clean."
+    ],
+    "entry_requirements": ["Free access"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "rathugala_village",
+  "name": "Rathugala Vedda Village",
+  "latitude": 7.2300,
+  "longitude": 81.4700,
+  "description": "A traditional Vedda indigenous village where visitors can learn about Sri Lanka's oldest indigenous culture.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/rathugala-vedda-village/",
+  "category": "Cultural / Indigenous Heritage",
+  "crowd_info": {
+    "peak_months": ["July", "August"],
+    "off_peak_months": ["November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest casual clothing.",
+    "behavior": [
+      "Respect local traditions.",
+      "Ask permission before taking photos.",
+      "Support local guides."
+    ],
+    "entry_requirements": ["Guide recommended"]
+  },
+  "entry_fee": "small cultural tour fee",
+  "opening_hours": "8:00 AM - 5:00 PM"
+},
+
+{
+  "id": "buddama_temple",
+  "name": "Buddama Raja Maha Viharaya",
+  "latitude": 7.2000,
+  "longitude": 81.4500,
+  "description": "An ancient Buddhist temple believed to date back to the Anuradhapura period.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/buddama-raja-maha-viharaya/",
+  "category": "Religious / Historical Site",
+  "crowd_info": {
+    "peak_months": ["May", "June"],
+    "off_peak_months": ["October"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest clothing.",
+    "behavior": [
+      "Remove footwear.",
+      "Respect religious customs.",
+      "Maintain silence."
+    ],
+    "entry_requirements": ["Free entry"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "6:00 AM - 7:00 PM"
+},
+{
+  "id": "kebiliththa",
+  "name": "Kebiliththa Sacred Forest",
+  "latitude": 7.0500,
+  "longitude": 81.3000,
+  "description": "A sacred jungle shrine dedicated to Kataragama deity, visited by pilgrims and nature lovers.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kebiliththa/",
+  "category": "Sacred Forest / Pilgrimage Site",
+  "crowd_info": {
+    "peak_months": ["July"],
+    "off_peak_months": ["November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest clothing recommended.",
+    "behavior": [
+      "Respect religious traditions.",
+      "Do not harm wildlife.",
+      "Keep the forest clean."
+    ],
+    "entry_requirements": ["Special permission may be required"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open daylight hours"
 }
+
 
 
 ]
