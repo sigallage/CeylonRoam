@@ -2,14 +2,15 @@
 
 This backend service provides **speech-to-text** and **text translation** capabilities using open-source models from Hugging Face and they are:
 
-- **Whisper Large v3** (OpenAI) - for speech recognition
+- **Whisper Small** (OpenAI) - for speech recognition
 - **NLLB-200** (Meta) - for translation
+
 
 ## Features
 
 - **Completely FREE** - runs locally on your machine
 - **No API keys required**
-- Supports Sinhala, English, and Tamil
+- Supports many languages including Sinhala, Tamil, English, Hindi, Arabic, Chinese, French, German, Spanish, Dutch, Italian, Japanese, Korean, Polish, Portuguese, Russian, and Turkish
 - High-quality transcription with Whisper Large v3
 - Advanced translation with NLLB-200
 
@@ -87,11 +88,30 @@ Translate text between languages.
 }
 ```
 
+
 ## Supported Languages
 
-- `si` - Sinhala 
+The backend supports a wide range of languages for both speech recognition and translation, including but not limited to:
+
+- `si` - Sinhala
+- `ta` - Tamil
 - `en` - English
-- `ta` - Tamil 
+- `hi` - Hindi
+- `ar` - Arabic
+- `zh` - Chinese
+- `fr` - French
+- `de` - German
+- `es` - Spanish
+- `nl` - Dutch
+- `it` - Italian
+- `ja` - Japanese
+- `ko` - Korean
+- `pl` - Polish
+- `pt` - Portuguese
+- `ru` - Russian
+- `tr` - Turkish
+
+For the full list of supported language codes, see the `WHISPER_LANG_MAP` and `NLLB_LANG_MAP` in `main.py`.
 
 ## System Requirements
 
