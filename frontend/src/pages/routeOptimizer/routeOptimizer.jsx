@@ -10,7 +10,7 @@ import {
 	CircleF,
 	useJsApiLoader,
 } from '@react-google-maps/api'
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiX } from 'react-icons/fi'
 import { BiTrash } from 'react-icons/bi'
 
 import destinationsRaw from '../../dataset/destinations.json'
@@ -362,6 +362,7 @@ export default function RouteOptimizer() {
 		setRoutePreviewActive(false)
 	}, [])
 	const [currentStepIndex, setCurrentStepIndex] = useState(0)
+	const [destinationSearchQuery, setDestinationSearchQuery] = useState('')
 	const [showSavedItineraries, setShowSavedItineraries] = useState(false)
 	const [savedItineraries, setSavedItineraries] = useState([])
 	const [savedLoading, setSavedLoading] = useState(false)
@@ -1164,8 +1165,31 @@ export default function RouteOptimizer() {
 				{/* Available Destinations */}
 				<div>
 					<div className="flex items-center gap-2 mb-3 text-xs font-semibold uppercase tracking-widest opacity-90" style={{color: '#facc15', backgroundColor: 'rgba(250,204,21,0.1)', padding: '8px 12px', borderRadius: '6px', borderLeft: '3px solid #facc15'}}>Available Destinations</div>
+					
+					{/* Search Bar */}
+					<div className="mb-3 relative">
+						<input 
+							type="text"
+							placeholder="Search destinations..." 
+							value={destinationSearchQuery}
+							onChange={(e) => setDestinationSearchQuery(e.target.value)}
+							className="w-full px-3 py-2 bg-slate-700/50 border border-slate-700/50 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-yellow-400 focus:bg-slate-700/80 transition-all"
+						/>
+						{destinationSearchQuery && (
+							<button 
+								onClick={() => setDestinationSearchQuery('')}
+								className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-200 transition-colors"
+								title="Clear search"
+							>
+								<FiX size={16} />
+							</button>
+						)}
+					</div>
+
 					<div className="bg-slate-800/60 border border-slate-700/20 rounded-lg p-3 max-h-48 overflow-y-auto">
-						{destinationData.map(d => (
+						{destinationData
+							.filter(d => d.name.toLowerCase().includes(destinationSearchQuery.toLowerCase()))
+							.map(d => (
 							<div key={d.id} className="flex items-center justify-between py-2 px-2 border-b border-slate-700/10 last:border-b-0 text-sm">
 									<span
 										className="flex-1 text-slate-200 hover:text-yellow-400 cursor-pointer transition-colors"
