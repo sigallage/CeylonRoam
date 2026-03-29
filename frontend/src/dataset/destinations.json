@@ -3962,7 +3962,257 @@
     },
     "entry_fee": "No formal entry; customary tip/payment to fishermen for photography",
     "opening_hours": "Best observed 5:30–9:00 AM and 3:30–6:00 PM along the coastal road (A2) between Ahangama and Koggala; year-round"
-  }
+  },
+  {
+  "id": "arugam_bay",
+  "name": "Arugam Bay",
+  "latitude": 6.8400,
+  "longitude": 81.8300,
+  "description": "A world-famous surfing destination known for its long sandy beach, relaxed atmosphere, and vibrant surf culture.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/arugam-bay/",
+  "category": "Beach / Surfing Destination",
+  "crowd_info": {
+    "peak_months": ["June", "July", "August"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Early morning or sunset"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Beachwear acceptable near the beach.",
+    "behavior": [
+      "Respect local fishing communities.",
+      "Avoid littering on the beach.",
+      "Follow surf safety guidelines."
+    ],
+    "entry_requirements": ["Free access"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "pasikudah_beach",
+  "name": "Pasikudah Beach",
+  "latitude": 7.9300,
+  "longitude": 81.5600,
+  "description": "A beautiful shallow coastline known for calm turquoise waters and luxury beach resorts.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/pasikudah-beach/",
+  "category": "Beach / Coastal Attraction",
+  "crowd_info": {
+    "peak_months": ["April", "May", "June"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Morning or late afternoon"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual beachwear.",
+    "behavior": [
+      "Respect resort and public beach areas.",
+      "Avoid disturbing marine life.",
+      "Dispose of waste responsibly."
+    ],
+    "entry_requirements": ["Free public access"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "nilaveli_beach",
+  "name": "Nilaveli Beach",
+  "latitude": 8.7000,
+  "longitude": 81.2000,
+  "description": "A pristine beach with white sand and clear waters, popular for relaxation and boat trips to nearby islands.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/nilaveli-beach/",
+  "category": "Beach / Coastal Attraction",
+  "crowd_info": {
+    "peak_months": ["April", "May", "June"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Beachwear near the shore.",
+    "behavior": [
+      "Protect coral reefs.",
+      "Avoid littering.",
+      "Respect local fishermen."
+    ],
+    "entry_requirements": ["Free access"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "pigeon_island",
+  "name": "Pigeon Island National Park",
+  "latitude": 8.7200,
+  "longitude": 81.2100,
+  "description": "A marine national park famous for coral reefs, snorkeling, and diverse marine life.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/pigeon-island-national-park/",
+  "category": "Marine National Park",
+  "crowd_info": {
+    "peak_months": ["April", "May", "June"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Light beachwear and snorkeling gear.",
+    "behavior": [
+      "Do not touch coral reefs.",
+      "Follow park ranger instructions.",
+      "Avoid feeding marine animals."
+    ],
+    "entry_requirements": ["National park ticket required"]
+  },
+  "entry_fee": "Paid entry",
+  "opening_hours": "7:00 AM - 5:00 PM"
+},
+{
+  "id": "koneswaram_temple",
+  "name": "Koneswaram Temple",
+  "latitude": 8.5700,
+  "longitude": 81.2300,
+  "description": "A historic Hindu temple located on Swami Rock offering stunning ocean views and cultural significance.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/koneswaram-temple/",
+  "category": "Religious / Cultural Site",
+  "crowd_info": {
+    "peak_months": ["April", "July"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning or evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Modest clothing required.",
+    "behavior": [
+      "Remove footwear before entering.",
+      "Respect religious rituals.",
+      "Maintain silence inside the temple."
+    ],
+    "entry_requirements": ["Free entry"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "6:00 AM - 8:00 PM"
+},
+{
+  "id": "marble_beach",
+  "name": "Marble Beach",
+  "latitude": 8.4800,
+  "longitude": 81.2000,
+  "description": "A quiet and scenic beach known for crystal-clear water and soft white sand.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/marble-beach/",
+  "category": "Beach / Nature Attraction",
+  "crowd_info": {
+    "peak_months": ["April", "May"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual beachwear.",
+    "behavior": [
+      "Keep the beach clean.",
+      "Respect wildlife and nature.",
+      "Follow safety instructions."
+    ],
+    "entry_requirements": ["May require security check"]
+  },
+  "entry_fee": "small entrance fee",
+  "opening_hours": "8:00 AM - 5:00 PM"
+},
+{
+  "id": "batticaloa_lagoon",
+  "name": "Batticaloa Lagoon",
+  "latitude": 7.7200,
+  "longitude": 81.7000,
+  "description": "A scenic lagoon famous for mangroves, fishing communities, and the legendary singing fish phenomenon.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/batticaloa-lagoon/",
+  "category": "Lagoon / Nature Attraction",
+  "crowd_info": {
+    "peak_months": ["April", "August"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Sunset"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Casual comfortable clothing.",
+    "behavior": [
+      "Respect fishermen activities.",
+      "Avoid littering.",
+      "Use life jackets during boat rides."
+    ],
+    "entry_requirements": ["Free access"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "Open 24 hours"
+},
+{
+  "id": "kumana_national_park",
+  "name": "Kumana National Park",
+  "latitude": 6.5800,
+  "longitude": 81.6700,
+  "description": "A wildlife sanctuary famous for birdwatching and diverse wildlife including elephants and crocodiles.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/kumana-national-park/",
+  "category": "Wildlife National Park",
+  "crowd_info": {
+    "peak_months": ["May", "June", "July"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Early morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Comfortable safari clothing.",
+    "behavior": [
+      "Do not feed animals.",
+      "Maintain silence during safaris.",
+      "Follow park ranger instructions."
+    ],
+    "entry_requirements": ["Park entry ticket required"]
+  },
+  "entry_fee": "Paid entry",
+  "opening_hours": "6:00 AM - 6:00 PM"
+},
+{
+  "id": "seruwila_temple",
+  "name": "Seruwila Mangala Raja Maha Viharaya",
+  "latitude": 8.3200,
+  "longitude": 81.2800,
+  "description": "An ancient Buddhist temple believed to have been built by King Kavantissa.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/seruwila-mangala-raja-maha-viharaya/",
+  "category": "Religious / Historical Site",
+  "crowd_info": {
+    "peak_months": ["May", "June"],
+    "off_peak_months": ["October", "November"],
+    "best_time_to_visit": "Morning"
+  },
+  "cultural_guidelines": {
+    "dress_code": "White or modest clothing recommended.",
+    "behavior": [
+      "Remove footwear before entering temple areas.",
+      "Maintain respectful behavior.",
+      "Avoid loud conversations."
+    ],
+    "entry_requirements": ["Free entry"]
+  },
+  "entry_fee": "free",
+  "opening_hours": "6:00 AM - 7:00 PM"
+},
+{
+  "id": "lahugala_national_park",
+  "name": "Lahugala Kitulana National Park",
+  "latitude": 6.8700,
+  "longitude": 81.7000,
+  "description": "A small but important national park known for elephant gatherings and rich biodiversity.",
+  "image_url": "https://www.attractionsinsrilanka.com/travel-directory/lahugala-national-park/",
+  "category": "Wildlife National Park",
+  "crowd_info": {
+    "peak_months": ["July", "August"],
+    "off_peak_months": ["November", "December"],
+    "best_time_to_visit": "Early morning or evening"
+  },
+  "cultural_guidelines": {
+    "dress_code": "Comfortable safari clothing.",
+    "behavior": [
+      "Do not disturb wildlife.",
+      "Follow park ranger instructions.",
+      "Avoid littering."
+    ],
+    "entry_requirements": ["Park entry ticket required"]
+  },
+  "entry_fee": "Paid entry",
+  "opening_hours": "6:00 AM - 6:00 PM"
+}
 
 
 ]
