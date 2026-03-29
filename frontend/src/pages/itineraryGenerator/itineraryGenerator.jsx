@@ -215,6 +215,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [error, setError] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
   const timeoutRef = useRef(null);
 
   useEffect(() => { //cleanup timeout on unmount
@@ -353,6 +354,33 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
       return;
     }
 
+    // Validation
+    if (!formState.purposeInput.trim()) {
+      setError("Purpose of trip is required");
+      return;
+    }
+
+    if (!formState.budget.trim()) {
+      setError("Budget is required");
+      return;
+    }
+
+    const numericBudget = Number.parseInt(formState.budget.replace(/[^0-9]/g, ""), 10);
+    if (Number.isNaN(numericBudget) || numericBudget < 1000) {
+      setError("Minimum budget is 1000 LKR");
+      return;
+    }
+
+    if (formState.selectedProvinces.length === 0) {
+      setError("Please select at least one province to visit");
+      return;
+    }
+
+    if (!startDate || !endDate) {
+      setError("Please select both start and end dates");
+      return;
+    }
+
     const submissionStartedAt = Date.now(); //timestamp for submission start
     setError(null);
     setIsSubmitting(true);
@@ -364,7 +392,6 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
         .map((entry) => entry.trim())
         .filter(Boolean);
 
-    const numericBudget = Number.parseInt(formState.budget.replace(/[^0-9]/g, ""), 10); //parses budget input
     const budgetValue = Number.isNaN(numericBudget) //checks if budget is a valid number
       ? formState.budget.trim() //if not, use the raw input
       : numericBudget;
@@ -488,7 +515,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
             }}
           >
             <section className={panelClass}>
-              <label className={labelClass}>Purpose of trip</label>
+              <label className={labelClass}>Purpose of trip <span className="text-yellow-400">*</span></label>
               <input
                 aria-label="Purpose of trip"
                 className={fieldClass}
@@ -500,7 +527,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
             </section>
 
             <section className={panelClass}>
-              <label className={labelClass}>Budget (LKR)</label>
+              <label className={labelClass}>Budget (LKR) <span className="text-yellow-400">*</span></label>
               <input
                 aria-label="Budget in LKR"
                 className={fieldClass}
@@ -510,10 +537,11 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
                 onChange={(event) => handleFieldChange('budget', event.target.value)}
                 disabled={isSubmitting}
               />
+              <p className={isDarkMode ? 'text-xs text-gray-500 mt-1' : 'text-xs text-gray-500 mt-1'}>Minimum: 1000 LKR</p>
             </section>
 
             <section className={`${panelClass} relative`}>
-              <label className={labelClass}>Provinces to visit</label>
+              <label className={labelClass}>Provinces to visit <span className="text-yellow-400">*</span></label>
               <button
                 type="button"
                 className={`${fieldClass} text-left`}
@@ -583,7 +611,7 @@ const ItineraryGenerator = () => { //main component for the itinerary generator
             </section>
 
             <section className={panelClass}>
-              <label className={labelClass}>Dates spending</label>
+              <label className={labelClass}>Dates spending <span className="text-yellow-400">*</span></label>
               <input
                 aria-label="Selected travel dates"
                 className={fieldClass}
