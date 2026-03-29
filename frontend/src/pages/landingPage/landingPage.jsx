@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import flagImage from '../../assets/1.jpg';
 import logoIcon from '../../assets/icon.jpeg';
 import colomboImage from '../../assets/2.jpg';
+import Footer from '../../components/global/Footer';
+import { ThemeProvider } from '../../context/ThemeContext';
 import templeImage from '../../assets/3.jpg';
 import wildlifeImage from '../../assets/6.jpg';
 import sigiriyaImage from '../../assets/4.jpeg';
@@ -204,7 +206,8 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <ThemeProvider>
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 flex flex-col">
       {/* Hero Section with Image Slider */}
       <section className="relative h-screen overflow-hidden">
         {/* Background Images with Crossfade */}
@@ -519,56 +522,9 @@ const LandingPage = () => {
           </button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="relative py-8 px-8 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
-                <img src={logoIcon} alt="CeylonRoam" className="w-full h-full object-cover" />
-              </div>
-              <h1 className="text-3xl font-bold text-white tracking-tight">
-                Ceylon<span className="text-yellow-400">Roam</span>
-              </h1>
-            </div>
-
-            {/* Navigation Links */}
-            <div className="flex flex-wrap justify-center gap-8 text-white font-medium">
-              <a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
-              <a href="#destinations" className="hover:text-amber-400 transition-colors">Experiences</a>
-              <button
-                type="button"
-                className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
-                style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
-                onClick={() => navigate('/about-us', { state: { scrollTo: 'top' } })}
-              >
-                About
-              </button>
-              <button
-                type="button"
-                className="hover:text-orange-400 transition-colors bg-transparent border-none outline-none text-white font-medium"
-                style={{font: 'inherit', padding: 0, margin: 0, cursor: 'pointer'}}
-                onClick={() => navigate('/faq', { state: { scrollTo: 'top' } })}
-              >
-                Faq
-              </button>
-            </div>
-
-            {/* Contact Info */}
-            <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm">ceylon.roam144@gmail.com</p>
-            </div>
-          </div>
-
-          {/* Bottom Copyright */}
-          <div className="mt-8 pt-6 border-t border-gray-800 text-center">
-            <p className="text-gray-400 text-sm">© 2026 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
+    </ThemeProvider>
   );
 };
 
