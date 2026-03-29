@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import bgImg from '../../assets/2.jpg';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
+import { FaLinkedin } from 'react-icons/fa';
 
 const AboutUs = () => {
   const location = useLocation();
@@ -203,6 +204,9 @@ const AboutUs = () => {
             <div style={{ background: '#ffb300', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>SG</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Sasanka Gallage</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/sasanka-gallage-9861532bb/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
           <li className="hoverable" style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(33,150,243,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
@@ -210,6 +214,9 @@ const AboutUs = () => {
             <div style={{ background: '#2196f3', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>TF</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Tashmi Fernando</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/tashmi-fernando/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
           <li className="hoverable" style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(139,195,74,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
@@ -217,6 +224,9 @@ const AboutUs = () => {
             <div style={{ background: '#8bc34a', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>OG</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Oshadhi Goonewardena</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/oshadhi-goonewardena/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
           <li className="hoverable" style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(229,115,115,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
@@ -224,6 +234,9 @@ const AboutUs = () => {
             <div style={{ background: '#e57373', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>RD</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Rashmika Dewangi</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/rashmika-dewangi-31811637b/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
           <li className="hoverable" style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(171,71,188,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
@@ -231,6 +244,9 @@ const AboutUs = () => {
             <div style={{ background: '#ab47bc', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>TP</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Thamindu Perera</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/thamindu-perera-5804b1215/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
           <li style={{ textAlign: 'center', border: '3px solid transparent', backgroundImage: 'linear-gradient(#1f1f1f,#1f1f1f), linear-gradient(90deg,#facc15,#ff8a00)', backgroundOrigin: 'border-box', backgroundClip: 'padding-box, border-box', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderRadius: 12, padding: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseOver={e => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,188,212,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
@@ -238,6 +254,9 @@ const AboutUs = () => {
             <div style={{ background: '#00bcd4', color: '#fff', borderRadius: '50%', width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 700 }}>SJ</div>
             <div style={{ fontWeight: 700, marginTop: 10, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>Sandaru Jayasekara</div>
             <div style={{ color: '#888', marginTop: 4, fontSize: 14 }}>Full-Stack Developer</div>
+            <a href="https://www.linkedin.com/in/sandaru-jayasekara-9639873b3/" target="_blank" rel="noopener noreferrer" style={{ marginTop: 10, color: '#0a66c2', fontSize: 20, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = '0.8'} onMouseOut={e => e.target.style.opacity = '1'}>
+              <FaLinkedin />
+            </a>
           </li>
         </ul>
       </div>
