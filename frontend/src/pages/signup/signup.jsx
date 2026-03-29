@@ -142,7 +142,7 @@ function SignUp() {
               <form onSubmit={handleSignup} className="flex flex-col gap-4">
                 <div>
                   <label htmlFor="name" className={labelClass}>
-                    Full Name <span className={helperClass}>(optional)</span>
+                    Full Name
                   </label>
                   <input
                     type="text"
