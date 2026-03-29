@@ -1,4 +1,3 @@
-Project Overview
 CeylonRoam is a travel planning platform designed to help people plan trips in Sri Lanka faster and with more confidence. It brings itinerary planning, route optimization, and language assistance into one experience so travelers can spend less time organizing and more time enjoying the trip.
 
 What Problem It Solves
