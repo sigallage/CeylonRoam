@@ -91,7 +91,7 @@ const Footer = () => {
 
 				{/* Bottom Copyright */}
 				<div className={isDarkMode ? 'mt-8 pt-6 border-t border-gray-800 text-center' : 'mt-8 pt-6 border-t border-gray-200 text-center'}>
-					<p className={bodyTextClass}>© 2025 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
+					<p className={bodyTextClass}>© 2026 CeylonRoam. All rights reserved. Made with love in Sri Lanka</p>
 				</div>
 			</div>
 		</footer>
