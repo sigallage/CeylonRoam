@@ -24,7 +24,7 @@ const sendOTPEmail = async (email, otp) => {
     if (!hasEmailConfig) {
       // Development mode - just log the OTP
       console.log('\n========================================');
-      console.log('📧 DEVELOPMENT MODE - OTP EMAIL');
+      console.log('DEVELOPMENT MODE - OTP EMAIL');
       console.log('========================================');
       console.log('To:', email);
       console.log('OTP:', otp);
@@ -76,7 +76,7 @@ const sendOTPEmail = async (email, otp) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('✅ OTP email sent successfully:', info.messageId);
+    console.log('OTP email sent successfully:', info.messageId);
     return { success: true, mode: 'production', messageId: info.messageId };
   } catch (error) {
     const smtp = {
@@ -87,7 +87,7 @@ const sendOTPEmail = async (email, otp) => {
       command: error?.command,
     };
 
-    console.error('❌ Error sending OTP email:', smtp);
+    console.error('Error sending OTP email:', smtp);
 
     const publicError = new Error('Failed to send OTP email');
     publicError.smtp = smtp;
